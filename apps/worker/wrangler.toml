@@ -1,0 +1,4 @@
+name = "apt-worker"
+type = "javascript"
+main = "src/index.ts"
+compatibility_date = "2026-01-19"
