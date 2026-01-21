@@ -140,8 +140,103 @@ If this is your first time deploying, follow these steps:
 - Push to a branch to trigger a preview deploy.
 - Merge to `main` to trigger production deploy.
 
-**References:**
+## Deployment Notes: Cloudflare Pages + Worker Integration
 
-- [Cloudflare Pages Docs](https://developers.cloudflare.com/pages/)
-- [Cloudflare Workers Docs](https://developers.cloudflare.com/workers/)
-- [Wrangler CLI Docs](https://developers.cloudflare.com/workers/wrangler/)
+### How the Project is Set Up and Works
+
+- **Monorepo Structure:**
+  - `apps/web`: Vite + React SPA (frontend, static assets)
+  - `apps/worker`: Cloudflare Worker (API backend)
+  - `apps/web/functions/api/[[path]].js`: Cloudflare Pages Function that proxies `/api/*` requests to the Worker
+
+- **Frontend (Pages):**
+  - Deployed to Cloudflare Pages (e.g., https://applied-practical-thinking.pages.dev)
+  - All API calls in the frontend use relative URLs (e.g., `/api/info`)
+
+- **Backend (Worker):**
+  - Deployed to Cloudflare Workers (e.g., https://applied-practical-thinking.apt-account.workers.dev)
+  - Handles API routes like `/api/info`
+
+- **Proxy (Pages Function):**
+  - Any request to `/api/*` on the Pages site is intercepted by `apps/web/functions/api/[[path]].js`
+  - This function forwards the request to the Worker, preserving the path and method
+  - The Worker processes the request and returns the response, which is sent back to the frontend
+
+### Deployment & Debugging Notes
+
+- **Deploying:**
+  - Push to the main branch triggers deploys for both Pages and Worker (if both are connected to GitHub)
+  - Pages Functions must be committed to the repo; they cannot be edited in the Cloudflare UI
+  - The Worker must be deployed and public at its workers.dev subdomain
+
+- **Common Issues & Fixes:**
+  - **404 on /api/\*:**
+    - Ensure the Pages Function exists at `apps/web/functions/api/[[path]].js`
+    - Ensure the Worker is deployed and accessible at its workers.dev URL
+    - The proxy function should forward the full path (do not strip `/api`)
+  - **Unexpected token '<', ... is not valid JSON:**
+    - This means the frontend is receiving HTML (likely a 404 or error page) instead of JSON
+    - Check that the proxy is forwarding requests correctly and the Worker is returning JSON
+  - **Invalid Pages function route parameter:**
+    - Use `[[path]].js` for catch-all routes, not `[...catchall].js`
+
+- **Testing:**
+  - You can test the Worker directly at its workers.dev URL (e.g., https://applied-practical-thinking.apt-account.workers.dev/api/info)
+  - You can test the full integration by visiting the Pages site and making API calls from the frontend
+
+### Summary
+
+- The frontend and backend are cleanly separated, with a Pages Function bridging API calls.
+- All deploys are automated via GitHub integration.
+- The setup allows for local development, preview deploys, and production deploys with unified routing.
+
+---
+
+## Using a Custom Domain (appliedpracticalthinking.com)
+
+To use your own domain (e.g., appliedpracticalthinking.com and www.appliedpracticalthinking.com) for your Cloudflare Pages + Worker deployment:
+
+### 1. Add Your Domain to Cloudflare
+
+- Go to the Cloudflare dashboard and add your domain (appliedpracticalthinking.com) if you haven’t already.
+- Follow the prompts to change your domain’s nameservers to Cloudflare’s (if not already using Cloudflare DNS).
+
+### 2. Assign the Domain to Your Pages Project
+
+- In the Cloudflare dashboard, go to your Pages project.
+- Go to the **Custom Domains** section.
+- Add both `appliedpracticalthinking.com` and `www.appliedpracticalthinking.com` as custom domains.
+- Cloudflare will show you the required DNS records (usually CNAME or A records) to add for each domain.
+
+### 3. Update DNS Records
+
+- In the Cloudflare DNS settings for your domain:
+  - For the root domain (`appliedpracticalthinking.com`):
+    - Add an **A record** pointing to `192.0.2.1` (Cloudflare’s dummy IP for root domain flattening), or use the CNAME flattening option if available.
+    - Or, if Cloudflare instructs, add a **CNAME** for `@` pointing to your Pages project’s `.pages.dev` domain.
+  - For the www subdomain (`www.appliedpracticalthinking.com`):
+    - Add a **CNAME** for `www` pointing to your Pages project’s `.pages.dev` domain (e.g., `applied-practical-thinking.pages.dev`).
+
+### 4. Wait for DNS Propagation
+
+- It may take a few minutes to a few hours for DNS changes to propagate.
+- Cloudflare will automatically provision SSL certificates for your custom domain.
+
+### 5. Test Your Site
+
+- Visit https://appliedpracticalthinking.com and https://www.appliedpracticalthinking.com to verify they both load your Pages site.
+- API routes (e.g., `/api/info`) will continue to work as before, routed through your Pages Function to your Worker.
+
+### 6. (Optional) Redirect www to root or vice versa
+
+- In Cloudflare Pages settings, you can set up a redirect so that all traffic to `www.appliedpracticalthinking.com` redirects to `appliedpracticalthinking.com`, or the other way around, for a unified canonical domain.
+
+---
+
+**Summary:**
+
+- Add your domain to Cloudflare and point DNS to Cloudflare.
+- Assign the domain(s) to your Pages project.
+- Add the DNS records Cloudflare provides.
+- Wait for propagation and test.
+- All API proxying and Worker integration will continue to work with your custom domain.
