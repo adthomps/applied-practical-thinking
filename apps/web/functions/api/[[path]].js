@@ -5,7 +5,7 @@ export async function onRequest(context) {
     "https://applied-practical-thinking.apt-account.workers.dev";
   const url = new URL(context.request.url);
   // Remove the '/api' prefix so the Worker receives the correct path
-  const apiPath = url.pathname.replace(/^\/api/, "");
+  const apiPath = url.pathname;
   const workerUrl = `${workerBase}${apiPath}`;
 
   // Forward the request to the Worker
