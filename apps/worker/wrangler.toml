@@ -1,4 +1,7 @@
 name = "applied-practical-thinking"
+<<<<<<< Updated upstream
 type = "javascript"
+=======
+>>>>>>> Stashed changes
 main = "src/index.ts"
 compatibility_date = "2026-01-19"
