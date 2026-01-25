@@ -1,6 +1,9 @@
 name = "applied-practical-thinking"
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 type = "javascript"
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 main = "src/index.ts"
