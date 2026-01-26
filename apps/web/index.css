@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* APT Design System - Dark-first, card-based, calm motion */
+
+@layer base {
+  :root {
+    /* APT uses dark mode as default - light mode values here for completeness */
+    --background: 220 15% 95%;
+    --foreground: 220 20% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 10%;
+
+    --primary: 220 70% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 15% 90%;
+    --secondary-foreground: 220 20% 10%;
+
+    --muted: 220 15% 92%;
+    --muted-foreground: 220 10% 40%;
+
+    --accent: 165 45% 35%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 85%;
+    --input: 220 15% 85%;
+    --ring: 220 70% 50%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 220 15% 97%;
+    --sidebar-foreground: 220 20% 10%;
+    --sidebar-primary: 220 70% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 15% 92%;
+    --sidebar-accent-foreground: 220 20% 10%;
+    --sidebar-border: 220 15% 85%;
+    --sidebar-ring: 220 70% 50%;
+
+    --chart-1: 220 70% 50%;
+    --chart-2: 165 60% 40%;
+    --chart-3: 280 60% 50%;
+    --chart-4: 30 80% 55%;
+    --chart-5: 340 70% 50%;
+
+    /* APT Specific Tokens */
+    --apt-glow: 220 70% 50%;
+    --apt-surface: 220 20% 18%;
+    --apt-surface-elevated: 220 18% 22%;
+    --apt-text-secondary: 220 10% 60%;
+    --apt-border-subtle: 220 15% 25%;
+  }
+
+  .dark {
+    --background: 220 20% 8%;
+    --foreground: 220 10% 95%;
+
+    --card: 220 18% 12%;
+    --card-foreground: 220 10% 95%;
+
+    --popover: 220 18% 12%;
+    --popover-foreground: 220 10% 95%;
+
+    --primary: 220 70% 55%;
+    --primary-foreground: 220 20% 8%;
+
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 220 10% 90%;
+
+    --muted: 220 15% 15%;
+    --muted-foreground: 220 10% 55%;
+
+    --accent: 165 45% 40%;
+    --accent-foreground: 220 20% 8%;
+
+    --destructive: 0 65% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 18%;
+    --ring: 220 70% 55%;
+
+    --sidebar-background: 220 20% 6%;
+    --sidebar-foreground: 220 10% 95%;
+    --sidebar-primary: 220 70% 55%;
+    --sidebar-primary-foreground: 220 20% 8%;
+    --sidebar-accent: 220 15% 15%;
+    --sidebar-accent-foreground: 220 10% 95%;
+    --sidebar-border: 220 15% 18%;
+    --sidebar-ring: 220 70% 55%;
+
+    --chart-1: 220 70% 55%;
+    --chart-2: 165 55% 45%;
+    --chart-3: 280 55% 55%;
+    --chart-4: 30 75% 50%;
+    --chart-5: 340 65% 55%;
+
+    /* APT Specific Tokens - Dark Mode */
+    --apt-glow: 220 70% 55%;
+    --apt-surface: 220 18% 12%;
+    --apt-surface-elevated: 220 16% 16%;
+    --apt-text-secondary: 220 10% 55%;
+    --apt-border-subtle: 220 15% 22%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased dark;
+  }
+}
+
+/* APT Animations - Calm motion only */
+@layer utilities {
+  .apt-fade-in {
+    animation: aptFadeIn 0.4s ease-out forwards;
+  }
+
+  .apt-slide-up {
+    animation: aptSlideUp 0.5s ease-out forwards;
+  }
+
+  .apt-hover-lift {
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  }
+
+  .apt-hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px -8px hsl(var(--apt-glow) / 0.15);
+  }
+
+  .apt-glow-subtle {
+    box-shadow: 0 0 40px -10px hsl(var(--apt-glow) / 0.2);
+  }
+}
+
+@keyframes aptFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes aptSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes apt-emblem-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes apt-pulse-glow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}

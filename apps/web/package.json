@@ -1,18 +1,17 @@
 {
-  "name": "applied-practical-thinking",
-  "version": "1.0.0",
+  "name": "apt-web",
   "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "main": "src/main.tsx",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "devDependencies": {
-    "vite": "^4.0.0",
-    "@vitejs/plugin-react": "^4.0.0"
-  }
+  "dependencies": {},
+  "devDependencies": {}
 }

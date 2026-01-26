@@ -1,7 +1,28 @@
-# Platform IDs
+# Platform IDs & Cloudflare Bindings
 
-- Document Cloudflare account IDs, API tokens, and environment variable mappings here.
+## Cloudflare Bindings
+- All D1/KV/R2/Queues bindings must be declared in `wrangler.toml`.
+- Document binding names and usage here.
+
+## Example
+
+```
+[vars]
+D1_DATABASE = "my_db"
+KV_NAMESPACE = "my_kv"
+R2_BUCKET = "my_bucket"
+QUEUE_NAME = "my_queue"
+```
+
+## Usage
+- Reference these bindings in worker code via environment variables.# PLATFORM_IDS.md
+
+## Cloudflare Platform IDs and Bindings
+
+- See `wrangler.toml` for all environment bindings
+- D1/KV/R2/Queues: Add and document bindings here as needed
 - Example:
-  - CLOUDFLARE_ACCOUNT_ID=257b7e468437a1105470c725617d9268
-  - CLOUDFLARE_API_TOKEN=7kvAHTF017G9jcJiwzS9f8JYn7FGZqbkg7MtdxOX
-  - ENV: see wrangler.toml
+  - D1: `DATABASE` (binding name)
+  - KV: `APT_KV` (binding name)
+  - R2: `APT_R2` (binding name)
+- Update this file whenever bindings change

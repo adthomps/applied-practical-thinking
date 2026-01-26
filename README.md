@@ -1,84 +1,121 @@
-# Applied Practical Thinking
+# Applied Practical Thinking (APT) Monorepo
 
-A monorepo for the APT stack: Vite + React SPA (apps/web), Cloudflare Worker API (apps/worker), and shared packages (packages/ui, packages/config).
+A modern, monorepo-based portfolio and demo platform for Applied Practical Thinking.
 
-## Structure
+---
 
-- `apps/web` — Vite + React SPA (Pages)
-- `apps/worker` — Cloudflare Worker (Hono, API)
-- `packages/ui` — Shared UI components (Apt\*)
-- `packages/config` — Design tokens and config
+## Project Overview
 
-## Quick Start
+- **Frontend:** Vite + React + TypeScript + Tailwind CSS + shadcn/ui
+- **Design System:** All tokens, patterns, and docs in `apps/web/docs/design/`
+- **AI Prompts:** Versioned in `apps/worker/src/ai/prompts/`
+- **Monorepo:** All code in `apps/` and `packages/`
+- **API:** Internal API via Cloudflare Worker (`apps/worker`), all UI fetches via `/api/*`
+- **Static-first:** SPA deploys to Cloudflare Pages; API is optional but recommended for dynamic features
 
-```sh
-cd apps/web
-npm install
-npm run dev
-# In another terminal:
-cd ../../apps/worker
-npm install
-npm run dev
-```
-
-- Frontend: http://localhost:5173
-- Backend: http://localhost:8787
-
-## Project Guardrails
-
-- All UI logic in `apps/web`
-- All API logic in `apps/worker`
-- No business logic in UI or routes
-- Shared code only in `packages/`
-
-See PROJECT_RULES.md for full details.
-
-# Using pnpm in This Monorepo
-
-This project uses [pnpm](https://pnpm.io/) for all package management and workspace operations.
+---
 
 ## Getting Started
 
-1. **Install pnpm globally:**
-   ```sh
-   npm install -g pnpm
-   ```
-2. **Install dependencies:**
-   ```sh
-   pnpm install
-   ```
-3. **Run scripts:**
-   - Frontend (Vite dev server):
-     ```sh
-     pnpm --filter "./apps/web" dev
-     ```
-   - Backend (Cloudflare Worker dev server):
-     ```sh
-     pnpm --filter "./apps/worker" dev
-     ```
+### Prerequisites
 
-## Why pnpm?
+- [Node.js](https://nodejs.org/) (v18+ recommended)
+- [pnpm](https://pnpm.io/) (preferred package manager)
 
-- Faster installs and better disk usage, especially for monorepos
-- Strict dependency isolation
-- First-class workspace support
+### Install dependencies
 
-## CI/CD
+```sh
+pnpm install
+```
 
-- Update all CI workflows to use `pnpm install` instead of `npm install`
-- Use `pnpm` for all build, test, and deploy scripts
-- Example (GitHub Actions):
-  ```yaml
-  - uses: pnpm/action-setup@v2
-    with:
-      version: 10
-  - run: pnpm install
-  - run: pnpm --filter "./apps/web" build
-  - run: pnpm --filter "./apps/worker" build
-  ```
+### Start the web app
 
-## Migration Notes
+```sh
+pnpm --filter ./apps/web dev
+```
 
-- All previous `package-lock.json` files and `node_modules` have been removed
-- Only `pnpm-lock.yaml` and workspace symlinks are used
-- All contributors must use pnpm for local development
+### (Optional) Start the worker API
+
+```sh
+pnpm --filter ./apps/worker dev
+```
+
+### Build apps
+
+Build the web app:
+
+```sh
+pnpm --filter ./apps/web build
+```
+
+Build the worker:
+
+```sh
+pnpm --filter ./apps/worker build
+```
+
+> **Note:** There is no root-level build. Always build each app/package directly.
+
+### Run tests
+
+Run all tests (from root):
+
+```sh
+pnpm test
+```
+
+Or per package:
+
+```sh
+pnpm --filter ./apps/web test
+pnpm --filter ./apps/worker test
+```
+
+---
+
+## Repository Structure
+
+```
+apps/
+  web/      # Frontend SPA (Vite + React)
+  worker/   # Cloudflare Worker API
+packages/
+  ui/       # Shared UI components
+  config/   # Design tokens, constants
+  utils/    # Shared utilities
+  core/     # Business logic, validation, adapters
+```
+
+- All design system docs/tokens: `apps/web/docs/design/`
+- AI prompts: `apps/worker/src/ai/prompts/`
+- Public assets: `apps/web/public/`
+- Internal docs: `docs/` (project/process/guardrails)
+- Site-facing docs: `apps/web/docs/` (user-facing, e.g. guides, help)
+
+---
+
+## Deployment
+
+- **Web:** Deploy to Cloudflare Pages (auto-deploy on push to main)
+- **Worker:** Deploy to Cloudflare Workers (see `wrangler.toml`)
+- **Preview:** Any branch push → `{branch}.project.pages.dev`
+- **Production:** Release tag → `project.pages.dev`
+
+---
+
+## Contributing
+
+- Use only semantic tokens for colors/styles (see `packages/config`)
+- All changes must be documented in `apps/web/docs/design/decision-log.md`
+- See `PROJECT_RULES.md` and `PATTERNS.md` for architecture and guardrails
+- All prompts must be file-based and versioned in `apps/worker/src/ai/prompts/`
+- No business logic in UI or route handlers; use services and core packages
+
+---
+
+## References
+
+- [APT Design Architecture](apps/web/docs/design/APT-DESIGN-ARCHITECTURE.md)
+- [Decision Log](apps/web/docs/design/decision-log.md)
+- [Quick Reference](QUICK_REFERENCE.md)
+- [Documentation Index](DOCUMENTATION_INDEX.md)

@@ -1,0 +1,7 @@
+# CODEOWNERS
+
+/apps/web/           @frontend-team
+/apps/worker/        @backend-team
+/packages/ui/        @design-team
+/apps/web/ai/prompts/         @ai-team
+/apps/web/docs/               @all
