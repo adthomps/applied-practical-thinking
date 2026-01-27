@@ -8,10 +8,10 @@
     "deploy": "wrangler deploy"
   },
   "dependencies": {
-    "hono": "^3.7.0"
+    "hono": "^4.11.6"
   },
   "devDependencies": {
-    "wrangler": "^4.60.0",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "wrangler": "^4.60.0"
   }
 }

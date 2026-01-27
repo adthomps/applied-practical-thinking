@@ -44,4 +44,19 @@ app.get('/api/info', (c) =>
   })
 );
 
+// Simple chat handler for POST /api/chat
+app.post('/api/chat', async (c) => {
+  try {
+    const body = await c.req.json();
+    // Example: echo the payload back
+    return c.json({
+      ok: true,
+      received: body,
+      message: 'Chat endpoint received your request.'
+    });
+  } catch (err) {
+    return c.json({ ok: false, error: 'Invalid JSON or request.' }, 400);
+  }
+});
+
 export default app;
