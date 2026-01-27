@@ -7,6 +7,7 @@ import { AptLayout } from "@/components/apt/AptLayout";
 
 // Pages
 import Home from "./routes/Home";
+import AssistantPage from "./routes/assistant";
 import Start from "./routes/Start";
 import About from "./routes/About";
 import NotFound from "./pages/NotFound";
@@ -67,6 +68,10 @@ const App = () => (
             {/* About */}
             <Route path="/about" element={<About />} />
             
+
+            {/* Assistant */}
+            <Route path="/assistant" element={<AssistantPage />} />
+
             {/* Utility */}
             <Route path="/design" element={<DesignPlayground />} />
             

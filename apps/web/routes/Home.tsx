@@ -13,6 +13,7 @@ import {
   AptTag,
   AptButton,
 } from "@/components/apt";
+import { AssistantChat } from "@/features/assistant/AssistantChat";
 import { Brain, AppWindow, Network, ArrowRight } from "lucide-react";
 
 const pillars = [
@@ -60,6 +61,8 @@ export default function Home() {
         secondaryCta={{ label: "Read Insights", to: "/insights" }}
       />
 
+      {/* ...existing code... */}
+
       {/* What You'll Find Here */}
       <section className="container py-16 md:py-24">
         <div className="text-center mb-12">
@@ -101,6 +104,13 @@ export default function Home() {
               </AptCardFooter>
             </AptCard>
           ))}
+        </div>
+      </section>
+
+      {/* Assistant Chat Section (after Featured) */}
+      <section className="container py-16 flex justify-center">
+        <div className="w-full max-w-xl">
+          <AssistantChat />
         </div>
       </section>
 

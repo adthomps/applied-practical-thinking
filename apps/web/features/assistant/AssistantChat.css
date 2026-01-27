@@ -1,0 +1,110 @@
+/* Styles for the APT Design Assistant chat UI */
+.apt-assistant {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  min-height: 500px;
+}
+.apt-chat-left {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+.apt-scope-selector {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.apt-scope-selector button {
+  background: var(--color-card);
+  color: var(--color-card-foreground);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.apt-scope-selector button.active {
+  background: var(--color-primary);
+  color: var(--color-primary-foreground);
+}
+.apt-chat-window {
+  background: var(--color-card);
+  border-radius: 8px;
+  padding: 1rem;
+  min-height: 300px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.msg-user {
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+.msg-assistant {
+  color: var(--color-secondary);
+  margin-bottom: 0.5rem;
+}
+.msg-error {
+  color: var(--color-error);
+  margin-bottom: 0.5rem;
+}
+.apt-confidence {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  margin-bottom: 0.5rem;
+}
+.apt-issue-btn {
+  background: var(--color-error);
+  color: var(--color-error-foreground);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+.apt-followups {
+  margin-top: 1rem;
+}
+.apt-followup-btns {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.apt-chat-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.apt-sources-panel {
+  background: var(--color-card);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.apt-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.apt-modal-content {
+  background: var(--color-card);
+  color: var(--color-card-foreground);
+  padding: 2rem;
+  border-radius: 12px;
+  min-width: 320px;
+  max-width: 90vw;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.apt-modal-feedback {
+  color: var(--color-success);
+  font-size: 1rem;
+  margin-top: 1rem;
+}
