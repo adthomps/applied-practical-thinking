@@ -9,6 +9,11 @@ account_id = "257b7e468437a1105470c725617d9268"
 workers_dev = true
 compatibility_date = "2026-01-25"
 
+[[vectorize]]
+binding = "VECTORIZE"
+index_name = "applied-practical-knowledge"
+remote = true
+
 [observability]
 [observability.logs]
 enabled = false
