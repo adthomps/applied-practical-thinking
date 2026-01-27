@@ -8,8 +8,8 @@ export const siteConfig = {
   disclaimer: "This is a demonstration, not a production system.",
   
   // External links
-  appliedGalleryUrl: "https://appliedgallery.example",
-  appliedGalleryLabel: "Applied Gallery",
+  appliedGalleryUrl: "https://appliedpracticalthinking.com/portfolio/visual-gallery",
+  appliedGalleryLabel: "Applied Visual Gallery",
   
   // Primary Navigation with hover descriptions and dropdowns
   nav: [
