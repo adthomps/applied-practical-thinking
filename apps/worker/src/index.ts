@@ -5,8 +5,11 @@ import { reportRoute } from './routes/report';
 
 const app = new Hono();
 
-// CORS middleware
+
+// Log every request method and path
 app.use('*', async (c, next) => {
+  // eslint-disable-next-line no-console
+  console.log(`[Worker] ${c.req.method} ${c.req.path}`);
   await next();
   c.res.headers.set('Access-Control-Allow-Origin', '*');
   c.res.headers.set('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');

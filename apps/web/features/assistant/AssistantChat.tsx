@@ -39,17 +39,21 @@ export const AssistantChat: React.FC = () => {
     setLoading(true);
     setError(null);
     try {
-      console.log('Sending request', apiEndpoint, { scope, messages: [...messages, { role: 'user', content }] });
+      const payload = { scope, messages: [...messages, { role: 'user', content }] };
+      console.log('Sending POST /api/chat', { url: apiEndpoint, payload });
       const res = await fetch(apiEndpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ scope, messages: [...messages, { role: 'user', content }] }),
+        body: JSON.stringify(payload),
       });
+      console.log('Response status:', res.status);
       let data;
       try {
         data = await res.json();
+        console.log('Response body:', data);
       } catch (jsonErr) {
         setError('Invalid response from server.');
+        console.error('Failed to parse JSON response:', jsonErr);
         return;
       }
       if (!res.ok) {
@@ -63,6 +67,7 @@ export const AssistantChat: React.FC = () => {
       setMessages((msgs) => [...msgs, { role: 'assistant', content: data.answer_markdown }]);
     } catch (err) {
       setError('Failed to get response from assistant.');
+      console.error('Fetch error:', err);
     } finally {
       setLoading(false);
     }
