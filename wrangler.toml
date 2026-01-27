@@ -1,3 +1,10 @@
+# Preview environment
+[env.preview]
+# Add preview-specific config here if needed
+
+# Production environment
+[env.production]
+# Add production-specific config here if needed
 # wrangler.toml
 # Placeholder for Cloudflare Worker deployment config
 # See https://developers.cloudflare.com/workers/wrangler/configuration/
