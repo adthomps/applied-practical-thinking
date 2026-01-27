@@ -94,13 +94,16 @@ export const siteConfig = {
 // Author/Profile configuration
 export const authorConfig = {
   name: "Adam Thompson",
-  title: "Director Service Experience",
-  location: "San Francisco, CA",
+  title: "Director of Service Experience",
+  location: "Bellevue, WA",
   joinedDate: "June 2006",
   roles: ["Engineer", "Photographer", "Product Leader", "Systems Thinker"],
   bio: "Passionate about technology-driven innovation, I design and implement tools, software, and systems that streamline and enhance processes. I focus on improving user experiences through precise testing and automation, delivering quality and efficiency in every project. Outside of work, I channel my creativity into photography and drone flying, capturing unique perspectives from both ground and sky. I also enjoy writing about my experiences and insights in the tech industry, sharing knowledge and fostering community engagement.",
   shortBio: "Crafting digital experiences through code and capturing moments through the lens. Welcome to my creative journey.",
   
+  // Profile image (relative to public/ or external URL)
+  profileImage: "/profile.jpg", // Place your image in apps/web/public/profile.jpg
+
   // Contact
   contact: {
     email: "test@example.com",
@@ -109,10 +112,9 @@ export const authorConfig = {
   
   // Social links
   social: {
-    github: "https://github.com",
-    linkedin: "https://linkedin.com",
-    twitter: "https://twitter.com",
-    portfolio: "https://appliedgallery.example",
+    github: "https://github.com/adthomps",
+    linkedin: "https://www.linkedin.com/in/adam-thompson-a547468/",
+    portfolio: "https://appliedpracticalthinking.com/portfolio",
   },
 } as const;
 

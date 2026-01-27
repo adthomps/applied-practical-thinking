@@ -13,7 +13,6 @@ import {
   Calendar,
   Github,
   Linkedin,
-  Twitter,
   Globe,
   Play,
   Book,
@@ -77,7 +76,6 @@ export default function About() {
   const socialLinks = [
     { label: "GitHub", icon: Github, url: authorConfig.social.github },
     { label: "LinkedIn", icon: Linkedin, url: authorConfig.social.linkedin },
-    { label: "Twitter", icon: Twitter, url: authorConfig.social.twitter },
     { label: "Portfolio", icon: Globe, url: authorConfig.social.portfolio },
   ];
 
@@ -95,7 +93,11 @@ export default function About() {
               <div className="shrink-0">
                 <div className="relative">
                   <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-muted border-4 border-primary/50 overflow-hidden flex items-center justify-center">
-                    <User className="w-16 h-16 md:w-20 md:h-20 text-muted-foreground/50" />
+                    <img
+                      src={authorConfig.profileImage}
+                      alt={authorConfig.name + " profile photo"}
+                      className="object-cover w-full h-full"
+                    />
                   </div>
                   {/* Glow effect */}
                   <div className="absolute inset-0 rounded-full bg-primary/20 blur-xl -z-10" />
