@@ -2,8 +2,9 @@
 # Placeholder for Cloudflare Worker deployment config
 # See https://developers.cloudflare.com/workers/wrangler/configuration/
 
-name = "applied-practical-thinking"
+name = "apt-worker"
 main = "apps/worker/src/index.ts"
+type = "javascript"
 account_id = "257b7e468437a1105470c725617d9268"
 workers_dev = true
 compatibility_date = "2026-01-25"
@@ -13,5 +14,7 @@ binding = "VECTORIZE"
 index_name = "applied-practical-knowledge"
 remote = true
 
-[vars]
-OPENAI_API_KEY = "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"
+[observability]
+[observability.logs]
+enabled = false
+invocation_logs = true
