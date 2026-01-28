@@ -17,16 +17,24 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
       - name: Install Wrangler
         run: npm install -g wrangler
       - name: Install dependencies
         run: |
           cd apps/worker
           npm install
-      - name: Publish Worker
+      - name: Deploy to Preview
+        if: github.ref != 'refs/heads/main'
         run: |
           cd apps/worker
-          wrangler publish --env ${{ github.ref_name == 'main' && 'production' || 'preview' }}
+          wrangler deploy --env preview
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      - name: Deploy to Production
+        if: github.ref == 'refs/heads/main'
+        run: |
+          cd apps/worker
+          wrangler deploy --env production
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
