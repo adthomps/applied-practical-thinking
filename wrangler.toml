@@ -1,16 +1,3 @@
-# Preview environment
-[env.preview]
-main = "apps/worker/src/index.ts"
-compatibility_date = "2026-01-25"
-
-# Production environment
-[env.production]
-main = "apps/worker/src/index.ts"
-compatibility_date = "2026-01-25"
-# wrangler.toml
-# Placeholder for Cloudflare Worker deployment config
-# See https://developers.cloudflare.com/workers/wrangler/configuration/
-
 name = "applied-practical-thinking"
 main = "apps/worker/src/index.ts"
 account_id = "257b7e468437a1105470c725617d9268"
@@ -26,6 +13,12 @@ remote = true
 [observability.logs]
 enabled = false
 invocation_logs = true
+
+[env.preview]
+# Add preview-specific config here if needed
+
+[env.production]
+# Add production-specific config here if needed
 
 
 
