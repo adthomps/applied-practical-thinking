@@ -24,17 +24,17 @@ jobs:
         run: |
           cd apps/worker
           npm install
-      - name: Publish to Preview
+      - name: Deploy to Preview
         if: github.ref != 'refs/heads/main'
         run: |
           cd apps/worker
-          wrangler publish --env preview
+          wrangler deploy --env preview
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      - name: Publish to Production
+      - name: Deploy to Production
         if: github.ref == 'refs/heads/main'
         run: |
           cd apps/worker
-          wrangler publish --env production
+          wrangler deploy --env production
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
