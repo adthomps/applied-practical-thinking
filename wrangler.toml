@@ -1,10 +1,12 @@
 # Preview environment
 [env.preview]
-# Add preview-specific config here if needed
+main = "apps/worker/src/index.ts"
+compatibility_date = "2026-01-25"
 
 # Production environment
 [env.production]
-# Add production-specific config here if needed
+main = "apps/worker/src/index.ts"
+compatibility_date = "2026-01-25"
 # wrangler.toml
 # Placeholder for Cloudflare Worker deployment config
 # See https://developers.cloudflare.com/workers/wrangler/configuration/
