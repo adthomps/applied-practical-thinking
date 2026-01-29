@@ -115,6 +115,7 @@ export const authorConfig = {
     github: "https://github.com/adthomps",
     linkedin: "https://www.linkedin.com/in/adam-thompson-a547468/",
     portfolio: "https://appliedpracticalthinking.com/portfolio",
+    flickr: "https://www.flickr.com/photos/adam-p-thompson/",
   },
 } as const;
 

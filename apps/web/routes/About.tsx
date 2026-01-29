@@ -74,9 +74,30 @@ export default function About() {
   ];
 
   const socialLinks = [
-    { label: "GitHub", icon: Github, url: authorConfig.social.github },
-    { label: "LinkedIn", icon: Linkedin, url: authorConfig.social.linkedin },
-    { label: "Portfolio", icon: Globe, url: authorConfig.social.portfolio },
+    {
+      label: "GitHub",
+      icon: Github,
+      url: authorConfig.social.github,
+      color: "text-[#6e5494]", // GitHub purple
+    },
+    {
+      label: "LinkedIn",
+      icon: Linkedin,
+      url: authorConfig.social.linkedin,
+      color: "text-[#0077b5]", // LinkedIn blue
+    },
+    {
+      label: "Flickr",
+      icon: Globe, // Replace with a Flickr icon if available
+      url: authorConfig.social.flickr,
+      color: "text-[#ff0084]", // Flickr pink
+    },
+    {
+      label: "Portfolio",
+      icon: Globe,
+      url: authorConfig.social.portfolio,
+      color: "text-[#1ec773]", // Portfolio green
+    },
   ];
 
   return (
@@ -178,7 +199,7 @@ export default function About() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 px-3 py-2 rounded-lg bg-muted/50 hover:bg-muted transition-colors text-sm"
                   >
-                    <link.icon className="h-4 w-4 text-muted-foreground" />
+                    <link.icon className={`h-4 w-4 ${link.color}`} />
                     <span>{link.label}</span>
                   </a>
                 ))}
