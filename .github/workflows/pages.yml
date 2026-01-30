@@ -22,10 +22,11 @@ jobs:
         run: |
           cd apps/web
           npm install
+          npm install vite --save-dev
       - name: Build
         run: |
           cd apps/web
-          npm run build
+          npx vite build
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
