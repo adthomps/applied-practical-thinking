@@ -21,8 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           cd apps/web
-          npm install
-          npm install vite --save-dev
+          npm ci
       - name: Build
         run: |
           cd apps/web
