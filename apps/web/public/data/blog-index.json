@@ -1,0 +1,75 @@
+[
+  {
+    "title": "AI Agent Patterns",
+    "id": "ai-agent-patterns",
+    "type": "blog",
+    "description": "A survey of common patterns for building AI agents, from simple chatbots to complex workflows.",
+    "publishedAt": "2024-01-20",
+    "concepts": [
+      "ai",
+      "agents",
+      "patterns"
+    ],
+    "contentPath": "blog/ai-agent-patterns.md",
+    "excerpt": "Introduction\r \r AI agents are everywhere, but most fall into a handful of patterns. This post surveys the most common ones and when to use each.\r \r  1. SingleTurn Chatbot\r \r  Stateless"
+  },
+  {
+    "title": "Decision-Driven Development",
+    "id": "decision-driven-development",
+    "type": "blog",
+    "description": "Why documenting decisions is more valuable than documenting code, and how to build a decision log that actually gets used.",
+    "publishedAt": "2024-01-15",
+    "concepts": [
+      "architecture",
+      "documentation",
+      "teams"
+    ],
+    "relatedLabs": [
+      "decision-log"
+    ],
+    "contentPath": "blog/decision-driven-development.md",
+    "excerpt": "The Problem with Code Documentation\r \r Most teams focus on documenting what the code does. Comments explain functions, READMEs describe setup steps, and wikis outline architecture. But there's a critical gap: why decisions were made.\r \r  Why Decisions Matter More\r \r When you revisit code six months later, knowing what it does is usually obvious from reading it. What's not obvious is:"
+  },
+  {
+    "title": "Feedback is a Multiplier",
+    "id": "feedback-multiplier",
+    "type": "blog",
+    "description": "How regular feedback loops can multiply your team’s effectiveness.",
+    "publishedAt": "2023-12-05",
+    "concepts": [
+      "feedback",
+      "teams",
+      "effectiveness"
+    ],
+    "contentPath": "blog/feedback-multiplier.md",
+    "excerpt": "Introduction\r \r Feedback isn’t just a way to fix mistakes—it’s a multiplier for team effectiveness. Here’s why.\r \r  Why Feedback Matters\r \r  Surfaces issues early"
+  },
+  {
+    "title": "Learning in Public",
+    "id": "learning-in-public",
+    "type": "blog",
+    "description": "Why sharing your learning journey accelerates growth and builds community.",
+    "publishedAt": "2024-02-01",
+    "concepts": [
+      "learning",
+      "community",
+      "growth"
+    ],
+    "contentPath": "blog/learning-in-public.md",
+    "excerpt": "Introduction\r \r Learning in public means sharing what you’re learning as you go. It’s a powerful way to accelerate your growth and connect with others.\r \r  Benefits\r \r  Attracts feedback and collaborators"
+  },
+  {
+    "title": "Shipping Fast, Learning Faster",
+    "id": "shipping-fast",
+    "type": "blog",
+    "description": "Lessons from rapid prototyping and continuous delivery in real-world projects.",
+    "publishedAt": "2023-11-15",
+    "concepts": [
+      "prototyping",
+      "delivery",
+      "learning"
+    ],
+    "contentPath": "blog/shipping-fast.md",
+    "excerpt": "Introduction\r \r Speed matters, but learning matters more. This post shares lessons from projects where rapid prototyping and continuous delivery led to better outcomes.\r \r  Why Ship Fast?\r \r  Get feedback sooner"
+  }
+]

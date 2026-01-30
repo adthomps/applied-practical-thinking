@@ -1,14 +1,17 @@
-
+import { useState } from "react";
 import { ExternalLink, Play } from "lucide-react";
 import { AptCard } from "@/components/apt/AptCard";
 import { AptButton } from "@/components/apt/AptButton";
 import { AptTag } from "@/components/apt/AptTag";
-import type { GalleryItem } from "@/data/gallery";
+import type { GalleryItem as GalleryItemBase } from "@/data/gallery";
+
+interface GalleryItem extends GalleryItemBase {
+  embedUrl?: string;
+}
 
 interface GalleryCardProps {
   item: GalleryItem;
 }
-
 
 export function GalleryCard({ item }: GalleryCardProps) {
   const isVideo = item.platform === "youtube";
@@ -16,16 +19,18 @@ export function GalleryCard({ item }: GalleryCardProps) {
 
   return (
     <AptCard variant="interactive" className="overflow-hidden group">
-      {/* Media: Always show embedded video for video projects, else show cover image */}
+      {/* Media: Only show embedded video for video projects, no cover image or play overlay */}
       <div className="relative aspect-[4/3] overflow-hidden">
         {isVideo && item.embedUrl ? (
           <iframe
             src={item.embedUrl}
+            className="w-full h-full border-0"
             title={item.title}
-            className="w-full h-full object-cover"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
-          />
+          ></iframe>
         ) : (
           <img
             src={item.coverImage}
@@ -33,8 +38,7 @@ export function GalleryCard({ item }: GalleryCardProps) {
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         )}
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        {/* Gradient Overlay removed for cleaner video display */}
       </div>
 
       {/* Content */}
@@ -46,7 +50,9 @@ export function GalleryCard({ item }: GalleryCardProps) {
               {item.title}
             </h3>
             {item.date && (
-              <span className="block text-xs text-muted-foreground mt-0.5">{item.date}</span>
+              <span className="block text-xs text-muted-foreground mt-0.5">
+                {item.date}
+              </span>
             )}
           </div>
           <AptTag variant="outline" size="sm" className="shrink-0">

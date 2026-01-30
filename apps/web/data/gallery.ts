@@ -12,6 +12,7 @@ export interface GalleryItem {
   externalUrl: string;
   platform: "flickr" | "youtube" | "google-maps";
   date?: string;
+  embedUrl?: string;
 }
 
 export interface MapItem {
@@ -85,7 +86,7 @@ export const galleryItems: GalleryItem[] = [
     description: "A journey through the La Quinta Cove",
     coverImage: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
     externalUrl: "https://www.youtube.com/watch?v=6mN4yCdC_v8",
-    embedUrl: "https://www.youtube.com/watch?v=6mN4yCdC_v8", // Actual Cove Cinematic video embed
+    embedUrl: "https://www.youtube.com/embed/6mN4yCdC_v8?si=36zXv5Ms8XjG7Maj", // Actual Cove Cinematic video embed
     platform: "youtube",
     date: "Dec 2024",
   },
@@ -97,7 +98,7 @@ export const galleryItems: GalleryItem[] = [
     description: "Life in the modern city",
     coverImage: "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=800&h=600&fit=crop",
     externalUrl: "https://www.youtube.com/watch?v=oW1cTuJPDm0",
-    embedUrl: "https://www.youtube.com/watch?v=oW1cTuJPDm0", // Actual PGA WEST video embed
+    embedUrl: "https://www.youtube.com/embed/oW1cTuJPDm0?si=mM5Ely5TIQxJVtOp", // Actual PGA WEST video embed
     platform: "youtube",
     date: "Dec 2024",
   },
@@ -109,7 +110,7 @@ export const galleryItems: GalleryItem[] = [
     description: "Flight of the Blue Angels",
     coverImage: "https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=800&h=600&fit=crop",
     externalUrl: "https://www.youtube.com/watch?v=Kypc2MlZtZ4",
-    embedUrl: "https://www.youtube.com/watch?v=Kypc2MlZtZ4",
+    embedUrl: "https://www.youtube.com/embed/Kypc2MlZtZ4?si=6IGlim1jkn4xBtwe",
     platform: "youtube",
     date: "Aug 2024",
   },

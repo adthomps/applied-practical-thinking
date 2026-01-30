@@ -1,7 +1,9 @@
-import { useParams, Link } from "react-router-dom";
-import { insights, InsightType } from "@/data/learn";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { fetchContentIndex, fetchContentMarkdown, ContentIndexItem } from "@/src/services/contentIndex";
 import { labs, LabType } from "@/data/labs";
 import { systems } from "@/data/systems";
+import { InsightMeta } from "@/components/apt/InsightMeta";
 import {
   AptCard,
   AptCardHeader,
@@ -27,16 +29,18 @@ import {
   Image as ImageIcon,
 } from "lucide-react";
 
-const typeIcons: Record<InsightType, typeof Book> = {
+const typeIcons = {
   blog: FileText,
   podcast: Mic,
   guide: Book,
+  "case-study": Book,
 };
 
-const typeLabels: Record<InsightType, string> = {
+const typeLabels = {
   blog: "Blog Post",
   podcast: "Podcast Episode",
   guide: "Guide",
+  "case-study": "Mock Case Study",
 };
 
 const labTypeIcons: Record<LabType, typeof Lightbulb> = {
@@ -45,24 +49,52 @@ const labTypeIcons: Record<LabType, typeof Lightbulb> = {
   demo: Play,
 };
 
+
 export default function InsightDetail() {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
+  const [insights, setInsights] = useState<ContentIndexItem[]>([]);
+  const [insight, setInsight] = useState<ContentIndexItem | null>(null);
+  const [content, setContent] = useState<string>("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const insight = insights.find((i) => i.id === id);
-  const insightIndex = insights.findIndex((i) => i.id === id);
-  const prevInsight = insightIndex > 0 ? insights[insightIndex - 1] : null;
-  const nextInsight =
-    insightIndex < insights.length - 1 ? insights[insightIndex + 1] : null;
+  useEffect(() => {
+    setLoading(true);
+    Promise.all([
+      fetchContentIndex("blog"),
+      fetchContentIndex("guides"),
+      fetchContentIndex("podcasts"),
+      fetchContentIndex("case-studies"),
+    ])
+      .then(([blog, guides, podcasts, caseStudies]) => {
+        const all = [...blog, ...guides, ...podcasts, ...caseStudies];
+        setInsights(all);
+        const found = all.find((i) => i.id === id);
+        setInsight(found || null);
+        if (found) {
+          fetchContentMarkdown(found.contentPath)
+            .then((raw) => {
+              // Remove YAML frontmatter (between --- blocks)
+              const cleaned = raw.replace(/^---[\s\S]*?---\s*/, "");
+              setContent(cleaned);
+            })
+            .catch((e) => setError(e.message));
+        } else {
+          setError("Insight not found");
+        }
+        setLoading(false);
+      })
+      .catch((e) => {
+        setError(e.message);
+        setLoading(false);
+      });
+  }, [id]);
 
-  const relatedLabItems = insight?.relatedLabs
-    ?.map((labId) => labs.find((l) => l.id === labId))
-    .filter(Boolean);
-
-  const relatedSystemItems = insight?.relatedSystems
-    ?.map((systemId) => systems.find((s) => s.id === systemId))
-    .filter(Boolean);
-
-  if (!insight) {
+  if (loading) {
+    return <div className="container py-12 text-center">Loading…</div>;
+  }
+  if (error || !insight) {
     return (
       <div className="container py-12 text-center">
         <h1 className="text-2xl font-bold mb-4">Insight not found</h1>
@@ -76,7 +108,7 @@ export default function InsightDetail() {
     );
   }
 
-  const TypeIcon = typeIcons[insight.type];
+  const TypeIcon = typeIcons[insight.type] || Book;
 
   // Simple markdown-like rendering for content
   const renderContent = (content: string) => {
@@ -227,35 +259,10 @@ export default function InsightDetail() {
 
       {/* Header */}
       <div className="mb-8">
-        <div className="flex items-center gap-3 mb-4">
-          <AptTag variant="accent">
-            <TypeIcon className="h-3 w-3 mr-1" />
-            {typeLabels[insight.type]}
-          </AptTag>
-          {insight.duration && (
-            <span className="flex items-center text-sm text-muted-foreground">
-              <Clock className="h-4 w-4 mr-1" />
-              {insight.duration}
-            </span>
-          )}
-        </div>
-
+        <InsightMeta insight={insight} />
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
           {insight.title}
         </h1>
-
-        {insight.publishedAt && (
-          <div className="flex items-center text-muted-foreground">
-            <Calendar className="h-4 w-4 mr-1.5" />
-            <time dateTime={insight.publishedAt}>
-              {new Date(insight.publishedAt).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </time>
-          </div>
-        )}
       </div>
 
       {/* Podcast Player */}
@@ -316,11 +323,11 @@ export default function InsightDetail() {
 
       {/* Full Content */}
       <article className="prose-custom mb-10">
-        {renderContent(insight.content)}
+        {renderContent(content)}
       </article>
 
       {/* Concepts */}
-      {insight.concepts.length > 0 && (
+      {insight.concepts?.length > 0 && (
         <div className="mb-8 pt-8 border-t border-border">
           <h3 className="text-sm font-medium text-muted-foreground mb-3">
             Key Concepts
@@ -343,114 +350,9 @@ export default function InsightDetail() {
         </AptButton>
       </div>
 
-      {/* Related Labs */}
-      {relatedLabItems && relatedLabItems.length > 0 && (
-        <div className="mb-10">
-          <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-            <Play className="h-5 w-5 text-primary" />
-            Related Labs
-          </h2>
-          <div className="grid gap-4">
-            {relatedLabItems.map((lab) => {
-              const LabIcon = labTypeIcons[lab!.type];
-              return (
-                <Link key={lab!.id} to={`/labs/${lab!.id}`}>
-                  <AptCard
-                    variant="interactive"
-                    padding="default"
-                    className="group"
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className="p-2 rounded-lg bg-primary/10 text-primary">
-                        <LabIcon className="h-5 w-5" />
-                      </div>
-                      <div className="flex-1">
-                        <AptCardHeader className="p-0">
-                          <div className="flex items-center gap-2 mb-1">
-                            <AptTag variant="accent" className="text-xs">
-                              {lab!.type}
-                            </AptTag>
-                          </div>
-                          <AptCardTitle className="text-lg group-hover:text-primary transition-colors">
-                            {lab!.title}
-                          </AptCardTitle>
-                        </AptCardHeader>
-                        <AptCardDescription className="mt-1">
-                          {lab!.problem}
-                        </AptCardDescription>
-                      </div>
-                      <ArrowRight className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                    </div>
-                  </AptCard>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      )}
-
-      {/* Related Systems */}
-      {relatedSystemItems && relatedSystemItems.length > 0 && (
-        <div className="mb-10">
-          <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-            <Settings className="h-5 w-5 text-primary" />
-            Related Systems
-          </h2>
-          <div className="grid gap-4">
-            {relatedSystemItems.map((system) => (
-              <AptCard key={system!.id} variant="default" padding="default">
-                <div className="flex items-start gap-4">
-                  <div className="p-2 rounded-lg bg-muted text-muted-foreground">
-                    <Settings className="h-5 w-5" />
-                  </div>
-                  <div className="flex-1">
-                    <AptCardHeader className="p-0">
-                      <AptCardTitle className="text-lg">
-                        {system!.title}
-                      </AptCardTitle>
-                    </AptCardHeader>
-                    <AptCardDescription className="mt-1">
-                      {system!.description}
-                    </AptCardDescription>
-                  </div>
-                </div>
-              </AptCard>
-            ))}
-          </div>
-        </div>
-      )}
-
       {/* Navigation between insights */}
       <div className="flex items-center justify-between pt-8 border-t border-border">
-        {prevInsight ? (
-          <Link
-            to={`/insights/${prevInsight.id}`}
-            className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors group"
-          >
-            <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
-            <div className="text-right">
-              <span className="text-xs block">Previous</span>
-              <span className="text-sm font-medium">{prevInsight.title}</span>
-            </div>
-          </Link>
-        ) : (
-          <div />
-        )}
-
-        {nextInsight ? (
-          <Link
-            to={`/insights/${nextInsight.id}`}
-            className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors group text-right"
-          >
-            <div>
-              <span className="text-xs block">Next</span>
-              <span className="text-sm font-medium">{nextInsight.title}</span>
-            </div>
-            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
-        ) : (
-          <div />
-        )}
+        {/* Navigation between insights can be implemented here if needed */}
       </div>
     </div>
   );
