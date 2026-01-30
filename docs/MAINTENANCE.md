@@ -28,10 +28,11 @@ This guide explains how to add or edit content in all major areas of the APT mon
 - For global changes (e.g., logo, links), update both the component and the relevant data file.
 
 ### Add/Edit Content Registries
-- Content such as labs, systems, blog posts, and case studies are defined in TypeScript files in `apps/web/data/`:
-  - `labs.ts`, `systems.ts`, `learn.ts`, `strong.ts`, etc.
-- To add a new item, export a new object in the relevant file.
-- To edit, update the object in place.
+Labs and systems are defined in TypeScript files in `apps/web/data/`:
+  - `labs.ts`, `systems.ts`, etc.
+For blogs, podcasts, guides, and case studies, each entry is a Markdown file with YAML frontmatter in `apps/web/content/{blog,guides,podcasts,case-studies}/`.
+To add a new item, create a new Markdown file in the appropriate folder with the required frontmatter fields (see below).
+To edit, update the Markdown file directly.
 
 ---
 
@@ -73,46 +74,51 @@ Portfolio sections are managed as structured data and/or Markdown in `apps/web/d
 
 ## 3. Insights Content (Blogs, Podcasts, Guides, Case Studies)
 
-All insights content is managed as structured data in `apps/web/data/` and associated Markdown or image files.
+All insights content (blogs, podcasts, guides, case studies) is managed as Markdown files with YAML frontmatter in their respective folders under `apps/web/content/`.
 
-### Add/Edit a Blog, Podcast, or Guide
-- **Registry:**
-  - Add a new entry to the appropriate registry file:
-    - Blogs/guides: `apps/web/data/learn.ts`
-    - Case studies: `apps/web/data/strong.ts`
-  - Each entry is a TypeScript object with fields like `title`, `slug`, `summary`, `date`, `image`, `content`, etc.
+### Add/Edit a Blog, Podcast, Guide, or Case Study
 - **Content:**
-  - For long-form content, reference a Markdown file in the object (e.g., `content: require('../content/guides/my-guide.md')`).
-  - Place Markdown files in `apps/web/content/guides/`, `apps/web/content/blog/`, etc.
-  - Edit the Markdown file to update the text, formatting, and links.
+  - Each entry is a Markdown file in the appropriate folder:
+    - Blogs: `apps/web/content/blog/`
+    - Guides: `apps/web/content/guides/`
+    - Podcasts: `apps/web/content/podcasts/`
+    - Case studies: `apps/web/content/case-studies/`
+  - The file must start with YAML frontmatter containing fields like `title`, `id`, `type`, `description`, `publishedAt`, and any other relevant metadata (see below for example).
+  - The body of the file is the full content, using Markdown formatting.
 - **Images:**
   - Place images in `apps/web/public/images/` or a relevant subfolder.
-  - Reference the image path in the registry object (e.g., `image: '/images/my-guide-cover.png'`).
+  - Reference the image path in the frontmatter or within the Markdown content as needed.
 - **Metadata:**
-  - Fill out all required fields in the registry object (title, date, tags, etc.) for proper display and filtering.
+  - Fill out all required frontmatter fields for proper display and filtering.
 - **Edit Existing Content:**
-  - Update the registry object and/or the Markdown file as needed.
+  - Update the Markdown file as needed.
   - Replace or update images as required.
 
-### Example: Adding a New Guide
+#### Example: Adding a New Guide
 1. Add a new Markdown file: `apps/web/content/guides/my-new-guide.md`
-2. Add an entry to `apps/web/data/learn.ts`:
-   ```ts
-   export const guides = [
-     // ...existing guides,
-     {
-       title: 'My New Guide',
-       slug: 'my-new-guide',
-       summary: 'A short summary of the guide.',
-       date: '2026-01-25',
-       image: '/images/guides/my-new-guide.png',
-       content: require('../content/guides/my-new-guide.md'),
-       tags: ['insight', 'how-to']
-     }
-   ];
+2. Use this template:
+   ```markdown
+   ---
+   title: "My New Guide"
+   id: "my-new-guide"
+   type: "guide"
+   description: "A short summary of the guide."
+   publishedAt: "2026-01-25"
+   concepts:
+     - insight
+     - how-to
+   ---
+
+   # My New Guide
+
+   Full content goes here...
    ```
-3. Place any images in `apps/web/public/images/guides/` and reference them in the object.
+3. Place any images in `apps/web/public/images/guides/` and reference them in the Markdown file.
 4. Edit the Markdown file for the full text and formatting.
+
+#### Indexing and Dynamic Loading
+- Index files for each content type are generated automatically by a Node.js script that parses Markdown frontmatter.
+- The app loads content dynamically from these indexes; do not manually edit index files.
 
 ---
 

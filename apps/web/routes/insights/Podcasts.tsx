@@ -1,31 +1,56 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { insights } from "@/data/learn";
 import { AptCard } from "@/components/apt/AptCard";
+import { AptCardTitle, AptCardDescription } from "@/components/apt/AptCard";
+import { InsightMeta } from "@/components/apt/InsightMeta";
+import { InsightCard } from "@/components/apt/InsightCard";
 import { AptTag } from "@/components/apt/AptTag";
 import { ContentFilters, FilterConfig, SelectedFilters } from "@/components/apt";
+import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
 import { Podcast, Clock } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export default function InsightsPodcasts() {
-  const podcasts = insights.filter((i) => i.type === "podcast");
-  
+  const [podcasts, setPodcasts] = useState<ContentIndexItem[]>([]);
   const [selected, setSelected] = useState<SelectedFilters>({
     topics: [],
   });
 
   // Get unique filter options
   const config = useMemo<FilterConfig>(() => {
-    const topics = [...new Set(podcasts.flatMap((p) => p.concepts))].sort();
+    const topics = [...new Set(podcasts.flatMap((b) => b.concepts || []))].sort();
     return { topics };
-  }, []);
+  }, [podcasts]);
 
   // Filter podcasts
   const filteredPodcasts = useMemo(() => {
     if (!selected.topics?.length) return podcasts;
     return podcasts.filter((podcast) =>
-      selected.topics?.some((t) => podcast.concepts.includes(t))
+      selected.topics?.some((t) => (podcast.concepts || []).includes(t))
     );
-  }, [selected.topics]);
+  }, [selected.topics, podcasts]);
+
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    setLoading(true);
+    fetchContentIndex("podcasts")
+      .then((data) => {
+        setPodcasts(data.sort((a, b) => (b.publishedAt || "").localeCompare(a.publishedAt || "")));
+        setLoading(false);
+      })
+      .catch((e) => {
+        setError(e.message);
+        setLoading(false);
+      });
+  }, []);
+  if (loading) {
+    return <div className="container py-12 text-center">Loading podcasts…</div>;
+  }
+  if (error) {
+    return <div className="container py-12 text-center text-red-500">{error}</div>;
+  }
 
   return (
     <div className="container py-12 md:py-16">
@@ -48,52 +73,7 @@ export default function InsightsPodcasts() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {filteredPodcasts.map((podcast) => (
-          <Link key={podcast.id} to={`/insights/${podcast.id}`}>
-            <AptCard variant="interactive" padding="none" className="h-full overflow-hidden">
-              {/* Thumbnail */}
-              <div className="aspect-video bg-muted/30 relative">
-                {podcast.thumbnail ? (
-                  <img
-                    src={podcast.thumbnail}
-                    alt={podcast.title}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center">
-                    <Podcast className="h-12 w-12 text-muted-foreground/30" />
-                  </div>
-                )}
-                <div className="absolute top-3 left-3 flex gap-2">
-                  <AptTag variant="primary">Podcast</AptTag>
-                </div>
-                {podcast.duration && (
-                  <div className="absolute top-3 right-3">
-                    <AptTag variant="secondary" className="flex items-center gap-1">
-                      <Clock className="h-3 w-3" />
-                      {podcast.duration}
-                    </AptTag>
-                  </div>
-                )}
-              </div>
-              
-              {/* Content */}
-              <div className="p-5 space-y-3">
-                <h2 className="font-semibold text-lg line-clamp-2">{podcast.title}</h2>
-                <p className="text-sm text-muted-foreground line-clamp-2">
-                  {podcast.description}
-                </p>
-                {podcast.concepts && podcast.concepts.length > 0 && (
-                  <div className="flex flex-wrap gap-1.5 pt-2">
-                    {podcast.concepts.slice(0, 3).map((concept) => (
-                      <AptTag key={concept} variant="ghost" size="sm">
-                        {concept}
-                      </AptTag>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </AptCard>
-          </Link>
+          <InsightCard key={podcast.id} insight={podcast} to={`/insights/${podcast.id}`} />
         ))}
       </div>
 

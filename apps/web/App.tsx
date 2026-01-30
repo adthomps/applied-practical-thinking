@@ -18,6 +18,7 @@ import InsightDetail from "./routes/InsightDetail";
 import InsightsBlogs from "./routes/insights/Blogs";
 import InsightsPodcasts from "./routes/insights/Podcasts";
 import InsightsCaseStudies from "./routes/insights/CaseStudies";
+import InsightsGuides from "./routes/insights/Guides";
 
 // Portfolio
 import Portfolio from "./routes/Portfolio";
@@ -53,6 +54,7 @@ const App = () => (
             <Route path="/insights/blogs" element={<InsightsBlogs />} />
             <Route path="/insights/podcasts" element={<InsightsPodcasts />} />
             <Route path="/insights/case-studies" element={<InsightsCaseStudies />} />
+            <Route path="/insights/guides" element={<InsightsGuides />} />
             <Route path="/insights/:id" element={<InsightDetail />} />
             
             {/* Portfolio */}

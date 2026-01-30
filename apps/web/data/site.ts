@@ -34,6 +34,11 @@ export const siteConfig = {
           description: "Audio discussions exploring thinking, frameworks, and real-world tradeoffs.",
         },
         { 
+          label: "Guides", 
+          path: "/insights/guides",
+          description: "Step-by-step walkthroughs and practical how-tos for applied thinking.",
+        },
+        { 
           label: "Case Studies", 
           path: "/insights/case-studies",
           description: "Narrative breakdowns of problems, constraints, decisions, and outcomes.",
@@ -115,6 +120,7 @@ export const authorConfig = {
     github: "https://github.com/adthomps",
     linkedin: "https://www.linkedin.com/in/adam-thompson-a547468/",
     portfolio: "https://appliedpracticalthinking.com/portfolio",
+    flickr: "https://www.flickr.com/photos/adam-p-thompson/",
   },
 } as const;
 

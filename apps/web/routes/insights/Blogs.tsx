@@ -1,31 +1,53 @@
-import { useState, useMemo } from "react";
+
+import { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { insights } from "@/data/learn";
+import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
 import { AptCard } from "@/components/apt/AptCard";
+import { AptCardTitle, AptCardDescription } from "@/components/apt/AptCard";
+import { InsightMeta } from "@/components/apt/InsightMeta";
+import { InsightCard } from "@/components/apt/InsightCard";
 import { AptTag } from "@/components/apt/AptTag";
 import { ContentFilters, FilterConfig, SelectedFilters } from "@/components/apt";
 import { FileText } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export default function InsightsBlogs() {
-  const blogs = insights.filter((i) => i.type === "blog");
-  
-  const [selected, setSelected] = useState<SelectedFilters>({
-    topics: [],
-  });
+  const [blogs, setBlogs] = useState<ContentIndexItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [selected, setSelected] = useState<SelectedFilters>({ topics: [] });
 
-  // Get unique filter options
-  const config = useMemo<FilterConfig>(() => {
-    const topics = [...new Set(blogs.flatMap((b) => b.concepts))].sort();
-    return { topics };
+  useEffect(() => {
+    setLoading(true);
+    fetchContentIndex("blog")
+      .then((data) => {
+        setBlogs(data.sort((a, b) => (b.publishedAt || "").localeCompare(a.publishedAt || "")));
+        setLoading(false);
+      })
+      .catch((e) => {
+        setError(e.message);
+        setLoading(false);
+      });
   }, []);
 
-  // Filter blogs
+  const config = useMemo<FilterConfig>(() => {
+    const topics = [...new Set(blogs.flatMap((b) => b.concepts || []))].sort();
+    return { topics };
+  }, [blogs]);
+
   const filteredBlogs = useMemo(() => {
     if (!selected.topics?.length) return blogs;
     return blogs.filter((blog) =>
-      selected.topics?.some((t) => blog.concepts.includes(t))
+      selected.topics?.some((t) => (blog.concepts || []).includes(t))
     );
-  }, [selected.topics]);
+  }, [selected.topics, blogs]);
+
+  if (loading) {
+    return <div className="container py-12 text-center">Loading blogs…</div>;
+  }
+  if (error) {
+    return <div className="container py-12 text-center text-red-500">{error}</div>;
+  }
 
   return (
     <div className="container py-12 md:py-16">
@@ -48,44 +70,7 @@ export default function InsightsBlogs() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {filteredBlogs.map((blog) => (
-          <Link key={blog.id} to={`/insights/${blog.id}`}>
-            <AptCard variant="interactive" padding="none" className="h-full overflow-hidden">
-              {/* Thumbnail */}
-              <div className="aspect-video bg-muted/30 relative">
-                {blog.thumbnail ? (
-                  <img
-                    src={blog.thumbnail}
-                    alt={blog.title}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center">
-                    <FileText className="h-12 w-12 text-muted-foreground/30" />
-                  </div>
-                )}
-                <div className="absolute top-3 left-3">
-                  <AptTag variant="primary">Blog</AptTag>
-                </div>
-              </div>
-              
-              {/* Content */}
-              <div className="p-5 space-y-3">
-                <h2 className="font-semibold text-lg line-clamp-2">{blog.title}</h2>
-                <p className="text-sm text-muted-foreground line-clamp-2">
-                  {blog.description}
-                </p>
-                {blog.concepts && blog.concepts.length > 0 && (
-                  <div className="flex flex-wrap gap-1.5 pt-2">
-                    {blog.concepts.slice(0, 3).map((concept) => (
-                      <AptTag key={concept} variant="ghost" size="sm">
-                        {concept}
-                      </AptTag>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </AptCard>
-          </Link>
+          <InsightCard key={blog.id} insight={blog} to={`/insights/${blog.id}`} />
         ))}
       </div>
 

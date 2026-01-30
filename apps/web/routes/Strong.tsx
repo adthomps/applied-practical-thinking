@@ -1,4 +1,5 @@
-import { strongItems } from "@/data/strong";
+import { useEffect, useState } from "react";
+import { fetchContentIndex, fetchContentMarkdown, ContentIndexItem } from "@/src/services/contentIndex";
 import {
   AptCard,
   AptCardHeader,
@@ -9,7 +10,41 @@ import {
   DecisionBlock,
 } from "@/components/apt";
 
-export default function Strong() {
+  const [caseStudies, setCaseStudies] = useState<ContentIndexItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [expanded, setExpanded] = useState<string | null>(null);
+  const [markdownContent, setMarkdownContent] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    setLoading(true);
+    fetchContentIndex("case-studies")
+      .then((data) => {
+        setCaseStudies(data);
+        setLoading(false);
+      })
+      .catch((e) => {
+        setError(e.message);
+        setLoading(false);
+      });
+  }, []);
+
+  const handleExpand = (id: string, contentPath: string) => {
+    setExpanded(expanded === id ? null : id);
+    if (!markdownContent[id]) {
+      fetchContentMarkdown(contentPath).then((md) => {
+        setMarkdownContent((prev) => ({ ...prev, [id]: md }));
+      });
+    }
+  };
+
+  if (loading) {
+    return <div className="container py-12 text-center">Loading case studies…</div>;
+  }
+  if (error) {
+    return <div className="container py-12 text-center text-red-500">{error}</div>;
+  }
+
   return (
     <div className="container py-8 md:py-12">
       <div className="mb-8">
@@ -21,13 +56,13 @@ export default function Strong() {
       </div>
 
       <div className="space-y-6">
-        {strongItems.map((item) => (
+        {caseStudies.map((item) => (
           <AptCard key={item.id} variant="default" padding="large">
             <AptCardHeader className="p-0">
               <div className="flex items-start justify-between">
                 <AptCardTitle className="text-xl">{item.title}</AptCardTitle>
                 <div className="flex gap-1.5">
-                  {item.tags.slice(0, 3).map((tag) => (
+                  {(item.concepts || []).slice(0, 3).map((tag) => (
                     <AptTag key={tag} variant="muted">
                       {tag}
                     </AptTag>
@@ -35,19 +70,26 @@ export default function Strong() {
                 </div>
               </div>
               <p className="text-sm font-medium text-primary mt-2">
-                Problem: {item.problem}
+                {item.description}
               </p>
             </AptCardHeader>
 
             <AptCardContent className="mt-4 p-0">
-              <div className="mb-6">
-                <h4 className="text-sm font-semibold text-foreground uppercase tracking-wide mb-2">
-                  Approach
-                </h4>
-                <AptCardDescription>{item.approach}</AptCardDescription>
-              </div>
-
-              <DecisionBlock decisions={item.decisions} />
+              <button
+                className="text-xs text-accent underline mb-2"
+                onClick={() => handleExpand(item.id, item.contentPath)}
+              >
+                {expanded === item.id ? "Hide Details" : "Show Details"}
+              </button>
+              {expanded === item.id && (
+                <div className="prose-custom mt-4">
+                  {markdownContent[item.id]
+                    ? markdownContent[item.id]
+                        .split('\n')
+                        .map((line, i) => <p key={i}>{line}</p>)
+                    : "Loading…"}
+                </div>
+              )}
             </AptCardContent>
           </AptCard>
         ))}
