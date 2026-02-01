@@ -73,7 +73,46 @@ pnpm --filter ./apps/worker test
 
 ---
 
-## Repository Structure
+
+## Content Management
+
+### Insights vs. Portfolio
+
+- **Insights**: Narrative content (blogs, podcasts, guides, case studies)
+  - Markdown in `apps/web/content/<type>/`
+  - Indexed in `apps/web/data/<type>-index.json`
+  - Shown on `/insights` and subpages, with area cards for each type
+- **Portfolio**: Artifact/content showcase (labs, demos, design system, gallery, etc.)
+  - Markdown in `apps/web/content/<type>/`
+  - Indexed in `apps/web/data/<type>-index.json`
+  - Shown on `/portfolio` and subpages, with area cards for each type
+
+### Adding or Updating Content
+
+1. Add or edit a markdown file in the appropriate `content/<type>/` folder.
+2. Run the content index build script: `pnpm --filter ./apps/web run build-content-index`
+3. The new or updated item will appear in the relevant index and on the site (this ensures public data is always in sync).
+
+### Cross-linking
+
+- Use frontmatter fields like `relatedLabs`, `relatedInsights` in markdown to create relationships.
+- Labs can link to Insights (and vice versa) for richer navigation, but avoid duplication.
+
+### Area Cards & Navigation
+
+- Both `/insights` and `/portfolio` use a grid of area cards at the top, sourced from navigation config (`site.ts`).
+- All navigation and section changes must be reflected in `apps/web/data/site.ts`.
+
+### Documentation & Guardrails
+
+- **All changes to content structure, navigation, or design must be documented in:**
+  - `apps/web/docs/design/decision-log.md` (for deviations/decisions)
+  - `README.md` and `DOCUMENTATION_INDEX.md` (for high-level structure)
+- **Follow the monorepo and design system rules in:**
+  - `PROJECT_RULES.md`
+  - `apps/web/docs/design/APT-DESIGN-ARCHITECTURE.md`
+
+---
 
 ```
 apps/

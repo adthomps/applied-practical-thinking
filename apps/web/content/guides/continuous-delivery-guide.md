@@ -8,6 +8,13 @@ concepts:
   - continuous-delivery
   - teams
   - product
+tags:
+  - continuous-delivery
+  - teams
+  - product
+platforms: []
+technologies: []
+links: {}
 ---
 
 ## Introduction

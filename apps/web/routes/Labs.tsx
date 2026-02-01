@@ -1,7 +1,9 @@
-import { useState, useMemo } from "react";
-import { labs } from "@/data/labs";
+
+import { useState, useMemo, useEffect } from "react";
 import { LabCard } from "@/components/apt/LabCard";
 import { ContentFilters, FilterConfig, SelectedFilters } from "@/components/apt";
+import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
+
 
 export default function Labs() {
   const [selected, setSelected] = useState<SelectedFilters>({
@@ -11,30 +13,36 @@ export default function Labs() {
     technologies: [],
     statuses: [],
   });
+  const [labs, setLabs] = useState<ContentIndexItem[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  // Extract unique filter options from labs data
-  const config = useMemo<FilterConfig>(() => {
-    const types = [...new Set(labs.map((lab) => lab.type))];
-    const topics = [...new Set(labs.flatMap((lab) => lab.tags))].sort();
-    const platforms = [...new Set(labs.flatMap((lab) => lab.platforms))];
-    const technologies = [...new Set(labs.flatMap((lab) => lab.technologies))];
-    const statuses = [...new Set(labs.map((lab) => lab.status))];
-    return { types, topics, platforms, technologies, statuses };
+  useEffect(() => {
+    fetchContentIndex("labs")
+      .then((data) => setLabs(data))
+      .finally(() => setLoading(false));
   }, []);
 
-  // Filter labs based on selections
+  const config = useMemo<FilterConfig>(() => {
+    const types = [...new Set(labs.map((lab) => lab.type))];
+    const topics = [...new Set(labs.flatMap((lab) => lab.tags || []))].sort();
+    const platforms = [...new Set(labs.flatMap((lab) => lab.platforms || []))];
+    const technologies = [...new Set(labs.flatMap((lab) => lab.technologies || []))];
+    const statuses = [...new Set(labs.map((lab) => lab.status))];
+    return { types, topics, platforms, technologies, statuses };
+  }, [labs]);
+
   const filteredLabs = useMemo(() => {
     return labs.filter((lab) => {
       if (selected.types?.length && !selected.types.includes(lab.type)) {
         return false;
       }
-      if (selected.topics?.length && !lab.tags.some((t) => selected.topics?.includes(t))) {
+      if (selected.topics?.length && !(lab.tags || []).some((t: string) => selected.topics?.includes(t))) {
         return false;
       }
-      if (selected.platforms?.length && !lab.platforms.some((p) => selected.platforms?.includes(p))) {
+      if (selected.platforms?.length && !(lab.platforms || []).some((p: string) => selected.platforms?.includes(p))) {
         return false;
       }
-      if (selected.technologies?.length && !lab.technologies.some((t) => selected.technologies?.includes(t))) {
+      if (selected.technologies?.length && !(lab.technologies || []).some((t: string) => selected.technologies?.includes(t))) {
         return false;
       }
       if (selected.statuses?.length && !selected.statuses.includes(lab.status)) {
@@ -42,7 +50,7 @@ export default function Labs() {
       }
       return true;
     });
-  }, [selected]);
+  }, [selected, labs]);
 
   return (
     <div className="container py-8 md:py-12">
@@ -62,20 +70,23 @@ export default function Labs() {
         totalCount={labs.length}
       />
 
-      {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredLabs.map((lab) => (
-          <LabCard key={lab.id} lab={lab} />
-        ))}
-      </div>
-
-      {/* Empty state */}
-      {filteredLabs.length === 0 && (
-        <div className="text-center py-12">
-          <p className="text-muted-foreground">
-            No labs match the selected filters.
-          </p>
-        </div>
+      {loading ? (
+        <div className="text-center py-12 text-muted-foreground">Loading…</div>
+      ) : (
+        <>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {filteredLabs.map((lab) => (
+              <LabCard key={lab.slug || lab.id} lab={lab} />
+            ))}
+          </div>
+          {filteredLabs.length === 0 && (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground">
+                No labs match the selected filters.
+              </p>
+            </div>
+          )}
+        </>
       )}
     </div>
   );

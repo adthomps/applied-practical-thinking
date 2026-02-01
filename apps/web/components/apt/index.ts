@@ -24,6 +24,8 @@ export { AptTag } from "./AptTag";
 export { AptEmblem } from "./AptEmblem";
 export { CosmicBackground } from "./CosmicBackground";
 
+export { ContentDetailPage } from "./ContentDetailPage";
+
 // Demo components
 export { DemoLayout, DemoSection } from "./demo/DemoLayout";
 export { DecisionBlock } from "./demo/DecisionBlock";

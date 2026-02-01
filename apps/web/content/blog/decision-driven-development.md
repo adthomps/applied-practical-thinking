@@ -8,6 +8,13 @@ concepts:
   - architecture
   - documentation
   - teams
+tags:
+  - architecture
+  - documentation
+  - teams
+platforms: []
+technologies: []
+links: {}
 relatedLabs:
   - decision-log
 ---

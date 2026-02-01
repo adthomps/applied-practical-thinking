@@ -10,6 +10,15 @@
       "teams",
       "product"
     ],
+    "tags": [
+      "continuous-delivery",
+      "teams",
+      "product"
+    ],
+    "platforms": [],
+    "technologies": [],
+    "links": {},
+    "status": "",
     "contentPath": "guides/continuous-delivery-guide.md",
     "excerpt": "Introduction\r \r Continuous delivery (CD) is the practice of keeping your product deployable at all times. This guide covers:\r \r  The principles of CD\r  How to set up a CD pipeline\r  Common challenges and solutions"
   },
@@ -24,6 +33,14 @@
       "edge",
       "architecture"
     ],
+    "tags": [
+      "performance",
+      "edge",
+      "architecture"
+    ],
+    "platforms": [],
+    "technologies": [],
+    "links": {},
     "relatedLabs": [
       "edge-caching-patterns",
       "api-contract-first"
@@ -31,6 +48,7 @@
     "relatedSystems": [
       "apt-site"
     ],
+    "status": "",
     "contentPath": "guides/edge-first-thinking.md",
     "excerpt": "What is EdgeFirst Thinking?\r \r Edgefirst thinking means designing your application architecture with edge computing as a primary consideration, not an afterthought. It's about bringing computation and data closer to users.\r \r  Why Edge Matters\r \r Traditional architectures route all requests through centralized servers. This creates:"
   },
@@ -45,6 +63,15 @@
       "prompt-design",
       "agents"
     ],
+    "tags": [
+      "ai",
+      "prompt-design",
+      "agents"
+    ],
+    "platforms": [],
+    "technologies": [],
+    "links": {},
+    "status": "",
     "contentPath": "guides/prompt-design-guide.md",
     "excerpt": "Introduction\r \r Prompt design is the art and science of crafting instructions that guide AI agents to produce useful, reliable, and safe outputs. This guide covers:\r \r  The anatomy of a good prompt\r  Common pitfalls\r  Examples and antipatterns"
   },
@@ -59,6 +86,15 @@
       "public",
       "growth"
     ],
+    "tags": [
+      "learning",
+      "public",
+      "growth"
+    ],
+    "platforms": [],
+    "technologies": [],
+    "links": {},
+    "status": "",
     "contentPath": "guides/public-learning-guide.md",
     "excerpt": "Introduction\r \r Learning in public is about sharing your process, not just your results. This guide covers:\r \r  Why learning in public works\r  How to get started\r  Common fears and how to overcome them"
   },
@@ -73,6 +109,15 @@
       "product",
       "teams"
     ],
+    "tags": [
+      "systems-mapping",
+      "product",
+      "teams"
+    ],
+    "platforms": [],
+    "technologies": [],
+    "links": {},
+    "status": "",
     "contentPath": "guides/systems-mapping-guide.md",
     "excerpt": "Introduction\r \r Systems mapping is a visual way to understand how different parts of a product or organization interact. This guide covers:\r \r  Why systems mapping matters\r  How to create a simple map\r  Common pitfalls"
   }

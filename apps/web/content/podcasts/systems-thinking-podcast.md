@@ -9,6 +9,13 @@ concepts:
   - systems-thinking
   - product
   - teams
+tags:
+  - systems-thinking
+  - product
+  - teams
+platforms: []
+technologies: []
+links: {}
 media:
   audioUrl: "https://example.com/podcast/systems-over-screens.mp3"
   embedUrl: "https://open.spotify.com/embed/episode/example"

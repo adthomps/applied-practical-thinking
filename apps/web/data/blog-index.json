@@ -10,6 +10,18 @@
       "agents",
       "patterns"
     ],
+    "tags": [
+      "ai",
+      "agents",
+      "patterns"
+    ],
+    "platforms": [],
+    "technologies": [],
+    "links": {
+      "article": "https://example.com/ai-agent-patterns",
+      "slides": "https://example.com/ai-agent-patterns-slides.pdf"
+    },
+    "status": "",
     "contentPath": "blog/ai-agent-patterns.md",
     "excerpt": "Introduction\r \r AI agents are everywhere, but most fall into a handful of patterns. This post surveys the most common ones and when to use each.\r \r  1. SingleTurn Chatbot\r \r  Stateless"
   },
@@ -24,9 +36,18 @@
       "documentation",
       "teams"
     ],
+    "tags": [
+      "architecture",
+      "documentation",
+      "teams"
+    ],
+    "platforms": [],
+    "technologies": [],
+    "links": {},
     "relatedLabs": [
       "decision-log"
     ],
+    "status": "",
     "contentPath": "blog/decision-driven-development.md",
     "excerpt": "The Problem with Code Documentation\r \r Most teams focus on documenting what the code does. Comments explain functions, READMEs describe setup steps, and wikis outline architecture. But there's a critical gap: why decisions were made.\r \r  Why Decisions Matter More\r \r When you revisit code six months later, knowing what it does is usually obvious from reading it. What's not obvious is:"
   },
@@ -41,6 +62,15 @@
       "teams",
       "effectiveness"
     ],
+    "tags": [
+      "feedback",
+      "teams",
+      "effectiveness"
+    ],
+    "platforms": [],
+    "technologies": [],
+    "links": {},
+    "status": "",
     "contentPath": "blog/feedback-multiplier.md",
     "excerpt": "Introduction\r \r Feedback isn’t just a way to fix mistakes—it’s a multiplier for team effectiveness. Here’s why.\r \r  Why Feedback Matters\r \r  Surfaces issues early"
   },
@@ -55,6 +85,15 @@
       "community",
       "growth"
     ],
+    "tags": [
+      "learning",
+      "community",
+      "growth"
+    ],
+    "platforms": [],
+    "technologies": [],
+    "links": {},
+    "status": "",
     "contentPath": "blog/learning-in-public.md",
     "excerpt": "Introduction\r \r Learning in public means sharing what you’re learning as you go. It’s a powerful way to accelerate your growth and connect with others.\r \r  Benefits\r \r  Attracts feedback and collaborators"
   },
@@ -69,6 +108,15 @@
       "delivery",
       "learning"
     ],
+    "tags": [
+      "prototyping",
+      "delivery",
+      "learning"
+    ],
+    "platforms": [],
+    "technologies": [],
+    "links": {},
+    "status": "",
     "contentPath": "blog/shipping-fast.md",
     "excerpt": "Introduction\r \r Speed matters, but learning matters more. This post shares lessons from projects where rapid prototyping and continuous delivery led to better outcomes.\r \r  Why Ship Fast?\r \r  Get feedback sooner"
   }

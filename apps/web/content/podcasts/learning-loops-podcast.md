@@ -9,6 +9,13 @@ concepts:
   - learning
   - feedback
   - teams
+tags:
+  - learning
+  - feedback
+  - teams
+platforms: []
+technologies: []
+links: {}
 media:
   audioUrl: "https://example.com/podcast/learning-loops.mp3"
   embedUrl: "https://open.spotify.com/embed/episode/example3"

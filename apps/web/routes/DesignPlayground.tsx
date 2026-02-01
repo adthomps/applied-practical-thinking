@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   HeroCard,
   AptButton,
@@ -12,11 +13,29 @@ import {
   DecisionBlock,
   LimitationNotice,
 } from "@/components/apt";
-import { labs } from "@/data/labs";
-import { systems } from "@/data/systems";
+import { fetchContentIndex, type ContentIndexItem } from "@/src/services/contentIndex";
 import { strongItems } from "@/data/strong";
 
 export default function DesignPlayground() {
+  const [labsIndex, setLabsIndex] = useState<ContentIndexItem[]>([]);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchContentIndex("labs")
+      .then((items) => {
+        if (cancelled) return;
+        setLabsIndex(items);
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setLabsIndex([]);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   return (
     <div className="container py-8 md:py-12">
       <div className="mb-8">
@@ -204,13 +223,13 @@ export default function DesignPlayground() {
         >
           <DemoSection title="Labs">
             <div className="space-y-2">
-              {labs.map((lab) => (
+              {labsIndex.map((lab) => (
                 <div
-                  key={lab.id}
+                  key={lab.id ?? lab.slug ?? lab.contentPath}
                   className="flex items-center justify-between p-2 rounded bg-muted/50"
                 >
                   <code className="text-sm font-mono text-primary">
-                    {lab.id}
+                    {lab.id ?? lab.slug ?? lab.contentPath}
                   </code>
                   <span className="text-sm text-muted-foreground">
                     {lab.title}

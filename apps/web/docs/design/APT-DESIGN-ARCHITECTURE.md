@@ -28,6 +28,18 @@ Design Architecture at APT is about **predictable delivery**. It's the scaffoldi
 
 ---
 
+
+## Content Management
+
+For how to manage Insights and Portfolio content, and documentation requirements for changes to content structure, navigation, or design, see:
+- 'Content Management' in [README.md](../../../README.md)
+- [DOCUMENTATION_INDEX.md](../../../DOCUMENTATION_INDEX.md)
+- [apps/web/docs/design/decision-log.md](./decision-log.md)
+
+All changes to content structure, navigation, or design must be documented in the above files.
+
+---
+
 ## Structural Patterns
 
 ### Monorepo Layout

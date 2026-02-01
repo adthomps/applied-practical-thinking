@@ -1,3 +1,4 @@
+import { Suspense, lazy } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -7,33 +8,39 @@ import { AptLayout } from "@/components/apt/AptLayout";
 
 // Pages
 import Home from "./routes/Home";
-import AssistantPage from "./routes/assistant";
-import Start from "./routes/Start";
-import About from "./routes/About";
 import NotFound from "./pages/NotFound";
 
+const AssistantPage = lazy(() => import("./routes/assistant"));
+const Start = lazy(() => import("./routes/Start"));
+const About = lazy(() => import("./routes/About"));
+
 // Insights
-import Insights from "./routes/Insights";
-import InsightDetail from "./routes/InsightDetail";
-import InsightsBlogs from "./routes/insights/Blogs";
-import InsightsPodcasts from "./routes/insights/Podcasts";
-import InsightsCaseStudies from "./routes/insights/CaseStudies";
-import InsightsGuides from "./routes/insights/Guides";
+const Insights = lazy(() => import("./routes/Insights"));
+const InsightsBlogs = lazy(() => import("./routes/insights/Blogs"));
+const InsightsPodcasts = lazy(() => import("./routes/insights/Podcasts"));
+const InsightsCaseStudies = lazy(() => import("./routes/insights/CaseStudies"));
+const InsightsGuides = lazy(() => import("./routes/insights/Guides"));
 
 // Portfolio
-import Portfolio from "./routes/Portfolio";
-import PortfolioLabs from "./routes/portfolio/Labs";
-import PortfolioLabDetail from "./routes/portfolio/LabDetail";
-import PortfolioDesignSystem from "./routes/portfolio/DesignSystem";
-import PortfolioDesignThinking from "./routes/portfolio/DesignThinking";
-import PortfolioDesignArchitecture from "./routes/portfolio/DesignArchitecture";
-import PortfolioLiveDemos from "./routes/portfolio/LiveDemos";
-import PortfolioVisualGallery from "./routes/portfolio/VisualGallery";
+const Portfolio = lazy(() => import("./routes/Portfolio"));
+const PortfolioLabs = lazy(() => import("./routes/portfolio/Labs"));
+const PortfolioDesignSystem = lazy(() => import("./routes/portfolio/DesignSystem"));
+const PortfolioDesignThinking = lazy(() => import("./routes/portfolio/DesignThinking"));
+const PortfolioDesignArchitecture = lazy(() => import("./routes/portfolio/DesignArchitecture"));
+const PortfolioLiveDemos = lazy(() => import("./routes/portfolio/LiveDemos"));
+const PortfolioVisualGallery = lazy(() => import("./routes/portfolio/VisualGallery"));
+const InsightDetail = lazy(() => import("./routes/InsightDetail"));
+const PortfolioLabDetail = lazy(() => import("./routes/portfolio/LabDetail"));
+const DemoDetail = lazy(() => import("./routes/DemoDetail"));
 
 // Legacy/Utility
-import DesignPlayground from "./routes/DesignPlayground";
+const DesignPlayground = lazy(() => import("./routes/DesignPlayground"));
 
 const queryClient = new QueryClient();
+
+const RouteFallback = () => (
+  <div className="container py-12 md:py-16">Loading…</div>
+);
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -41,8 +48,9 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route element={<AptLayout />}>
+        <Suspense fallback={<RouteFallback />}>
+          <Routes>
+            <Route element={<AptLayout />}>
             {/* Home */}
             <Route path="/" element={<Home />} />
             
@@ -65,6 +73,7 @@ const App = () => (
             <Route path="/portfolio/design-thinking" element={<PortfolioDesignThinking />} />
             <Route path="/portfolio/design-architecture" element={<PortfolioDesignArchitecture />} />
             <Route path="/portfolio/live-demos" element={<PortfolioLiveDemos />} />
+            <Route path="/portfolio/live-demos/:slug" element={<DemoDetail />} />
             <Route path="/portfolio/visual-gallery" element={<PortfolioVisualGallery />} />
             
             {/* About */}
@@ -80,9 +89,10 @@ const App = () => (
             {/* Legacy Redirects */}
             <Route path="/labs" element={<Navigate to="/portfolio/labs" replace />} />
             <Route path="/labs/:id" element={<Navigate to="/portfolio/labs/:id" replace />} />
-          </Route>
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+            </Route>
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

@@ -1,4 +1,16 @@
+
 # Documentation Index
+## Content Management
+
+How to manage Insights and Portfolio content, and where to document changes:
+
+- See 'Content Management' section in [README.md](README.md)
+- All changes to content structure, navigation, or design must be documented in:
+	- [apps/web/docs/design/decision-log.md](apps/web/docs/design/decision-log.md) (for deviations/decisions)
+	- [README.md](README.md) and [DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md) (for high-level structure)
+- Follow the monorepo and design system rules in:
+	- [PROJECT_RULES.md](PROJECT_RULES.md)
+	- [apps/web/docs/design/APT-DESIGN-ARCHITECTURE.md](apps/web/docs/design/APT-DESIGN-ARCHITECTURE.md)
 
 This file provides an index of all major documentation and guardrail files in this repository.
 

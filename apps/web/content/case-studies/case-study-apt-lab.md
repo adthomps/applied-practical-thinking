@@ -11,6 +11,13 @@ concepts:
   - systems-thinking
   - prototyping
   - product-design
+tags:
+  - systems-thinking
+  - prototyping
+  - product-design
+platforms: []
+technologies: []
+links: {}
 ---
 
 ## Background

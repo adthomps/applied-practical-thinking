@@ -11,6 +11,13 @@ concepts:
   - portfolio
   - redesign
   - systems-thinking
+tags:
+  - portfolio
+  - redesign
+  - systems-thinking
+platforms: []
+technologies: []
+links: {}
 ---
 
 ## Background

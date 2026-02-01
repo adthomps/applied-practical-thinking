@@ -2,7 +2,7 @@ import { AptTag } from "@/components/apt/AptTag";
 import { Clock } from "lucide-react";
 import { Book, Mic, FileText, Podcast } from "lucide-react";
 
-export function InsightMeta({ insight }) {
+export function InsightMeta({ insight, showDate = true, showConcepts = true }) {
   const typeIcons = {
     blog: FileText,
     podcast: Podcast,
@@ -28,7 +28,7 @@ export function InsightMeta({ insight }) {
           {insight.duration}
         </span>
       )}
-      {insight.publishedAt && (
+      {showDate && insight.publishedAt && (
         <span className="text-xs text-muted-foreground">
           {new Date(insight.publishedAt).toLocaleDateString("en-US", {
             month: "short",
@@ -37,7 +37,7 @@ export function InsightMeta({ insight }) {
           })}
         </span>
       )}
-      {insight.concepts?.length > 0 && (
+      {showConcepts && insight.concepts?.length > 0 && (
         <span className="flex gap-1 ml-2">
           {insight.concepts.slice(0, 3).map((concept) => (
             <AptTag key={concept} variant="muted" size="sm">

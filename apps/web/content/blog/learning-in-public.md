@@ -8,6 +8,13 @@ concepts:
   - learning
   - community
   - growth
+tags:
+  - learning
+  - community
+  - growth
+platforms: []
+technologies: []
+links: {}
 ---
 
 ## Introduction

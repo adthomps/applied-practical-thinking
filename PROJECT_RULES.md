@@ -1,4 +1,13 @@
+
 # Project Rules & Architecture Guardrails
+
+## Content Management
+
+- For how to manage Insights and Portfolio content, see the 'Content Management' section in [README.md](README.md).
+- All changes to content structure, navigation, or design must be documented in:
+  - [apps/web/docs/design/decision-log.md](apps/web/docs/design/decision-log.md) (for deviations/decisions)
+  - [README.md](README.md) and [DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md) (for high-level structure)
+- Follow the monorepo and design system rules in this file and in [apps/web/docs/design/APT-DESIGN-ARCHITECTURE.md](apps/web/docs/design/APT-DESIGN-ARCHITECTURE.md).
 
 ## Monorepo Structure
 

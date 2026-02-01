@@ -11,6 +11,13 @@ concepts:
   - feedback
   - teams
   - culture
+tags:
+  - feedback
+  - teams
+  - culture
+platforms: []
+technologies: []
+links: {}
 ---
 
 ## Background

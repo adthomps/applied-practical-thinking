@@ -1,0 +1,376 @@
+import { ReactNode } from "react";
+import { Link } from "react-router-dom";
+
+import { AptCard } from "@/components/apt/AptCard";
+import { AptButton } from "@/components/apt/AptButton";
+import { AptTag } from "@/components/apt/AptTag";
+import { MarkdownContent } from "@/components/apt/MarkdownContent";
+import { ContentIndexItem } from "@/src/services/contentIndex";
+import { useToast } from "@/hooks/use-toast";
+import { shareOrCopy } from "@/src/services/share";
+import {
+  ArrowLeft,
+  ExternalLink,
+  Github,
+  Image as ImageIcon,
+  Share2,
+} from "lucide-react";
+
+type ContentDetailPageProps = {
+  backHref: string;
+  backLabel: string;
+
+  item: ContentIndexItem;
+  markdown?: string;
+
+  aboutTitle: string;
+  markdownTitle?: string;
+
+  /** Optional content inserted in the header area (e.g., InsightMeta). */
+  headerMeta?: ReactNode;
+
+  /** Optional fallback rendered in the hero area when thumbnail is missing. */
+  heroFallback?: ReactNode;
+
+  /** Optional content inserted near the top of the main column (e.g., podcast player). */
+  mainTop?: ReactNode;
+
+  /** Optional content inserted after markdown (e.g., concepts list, share). */
+  mainBottom?: ReactNode;
+
+  /** Optional extra content at top of the sidebar. */
+  sidebarTop?: ReactNode;
+
+  /** Optional extra content at bottom of the sidebar. */
+  sidebarBottom?: ReactNode;
+
+  /** Override actions card entirely; when omitted, uses item.links. */
+  actionsOverride?: ReactNode;
+
+  /** When true (default), show a Share action in the sidebar. */
+  shareEnabled?: boolean;
+};
+
+export function ContentDetailPage(props: ContentDetailPageProps) {
+  const {
+    backHref,
+    backLabel,
+    item,
+    markdown,
+    aboutTitle,
+    markdownTitle,
+    headerMeta,
+    heroFallback,
+    mainTop,
+    mainBottom,
+    sidebarTop,
+    sidebarBottom,
+    actionsOverride,
+    shareEnabled = true,
+  } = props;
+
+  const { toast } = useToast();
+
+  const formatDate = (raw?: string) => {
+    if (!raw) return null;
+    const d = new Date(raw);
+    if (Number.isNaN(d.getTime())) return raw;
+    return d.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+  };
+
+  const publishedRaw = (item.publishedAt as string | undefined) || (item.date as string | undefined);
+  const publishedLabel = formatDate(publishedRaw);
+
+  const isInternalHref = (href: string) => href.startsWith("/") && !href.startsWith("//");
+
+  const ActionLink = ({ href, children }: { href: string; children: ReactNode }) => {
+    if (isInternalHref(href)) {
+      return (
+        <Link to={href} className="block">
+          {children}
+        </Link>
+      );
+    }
+
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className="block">
+        {children}
+      </a>
+    );
+  };
+
+  const links = item.links || {};
+  const extraLinks = Object.entries(links)
+    .filter(([key, value]) => Boolean(value) && !["demo", "repo", "figma", "lovable"].includes(key))
+    .map(([key, value]) => ({
+      key,
+      href: value,
+      label:
+        {
+          website: "Website",
+          article: "Article",
+          read: "Read",
+          listen: "Listen",
+          youtube: "YouTube",
+          spotify: "Spotify",
+          apple: "Apple",
+          transcript: "Transcript",
+          slides: "Slides",
+          pdf: "PDF",
+          lovable: "Lovable",
+        }[key] || key.replace(/[-_]/g, " "),
+    }))
+    .sort((a, b) => a.label.localeCompare(b.label));
+
+  const hasDefaultActions = Boolean(links.demo || links.repo || links.figma || links.lovable);
+  const hasAnyLinks = hasDefaultActions || extraLinks.length > 0;
+  const showActionsCard = Boolean(actionsOverride || hasAnyLinks || shareEnabled);
+
+  const handleShare = async () => {
+    const url = window.location.href;
+    const result = await shareOrCopy({ title: item.title, url });
+
+    if (result.status === "shared") return;
+
+    if (result.status === "copied") {
+      toast({ title: "Link copied", description: "The URL is in your clipboard." });
+      return;
+    }
+
+    toast({
+      title: "Unable to share",
+      description: "Sharing is not supported in this browser.",
+      variant: "destructive",
+    });
+  };
+
+  const tagsForSidebar: string[] = Array.isArray(item.tags) && item.tags.length > 0
+    ? item.tags
+    : Array.isArray(item.concepts) && item.concepts.length > 0
+      ? item.concepts
+      : [];
+
+  return (
+    <div className="container py-12 md:py-16">
+      <Link
+        to={backHref}
+        className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8"
+      >
+        <ArrowLeft className="h-4 w-4" />
+        {backLabel}
+      </Link>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Main Content */}
+        <div className="lg:col-span-2 space-y-8">
+          {/* Featured Image */}
+          <div className="aspect-video rounded-xl overflow-hidden bg-muted/30 border border-border/50">
+            {item.thumbnail ? (
+              <img
+                src={item.thumbnail}
+                alt={item.title}
+                className="w-full h-full object-cover"
+              />
+            ) : heroFallback ? (
+              <div className="w-full h-full flex items-center justify-center">
+                {heroFallback}
+              </div>
+            ) : (
+              <div className="w-full h-full flex items-center justify-center">
+                <ImageIcon className="h-16 w-16 text-muted-foreground/30" />
+              </div>
+            )}
+          </div>
+
+          {/* Header */}
+          <div>
+            {headerMeta ? <div className="mb-3">{headerMeta}</div> : null}
+            <div className="flex items-center gap-2 mb-3">
+              {item.type ? <AptTag variant="primary">{item.type}</AptTag> : null}
+              {item.status ? <AptTag variant="secondary">{item.status}</AptTag> : null}
+            </div>
+            <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+              {item.title}
+            </h1>
+          </div>
+
+          {mainTop ? <div>{mainTop}</div> : null}
+
+          {/* Problem */}
+          {item.problem ? (
+            <AptCard variant="subtle">
+              <div className="p-6">
+                <h2 className="text-sm font-semibold text-primary mb-3 uppercase tracking-wide">
+                  Problem
+                </h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  {item.problem}
+                </p>
+              </div>
+            </AptCard>
+          ) : null}
+
+          {/* Description */}
+          {item.description ? (
+            <div>
+              <h2 className="text-xl font-semibold mb-4">{aboutTitle}</h2>
+              <p className="text-muted-foreground leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+          ) : null}
+
+          {/* Markdown */}
+          {markdown ? (
+            <div>
+              <h2 className="text-xl font-semibold mb-4">
+                {markdownTitle || "Notes"}
+              </h2>
+              <article className="prose-custom">
+                <MarkdownContent markdown={markdown} contentPath={item.contentPath} />
+              </article>
+            </div>
+          ) : null}
+
+          {mainBottom ? <div>{mainBottom}</div> : null}
+        </div>
+
+        {/* Sidebar */}
+        <div className="space-y-6">
+          {sidebarTop ? <div>{sidebarTop}</div> : null}
+
+          {/* Published */}
+          {publishedLabel ? (
+            <AptCard>
+              <div className="p-6">
+                <h3 className="text-sm font-semibold mb-2">Published</h3>
+                <div className="text-sm text-muted-foreground">{publishedLabel}</div>
+              </div>
+            </AptCard>
+          ) : null}
+
+          {/* Actions */}
+          {showActionsCard ? (
+            actionsOverride ? (
+              actionsOverride
+            ) : (
+              <AptCard>
+                <div className="p-6 space-y-4">
+                  {links.demo ? (
+                    <ActionLink href={links.demo}>
+                      <AptButton variant="primary" className="w-full">
+                        <ExternalLink className="h-4 w-4 mr-2" />
+                        View Demo
+                      </AptButton>
+                    </ActionLink>
+                  ) : null}
+
+                  {links.repo ? (
+                    <ActionLink href={links.repo}>
+                      <AptButton variant="outline" className="w-full">
+                        <Github className="h-4 w-4 mr-2" />
+                        Repository
+                      </AptButton>
+                    </ActionLink>
+                  ) : null}
+
+                  {links.figma ? (
+                    <ActionLink href={links.figma}>
+                      <AptButton variant="outline" className="w-full">
+                        <ExternalLink className="h-4 w-4 mr-2" />
+                        Figma
+                      </AptButton>
+                    </ActionLink>
+                  ) : null}
+
+                  {links.lovable ? (
+                    <ActionLink href={links.lovable}>
+                      <AptButton variant="outline" className="w-full">
+                        <ExternalLink className="h-4 w-4 mr-2" />
+                        Lovable
+                      </AptButton>
+                    </ActionLink>
+                  ) : null}
+
+                  {extraLinks.map((link) => (
+                    <ActionLink key={link.key} href={link.href}>
+                      <AptButton variant={hasAnyLinks ? "outline" : "primary"} className="w-full">
+                        <ExternalLink className="h-4 w-4 mr-2" />
+                        {link.label}
+                      </AptButton>
+                    </ActionLink>
+                  ))}
+
+                  {shareEnabled ? (
+                    <AptButton
+                      variant={hasAnyLinks ? "outline" : "primary"}
+                      className="w-full"
+                      onClick={handleShare}
+                    >
+                      <Share2 className="h-4 w-4 mr-2" />
+                      Share
+                    </AptButton>
+                  ) : null}
+                </div>
+              </AptCard>
+            )
+          ) : null}
+
+          {/* Technologies */}
+          {Array.isArray(item.technologies) && item.technologies.length > 0 ? (
+            <AptCard>
+              <div className="p-6">
+                <h3 className="text-sm font-semibold mb-4">Technologies</h3>
+                <div className="flex flex-wrap gap-2">
+                  {item.technologies.map((tech: string) => (
+                    <AptTag key={tech} variant="outline">
+                      {tech}
+                    </AptTag>
+                  ))}
+                </div>
+              </div>
+            </AptCard>
+          ) : null}
+
+          {/* Platforms */}
+          {Array.isArray(item.platforms) && item.platforms.length > 0 ? (
+            <AptCard>
+              <div className="p-6">
+                <h3 className="text-sm font-semibold mb-4">Platforms</h3>
+                <div className="flex flex-wrap gap-2">
+                  {item.platforms.map((platform: string) => (
+                    <AptTag key={platform} variant="secondary">
+                      {platform}
+                    </AptTag>
+                  ))}
+                </div>
+              </div>
+            </AptCard>
+          ) : null}
+
+          {/* Tags */}
+          {tagsForSidebar.length > 0 ? (
+            <AptCard>
+              <div className="p-6">
+                <h3 className="text-sm font-semibold mb-4">Tags</h3>
+                <div className="flex flex-wrap gap-2">
+                  {tagsForSidebar.map((tag: string) => (
+                    <AptTag key={tag} variant="ghost">
+                      {tag}
+                    </AptTag>
+                  ))}
+                </div>
+              </div>
+            </AptCard>
+          ) : null}
+
+          {sidebarBottom ? <div>{sidebarBottom}</div> : null}
+        </div>
+      </div>
+    </div>
+  );
+}

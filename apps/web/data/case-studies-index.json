@@ -13,6 +13,15 @@
       "prototyping",
       "product-design"
     ],
+    "tags": [
+      "systems-thinking",
+      "prototyping",
+      "product-design"
+    ],
+    "platforms": [],
+    "technologies": [],
+    "links": {},
+    "status": "",
     "contentPath": "case-studies/case-study-apt-lab.md",
     "excerpt": "Background\r \r APT Lab was tasked with building a new product under tight deadlines and ambiguous requirements.\r \r  Approach\r \r  Used systems mapping to clarify goals"
   },
@@ -30,6 +39,15 @@
       "devops",
       "product"
     ],
+    "tags": [
+      "continuous-delivery",
+      "devops",
+      "product"
+    ],
+    "platforms": [],
+    "technologies": [],
+    "links": {},
+    "status": "",
     "contentPath": "case-studies/case-study-continuous-delivery.md",
     "excerpt": "Background\r \r The team wanted to release features faster without sacrificing quality.\r \r  Approach\r \r  Automated build and deployment"
   },
@@ -47,6 +65,15 @@
       "ui",
       "product"
     ],
+    "tags": [
+      "design-system",
+      "ui",
+      "product"
+    ],
+    "platforms": [],
+    "technologies": [],
+    "links": {},
+    "status": "",
     "contentPath": "case-studies/case-study-design-system.md",
     "excerpt": "Background\r \r Multiple products had diverging UI patterns, causing confusion and slowing development.\r \r  Approach\r \r  Created a shared design system"
   },
@@ -64,6 +91,15 @@
       "teams",
       "culture"
     ],
+    "tags": [
+      "feedback",
+      "teams",
+      "culture"
+    ],
+    "platforms": [],
+    "technologies": [],
+    "links": {},
+    "status": "",
     "contentPath": "case-studies/case-study-feedback-multiplier.md",
     "excerpt": "Background\r \r The team was missing deadlines and morale was low.\r \r  Approach\r \r  Introduced regular feedback sessions"
   },
@@ -81,6 +117,15 @@
       "feedback",
       "product"
     ],
+    "tags": [
+      "learning",
+      "feedback",
+      "product"
+    ],
+    "platforms": [],
+    "technologies": [],
+    "links": {},
+    "status": "",
     "contentPath": "case-studies/case-study-learning-loops.md",
     "excerpt": "Background\r \r The team struggled with slow feedback and unclear goals.\r \r  Approach\r \r  Introduced regular feedback sessions"
   },
@@ -98,6 +143,15 @@
       "redesign",
       "systems-thinking"
     ],
+    "tags": [
+      "portfolio",
+      "redesign",
+      "systems-thinking"
+    ],
+    "platforms": [],
+    "technologies": [],
+    "links": {},
+    "status": "",
     "contentPath": "case-studies/case-study-portfolio-redesign.md",
     "excerpt": "Background\r \r The original portfolio site was static and hard to update. The goal was to create a living portfolio that could grow with new work and ideas.\r \r  Approach\r \r  Modular content structure"
   }

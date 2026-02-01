@@ -11,6 +11,13 @@ concepts:
   - continuous-delivery
   - devops
   - product
+tags:
+  - continuous-delivery
+  - devops
+  - product
+platforms: []
+technologies: []
+links: {}
 ---
 
 ## Background
