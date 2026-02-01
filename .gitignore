@@ -26,4 +26,3 @@ Thumbs.db
 
 # Generated web content (copied into public/ by scripts)
 apps/web/public/data/*-index.json
-apps/web/public/content/
