@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const CONTENT_TYPES = ['blog', 'guides', 'podcasts', 'case-studies'];
+const CONTENT_TYPES = ['blog', 'guides', 'podcasts', 'case-studies', 'labs', 'demos'];
 const CONTENT_ROOT = path.join(__dirname, '../content');
 const PUBLIC_CONTENT_ROOT = path.join(__dirname, '../public/content');
 

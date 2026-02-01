@@ -8,6 +8,15 @@ concepts:
   - ai
   - agents
   - patterns
+tags:
+  - ai
+  - agents
+  - patterns
+platforms: []
+technologies: []
+links:
+  article: https://example.com/ai-agent-patterns
+  slides: https://example.com/ai-agent-patterns-slides.pdf
 ---
 
 ## Introduction

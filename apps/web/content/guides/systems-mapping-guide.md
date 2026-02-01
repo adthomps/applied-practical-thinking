@@ -8,6 +8,13 @@ concepts:
   - systems-mapping
   - product
   - teams
+tags:
+  - systems-mapping
+  - product
+  - teams
+platforms: []
+technologies: []
+links: {}
 ---
 
 ## Introduction

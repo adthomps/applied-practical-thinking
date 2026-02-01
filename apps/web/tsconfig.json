@@ -6,7 +6,9 @@
       "@/*": ["./*"]
     },
     "jsx": "react-jsx",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "noEmit": true
   },
-  "include": ["./**/*"]
+  "include": ["./**/*"],
+  "exclude": ["dist", "public", "scripts", "node_modules"]
 }

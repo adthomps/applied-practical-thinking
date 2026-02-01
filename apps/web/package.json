@@ -5,12 +5,15 @@
   "type": "module",
   "main": "src/main.tsx",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "pnpm run build-content-index && vite",
+    "build": "pnpm run build-content-index && vite build",
     "preview": "vite preview",
     "lint": "eslint .",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "generate-content-index": "node scripts/generate-content-index.cjs",
+    "copy-content-index": "node scripts/copy-index-to-public.cjs",
+    "build-content-index": "pnpm run generate-content-index && pnpm run copy-content-index"
   },
   "dependencies": {
     "@tanstack/react-query": "^4.0.0",

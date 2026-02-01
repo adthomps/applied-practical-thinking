@@ -3,11 +3,18 @@
 
 export type ContentIndexItem = {
   title: string;
-  id: string;
-  type: string;
+  id?: string;
+  slug?: string;
+  type?: string;
+  date?: string;
   description?: string;
   publishedAt?: string;
   concepts?: string[];
+  tags?: string[];
+  platforms?: string[];
+  technologies?: string[];
+  status?: string;
+  links?: Record<string, string>;
   contentPath: string;
   excerpt?: string;
   [key: string]: any;
@@ -18,9 +25,13 @@ const INDEX_PATHS = {
   guides: '/data/guides-index.json',
   podcasts: '/data/podcasts-index.json',
   'case-studies': '/data/case-studies-index.json',
+  labs: '/data/labs-index.json',
+  demos: '/data/demos-index.json',
 };
 
-export async function fetchContentIndex(type: keyof typeof INDEX_PATHS): Promise<ContentIndexItem[]> {
+export type ContentIndexType = keyof typeof INDEX_PATHS;
+
+export async function fetchContentIndex(type: ContentIndexType): Promise<ContentIndexItem[]> {
   const res = await fetch(INDEX_PATHS[type]);
   if (!res.ok) throw new Error(`Failed to load ${type} index`);
   return res.json();

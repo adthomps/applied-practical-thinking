@@ -1,4 +1,4 @@
-import { AptButton } from "@/components/apt";
+import { AptButton } from "@/components/apt/AptButton";
 import {
   DropdownMenu,
   DropdownMenuContent,

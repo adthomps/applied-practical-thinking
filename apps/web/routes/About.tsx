@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { siteConfig, authorConfig } from "@/data/site";
-import { labs } from "@/data/labs";
-import { insights } from "@/data/learn";
-import { systems } from "@/data/systems";
+import { systems } from "../data/systems";
+import { fetchContentIndex } from "@/src/services/contentIndex";
 import { AptCard, AptButton, AptTag } from "@/components/apt";
 import {
   ExternalLink,
@@ -49,17 +48,32 @@ function AnimatedRole({ roles }: { roles: readonly string[] }) {
 }
 
 export default function About() {
+  const [labsCount, setLabsCount] = useState(0);
+
+  useEffect(() => {
+    fetchContentIndex("labs")
+      .then((items) => setLabsCount(items.length))
+      .catch(() => setLabsCount(0));
+  }, []);
+
+  const [insightsCount, setInsightsCount] = useState(0);
+  useEffect(() => {
+    fetchContentIndex("blog")
+      .then((items) => setInsightsCount(items.length))
+      .catch(() => setInsightsCount(0));
+  }, []);
+
   const projectStats = [
     {
       label: "Labs",
-      count: labs.length,
+      count: labsCount,
       icon: Play,
       path: "/labs",
       color: "text-primary",
     },
     {
       label: "Insights",
-      count: insights.length,
+      count: insightsCount,
       icon: Book,
       path: "/insights",
       color: "text-accent",
@@ -175,13 +189,6 @@ export default function About() {
               >
                 <Mail className="h-4 w-4" />
                 <span>{authorConfig.contact.email}</span>
-              </a>
-              <a
-                href={`tel:${authorConfig.contact.phone}`}
-                className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <Phone className="h-4 w-4" />
-                <span>{authorConfig.contact.phone}</span>
               </a>
             </div>
 

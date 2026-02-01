@@ -8,6 +8,13 @@ concepts:
   - feedback
   - teams
   - effectiveness
+tags:
+  - feedback
+  - teams
+  - effectiveness
+platforms: []
+technologies: []
+links: {}
 ---
 
 ## Introduction

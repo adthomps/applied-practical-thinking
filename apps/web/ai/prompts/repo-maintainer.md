@@ -56,7 +56,7 @@ export function Component({ className, variant, ...props }) {
 ### Adding content
 
 Add entries to the appropriate file in `src/data/`:
-- Labs → `labs.ts`
+- Labs → markdown files in `content/labs` and generated index in `data/labs-index.json`
 - Systems → `systems.ts`
 - Content → `learn.ts`
 - Case studies → `strong.ts`

@@ -8,6 +8,13 @@ concepts:
   - prototyping
   - delivery
   - learning
+tags:
+  - prototyping
+  - delivery
+  - learning
+platforms: []
+technologies: []
+links: {}
 ---
 
 ## Introduction

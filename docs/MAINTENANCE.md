@@ -14,12 +14,55 @@ This guide explains how to add or edit content in all major areas of the APT mon
   3. Add a navigation item in `apps/web/data/site.ts` if needed.
 - To edit a page, update the relevant file in `apps/web/routes/`.
 
+
 ### Manage Start (Home) and About Pages
 - The Start (Home) page is typically `apps/web/routes/index.tsx` or `home.tsx`.
 - The About page is usually `apps/web/routes/about.tsx`.
 - To edit content, update the respective file/component.
 - For structured content (hero, intro, etc.), check `apps/web/data/site.ts` or similar data files.
 - Images and assets for these pages should be placed in `apps/web/public/images/`.
+
+---
+
+## Asset Management for Content Types
+
+For all content types (blogs, podcasts, guides, case studies, labs, demos):
+
+- **Local images, audio, and video files** referenced in markdown must be placed in:
+  - `apps/web/public/content/<type>/<slug-or-filename>/`
+  - Example: For a blog post at `apps/web/content/blog/my-post.md`, images go in `apps/web/public/content/blog/my-post/my-image.png`.
+  - For podcasts, local audio files (e.g., `.mp3`) should be in `apps/web/public/content/podcasts/<episode>/`.
+  - For demos or guides with local video, use `apps/web/public/content/demos/<demo>/` or `apps/web/public/content/guides/<guide>/`.
+- **Reference these assets in markdown** using relative paths (e.g., `![](./my-image.png)`), which resolve to `/content/<type>/<slug>/my-image.png` at runtime.
+- **External media** (YouTube, etc.): Use full URLs or embed code (e.g., `<iframe>`) directly in markdown. No need to download or host these externally embedded assets.
+
+#### Asset Path Summary Table
+
+| Content Type | Local Asset Path Example                                      | Reference in Markdown Example                |
+|--------------|--------------------------------------------------------------|----------------------------------------------|
+| blog         | public/content/blog/my-post/my-image.png                      | ![](./my-image.png)                          |
+| podcast      | public/content/podcasts/episode-1/episode.mp3                 | [audio](./episode.mp3)                       |
+| guides       | public/content/guides/my-guide/diagram.png                    | ![](./diagram.png)                           |
+| case studies | public/content/case-studies/case-xyz/cover.jpg                | ![](./cover.jpg)                             |
+| labs         | public/content/labs/lab-abc/screenshot.png                    | ![](./screenshot.png)                        |
+| demos        | public/content/demos/demo-123/demo-video.mp4                  | [video](./demo-video.mp4)                    |
+
+For gallery, design, or architecture images, continue using `apps/web/public/images/<section>/` as appropriate.
+
+### Content Authoring Checklist (Keep Things Consistent)
+- Create the markdown file under `apps/web/content/<type>/` with correct frontmatter (`id`, `type`, `title`, `description`, `publishedAt`, etc.).
+- If you want buttons/links in the detail page sidebar, add a `links:` map in frontmatter (keys are flexible; common ones: `demo`, `repo`, `figma`, `website`, `article`, `youtube`, `spotify`, `transcript`).
+- Run the index build when adding/changing content: `pnpm --filter ./apps/web run build-content-index`.
+- Put all local assets for that entry under `apps/web/public/content/<type>/<id-or-slug>/`.
+- In markdown, reference local assets with relative paths (e.g., `![](./diagram.png)`, `[audio](./episode.mp3)`).
+- Keep `contentPath` pointing to the markdown file path under `/content/...` (this is what enables relative asset resolution).
+
+#### Example (Guide with One Image)
+1. Create: `apps/web/content/guides/my-new-guide.md`
+2. Add an image at: `apps/web/public/content/guides/my-new-guide/diagram.png`
+3. Reference it in markdown as: `![](./diagram.png)`
+
+---
 
 ### Manage Header and Footer
 - The header and footer components are in `apps/web/components/apt/` (e.g., `AptHeader.tsx`, `AptFooter.tsx`).
@@ -40,11 +83,12 @@ To edit, update the Markdown file directly.
 
 Portfolio sections are managed as structured data and/or Markdown in `apps/web/data/` and `apps/web/content/`.
 
+
 ### Labs
 - All lab entries are in `apps/web/data/labs.ts`.
 - To add a lab, export a new object with fields like `title`, `slug`, `summary`, `image`, `content`, etc.
 - For detailed content, reference a Markdown file in `apps/web/content/labs/`.
-- Place images in `apps/web/public/images/labs/` and reference in the object.
+- Place images, audio, or video for labs in `apps/web/public/content/labs/<slug>/` and reference them in the object or markdown.
 
 ### Design System
 - Documented in `apps/web/docs/design/` and tokens in `packages/config` and `apps/web/theme/aptTokens.ts`.
@@ -60,10 +104,13 @@ Portfolio sections are managed as structured data and/or Markdown in `apps/web/d
 - Add new architecture docs as Markdown files in this folder.
 - Update diagrams/images in `apps/web/public/images/architecture/`.
 
+
 ### Live Demos
 - Demo entries are in `apps/web/data/demos.ts` (if present).
 - Add a new demo object with fields like `title`, `slug`, `url`, `description`, `image`, etc.
 - For embedded demos, add the relevant code/component in `apps/web/routes/` or `apps/web/components/`.
+- Place images, audio, or video for demos in `apps/web/public/content/demos/<slug>/` and reference them in the object or markdown.
+
 
 ### Gallery
 - Gallery items are in `apps/web/data/gallery.ts` (if present) or as Markdown in `apps/web/content/gallery/`.
@@ -76,6 +123,7 @@ Portfolio sections are managed as structured data and/or Markdown in `apps/web/d
 
 All insights content (blogs, podcasts, guides, case studies) is managed as Markdown files with YAML frontmatter in their respective folders under `apps/web/content/`.
 
+
 ### Add/Edit a Blog, Podcast, Guide, or Case Study
 - **Content:**
   - Each entry is a Markdown file in the appropriate folder:
@@ -85,14 +133,16 @@ All insights content (blogs, podcasts, guides, case studies) is managed as Markd
     - Case studies: `apps/web/content/case-studies/`
   - The file must start with YAML frontmatter containing fields like `title`, `id`, `type`, `description`, `publishedAt`, and any other relevant metadata (see below for example).
   - The body of the file is the full content, using Markdown formatting.
-- **Images:**
-  - Place images in `apps/web/public/images/` or a relevant subfolder.
-  - Reference the image path in the frontmatter or within the Markdown content as needed.
+- **Images, Audio, Video:**
+  - Place images, audio, or video in `apps/web/public/content/<type>/<slug-or-filename>/`.
+  - Reference the asset path in the frontmatter or within the Markdown content as needed (e.g., `![](./my-image.png)`).
+- **External Media:**
+  - For YouTube or other external videos, use the full URL or embed code directly in markdown.
 - **Metadata:**
   - Fill out all required frontmatter fields for proper display and filtering.
 - **Edit Existing Content:**
   - Update the Markdown file as needed.
-  - Replace or update images as required.
+  - Replace or update assets as required.
 
 #### Example: Adding a New Guide
 1. Add a new Markdown file: `apps/web/content/guides/my-new-guide.md`
@@ -113,12 +163,16 @@ All insights content (blogs, podcasts, guides, case studies) is managed as Markd
 
    Full content goes here...
    ```
-3. Place any images in `apps/web/public/images/guides/` and reference them in the Markdown file.
+3. Place any images in `apps/web/public/content/guides/my-new-guide/` and reference them in the Markdown file (e.g., `![](./diagram.png)`).
 4. Edit the Markdown file for the full text and formatting.
 
 #### Indexing and Dynamic Loading
 - Index files for each content type are generated automatically by a Node.js script that parses Markdown frontmatter.
 - The app loads content dynamically from these indexes; do not manually edit index files.
+
+#### Detail Pages Architecture
+- Detail pages (Insights, Labs, Demos) all use the same pipeline: `useContentDetail` (loads index + markdown), `MarkdownContent` (renders markdown with correct relative asset resolution), and `ContentDetailPage` (shared layout shell with slots for type-specific UI).
+- When adding a new content type detail page, prefer composing slots (e.g., media player, meta blocks, custom actions) instead of copy/pasting a new layout.
 
 ---
 

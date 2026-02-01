@@ -7,7 +7,7 @@ const fs = require('fs');
 const path = require('path');
 const matter = require('gray-matter');
 
-const CONTENT_TYPES = ['blog', 'guides', 'podcasts', 'case-studies'];
+const CONTENT_TYPES = ['blog', 'guides', 'podcasts', 'case-studies', 'labs', 'demos'];
 const CONTENT_ROOT = path.join(__dirname, '../content');
 const OUTPUT_ROOT = path.join(__dirname, '../data');
 
@@ -20,10 +20,17 @@ function getAllMarkdownFiles(dir) {
 function parseMarkdownFile(filePath) {
   const raw = fs.readFileSync(filePath, 'utf8');
   const { data, content } = matter(raw);
+  // Always include all filterable fields with defaults
   return {
     ...data,
+    type: data.type || '',
+    status: data.status || '',
+    tags: Array.isArray(data.tags) ? data.tags : [],
+    platforms: Array.isArray(data.platforms) ? data.platforms : [],
+    technologies: Array.isArray(data.technologies) ? data.technologies : [],
+    links: typeof data.links === 'object' && data.links !== null ? data.links : {},
     contentPath: path.relative(CONTENT_ROOT, filePath).replace(/\\/g, '/'),
-    excerpt: content.split('\n').slice(0, 8).join(' ').replace(/[#>*-]/g, '').trim()
+    excerpt: content.split('\n').slice(0, 8).join(' ').replace(/[#>*-]/g, '').trim(),
   };
 }
 

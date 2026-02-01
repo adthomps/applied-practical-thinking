@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { siteConfig } from "@/data/site";
-import { labs } from "@/data/labs";
 import { systems } from "@/data/systems";
-import { insights } from "@/data/learn";
+import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
 import {
   HeroSection,
   AptCard,
@@ -45,9 +45,48 @@ const pillars = [
 
 export default function Home() {
   // Featured items - mix of labs, systems, and content
-  const featuredLabs = labs.slice(0, 2);
+  const [featuredLabs, setFeaturedLabs] = useState<ContentIndexItem[]>([]);
+  const [labsLoading, setLabsLoading] = useState(true);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchContentIndex("labs")
+      .then((items) => {
+        if (cancelled) return;
+        setFeaturedLabs(items.slice(0, 2));
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setFeaturedLabs([]);
+      })
+      .finally(() => {
+        if (cancelled) return;
+        setLabsLoading(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   const featuredSystems = systems.slice(0, 2);
-  const featuredContent = insights.slice(0, 2);
+  const [featuredContent, setFeaturedContent] = useState<ContentIndexItem[]>([]);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchContentIndex("blog")
+      .then((items) => {
+        if (cancelled) return;
+        setFeaturedContent(items.slice(0, 2));
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setFeaturedContent([]);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   return (
     <div>
@@ -122,20 +161,34 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {/* Featured Labs */}
+          {labsLoading && featuredLabs.length === 0 && (
+            <AptCard variant="interactive" padding="default">
+              <AptCardHeader className="p-0 mt-3">
+                <AptCardTitle>Loading labs…</AptCardTitle>
+                <AptCardDescription className="mt-1">
+                  Fetching the latest labs.
+                </AptCardDescription>
+              </AptCardHeader>
+            </AptCard>
+          )}
           {featuredLabs.map((lab) => (
-            <AptCard key={lab.id} variant="interactive" padding="default">
+            <AptCard
+              key={lab.id ?? lab.slug ?? lab.contentPath}
+              variant="interactive"
+              padding="default"
+            >
               <div className="flex items-start justify-between mb-2">
                 <AptTag variant="accent">Lab</AptTag>
-                <AptTag variant="muted">{lab.status}</AptTag>
+                {lab.status && <AptTag variant="muted">{lab.status}</AptTag>}
               </div>
               <AptCardHeader className="p-0 mt-3">
                 <AptCardTitle>{lab.title}</AptCardTitle>
                 <AptCardDescription className="mt-1">
-                  {lab.problem}
+                  {lab.problem ?? lab.description}
                 </AptCardDescription>
               </AptCardHeader>
               <div className="mt-4 flex flex-wrap gap-1.5">
-                {lab.tags.slice(0, 3).map((tag) => (
+                {(lab.tags || []).slice(0, 3).map((tag: string) => (
                   <AptTag key={tag} variant="muted">
                     {tag}
                   </AptTag>

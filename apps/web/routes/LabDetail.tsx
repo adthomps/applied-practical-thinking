@@ -1,6 +1,6 @@
-import { useParams, Link, useNavigate } from "react-router-dom";
-import { labs, LabType } from "@/data/labs";
-import { insights } from "@/data/learn";
+import { useEffect, useMemo, useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import { fetchContentIndex, type ContentIndexItem } from "@/src/services/contentIndex";
 import {
   AptCard,
   AptCardHeader,
@@ -24,13 +24,13 @@ import {
   BookOpen,
 } from "lucide-react";
 
-const typeIcons: Record<LabType, typeof Lightbulb> = {
+const typeIcons: Record<string, typeof Lightbulb> = {
   concept: Lightbulb,
   mock: Figma,
   demo: Play,
 };
 
-const typeLabels: Record<LabType, string> = {
+const typeLabels: Record<string, string> = {
   concept: "Concept",
   mock: "Mock",
   demo: "Demo",
@@ -44,18 +44,72 @@ const insightTypeIcons = {
 
 export default function LabDetail() {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
 
-  const lab = labs.find((l) => l.id === id);
-  const labIndex = labs.findIndex((l) => l.id === id);
-  const prevLab = labIndex > 0 ? labs[labIndex - 1] : null;
-  const nextLab = labIndex < labs.length - 1 ? labs[labIndex + 1] : null;
+  const [labsIndex, setLabsIndex] = useState<ContentIndexItem[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const relatedInsightItems = lab?.relatedInsights
-    ?.map((insightId) => insights.find((i) => i.id === insightId))
-    .filter(Boolean);
+  useEffect(() => {
+    let cancelled = false;
+    fetchContentIndex("labs")
+      .then((items) => {
+        if (cancelled) return;
+        setLabsIndex(items);
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setLabsIndex([]);
+      })
+      .finally(() => {
+        if (cancelled) return;
+        setLoading(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const lab = useMemo(() => {
+    if (!id) return undefined;
+    return labsIndex.find((l) => l.id === id || l.slug === id);
+  }, [id, labsIndex]);
+
+  const labIndex = useMemo(() => {
+    if (!id) return -1;
+    return labsIndex.findIndex((l) => l.id === id || l.slug === id);
+  }, [id, labsIndex]);
+
+  const prevLab = labIndex > 0 ? labsIndex[labIndex - 1] : null;
+  const nextLab = labIndex >= 0 && labIndex < labsIndex.length - 1 ? labsIndex[labIndex + 1] : null;
+
+  const [insightsIndex, setInsightsIndex] = useState<ContentIndexItem[]>([]);
+  useEffect(() => {
+    let cancelled = false;
+    fetchContentIndex("blog")
+      .then((items) => {
+        if (cancelled) return;
+        setInsightsIndex(items);
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setInsightsIndex([]);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const relatedInsightItems = useMemo(() => {
+    const ids = (lab as any)?.relatedInsights as string[] | undefined;
+    return ids?.map((insightId) => insightsIndex.find((i) => i.id === insightId)).filter(Boolean);
+  }, [lab, insightsIndex]);
+
+  const labType = (lab?.type ?? "concept") as string;
 
   if (!lab) {
+    if (loading) {
+      return <div className="container py-12 md:py-16">Loading…</div>;
+    }
     return (
       <div className="container py-12 text-center">
         <h1 className="text-2xl font-bold mb-4">Lab not found</h1>
@@ -69,7 +123,7 @@ export default function LabDetail() {
     );
   }
 
-  const TypeIcon = typeIcons[lab.type];
+  const TypeIcon = typeIcons[labType] ?? Lightbulb;
 
   return (
     <div className="container py-8 md:py-12 max-w-4xl">
@@ -87,7 +141,7 @@ export default function LabDetail() {
         <div className="flex items-center gap-2 mb-4">
           <AptTag variant="accent">
             <TypeIcon className="h-3 w-3 mr-1" />
-            {typeLabels[lab.type]}
+            {typeLabels[labType] ?? labType}
           </AptTag>
           <AptTag variant={lab.status === "active" ? "default" : "muted"}>
             {lab.status}
@@ -126,13 +180,13 @@ export default function LabDetail() {
 
       {/* Platforms & Technologies */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        {lab.platforms.length > 0 && (
+        {(lab.platforms || []).length > 0 && (
           <div>
             <h3 className="text-sm font-medium text-muted-foreground mb-2">
               Platforms
             </h3>
             <div className="flex flex-wrap gap-2">
-              {lab.platforms.map((platform) => (
+              {(lab.platforms || []).map((platform: string) => (
                 <AptTag key={platform} variant="default">
                   {platform}
                 </AptTag>
@@ -141,13 +195,13 @@ export default function LabDetail() {
           </div>
         )}
 
-        {lab.technologies.length > 0 && (
+        {(lab.technologies || []).length > 0 && (
           <div>
             <h3 className="text-sm font-medium text-muted-foreground mb-2">
               Technologies
             </h3>
             <div className="flex flex-wrap gap-2">
-              {lab.technologies.map((tech) => (
+              {(lab.technologies || []).map((tech: string) => (
                 <AptTag key={tech} variant="muted">
                   {tech}
                 </AptTag>
@@ -158,13 +212,13 @@ export default function LabDetail() {
       </div>
 
       {/* Tags */}
-      {lab.tags.length > 0 && (
+      {(lab.tags || []).length > 0 && (
         <div className="mb-8">
           <h3 className="text-sm font-medium text-muted-foreground mb-2">
             Topics
           </h3>
           <div className="flex flex-wrap gap-2">
-            {lab.tags.map((tag) => (
+            {(lab.tags || []).map((tag: string) => (
               <AptTag key={tag} variant="muted">
                 #{tag}
               </AptTag>
@@ -174,12 +228,12 @@ export default function LabDetail() {
       )}
 
       {/* Action Buttons */}
-      {(lab.links.demo ||
-        lab.links.figma ||
-        lab.links.lovable ||
-        lab.links.repo) && (
+      {(lab.links?.demo ||
+        lab.links?.figma ||
+        lab.links?.lovable ||
+        lab.links?.repo) && (
         <div className="flex flex-wrap gap-3 mb-10 pb-8 border-b border-border">
-          {lab.links.figma && (
+          {lab.links?.figma && (
             <AptButton variant="secondary" size="default" asChild>
               <a
                 href={lab.links.figma}
@@ -191,7 +245,7 @@ export default function LabDetail() {
               </a>
             </AptButton>
           )}
-          {lab.links.lovable && (
+          {lab.links?.lovable && (
             <AptButton variant="primary" size="default" asChild>
               <Link to={lab.links.lovable}>
                 <ExternalLink className="h-4 w-4 mr-2" />
@@ -199,7 +253,7 @@ export default function LabDetail() {
               </Link>
             </AptButton>
           )}
-          {lab.links.demo && (
+          {lab.links?.demo && (
             <AptButton variant="primary" size="default" asChild>
               <Link to={lab.links.demo}>
                 <Play className="h-4 w-4 mr-2" />
@@ -207,7 +261,7 @@ export default function LabDetail() {
               </Link>
             </AptButton>
           )}
-          {lab.links.repo && (
+          {lab.links?.repo && (
             <AptButton variant="secondary" size="default" asChild>
               <a
                 href={lab.links.repo}
@@ -274,9 +328,9 @@ export default function LabDetail() {
 
       {/* Navigation between labs */}
       <div className="flex items-center justify-between pt-8 border-t border-border">
-        {prevLab ? (
+        {prevLab && (prevLab.slug || prevLab.id) ? (
           <Link
-            to={`/labs/${prevLab.id}`}
+            to={`/labs/${prevLab.slug ?? prevLab.id}`}
             className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors group"
           >
             <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
@@ -289,9 +343,9 @@ export default function LabDetail() {
           <div />
         )}
 
-        {nextLab ? (
+        {nextLab && (nextLab.slug || nextLab.id) ? (
           <Link
-            to={`/labs/${nextLab.id}`}
+            to={`/labs/${nextLab.slug ?? nextLab.id}`}
             className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors group text-right"
           >
             <div>

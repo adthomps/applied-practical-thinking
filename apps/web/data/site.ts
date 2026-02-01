@@ -112,7 +112,6 @@ export const authorConfig = {
   // Contact
   contact: {
     email: "test@example.com",
-    phone: "+0 (123) 456-7890",
   },
   
   // Social links

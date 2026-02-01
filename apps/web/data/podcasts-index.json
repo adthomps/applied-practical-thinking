@@ -11,10 +11,19 @@
       "feedback",
       "teams"
     ],
+    "tags": [
+      "learning",
+      "feedback",
+      "teams"
+    ],
+    "platforms": [],
+    "technologies": [],
+    "links": {},
     "media": {
       "audioUrl": "https://example.com/podcast/learning-loops.mp3",
       "embedUrl": "https://open.spotify.com/embed/episode/example3"
     },
+    "status": "",
     "contentPath": "podcasts/learning-loops-podcast.md",
     "excerpt": "Episode Summary\r \r We talk with product leaders about how they use feedback loops to:\r \r  Improve product quality\r  Reduce wasted effort\r  Build stronger teams"
   },
@@ -30,10 +39,19 @@
       "product",
       "teams"
     ],
+    "tags": [
+      "systems-thinking",
+      "product",
+      "teams"
+    ],
+    "platforms": [],
+    "technologies": [],
+    "links": {},
     "media": {
       "audioUrl": "https://example.com/podcast/systems-over-screens.mp3",
       "embedUrl": "https://open.spotify.com/embed/episode/example"
     },
+    "status": "",
     "contentPath": "podcasts/systems-thinking-podcast.md",
     "excerpt": "Episode Summary\r \r In this episode, we explore why featurefocused development often leads to fragmented products and burnedout teams. The alternative? Systems thinking.\r \r  Key Topics Discussed\r \r  The Feature Trap (00:00  12:30)"
   }

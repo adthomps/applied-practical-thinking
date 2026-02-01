@@ -8,6 +8,13 @@ concepts:
   - performance
   - edge
   - architecture
+tags:
+  - performance
+  - edge
+  - architecture
+platforms: []
+technologies: []
+links: {}
 relatedLabs:
   - edge-caching-patterns
   - api-contract-first

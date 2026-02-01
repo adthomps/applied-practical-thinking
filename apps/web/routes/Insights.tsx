@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
-import { labs } from "@/data/labs";
 import { systems } from "@/data/systems";
 import { InsightMeta } from "@/components/apt/InsightMeta";
 import { InsightCard } from "@/components/apt/InsightCard";
@@ -13,20 +12,15 @@ import {
   AptButton,
 } from "@/components/apt";
 import { Link } from "react-router-dom";
-import { Book, Mic, FileText, Clock, Play, Lightbulb, Figma, Settings, ArrowRight, Image as ImageIcon } from "lucide-react";
+import { Book, Mic, FileText, Podcast, ArrowRight } from "lucide-react";
+import { siteConfig } from "@/data/site";
 
-const typeIcons = {
-  blog: FileText,
-  podcast: Mic,
-  guide: Book,
-  "case-study": Book,
-};
 
-const typeLabels = {
-  blog: "Blog",
-  podcast: "Podcast",
-  guide: "Guide",
-  "case-study": "Case Study",
+const areaIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+  "/insights/blogs": FileText,
+  "/insights/podcasts": Podcast,
+  "/insights/guides": Book,
+  "/insights/case-studies": Book,
 };
 
 
@@ -74,42 +68,79 @@ export default function Insights() {
     return <div className="container py-12 text-center text-red-500">{error}</div>;
   }
 
+  // Get Insights nav children for area cards
+  const insightsNav = siteConfig.nav.find((n) => n.path === "/insights");
+  const areaSections = insightsNav?.children ?? [];
+
   return (
-    <div className="container py-8 md:py-12">
-      <div className="mb-8">
+    <div className="container py-8 md:py-12 space-y-12">
+      {/* Header */}
+      <section className="max-w-2xl">
         <h1 className="text-3xl font-bold tracking-tight mb-2">Insights</h1>
         <p className="text-muted-foreground max-w-2xl">
-          Blogs, podcasts, and guides. Each piece connects concepts to working
-          implementations in Labs and Systems.
+          Essays, podcasts, and case studies on applied thinking, systems, and execution.
         </p>
-      </div>
+      </section>
 
-      {/* Filters */}
-      <div className="flex gap-2 mb-8">
-        <AptButton
-          variant={filter === "all" ? "primary" : "ghost"}
-          size="sm"
-          onClick={() => setFilter("all")}
-        >
-          All
-        </AptButton>
-        {(["blog", "podcast", "guide", "case-study"]).map((type) => (
+      {/* Area Cards Grid */}
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {areaSections.map((section) => {
+          const Icon = areaIcons[section.path] ?? Book;
+          return (
+            <Link key={section.path} to={section.path}>
+              <AptCard variant="interactive" className="h-full">
+                <div className="p-6 space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <Icon className="h-5 w-5 text-primary" />
+                    </div>
+                    <h2 className="text-lg font-semibold">{section.label}</h2>
+                    <ArrowRight className="h-4 w-4 ml-auto text-muted-foreground" />
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    {section.description}
+                  </p>
+                  {"tagline" in section && section.tagline && (
+                    <p className="text-xs text-primary/80 italic">
+                      {section.tagline}
+                    </p>
+                  )}
+                </div>
+              </AptCard>
+            </Link>
+          );
+        })}
+      </section>
+
+      {/* Filterable Insights List */}
+      <section>
+        {/* Filters */}
+        <div className="flex gap-2 mb-8">
           <AptButton
-            key={type}
-            variant={filter === type ? "primary" : "ghost"}
+            variant={filter === "all" ? "primary" : "ghost"}
             size="sm"
-            onClick={() => setFilter(type)}
+            onClick={() => setFilter("all")}
           >
-            {typeLabels[type]}
+            All
           </AptButton>
-        ))}
-      </div>
+          {(["blog", "podcast", "guide", "case-study"]).map((type) => (
+            <AptButton
+              key={type}
+              variant={filter === type ? "primary" : "ghost"}
+              size="sm"
+              onClick={() => setFilter(type)}
+            >
+              {type.charAt(0).toUpperCase() + type.slice(1).replace("-", " ")}
+            </AptButton>
+          ))}
+        </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {filteredContent.map((insight) => (
-          <InsightCard key={insight.id} insight={insight} to={`/insights/${insight.id}`} />
-        ))}
-      </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {filteredContent.map((insight) => (
+            <InsightCard key={insight.id} insight={insight} to={`/insights/${insight.id}`} />
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
