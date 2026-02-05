@@ -1,5 +1,6 @@
 ---
 title: "Systems Over Screens"
+featured: true
 id: "systems-thinking-podcast"
 type: "podcast"
 description: "A discussion on why thinking in systems rather than features leads to better products and happier teams."

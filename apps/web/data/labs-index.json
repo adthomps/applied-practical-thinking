@@ -1,12 +1,16 @@
 [
   {
-    "title": "AI Dream to Deliver",
+    "id": "ai-dream-to-deliver",
     "slug": "ai-dream-to-deliver",
-    "date": "2026-01-31T00:00:00.000Z",
-    "description": "A conceptual experience dashboard powered by Lovable, visualizing the journey from project ideation to execution. Tailored for innovation leaders and product teams to track initiatives, outcomes, and user impact.",
+    "title": "AI Dream to Deliver",
     "type": "mock",
-    "problem": "How do you demonstrate a full-featured lab?",
-    "thumbnail": "/content/labs/ai-dream-to-deliver.png",
+    "description": "A conceptual experience dashboard powered by Lovable, visualizing the journey from project ideation to execution. Tailored for innovation leaders and product teams to track initiatives, outcomes, and user impact.",
+    "publishedAt": "2026-01-31T00:00:00.000Z",
+    "featured": false,
+    "concepts": [
+      "poc",
+      "example"
+    ],
     "platforms": [
       "Web",
       "Figma Make"
@@ -18,29 +22,30 @@
       "TypeScript",
       "TailwindCSS"
     ],
-    "tags": [
-      "poc",
-      "example"
-    ],
     "status": "active",
+    "thumbnail": "/content/labs/ai-dream-to-deliver.png",
     "links": {
       "demo": null,
       "figma": null,
       "lovable": "https://apt-dream-to-deliver.lovable.app/",
       "repo": null
     },
-    "relatedInsights": null,
+    "related": [],
     "contentPath": "labs/ai-dream-to-deliver.md",
     "excerpt": "A conceptual experience dashboard powered by Lovable, visualizing the journey from project ideation to execution. Tailored for innovation leaders and product teams to track initiatives, outcomes, and user impact."
   },
   {
-    "title": "Fitness Web App",
+    "id": "fitness-web-app",
     "slug": "fitness-web-app",
-    "date": "2026-01-31T00:00:00.000Z",
-    "description": "A responsive fitness tracking interface designed in Figma Maker. Includes components for workout planning, progress tracking, and personalized training programs, with a focus on clean UI and mobile optimization.",
+    "title": "Fitness Web App",
     "type": "mock",
-    "problem": "How do you demonstrate a full-featured lab?",
-    "thumbnail": "/content/labs/payment-gateway-concept-v1.png",
+    "description": "A responsive fitness tracking interface designed in Figma Maker. Includes components for workout planning, progress tracking, and personalized training programs, with a focus on clean UI and mobile optimization.",
+    "publishedAt": "2026-01-31T00:00:00.000Z",
+    "featured": false,
+    "concepts": [
+      "poc",
+      "example"
+    ],
     "platforms": [
       "Web",
       "Figma Make"
@@ -52,29 +57,30 @@
       "TypeScript",
       "TailwindCSS"
     ],
-    "tags": [
-      "poc",
-      "example"
-    ],
     "status": "active",
+    "thumbnail": "/content/labs/payment-gateway-concept-v1.png",
     "links": {
       "demo": null,
       "figma": "https://peach-orbit-27497554.figma.site/",
       "lovable": "https://api-gateway-concept1.lovable.app/",
       "repo": null
     },
-    "relatedInsights": null,
+    "related": [],
     "contentPath": "labs/fitness-web-app.md",
     "excerpt": "A responsive fitness tracking interface designed in Figma Maker. Includes components for workout planning, progress tracking, and personalized training programs, with a focus on clean UI and mobile optimization."
   },
   {
-    "title": "Payment Gateway Concept v1",
+    "id": "payment-gateway-concept-v1",
     "slug": "payment-gateway-concept-v1",
-    "date": "2026-01-31T00:00:00.000Z",
-    "description": "A conceptual UI for an AI-assisted payment gateway platform. Designed in Figma Maker, this prototype visualizes merchant onboarding, transaction search, fraud review, and OpenAI-powered support integration.",
+    "title": "Payment Gateway Concept v1",
     "type": "demo",
-    "problem": "How do you demonstrate a full-featured lab?",
-    "thumbnail": "/content/labs/payment-gateway-concept-v1.png",
+    "description": "A conceptual UI for an AI-assisted payment gateway platform. Designed in Figma Maker, this prototype visualizes merchant onboarding, transaction search, fraud review, and OpenAI-powered support integration.",
+    "publishedAt": "2026-01-31T00:00:00.000Z",
+    "featured": false,
+    "concepts": [
+      "poc",
+      "example"
+    ],
     "platforms": [
       "Web",
       "Figma Make",
@@ -87,29 +93,30 @@
       "TypeScript",
       "TailwindCSS"
     ],
-    "tags": [
-      "poc",
-      "example"
-    ],
     "status": "active",
+    "thumbnail": "/content/labs/payment-gateway-concept-v1.png",
     "links": {
       "demo": null,
       "figma": "https://peach-orbit-27497554.figma.site/",
       "lovable": "https://api-gateway-concept1.lovable.app/",
       "repo": null
     },
-    "relatedInsights": null,
+    "related": [],
     "contentPath": "labs/payment-gateway-concept-v1.md",
     "excerpt": "A conceptual UI for an AIassisted payment gateway platform. Designed in Figma Maker, this prototype visualizes merchant onboarding, transaction search, fraud review, and OpenAIpowered support integration."
   },
   {
-    "title": "Payment Gateway Signup v1",
+    "id": "payment-gateway-signup-v1",
     "slug": "payment-gateway-signup-v1",
-    "date": "2026-01-31T00:00:00.000Z",
-    "description": "A conceptual UI for an AI-assisted payment gateway sign up flow. Designed in Figma Maker, this prototype visualizes merchant onboarding and account setup with AI assistant.",
+    "title": "Payment Gateway Signup v1",
     "type": "demo",
-    "problem": "How do you demonstrate a full-featured lab?",
-    "thumbnail": "/content/labs/payment-gateway-concept-v1.png",
+    "description": "A conceptual UI for an AI-assisted payment gateway sign up flow. Designed in Figma Maker, this prototype visualizes merchant onboarding and account setup with AI assistant.",
+    "publishedAt": "2026-01-31T00:00:00.000Z",
+    "featured": true,
+    "concepts": [
+      "poc",
+      "example"
+    ],
     "platforms": [
       "Web",
       "Figma Make",
@@ -122,29 +129,30 @@
       "TypeScript",
       "TailwindCSS"
     ],
-    "tags": [
-      "poc",
-      "example"
-    ],
     "status": "active",
+    "thumbnail": "/content/labs/payment-gateway-concept-v1.png",
     "links": {
       "demo": null,
       "figma": "https://expert-salmon-21375654.figma.site/",
       "lovable": null,
       "repo": null
     },
-    "relatedInsights": null,
+    "related": [],
     "contentPath": "labs/payment-gateway-signup-v1.md",
     "excerpt": "A conceptual UI for an AIassisted payment gateway sign up flow. Designed in Figma Maker, this prototype visualizes merchant onboarding and account setup with AI assistant."
   },
   {
-    "title": "Portfolio Website",
+    "id": "portfolio-website",
     "slug": "portfolio-website",
-    "date": "2026-01-31T00:00:00.000Z",
-    "description": "A personal portfolio layout crafted in Figma Maker. Includes sections for featured projects, photography, blog posts, and interactive maps, structured to support a React + Cloudflare Pages deployment.",
+    "title": "Portfolio Website",
     "type": "mock",
-    "problem": "How do you demonstrate a full-featured lab?",
-    "thumbnail": "/content/labs/portoflio-website.png",
+    "description": "A personal portfolio layout crafted in Figma Maker. Includes sections for featured projects, photography, blog posts, and interactive maps, structured to support a React + Cloudflare Pages deployment.",
+    "publishedAt": "2026-01-31T00:00:00.000Z",
+    "featured": false,
+    "concepts": [
+      "poc",
+      "example"
+    ],
     "platforms": [
       "Web",
       "Figma Make"
@@ -156,29 +164,30 @@
       "TypeScript",
       "TailwindCSS"
     ],
-    "tags": [
-      "poc",
-      "example"
-    ],
     "status": "active",
+    "thumbnail": "/content/labs/portoflio-website.png",
     "links": {
       "demo": null,
       "figma": "https://royal-manor-57703683.figma.site/",
       "lovable": "https://api-gateway-concept1.lovable.app/",
       "repo": null
     },
-    "relatedInsights": null,
+    "related": [],
     "contentPath": "labs/portfolio-website.md",
     "excerpt": "A personal portfolio layout crafted in Figma Maker. Includes sections for featured projects, photography, blog posts, and interactive maps, structured to support a React + Cloudflare Pages deployment."
   },
   {
-    "title": "Weather Dashboard",
+    "id": "weather-dashboard",
     "slug": "weather-dashboard",
-    "date": "2026-01-31T00:00:00.000Z",
-    "description": "A responsive weather dashboard that displays current conditions, forecasts, and historical data with beautiful visualizations and location-based services.",
+    "title": "Weather Dashboard",
     "type": "mock",
-    "problem": "How do you demonstrate a full-featured lab?",
-    "thumbnail": "/content/labs/weather-dashboard.png",
+    "description": "A responsive weather dashboard that displays current conditions, forecasts, and historical data with beautiful visualizations and location-based services.",
+    "publishedAt": "2026-01-31T00:00:00.000Z",
+    "featured": false,
+    "concepts": [
+      "poc",
+      "example"
+    ],
     "platforms": [
       "Web",
       "Figma Make"
@@ -189,18 +198,15 @@
       "TypeScript",
       "TailwindCSS"
     ],
-    "tags": [
-      "poc",
-      "example"
-    ],
     "status": "active",
+    "thumbnail": "/content/labs/weather-dashboard.png",
     "links": {
       "demo": null,
       "figma": "https://dwell-even-20659959.figma.site/",
       "lovable": null,
       "repo": null
     },
-    "relatedInsights": null,
+    "related": [],
     "contentPath": "labs/weather-dashboard.md",
     "excerpt": "A responsive weather dashboard that displays current conditions, forecasts, and historical data with beautiful visualizations and locationbased services."
   }

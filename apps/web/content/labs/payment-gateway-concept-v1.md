@@ -1,5 +1,6 @@
 ---
 title: Payment Gateway Concept v1
+featured: false
 slug: payment-gateway-concept-v1
 date: 2026-01-31
 description: A conceptual UI for an AI-assisted payment gateway platform. Designed in Figma Maker, this prototype visualizes merchant onboarding, transaction search, fraud review, and OpenAI-powered support integration.

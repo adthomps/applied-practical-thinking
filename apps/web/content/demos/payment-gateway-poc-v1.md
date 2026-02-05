@@ -1,5 +1,6 @@
 ---
 title: Payment Gateway POC v1
+featured: false
 slug: payment-gateway-poc-v1
 date: 2026-01-31
 description: Front-end + Worker back-end Proof-of-Concept for a cloud-native payments gateway UI.

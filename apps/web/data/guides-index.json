@@ -1,124 +1,382 @@
 [
   {
-    "title": "Continuous Delivery for Teams",
+    "id": "ai-system-instructions-for-transaction-analysis-guide",
+    "slug": "ai-system-instructions-for-transaction-analysis-guide",
+    "title": "AI System Instructions For Transaction Analysis Guide",
+    "type": "guide",
+    "description": "Step-by-step guide for implementing structured AI instructions in payments. Covers schemas, testing, monitoring, and compliance considerations without external references.",
+    "publishedAt": "2025-08-17",
+    "featured": false,
+    "concepts": [
+      "continuous-delivery",
+      "teams",
+      "product"
+    ],
+    "platforms": [
+      "Web",
+      "Cloud",
+      "Payment Gateway"
+    ],
+    "technologies": [
+      "Cloudflare",
+      "OpenAI"
+    ],
+    "status": "",
+    "thumbnail": "/content/guides/01-ai-system-instructions-for-transaction-analysis-guide.png",
+    "links": {
+      "Blog": "01-ai-system-instructions-for-transaction-analysis",
+      "Podcast": "01-ai-system-instructions-for-transaction-analysis-podcast",
+      "Case": null,
+      "Guide": null,
+      "Article": null,
+      "Slides": null
+    },
+    "related": [],
+    "contentPath": "guides/01-ai-system-instructions-for-transaction-analysis-guide.md",
+    "excerpt": "Introduction\r \r This guide outlines how to implement structured system instructions in payment environments. The goal is to ensure AI delivers predictable, explainable results in fraud detection and transaction analysis while remaining flexible for iteration.\r \r  1. Define the Role & Boundaries\r \r ```json"
+  },
+  {
+    "id": "02-ai-powered-cloud-development-guide",
+    "slug": "02-ai-powered-cloud-development-guide",
+    "title": "AI-Powered Cloud Development",
+    "type": "guide",
+    "description": "Hands-on patterns for building AI-augmented apps with React, Hono, and Cloudflare Workers.",
+    "publishedAt": "2025-08-22",
+    "featured": false,
+    "concepts": [
+      "Cloud Development",
+      "React",
+      "Hono",
+      "Cloudflare",
+      "AI Development Workflows"
+    ],
+    "platforms": [
+      "Web",
+      "Cloud",
+      "Payment Gateway"
+    ],
+    "technologies": [
+      "Cloudflare",
+      "OpenAI"
+    ],
+    "status": "",
+    "thumbnail": "/content/guides/02-ai-powered-cloud-development-guide.png",
+    "links": {
+      "Blog": "02-ai-powered-cloud-development-blog",
+      "Podcast": "02-ai-powered-cloud-development-podcast",
+      "Case": "02-ai-powered-cloud-development=case",
+      "Guide": "02-ai-powered-cloud-development-guide",
+      "Article": null,
+      "Slides": null
+    },
+    "related": [],
+    "contentPath": "guides/02-ai-powered-cloud-development-guide.md",
+    "excerpt": "Overview\r This guide walks through creating a modern cloudnative app using:\r \r  React → UI layer  \r  Hono → lightweight backend framework  \r  Cloudflare Workers → deploy globally at the edge  \r  pnpm → modern package manager"
+  },
+  {
+    "id": "03-designing-ai-ready-interfaces-guide",
+    "slug": "03-designing-ai-ready-interfaces-guide",
+    "title": "Designing AI-Ready Interfaces",
+    "type": "guide",
+    "description": "Practical guidance on prototyping, validating, and scaling AI-enhanced interfaces under VPDS.",
+    "publishedAt": "2025-08-31",
+    "featured": false,
+    "concepts": [
+      "AI-Ready UX",
+      "Design Governance",
+      "Payments Interfaces"
+    ],
+    "platforms": [
+      "Web",
+      "Cloud",
+      "Payment Gateway"
+    ],
+    "technologies": [
+      "Cloudflare",
+      "OpenAI"
+    ],
+    "status": "",
+    "thumbnail": "/content/guides/03-designing-ai-ready-interfaces-guide.png",
+    "links": {
+      "Blog": "03-designing-ai-ready-interfaces-blog",
+      "Podcast": "03-designing-ai-ready-interfaces-podcast",
+      "Case": "03-designing-ai-ready-interfaces-case",
+      "Guide": "03-designing-ai-ready-interfaces-guide",
+      "Article": null,
+      "Slides": null
+    },
+    "related": [],
+    "contentPath": "guides/03-designing-ai-ready-interfaces-guide.md",
+    "excerpt": "Purpose  \r This guide provides handson reference patterns, schemas, and workflows for designing and deploying AIready interfaces that meet Visa Product Design System (VPDS) standards.  \r \r By combining:  \r  VPDS (design tokens, accessibility, compliance)  \r  React + Tailwind + shadcn/ui (modern frontend scaffolding)  \r  Hono APIs on Cloudflare Workers (edgenative backend)"
+  },
+  {
+    "id": "04-future-of-payments-ai-guide-guide",
+    "slug": "04-future-of-payments-ai-guide-guide",
+    "title": "The Future of Payments & AI - Smarter, Faster, Safer for Everyone",
+    "type": "guide",
+    "description": "A practical beginner’s guide to AI in payments, designed for SMBs and emerging merchants. Covers today’s AI use cases (fraud detection, routing, analytics), why they matter, and how businesses can prepare responsibly. Includes a checklist to help SMBs adopt AI-powered payment tools with confidence.",
+    "publishedAt": "2025-09-14",
+    "featured": false,
+    "concepts": [
+      "AI in Payments",
+      "Real-Time Payments",
+      "Fraud Detection",
+      "Emerging Business Enablement",
+      "Payment Innovation"
+    ],
+    "platforms": [
+      "Web",
+      "Cloud",
+      "Payment Gateway"
+    ],
+    "technologies": [
+      "Cloudflare",
+      "OpenAI"
+    ],
+    "status": "",
+    "thumbnail": "/content/guides/04-future-of-payments-ai-guide.png",
+    "links": {
+      "Blog": "04-future-of-payments-ai-blog",
+      "Podcast": "04-future-of-payments-ai-podcast",
+      "Case": "04-future-of-payments-ai-case",
+      "Guide": "04-future-of-payments-ai-guide",
+      "Article": null,
+      "Slides": null
+    },
+    "related": [],
+    "contentPath": "guides/04-future-of-payments-ai-guide.md",
+    "excerpt": "Introduction\r \r Artificial Intelligence (AI) is reshaping payments by making them smarter, faster, and safer. For small and midsized businesses (SMBs), AI lowers barriers to entry: powerful fraud prevention, automated invoicing, and realtime insights are now available through plugandplay payment solutions.  \r \r This guide explains what AI in payments means, where it shows up today, and how new businesses can adopt it responsibly.\r \r  1. What is AI in Payments?"
+  },
+  {
+    "id": "ai-system-instructions-for-transaction-analysis-guide",
+    "slug": "ai-system-instructions-for-transaction-analysis-guide",
+    "title": "AI System Instructions For Transaction Analysis Guide",
+    "type": "guide",
+    "description": "Step-by-step guide for implementing structured AI instructions in payments. Covers schemas, testing, monitoring, and compliance considerations without external references.",
+    "publishedAt": "2025-08-17",
+    "featured": false,
+    "concepts": [
+      "continuous-delivery",
+      "teams",
+      "product"
+    ],
+    "platforms": [
+      "Web",
+      "Cloud",
+      "Payment Gateway"
+    ],
+    "technologies": [
+      "Cloudflare",
+      "OpenAI"
+    ],
+    "status": "",
+    "thumbnail": "/content/guides/05-photography-for-technologists-guide.png",
+    "links": {
+      "Blog": "01-ai-system-instructions-for-transaction-analysis",
+      "Podcast": "01-ai-system-instructions-for-transaction-analysis-podcast",
+      "Case": null,
+      "Guide": null,
+      "Article": null,
+      "Slides": null
+    },
+    "related": [],
+    "contentPath": "guides/05-photography-for-technologists-guide.md",
+    "excerpt": "Introduction\r \r This guide outlines how to implement structured system instructions in payment environments. The goal is to ensure AI delivers predictable, explainable results in fraud detection and transaction analysis while remaining flexible for iteration.\r \r  1. Define the Role & Boundaries\r \r ```json"
+  },
+  {
+    "id": "ai-system-instructions-for-transaction-analysis-guide",
+    "slug": "ai-system-instructions-for-transaction-analysis-guide",
+    "title": "AI System Instructions For Transaction Analysis Guide",
+    "type": "guide",
+    "description": "Step-by-step guide for implementing structured AI instructions in payments. Covers schemas, testing, monitoring, and compliance considerations without external references.",
+    "publishedAt": "2025-08-17",
+    "featured": false,
+    "concepts": [
+      "continuous-delivery",
+      "teams",
+      "product"
+    ],
+    "platforms": [
+      "Web",
+      "Cloud",
+      "Payment Gateway"
+    ],
+    "technologies": [
+      "Cloudflare",
+      "OpenAI"
+    ],
+    "status": "",
+    "thumbnail": "/content/guides/06-vibe-coding-for-game-dev-guide.png",
+    "links": {
+      "Blog": "01-ai-system-instructions-for-transaction-analysis",
+      "Podcast": "01-ai-system-instructions-for-transaction-analysis-podcast",
+      "Case": null,
+      "Guide": null,
+      "Article": null,
+      "Slides": null
+    },
+    "related": [],
+    "contentPath": "guides/06-vibe-coding-for-game-dev-guide.md",
+    "excerpt": "Introduction\r \r This guide outlines how to implement structured system instructions in payment environments. The goal is to ensure AI delivers predictable, explainable results in fraud detection and transaction analysis while remaining flexible for iteration.\r \r  1. Define the Role & Boundaries\r \r ```json"
+  },
+  {
+    "id": "ai-system-instructions-for-transaction-analysis-guide",
+    "slug": "ai-system-instructions-for-transaction-analysis-guide",
+    "title": "AI System Instructions For Transaction Analysis Guide",
+    "type": "guide",
+    "description": "Step-by-step guide for implementing structured AI instructions in payments. Covers schemas, testing, monitoring, and compliance considerations without external references.",
+    "publishedAt": "2025-08-17",
+    "featured": false,
+    "concepts": [
+      "continuous-delivery",
+      "teams",
+      "product"
+    ],
+    "platforms": [
+      "Web",
+      "Cloud",
+      "Payment Gateway"
+    ],
+    "technologies": [
+      "Cloudflare",
+      "OpenAI"
+    ],
+    "status": "",
+    "thumbnail": "/content/guides/01-ai-systeminstructions-for-transaction-analysis-guide.png",
+    "links": {
+      "Blog": "01-ai-system-instructions-for-transaction-analysis",
+      "Podcast": "01-ai-system-instructions-for-transaction-analysis-podcast",
+      "Case": null,
+      "Guide": null,
+      "Article": null,
+      "Slides": null
+    },
+    "related": [],
+    "contentPath": "guides/07-ai-developers-journey-guide.md",
+    "excerpt": "Introduction\r \r This guide outlines how to implement structured system instructions in payment environments. The goal is to ensure AI delivers predictable, explainable results in fraud detection and transaction analysis while remaining flexible for iteration.\r \r  1. Define the Role & Boundaries\r \r ```json"
+  },
+  {
+    "id": "ai-system-instructions-for-transaction-analysis-guide",
+    "slug": "ai-system-instructions-for-transaction-analysis-guide",
+    "title": "AI System Instructions For Transaction Analysis Guide",
+    "type": "guide",
+    "description": "Step-by-step guide for implementing structured AI instructions in payments. Covers schemas, testing, monitoring, and compliance considerations without external references.",
+    "publishedAt": "2025-08-17",
+    "featured": false,
+    "concepts": [
+      "continuous-delivery",
+      "teams",
+      "product"
+    ],
+    "platforms": [
+      "Web",
+      "Cloud",
+      "Payment Gateway"
+    ],
+    "technologies": [
+      "Cloudflare",
+      "OpenAI"
+    ],
+    "status": "",
+    "thumbnail": "/content/guides/01-ai-systeminstructions-for-transaction-analysis-guide.png",
+    "links": {
+      "Blog": "01-ai-system-instructions-for-transaction-analysis",
+      "Podcast": "01-ai-system-instructions-for-transaction-analysis-podcast",
+      "Case": null,
+      "Guide": null,
+      "Article": null,
+      "Slides": null
+    },
+    "related": [],
+    "contentPath": "guides/08-creative-coding-storytelling-guide.md",
+    "excerpt": "Introduction\r \r This guide outlines how to implement structured system instructions in payment environments. The goal is to ensure AI delivers predictable, explainable results in fraud detection and transaction analysis while remaining flexible for iteration.\r \r  1. Define the Role & Boundaries\r \r ```json"
+  },
+  {
     "id": "continuous-delivery-guide",
+    "slug": "continuous-delivery-guide",
+    "title": "Continuous Delivery for Teams",
     "type": "guide",
     "description": "A step-by-step guide to implementing continuous delivery in product teams.",
     "publishedAt": "2023-11-25",
+    "featured": false,
     "concepts": [
-      "continuous-delivery",
-      "teams",
-      "product"
-    ],
-    "tags": [
       "continuous-delivery",
       "teams",
       "product"
     ],
     "platforms": [],
     "technologies": [],
-    "links": {},
     "status": "",
-    "contentPath": "guides/continuous-delivery-guide.md",
+    "links": {},
+    "related": [],
+    "contentPath": "guides/09-continuous-delivery-guide.md",
     "excerpt": "Introduction\r \r Continuous delivery (CD) is the practice of keeping your product deployable at all times. This guide covers:\r \r  The principles of CD\r  How to set up a CD pipeline\r  Common challenges and solutions"
   },
   {
-    "title": "Edge-First Thinking",
     "id": "edge-first-thinking",
+    "slug": "edge-first-thinking",
+    "title": "Edge-First Thinking",
     "type": "guide",
     "description": "A practical guide to designing applications with edge computing in mind, from caching strategies to data locality.",
     "publishedAt": "2024-02-20",
+    "featured": true,
     "concepts": [
-      "performance",
-      "edge",
-      "architecture"
-    ],
-    "tags": [
       "performance",
       "edge",
       "architecture"
     ],
     "platforms": [],
     "technologies": [],
+    "status": "",
     "links": {},
-    "relatedLabs": [
+    "related": [
       "edge-caching-patterns",
-      "api-contract-first"
-    ],
-    "relatedSystems": [
+      "api-contract-first",
       "apt-site"
     ],
-    "status": "",
-    "contentPath": "guides/edge-first-thinking.md",
+    "contentPath": "guides/10-edge-first-thinking-guide.md",
     "excerpt": "What is EdgeFirst Thinking?\r \r Edgefirst thinking means designing your application architecture with edge computing as a primary consideration, not an afterthought. It's about bringing computation and data closer to users.\r \r  Why Edge Matters\r \r Traditional architectures route all requests through centralized servers. This creates:"
   },
   {
-    "title": "Prompt Design for AI Agents",
     "id": "prompt-design-guide",
+    "slug": "prompt-design-guide",
+    "title": "Prompt Design for AI Agents",
     "type": "guide",
     "description": "A practical guide to designing effective prompts for AI agents, with real-world examples.",
     "publishedAt": "2024-02-15",
+    "featured": true,
     "concepts": [
-      "ai",
-      "prompt-design",
-      "agents"
-    ],
-    "tags": [
       "ai",
       "prompt-design",
       "agents"
     ],
     "platforms": [],
     "technologies": [],
-    "links": {},
     "status": "",
-    "contentPath": "guides/prompt-design-guide.md",
+    "links": {},
+    "related": [],
+    "contentPath": "guides/11-prompt-design-guide.md",
     "excerpt": "Introduction\r \r Prompt design is the art and science of crafting instructions that guide AI agents to produce useful, reliable, and safe outputs. This guide covers:\r \r  The anatomy of a good prompt\r  Common pitfalls\r  Examples and antipatterns"
   },
   {
-    "title": "Guide to Learning in Public",
-    "id": "public-learning-guide",
-    "type": "guide",
-    "description": "How to accelerate your growth by sharing your learning journey openly.",
-    "publishedAt": "2024-02-10",
-    "concepts": [
-      "learning",
-      "public",
-      "growth"
-    ],
-    "tags": [
-      "learning",
-      "public",
-      "growth"
-    ],
-    "platforms": [],
-    "technologies": [],
-    "links": {},
-    "status": "",
-    "contentPath": "guides/public-learning-guide.md",
-    "excerpt": "Introduction\r \r Learning in public is about sharing your process, not just your results. This guide covers:\r \r  Why learning in public works\r  How to get started\r  Common fears and how to overcome them"
-  },
-  {
-    "title": "Systems Mapping for Product Teams",
     "id": "systems-mapping-guide",
+    "slug": "systems-mapping-guide",
+    "title": "Systems Mapping for Product Teams",
     "type": "guide",
     "description": "A hands-on guide to using systems mapping to clarify product goals and reduce risk.",
     "publishedAt": "2024-03-01",
+    "featured": true,
     "concepts": [
-      "systems-mapping",
-      "product",
-      "teams"
-    ],
-    "tags": [
       "systems-mapping",
       "product",
       "teams"
     ],
     "platforms": [],
     "technologies": [],
-    "links": {},
     "status": "",
-    "contentPath": "guides/systems-mapping-guide.md",
+    "links": {},
+    "related": [],
+    "contentPath": "guides/12-systems-mapping-guide.md",
     "excerpt": "Introduction\r \r Systems mapping is a visual way to understand how different parts of a product or organization interact. This guide covers:\r \r  Why systems mapping matters\r  How to create a simple map\r  Common pitfalls"
   }
 ]

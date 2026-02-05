@@ -1,5 +1,6 @@
 ---
 title: AI - PM Dream to Deliver v1
+featured: true
 slug: ai-pm-dream-to-deliver-v1
 date: 2026-01-31
 description: This is a full example live demo entry with all fields and end to end interactions.

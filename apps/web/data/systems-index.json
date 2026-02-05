@@ -1,0 +1,72 @@
+[
+  {
+    "id": "apt-site",
+    "title": "APT Site",
+    "type": "system",
+    "description": "Portfolio and demonstration platform built with Vite, React, and Cloudflare Pages.",
+    "publishedAt": "2026-02-01",
+    "featured": false,
+    "concepts": [
+      "vite",
+      "react",
+      "cloudflare"
+    ],
+    "platforms": [],
+    "technologies": [],
+    "status": "",
+    "links": {},
+    "related": [
+      "case-study-apt-lab",
+      "case-study-portfolio-redesign",
+      "portfolio-website"
+    ],
+    "contentPath": "systems/apt-site.md",
+    "excerpt": "id: \"aptsite\"\r title: \"APT Site\"\r type: \"system\"\r description: \"Portfolio and demonstration platform built with Vite, React, and Cloudflare Pages.\"\r publishedAt: \"20260201\"\r featured: false\r tags: [\"vite\", \"react\", \"cloudflare\"]"
+  },
+  {
+    "id": "auth-patterns",
+    "title": "Auth Patterns",
+    "type": "system",
+    "description": "Reference implementations for authentication flows including JWT, OAuth, and session management.",
+    "publishedAt": "2026-02-01",
+    "featured": false,
+    "concepts": [
+      "security",
+      "auth",
+      "patterns"
+    ],
+    "platforms": [],
+    "technologies": [],
+    "status": "",
+    "links": {},
+    "related": [
+      "case-study-auth-flow",
+      "guide-to-auth-patterns"
+    ],
+    "contentPath": "systems/auth-patterns.md",
+    "excerpt": "id: \"authpatterns\"\r title: \"Auth Patterns\"\r type: \"system\"\r description: \"Reference implementations for authentication flows including JWT, OAuth, and session management.\"\r publishedAt: \"20260201\"\r featured: false\r tags: [\"security\", \"auth\", \"patterns\"]"
+  },
+  {
+    "id": "data-pipeline",
+    "title": "Data Pipeline",
+    "type": "system",
+    "description": "Lightweight ETL for small-scale analytics with robust error recovery and observability.",
+    "publishedAt": "2026-02-01",
+    "featured": false,
+    "concepts": [
+      "data",
+      "etl",
+      "observability"
+    ],
+    "platforms": [],
+    "technologies": [],
+    "status": "",
+    "links": {},
+    "related": [
+      "case-study-data-pipeline",
+      "guide-to-etl-pipeline"
+    ],
+    "contentPath": "systems/data-pipeline.md",
+    "excerpt": "id: \"datapipeline\"\r title: \"Data Pipeline\"\r type: \"system\"\r description: \"Lightweight ETL for smallscale analytics with robust error recovery and observability.\"\r publishedAt: \"20260201\"\r featured: false\r tags: [\"data\", \"etl\", \"observability\"]"
+  }
+]

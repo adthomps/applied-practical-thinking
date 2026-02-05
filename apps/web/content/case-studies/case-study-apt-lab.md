@@ -1,5 +1,6 @@
 ---
 title: "Case Study: APT Lab"
+featured: true
 id: "case-study-apt-lab"
 type: "case-study"
 description: "How the APT Lab used systems thinking and rapid prototyping to deliver a complex product in record time."

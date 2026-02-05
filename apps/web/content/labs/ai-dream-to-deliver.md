@@ -1,5 +1,6 @@
 ---
 title: AI Dream to Deliver
+featured: false
 slug: ai-dream-to-deliver
 date: 2026-01-31
 description: A conceptual experience dashboard powered by Lovable, visualizing the journey from project ideation to execution. Tailored for innovation leaders and product teams to track initiatives, outcomes, and user impact.

@@ -1,19 +1,28 @@
-import { systems } from "@/data/systems";
-import {
-  AptCard,
-  AptCardHeader,
-  AptCardTitle,
-  AptCardDescription,
-  AptCardContent,
-  AptTag,
-  AptButton,
-  DecisionBlock,
-  LimitationNotice,
-} from "@/components/apt";
-import { Link } from "react-router-dom";
-import { ExternalLink, FileText } from "lucide-react";
+import { useEffect, useState } from "react";
+import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
+import { SystemCard } from "@/components/apt/SystemCard";
 
 export default function Systems() {
+  const [systems, setSystems] = useState<ContentIndexItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    setLoading(true);
+    fetchContentIndex("systems")
+      .then((items) => {
+        setSystems(items);
+        setLoading(false);
+      })
+      .catch((e) => {
+        setError(e.message);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) return <div className="container py-12 text-center">Loading systems…</div>;
+  if (error) return <div className="container py-12 text-center text-red-500">{error}</div>;
+
   return (
     <div className="container py-8 md:py-12">
       <div className="mb-8">
@@ -24,73 +33,9 @@ export default function Systems() {
         </p>
       </div>
 
-      <div className="space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {systems.map((system) => (
-          <AptCard key={system.id} variant="default" padding="large">
-            <AptCardHeader className="p-0">
-              <div className="flex items-start justify-between">
-                <div>
-                  <AptCardTitle className="text-xl">{system.title}</AptCardTitle>
-                  <p className="text-sm font-medium text-primary mt-1">
-                    {system.purpose}
-                  </p>
-                </div>
-                <div className="flex gap-1.5">
-                  {system.tags.slice(0, 3).map((tag) => (
-                    <AptTag key={tag} variant="muted">
-                      {tag}
-                    </AptTag>
-                  ))}
-                </div>
-              </div>
-            </AptCardHeader>
-
-            <AptCardContent className="mt-4 p-0">
-              <AptCardDescription className="mb-6">
-                {system.description}
-              </AptCardDescription>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <DecisionBlock decisions={system.decisions} />
-                <LimitationNotice
-                  title="Tradeoffs"
-                  limitations={system.tradeoffs}
-                />
-              </div>
-            </AptCardContent>
-
-            {(system.links.demo || system.links.docs || system.links.repo) && (
-              <div className="flex gap-2 mt-6 pt-4 border-t border-border">
-                {system.links.demo && (
-                  <AptButton variant="secondary" size="sm" asChild>
-                    <Link to={system.links.demo}>
-                      <ExternalLink className="h-3.5 w-3.5 mr-1.5" />
-                      Demo
-                    </Link>
-                  </AptButton>
-                )}
-                {system.links.docs && (
-                  <AptButton variant="ghost" size="sm" asChild>
-                    <Link to={system.links.docs}>
-                      <FileText className="h-3.5 w-3.5 mr-1.5" />
-                      Docs
-                    </Link>
-                  </AptButton>
-                )}
-                {system.links.repo && (
-                  <AptButton variant="ghost" size="sm" asChild>
-                    <a
-                      href={system.links.repo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Repo
-                    </a>
-                  </AptButton>
-                )}
-              </div>
-            )}
-          </AptCard>
+          <SystemCard key={system.id} system={system} to={`/systems/${system.id}`} />
         ))}
       </div>
     </div>

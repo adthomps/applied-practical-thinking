@@ -45,6 +45,11 @@ export const siteConfig = {
         },
       ],
     },
+      { 
+        label: "Systems", 
+        path: "/systems",
+        description: "Reusable platform patterns and reference architectures.",
+      },
     { 
       label: "Portfolio", 
       path: "/portfolio",

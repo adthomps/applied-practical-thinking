@@ -1,4 +1,6 @@
 import { useMemo } from "react";
+import { MermaidRenderer } from "./MermaidRenderer";
+import { CodeBlock } from "./CodeBlock";
 
 function isExternalUrl(url: string) {
   return /^https?:\/\//i.test(url);
@@ -89,6 +91,7 @@ export function MarkdownContent(props: { markdown: string; contentPath?: string 
 
     let inCodeBlock = false;
     let codeContent: string[] = [];
+    let codeLang: string | undefined = undefined;
 
     let inUl = false;
     let ulItems: React.ReactNode[] = [];
@@ -120,26 +123,50 @@ export function MarkdownContent(props: { markdown: string; contentPath?: string 
     lines.forEach((rawLine, index) => {
       const line = rawLine.replace(/\s+$/, "");
 
-      // Code fences
+      // Code fences with language
       if (line.startsWith("```")) {
         flushLists(String(index));
-
-        if (inCodeBlock) {
-          out.push(
-            <pre
-              key={`code-${index}`}
-              className="bg-muted/50 rounded-lg p-4 overflow-x-auto my-4 text-sm border border-border/50"
-            >
-              <code>{codeContent.join("\n")}</code>
-            </pre>
-          );
+        if (!inCodeBlock) {
+          // Opening code block
+          const langMatch = line.match(/^```([a-zA-Z0-9_-]*)/);
+          codeLang = langMatch && langMatch[1] ? langMatch[1].toLowerCase() : undefined;
+          inCodeBlock = true;
+          return;
+        } else {
+          // Closing code block
+          const code = codeContent.join("\n");
+          if (codeLang === "mermaid") {
+            // Remove multi-line %%{init:...}%% blocks and all %% comment lines
+            const lines = code.split('\n');
+            let inInitBlock = false;
+            const filtered: string[] = [];
+            for (const line of lines) {
+              if (line.includes('%%{init:')) {
+                inInitBlock = true;
+                continue;
+              }
+              if (inInitBlock) {
+                if (line.includes('}%%')) {
+                  inInitBlock = false;
+                }
+                continue;
+              }
+              if (line.trim().startsWith('%%')) continue;
+              filtered.push(line);
+            }
+            let diagramCode = filtered.join('\n').trim();
+            out.push(<MermaidRenderer key={`mermaid-${index}`} code={diagramCode} />);
+          } else {
+            out.push(
+              <CodeBlock key={`code-${index}`} code={code} language={codeLang} />
+            );
+          }
           codeContent = [];
+          codeLang = undefined;
+          inCodeBlock = false;
+          return;
         }
-
-        inCodeBlock = !inCodeBlock;
-        return;
       }
-
       if (inCodeBlock) {
         codeContent.push(rawLine);
         return;

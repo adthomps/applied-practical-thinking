@@ -1,5 +1,6 @@
 ---
 title: "Learning Loops Podcast"
+featured: true
 id: "learning-loops-podcast"
 type: "podcast"
 description: "Exploring how teams can build better products by closing the feedback loop."

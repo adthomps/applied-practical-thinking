@@ -1,5 +1,6 @@
 ---
 title: "Case Study: Portfolio Redesign"
+featured: true
 id: "case-study-portfolio-redesign"
 type: "case-study"
 description: "Redesigning a personal portfolio site to showcase work, learning, and systems thinking."
