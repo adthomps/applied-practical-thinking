@@ -20,15 +20,42 @@ function getAllMarkdownFiles(dir) {
 function parseMarkdownFile(filePath) {
   const raw = fs.readFileSync(filePath, 'utf8');
   const { data, content } = matter(raw);
-  // Always include all filterable fields with defaults
+  // Normalize related fields
+  let related = [];
+  if (Array.isArray(data.related)) related = data.related;
+  if (Array.isArray(data.relatedLabs)) related = related.concat(data.relatedLabs);
+  if (Array.isArray(data.relatedInsights)) related = related.concat(data.relatedInsights);
+  if (Array.isArray(data.relatedSystems)) related = related.concat(data.relatedSystems);
+  // Remove nulls/duplicates
+  related = Array.from(new Set(related.filter(Boolean)));
+  // Map date to publishedAt
+  const publishedAt = data.publishedAt || data.date || '';
+  // Map summary to description
+  const description = data.description || data.summary || '';
+  // For labs, ensure both id and slug
+  let id = data.id;
+  let slug = data.slug;
+  if (!id && slug) id = slug;
+  if (!slug && id) slug = id;
+  // Merge tags into concepts, dedupe
+  const tags = Array.isArray(data.tags) ? data.tags : [];
+  const concepts = Array.isArray(data.concepts) ? data.concepts : [];
+  const mergedConcepts = Array.from(new Set([...concepts, ...tags]));
   return {
-    ...data,
+    id,
+    slug,
+    title: data.title,
     type: data.type || '',
-    status: data.status || '',
-    tags: Array.isArray(data.tags) ? data.tags : [],
+    description,
+    publishedAt,
+    featured: typeof data.featured === 'boolean' ? data.featured : false,
+    concepts: mergedConcepts,
     platforms: Array.isArray(data.platforms) ? data.platforms : [],
     technologies: Array.isArray(data.technologies) ? data.technologies : [],
+    status: data.status || '',
+    thumbnail: data.thumbnail || data.image || undefined,
     links: typeof data.links === 'object' && data.links !== null ? data.links : {},
+    related,
     contentPath: path.relative(CONTENT_ROOT, filePath).replace(/\\/g, '/'),
     excerpt: content.split('\n').slice(0, 8).join(' ').replace(/[#>*-]/g, '').trim(),
   };

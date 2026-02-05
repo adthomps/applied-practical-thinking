@@ -110,7 +110,7 @@ export default function InsightDetail() {
       item={insight}
       markdown={markdown}
       aboutTitle="Summary"
-      markdownTitle="Full Content"
+      //markdownTitle="Full Content"
       headerMeta={<InsightMeta insight={insight} showDate={false} showConcepts={false} />}
       heroFallback={
         <div className="flex flex-col items-center gap-2 text-muted-foreground/50">

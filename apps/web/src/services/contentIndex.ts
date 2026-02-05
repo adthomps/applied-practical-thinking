@@ -20,6 +20,7 @@ export type ContentIndexItem = {
   [key: string]: any;
 };
 
+
 const INDEX_PATHS = {
   blog: '/data/blog-index.json',
   guides: '/data/guides-index.json',
@@ -27,6 +28,7 @@ const INDEX_PATHS = {
   'case-studies': '/data/case-studies-index.json',
   labs: '/data/labs-index.json',
   demos: '/data/demos-index.json',
+  systems: '/data/systems-index.json',
 };
 
 export type ContentIndexType = keyof typeof INDEX_PATHS;

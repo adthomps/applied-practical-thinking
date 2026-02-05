@@ -1,5 +1,6 @@
 ---
 title: Weather Dashboard
+featured: false
 slug: weather-dashboard
 date: 2026-01-31
 description: A responsive weather dashboard that displays current conditions, forecasts, and historical data with beautiful visualizations and location-based services.

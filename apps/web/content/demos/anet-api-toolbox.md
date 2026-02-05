@@ -1,5 +1,6 @@
 ---
 title: Authorize.net API Toolkit
+featured: false
 slug: anet-api-Toolkit
 date: 2026-01-31
 description: This is a full example live demo entry with all fields and end to end interactions.

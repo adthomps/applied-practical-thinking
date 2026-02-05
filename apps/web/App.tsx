@@ -10,6 +10,9 @@ import { AptLayout } from "@/components/apt/AptLayout";
 import Home from "./routes/Home";
 import NotFound from "./pages/NotFound";
 
+import Systems from "./routes/Systems";
+import SystemDetail from "./routes/SystemDetail";
+
 const AssistantPage = lazy(() => import("./routes/assistant"));
 const Start = lazy(() => import("./routes/Start"));
 const About = lazy(() => import("./routes/About"));
@@ -57,13 +60,20 @@ const App = () => (
             {/* Start (Onboarding) */}
             <Route path="/start" element={<Start />} />
             
+
             {/* Insights */}
             <Route path="/insights" element={<Insights />} />
             <Route path="/insights/blogs" element={<InsightsBlogs />} />
             <Route path="/insights/podcasts" element={<InsightsPodcasts />} />
             <Route path="/insights/case-studies" element={<InsightsCaseStudies />} />
             <Route path="/insights/guides" element={<InsightsGuides />} />
-            <Route path="/insights/:id" element={<InsightDetail />} />
+            <Route path="/insights/:id" element={<InsightDetail key={window.location.pathname} />} />
+
+            {/* Direct detail routes for all types */}
+            <Route path="/blog/:id" element={<InsightDetail key={window.location.pathname} />} />
+            <Route path="/guides/:id" element={<InsightDetail key={window.location.pathname} />} />
+            <Route path="/podcasts/:id" element={<InsightDetail key={window.location.pathname} />} />
+            <Route path="/case-studies/:id" element={<InsightDetail key={window.location.pathname} />} />
             
             {/* Portfolio */}
             <Route path="/portfolio" element={<Portfolio />} />
@@ -78,6 +88,9 @@ const App = () => (
             
             {/* About */}
             <Route path="/about" element={<About />} />
+              {/* Systems */}
+              <Route path="/systems" element={<Systems />} />
+              <Route path="/systems/:id" element={<SystemDetail />} />
             
 
             {/* Assistant */}

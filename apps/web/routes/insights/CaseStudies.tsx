@@ -73,7 +73,7 @@ export default function InsightsCaseStudies() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {filteredCaseStudies.map((caseStudy) => (
-              <InsightCard key={caseStudy.id} insight={caseStudy} to={`/insights/${caseStudy.id}`} />
+              <InsightCard key={caseStudy.id} insight={caseStudy} to={`/case-studies/${caseStudy.id}`} />
             ))}
       </div>
 

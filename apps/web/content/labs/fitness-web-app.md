@@ -1,5 +1,6 @@
 ---
 title: Fitness Web App
+featured: false
 slug: fitness-web-app
 date: 2026-01-31
 description: A responsive fitness tracking interface designed in Figma Maker. Includes components for workout planning, progress tracking, and personalized training programs, with a focus on clean UI and mobile optimization.

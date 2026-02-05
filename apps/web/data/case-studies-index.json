@@ -1,157 +1,127 @@
 [
   {
-    "title": "Case Study: APT Lab",
     "id": "case-study-apt-lab",
+    "slug": "case-study-apt-lab",
+    "title": "Case Study: APT Lab",
     "type": "case-study",
     "description": "How the APT Lab used systems thinking and rapid prototyping to deliver a complex product in record time.",
     "publishedAt": "2023-12-10",
-    "client": "APT Lab",
-    "role": "Product Design, Engineering",
-    "impact": "Reduced delivery time by 40% and improved team satisfaction.",
+    "featured": true,
     "concepts": [
-      "systems-thinking",
-      "prototyping",
-      "product-design"
-    ],
-    "tags": [
       "systems-thinking",
       "prototyping",
       "product-design"
     ],
     "platforms": [],
     "technologies": [],
-    "links": {},
     "status": "",
+    "links": {},
+    "related": [],
     "contentPath": "case-studies/case-study-apt-lab.md",
     "excerpt": "Background\r \r APT Lab was tasked with building a new product under tight deadlines and ambiguous requirements.\r \r  Approach\r \r  Used systems mapping to clarify goals"
   },
   {
-    "title": "Case Study: Continuous Delivery",
     "id": "case-study-continuous-delivery",
+    "slug": "case-study-continuous-delivery",
+    "title": "Case Study: Continuous Delivery",
     "type": "case-study",
     "description": "Implementing continuous delivery to accelerate product development.",
     "publishedAt": "2023-12-15",
-    "client": "CD Team",
-    "role": "DevOps Lead",
-    "impact": "Faster releases and fewer bugs.",
+    "featured": false,
     "concepts": [
-      "continuous-delivery",
-      "devops",
-      "product"
-    ],
-    "tags": [
       "continuous-delivery",
       "devops",
       "product"
     ],
     "platforms": [],
     "technologies": [],
-    "links": {},
     "status": "",
+    "links": {},
+    "related": [],
     "contentPath": "case-studies/case-study-continuous-delivery.md",
     "excerpt": "Background\r \r The team wanted to release features faster without sacrificing quality.\r \r  Approach\r \r  Automated build and deployment"
   },
   {
-    "title": "Case Study: Design System Rollout",
     "id": "case-study-design-system",
+    "slug": "case-study-design-system",
+    "title": "Case Study: Design System Rollout",
     "type": "case-study",
     "description": "Rolling out a design system to unify UI across multiple products.",
     "publishedAt": "2024-02-20",
-    "client": "APT Design",
-    "role": "Design Lead",
-    "impact": "Reduced UI inconsistencies and improved development speed.",
+    "featured": true,
     "concepts": [
-      "design-system",
-      "ui",
-      "product"
-    ],
-    "tags": [
       "design-system",
       "ui",
       "product"
     ],
     "platforms": [],
     "technologies": [],
-    "links": {},
     "status": "",
+    "links": {},
+    "related": [],
     "contentPath": "case-studies/case-study-design-system.md",
     "excerpt": "Background\r \r Multiple products had diverging UI patterns, causing confusion and slowing development.\r \r  Approach\r \r  Created a shared design system"
   },
   {
-    "title": "Case Study: Feedback Multiplier",
     "id": "case-study-feedback-multiplier",
+    "slug": "case-study-feedback-multiplier",
+    "title": "Case Study: Feedback Multiplier",
     "type": "case-study",
     "description": "How a feedback culture transformed a struggling team into a high-performing one.",
     "publishedAt": "2023-12-25",
-    "client": "Feedback Team",
-    "role": "Coach",
-    "impact": "Doubled team velocity and improved retention.",
+    "featured": false,
     "concepts": [
-      "feedback",
-      "teams",
-      "culture"
-    ],
-    "tags": [
       "feedback",
       "teams",
       "culture"
     ],
     "platforms": [],
     "technologies": [],
-    "links": {},
     "status": "",
+    "links": {},
+    "related": [],
     "contentPath": "case-studies/case-study-feedback-multiplier.md",
     "excerpt": "Background\r \r The team was missing deadlines and morale was low.\r \r  Approach\r \r  Introduced regular feedback sessions"
   },
   {
-    "title": "Case Study: Learning Loops",
     "id": "case-study-learning-loops",
+    "slug": "case-study-learning-loops",
+    "title": "Case Study: Learning Loops",
     "type": "case-study",
     "description": "How a team used feedback loops to improve product quality and team performance.",
     "publishedAt": "2023-11-30",
-    "client": "Learning Loops Team",
-    "role": "Facilitator",
-    "impact": "Improved product quality and team morale.",
+    "featured": false,
     "concepts": [
-      "learning",
-      "feedback",
-      "product"
-    ],
-    "tags": [
       "learning",
       "feedback",
       "product"
     ],
     "platforms": [],
     "technologies": [],
-    "links": {},
     "status": "",
+    "links": {},
+    "related": [],
     "contentPath": "case-studies/case-study-learning-loops.md",
     "excerpt": "Background\r \r The team struggled with slow feedback and unclear goals.\r \r  Approach\r \r  Introduced regular feedback sessions"
   },
   {
-    "title": "Case Study: Portfolio Redesign",
     "id": "case-study-portfolio-redesign",
+    "slug": "case-study-portfolio-redesign",
+    "title": "Case Study: Portfolio Redesign",
     "type": "case-study",
     "description": "Redesigning a personal portfolio site to showcase work, learning, and systems thinking.",
     "publishedAt": "2024-01-05",
-    "client": "APT Portfolio",
-    "role": "Design, Development",
-    "impact": "Increased engagement and clarity of value proposition.",
+    "featured": true,
     "concepts": [
-      "portfolio",
-      "redesign",
-      "systems-thinking"
-    ],
-    "tags": [
       "portfolio",
       "redesign",
       "systems-thinking"
     ],
     "platforms": [],
     "technologies": [],
-    "links": {},
     "status": "",
+    "links": {},
+    "related": [],
     "contentPath": "case-studies/case-study-portfolio-redesign.md",
     "excerpt": "Background\r \r The original portfolio site was static and hard to update. The goal was to create a living portfolio that could grow with new work and ideas.\r \r  Approach\r \r  Modular content structure"
   }

@@ -6,6 +6,7 @@ import { AptButton } from "@/components/apt/AptButton";
 import { AptTag } from "@/components/apt/AptTag";
 import { MarkdownContent } from "@/components/apt/MarkdownContent";
 import { ContentIndexItem } from "@/src/services/contentIndex";
+import { RelatedContentList } from "@/components/apt/RelatedContentList";
 import { useToast } from "@/hooks/use-toast";
 import { shareOrCopy } from "@/src/services/share";
 import {
@@ -87,17 +88,32 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
 
   const isInternalHref = (href: string) => href.startsWith("/") && !href.startsWith("//");
 
-  const ActionLink = ({ href, children }: { href: string; children: ReactNode }) => {
-    if (isInternalHref(href)) {
+
+  // Helper to generate correct internal URLs for known types
+  const getInternalUrl = (key: string, href: string) => {
+    if (href.startsWith("http")) return href;
+    if (isInternalHref(href)) return href;
+    // Use item's id for internal routing if available
+    const k = key.toLowerCase();
+    const id = item?.id || href.replace(/^\/+/, "");
+    if (k.includes("blog")) return `/blog/${id}`;
+    if (k.includes("podcast")) return `/podcasts/${id}`;
+    if (k.includes("guide")) return `/guides/${id}`;
+    if (k.includes("case")) return `/case-studies/${id}`;
+    return href;
+  };
+
+  const ActionLink = ({ href, children, linkKey }: { href: string; children: ReactNode; linkKey?: string }) => {
+    const finalHref = linkKey ? getInternalUrl(linkKey, href) : href;
+    if (isInternalHref(finalHref)) {
       return (
-        <Link to={href} className="block">
+        <Link to={finalHref} className="block">
           {children}
         </Link>
       );
     }
-
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className="block">
+      <a href={finalHref} target="_blank" rel="noopener noreferrer" className="block">
         {children}
       </a>
     );
@@ -148,11 +164,10 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
     });
   };
 
-  const tagsForSidebar: string[] = Array.isArray(item.tags) && item.tags.length > 0
-    ? item.tags
-    : Array.isArray(item.concepts) && item.concepts.length > 0
-      ? item.concepts
-      : [];
+  // Use concepts, platforms, and technologies for sidebar
+  const conceptsForSidebar: string[] = Array.isArray(item.concepts) && item.concepts.length > 0 ? item.concepts : [];
+  const platformsForSidebar: string[] = Array.isArray(item.platforms) && item.platforms.length > 0 ? item.platforms : [];
+  const technologiesForSidebar: string[] = Array.isArray(item.technologies) && item.technologies.length > 0 ? item.technologies : [];
 
   return (
     <div className="container py-12 md:py-16">
@@ -227,9 +242,6 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
           {/* Markdown */}
           {markdown ? (
             <div>
-              <h2 className="text-xl font-semibold mb-4">
-                {markdownTitle || "Notes"}
-              </h2>
               <article className="prose-custom">
                 <MarkdownContent markdown={markdown} contentPath={item.contentPath} />
               </article>
@@ -237,6 +249,11 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
           ) : null}
 
           {mainBottom ? <div>{mainBottom}</div> : null}
+
+          {/* Related Content */}
+          {Array.isArray(item.related) && item.related.length > 0 ? (
+            <RelatedContentList related={item.related} />
+          ) : null}
         </div>
 
         {/* Sidebar */}
@@ -296,14 +313,56 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
                     </ActionLink>
                   ) : null}
 
-                  {extraLinks.map((link) => (
-                    <ActionLink key={link.key} href={link.href}>
-                      <AptButton variant={hasAnyLinks ? "outline" : "primary"} className="w-full">
-                        <ExternalLink className="h-4 w-4 mr-2" />
-                        {link.label}
-                      </AptButton>
-                    </ActionLink>
-                  ))}
+
+                  {/* Group extra links by type for clarity */}
+                  {(() => {
+                    const typeGroups = [
+                      { type: 'blog', label: 'Blog', icon: <ExternalLink className="h-4 w-4 mr-2" /> },
+                      { type: 'podcast', label: 'Podcast', icon: <ExternalLink className="h-4 w-4 mr-2" /> },
+                      { type: 'guide', label: 'Guide', icon: <ExternalLink className="h-4 w-4 mr-2" /> },
+                      { type: 'caseStudy', label: 'Case Study', icon: <ExternalLink className="h-4 w-4 mr-2" /> },
+                    ];
+                    // Map keys to types
+                    const keyToType = (key) => {
+                      if (key.includes('blog')) return 'blog';
+                      if (key.includes('podcast')) return 'podcast';
+                      if (key.includes('guide')) return 'guide';
+                      if (key.includes('case')) return 'caseStudy';
+                      return 'other';
+                    };
+                    const grouped = {};
+                    extraLinks.forEach((link) => {
+                      const type = keyToType(link.key);
+                      if (!grouped[type]) grouped[type] = [];
+                      grouped[type].push(link);
+                    });
+                    return typeGroups.map(({ type, label, icon }) =>
+                      grouped[type]?.length ? (
+                        <div key={type}>
+                          <div className="text-xs font-semibold text-muted-foreground mb-1 mt-2">{label}</div>
+                          {grouped[type].map((link) => (
+                            <ActionLink key={link.key} href={link.href} linkKey={link.key}>
+                              <AptButton variant={hasAnyLinks ? "outline" : "primary"} className="w-full">
+                                {icon}
+                                {link.label}
+                              </AptButton>
+                            </ActionLink>
+                          ))}
+                        </div>
+                      ) : null
+                    ).concat(
+                      grouped.other?.length
+                        ? grouped.other.map((link) => (
+                            <ActionLink key={link.key} href={link.href} linkKey={link.key}>
+                              <AptButton variant={hasAnyLinks ? "outline" : "primary"} className="w-full">
+                                <ExternalLink className="h-4 w-4 mr-2" />
+                                {link.label}
+                              </AptButton>
+                            </ActionLink>
+                          ))
+                        : null
+                    );
+                  })()}
 
                   {shareEnabled ? (
                     <AptButton
@@ -320,15 +379,15 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
             )
           ) : null}
 
-          {/* Technologies */}
-          {Array.isArray(item.technologies) && item.technologies.length > 0 ? (
+          {/* Concepts */}
+          {conceptsForSidebar.length > 0 ? (
             <AptCard>
               <div className="p-6">
-                <h3 className="text-sm font-semibold mb-4">Technologies</h3>
+                <h3 className="text-sm font-semibold mb-4">Concepts</h3>
                 <div className="flex flex-wrap gap-2">
-                  {item.technologies.map((tech: string) => (
-                    <AptTag key={tech} variant="outline">
-                      {tech}
+                  {conceptsForSidebar.map((concept: string) => (
+                    <AptTag key={concept} variant="ghost">
+                      {concept}
                     </AptTag>
                   ))}
                 </div>
@@ -337,12 +396,12 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
           ) : null}
 
           {/* Platforms */}
-          {Array.isArray(item.platforms) && item.platforms.length > 0 ? (
+          {platformsForSidebar.length > 0 ? (
             <AptCard>
               <div className="p-6">
                 <h3 className="text-sm font-semibold mb-4">Platforms</h3>
                 <div className="flex flex-wrap gap-2">
-                  {item.platforms.map((platform: string) => (
+                  {platformsForSidebar.map((platform: string) => (
                     <AptTag key={platform} variant="secondary">
                       {platform}
                     </AptTag>
@@ -352,15 +411,15 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
             </AptCard>
           ) : null}
 
-          {/* Tags */}
-          {tagsForSidebar.length > 0 ? (
+          {/* Technologies */}
+          {technologiesForSidebar.length > 0 ? (
             <AptCard>
               <div className="p-6">
-                <h3 className="text-sm font-semibold mb-4">Tags</h3>
+                <h3 className="text-sm font-semibold mb-4">Technologies</h3>
                 <div className="flex flex-wrap gap-2">
-                  {tagsForSidebar.map((tag: string) => (
-                    <AptTag key={tag} variant="ghost">
-                      {tag}
+                  {technologiesForSidebar.map((tech: string) => (
+                    <AptTag key={tech} variant="outline">
+                      {tech}
                     </AptTag>
                   ))}
                 </div>

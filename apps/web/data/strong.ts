@@ -4,7 +4,7 @@ export interface StrongItem {
   problem: string;
   approach: string;
   decisions: string[];
-  tags: string[];
+  concepts: string[];
   links: {
     demo?: string;
     docs?: string;
@@ -24,7 +24,7 @@ export const strongItems: StrongItem[] = [
       "Event sourcing for data synchronization",
       "Blue-green deployments for cutover",
     ],
-    tags: ["migration", "microservices", "platform"],
+    concepts: ["migration", "microservices", "platform"],
     links: {
       docs: "/learn",
     },
@@ -40,7 +40,7 @@ export const strongItems: StrongItem[] = [
       "Connection pooling optimization",
       "Async processing for writes",
     ],
-    tags: ["performance", "database", "scale"],
+    concepts: ["performance", "database", "scale"],
     links: {
       docs: "/learn",
     },
@@ -56,7 +56,7 @@ export const strongItems: StrongItem[] = [
       "Platform team for shared infrastructure",
       "Trunk-based development",
     ],
-    tags: ["teams", "process", "developer-experience"],
+    concepts: ["teams", "process", "developer-experience"],
     links: {
       docs: "/learn",
     },

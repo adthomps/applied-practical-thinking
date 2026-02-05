@@ -1,5 +1,6 @@
 ---
 title: Authorize.net Accept Suite Toolkit
+featured: true
 slug: anet-acceptsuite-Toolkit
 date: 2026-01-31
 description: This is a full example live demo entry with all fields and end to end interactions.

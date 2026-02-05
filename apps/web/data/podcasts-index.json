@@ -1,57 +1,115 @@
 [
   {
-    "title": "Learning Loops Podcast",
-    "id": "learning-loops-podcast",
+    "id": "ai-system instructions-for-transaction-analysis-podcast",
+    "slug": "ai-system instructions-for-transaction-analysis-podcast",
+    "title": "AI System Instructions For Transaction Analysis Podcast",
     "type": "podcast",
-    "description": "Exploring how teams can build better products by closing the feedback loop.",
-    "publishedAt": "2023-12-20",
-    "duration": "32 min",
+    "description": "A conversational deep dive into constructing AI system instructions. Discusses design patterns, compliance, and lessons from transaction analysis.",
+    "publishedAt": "2025-08-17",
+    "featured": true,
     "concepts": [
       "learning",
       "feedback",
       "teams"
     ],
-    "tags": [
+    "platforms": [
+      "Web",
+      "Cloud",
+      "Payment Gateway"
+    ],
+    "technologies": [
+      "Cloudflare",
+      "OpenAI"
+    ],
+    "status": "",
+    "thumbnail": "/content/podcasts/01-ai-system-instructions-for-transaction-analysis-podcast.png",
+    "links": {
+      "Blog": "01-ai-system-instructions-for-transaction-analysis",
+      "Podcast": null,
+      "Guide": "01-ai-system-instructions-for-transaction-analysis-guide",
+      "Case": null,
+      "Article": null,
+      "Slides": null
+    },
+    "related": [],
+    "contentPath": "podcasts/01-ai-system-instructions-for-transaction-analysis-podcast copy.md",
+    "excerpt": "Episode Summary\r \r In this episode, we explore how AI interprets financial transactions, why system instructions act as guardrails, and lessons learned where clarity of rules made or broke fraud detection outcomes.\r \r  Segment 1: Why Accuracy in AI Matters Most (0:00–2:30)\r  HighStakes Decisions: In payments and fraud detection, speed is essential—but accuracy is nonnegotiable.\r  The Risk Window: A splitsecond decision between “approve” or “decline” carries major operational risk."
+  },
+  {
+    "id": "ai-system instructions-for-transaction-analysis-podcast",
+    "slug": "ai-system instructions-for-transaction-analysis-podcast",
+    "title": "AI System Instructions For Transaction Analysis Podcast",
+    "type": "podcast",
+    "description": "A conversational deep dive into constructing AI system instructions. Discusses design patterns, compliance, and lessons from transaction analysis.",
+    "publishedAt": "2025-08-17",
+    "featured": true,
+    "concepts": [
+      "learning",
+      "feedback",
+      "teams"
+    ],
+    "platforms": [
+      "Web",
+      "Cloud",
+      "Payment Gateway"
+    ],
+    "technologies": [
+      "Cloudflare",
+      "OpenAI"
+    ],
+    "status": "",
+    "thumbnail": "/content/podcasts/02-ai-powered-cloud-development-podcast.png",
+    "links": {
+      "Blog": "02-ai-powered-cloud-development-blog",
+      "Podcast": null,
+      "Guide": "02-ai-powered-cloud-development-guide",
+      "Case": null,
+      "Article": null,
+      "Slides": null
+    },
+    "related": [],
+    "contentPath": "podcasts/02-ai-powered-cloud-development-podcast.md",
+    "excerpt": "Episode Summary\r \r In this episode, we explore how AI interprets financial transactions, why system instructions act as guardrails, and lessons learned where clarity of rules made or broke fraud detection outcomes.\r \r  Segment 1: Why Accuracy in AI Matters Most (0:00–2:30)\r  HighStakes Decisions: In payments and fraud detection, speed is essential—but accuracy is nonnegotiable.\r  The Risk Window: A splitsecond decision between “approve” or “decline” carries major operational risk."
+  },
+  {
+    "id": "learning-loops-podcast",
+    "slug": "learning-loops-podcast",
+    "title": "Learning Loops Podcast",
+    "type": "podcast",
+    "description": "Exploring how teams can build better products by closing the feedback loop.",
+    "publishedAt": "2023-12-20",
+    "featured": true,
+    "concepts": [
       "learning",
       "feedback",
       "teams"
     ],
     "platforms": [],
     "technologies": [],
-    "links": {},
-    "media": {
-      "audioUrl": "https://example.com/podcast/learning-loops.mp3",
-      "embedUrl": "https://open.spotify.com/embed/episode/example3"
-    },
     "status": "",
+    "links": {},
+    "related": [],
     "contentPath": "podcasts/learning-loops-podcast.md",
     "excerpt": "Episode Summary\r \r We talk with product leaders about how they use feedback loops to:\r \r  Improve product quality\r  Reduce wasted effort\r  Build stronger teams"
   },
   {
-    "title": "Systems Over Screens",
     "id": "systems-thinking-podcast",
+    "slug": "systems-thinking-podcast",
+    "title": "Systems Over Screens",
     "type": "podcast",
     "description": "A discussion on why thinking in systems rather than features leads to better products and happier teams.",
     "publishedAt": "2024-03-10",
-    "duration": "45 min",
+    "featured": true,
     "concepts": [
-      "systems-thinking",
-      "product",
-      "teams"
-    ],
-    "tags": [
       "systems-thinking",
       "product",
       "teams"
     ],
     "platforms": [],
     "technologies": [],
-    "links": {},
-    "media": {
-      "audioUrl": "https://example.com/podcast/systems-over-screens.mp3",
-      "embedUrl": "https://open.spotify.com/embed/episode/example"
-    },
     "status": "",
+    "links": {},
+    "related": [],
     "contentPath": "podcasts/systems-thinking-podcast.md",
     "excerpt": "Episode Summary\r \r In this episode, we explore why featurefocused development often leads to fragmented products and burnedout teams. The alternative? Systems thinking.\r \r  Key Topics Discussed\r \r  The Feature Trap (00:00  12:30)"
   }

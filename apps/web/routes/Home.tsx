@@ -45,47 +45,44 @@ const pillars = [
 
 export default function Home() {
   // Featured items - mix of labs, systems, and content
-  const [featuredLabs, setFeaturedLabs] = useState<ContentIndexItem[]>([]);
-  const [labsLoading, setLabsLoading] = useState(true);
+  const [featuredItems, setFeaturedItems] = useState<ContentIndexItem[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let cancelled = false;
-    fetchContentIndex("labs")
-      .then((items) => {
-        if (cancelled) return;
-        setFeaturedLabs(items.slice(0, 2));
-      })
-      .catch(() => {
-        if (cancelled) return;
-        setFeaturedLabs([]);
-      })
-      .finally(() => {
-        if (cancelled) return;
-        setLabsLoading(false);
+    Promise.all([
+      fetchContentIndex("labs"),
+      fetchContentIndex("blog"),
+      fetchContentIndex("guides"),
+      fetchContentIndex("podcasts"),
+      fetchContentIndex("case-studies"),
+      fetchContentIndex("demos"),
+    ]).then(([labs, blog, guides, podcasts, caseStudies, demos]) => {
+      if (cancelled) return;
+      // Only use ContentIndexItem[] for featuredItems
+      const allContent: ContentIndexItem[] = [
+        ...labs,
+        ...blog,
+        ...guides,
+        ...podcasts,
+        ...caseStudies,
+        ...demos,
+      ];
+      const featured = allContent.filter(item => item.featured === true);
+      featured.sort((a, b) => {
+        const aDate = new Date(a.date || a.publishedAt || 0).getTime();
+        const bDate = new Date(b.date || b.publishedAt || 0).getTime();
+        return bDate - aDate;
       });
-
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  const featuredSystems = systems.slice(0, 2);
-  const [featuredContent, setFeaturedContent] = useState<ContentIndexItem[]>([]);
-
-  useEffect(() => {
-    let cancelled = false;
-    fetchContentIndex("blog")
-      .then((items) => {
-        if (cancelled) return;
-        setFeaturedContent(items.slice(0, 2));
-      })
-      .catch(() => {
-        if (cancelled) return;
-        setFeaturedContent([]);
-      });
-    return () => {
-      cancelled = true;
-    };
+      setFeaturedItems(featured);
+    }).catch(() => {
+      if (cancelled) return;
+      setFeaturedItems([]);
+    }).finally(() => {
+      if (cancelled) return;
+      setLoading(false);
+    });
+    return () => { cancelled = true; };
   }, []);
 
   return (
@@ -153,6 +150,7 @@ export default function Home() {
         </div>
       </section>
 
+
       {/* Featured */}
       <section className="container pb-16 md:pb-24">
         <div className="flex items-center justify-between mb-8">
@@ -160,104 +158,86 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {/* Featured Labs */}
-          {labsLoading && featuredLabs.length === 0 && (
+          {loading && featuredItems.length === 0 && (
             <AptCard variant="interactive" padding="default">
               <AptCardHeader className="p-0 mt-3">
-                <AptCardTitle>Loading labs…</AptCardTitle>
+                <AptCardTitle>Loading featured…</AptCardTitle>
                 <AptCardDescription className="mt-1">
-                  Fetching the latest labs.
+                  Fetching the latest featured content.
                 </AptCardDescription>
               </AptCardHeader>
             </AptCard>
           )}
-          {featuredLabs.map((lab) => (
-            <AptCard
-              key={lab.id ?? lab.slug ?? lab.contentPath}
-              variant="interactive"
-              padding="default"
-            >
-              <div className="flex items-start justify-between mb-2">
-                <AptTag variant="accent">Lab</AptTag>
-                {lab.status && <AptTag variant="muted">{lab.status}</AptTag>}
-              </div>
-              <AptCardHeader className="p-0 mt-3">
-                <AptCardTitle>{lab.title}</AptCardTitle>
-                <AptCardDescription className="mt-1">
-                  {lab.problem ?? lab.description}
-                </AptCardDescription>
-              </AptCardHeader>
-              <div className="mt-4 flex flex-wrap gap-1.5">
-                {(lab.tags || []).slice(0, 3).map((tag: string) => (
-                  <AptTag key={tag} variant="muted">
-                    {tag}
-                  </AptTag>
-                ))}
-              </div>
-            </AptCard>
-          ))}
-
-          {/* Featured Systems */}
-          {featuredSystems.map((system) => (
-            <AptCard key={system.id} variant="interactive" padding="default">
-              <div className="mb-2">
-                <AptTag variant="default">System</AptTag>
-              </div>
-              <AptCardHeader className="p-0 mt-3">
-                <AptCardTitle>{system.title}</AptCardTitle>
-                <AptCardDescription className="mt-1">
-                  {system.purpose}
-                </AptCardDescription>
-              </AptCardHeader>
-              <div className="mt-4 flex flex-wrap gap-1.5">
-                {system.tags.slice(0, 3).map((tag) => (
-                  <AptTag key={tag} variant="muted">
-                    {tag}
-                  </AptTag>
-                ))}
-              </div>
-            </AptCard>
-          ))}
-
-          {/* Featured Insights */}
-          {featuredContent.map((insight) => (
-            <AptCard key={insight.id} variant="interactive" padding="default">
-              <div className="mb-2">
-                <AptTag variant="default">{insight.type}</AptTag>
-              </div>
-              <AptCardHeader className="p-0 mt-3">
-                <AptCardTitle>{insight.title}</AptCardTitle>
-                <AptCardDescription className="mt-1">
-                  {insight.description.slice(0, 100)}...
-                </AptCardDescription>
-              </AptCardHeader>
-              <div className="mt-4 flex flex-wrap gap-1.5">
-                {insight.concepts.slice(0, 3).map((concept) => (
-                  <AptTag key={concept} variant="muted">
-                    {concept}
-                  </AptTag>
-                ))}
-              </div>
-            </AptCard>
-          ))}
-        </div>
-
-        <div className="mt-8 flex flex-wrap gap-3">
-          <AptButton variant="secondary" asChild>
-            <Link to="/labs" className="gap-2">
-              All Labs <ArrowRight className="h-4 w-4" />
-            </Link>
-          </AptButton>
-          <AptButton variant="secondary" asChild>
-            <Link to="/systems" className="gap-2">
-              All Systems <ArrowRight className="h-4 w-4" />
-            </Link>
-          </AptButton>
-          <AptButton variant="secondary" asChild>
-            <Link to="/insights" className="gap-2">
-              All Insights <ArrowRight className="h-4 w-4" />
-            </Link>
-          </AptButton>
+          {featuredItems.map((item) => {
+            // Determine link and type label
+            let to = "#";
+            let typeLabel = item.type || (item.platforms ? "System" : "Lab");
+            if (item.type === "lab" || item.type === "mock" || item.type === "demo") {
+              to = `/portfolio/labs/${item.slug ?? item.id}`;
+              typeLabel = "Lab";
+            } else if (item.type === "system" || item.platforms) {
+              to = `/systems#${item.id ?? item.slug}`;
+              typeLabel = "System";
+            } else if (item.type === "blog" || item.type === "guide" || item.type === "case-study") {
+              to = `/insights/${item.id ?? item.slug}`;
+              typeLabel = item.type.charAt(0).toUpperCase() + item.type.slice(1);
+            } else if (item.type === "podcast") {
+              to = `/insights/${item.id ?? item.slug}`;
+              typeLabel = "Podcast";
+            } else if (item.type === "demo") {
+              to = `/portfolio/labs/${item.slug ?? item.id}`;
+              typeLabel = "Demo";
+            }
+            return (
+              <Link key={item.id ?? item.slug ?? item.contentPath} to={to} className="block group">
+                <AptCard variant="interactive" padding="default">
+                  <div className="flex items-start justify-between mb-2">
+                    <AptTag variant="accent">{typeLabel}</AptTag>
+                    {item.status && <AptTag variant="muted">{item.status}</AptTag>}
+                  </div>
+                  <AptCardHeader className="p-0 mt-3">
+                    <AptCardTitle>{item.title}</AptCardTitle>
+                    <AptCardDescription className="mt-1">
+                      {item.problem ?? item.description ?? item.excerpt}
+                    </AptCardDescription>
+                  </AptCardHeader>
+                  <div className="mt-4 flex flex-wrap gap-1.5">
+                    {(item.tags || []).slice(0, 3).map((tag) => (
+                      <AptTag key={tag} variant="muted">
+                        {tag}
+                      </AptTag>
+                    ))}
+                  </div>
+                  {item.date || item.publishedAt ? (
+                    <div className="mt-3 text-xs text-muted-foreground">
+                      {new Date(item.date || item.publishedAt).toLocaleDateString("en-US", {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
+                      })}
+                    </div>
+                  ) : null}
+                </AptCard>
+              </Link>
+            );
+          })}
+          <div className="mt-8 flex flex-wrap gap-3">
+            <AptButton variant="secondary" asChild>
+              <Link to="/labs" className="gap-2">
+                All Labs <ArrowRight className="h-4 w-4" />
+              </Link>
+            </AptButton>
+            <AptButton variant="secondary" asChild>
+              <Link to="/systems" className="gap-2">
+                All Systems <ArrowRight className="h-4 w-4" />
+              </Link>
+            </AptButton>
+            <AptButton variant="secondary" asChild>
+              <Link to="/insights" className="gap-2">
+                All Insights <ArrowRight className="h-4 w-4" />
+              </Link>
+            </AptButton>
+          </div>
         </div>
       </section>
     </div>

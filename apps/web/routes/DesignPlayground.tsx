@@ -15,6 +15,7 @@ import {
 } from "@/components/apt";
 import { fetchContentIndex, type ContentIndexItem } from "@/src/services/contentIndex";
 import { strongItems } from "@/data/strong";
+import { systems } from "@/data/systems";
 
 export default function DesignPlayground() {
   const [labsIndex, setLabsIndex] = useState<ContentIndexItem[]>([]);

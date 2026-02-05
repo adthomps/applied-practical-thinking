@@ -5,11 +5,25 @@ export interface System {
   description: string;
   decisions: string[];
   tradeoffs: string[];
-  tags: string[];
+  concepts: string[];
+  platforms?: string[];
+  technologies?: string[];
   links: {
     demo?: string;
     docs?: string;
     repo?: string;
+  };
+  productionGuide?: {
+    overview?: string;
+    deployment?: string;
+    api?: string;
+    operations?: string;
+  };
+  learningResources?: {
+    rationale?: string;
+    caseStudies?: string[];
+    tutorials?: string[];
+    glossary?: string[];
   };
 }
 
@@ -29,11 +43,23 @@ export const systems: System[] = [
       "No SSR means slower FCP for content-heavy pages",
       "Worker-based APIs add deployment complexity",
     ],
-    tags: ["vite", "react", "cloudflare"],
+    concepts: ["vite", "react", "cloudflare"],
     links: {
       demo: "/",
       docs: "/learn",
     },
+    productionGuide: {
+      overview: "Vite + React SPA deployed on Cloudflare Pages, with optional Hono worker APIs for backend.",
+      deployment: "See README for build and deploy steps. Configure Cloudflare Pages and Wrangler for worker APIs.",
+      api: "Worker APIs documented in /api routes. Auth via JWT, data via REST endpoints.",
+      operations: "Monitor via Cloudflare dashboard. Rollback via git and redeploy."
+    },
+    learningResources: {
+      rationale: "Static-first for speed and simplicity. Unified design system for consistency.",
+      caseStudies: ["case-study-apt-lab", "case-study-portfolio-redesign"],
+      tutorials: ["guide-to-deployment", "guide-to-content-management"],
+      glossary: ["SSR", "SPA", "API", "Design System"]
+    }
   },
   {
     id: "auth-patterns",
@@ -50,10 +76,22 @@ export const systems: System[] = [
       "Cookie-based auth complicates mobile clients",
       "Token rotation adds database writes",
     ],
-    tags: ["security", "auth", "patterns"],
+    concepts: ["security", "auth", "patterns"],
     links: {
       docs: "/learn",
     },
+    productionGuide: {
+      overview: "Auth flows using JWT, OAuth, and session management. Security-first design.",
+      deployment: "Configure environment variables for secrets. Deploy with secure cookie settings.",
+      api: "Endpoints documented in /api/auth. Supports login, refresh, and logout.",
+      operations: "Monitor auth logs. Rotate secrets regularly."
+    },
+    learningResources: {
+      rationale: "httpOnly cookies for security. Token rotation for safety. Rate limiting to prevent abuse.",
+      caseStudies: ["case-study-auth-flow"],
+      tutorials: ["guide-to-auth-patterns"],
+      glossary: ["JWT", "OAuth", "Session", "Rate Limiting"]
+    }
   },
   {
     id: "data-pipeline",
@@ -70,9 +108,21 @@ export const systems: System[] = [
       "Not designed for real-time streams",
       "Single-node processing limits scale",
     ],
-    tags: ["data", "etl", "observability"],
+    concepts: ["data", "etl", "observability"],
     links: {
       docs: "/learn",
     },
+    productionGuide: {
+      overview: "ETL pipeline for batch analytics. Built for reliability and error recovery.",
+      deployment: "Run as scheduled job. Configure schema validation and error queues.",
+      api: "Endpoints for ingest, transform, and load. Dead letter queue for failures.",
+      operations: "Monitor job status. Handle errors via dead letter queue."
+    },
+    learningResources: {
+      rationale: "Idempotency for safe retries. Dead letter queues for error handling.",
+      caseStudies: ["case-study-data-pipeline"],
+      tutorials: ["guide-to-etl-pipeline"],
+      glossary: ["ETL", "Idempotency", "Dead Letter Queue", "Schema Validation"]
+    }
   },
 ];

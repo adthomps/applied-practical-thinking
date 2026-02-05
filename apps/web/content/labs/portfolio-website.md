@@ -1,5 +1,6 @@
 ---
 title: Portfolio Website
+featured: false
 slug: portfolio-website
 date: 2026-01-31
 description: A personal portfolio layout crafted in Figma Maker. Includes sections for featured projects, photography, blog posts, and interactive maps, structured to support a React + Cloudflare Pages deployment.
