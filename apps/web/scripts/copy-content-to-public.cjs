@@ -1,4 +1,5 @@
-// Copy all Markdown content to public/content for frontend access
+
+// Copy all Markdown content and docs to public for frontend access
 const fs = require('fs');
 const path = require('path');
 
@@ -17,3 +18,24 @@ for (const type of CONTENT_TYPES) {
     console.log(`Copied ${type}/${file} to public/content/${type}`);
   }
 }
+
+// Copy all docs (including design) to public/docs
+const DOCS_ROOT = path.join(__dirname, '../docs');
+const PUBLIC_DOCS_ROOT = path.join(__dirname, '../public/docs');
+
+function copyDirRecursive(src, dest) {
+  if (!fs.existsSync(src)) return;
+  if (!fs.existsSync(dest)) fs.mkdirSync(dest, { recursive: true });
+  for (const entry of fs.readdirSync(src)) {
+    const srcPath = path.join(src, entry);
+    const destPath = path.join(dest, entry);
+    if (fs.statSync(srcPath).isDirectory()) {
+      copyDirRecursive(srcPath, destPath);
+    } else {
+      fs.copyFileSync(srcPath, destPath);
+      console.log(`Copied ${srcPath} to ${destPath}`);
+    }
+  }
+}
+
+copyDirRecursive(DOCS_ROOT, PUBLIC_DOCS_ROOT);

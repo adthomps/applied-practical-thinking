@@ -1,5 +1,6 @@
 ---
 title: "Case Study: Learning Loops"
+featured: false
 id: "case-study-learning-loops"
 type: "case-study"
 description: "How a team used feedback loops to improve product quality and team performance."
@@ -11,6 +12,13 @@ concepts:
   - learning
   - feedback
   - product
+tags:
+  - learning
+  - feedback
+  - product
+platforms: []
+technologies: []
+links: {}
 ---
 
 ## Background

@@ -1,5 +1,6 @@
 ---
 title: "Learning Loops Podcast"
+featured: true
 id: "learning-loops-podcast"
 type: "podcast"
 description: "Exploring how teams can build better products by closing the feedback loop."
@@ -9,6 +10,13 @@ concepts:
   - learning
   - feedback
   - teams
+tags:
+  - learning
+  - feedback
+  - teams
+platforms: []
+technologies: []
+links: {}
 media:
   audioUrl: "https://example.com/podcast/learning-loops.mp3"
   embedUrl: "https://open.spotify.com/embed/episode/example3"
