@@ -1,5 +1,6 @@
 ---
 title: "Case Study: Design System Rollout"
+featured: true
 id: "case-study-design-system"
 type: "case-study"
 description: "Rolling out a design system to unify UI across multiple products."
@@ -11,6 +12,13 @@ concepts:
   - design-system
   - ui
   - product
+tags:
+  - design-system
+  - ui
+  - product
+platforms: []
+technologies: []
+links: {}
 ---
 
 ## Background

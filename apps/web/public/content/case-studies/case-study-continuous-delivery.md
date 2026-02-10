@@ -1,5 +1,6 @@
 ---
 title: "Case Study: Continuous Delivery"
+featured: false
 id: "case-study-continuous-delivery"
 type: "case-study"
 description: "Implementing continuous delivery to accelerate product development."
@@ -11,6 +12,13 @@ concepts:
   - continuous-delivery
   - devops
   - product
+tags:
+  - continuous-delivery
+  - devops
+  - product
+platforms: []
+technologies: []
+links: {}
 ---
 
 ## Background

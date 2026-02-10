@@ -1,5 +1,6 @@
 ---
 title: "Case Study: Feedback Multiplier"
+featured: false
 id: "case-study-feedback-multiplier"
 type: "case-study"
 description: "How a feedback culture transformed a struggling team into a high-performing one."
@@ -11,6 +12,13 @@ concepts:
   - feedback
   - teams
   - culture
+tags:
+  - feedback
+  - teams
+  - culture
+platforms: []
+technologies: []
+links: {}
 ---
 
 ## Background
