@@ -378,5 +378,22 @@
     "related": [],
     "contentPath": "guides/12-systems-mapping-guide.md",
     "excerpt": "Introduction\r \r Systems mapping is a visual way to understand how different parts of a product or organization interact. This guide covers:\r \r  Why systems mapping matters\r  How to create a simple map\r  Common pitfalls"
+  },
+  {
+    "id": "shadcn-ui-builder-guide",
+    "slug": "shadcn-ui-builder-guide",
+    "title": "Guide: Getting Started with shadcn UI Builder",
+    "type": "guide",
+    "description": "Step-by-step guide to using the shadcn UI Builder for rapid UI prototyping.",
+    "publishedAt": "2026-02-14",
+    "featured": false,
+    "concepts": [],
+    "platforms": [],
+    "technologies": [],
+    "status": "",
+    "links": {},
+    "related": [],
+    "contentPath": "guides/shadcn-ui-builder-guide.md",
+    "excerpt": "_Content coming soon._"
   }
 ]

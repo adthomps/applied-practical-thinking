@@ -125,4 +125,40 @@ export const systems: System[] = [
       glossary: ["ETL", "Idempotency", "Dead Letter Queue", "Schema Validation"]
     }
   },
+  {
+    id: "shadcn-ui-builder",
+    title: "shadcn UI Builder",
+    purpose: "Visual project scaffolding and design system customization tool",
+    description:
+      "A visual interface for configuring and generating UI projects using shadcn's open-code component registry. Enables real-time customization and open code ownership.",
+    decisions: [
+      "Open code ownership: components are copied, not imported",
+      "Visual builder for real-time customization",
+      "Supports multiple frameworks (Next.js, Vite, TanStack Start, v0)",
+    ],
+    tradeoffs: [
+      "Requires manual updates for component changes",
+      "No package-level updates; full code control",
+    ],
+    concepts: ["design system", "visual builder", "shadcn", "Radix UI", "Base UI"],
+    platforms: ["web"],
+    technologies: ["shadcn", "vite", "nextjs", "tanstack", "radix-ui", "base-ui"],
+    links: {
+      docs: "https://ui.shadcn.com/create",
+      repo: "https://github.com/shadcn/ui",
+      demo: "https://ui.shadcn.com/create"
+    },
+    productionGuide: {
+      overview: "Use shadcn UI Builder to bootstrap new projects or enhance existing design systems. Configure preferences visually, then run the generated command.",
+      deployment: "Visit the builder, configure, and run the generated command in your project.",
+      api: "N/A",
+      operations: "Manual updates for new component versions. Full code control."
+    },
+    learningResources: {
+      rationale: "Open code for flexibility and control. Visual builder accelerates design system setup.",
+      caseStudies: [],
+      tutorials: ["guide-to-shadcn-ui-builder"],
+      glossary: ["Design System", "Visual Builder", "Open Code"]
+    }
+  },
 ];

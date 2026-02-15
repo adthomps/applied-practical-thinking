@@ -40,6 +40,9 @@ pnpm --filter ./apps/worker dev
 
 ## Build
 
+
+**Important:** After adding or updating content in `apps/web/content/`, you must run the build step to ensure new content is copied to `public/content/` and available in the app.
+
 Build the web app:
 
 ```sh

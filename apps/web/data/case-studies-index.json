@@ -124,5 +124,22 @@
     "related": [],
     "contentPath": "case-studies/case-study-portfolio-redesign.md",
     "excerpt": "Background\r \r The original portfolio site was static and hard to update. The goal was to create a living portfolio that could grow with new work and ideas.\r \r  Approach\r \r  Modular content structure"
+  },
+  {
+    "id": "case-study-shadcn-ui-builder",
+    "slug": "case-study-shadcn-ui-builder",
+    "title": "Case Study: Adopting shadcn UI Builder",
+    "type": "case-study",
+    "description": "How a team integrated shadcn UI Builder into their design system workflow.",
+    "publishedAt": "2026-02-14",
+    "featured": false,
+    "concepts": [],
+    "platforms": [],
+    "technologies": [],
+    "status": "",
+    "links": {},
+    "related": [],
+    "contentPath": "case-studies/case-study-shadcn-ui-builder.md",
+    "excerpt": "_Content coming soon._"
   }
 ]
