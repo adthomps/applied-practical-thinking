@@ -364,5 +364,22 @@
     "related": [],
     "contentPath": "blog/10-feedback-multiplier-blog.md",
     "excerpt": "Introduction\r \r Feedback isn’t just a way to fix mistakes—it’s a multiplier for team effectiveness. Here’s why.\r \r  Why Feedback Matters\r \r  Surfaces issues early"
+  },
+  {
+    "id": "shadcn-ui-builder-blog",
+    "slug": "shadcn-ui-builder-blog",
+    "title": "shadcn UI Builder: First Impressions",
+    "type": "blog",
+    "description": "A first look at the new shadcn UI Builder and its impact on design system workflows.",
+    "publishedAt": "2026-02-14",
+    "featured": false,
+    "concepts": [],
+    "platforms": [],
+    "technologies": [],
+    "status": "",
+    "links": {},
+    "related": [],
+    "contentPath": "blog/shadcn-ui-builder-blog.md",
+    "excerpt": "_Content coming soon._"
   }
 ]

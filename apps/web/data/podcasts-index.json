@@ -93,6 +93,23 @@
     "excerpt": "Episode Summary\r \r We talk with product leaders about how they use feedback loops to:\r \r  Improve product quality\r  Reduce wasted effort\r  Build stronger teams"
   },
   {
+    "id": "shadcn-ui-builder-podcast",
+    "slug": "shadcn-ui-builder-podcast",
+    "title": "Podcast: Exploring shadcn UI Builder",
+    "type": "podcast",
+    "description": "A discussion on the features, use cases, and future of the shadcn UI Builder.",
+    "publishedAt": "2026-02-14",
+    "featured": false,
+    "concepts": [],
+    "platforms": [],
+    "technologies": [],
+    "status": "",
+    "links": {},
+    "related": [],
+    "contentPath": "podcasts/shadcn-ui-builder-podcast.md",
+    "excerpt": "_Content coming soon._"
+  },
+  {
     "id": "systems-thinking-podcast",
     "slug": "systems-thinking-podcast",
     "title": "Systems Over Screens",

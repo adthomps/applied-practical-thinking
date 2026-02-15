@@ -68,5 +68,26 @@
     ],
     "contentPath": "systems/data-pipeline.md",
     "excerpt": "id: \"datapipeline\"\r title: \"Data Pipeline\"\r type: \"system\"\r description: \"Lightweight ETL for smallscale analytics with robust error recovery and observability.\"\r publishedAt: \"20260201\"\r featured: false\r tags: [\"data\", \"etl\", \"observability\"]"
+  },
+  {
+    "id": "shadcn-ui-builder",
+    "title": "shadcn UI Builder",
+    "type": "system",
+    "description": "A visual project scaffolding tool for customizing and generating UI projects using shadcn's open-code component registry.",
+    "publishedAt": "2026-02-14",
+    "featured": false,
+    "concepts": [
+      "design system",
+      "tool",
+      "shadcn",
+      "builder"
+    ],
+    "platforms": [],
+    "technologies": [],
+    "status": "",
+    "links": {},
+    "related": [],
+    "contentPath": "systems/shadcn-ui-builder.md",
+    "excerpt": "id: \"shadcnuibuilder\"\r title: \"shadcn UI Builder\"\r description: \"A visual project scaffolding tool for customizing and generating UI projects using shadcn's opencode component registry.\"\r date: \"20260214\"\r tags: [\"design system\", \"tool\", \"shadcn\", \"builder\"]"
   }
 ]
