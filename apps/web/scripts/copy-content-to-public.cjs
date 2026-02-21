@@ -44,13 +44,24 @@ copyDirRecursive(DOCS_ROOT, PUBLIC_DOCS_ROOT);
 const VIDEO_EXTENSIONS = ['.mp4', '.webm', '.mov', '.ogg', '.m4v'];
 const SRC_VIDEOS = path.join(CONTENT_ROOT, 'videos');
 const DEST_VIDEOS = path.join(PUBLIC_CONTENT_ROOT, 'videos');
+const MAX_BYTES = 25 * 1024 * 1024; // 25 MiB - Pages asset limit
 if (fs.existsSync(SRC_VIDEOS)) {
   if (!fs.existsSync(DEST_VIDEOS)) fs.mkdirSync(DEST_VIDEOS, { recursive: true });
+  const skipped = [];
   for (const entry of fs.readdirSync(SRC_VIDEOS)) {
     const ext = path.extname(entry).toLowerCase();
-    if (VIDEO_EXTENSIONS.includes(ext)) {
-      fs.copyFileSync(path.join(SRC_VIDEOS, entry), path.join(DEST_VIDEOS, entry));
-      console.log(`Copied videos/${entry} to public/content/videos`);
+    const srcPath = path.join(SRC_VIDEOS, entry);
+    if (!VIDEO_EXTENSIONS.includes(ext)) continue;
+    const stat = fs.statSync(srcPath);
+    if (stat.size > MAX_BYTES) {
+      skipped.push({ name: entry, size: stat.size });
+      console.warn(`Skipping videos/${entry}: ${Math.round((stat.size / (1024 * 1024)) * 100) / 100} MiB (exceeds ${MAX_BYTES / (1024 * 1024)} MiB)`);
+      continue;
     }
+    fs.copyFileSync(srcPath, path.join(DEST_VIDEOS, entry));
+    console.log(`Copied videos/${entry} to public/content/videos`);
+  }
+  if (skipped.length) {
+    console.log(`Skipped ${skipped.length} large video(s). Consider external hosting (R2, S3, or CDN) for files >25 MiB.`);
   }
 }
