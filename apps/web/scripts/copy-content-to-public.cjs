@@ -39,3 +39,18 @@ function copyDirRecursive(src, dest) {
 }
 
 copyDirRecursive(DOCS_ROOT, PUBLIC_DOCS_ROOT);
+
+// Copy video files from content/videos to public/content/videos
+const VIDEO_EXTENSIONS = ['.mp4', '.webm', '.mov', '.ogg', '.m4v'];
+const SRC_VIDEOS = path.join(CONTENT_ROOT, 'videos');
+const DEST_VIDEOS = path.join(PUBLIC_CONTENT_ROOT, 'videos');
+if (fs.existsSync(SRC_VIDEOS)) {
+  if (!fs.existsSync(DEST_VIDEOS)) fs.mkdirSync(DEST_VIDEOS, { recursive: true });
+  for (const entry of fs.readdirSync(SRC_VIDEOS)) {
+    const ext = path.extname(entry).toLowerCase();
+    if (VIDEO_EXTENSIONS.includes(ext)) {
+      fs.copyFileSync(path.join(SRC_VIDEOS, entry), path.join(DEST_VIDEOS, entry));
+      console.log(`Copied videos/${entry} to public/content/videos`);
+    }
+  }
+}
