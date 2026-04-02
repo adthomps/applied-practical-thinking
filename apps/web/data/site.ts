@@ -8,7 +8,7 @@ export const siteConfig = {
   disclaimer: "This is a demonstration, not a production system.",
   
   // External links
-  appliedGalleryUrl: "https://appliedpracticalthinking.com/portfolio/visual-gallery",
+  appliedGalleryUrl: "https://appliedpracticalthinking.com/about/visual-gallery",
   appliedGalleryLabel: "Applied Visual Gallery",
   
   // Primary Navigation with hover descriptions and dropdowns
@@ -18,85 +18,89 @@ export const siteConfig = {
       path: "/start",
       description: "New here? Start with the core ideas, examples, and how to navigate APT.",
     },
-    { 
-      label: "Insights", 
-      path: "/insights",
-      description: "Essays, podcasts, and case studies on applied thinking, systems, and execution.",
+    {
+      label: "Learn",
+      path: "/learn",
+      description: "Guides, articles, podcasts, and worked examples for applied thinking in practice.",
       children: [
-        { 
-          label: "Blogs", 
-          path: "/insights/blogs",
+        {
+          label: "Guides",
+          path: "/learn/guides",
+          description: "Practical walkthroughs, reference guides, and worked examples.",
+        },
+        {
+          label: "Articles",
+          path: "/learn/articles",
           description: "Short- to medium-form writing on applied ideas and practical systems.",
         },
-        { 
-          label: "Podcasts", 
-          path: "/insights/podcasts",
+        {
+          label: "Podcasts",
+          path: "/learn/podcasts",
           description: "Audio discussions exploring thinking, frameworks, and real-world tradeoffs.",
-        },
-        { 
-          label: "Guides", 
-          path: "/insights/guides",
-          description: "Step-by-step walkthroughs and practical how-tos for applied thinking.",
-        },
-        { 
-          label: "Case Studies", 
-          path: "/insights/case-studies",
-          description: "Narrative breakdowns of problems, constraints, decisions, and outcomes.",
         },
       ],
     },
-      { 
-        label: "Systems", 
-        path: "/systems",
-        description: "Reusable platform patterns and reference architectures.",
-      },
-    { 
-      label: "Portfolio", 
-      path: "/portfolio",
-      description: "Applied work—concepts, frameworks, demos, and visual explorations.",
+    {
+      label: "Systems",
+      path: "/systems",
+      description: "Completed system models with architecture, decisions, and known tradeoffs.",
+    },
+    {
+      label: "Labs",
+      path: "/labs",
+      description: "Experiments, prototypes, and proof-of-work built in the open.",
       children: [
-        { 
-          label: "Labs", 
-          path: "/portfolio/labs",
-          description: "AI-assisted concept construction using tools like Lovable, Figma Make, and Copilot.",
+        {
+          label: "Labs",
+          path: "/labs",
+          description: "Early, exploratory, and iterative builds that make ideas tangible.",
           tagline: "Ideas given shape—early, imperfect, and intentional.",
         },
-        { 
-          label: "Design System", 
-          path: "/portfolio/design-system",
-          description: "How APT applies design systems—tokens, semantics, components, and constraints.",
-          tagline: "Designing for clarity, consistency, and scale.",
-        },
-        { 
-          label: "Design Thinking", 
-          path: "/portfolio/design-thinking",
-          description: "Problem framing, assumptions, constraints, and decision-making in practice.",
-          tagline: "How problems are defined before solutions exist.",
-        },
-        { 
-          label: "Design Architecture", 
-          path: "/portfolio/design-architecture",
-          description: "Repo layout, deployment flows, API contracts, and enforcement rules.",
-          tagline: "Structure exists to prevent failure, not to enable creativity.",
-        },
-        { 
-          label: "Live Demos", 
-          path: "/portfolio/live-demos",
+        {
+          label: "Live Demos",
+          path: "/labs/live-demos",
           description: "Real, running demos that make concepts observable and testable.",
           tagline: "Not products—clickable proof.",
         },
-        { 
-          label: "Visual Gallery", 
-          path: "/portfolio/visual-gallery",
+      ],
+    },
+    {
+      label: "Design",
+      path: "/design",
+      description: "APT's design doctrine, standards, thinking, and architecture.",
+      children: [
+        {
+          label: "Design Thinking",
+          path: "/design/thinking",
+          description: "Problem framing, assumptions, constraints, and decision-making in practice.",
+          tagline: "How problems are defined before solutions exist.",
+        },
+        {
+          label: "Design System",
+          path: "/design/system",
+          description: "How APT applies design systems—tokens, semantics, components, and constraints.",
+          tagline: "Designing for clarity, consistency, and scale.",
+        },
+        {
+          label: "Design Architecture",
+          path: "/design/architecture",
+          description: "Repo layout, deployment flows, API contracts, and enforcement rules.",
+          tagline: "Structure exists to prevent failure, not to enable creativity.",
+        },
+      ],
+    },
+    {
+      label: "About",
+      path: "/about",
+      description: "How I think, what I work on, and why APT exists.",
+      children: [
+        {
+          label: "Visual Gallery",
+          path: "/about/visual-gallery",
           description: "Photography and drone work framed as visual exploration under constraint.",
           tagline: "Seeing patterns through composition and limitation.",
         },
       ],
-    },
-    { 
-      label: "About", 
-      path: "/about",
-      description: "How I think, what I work on, and why APT exists.",
     },
   ],
 } as const;
@@ -123,7 +127,7 @@ export const authorConfig = {
   social: {
     github: "https://github.com/adthomps",
     linkedin: "https://www.linkedin.com/in/adam-thompson-a547468/",
-    portfolio: "https://appliedpracticalthinking.com/portfolio",
+    portfolio: "https://appliedpracticalthinking.com",
     flickr: "https://www.flickr.com/photos/adam-p-thompson/",
   },
 } as const;

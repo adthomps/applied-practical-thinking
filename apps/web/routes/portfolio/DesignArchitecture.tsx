@@ -376,12 +376,12 @@ export default function PortfolioDesignArchitecture() {
             </div>
             <div className="flex gap-2">
               <AptButton variant="outline" asChild>
-                <Link to="/portfolio/design-system">
+                <Link to="/design/system">
                   Design System
                 </Link>
               </AptButton>
               <AptButton variant="outline" asChild>
-                <Link to="/portfolio/design-thinking">
+                <Link to="/design/thinking">
                   Design Thinking
                 </Link>
               </AptButton>

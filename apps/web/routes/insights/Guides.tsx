@@ -1,19 +1,22 @@
 import { useState, useMemo, useEffect } from "react";
 import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
 import { InsightCard } from "@/components/apt/InsightCard";
-import { ContentFilters, FilterConfig, SelectedFilters } from "@/components/apt";
+import { AptButton, ContentFilters, FilterConfig, SelectedFilters } from "@/components/apt";
 
 export default function InsightsGuides() {
   const [guides, setGuides] = useState<ContentIndexItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selected, setSelected] = useState<SelectedFilters>({ topics: [] });
+  const [subtype, setSubtype] = useState<"all" | "guide" | "case-study">("all");
 
   useEffect(() => {
     setLoading(true);
-    fetchContentIndex("guides")
-      .then((data) => {
-        setGuides(data.sort((a, b) => (b.publishedAt || "").localeCompare(a.publishedAt || "")));
+    Promise.all([fetchContentIndex("guides"), fetchContentIndex("case-studies")])
+      .then(([guideItems, caseStudies]) => {
+        setGuides(
+          [...guideItems, ...caseStudies].sort((a, b) => (b.publishedAt || "").localeCompare(a.publishedAt || ""))
+        );
         setLoading(false);
       })
       .catch((e) => {
@@ -28,11 +31,13 @@ export default function InsightsGuides() {
   }, [guides]);
 
   const filteredGuides = useMemo(() => {
-    if (!selected.topics?.length) return guides;
-    return guides.filter((guide) =>
-      selected.topics?.some((t) => (guide.concepts || []).includes(t))
-    );
-  }, [selected.topics, guides]);
+    return guides.filter((guide) => {
+      const matchesTopics =
+        !selected.topics?.length || selected.topics.some((t) => (guide.concepts || []).includes(t));
+      const matchesSubtype = subtype === "all" || guide.type === subtype;
+      return matchesTopics && matchesSubtype;
+    });
+  }, [selected.topics, guides, subtype]);
 
   if (loading) {
     return <div className="container py-12 text-center">Loading guides…</div>;
@@ -48,8 +53,25 @@ export default function InsightsGuides() {
           Guides
         </h1>
         <p className="text-lg text-muted-foreground">
-          Step-by-step walkthroughs and practical how-tos for applied thinking.
+          Practical walkthroughs, reference guides, and worked examples for applied thinking.
         </p>
+      </div>
+
+      <div className="flex flex-wrap gap-2 mb-6">
+        {[
+          { value: "all", label: "All" },
+          { value: "guide", label: "Guides" },
+          { value: "case-study", label: "Case Studies" },
+        ].map((option) => (
+          <AptButton
+            key={option.value}
+            onClick={() => setSubtype(option.value as "all" | "guide" | "case-study")}
+            variant={subtype === option.value ? "primary" : "ghost"}
+            size="sm"
+          >
+            {option.label}
+          </AptButton>
+        ))}
       </div>
 
       <ContentFilters
@@ -62,13 +84,13 @@ export default function InsightsGuides() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {filteredGuides.map((guide) => (
-          <InsightCard key={guide.id} insight={guide} to={`/guides/${guide.id}`} />
+          <InsightCard key={guide.id} insight={guide} to={`/learn/${guide.id}`} />
         ))}
       </div>
 
       {filteredGuides.length === 0 && (
         <div className="text-center py-12 text-muted-foreground">
-          No guides match your filters.
+          No guides or case studies match your filters.
         </div>
       )}
     </div>

@@ -240,9 +240,9 @@ export default function PortfolioDesignThinking() {
     },
     {
       title: "Content Taxonomy",
-      problem: "Insights and Portfolio content overlapped, confusing visitors",
-      constraint: "Hard separation: Insights = narrative, Portfolio = artifacts",
-      outcome: "Clear mental model, bidirectional cross-linking for context",
+      problem: "Learning content, system references, and experiments overlapped, confusing visitors",
+      constraint: "Clarify Learn, Systems, Labs, and Design without breaking older links",
+      outcome: "A clearer intent-based mental model with less navigation ambiguity",
       tags: ["IA", "Content Strategy"],
     },
   ];
@@ -314,8 +314,8 @@ export default function PortfolioDesignThinking() {
             </p>
           </div>
           <AptButton variant="ghost" asChild>
-            <Link to="/insights/case-studies">
-              All Case Studies <ArrowRight className="h-4 w-4" />
+            <Link to="/learn/guides">
+              All Guides <ArrowRight className="h-4 w-4" />
             </Link>
           </AptButton>
         </div>

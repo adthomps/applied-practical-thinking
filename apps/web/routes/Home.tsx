@@ -23,7 +23,7 @@ const pillars = [
     description:
       "Real problems, practical solutions. No theoretical exercises — everything connects to actual use cases.",
     demoLink: "/labs",
-    docsLink: "/insights",
+    docsLink: "/learn",
   },
   {
     icon: AppWindow,
@@ -31,7 +31,7 @@ const pillars = [
     description:
       "Working code that demonstrates patterns in production-ready form, not just simplified examples.",
     demoLink: "/labs",
-    docsLink: "/insights",
+    docsLink: "/learn",
   },
   {
     icon: Network,
@@ -39,7 +39,7 @@ const pillars = [
     description:
       "Documented tradeoffs and reasoning behind every major choice. Understanding the why, not just the how.",
     demoLink: "/systems",
-    docsLink: "/insights",
+    docsLink: "/design",
   },
 ];
 
@@ -93,8 +93,8 @@ export default function Home() {
         tagline={siteConfig.fullName}
         title={siteConfig.tagline}
         description={siteConfig.description}
-        primaryCta={{ label: "Explore APT Labs", to: "/labs" }}
-        secondaryCta={{ label: "Read Insights", to: "/insights" }}
+        primaryCta={{ label: "Explore Labs", to: "/labs" }}
+        secondaryCta={{ label: "Start Learning", to: "/learn" }}
       />
 
       {/* ...existing code... */}
@@ -173,19 +173,19 @@ export default function Home() {
             let to = "#";
             let typeLabel = item.type || (item.platforms ? "System" : "Lab");
             if (item.type === "lab" || item.type === "mock" || item.type === "demo") {
-              to = `/portfolio/labs/${item.slug ?? item.id}`;
+              to = `/labs/${item.slug ?? item.id}`;
               typeLabel = "Lab";
             } else if (item.type === "system" || item.platforms) {
-              to = `/systems#${item.id ?? item.slug}`;
+              to = `/systems/${item.id ?? item.slug}`;
               typeLabel = "System";
             } else if (item.type === "blog" || item.type === "guide" || item.type === "case-study") {
-              to = `/insights/${item.id ?? item.slug}`;
-              typeLabel = item.type.charAt(0).toUpperCase() + item.type.slice(1);
+              to = `/learn/${item.id ?? item.slug}`;
+              typeLabel = item.type === "blog" ? "Article" : item.type === "case-study" ? "Case Study" : "Guide";
             } else if (item.type === "podcast") {
-              to = `/insights/${item.id ?? item.slug}`;
+              to = `/learn/${item.id ?? item.slug}`;
               typeLabel = "Podcast";
             } else if (item.type === "demo") {
-              to = `/portfolio/labs/${item.slug ?? item.id}`;
+              to = `/labs/${item.slug ?? item.id}`;
               typeLabel = "Demo";
             }
             return (
@@ -233,8 +233,8 @@ export default function Home() {
               </Link>
             </AptButton>
             <AptButton variant="secondary" asChild>
-              <Link to="/insights" className="gap-2">
-                All Insights <ArrowRight className="h-4 w-4" />
+              <Link to="/learn" className="gap-2">
+                All Learn Content <ArrowRight className="h-4 w-4" />
               </Link>
             </AptButton>
           </div>

@@ -58,7 +58,7 @@ export function LabCard({ lab }: LabCardProps) {
   const links = lab.links || {};
   const hasLinks = links.demo || links.figma || links.lovable || links.repo;
 
-  const basePath = "/portfolio/labs";
+  const basePath = "/labs";
   const labId = lab.slug || lab.id;
 
   // ...existing code...
@@ -257,7 +257,7 @@ export function LabCard({ lab }: LabCardProps) {
               onClick={async (e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                const url = window.location.origin + `/portfolio/labs/${lab.slug || lab.id}`;
+                const url = window.location.origin + `/labs/${lab.slug || lab.id}`;
                 const result = await shareOrCopy({
                   title: lab.title,
                   url,

@@ -34,12 +34,12 @@ export function RelatedContentList({ related }: { related: string[] }) {
 }
 
 function getContentUrl(item: ContentIndexItem): string {
-  if (item.type === "blog") return `/insights/${item.id}`;
-  if (item.type === "case-study") return `/insights/${item.id}`;
-  if (item.type === "guide") return `/insights/${item.id}`;
-  if (item.type === "podcast") return `/insights/${item.id}`;
-  if (item.type === "lab" || item.type === "mock" || item.type === "demo") return `/portfolio/labs/${item.slug || item.id}`;
+  if (item.type === "blog") return `/learn/${item.id}`;
+  if (item.type === "case-study") return `/learn/${item.id}`;
+  if (item.type === "guide") return `/learn/${item.id}`;
+  if (item.type === "podcast") return `/learn/${item.id}`;
+  if (item.type === "lab" || item.type === "mock" || item.type === "demo") return `/labs/${item.slug || item.id}`;
   if (item.type === "system" || item.contentPath?.startsWith("systems/")) return `/systems/${item.id}`;
   // fallback
-  return `/insights/${item.id || item.slug}`;
+  return `/learn/${item.id || item.slug}`;
 }

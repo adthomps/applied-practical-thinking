@@ -58,7 +58,7 @@ export function DemoCard({ demo }: DemoCardProps) {
   const hasLinks = links.demo || links.figma || links.repo;
   const isComingSoon = demo.status === "coming-soon";
 
-  const detailHref = `/portfolio/live-demos/${demo.slug || demo.id}`;
+  const detailHref = `/labs/live-demos/${demo.slug || demo.id}`;
 
   return (
     <div className="block group">

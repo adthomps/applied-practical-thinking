@@ -57,8 +57,13 @@ export default function About() {
 
   const [insightsCount, setInsightsCount] = useState(0);
   useEffect(() => {
-    fetchContentIndex("blog")
-      .then((items) => setInsightsCount(items.length))
+    Promise.all([
+      fetchContentIndex("blog"),
+      fetchContentIndex("guides"),
+      fetchContentIndex("podcasts"),
+      fetchContentIndex("case-studies"),
+    ])
+      .then(([blog, guides, podcasts, caseStudies]) => setInsightsCount(blog.length + guides.length + podcasts.length + caseStudies.length))
       .catch(() => setInsightsCount(0));
   }, []);
 
@@ -71,10 +76,10 @@ export default function About() {
       color: "text-primary",
     },
     {
-      label: "Insights",
+      label: "Learn",
       count: insightsCount,
       icon: Book,
-      path: "/insights",
+      path: "/learn",
       color: "text-accent",
     },
     {
@@ -106,7 +111,7 @@ export default function About() {
       color: "text-foreground",
     },
     {
-      label: "Portfolio",
+      label: "APT Site",
       icon: Globe,
       url: authorConfig.social.portfolio,
       color: "text-muted-foreground",
@@ -312,15 +317,10 @@ export default function About() {
               photography gallery.
             </p>
             <AptButton variant="outline" size="sm" asChild>
-              <a
-                href={siteConfig.appliedGalleryUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2"
-              >
+              <Link to="/about/visual-gallery" className="inline-flex items-center gap-2">
                 {siteConfig.appliedGalleryLabel}
                 <ExternalLink className="h-3.5 w-3.5" />
-              </a>
+              </Link>
             </AptButton>
           </AptCard>
         </div>

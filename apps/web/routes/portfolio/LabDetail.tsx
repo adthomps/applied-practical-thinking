@@ -13,7 +13,7 @@ export default function PortfolioLabDetail() {
   });
 
   if (!id) {
-    return <Navigate to="/portfolio/labs" replace />;
+    return <Navigate to="/labs" replace />;
   }
 
   if (loading) {
@@ -21,7 +21,7 @@ export default function PortfolioLabDetail() {
   }
 
   if (!lab) {
-    return <Navigate to="/portfolio/labs" replace />;
+    return <Navigate to="/labs" replace />;
   }
 
   // Use a consistent fallback icon/label for missing images, matching blogs/podcasts/guides/case-studies
@@ -43,7 +43,7 @@ export default function PortfolioLabDetail() {
 
   return (
     <ContentDetailPage
-      backHref="/portfolio/labs"
+      backHref="/labs"
       backLabel="Back to Labs"
       item={lab}
       markdown={markdown}
