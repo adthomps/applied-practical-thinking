@@ -60,9 +60,6 @@ All changes to content structure, navigation, or design must be documented in th
 │  ├─ api.md
 │  └─ ai.md
 │
-├─ ai/
-│  └─ prompts/              # Versioned AI prompts
-│
 ├─ .github/
 │  └─ workflows/
 │
@@ -78,7 +75,7 @@ All changes to content structure, navigation, or design must be documented in th
 | No frontend logic in `worker/` | Separation of concerns |
 | No backend logic in `web/` | Security boundary |
 | Shared logic lives in `packages/` | Single source of truth |
-| AI prompts live in `ai/prompts/` | Versioned, auditable |
+| AI prompts live in `apps/web/ai/prompts/` | Versioned, auditable |
 
 ---
 
@@ -162,14 +159,13 @@ interface APIError {
 ### File Structure
 
 ```
-ai/
-├─ prompts/
-│  ├─ system.md           # Base system prompts
-│  ├─ api-maintainer.md   # API code generation
-│  ├─ design-maintainer.md # Design system guidance
-│  └─ repo-maintainer.md  # Repo structure guidance
-│
-└─ README.md              # AI usage documentation
+apps/web/
+└─ ai/
+   ├─ prompts/
+   │  ├─ api-maintainer.md
+   │  ├─ design-maintainer.md
+   │  └─ repo-maintainer.md
+   └─ README.md
 ```
 
 ### Routing Pattern
@@ -243,11 +239,10 @@ app.post('/api/ai/generate', authMiddleware, rateLimiter, async (c) => {
 
 ```
 # CODEOWNERS
-/apps/web/           @frontend-team
-/apps/worker/        @backend-team
-/packages/ui/        @design-team
-/ai/prompts/         @ai-team
-/docs/               @all
+/apps/web/              @frontend-team
+/apps/web/ai/prompts/   @ai-team
+/apps/worker/           @backend-team
+/docs/                  @all
 ```
 
 ---
@@ -256,26 +251,28 @@ app.post('/api/ai/generate', authMiddleware, rateLimiter, async (c) => {
 
 ### APT Site Architecture
 
-**Pattern:** Static-first portfolio with optional API layer
+**Pattern:** Static-first portfolio with active worker-backed API surface
 
 ```
 apt-site/
-├─ src/                    # React frontend (single app, no monorepo needed)
-│  ├─ components/apt/      # APT design system
-│  ├─ routes/              # Page components
-│  ├─ data/                # Content registries
-│  └─ theme/               # Design tokens
+├─ apps/
+│  ├─ web/
+│  │  ├─ components/apt/   # APT design system
+│  │  ├─ routes/           # Page components
+│  │  ├─ data/             # Content registries
+│  │  ├─ theme/            # Design tokens
+│  │  └─ apps/web/ai/prompts/ # Versioned AI instructions
+│  └─ worker/              # Active API and AI routing surface
 │
-├─ docs/design/            # Portable specifications
-├─ ai/prompts/             # AI agent instructions
-└─ public/                 # Static assets
+├─ docs/                   # Project/process documentation
+└─ wrangler.toml           # Pages config (worker config lives with worker)
 ```
 
 **Decisions:**
-- Single app (not monorepo) due to portfolio scope
-- No worker API initially (content is static)
-- Design system is local (not a shared package)
-- AI prompts live with the project
+- Monorepo keeps deploy/config boundaries explicit
+- Web remains static-first, with worker endpoints added where needed
+- Design system stays local to `apps/web`
+- AI prompts live with the web app under `apps/web/ai/prompts`
 
 ### Production Microservice
 
@@ -309,7 +306,7 @@ service/
 |--------------|---------|------|
 | **Flat repo** | No clear ownership | Organize into apps/packages |
 | **Shared mutable state** | Race conditions | Isolate per-request |
-| **Inline prompts** | Unversioned, untestable | Extract to `ai/prompts/` |
+| **Inline prompts** | Unversioned, untestable | Extract to `apps/web/ai/prompts/` |
 | **Manual deploys** | Inconsistent, error-prone | CI/CD automation |
 | **Missing boundaries** | Spaghetti dependencies | Enforce via linting |
 | **Undocumented APIs** | Integration friction | Schema-first design |

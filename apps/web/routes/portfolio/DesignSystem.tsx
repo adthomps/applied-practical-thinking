@@ -40,15 +40,17 @@ function ColorSwatch({ name, cssVar, className }: { name: string; cssVar: string
   };
 
   return (
-    <button
+    <AptButton
+      type="button"
       onClick={handleCopy}
-      className="group text-left"
+      variant="ghost"
+      className="group h-auto justify-start p-0 text-left"
     >
       <div className={`h-16 rounded-lg border border-border mb-2 ${className} transition-transform group-hover:scale-105`} />
       <p className="text-sm font-medium">{name}</p>
       <p className="text-xs text-muted-foreground font-mono">{cssVar}</p>
       {copied && <p className="text-xs text-accent">Copied!</p>}
-    </button>
+    </AptButton>
   );
 }
 
@@ -66,12 +68,15 @@ function CodeBlock({ code, language = "tsx" }: { code: string; language?: string
       <pre className="bg-muted/50 border border-border rounded-lg p-4 overflow-x-auto text-sm">
         <code className="text-foreground">{code}</code>
       </pre>
-      <button
+      <AptButton
+        type="button"
         onClick={handleCopy}
-        className="absolute top-2 right-2 p-2 rounded-md bg-background/80 hover:bg-background border border-border transition-colors"
+        variant="ghost"
+        size="icon"
+        className="absolute top-2 right-2 h-8 w-8 bg-background/80 border border-border"
       >
         {copied ? <Check className="h-4 w-4 text-accent" /> : <Copy className="h-4 w-4" />}
-      </button>
+      </AptButton>
     </div>
   );
 }
@@ -229,7 +234,7 @@ export default function PortfolioDesignSystem() {
                 </div>
               </div>
 
-              <CodeBlock code={`/* Dark mode (default) - src/index.css */
+              <CodeBlock code={`/* Dark mode (default) - apps/web/index.css */
 .dark {
   --background: 220 20% 8%;      /* Deep space blue */
   --foreground: 220 10% 95%;     /* Near-white text */
@@ -245,27 +250,27 @@ export default function PortfolioDesignSystem() {
                 <h3 className="text-lg font-semibold mb-4">Core Colors (Light)</h3>
                 <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
                   <div className="text-left">
-                    <div className="h-16 rounded-lg border mb-2 bg-[hsl(220,15%,95%)]" />
+                    <div className="h-16 rounded-lg border mb-2 bg-background" />
                     <p className="text-sm font-medium">Background</p>
                     <p className="text-xs text-muted-foreground font-mono">HSL(220, 15%, 95%)</p>
                   </div>
                   <div className="text-left">
-                    <div className="h-16 rounded-lg border mb-2 bg-[hsl(220,20%,10%)]" />
+                    <div className="h-16 rounded-lg border mb-2 bg-foreground" />
                     <p className="text-sm font-medium">Foreground</p>
                     <p className="text-xs text-muted-foreground font-mono">HSL(220, 20%, 10%)</p>
                   </div>
                   <div className="text-left">
-                    <div className="h-16 rounded-lg border mb-2 bg-white" />
+                    <div className="h-16 rounded-lg border mb-2 bg-card" />
                     <p className="text-sm font-medium">Card</p>
                     <p className="text-xs text-muted-foreground font-mono">HSL(0, 0%, 100%)</p>
                   </div>
                   <div className="text-left">
-                    <div className="h-16 rounded-lg border mb-2 bg-[hsl(220,70%,50%)]" />
+                    <div className="h-16 rounded-lg border mb-2 bg-primary" />
                     <p className="text-sm font-medium">Primary</p>
                     <p className="text-xs text-muted-foreground font-mono">HSL(220, 70%, 50%)</p>
                   </div>
                   <div className="text-left">
-                    <div className="h-16 rounded-lg border mb-2 bg-[hsl(165,60%,40%)]" />
+                    <div className="h-16 rounded-lg border mb-2 bg-accent" />
                     <p className="text-sm font-medium">Accent</p>
                     <p className="text-xs text-muted-foreground font-mono">HSL(165, 60%, 40%)</p>
                   </div>

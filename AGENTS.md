@@ -31,10 +31,13 @@ APT (Applied Practical Thinking) is a personal portfolio and demonstration brand
 ### 2. Component Usage
 
 Use APT components from `apps/web/components/apt`:
-- `AptButton` - All buttons
+- `AptButton` - User-facing action buttons and shell controls
 - `AptCard` - Card containers
 - `HeroCard` - Page heroes
 - `AptTag` - Labels/tags
+
+Exception:
+- Native `<button>` is acceptable inside low-level accessible controls such as tabs, menus, and disclosure toggles when it is the correct semantic primitive.
 
 ### 3. File Organization
 
@@ -51,10 +54,9 @@ apps/web/
 
 Content lives in `apps/web/data/`:
 - `site.ts` - Site configuration
-- `labs.ts` - Lab definitions
 - `systems.ts` - System definitions
-- `learn.ts` - Blog/podcast/guide metadata
-- `strong.ts` - Case studies
+- `gallery.ts` - Visual gallery definitions
+- `*-index.json` - Generated content indexes for blogs, guides, podcasts, case studies, labs, demos, and systems
 
 ### 5. Design Deviations
 
@@ -64,19 +66,20 @@ Log any design deviations in `apps/web/docs/design/decision-log.md`.
 
 ### Add a new Lab
 
-1. Add entry to `src/data/labs.ts`
-2. Lab will appear on `/labs` automatically
+1. Add or update the lab markdown/content in `apps/web/content/labs/`
+2. Rebuild content indexes via the web app scripts
+3. Labs appear canonically on `/portfolio/labs` (`/labs` is a legacy redirect)
 
 ### Add a new page
 
-1. Create component in `src/routes/`
-2. Add route in `src/App.tsx`
-3. Add nav item in `src/data/site.ts`
+1. Create component in `apps/web/routes/`
+2. Add route in `apps/web/App.tsx`
+3. Add nav item in `apps/web/data/site.ts`
 
 ### Modify design tokens
 
-1. Update CSS variables in `src/index.css`
-2. Update TypeScript tokens in `src/theme/aptTokens.ts`
+1. Update CSS variables in `apps/web/index.css`
+2. Update TypeScript tokens in `apps/web/theme/aptTokens.ts`
 3. Document in decision log
 
 ## Testing

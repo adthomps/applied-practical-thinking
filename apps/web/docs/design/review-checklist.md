@@ -29,6 +29,7 @@ Use this checklist before merging design changes.
 - [ ] Button variants match action importance
 - [ ] Interactive elements have hover states
 - [ ] Tags/badges categorize appropriately
+- [ ] Native `<button>` is reserved for low-level accessible controls (tabs, menus, toggles); user-facing action controls use `AptButton`
 
 ## Motion
 
@@ -65,8 +66,8 @@ Use this checklist before merging design changes.
 - [x] README with setup and architecture instructions
 - [x] CI/CD pipeline placeholder (pnpm-workspace.yaml, wrangler.toml)
 - [x] Branch protection and CODEOWNERS defined
-- [x] API contracts: N/A (static-first, no backend yet)
-- [x] AI prompts versioned in ai/prompts
+- [x] API contracts documented for active web/worker setup
+- [x] AI prompts versioned in apps/web/ai/prompts
 
 # Deployment Checklist
 - [ ] Environment variables configured (N/A for static)

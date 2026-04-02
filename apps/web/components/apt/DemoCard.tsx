@@ -149,30 +149,34 @@ export function DemoCard({ demo }: DemoCardProps) {
                   </AptTag>
                 ))}
                 {hasMoreTech && !showAllTech && (
-                  <button
+                  <AptButton
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
                       setShowAllTech(true);
                     }}
-                    className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+                    variant="link"
+                    size="sm"
+                    className="h-auto p-0 text-xs text-muted-foreground"
                   >
                     +{technologies.length - visibleTechCount} more
-                  </button>
+                  </AptButton>
                 )}
               </div>
               {showAllTech && hasMoreTech && (
-                <button
+                <AptButton
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
                     setShowAllTech(false);
                   }}
-                  className="text-xs text-muted-foreground hover:text-foreground transition-colors mt-1.5 flex items-center gap-0.5"
+                  variant="link"
+                  size="sm"
+                  className="mt-1.5 h-auto p-0 text-xs text-muted-foreground"
                 >
                   <ChevronUp className="h-3 w-3" />
                   Show less
-                </button>
+                </AptButton>
               )}
             </div>
           )}

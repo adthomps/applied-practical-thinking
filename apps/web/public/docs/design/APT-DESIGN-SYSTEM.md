@@ -132,6 +132,12 @@ A comprehensive design system specification for Applied Practical Thinking. Dark
 <div className="bg-[#1a1a2e]">
 ```
 
+### Component Boundary Note
+
+- Use APT components for user-facing actions and shell elements
+- Native `<button>` is acceptable inside low-level composite controls where button semantics are the correct accessible primitive
+- Shared UI primitives should still prefer semantic tokens over literal colors whenever feasible
+
 ---
 
 ## Typography
@@ -528,7 +534,7 @@ export default function Page() {
 ### File Organization
 
 ```
-src/
+apps/web/
 ├── components/apt/
 │   ├── index.ts          # Public exports
 │   ├── AptButton.tsx
@@ -544,8 +550,8 @@ src/
 
 ### Export Formats
 
-- **CSS Variables**: `src/index.css`
-- **TypeScript Tokens**: `src/theme/aptTokens.ts`
+- **CSS Variables**: `apps/web/index.css`
+- **TypeScript Tokens**: `apps/web/theme/aptTokens.ts`
 - **JSON (Figma/Style Dictionary)**: `docs/design/APT-FIGMA-TOKENS.json`
 
 ---
