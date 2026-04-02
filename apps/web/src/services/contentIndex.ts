@@ -8,32 +8,29 @@ import type {
   PublicDesignDocDetailResponse,
   PublicDesignDocItem,
 } from "@apt/knowledge";
+import { fetchWorkerJson } from "./api";
 
 export async function fetchContentIndex(type: ContentIndexType): Promise<ContentIndexItem[]> {
-  const res = await fetch(`/api/content/${type}`);
-  if (!res.ok) throw new Error(`Failed to load ${type} index`);
-  return res.json();
+  return fetchWorkerJson<ContentIndexItem[]>(`/api/content/${type}`);
 }
 
 export async function fetchContentEntry(
   type: ContentIndexType,
   idOrSlug: string
 ): Promise<ContentDetailResponse> {
-  const res = await fetch(`/api/content/${type}/${encodeURIComponent(idOrSlug)}`);
-  if (!res.ok) throw new Error(`Failed to load ${type} entry`);
-  return res.json();
+  return fetchWorkerJson<ContentDetailResponse>(
+    `/api/content/${type}/${encodeURIComponent(idOrSlug)}`
+  );
 }
 
 export async function fetchDesignDocs(): Promise<PublicDesignDocItem[]> {
-  const res = await fetch("/api/design/docs");
-  if (!res.ok) throw new Error("Failed to load design docs");
-  return res.json();
+  return fetchWorkerJson<PublicDesignDocItem[]>("/api/design/docs");
 }
 
 export async function fetchDesignDoc(slug: string): Promise<PublicDesignDocDetailResponse> {
-  const res = await fetch(`/api/design/docs/${encodeURIComponent(slug)}`);
-  if (!res.ok) throw new Error(`Failed to load design doc: ${slug}`);
-  return res.json();
+  return fetchWorkerJson<PublicDesignDocDetailResponse>(
+    `/api/design/docs/${encodeURIComponent(slug)}`
+  );
 }
 
 export type { ContentIndexItem, ContentIndexType };

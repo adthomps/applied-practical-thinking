@@ -13,10 +13,12 @@ export default function ExperimentsMocks() {
   });
   const [labs, setLabs] = useState<ContentIndexItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetchContentIndex("labs")
       .then((data) => setLabs(data.filter((item) => item.type === "mock")))
+      .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
   }, []);
 
@@ -59,6 +61,8 @@ export default function ExperimentsMocks() {
 
       {loading ? (
         <div className="text-center py-12 text-muted-foreground">Loading…</div>
+      ) : error ? (
+        <div className="text-center py-12 text-destructive">{error}</div>
       ) : filteredLabs.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filteredLabs.map((lab) => (

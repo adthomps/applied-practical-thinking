@@ -29,6 +29,7 @@ import {
   Eye
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { tryGetWorkerApiUrl } from "@/src/services/api";
 
 function ColorSwatch({ name, cssVar, className }: { name: string; cssVar: string; className: string }) {
   const [copied, setCopied] = useState(false);
@@ -94,6 +95,7 @@ function Section({ id, title, description, children }: { id: string; title: stri
 }
 
 export default function PortfolioDesignSystem() {
+  const systemDocUrl = tryGetWorkerApiUrl("/api/design/docs/system");
   const sections = [
     { id: "philosophy", label: "Philosophy", icon: Sparkles },
     { id: "colors", label: "Colors", icon: Palette },
@@ -739,7 +741,12 @@ rounded-full → 9999px`} />
             </div>
             <div className="flex gap-3">
               <AptButton variant="outline" asChild>
-                <a href="/api/design/docs/system" target="_blank">
+                <a
+                  href={systemDocUrl || "#"}
+                  target={systemDocUrl ? "_blank" : undefined}
+                  rel={systemDocUrl ? "noopener noreferrer" : undefined}
+                  aria-disabled={!systemDocUrl}
+                >
                   View Markdown
                 </a>
               </AptButton>

@@ -8,7 +8,11 @@ import {
   type PublicDesignDocItem,
 } from "@apt/knowledge";
 
-const DEV_WEB_ORIGIN = "http://127.0.0.1:8080";
+type PublicContentBindings = {
+  PUBLIC_SITE_ORIGIN?: string;
+};
+
+const DEV_WEB_ORIGIN = "http://127.0.0.1:5173";
 
 const publicDesignDocs: PublicDesignDocItem[] = [
   {
@@ -55,29 +59,51 @@ const publicDesignDocs: PublicDesignDocItem[] = [
   },
 ];
 
-function getStaticOrigin(url: string) {
-  const current = new URL(url);
+function normalizeOrigin(value: string) {
+  return value.trim().replace(/\/+$/, "");
+}
+
+function getStaticOrigin(requestUrl: string, configuredOrigin?: string) {
+  if (configuredOrigin?.trim()) {
+    return normalizeOrigin(configuredOrigin);
+  }
+
+  const current = new URL(requestUrl);
   if ((current.hostname === "127.0.0.1" || current.hostname === "localhost") && current.port === "8787") {
     return DEV_WEB_ORIGIN;
   }
-  return current.origin;
+
+  throw new Error(
+    "PUBLIC_SITE_ORIGIN is not configured for the standalone Worker. Set it to the Cloudflare Pages site origin."
+  );
 }
 
-async function fetchStaticText(requestUrl: string, pathname: string) {
-  const origin = getStaticOrigin(requestUrl);
+async function fetchStaticText(requestUrl: string, pathname: string, configuredOrigin?: string) {
+  const origin = getStaticOrigin(requestUrl, configuredOrigin);
   const res = await fetch(`${origin}${pathname}`);
   if (!res.ok) {
     throw new Error(`Failed to load static asset: ${pathname}`);
   }
+
   return res.text();
 }
 
-async function fetchStaticJson<T>(requestUrl: string, pathname: string): Promise<T> {
-  const origin = getStaticOrigin(requestUrl);
+async function fetchStaticJson<T>(requestUrl: string, pathname: string, configuredOrigin?: string): Promise<T> {
+  const origin = getStaticOrigin(requestUrl, configuredOrigin);
   const res = await fetch(`${origin}${pathname}`);
   if (!res.ok) {
     throw new Error(`Failed to load static asset: ${pathname}`);
   }
+
+  const contentType = res.headers.get("content-type") || "";
+  if (!contentType.toLowerCase().includes("application/json")) {
+    const body = await res.text();
+    const preview = body.trim().slice(0, 160);
+    throw new Error(
+      `Expected JSON from ${origin}${pathname}, received ${contentType || "unknown"}${preview ? `: ${preview}` : ""}`
+    );
+  }
+
   return (await res.json()) as T;
 }
 
@@ -94,7 +120,7 @@ function normalizeItem(type: ContentIndexType, item: ContentIndexItem): ContentI
   };
 }
 
-export const publicContentRoute = new Hono()
+export const publicContentRoute = new Hono<{ Bindings: PublicContentBindings }>()
   .get("/api/content/:type", async (c) => {
     const type = c.req.param("type") as ContentIndexType;
     if (!contentIndexTypes.includes(type)) {
@@ -102,7 +128,11 @@ export const publicContentRoute = new Hono()
     }
 
     try {
-      const items = await fetchStaticJson<ContentIndexItem[]>(c.req.url, `/data/${type}-index.json`);
+      const items = await fetchStaticJson<ContentIndexItem[]>(
+        c.req.url,
+        `/data/${type}-index.json`,
+        c.env.PUBLIC_SITE_ORIGIN
+      );
       return c.json(items.map((item) => normalizeItem(type, item)));
     } catch (error: any) {
       return c.json({ error: error?.message || "Failed to load content index" }, 500);
@@ -117,7 +147,11 @@ export const publicContentRoute = new Hono()
     }
 
     try {
-      const items = await fetchStaticJson<ContentIndexItem[]>(c.req.url, `/data/${type}-index.json`);
+      const items = await fetchStaticJson<ContentIndexItem[]>(
+        c.req.url,
+        `/data/${type}-index.json`,
+        c.env.PUBLIC_SITE_ORIGIN
+      );
       const normalizedItems = items.map((item) => normalizeItem(type, item));
       const item =
         normalizedItems.find((entry) => entry.id === idOrSlug || entry.slug === idOrSlug) || null;
@@ -127,7 +161,11 @@ export const publicContentRoute = new Hono()
         return c.json(response, 404);
       }
 
-      const rawMarkdown = await fetchStaticText(c.req.url, `/content/${item.contentPath}`);
+      const rawMarkdown = await fetchStaticText(
+        c.req.url,
+        `/content/${item.contentPath}`,
+        c.env.PUBLIC_SITE_ORIGIN
+      );
       const response: ContentDetailResponse = {
         item,
         markdown: stripFrontmatter(rawMarkdown),
@@ -148,7 +186,11 @@ export const publicContentRoute = new Hono()
     }
 
     try {
-      const markdown = await fetchStaticText(c.req.url, `/docs/design/${item.path}`);
+      const markdown = await fetchStaticText(
+        c.req.url,
+        `/docs/design/${item.path}`,
+        c.env.PUBLIC_SITE_ORIGIN
+      );
       const response: PublicDesignDocDetailResponse = { item, markdown };
       return c.json(response);
     } catch (error: any) {

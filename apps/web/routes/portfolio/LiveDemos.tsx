@@ -14,10 +14,12 @@ export default function PortfolioLiveDemos() {
   });
   const [demos, setDemos] = useState<ContentIndexItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetchContentIndex("demos")
       .then((data) => setDemos(data))
+      .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
   }, []);
 
@@ -79,6 +81,8 @@ export default function PortfolioLiveDemos() {
 
       {loading ? (
         <div className="text-center py-12 text-muted-foreground">Loading…</div>
+      ) : error ? (
+        <div className="text-center py-12 text-destructive">{error}</div>
       ) : sortedDemos.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {sortedDemos.map((demo) => (

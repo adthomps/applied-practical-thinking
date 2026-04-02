@@ -15,10 +15,12 @@ export default function PortfolioLabs() {
 
   const [labs, setLabs] = useState<ContentIndexItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetchContentIndex("labs")
       .then((data) => setLabs(data))
+      .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
   }, []);
 
@@ -87,6 +89,8 @@ export default function PortfolioLabs() {
 
       {loading ? (
         <div className="text-center py-12 text-muted-foreground">Loading…</div>
+      ) : error ? (
+        <div className="text-center py-12 text-destructive">{error}</div>
       ) : (
         <>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

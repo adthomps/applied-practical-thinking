@@ -1,6 +1,7 @@
 [
   {
     "id": "apt-site",
+    "slug": "apt-site",
     "title": "APT Site",
     "type": "system",
     "description": "Portfolio and demonstration platform built with Vite, React, and Cloudflare Pages.",
@@ -21,10 +22,11 @@
       "portfolio-website"
     ],
     "contentPath": "systems/apt-site.md",
-    "excerpt": "id: \"aptsite\"\r title: \"APT Site\"\r type: \"system\"\r description: \"Portfolio and demonstration platform built with Vite, React, and Cloudflare Pages.\"\r publishedAt: \"20260201\"\r featured: false\r tags: [\"vite\", \"react\", \"cloudflare\"]"
+    "excerpt": "This site itself—a Vite + React + Tailwind stack deployed on Cloudflare Pages with optional Hono worker APIs.\r \r  Production Guide\r  Overview: Vite + React SPA deployed on Cloudflare Pages, with optional Hono worker APIs for backend.\r  Deployment: See README for build and deploy steps. Configure Cloudflare Pages and Wrangler for worker APIs.\r  API: Worker APIs documented in /api routes. Auth via JWT, data via REST endpoints.\r  Operations: Monitor via Cloudflare dashboard. Rollback via git and redeploy."
   },
   {
     "id": "auth-patterns",
+    "slug": "auth-patterns",
     "title": "Auth Patterns",
     "type": "system",
     "description": "Reference implementations for authentication flows including JWT, OAuth, and session management.",
@@ -44,10 +46,11 @@
       "guide-to-auth-patterns"
     ],
     "contentPath": "systems/auth-patterns.md",
-    "excerpt": "id: \"authpatterns\"\r title: \"Auth Patterns\"\r type: \"system\"\r description: \"Reference implementations for authentication flows including JWT, OAuth, and session management.\"\r publishedAt: \"20260201\"\r featured: false\r tags: [\"security\", \"auth\", \"patterns\"]"
+    "excerpt": "A collection of auth patterns including session management, JWT handling, and OAuth integrations with security considerations.\r \r  Production Guide\r  Overview: Auth flows using JWT, OAuth, and session management. Securityfirst design.\r  Deployment: Configure environment variables for secrets. Deploy with secure cookie settings.\r  API: Endpoints documented in /api/auth. Supports login, refresh, and logout.\r  Operations: Monitor auth logs. Rotate secrets regularly."
   },
   {
     "id": "data-pipeline",
+    "slug": "data-pipeline",
     "title": "Data Pipeline",
     "type": "system",
     "description": "Lightweight ETL for small-scale analytics with robust error recovery and observability.",
@@ -67,12 +70,13 @@
       "guide-to-etl-pipeline"
     ],
     "contentPath": "systems/data-pipeline.md",
-    "excerpt": "id: \"datapipeline\"\r title: \"Data Pipeline\"\r type: \"system\"\r description: \"Lightweight ETL for smallscale analytics with robust error recovery and observability.\"\r publishedAt: \"20260201\"\r featured: false\r tags: [\"data\", \"etl\", \"observability\"]"
+    "excerpt": "A simple but robust pattern for extracting, transforming, and loading data with observability and error recovery.\r \r  Production Guide\r  Overview: ETL pipeline for batch analytics. Built for reliability and error recovery.\r  Deployment: Run as scheduled job. Configure schema validation and error queues.\r  API: Endpoints for ingest, transform, and load. Dead letter queue for failures.\r  Operations: Monitor job status. Handle errors via dead letter queue."
   },
   {
     "id": "shadcn-ui-builder",
+    "slug": "shadcn-ui-builder",
     "title": "shadcn UI Builder",
-    "type": "system",
+    "type": "",
     "description": "A visual project scaffolding tool for customizing and generating UI projects using shadcn's open-code component registry.",
     "publishedAt": "2026-02-14",
     "featured": false,
@@ -88,6 +92,6 @@
     "links": {},
     "related": [],
     "contentPath": "systems/shadcn-ui-builder.md",
-    "excerpt": "id: \"shadcnuibuilder\"\r title: \"shadcn UI Builder\"\r description: \"A visual project scaffolding tool for customizing and generating UI projects using shadcn's opencode component registry.\"\r date: \"20260214\"\r tags: [\"design system\", \"tool\", \"shadcn\", \"builder\"]"
+    "excerpt": "Overview\r shadcn UI Builder is a visual interface for configuring and generating UI projects. It enables developers to customize themes, components, and project setup before writing code, promoting open code ownership and flexibility.\r \r  Features\r  Realtime customization: themes, colors, fonts, border radius, icon sets\r  Componentlevel preview and shuffle\r  Supports Next.js, Vite, TanStack Start, v0 frameworks"
   }
 ]

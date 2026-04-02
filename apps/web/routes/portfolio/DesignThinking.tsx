@@ -23,6 +23,7 @@ import {
   Repeat,
   FileText,
 } from "lucide-react";
+import { tryGetWorkerApiUrl } from "@/src/services/api";
 
 interface FrameworkCardProps {
   icon: React.ReactNode;
@@ -109,6 +110,8 @@ function CaseStudyPreview({ title, problem, constraint, outcome, tags }: CaseStu
 }
 
 export default function PortfolioDesignThinking() {
+  const thinkingDocUrl = tryGetWorkerApiUrl("/api/design/docs/thinking");
+  const architectureDocUrl = tryGetWorkerApiUrl("/api/design/docs/architecture");
   const frameworks = [
     {
       icon: <Target className="h-5 w-5" />,
@@ -262,7 +265,12 @@ export default function PortfolioDesignThinking() {
           This is how problems are defined before solutions exist—the thinking that precedes the doing.
         </p>
         <AptButton variant="outline" asChild>
-          <a href="/api/design/docs/thinking" target="_blank">
+          <a
+            href={thinkingDocUrl || "#"}
+            target={thinkingDocUrl ? "_blank" : undefined}
+            rel={thinkingDocUrl ? "noopener noreferrer" : undefined}
+            aria-disabled={!thinkingDocUrl}
+          >
             <FileText className="h-4 w-4" />
             View Full Framework
           </a>
@@ -342,7 +350,12 @@ export default function PortfolioDesignThinking() {
               </div>
             </div>
             <AptButton asChild>
-              <a href="/api/design/docs/architecture" target="_blank">
+              <a
+                href={architectureDocUrl || "#"}
+                target={architectureDocUrl ? "_blank" : undefined}
+                rel={architectureDocUrl ? "noopener noreferrer" : undefined}
+                aria-disabled={!architectureDocUrl}
+              >
                 View Architecture
                 <ArrowRight className="h-4 w-4" />
               </a>

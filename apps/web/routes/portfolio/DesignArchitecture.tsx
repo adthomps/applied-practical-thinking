@@ -24,6 +24,7 @@ import {
   AlertTriangle,
   CheckCircle2,
 } from "lucide-react";
+import { tryGetWorkerApiUrl } from "@/src/services/api";
 
 interface ArchitecturePatternProps {
   icon: React.ReactNode;
@@ -113,6 +114,7 @@ function BoundaryCard({ title, stack, responsibilities, constraints }: BoundaryC
 }
 
 export default function PortfolioDesignArchitecture() {
+  const architectureDocUrl = tryGetWorkerApiUrl("/api/design/docs/architecture");
   const patterns = [
     {
       icon: <FolderTree className="h-5 w-5" />,
@@ -271,7 +273,12 @@ export default function PortfolioDesignArchitecture() {
           <em>Structure exists to prevent failure, not to enable creativity.</em>
         </p>
         <AptButton variant="outline" asChild>
-          <a href="/api/design/docs/architecture" target="_blank">
+          <a
+            href={architectureDocUrl || "#"}
+            target={architectureDocUrl ? "_blank" : undefined}
+            rel={architectureDocUrl ? "noopener noreferrer" : undefined}
+            aria-disabled={!architectureDocUrl}
+          >
             <FileText className="h-4 w-4" />
             View Full Specification
           </a>
