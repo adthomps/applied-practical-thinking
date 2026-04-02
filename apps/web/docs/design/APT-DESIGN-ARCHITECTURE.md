@@ -2,8 +2,8 @@
 
 > Structure exists to prevent failure, not to enable creativity.
 
-**[2026-01-25] NOTE:**
-This project now uses a monorepo structure. All code, docs, and AI prompts live under `apps/web/`. See [decision log](apps/web/docs/design/decision-log.md) for details.
+**[2026-04-01] NOTE:**
+This is an external-first design doctrine document. Internal repo/process guidance lives in `docs/`, while public design doctrine is authored under `apps/web/docs/design/`.
 
 This document defines the architectural patterns, deployment strategies, and enforcement rules that govern how APT projects are built, organized, and delivered.
 
@@ -29,17 +29,6 @@ Design Architecture at APT is about **predictable delivery**. It's the scaffoldi
 ---
 
 
-## Content Management
-
-For how to manage Insights and Portfolio content, and documentation requirements for changes to content structure, navigation, or design, see:
-- 'Content Management' in [README.md](../../../README.md)
-- [DOCUMENTATION_INDEX.md](../../../DOCUMENTATION_INDEX.md)
-- [apps/web/docs/design/decision-log.md](./decision-log.md)
-
-All changes to content structure, navigation, or design must be documented in the above files.
-
----
-
 ## Structural Patterns
 
 ### Monorepo Layout
@@ -51,17 +40,12 @@ All changes to content structure, navigation, or design must be documented in th
 │  └─ worker/               # Cloudflare Worker (Hono API)
 │
 ├─ packages/
-│  ├─ ui/                   # Shared UI components
-│  ├─ config/               # Design tokens, constants
-│  └─ utils/                # Shared pure utilities
+│  ├─ ui/                   # Shared APT presentational primitives
+│  ├─ config/               # Shared tokens and config contracts
+│  ├─ knowledge/            # Shared content/domain/assistant contracts
+│  └─ utils/                # Shared pure utilities if activated
 │
-├─ docs/
-│  ├─ architecture.md
-│  ├─ api.md
-│  └─ ai.md
-│
-├─ ai/
-│  └─ prompts/              # Versioned AI prompts
+├─ docs/                    # Internal repo/process/engineering docs
 │
 ├─ .github/
 │  └─ workflows/
@@ -78,7 +62,7 @@ All changes to content structure, navigation, or design must be documented in th
 | No frontend logic in `worker/` | Separation of concerns |
 | No backend logic in `web/` | Security boundary |
 | Shared logic lives in `packages/` | Single source of truth |
-| AI prompts live in `ai/prompts/` | Versioned, auditable |
+| Web-owned prompts live in `apps/web/ai/prompts/` | Versioned, auditable |
 
 ---
 
@@ -161,15 +145,12 @@ interface APIError {
 
 ### File Structure
 
-```
-ai/
-├─ prompts/
-│  ├─ system.md           # Base system prompts
-│  ├─ api-maintainer.md   # API code generation
-│  ├─ design-maintainer.md # Design system guidance
-│  └─ repo-maintainer.md  # Repo structure guidance
-│
-└─ README.md              # AI usage documentation
+```text
+apps/web/ai/
+└─ prompts/
+   ├─ api-maintainer.md
+   ├─ design-maintainer.md
+   └─ repo-maintainer.md
 ```
 
 ### Routing Pattern
@@ -243,11 +224,10 @@ app.post('/api/ai/generate', authMiddleware, rateLimiter, async (c) => {
 
 ```
 # CODEOWNERS
-/apps/web/           @frontend-team
-/apps/worker/        @backend-team
-/packages/ui/        @design-team
-/ai/prompts/         @ai-team
-/docs/               @all
+/apps/web/              @frontend-team
+/apps/web/ai/prompts/   @ai-team
+/apps/worker/           @backend-team
+/docs/                  @all
 ```
 
 ---
@@ -256,26 +236,33 @@ app.post('/api/ai/generate', authMiddleware, rateLimiter, async (c) => {
 
 ### APT Site Architecture
 
-**Pattern:** Static-first portfolio with optional API layer
+**Pattern:** Static-first portfolio with active worker-backed API surface
 
 ```
 apt-site/
-├─ src/                    # React frontend (single app, no monorepo needed)
-│  ├─ components/apt/      # APT design system
-│  ├─ routes/              # Page components
-│  ├─ data/                # Content registries
-│  └─ theme/               # Design tokens
+├─ apps/
+│  ├─ web/
+│  │  ├─ routes/           # Page components and shell
+│  │  ├─ content/          # Authored public content source
+│  │  ├─ docs/design/      # Authored design doctrine
+│  │  ├─ public/           # Generated runtime content/docs/data
+│  │  └─ ai/prompts/       # Versioned web-owned AI instructions
+│  └─ worker/              # Active API and AI routing surface
 │
-├─ docs/design/            # Portable specifications
-├─ ai/prompts/             # AI agent instructions
-└─ public/                 # Static assets
+├─ packages/               # Shared cross-app contracts
+│  ├─ ui/
+│  ├─ config/
+│  └─ knowledge/
+│
+├─ docs/                   # Internal repo/process documentation
+└─ wrangler.toml           # Pages config (worker config lives with worker)
 ```
 
 **Decisions:**
-- Single app (not monorepo) due to portfolio scope
-- No worker API initially (content is static)
-- Design system is local (not a shared package)
-- AI prompts live with the project
+- Monorepo keeps deploy/config boundaries explicit
+- Web remains static-first, with worker endpoints added where needed
+- Shared design-system primitives live in `packages/ui`, with app composition in `apps/web`
+- Web-owned prompts live under `apps/web/ai/prompts`
 
 ### Production Microservice
 
@@ -309,7 +296,7 @@ service/
 |--------------|---------|------|
 | **Flat repo** | No clear ownership | Organize into apps/packages |
 | **Shared mutable state** | Race conditions | Isolate per-request |
-| **Inline prompts** | Unversioned, untestable | Extract to `ai/prompts/` |
+| **Inline prompts** | Unversioned, untestable | Extract to `apps/web/ai/prompts/` |
 | **Manual deploys** | Inconsistent, error-prone | CI/CD automation |
 | **Missing boundaries** | Spaghetti dependencies | Enforce via linting |
 | **Undocumented APIs** | Integration friction | Schema-first design |
@@ -350,4 +337,4 @@ service/
 
 - [APT Design System](./APT-DESIGN-SYSTEM.md) — Visual tokens and components
 - [APT Design Thinking](./APT-DESIGN-THINKING.md) — Problem-solving methodology
-- [Decision Log](./decision-log.md) — Architectural decision records
+- Internal review artifacts such as decision logs remain source-side support docs and are not part of the public design export by default

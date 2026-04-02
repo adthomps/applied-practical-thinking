@@ -7,7 +7,6 @@ import { AptCard, AptButton, AptTag } from "@/components/apt";
 import {
   ExternalLink,
   Mail,
-  Phone,
   MapPin,
   Calendar,
   Github,
@@ -48,41 +47,46 @@ function AnimatedRole({ roles }: { roles: readonly string[] }) {
 }
 
 export default function About() {
-  const [labsCount, setLabsCount] = useState(0);
+  const [experimentsCount, setExperimentsCount] = useState(0);
 
   useEffect(() => {
     fetchContentIndex("labs")
-      .then((items) => setLabsCount(items.length))
-      .catch(() => setLabsCount(0));
+      .then((items) => setExperimentsCount(items.length))
+      .catch(() => setExperimentsCount(0));
   }, []);
 
   const [insightsCount, setInsightsCount] = useState(0);
   useEffect(() => {
-    fetchContentIndex("blog")
-      .then((items) => setInsightsCount(items.length))
+    Promise.all([
+      fetchContentIndex("blog"),
+      fetchContentIndex("guides"),
+      fetchContentIndex("podcasts"),
+      fetchContentIndex("case-studies"),
+    ])
+      .then(([blog, guides, podcasts, caseStudies]) => setInsightsCount(blog.length + guides.length + podcasts.length + caseStudies.length))
       .catch(() => setInsightsCount(0));
   }, []);
 
   const projectStats = [
     {
-      label: "Labs",
-      count: labsCount,
+      label: "Experiments",
+      count: experimentsCount,
       icon: Play,
-      path: "/labs",
+      path: "/experiments",
       color: "text-primary",
     },
     {
-      label: "Insights",
+      label: "Learn",
       count: insightsCount,
       icon: Book,
-      path: "/insights",
+      path: "/learn",
       color: "text-accent",
     },
     {
       label: "Systems",
       count: systems.length,
       icon: Settings,
-      path: "/systems",
+      path: "/design/systems",
       color: "text-muted-foreground",
     },
   ];
@@ -92,25 +96,25 @@ export default function About() {
       label: "GitHub",
       icon: Github,
       url: authorConfig.social.github,
-      color: "text-[#6e5494]", // GitHub purple
+      color: "text-primary",
     },
     {
       label: "LinkedIn",
       icon: Linkedin,
       url: authorConfig.social.linkedin,
-      color: "text-[#0077b5]", // LinkedIn blue
+      color: "text-accent",
     },
     {
       label: "Flickr",
       icon: Globe, // Replace with a Flickr icon if available
       url: authorConfig.social.flickr,
-      color: "text-[#ff0084]", // Flickr pink
+      color: "text-foreground",
     },
     {
-      label: "Portfolio",
+      label: "APT Site",
       icon: Globe,
       url: authorConfig.social.portfolio,
-      color: "text-[#1ec773]", // Portfolio green
+      color: "text-muted-foreground",
     },
   ];
 
@@ -156,7 +160,7 @@ export default function About() {
                 {/* CTA Buttons */}
                 <div className="flex flex-wrap gap-3 justify-center md:justify-start">
                   <AptButton variant="primary" size="lg" asChild>
-                    <Link to="/labs">View My Work</Link>
+                    <Link to="/experiments">View My Work</Link>
                   </AptButton>
                   <AptButton variant="outline" size="lg" asChild>
                     <a href="#profile">
@@ -313,15 +317,10 @@ export default function About() {
               photography gallery.
             </p>
             <AptButton variant="outline" size="sm" asChild>
-              <a
-                href={siteConfig.appliedGalleryUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2"
-              >
+              <Link to="/about/visual-gallery" className="inline-flex items-center gap-2">
                 {siteConfig.appliedGalleryLabel}
                 <ExternalLink className="h-3.5 w-3.5" />
-              </a>
+              </Link>
             </AptButton>
           </AptCard>
         </div>

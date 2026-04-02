@@ -8,7 +8,7 @@ export const siteConfig = {
   disclaimer: "This is a demonstration, not a production system.",
   
   // External links
-  appliedGalleryUrl: "https://appliedpracticalthinking.com/portfolio/visual-gallery",
+  appliedGalleryUrl: "https://appliedpracticalthinking.com/about/visual-gallery",
   appliedGalleryLabel: "Applied Visual Gallery",
   
   // Primary Navigation with hover descriptions and dropdowns
@@ -18,85 +18,108 @@ export const siteConfig = {
       path: "/start",
       description: "New here? Start with the core ideas, examples, and how to navigate APT.",
     },
-    { 
-      label: "Insights", 
-      path: "/insights",
-      description: "Essays, podcasts, and case studies on applied thinking, systems, and execution.",
+    {
+      label: "Learn",
+      path: "/learn",
+      description: "Guides, articles, podcasts, and worked examples for applied thinking in practice.",
       children: [
-        { 
-          label: "Blogs", 
-          path: "/insights/blogs",
+        {
+          label: "Articles",
+          path: "/learn/articles",
           description: "Short- to medium-form writing on applied ideas and practical systems.",
         },
-        { 
-          label: "Podcasts", 
-          path: "/insights/podcasts",
+        {
+          label: "Podcasts",
+          path: "/learn/podcasts",
           description: "Audio discussions exploring thinking, frameworks, and real-world tradeoffs.",
         },
-        { 
-          label: "Guides", 
-          path: "/insights/guides",
-          description: "Step-by-step walkthroughs and practical how-tos for applied thinking.",
-        },
-        { 
-          label: "Case Studies", 
-          path: "/insights/case-studies",
-          description: "Narrative breakdowns of problems, constraints, decisions, and outcomes.",
+        {
+          label: "Guides",
+          path: "/learn/guides",
+          description: "Practical walkthroughs, reference guides, and worked examples.",
         },
       ],
     },
-      { 
-        label: "Systems", 
-        path: "/systems",
-        description: "Reusable platform patterns and reference architectures.",
-      },
-    { 
-      label: "Portfolio", 
-      path: "/portfolio",
-      description: "Applied work—concepts, frameworks, demos, and visual explorations.",
+    {
+      label: "Experiments",
+      path: "/experiments",
+      description: "Concepts, mocks, and runnable proof that make ideas tangible before they become stable references.",
       children: [
-        { 
-          label: "Labs", 
-          path: "/portfolio/labs",
-          description: "AI-assisted concept construction using tools like Lovable, Figma Make, and Copilot.",
-          tagline: "Ideas given shape—early, imperfect, and intentional.",
+        {
+          label: "All",
+          path: "/experiments",
+          description: "The full index of exploratory work across concepts, mocks, and live demos.",
+          tagline: "Exploration made legible.",
         },
-        { 
-          label: "Design System", 
-          path: "/portfolio/design-system",
-          description: "How APT applies design systems—tokens, semantics, components, and constraints.",
-          tagline: "Designing for clarity, consistency, and scale.",
+        {
+          label: "Concepts",
+          path: "/experiments/concepts",
+          description: "Early conceptual builds and prototype directions that give shape to an idea.",
+          tagline: "The first coherent form of an idea.",
         },
-        { 
-          label: "Design Thinking", 
-          path: "/portfolio/design-thinking",
-          description: "Problem framing, assumptions, constraints, and decision-making in practice.",
-          tagline: "How problems are defined before solutions exist.",
+        {
+          label: "Mocks",
+          path: "/experiments/mocks",
+          description: "Framed representations that clarify flow, layout, and experience before implementation hardens.",
+          tagline: "Structured representations before systems settle.",
         },
-        { 
-          label: "Design Architecture", 
-          path: "/portfolio/design-architecture",
-          description: "Repo layout, deployment flows, API contracts, and enforcement rules.",
-          tagline: "Structure exists to prevent failure, not to enable creativity.",
-        },
-        { 
-          label: "Live Demos", 
-          path: "/portfolio/live-demos",
+        {
+          label: "Live Demos",
+          path: "/experiments/live-demos",
           description: "Real, running demos that make concepts observable and testable.",
           tagline: "Not products—clickable proof.",
         },
-        { 
-          label: "Visual Gallery", 
-          path: "/portfolio/visual-gallery",
+      ],
+    },
+    {
+      label: "Design",
+      path: "/design",
+      description: "APT's design doctrine, standards, thinking, and architecture.",
+      children: [
+        {
+          label: "Design Thinking",
+          path: "/design/thinking",
+          description: "Problem framing, assumptions, constraints, and decision-making in practice.",
+          tagline: "How problems are defined before solutions exist.",
+        },
+        {
+          label: "Design System",
+          path: "/design/system",
+          description: "How APT applies design systems—tokens, semantics, components, and constraints.",
+          tagline: "Designing for clarity, consistency, and scale.",
+        },
+        {
+          label: "Design Architecture",
+          path: "/design/architecture",
+          description: "Repo layout, deployment flows, API contracts, and enforcement rules.",
+          tagline: "Structure exists to prevent failure, not to enable creativity.",
+        },
+        {
+          label: "Systems",
+          path: "/design/systems",
+          description: "Stable system references that capture architecture, decisions, and reusable models inside the APT doctrine.",
+          tagline: "Reference models governed by the design doctrine.",
+        },
+        {
+          label: "Content Strategy",
+          path: "/design/content-strategy",
+          description: "How APT organizes information so people can understand, navigate, and apply it.",
+          tagline: "Information architecture made visible.",
+        },
+      ],
+    },
+    {
+      label: "About",
+      path: "/about",
+      description: "How I think, what I work on, and why APT exists.",
+      children: [
+        {
+          label: "Visual Gallery",
+          path: "/about/visual-gallery",
           description: "Photography and drone work framed as visual exploration under constraint.",
           tagline: "Seeing patterns through composition and limitation.",
         },
       ],
-    },
-    { 
-      label: "About", 
-      path: "/about",
-      description: "How I think, what I work on, and why APT exists.",
     },
   ],
 } as const;
@@ -123,7 +146,7 @@ export const authorConfig = {
   social: {
     github: "https://github.com/adthomps",
     linkedin: "https://www.linkedin.com/in/adam-thompson-a547468/",
-    portfolio: "https://appliedpracticalthinking.com/portfolio",
+    portfolio: "https://appliedpracticalthinking.com",
     flickr: "https://www.flickr.com/photos/adam-p-thompson/",
   },
 } as const;

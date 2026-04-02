@@ -14,10 +14,12 @@ export default function PortfolioLiveDemos() {
   });
   const [demos, setDemos] = useState<ContentIndexItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetchContentIndex("demos")
       .then((data) => setDemos(data))
+      .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
   }, []);
 
@@ -65,8 +67,7 @@ export default function PortfolioLiveDemos() {
           Live Demos
         </h1>
         <p className="text-lg text-muted-foreground">
-          Real, running demos that make concepts observable and testable. Not
-          products—clickable proof.
+          Interactive working demos nested under Experiments. This is the runnable proof layer for concepts, mocks, and prototypes that have become observable enough to click through.
         </p>
       </div>
 
@@ -80,6 +81,8 @@ export default function PortfolioLiveDemos() {
 
       {loading ? (
         <div className="text-center py-12 text-muted-foreground">Loading…</div>
+      ) : error ? (
+        <div className="text-center py-12 text-destructive">{error}</div>
       ) : sortedDemos.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {sortedDemos.map((demo) => (

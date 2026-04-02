@@ -1,161 +1,97 @@
-# Applied Practical Thinking (APT) Monorepo
+# Applied Practical Thinking
 
-A modern, monorepo-based portfolio and demo platform for Applied Practical Thinking.
+APT is a monorepo for the Applied Practical Thinking platform.
 
----
+## Current repo shape
 
-## Project Overview
+```text
+apps/
+  web/       # Public Vite + React application
+  worker/    # Cloudflare Worker API/AI subsystem
+packages/
+  ui/        # Shared APT presentational primitives
+  config/    # Shared token/config contracts
+  knowledge/ # Shared content/domain/assistant contracts
+docs/        # Internal project/process documentation
+```
 
-- **Frontend:** Vite + React + TypeScript + Tailwind CSS + shadcn/ui
-- **Design System:** All tokens, patterns, and docs in `apps/web/docs/design/`
-- **AI Prompts:** Versioned in `apps/worker/src/ai/prompts/`
-- **Monorepo:** All code in `apps/` and `packages/`
-- **API:** Internal API via Cloudflare Worker (`apps/worker`), all UI fetches via `/api/*`
-- **Static-first:** SPA deploys to Cloudflare Pages; API is optional but recommended for dynamic features
+Authored site content and design docs live under `apps/web/`. Shared package contracts live under `packages/`.
 
----
+## Documentation model
 
-## Getting Started
+- `README.md` is the repo entrypoint and operating overview
+- `docs/` contains internal engineering, deployment, maintenance, workflow, and agent-facing repo docs
+- `apps/web/content/` contains authored external/public content that renders on the site
+- `apps/web/docs/design/` contains external-first design doctrine and public design reference docs
+- internal design support docs may live alongside the design doctrine source, but are not automatically public
+- `apps/web/public/` is generated runtime output only:
+  - `apps/web/public/content/`
+  - `apps/web/public/docs/`
+  - `apps/web/public/data/`
 
-### Prerequisites
+Do not edit copied markdown under `apps/web/public/` as authored source.
 
-- [Node.js](https://nodejs.org/) (v18+ recommended)
-- [pnpm](https://pnpm.io/) (preferred package manager)
+## Getting started
 
-### Install dependencies
+Prerequisites:
+
+- Node.js 20+
+- `pnpm`
+
+Install dependencies:
 
 ```sh
 pnpm install
 ```
 
-### Start the web app
+Run the web app:
 
 ```sh
-pnpm --filter ./apps/web dev
+pnpm dev
 ```
 
-### (Optional) Start the worker API
+Run the worker:
 
 ```sh
-pnpm --filter ./apps/worker dev
+pnpm dev:worker
 ```
-
-### Build apps
 
 Build the web app:
 
 ```sh
-pnpm --filter ./apps/web build
+pnpm build
 ```
 
-Build the worker:
-
-```sh
-pnpm --filter ./apps/worker build
-```
-
-> **Note:** There is no root-level build. Always build each app/package directly.
-
-### Run tests
-
-Run all tests (from root):
+Run tests:
 
 ```sh
 pnpm test
 ```
 
-Or per package:
+You can also run each app directly from its workspace:
 
 ```sh
-pnpm --filter ./apps/web test
-pnpm --filter ./apps/worker test
+pnpm --dir apps/web dev
+pnpm --dir apps/web build
+pnpm --dir apps/worker dev
 ```
 
----
+## Content and design guardrails
 
-
-## Content Management
-
-### Insights vs. Portfolio
-
-- **Insights**: Narrative content (blogs, podcasts, guides, case studies)
-  - Markdown in `apps/web/content/<type>/`
-  - Indexed in `apps/web/data/<type>-index.json`
-  - Shown on `/insights` and subpages, with area cards for each type
-- **Portfolio**: Artifact/content showcase (labs, demos, design system, gallery, etc.)
-  - Markdown in `apps/web/content/<type>/`
-  - Indexed in `apps/web/data/<type>-index.json`
-  - Shown on `/portfolio` and subpages, with area cards for each type
-
-### Adding or Updating Content
-
-1. Add or edit a markdown file in the appropriate `content/<type>/` folder.
-2. Run the content index build script: `pnpm --filter ./apps/web run build-content-index`
-3. The new or updated item will appear in the relevant index and on the site (this ensures public data is always in sync).
-
-### Cross-linking
-
-- Use frontmatter fields like `relatedLabs`, `relatedInsights` in markdown to create relationships.
-- Labs can link to Insights (and vice versa) for richer navigation, but avoid duplication.
-
-### Area Cards & Navigation
-
-- Both `/insights` and `/portfolio` use a grid of area cards at the top, sourced from navigation config (`site.ts`).
-- All navigation and section changes must be reflected in `apps/web/data/site.ts`.
-
-### Documentation & Guardrails
-
-- **All changes to content structure, navigation, or design must be documented in:**
-  - `apps/web/docs/design/decision-log.md` (for deviations/decisions)
-  - `README.md` and `DOCUMENTATION_INDEX.md` (for high-level structure)
-- **Follow the monorepo and design system rules in:**
-  - `PROJECT_RULES.md`
-  - `apps/web/docs/design/APT-DESIGN-ARCHITECTURE.md`
-
----
-
-```
-apps/
-  web/      # Frontend SPA (Vite + React)
-  worker/   # Cloudflare Worker API
-packages/
-  ui/       # Shared UI components
-  config/   # Design tokens, constants
-  utils/    # Shared utilities
-  core/     # Business logic, validation, adapters
-```
-
-- All design system docs/tokens: `apps/web/docs/design/`
-- AI prompts: `apps/worker/src/ai/prompts/`
-- Public assets: `apps/web/public/`
-- Internal docs: `docs/` (project/process/guardrails)
-- Site-facing docs: `apps/web/docs/` (user-facing, e.g. guides, help)
-
----
-
-## Deployment
-
-- **Web:** Deploy to Cloudflare Pages (auto-deploy on push to main)
-- **Worker:** Deploy to Cloudflare Workers (see `wrangler.toml`)
-- **Preview:** Any branch push → `{branch}.project.pages.dev`
-- **Production:** Release tag → `project.pages.dev`
-
----
-
-## Contributing
-
-- Use only semantic tokens for colors/styles (see `packages/config`)
-- All changes must be documented in `apps/web/docs/design/decision-log.md`
-- See `PROJECT_RULES.md` and `PATTERNS.md` for architecture and guardrails
-- All prompts must be file-based and versioned in `apps/worker/src/ai/prompts/`
-- No business logic in UI or route handlers; use services and core packages
-
----
+- Source content lives in `apps/web/content/` and authored registries live in `apps/web/data/`
+- Source design doctrine lives in `apps/web/docs/design/`
+- Internal repo/operator guidance lives in `docs/`
+- Shared APT primitives live in `packages/ui/` and are re-exported through `apps/web/components/apt/` during the migration
+- Shared TypeScript token contracts live in `packages/config/`
+- Shared content/domain contracts live in `packages/knowledge/`
+- `apps/web/public/` is output-oriented:
+  - copied markdown/docs/indexes are generated artifacts
+  - authored markdown/docs should not be edited in `public/`
+- Use semantic design tokens only; avoid raw color classes in app components
 
 ## References
 
 - [APT Design Architecture](apps/web/docs/design/APT-DESIGN-ARCHITECTURE.md)
+- [APT Design System](apps/web/docs/design/APT-DESIGN-SYSTEM.md)
 - [Decision Log](apps/web/docs/design/decision-log.md)
-- [Quick Reference](QUICK_REFERENCE.md)
 - [Documentation Index](DOCUMENTATION_INDEX.md)
-

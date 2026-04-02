@@ -42,6 +42,6 @@ All designs must work across:
 
 ## Review Process
 
-1. Design changes reviewed against [review-checklist.md](review-checklist.md)
+1. Design changes reviewed against the internal review checklist
 2. Product changes reviewed for consistency
-3. Deviations logged in [decision-log.md](decision-log.md)
+3. Deviations logged in the internal decision log

@@ -23,6 +23,7 @@ import {
   Repeat,
   FileText,
 } from "lucide-react";
+import { tryGetWorkerApiUrl } from "@/src/services/api";
 
 interface FrameworkCardProps {
   icon: React.ReactNode;
@@ -109,6 +110,8 @@ function CaseStudyPreview({ title, problem, constraint, outcome, tags }: CaseStu
 }
 
 export default function PortfolioDesignThinking() {
+  const thinkingDocUrl = tryGetWorkerApiUrl("/api/design/docs/thinking");
+  const architectureDocUrl = tryGetWorkerApiUrl("/api/design/docs/architecture");
   const frameworks = [
     {
       icon: <Target className="h-5 w-5" />,
@@ -240,9 +243,9 @@ export default function PortfolioDesignThinking() {
     },
     {
       title: "Content Taxonomy",
-      problem: "Insights and Portfolio content overlapped, confusing visitors",
-      constraint: "Hard separation: Insights = narrative, Portfolio = artifacts",
-      outcome: "Clear mental model, bidirectional cross-linking for context",
+      problem: "Learning content, system references, and experiments overlapped, confusing visitors",
+      constraint: "Clarify Learn, Systems, Labs, and Design without breaking older links",
+      outcome: "A clearer intent-based mental model with less navigation ambiguity",
       tags: ["IA", "Content Strategy"],
     },
   ];
@@ -262,7 +265,12 @@ export default function PortfolioDesignThinking() {
           This is how problems are defined before solutions exist—the thinking that precedes the doing.
         </p>
         <AptButton variant="outline" asChild>
-          <a href="/docs/design/APT-DESIGN-THINKING.md" target="_blank">
+          <a
+            href={thinkingDocUrl || "#"}
+            target={thinkingDocUrl ? "_blank" : undefined}
+            rel={thinkingDocUrl ? "noopener noreferrer" : undefined}
+            aria-disabled={!thinkingDocUrl}
+          >
             <FileText className="h-4 w-4" />
             View Full Framework
           </a>
@@ -314,8 +322,8 @@ export default function PortfolioDesignThinking() {
             </p>
           </div>
           <AptButton variant="ghost" asChild>
-            <Link to="/insights/case-studies">
-              All Case Studies <ArrowRight className="h-4 w-4" />
+            <Link to="/learn/guides">
+              All Guides <ArrowRight className="h-4 w-4" />
             </Link>
           </AptButton>
         </div>
@@ -326,7 +334,7 @@ export default function PortfolioDesignThinking() {
         </div>
       </section>
 
-      {/* Decision Log CTA */}
+      {/* Next Step CTA */}
       <section>
         <AptCard variant="feature" padding="large">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -335,15 +343,20 @@ export default function PortfolioDesignThinking() {
                 <Brain className="h-6 w-6" />
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-1">Decision Log</h3>
+                <h3 className="text-xl font-semibold mb-1">Design Architecture</h3>
                 <p className="text-muted-foreground">
-                  Every significant design decision is documented with context, alternatives, and rationale.
+                  See how APT turns design thinking into delivery structure, ownership boundaries, and repeatable system decisions.
                 </p>
               </div>
             </div>
             <AptButton asChild>
-              <a href="/docs/design/decision-log.md" target="_blank">
-                View Decision Log
+              <a
+                href={architectureDocUrl || "#"}
+                target={architectureDocUrl ? "_blank" : undefined}
+                rel={architectureDocUrl ? "noopener noreferrer" : undefined}
+                aria-disabled={!architectureDocUrl}
+              >
+                View Architecture
                 <ArrowRight className="h-4 w-4" />
               </a>
             </AptButton>

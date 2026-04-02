@@ -11,3 +11,8 @@ This directory contains role-specific prompts for AI agents.
 ## Usage
 
 Reference the appropriate prompt when working on specific areas of the codebase.
+
+These prompts are internal operating instructions. Public-facing content and doctrine should be sourced from:
+
+- `apps/web/content/`
+- approved public docs in `apps/web/docs/design/`

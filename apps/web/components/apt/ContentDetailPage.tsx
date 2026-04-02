@@ -96,10 +96,10 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
     // Use item's id for internal routing if available
     const k = key.toLowerCase();
     const id = item?.id || href.replace(/^\/+/, "");
-    if (k.includes("blog")) return `/blog/${id}`;
-    if (k.includes("podcast")) return `/podcasts/${id}`;
-    if (k.includes("guide")) return `/guides/${id}`;
-    if (k.includes("case")) return `/case-studies/${id}`;
+    if (k.includes("blog")) return `/learn/${id}`;
+    if (k.includes("podcast")) return `/learn/${id}`;
+    if (k.includes("guide")) return `/learn/${id}`;
+    if (k.includes("case")) return `/learn/${id}`;
     return href;
   };
 
@@ -243,7 +243,11 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
           {markdown ? (
             <div>
               <article className="prose-custom">
-                <MarkdownContent markdown={markdown} contentPath={item.contentPath} />
+                <MarkdownContent
+                  markdown={markdown}
+                  contentPath={item.contentPath}
+                  assetBasePath={typeof item.assetBasePath === "string" ? item.assetBasePath : undefined}
+                />
               </article>
             </div>
           ) : null}

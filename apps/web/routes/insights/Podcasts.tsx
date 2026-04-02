@@ -1,14 +1,7 @@
 import { useState, useMemo, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { AptCard } from "@/components/apt/AptCard";
-import { AptCardTitle, AptCardDescription } from "@/components/apt/AptCard";
-import { InsightMeta } from "@/components/apt/InsightMeta";
 import { InsightCard } from "@/components/apt/InsightCard";
-import { AptTag } from "@/components/apt/AptTag";
 import { ContentFilters, FilterConfig, SelectedFilters } from "@/components/apt";
 import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
-import { Podcast, Clock } from "lucide-react";
-import { ArrowRight } from "lucide-react";
 
 export default function InsightsPodcasts() {
   const [podcasts, setPodcasts] = useState<ContentIndexItem[]>([]);
@@ -49,7 +42,7 @@ export default function InsightsPodcasts() {
     return <div className="container py-12 text-center">Loading podcasts…</div>;
   }
   if (error) {
-    return <div className="container py-12 text-center text-red-500">{error}</div>;
+    return <div className="container py-12 text-center text-destructive">{error}</div>;
   }
 
   return (
@@ -73,7 +66,7 @@ export default function InsightsPodcasts() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {filteredPodcasts.map((podcast) => (
-          <InsightCard key={podcast.id} insight={podcast} to={`/podcasts/${podcast.id}`} />
+          <InsightCard key={podcast.id} insight={podcast} to={`/learn/${podcast.id}`} />
         ))}
       </div>
 

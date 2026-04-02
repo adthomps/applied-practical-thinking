@@ -91,7 +91,7 @@ Portfolio sections are managed as structured data and/or Markdown in `apps/web/d
 - Place images, audio, or video for labs in `apps/web/public/content/labs/<slug>/` and reference them in the object or markdown.
 
 ### Design System
-- Documented in `apps/web/docs/design/` and tokens in `packages/config` and `apps/web/theme/aptTokens.ts`.
+- Documented in `apps/web/docs/design/` with shared token contracts in `packages/config` (`apps/web/theme/aptTokens.ts` is the compatibility re-export).
 - To add a new design system doc, create a Markdown file in `apps/web/docs/design/`.
 - To update tokens, edit the relevant files and log changes in `decision-log.md`.
 
@@ -183,15 +183,15 @@ All insights content (blogs, podcasts, guides, case studies) is managed as Markd
 - Update or add files as needed (see `DOCUMENTATION_INDEX.md` for a list).
 
 ### Site Docs (User-Facing)
-- All user-facing docs (guides, help, etc.) are in `apps/web/docs/`.
-- Add new Markdown files for new guides or help pages.
-- Edit existing files to update content.
+- APT design doctrine lives in `apps/web/docs/design/`.
+- Public learning/content markdown lives in `apps/web/content/`.
+- Generated runtime copies in `apps/web/public/docs/` and `apps/web/public/content/` should not be edited as authored source.
 
 ---
 
 ## 5. Design System
 
-- All design tokens are in `packages/config` and `apps/web/theme/aptTokens.ts`.
+- Shared design tokens are authored in `packages/config`, with `apps/web/theme/aptTokens.ts` kept as the compatibility re-export.
 - To update tokens, edit these files and document changes in `apps/web/docs/design/decision-log.md`.
 - All UI components should use Apt* components from `apps/web/components/apt/`.
 - For new design patterns, update docs in `apps/web/docs/design/`.
@@ -200,7 +200,7 @@ All insights content (blogs, podcasts, guides, case studies) is managed as Markd
 
 ## 6. AI Prompts & Agents
 
-- All AI prompt files are in `apps/worker/src/ai/prompts/`.
+- All AI prompt files are in `apps/web/ai/prompts/`.
 - To add a new prompt, create a new file in this folder and version it.
 - To edit a prompt, update the file and increment the version if needed.
 - All agent logic should be in `apps/worker/src/ai/` and reference prompt files.
@@ -210,7 +210,7 @@ All insights content (blogs, podcasts, guides, case studies) is managed as Markd
 
 ## 7. Business Logic & Shared Packages
 
-- All business logic and data adapters are in `packages/core`.
+- Shared content/domain/assistant contracts are in `packages/knowledge`, and reusable UI primitives are in `packages/ui`.
 - Shared UI components: `packages/ui`
 - Shared utilities: `packages/utils`
 - Only update these with reviewed, tested changes.

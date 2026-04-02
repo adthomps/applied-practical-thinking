@@ -1,33 +1,37 @@
-# Architecture
-
-## Monorepo Layout
-
-- `apps/web`: Vite + React SPA (UI only)
-- `apps/worker`: Cloudflare Worker (API only)
-- `packages/ui`: Presentational components
-- `packages/config`: Design tokens/config
-- `packages/core`: Business logic/data adapters
-
-## Data Flow
-- UI fetches from `/api/*` (internal API worker)
-- Public API at `/v1/*` (if present)
-
-## Boundaries
-- No business logic in UI or routes
-- All logic in services or shared packages
-- No cross-imports from `apps/*` to `packages/core`
-
-## Data Layers
-- If D1/KV/R2/Queues are used, see `docs/PLATFORM_IDS.md`# ARCHITECTURE.md
+# ARCHITECTURE.md
 
 ## APT Monorepo Architecture
 
-- All code lives under `apps/` (web, worker)
-- Shared code in `packages/` (ui, config, utils)
-- Design system in `apps/web/docs/design/`
-- AI prompts in `apps/web/ai/prompts/`
-- Internal API: `/api/*` (worker)
-- Public API: `/v1/*` (worker, versioned)
-- SPA fetches only relative `/api/...` endpoints
-- packages/core must not import from apps
-- See `wrangler.toml` for Cloudflare bindings (D1/KV/R2 if present)
+- `apps/web`: public site, routing, shell, content source, generated-static runtime content
+- `apps/worker`: Cloudflare Worker routes, AI/vector/indexing runtime
+- `packages/ui`: shared presentational APT primitives
+- `packages/config`: shared token/config contracts
+- `packages/knowledge`: shared content/domain/assistant contracts
+
+## Data Flow
+
+- The web app can consume:
+  - generated static indexes/content/docs under `apps/web/public/*`
+  - relative `/api/*` endpoints served by `apps/worker`
+- Public API routes, if introduced, live under `/v1/*` in the worker
+
+## Boundaries
+
+- No app imports from another app
+- Shared code flows only from `packages/*` into apps
+- UI/business orchestration stays in app services, not presentational packages
+- Route handlers stay thin; worker logic lives below the route layer
+- Prompts are file-based and live in `apps/web/ai/prompts/`
+
+## Source vs Generated
+
+- Source of truth:
+  - `apps/web/content/`
+  - `apps/web/docs/design/`
+  - `apps/web/data/`
+- Generated runtime copies:
+  - `apps/web/public/content/`
+  - `apps/web/public/docs/`
+  - `apps/web/public/data/`
+
+If D1/KV/R2/Queues are used, see `docs/PLATFORM_IDS.md`.

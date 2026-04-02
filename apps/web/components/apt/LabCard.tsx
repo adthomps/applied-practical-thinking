@@ -14,24 +14,22 @@ import {
 import {
   Lightbulb,
   Figma,
-  Play,
   ExternalLink,
   Share2,
   Book,
-  Image as ImageIcon,
   ChevronUp,
 } from "lucide-react";
 
 const typeIcons: Record<string, typeof Lightbulb> = {
   concept: Lightbulb,
   mock: Figma,
-  demo: Play,
+  demo: Lightbulb,
 };
 
 const typeLabels: Record<string, string> = {
   concept: "Concept",
   mock: "Mock",
-  demo: "Demo",
+  demo: "Concept",
 };
 
 interface LabCardProps {
@@ -58,7 +56,7 @@ export function LabCard({ lab }: LabCardProps) {
   const links = lab.links || {};
   const hasLinks = links.demo || links.figma || links.lovable || links.repo;
 
-  const basePath = "/portfolio/labs";
+  const basePath = "/experiments";
   const labId = lab.slug || lab.id;
 
   // ...existing code...
@@ -77,7 +75,7 @@ export function LabCard({ lab }: LabCardProps) {
             ) : (
               <div className="flex flex-col items-center justify-center gap-2 text-muted-foreground/50 h-full w-full">
                 <TypeIcon className="h-8 w-8" />
-                <span className="text-xs">{typeLabels[lab.type as string] || lab.type || "Lab"}</span>
+                <span className="text-xs">{typeLabels[lab.type as string] || lab.type || "Experiment"}</span>
               </div>
             )}
             {/* Type badge overlay */}
@@ -85,7 +83,7 @@ export function LabCard({ lab }: LabCardProps) {
               <div className="backdrop-blur-sm bg-background/80 rounded-md shadow px-0.5">
                 <AptTag variant="accent" className="bg-transparent">
                   <TypeIcon className="h-3 w-3 mr-1" />
-                  {typeLabels[lab.type as string] || lab.type || "Lab"}
+                  {typeLabels[lab.type as string] || lab.type || "Experiment"}
                 </AptTag>
               </div>
             </div>
@@ -137,30 +135,34 @@ export function LabCard({ lab }: LabCardProps) {
                   </AptTag>
                 ))}
                 {hasMoreTech && !showAllTech && (
-                  <button
+                  <AptButton
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
                       setShowAllTech(true);
                     }}
-                    className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+                    variant="link"
+                    size="sm"
+                    className="h-auto p-0 text-xs text-muted-foreground"
                   >
                     +{technologies.length - visibleTechCount} more
-                  </button>
+                  </AptButton>
                 )}
               </div>
               {showAllTech && hasMoreTech && (
-                <button
+                <AptButton
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
                     setShowAllTech(false);
                   }}
-                  className="text-xs text-muted-foreground hover:text-foreground transition-colors mt-1.5 flex items-center gap-0.5"
+                  variant="link"
+                  size="sm"
+                  className="mt-1.5 h-auto p-0 text-xs text-muted-foreground"
                 >
                   <ChevronUp className="h-3 w-3" />
                   Show less
-                </button>
+                </AptButton>
               )}
             </div>
           )}
@@ -213,8 +215,8 @@ export function LabCard({ lab }: LabCardProps) {
                     asChild
                   >
                     <span>
-                      <Play className="h-3.5 w-3.5 mr-1.5" />
-                      Demo
+                      <ExternalLink className="h-3.5 w-3.5 mr-1.5" />
+                      Open
                     </span>
                   </AptButton>
                 )}
@@ -253,7 +255,7 @@ export function LabCard({ lab }: LabCardProps) {
               onClick={async (e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                const url = window.location.origin + `/portfolio/labs/${lab.slug || lab.id}`;
+                const url = window.location.origin + `/experiments/${lab.slug || lab.id}`;
                 const result = await shareOrCopy({
                   title: lab.title,
                   url,

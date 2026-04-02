@@ -24,7 +24,7 @@
 
 **Expected:**
 - "Not found in APT docs yet."
-- Suggest adding to docs/design/accessibility.md
+- Suggest adding to `apps/web/docs/design/` if accessibility guidance becomes part of the design doctrine
 - No hallucinated answer
 
 ### Multi-Source
@@ -32,7 +32,7 @@
 > How does APT define design thinking?
 
 **Expected:**
-- Answer from docs/*thinking*
+- Answer from `apps/web/docs/design/APT-DESIGN-THINKING.md`
 - Citations to relevant section
 - Prefer higher-priority source if overlap
 

@@ -6,9 +6,15 @@ function isExternalUrl(url: string) {
   return /^https?:\/\//i.test(url);
 }
 
-function resolveAssetUrl(contentPath: string | undefined, rawUrl: string) {
+function resolveAssetUrl(contentPath: string | undefined, rawUrl: string, assetBasePath?: string) {
   if (!rawUrl) return rawUrl;
   if (rawUrl.startsWith("/") || isExternalUrl(rawUrl)) return rawUrl;
+
+  if (assetBasePath) {
+    const base = new URL(assetBasePath, window.location.origin);
+    const resolved = new URL(rawUrl, base);
+    return `${resolved.pathname}${resolved.search}${resolved.hash}`;
+  }
 
   const dir = contentPath ? contentPath.split("/").slice(0, -1).join("/") : "";
   const base = new URL(`/content/${dir ? `${dir}/` : ""}`, window.location.origin);
@@ -82,8 +88,8 @@ function renderInline(text: string) {
   return final;
 }
 
-export function MarkdownContent(props: { markdown: string; contentPath?: string }) {
-  const { markdown, contentPath } = props;
+export function MarkdownContent(props: { markdown: string; contentPath?: string; assetBasePath?: string }) {
+  const { markdown, contentPath, assetBasePath } = props;
 
   const elements = useMemo(() => {
     const lines = markdown.trim().split("\n");
@@ -184,7 +190,7 @@ export function MarkdownContent(props: { markdown: string; contentPath?: string 
       if (imgMatch) {
         flushLists(String(index));
         const alt = imgMatch[1];
-        const url = resolveAssetUrl(contentPath, imgMatch[2]);
+        const url = resolveAssetUrl(contentPath, imgMatch[2], assetBasePath);
         out.push(
           <figure key={`img-${index}`} className="my-6">
             <img
@@ -317,7 +323,7 @@ export function MarkdownContent(props: { markdown: string; contentPath?: string 
     flushLists("end");
 
     return out;
-  }, [markdown, contentPath]);
+  }, [markdown, contentPath, assetBasePath]);
 
   return <>{elements}</>;
 }

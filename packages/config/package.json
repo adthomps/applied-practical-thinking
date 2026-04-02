@@ -1,0 +1,11 @@
+{
+  "name": "@apt/config",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./tokens": "./src/tokens.ts",
+    "./aptTokens": "./src/aptTokens.ts"
+  }
+}

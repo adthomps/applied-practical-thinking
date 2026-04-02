@@ -98,8 +98,8 @@ Project needed to align with APT Design Architecture for predictable delivery, c
 
 **Decision:**
 - All frontend, docs, AI, and public assets moved under `apps/web/`.
-- Created `apps/worker/` and `packages/` for future backend and shared logic.
-- No backend logic present; static-first enforced.
+- Created `apps/worker/` and `packages/` for backend/API and future shared logic.
+- Static-first remains the primary delivery model, with active worker endpoints available where needed.
 - All design/architecture docs now under `apps/web/docs/design/`.
 - AI prompts under `apps/web/ai/prompts/`.
 

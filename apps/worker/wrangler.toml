@@ -1,0 +1,24 @@
+name = "applied-practical-thinking-worker"
+main = "src/index.ts"
+account_id = "257b7e468437a1105470c725617d9268"
+workers_dev = true
+compatibility_date = "2026-01-25"
+
+# Set PUBLIC_SITE_ORIGIN in Cloudflare for each environment so the standalone Worker
+# can read the Pages-hosted public content and design docs.
+
+[[vectorize]]
+binding = "VECTORIZE"
+index_name = "applied-practical-knowledge"
+remote = true
+
+[observability]
+[observability.logs]
+enabled = false
+invocation_logs = true
+
+[env.preview]
+# Configure PUBLIC_SITE_ORIGIN to the Pages preview URL for this branch/environment.
+
+[env.production]
+# Configure PUBLIC_SITE_ORIGIN to the production Pages site origin.

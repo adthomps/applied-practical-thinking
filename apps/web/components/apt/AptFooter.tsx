@@ -6,7 +6,7 @@ export function AptFooter() {
   return (
     <footer className="border-t border-border bg-background">
       <div className="container py-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="flex flex-col md:flex-row items-start justify-between gap-6">
           <div className="text-center md:text-left w-full">
             <p className="text-sm font-medium text-foreground">
               {siteConfig.name} — {siteConfig.fullName}
@@ -23,7 +23,15 @@ export function AptFooter() {
             </p>
           </div>
 
-          {/* Removed Applied Visual Gallery link for cleaner footer */}
+          <a
+            href={siteConfig.appliedGalleryUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            {siteConfig.appliedGalleryLabel}
+            <ExternalLink className="h-4 w-4" />
+          </a>
         </div>
       </div>
     </footer>

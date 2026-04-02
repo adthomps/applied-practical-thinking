@@ -12,17 +12,7 @@ import {
   AptTag,
   AptButton,
 } from "@/components/apt";
-import {
-  Play,
-  Zap,
-  FlaskConical,
-  ExternalLink,
-  Share2,
-  Beaker,
-  Image as ImageIcon,
-  ChevronUp,
-  Clock,
-} from "lucide-react";
+import { Play, Zap, FlaskConical, ExternalLink, Share2, Beaker, ChevronUp, Clock } from "lucide-react";
 
 const typeIcons: Record<string, typeof Play> = {
   interactive: Zap,
@@ -58,7 +48,7 @@ export function DemoCard({ demo }: DemoCardProps) {
   const hasLinks = links.demo || links.figma || links.repo;
   const isComingSoon = demo.status === "coming-soon";
 
-  const detailHref = `/portfolio/live-demos/${demo.slug || demo.id}`;
+  const detailHref = `/experiments/live-demos/${demo.slug || demo.id}`;
 
   return (
     <div className="block group">
@@ -149,30 +139,34 @@ export function DemoCard({ demo }: DemoCardProps) {
                   </AptTag>
                 ))}
                 {hasMoreTech && !showAllTech && (
-                  <button
+                  <AptButton
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
                       setShowAllTech(true);
                     }}
-                    className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+                    variant="link"
+                    size="sm"
+                    className="h-auto p-0 text-xs text-muted-foreground"
                   >
                     +{technologies.length - visibleTechCount} more
-                  </button>
+                  </AptButton>
                 )}
               </div>
               {showAllTech && hasMoreTech && (
-                <button
+                <AptButton
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
                     setShowAllTech(false);
                   }}
-                  className="text-xs text-muted-foreground hover:text-foreground transition-colors mt-1.5 flex items-center gap-0.5"
+                  variant="link"
+                  size="sm"
+                  className="mt-1.5 h-auto p-0 text-xs text-muted-foreground"
                 >
                   <ChevronUp className="h-3 w-3" />
                   Show less
-                </button>
+                </AptButton>
               )}
             </div>
           )}
@@ -268,7 +262,7 @@ export function DemoCard({ demo }: DemoCardProps) {
               <div className="flex items-center gap-1 text-xs text-muted-foreground">
                 <Beaker className="h-3 w-3" />
                 <span>
-                  {relatedLabCount} lab
+                  {relatedLabCount} experiment
                   {relatedLabCount > 1 ? "s" : ""}
                 </span>
               </div>

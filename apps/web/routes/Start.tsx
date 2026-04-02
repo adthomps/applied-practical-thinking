@@ -6,8 +6,8 @@ import {
   Lightbulb, 
   BookOpen, 
   Layers, 
+  Beaker,
   ArrowRight, 
-  Sparkles,
   Target,
   Compass,
   Zap
@@ -34,24 +34,24 @@ const coreIdeas = [
 const startingPoints = [
   {
     icon: BookOpen,
-    label: "Insights",
-    path: "/insights",
-    description: "Essays, podcasts, and case studies on applied thinking and systems.",
-    color: "text-blue-400",
+    label: "Learn",
+    path: "/learn",
+    description: "Guides, articles, podcasts, and worked examples for applied thinking and systems.",
+    color: "text-primary",
   },
   {
-    icon: Lightbulb,
-    label: "Portfolio",
-    path: "/portfolio",
-    description: "Labs, demos, design systems, and visual explorations.",
-    color: "text-amber-400",
+    icon: Beaker,
+    label: "Experiments",
+    path: "/experiments",
+    description: "Concepts, mocks, and interactive proof that make ideas tangible in the open.",
+    color: "text-accent",
   },
   {
-    icon: Sparkles,
-    label: "Labs",
-    path: "/portfolio/labs",
-    description: "Early-stage concept construction using AI-assisted tools.",
-    color: "text-purple-400",
+    icon: Layers,
+    label: "Design",
+    path: "/design",
+    description: "The doctrine behind APT, including thinking, architecture, systems, and content strategy.",
+    color: "text-muted-foreground",
   },
 ];
 
@@ -71,8 +71,8 @@ export default function Start() {
         
         <p className="text-lg text-muted-foreground leading-relaxed">
           {siteConfig.fullName} is a personal portfolio and demonstration brand. 
-          Here you'll find applied work, essays, and experiments—all focused on 
-          turning real-world problems into working systems.
+          Here you'll find learning resources, experiments, and design-governed reference models
+          focused on turning real-world problems into observable systems.
         </p>
       </section>
 
@@ -131,25 +131,30 @@ export default function Start() {
             
             <div className="space-y-4 text-sm text-muted-foreground">
               <div className="flex gap-3">
-                <span className="text-primary font-bold">Insights</span>
-                <span>= analysis and narrative (blogs, podcasts, case studies)</span>
+                <span className="text-primary font-bold">Learn</span>
+                <span>= articles, podcasts, guides, and worked examples</span>
               </div>
               <div className="flex gap-3">
-                <span className="text-primary font-bold">Portfolio</span>
-                <span>= applied artifacts and evidence (labs, demos, design work)</span>
+                <span className="text-primary font-bold">Experiments</span>
+                <span>= concepts, mocks, prototypes, and live demos that make ideas observable</span>
               </div>
               <div className="flex gap-3">
-                <span className="text-primary font-bold">Labs</span>
-                <span>may link to Live Demos, never the reverse</span>
+                <span className="text-primary font-bold">Design</span>
+                <span>= the thinking, system, architecture, content strategy, and system references behind APT</span>
               </div>
             </div>
 
             <div className="pt-4 border-t border-border text-center">
               <p className="text-xs text-muted-foreground mb-4">{siteConfig.disclaimer}</p>
               <div className="flex flex-wrap justify-center gap-3">
-                <Link to="/portfolio/labs">
+                <Link to="/experiments">
                   <AptButton variant="primary" size="sm">
-                    Explore Labs
+                    Explore Experiments
+                  </AptButton>
+                </Link>
+                <Link to="/design">
+                  <AptButton variant="outline" size="sm">
+                    Explore Design
                   </AptButton>
                 </Link>
                 <Link to="/about">

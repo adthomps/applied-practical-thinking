@@ -11,7 +11,7 @@ This project uses a modern CI/CD workflow with GitHub Actions and Cloudflare for
     - `apps/web` — Vite + React SPA frontend (Cloudflare Pages target)
     - `apps/worker` — Cloudflare Worker API backend
     - `packages/` — Shared code (do not deploy directly)
-    - `apps/worker/src/ai/prompts/` — AI prompt definitions (referenced by worker)
+    - `apps/web/ai/prompts/` — AI prompt definitions
     - `docs/` — Documentation
     - `.github/workflows/` — GitHub Actions workflow files
 
@@ -85,12 +85,18 @@ This project uses a modern CI/CD workflow with GitHub Actions and Cloudflare for
 ## Environment Variables & API Base URL
 
 - The frontend (`apps/web`) uses the environment variable `VITE_API_BASE` to determine the API endpoint for health checks and all API calls.
+- The worker (`apps/worker`) uses `PUBLIC_SITE_ORIGIN` to fetch the Pages-hosted public content and design-doc assets it normalizes into API responses.
 - **Local development:**
   - Set `VITE_API_BASE=http://localhost:8787` in `apps/web/.env`.
+  - Set `PUBLIC_SITE_ORIGIN=http://127.0.0.1:5173` in `apps/worker/.dev.vars`.
 - **Cloudflare Pages (preview/production):**
   - In the Cloudflare Pages dashboard, set `VITE_API_BASE` to your deployed Worker URL (e.g., `https://apt-starter-project.apt-account.workers.dev`).
   - **Important:** Do not include a trailing slash in the value. Use `https://apt-starter-project.apt-account.workers.dev` (not `...workers.dev/`).
   - This prevents double slashes in requests (e.g., `//api/v1/health` → 404).
+- **Cloudflare Worker (preview/production):**
+  - In Wrangler or the Cloudflare Worker dashboard, set `PUBLIC_SITE_ORIGIN` to the corresponding Pages site origin for that environment.
+  - Preview worker deployments should point at the matching Pages preview URL.
+  - Production worker deployments should point at the production Pages site URL.
 
 ## Best Practices
 
@@ -133,7 +139,7 @@ For more details, see the workflow files in `.github/workflows/` and Cloudflare 
 
 ## API Routing
 
-- Internal API: `/api/*` (UI-facing endpoints)
+- Worker API: `{VITE_API_BASE}/api/*` (UI-facing endpoints served by the standalone Worker)
 - Public API: `/v1/*` (versioned, public endpoints)
 
 ## Deployment Flow Summary

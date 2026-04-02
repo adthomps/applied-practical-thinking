@@ -1,46 +1,36 @@
 // src/services/contentIndex.ts
-// Service to load content indexes for blog, guides, podcasts, and case-studies
+// Runtime content/doc API client for public content indexes and details
 
-export type ContentIndexItem = {
-  title: string;
-  id?: string;
-  slug?: string;
-  type?: string;
-  date?: string;
-  description?: string;
-  publishedAt?: string;
-  concepts?: string[];
-  tags?: string[];
-  platforms?: string[];
-  technologies?: string[];
-  status?: string;
-  links?: Record<string, string>;
-  contentPath: string;
-  excerpt?: string;
-  [key: string]: any;
-};
-
-
-const INDEX_PATHS = {
-  blog: '/data/blog-index.json',
-  guides: '/data/guides-index.json',
-  podcasts: '/data/podcasts-index.json',
-  'case-studies': '/data/case-studies-index.json',
-  labs: '/data/labs-index.json',
-  demos: '/data/demos-index.json',
-  systems: '/data/systems-index.json',
-};
-
-export type ContentIndexType = keyof typeof INDEX_PATHS;
+import type {
+  ContentDetailResponse,
+  ContentIndexItem,
+  ContentIndexType,
+  PublicDesignDocDetailResponse,
+  PublicDesignDocItem,
+} from "@apt/knowledge";
+import { fetchWorkerJson } from "./api";
 
 export async function fetchContentIndex(type: ContentIndexType): Promise<ContentIndexItem[]> {
-  const res = await fetch(INDEX_PATHS[type]);
-  if (!res.ok) throw new Error(`Failed to load ${type} index`);
-  return res.json();
+  return fetchWorkerJson<ContentIndexItem[]>(`/api/content/${type}`);
 }
 
-export async function fetchContentMarkdown(contentPath: string): Promise<string> {
-  const res = await fetch(`/content/${contentPath}`);
-  if (!res.ok) throw new Error(`Failed to load content: ${contentPath}`);
-  return res.text();
+export async function fetchContentEntry(
+  type: ContentIndexType,
+  idOrSlug: string
+): Promise<ContentDetailResponse> {
+  return fetchWorkerJson<ContentDetailResponse>(
+    `/api/content/${type}/${encodeURIComponent(idOrSlug)}`
+  );
 }
+
+export async function fetchDesignDocs(): Promise<PublicDesignDocItem[]> {
+  return fetchWorkerJson<PublicDesignDocItem[]>("/api/design/docs");
+}
+
+export async function fetchDesignDoc(slug: string): Promise<PublicDesignDocDetailResponse> {
+  return fetchWorkerJson<PublicDesignDocDetailResponse>(
+    `/api/design/docs/${encodeURIComponent(slug)}`
+  );
+}
+
+export type { ContentIndexItem, ContentIndexType };

@@ -1,7 +1,7 @@
 # APT Design System
 
-**[2026-01-25] NOTE:**
-This project now uses a monorepo structure. All design system code, docs, and AI prompts live under `apps/web/`. See [decision log](apps/web/docs/design/decision-log.md) for details.
+**[2026-04-01] NOTE:**
+APT's design system now spans the monorepo. Authored design doctrine lives in `apps/web/docs/design/`, shared UI primitives live in `packages/ui`, shared TypeScript token contracts live in `packages/config`, and `apps/web/components/apt` remains the app-facing wrapper/composition layer during migration.
 
 A comprehensive design system specification for Applied Practical Thinking. Dark-first, card-based, calm motion.
 
@@ -131,6 +131,12 @@ A comprehensive design system specification for Applied Practical Thinking. Dark
 <div className="bg-gray-900 text-white">
 <div className="bg-[#1a1a2e]">
 ```
+
+### Component Boundary Note
+
+- Use APT components for user-facing actions and shell elements
+- Native `<button>` is acceptable inside low-level composite controls where button semantics are the correct accessible primitive
+- Shared UI primitives should still prefer semantic tokens over literal colors whenever feasible
 
 ---
 
@@ -527,26 +533,24 @@ export default function Page() {
 
 ### File Organization
 
-```
-src/
-├── components/apt/
-│   ├── index.ts          # Public exports
-│   ├── AptButton.tsx
-│   ├── AptCard.tsx
-│   ├── AptTag.tsx
-│   ├── AptEmblem.tsx
-│   ├── HeroCard.tsx
-│   └── ...
+```text
+packages/
+├── ui/                   # Shared APT primitives
+└── config/               # Shared TypeScript token contracts
+
+apps/web/
+├── components/apt/       # App-facing wrappers and composition components
 ├── theme/
-│   └── aptTokens.ts      # TypeScript token definitions
-└── index.css             # CSS custom properties
+│   └── aptTokens.ts      # Compatibility re-export to shared token contract
+└── index.css             # CSS custom properties and semantic token values
 ```
 
 ### Export Formats
 
-- **CSS Variables**: `src/index.css`
-- **TypeScript Tokens**: `src/theme/aptTokens.ts`
-- **JSON (Figma/Style Dictionary)**: `docs/design/APT-FIGMA-TOKENS.json`
+- **CSS Variables**: `apps/web/index.css`
+- **TypeScript Tokens**: `packages/config/src/aptTokens.ts`
+- **Compatibility Re-export**: `apps/web/theme/aptTokens.ts`
+- **JSON (Figma/Style Dictionary)**: `apps/web/docs/design/APT-FIGMA-TOKENS.json`
 
 ---
 

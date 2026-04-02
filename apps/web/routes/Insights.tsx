@@ -1,26 +1,19 @@
 import { useEffect, useState } from "react";
 import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
-import { systems } from "@/data/systems";
-import { InsightMeta } from "@/components/apt/InsightMeta";
 import { InsightCard } from "@/components/apt/InsightCard";
 import {
   AptCard,
-  AptCardHeader,
-  AptCardTitle,
-  AptCardDescription,
-  AptTag,
   AptButton,
 } from "@/components/apt";
 import { Link } from "react-router-dom";
-import { Book, Mic, FileText, Podcast, ArrowRight } from "lucide-react";
+import { Book, FileText, Podcast, ArrowRight } from "lucide-react";
 import { siteConfig } from "@/data/site";
 
 
 const areaIcons: Record<string, React.ComponentType<{ className?: string }>> = {
-  "/insights/blogs": FileText,
-  "/insights/podcasts": Podcast,
-  "/insights/guides": Book,
-  "/insights/case-studies": Book,
+  "/learn/articles": FileText,
+  "/learn/podcasts": Podcast,
+  "/learn/guides": Book,
 };
 
 
@@ -56,29 +49,27 @@ export default function Insights() {
   const filteredContent =
     filter === "all"
       ? insights
-      : insights.filter((c) => c.type === filter);
-
-  // DEBUG: Log filteredContent to diagnose rendering issue
-  console.log('filteredContent', filteredContent);
+      : insights.filter((c) =>
+          filter === "guide" ? c.type === "guide" || c.type === "case-study" : c.type === filter
+        );
 
   if (loading) {
-    return <div className="container py-12 text-center">Loading insights…</div>;
+    return <div className="container py-12 text-center">Loading learning content…</div>;
   }
   if (error) {
-    return <div className="container py-12 text-center text-red-500">{error}</div>;
+    return <div className="container py-12 text-center text-destructive">{error}</div>;
   }
 
-  // Get Insights nav children for area cards
-  const insightsNav = siteConfig.nav.find((n) => n.path === "/insights");
-  const areaSections = insightsNav?.children ?? [];
+  const learnNav = siteConfig.nav.find((n) => n.path === "/learn");
+  const areaSections = learnNav?.children ?? [];
 
   return (
     <div className="container py-8 md:py-12 space-y-12">
       {/* Header */}
       <section className="max-w-2xl">
-        <h1 className="text-3xl font-bold tracking-tight mb-2">Insights</h1>
+        <h1 className="text-3xl font-bold tracking-tight mb-2">Learn</h1>
         <p className="text-muted-foreground max-w-2xl">
-          Essays, podcasts, and case studies on applied thinking, systems, and execution.
+          Guides, articles, podcasts, and worked examples for applied thinking, systems, and execution.
         </p>
       </section>
 
@@ -112,7 +103,7 @@ export default function Insights() {
         })}
       </section>
 
-      {/* Filterable Insights List */}
+      {/* Filterable Learn List */}
       <section>
         {/* Filters */}
         <div className="flex gap-2 mb-8">
@@ -123,21 +114,25 @@ export default function Insights() {
           >
             All
           </AptButton>
-          {(["blog", "podcast", "guide", "case-study"]).map((type) => (
+          {[
+            { type: "blog", label: "Articles" },
+            { type: "podcast", label: "Podcasts" },
+            { type: "guide", label: "Guides" },
+          ].map(({ type, label }) => (
             <AptButton
               key={type}
               variant={filter === type ? "primary" : "ghost"}
               size="sm"
               onClick={() => setFilter(type)}
             >
-              {type.charAt(0).toUpperCase() + type.slice(1).replace("-", " ")}
+              {label}
             </AptButton>
           ))}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filteredContent.map((insight) => (
-            <InsightCard key={insight.id} insight={insight} to={`/insights/${insight.id}`} />
+            <InsightCard key={insight.id} insight={insight} to={`/learn/${insight.id}`} />
           ))}
         </div>
       </section>

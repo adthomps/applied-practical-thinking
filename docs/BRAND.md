@@ -1,21 +1,24 @@
-# Brand & Design System
+# BRAND.md
 
-## Design Tokens
-- Use only tokens from `packages/config` for colors, fonts, spacing.
-- No custom colors, fonts, or spacing.
-- Dark-first only; no light mode.
+## Purpose
 
-## Components
-- Use Apt* components from `apps/web/components/apt` for all UI.
+Internal brand quick reference for repo contributors.
 
-## Documentation
-- Log any design deviations in `apps/web/docs/design/decision-log.md`.# BRAND.md
+Canonical brand and design behavior lives in:
 
-## APT Brand Guidelines
+- `apps/web/docs/design/APT-DESIGN-SYSTEM.md`
+- `apps/web/docs/design/APT-DESIGN-THINKING.md`
+- `apps/web/docs/design/decision-log.md`
+
+## Current rules
 
 - Brand: Applied Practical Thinking (APT)
-- Primary color: `--primary` (see design tokens)
-- Logo: See `apps/web/public/favicon.ico`
-- Typography: See design system docs
-- All brand assets live in `apps/web/public/`
-- Brand changes must be reviewed and logged in `apps/web/docs/design/decision-log.md`
+- Use shared token contracts from `packages/config` for colors, fonts, and spacing
+- Use shared APT UI primitives from `packages/ui`, with app-specific composition in `apps/web/components/apt`
+- Dark-first remains the default experience
+- Brand assets for the web app live under `apps/web/public/`
+
+## Change policy
+
+- Brand or design deviations must be logged in `apps/web/docs/design/decision-log.md`
+- If a brand rule becomes durable product doctrine, update the canonical design docs under `apps/web/docs/design/`

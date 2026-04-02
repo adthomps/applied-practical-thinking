@@ -13,7 +13,7 @@ export default function PortfolioLabDetail() {
   });
 
   if (!id) {
-    return <Navigate to="/portfolio/labs" replace />;
+    return <Navigate to="/experiments" replace />;
   }
 
   if (loading) {
@@ -21,7 +21,7 @@ export default function PortfolioLabDetail() {
   }
 
   if (!lab) {
-    return <Navigate to="/portfolio/labs" replace />;
+    return <Navigate to="/experiments" replace />;
   }
 
   // Use a consistent fallback icon/label for missing images, matching blogs/podcasts/guides/case-studies
@@ -43,11 +43,11 @@ export default function PortfolioLabDetail() {
 
   return (
     <ContentDetailPage
-      backHref="/portfolio/labs"
-      backLabel="Back to Labs"
+      backHref="/experiments"
+      backLabel="Back to Experiments"
       item={lab}
       markdown={markdown}
-      aboutTitle="About This Lab"
+      aboutTitle="About This Experiment"
       markdownTitle="Notes"
       heroFallback={
         <div className="flex flex-col items-center gap-2 text-muted-foreground/50">

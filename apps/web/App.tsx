@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useParams } from "react-router-dom";
 import { AptLayout } from "@/components/apt/AptLayout";
 
 // Pages
@@ -17,19 +17,21 @@ const AssistantPage = lazy(() => import("./routes/assistant"));
 const Start = lazy(() => import("./routes/Start"));
 const About = lazy(() => import("./routes/About"));
 
-// Insights
+// Learn
 const Insights = lazy(() => import("./routes/Insights"));
 const InsightsBlogs = lazy(() => import("./routes/insights/Blogs"));
 const InsightsPodcasts = lazy(() => import("./routes/insights/Podcasts"));
-const InsightsCaseStudies = lazy(() => import("./routes/insights/CaseStudies"));
 const InsightsGuides = lazy(() => import("./routes/insights/Guides"));
 
-// Portfolio
+// Labs / Design
 const Portfolio = lazy(() => import("./routes/Portfolio"));
 const PortfolioLabs = lazy(() => import("./routes/portfolio/Labs"));
+const PortfolioExperimentsConcepts = lazy(() => import("./routes/portfolio/ExperimentsConcepts"));
+const PortfolioExperimentsMocks = lazy(() => import("./routes/portfolio/ExperimentsMocks"));
 const PortfolioDesignSystem = lazy(() => import("./routes/portfolio/DesignSystem"));
 const PortfolioDesignThinking = lazy(() => import("./routes/portfolio/DesignThinking"));
 const PortfolioDesignArchitecture = lazy(() => import("./routes/portfolio/DesignArchitecture"));
+const PortfolioContentStrategy = lazy(() => import("./routes/portfolio/ContentStrategy"));
 const PortfolioLiveDemos = lazy(() => import("./routes/portfolio/LiveDemos"));
 const PortfolioVisualGallery = lazy(() => import("./routes/portfolio/VisualGallery"));
 const InsightDetail = lazy(() => import("./routes/InsightDetail"));
@@ -44,6 +46,30 @@ const queryClient = new QueryClient();
 const RouteFallback = () => (
   <div className="container py-12 md:py-16">Loading…</div>
 );
+
+const LegacyLabRedirect = () => {
+  const { id } = useParams<{ id: string }>();
+
+  return <Navigate to={id ? `/experiments/${id}` : "/experiments"} replace />;
+};
+
+const LegacyLearnRedirect = () => {
+  const { id } = useParams<{ id: string }>();
+
+  return <Navigate to={id ? `/learn/${id}` : "/learn"} replace />;
+};
+
+const LegacyDemoRedirect = () => {
+  const { slug } = useParams<{ slug: string }>();
+
+  return <Navigate to={slug ? `/experiments/live-demos/${slug}` : "/experiments/live-demos"} replace />;
+};
+
+const LegacySystemRedirect = () => {
+  const { id } = useParams<{ id: string }>();
+
+  return <Navigate to={id ? `/design/systems/${id}` : "/design/systems"} replace />;
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -61,47 +87,71 @@ const App = () => (
             <Route path="/start" element={<Start />} />
             
 
-            {/* Insights */}
-            <Route path="/insights" element={<Insights />} />
-            <Route path="/insights/blogs" element={<InsightsBlogs />} />
-            <Route path="/insights/podcasts" element={<InsightsPodcasts />} />
-            <Route path="/insights/case-studies" element={<InsightsCaseStudies />} />
-            <Route path="/insights/guides" element={<InsightsGuides />} />
-            <Route path="/insights/:id" element={<InsightDetail key={window.location.pathname} />} />
+            {/* Learn */}
+            <Route path="/learn" element={<Insights />} />
+            <Route path="/learn/articles" element={<InsightsBlogs />} />
+            <Route path="/learn/podcasts" element={<InsightsPodcasts />} />
+            <Route path="/learn/guides" element={<InsightsGuides />} />
+            <Route path="/learn/:id" element={<InsightDetail />} />
 
-            {/* Direct detail routes for all types */}
-            <Route path="/blog/:id" element={<InsightDetail key={window.location.pathname} />} />
-            <Route path="/guides/:id" element={<InsightDetail key={window.location.pathname} />} />
-            <Route path="/podcasts/:id" element={<InsightDetail key={window.location.pathname} />} />
-            <Route path="/case-studies/:id" element={<InsightDetail key={window.location.pathname} />} />
+            {/* Canonical detail aliases */}
+            <Route path="/blog/:id" element={<LegacyLearnRedirect />} />
+            <Route path="/guides/:id" element={<LegacyLearnRedirect />} />
+            <Route path="/podcasts/:id" element={<LegacyLearnRedirect />} />
+            <Route path="/case-studies/:id" element={<LegacyLearnRedirect />} />
             
-            {/* Portfolio */}
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/portfolio/labs" element={<PortfolioLabs />} />
-            <Route path="/portfolio/labs/:id" element={<PortfolioLabDetail />} />
-            <Route path="/portfolio/design-system" element={<PortfolioDesignSystem />} />
-            <Route path="/portfolio/design-thinking" element={<PortfolioDesignThinking />} />
-            <Route path="/portfolio/design-architecture" element={<PortfolioDesignArchitecture />} />
-            <Route path="/portfolio/live-demos" element={<PortfolioLiveDemos />} />
-            <Route path="/portfolio/live-demos/:slug" element={<DemoDetail />} />
-            <Route path="/portfolio/visual-gallery" element={<PortfolioVisualGallery />} />
+            {/* Experiments */}
+            <Route path="/experiments" element={<PortfolioLabs />} />
+            <Route path="/experiments/concepts" element={<PortfolioExperimentsConcepts />} />
+            <Route path="/experiments/mocks" element={<PortfolioExperimentsMocks />} />
+            <Route path="/experiments/:id" element={<PortfolioLabDetail />} />
+            <Route path="/experiments/live-demos" element={<PortfolioLiveDemos />} />
+            <Route path="/experiments/live-demos/:slug" element={<DemoDetail />} />
+
+            {/* Design */}
+            <Route path="/design" element={<Portfolio />} />
+            <Route path="/design/system" element={<PortfolioDesignSystem />} />
+            <Route path="/design/thinking" element={<PortfolioDesignThinking />} />
+            <Route path="/design/architecture" element={<PortfolioDesignArchitecture />} />
+            <Route path="/design/systems" element={<Systems />} />
+            <Route path="/design/systems/:id" element={<SystemDetail />} />
+            <Route path="/design/content-strategy" element={<PortfolioContentStrategy />} />
             
             {/* About */}
             <Route path="/about" element={<About />} />
-              {/* Systems */}
-              <Route path="/systems" element={<Systems />} />
-              <Route path="/systems/:id" element={<SystemDetail />} />
-            
-
+            <Route path="/about/visual-gallery" element={<PortfolioVisualGallery />} />
             {/* Assistant */}
             <Route path="/assistant" element={<AssistantPage />} />
 
             {/* Utility */}
-            <Route path="/design" element={<DesignPlayground />} />
+            <Route path="/design-playground" element={<DesignPlayground />} />
             
             {/* Legacy Redirects */}
-            <Route path="/labs" element={<Navigate to="/portfolio/labs" replace />} />
-            <Route path="/labs/:id" element={<Navigate to="/portfolio/labs/:id" replace />} />
+            <Route path="/insights" element={<Navigate to="/learn" replace />} />
+            <Route path="/insights/blogs" element={<Navigate to="/learn/articles" replace />} />
+            <Route path="/insights/podcasts" element={<Navigate to="/learn/podcasts" replace />} />
+            <Route path="/insights/guides" element={<Navigate to="/learn/guides" replace />} />
+            <Route path="/insights/case-studies" element={<Navigate to="/learn/guides" replace />} />
+            <Route path="/insights/:id" element={<LegacyLearnRedirect />} />
+            <Route path="/portfolio" element={<Navigate to="/experiments" replace />} />
+            <Route path="/portfolio/labs" element={<Navigate to="/experiments" replace />} />
+            <Route path="/portfolio/labs/:id" element={<LegacyLabRedirect />} />
+            <Route path="/portfolio/design-system" element={<Navigate to="/design/system" replace />} />
+            <Route path="/portfolio/design-thinking" element={<Navigate to="/design/thinking" replace />} />
+            <Route path="/portfolio/design-architecture" element={<Navigate to="/design/architecture" replace />} />
+            <Route path="/portfolio/design-systems" element={<Navigate to="/design/systems" replace />} />
+            <Route path="/portfolio/content-strategy" element={<Navigate to="/design/content-strategy" replace />} />
+            <Route path="/portfolio/live-demos" element={<Navigate to="/experiments/live-demos" replace />} />
+            <Route path="/portfolio/live-demos/:slug" element={<LegacyDemoRedirect />} />
+            <Route path="/portfolio/visual-gallery" element={<Navigate to="/about/visual-gallery" replace />} />
+            <Route path="/systems" element={<LegacySystemRedirect />} />
+            <Route path="/systems/:id" element={<LegacySystemRedirect />} />
+            <Route path="/labs" element={<Navigate to="/experiments" replace />} />
+            <Route path="/labs/concepts" element={<Navigate to="/experiments/concepts" replace />} />
+            <Route path="/labs/mocks" element={<Navigate to="/experiments/mocks" replace />} />
+            <Route path="/labs/:id" element={<LegacyLabRedirect />} />
+            <Route path="/labs/live-demos" element={<Navigate to="/experiments/live-demos" replace />} />
+            <Route path="/labs/live-demos/:slug" element={<LegacyDemoRedirect />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>

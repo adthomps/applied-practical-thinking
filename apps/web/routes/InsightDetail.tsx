@@ -45,10 +45,10 @@ export default function InsightDetail() {
       <div className="container py-12 text-center">
         <h1 className="text-2xl font-bold mb-4">Insight not found</h1>
         <p className="text-muted-foreground mb-6">
-          The insight you're looking for doesn't exist.
+          The learning resource you're looking for doesn't exist.
         </p>
         <AptButton variant="primary" asChild>
-          <Link to="/insights">Back to Insights</Link>
+          <Link to="/learn">Back to Learn</Link>
         </AptButton>
       </div>
     );
@@ -105,8 +105,8 @@ export default function InsightDetail() {
 
   return (
     <ContentDetailPage
-      backHref="/insights"
-      backLabel="Back to Insights"
+      backHref="/learn"
+      backLabel="Back to Learn"
       item={insight}
       markdown={markdown}
       aboutTitle="Summary"

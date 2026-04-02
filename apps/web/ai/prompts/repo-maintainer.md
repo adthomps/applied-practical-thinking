@@ -11,7 +11,7 @@ You are maintaining the APT repository. Follow these guidelines:
 
 ## Before Making Changes
 
-1. Read `DESIGN.md` for design system overview
+1. Read `DESIGN.md` for design doctrine entrypoints
 2. Read `PROJECT_RULES.md` for coding standards
 3. Check existing patterns in the codebase
 
@@ -24,10 +24,10 @@ You are maintaining the APT repository. Follow these guidelines:
 
 ## Key Files
 
-- `src/index.css` - CSS variables (design tokens)
-- `src/theme/aptTokens.ts` - TypeScript tokens
-- `src/data/site.ts` - Site configuration
-- `docs/design/decision-log.md` - Deviation log
+- `apps/web/index.css` - CSS variables (design tokens)
+- `packages/config/src/aptTokens.ts` - Shared TypeScript token contract
+- `apps/web/data/site.ts` - Site configuration
+- `apps/web/docs/design/decision-log.md` - Internal deviation log
 
 ## Common Patterns
 
@@ -55,8 +55,7 @@ export function Component({ className, variant, ...props }) {
 
 ### Adding content
 
-Add entries to the appropriate file in `src/data/`:
-- Labs → markdown files in `content/labs` and generated index in `data/labs-index.json`
-- Systems → `systems.ts`
-- Content → `learn.ts`
-- Case studies → `strong.ts`
+Add entries to the appropriate source location:
+- Experiments → markdown files in `apps/web/content/labs` and generated index in `apps/web/data/labs-index.json`
+- Systems → `apps/web/data/systems.ts`
+- Learn content → markdown under `apps/web/content/*` with generated indexes in `apps/web/data/*-index.json`

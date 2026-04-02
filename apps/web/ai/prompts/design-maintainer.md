@@ -19,7 +19,7 @@ You are maintaining the APT design system. Follow these guidelines:
 
 ## Token System
 
-### CSS Variables (src/index.css)
+### CSS Variables (`apps/web/index.css`)
 
 ```css
 :root {
@@ -30,7 +30,7 @@ You are maintaining the APT design system. Follow these guidelines:
 }
 ```
 
-### TypeScript Tokens (src/theme/aptTokens.ts)
+### TypeScript Tokens (`packages/config/src/aptTokens.ts`)
 
 ```typescript
 export const aptTokens = {
@@ -45,19 +45,19 @@ export const aptTokens = {
 1. Check existing variants in `/design` playground
 2. Prefer adding variants over new components
 3. Use CVA for variant management
-4. Export from `src/components/apt/index.ts`
+4. Export shared primitives from `packages/ui` and app-facing composition from `apps/web/components/apt/index.ts`
 
 ## Validation
 
 After changes:
 1. Check `/design` playground renders correctly
-2. Run through review-checklist.md
+2. Run through the internal review checklist
 3. Test all variants
 4. Update component documentation
 
 ## Deviations
 
 If you must deviate from standards:
-1. Document in `docs/design/decision-log.md`
+1. Document in `apps/web/docs/design/decision-log.md`
 2. Include rationale
 3. List alternatives considered
