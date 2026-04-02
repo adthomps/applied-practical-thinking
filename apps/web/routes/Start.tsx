@@ -37,21 +37,21 @@ const startingPoints = [
     label: "Insights",
     path: "/insights",
     description: "Essays, podcasts, and case studies on applied thinking and systems.",
-    color: "text-blue-400",
+    color: "text-primary",
   },
   {
     icon: Lightbulb,
     label: "Portfolio",
     path: "/portfolio",
     description: "Labs, demos, design systems, and visual explorations.",
-    color: "text-amber-400",
+    color: "text-accent",
   },
   {
     icon: Sparkles,
     label: "Labs",
     path: "/portfolio/labs",
     description: "Early-stage concept construction using AI-assisted tools.",
-    color: "text-purple-400",
+    color: "text-muted-foreground",
   },
 ];
 

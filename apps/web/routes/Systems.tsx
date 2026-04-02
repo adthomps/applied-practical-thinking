@@ -21,7 +21,7 @@ export default function Systems() {
   }, []);
 
   if (loading) return <div className="container py-12 text-center">Loading systems…</div>;
-  if (error) return <div className="container py-12 text-center text-red-500">{error}</div>;
+  if (error) return <div className="container py-12 text-center text-destructive">{error}</div>;
 
   return (
     <div className="container py-8 md:py-12">

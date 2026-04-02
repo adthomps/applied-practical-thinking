@@ -1,14 +1,7 @@
 import { useState, useMemo, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
-import { AptCard } from "@/components/apt/AptCard";
-import { AptCardTitle, AptCardDescription } from "@/components/apt/AptCard";
-import { InsightMeta } from "@/components/apt/InsightMeta";
 import { InsightCard } from "@/components/apt/InsightCard";
-import { AptTag } from "@/components/apt/AptTag";
 import { ContentFilters, FilterConfig, SelectedFilters } from "@/components/apt";
-import { Book } from "lucide-react";
-import { ArrowRight } from "lucide-react";
 
 export default function InsightsGuides() {
   const [guides, setGuides] = useState<ContentIndexItem[]>([]);
@@ -45,7 +38,7 @@ export default function InsightsGuides() {
     return <div className="container py-12 text-center">Loading guides…</div>;
   }
   if (error) {
-    return <div className="container py-12 text-center text-red-500">{error}</div>;
+    return <div className="container py-12 text-center text-destructive">{error}</div>;
   }
 
   return (

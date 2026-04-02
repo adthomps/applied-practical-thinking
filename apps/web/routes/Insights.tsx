@@ -1,18 +1,12 @@
 import { useEffect, useState } from "react";
 import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
-import { systems } from "@/data/systems";
-import { InsightMeta } from "@/components/apt/InsightMeta";
 import { InsightCard } from "@/components/apt/InsightCard";
 import {
   AptCard,
-  AptCardHeader,
-  AptCardTitle,
-  AptCardDescription,
-  AptTag,
   AptButton,
 } from "@/components/apt";
 import { Link } from "react-router-dom";
-import { Book, Mic, FileText, Podcast, ArrowRight } from "lucide-react";
+import { Book, FileText, Podcast, ArrowRight } from "lucide-react";
 import { siteConfig } from "@/data/site";
 
 
@@ -58,14 +52,11 @@ export default function Insights() {
       ? insights
       : insights.filter((c) => c.type === filter);
 
-  // DEBUG: Log filteredContent to diagnose rendering issue
-  console.log('filteredContent', filteredContent);
-
   if (loading) {
     return <div className="container py-12 text-center">Loading insights…</div>;
   }
   if (error) {
-    return <div className="container py-12 text-center text-red-500">{error}</div>;
+    return <div className="container py-12 text-center text-destructive">{error}</div>;
   }
 
   // Get Insights nav children for area cards

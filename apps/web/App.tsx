@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useParams } from "react-router-dom";
 import { AptLayout } from "@/components/apt/AptLayout";
 
 // Pages
@@ -45,6 +45,12 @@ const RouteFallback = () => (
   <div className="container py-12 md:py-16">Loading…</div>
 );
 
+const LegacyLabRedirect = () => {
+  const { id } = useParams<{ id: string }>();
+
+  return <Navigate to={id ? `/portfolio/labs/${id}` : "/portfolio/labs"} replace />;
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -67,13 +73,13 @@ const App = () => (
             <Route path="/insights/podcasts" element={<InsightsPodcasts />} />
             <Route path="/insights/case-studies" element={<InsightsCaseStudies />} />
             <Route path="/insights/guides" element={<InsightsGuides />} />
-            <Route path="/insights/:id" element={<InsightDetail key={window.location.pathname} />} />
+            <Route path="/insights/:id" element={<InsightDetail />} />
 
             {/* Direct detail routes for all types */}
-            <Route path="/blog/:id" element={<InsightDetail key={window.location.pathname} />} />
-            <Route path="/guides/:id" element={<InsightDetail key={window.location.pathname} />} />
-            <Route path="/podcasts/:id" element={<InsightDetail key={window.location.pathname} />} />
-            <Route path="/case-studies/:id" element={<InsightDetail key={window.location.pathname} />} />
+            <Route path="/blog/:id" element={<InsightDetail />} />
+            <Route path="/guides/:id" element={<InsightDetail />} />
+            <Route path="/podcasts/:id" element={<InsightDetail />} />
+            <Route path="/case-studies/:id" element={<InsightDetail />} />
             
             {/* Portfolio */}
             <Route path="/portfolio" element={<Portfolio />} />
@@ -101,7 +107,7 @@ const App = () => (
             
             {/* Legacy Redirects */}
             <Route path="/labs" element={<Navigate to="/portfolio/labs" replace />} />
-            <Route path="/labs/:id" element={<Navigate to="/portfolio/labs/:id" replace />} />
+            <Route path="/labs/:id" element={<LegacyLabRedirect />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>

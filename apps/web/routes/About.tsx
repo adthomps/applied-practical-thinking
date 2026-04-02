@@ -7,7 +7,6 @@ import { AptCard, AptButton, AptTag } from "@/components/apt";
 import {
   ExternalLink,
   Mail,
-  Phone,
   MapPin,
   Calendar,
   Github,
@@ -92,25 +91,25 @@ export default function About() {
       label: "GitHub",
       icon: Github,
       url: authorConfig.social.github,
-      color: "text-[#6e5494]", // GitHub purple
+      color: "text-primary",
     },
     {
       label: "LinkedIn",
       icon: Linkedin,
       url: authorConfig.social.linkedin,
-      color: "text-[#0077b5]", // LinkedIn blue
+      color: "text-accent",
     },
     {
       label: "Flickr",
       icon: Globe, // Replace with a Flickr icon if available
       url: authorConfig.social.flickr,
-      color: "text-[#ff0084]", // Flickr pink
+      color: "text-foreground",
     },
     {
       label: "Portfolio",
       icon: Globe,
       url: authorConfig.social.portfolio,
-      color: "text-[#1ec773]", // Portfolio green
+      color: "text-muted-foreground",
     },
   ];
 

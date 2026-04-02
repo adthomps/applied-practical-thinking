@@ -35,7 +35,7 @@ export default function SystemDetail() {
   }, [id]);
 
   if (loading) return <div className="container py-12">Loading…</div>;
-  if (error || !item) return <div className="container py-12 text-red-500">{error || "System not found"}</div>;
+  if (error || !item) return <div className="container py-12 text-destructive">{error || "System not found"}</div>;
 
   return (
     <ContentDetailPage

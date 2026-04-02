@@ -1,14 +1,8 @@
-import { InsightMeta } from "@/components/apt/InsightMeta";
 import { InsightCard } from "@/components/apt/InsightCard";
 import { useState, useMemo, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
-import { AptCard } from "@/components/apt/AptCard";
-import { AptCardTitle, AptCardDescription } from "@/components/apt/AptCard";
 import { AptTag } from "@/components/apt/AptTag";
 import { ContentFilters, FilterConfig, SelectedFilters } from "@/components/apt";
-import { BookOpen } from "lucide-react";
-import { ArrowRight } from "lucide-react";
 
 export default function InsightsCaseStudies() {
   const [caseStudies, setCaseStudies] = useState<ContentIndexItem[]>([]);
@@ -45,7 +39,7 @@ export default function InsightsCaseStudies() {
     return <div className="container py-12 text-center">Loading case studies…</div>;
   }
   if (error) {
-    return <div className="container py-12 text-center text-red-500">{error}</div>;
+    return <div className="container py-12 text-center text-destructive">{error}</div>;
   }
 
   return (
@@ -55,11 +49,13 @@ export default function InsightsCaseStudies() {
           Case Studies
         </h1>
         <div className="mb-2">
-          <span className="inline-block bg-yellow-400/20 text-yellow-800 text-xs font-semibold px-3 py-1 rounded mb-2">Mock Data</span>
+          <AptTag variant="outline" className="mb-2">
+            Mock Data
+          </AptTag>
         </div>
         <p className="text-lg text-muted-foreground">
           Narrative breakdowns of problems, constraints, decisions, and outcomes.<br />
-          <span className="text-yellow-700">These are mock case studies for demonstration purposes only.</span>
+          <span className="text-accent">These are mock case studies for demonstration purposes only.</span>
         </p>
       </div>
 
@@ -71,10 +67,10 @@ export default function InsightsCaseStudies() {
         totalCount={caseStudies.length}
       />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {filteredCaseStudies.map((caseStudy) => (
-              <InsightCard key={caseStudy.id} insight={caseStudy} to={`/case-studies/${caseStudy.id}`} />
-            ))}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {filteredCaseStudies.map((caseStudy) => (
+          <InsightCard key={caseStudy.id} insight={caseStudy} to={`/case-studies/${caseStudy.id}`} />
+        ))}
       </div>
 
       {filteredCaseStudies.length === 0 && (
