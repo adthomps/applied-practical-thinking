@@ -1,119 +1,49 @@
-
-# Project Rules & Architecture Guardrails
-
-## Content Management
-
-- For how to manage Insights and Portfolio content, see the 'Content Management' section in [README.md](README.md).
-- All changes to content structure, navigation, or design must be documented in:
-  - [apps/web/docs/design/decision-log.md](apps/web/docs/design/decision-log.md) (for deviations/decisions)
-  - [README.md](README.md) and [DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md) (for high-level structure)
-- Follow the monorepo and design system rules in this file and in [apps/web/docs/design/APT-DESIGN-ARCHITECTURE.md](apps/web/docs/design/APT-DESIGN-ARCHITECTURE.md).
+# Project Rules
 
 ## Monorepo Structure
 
-- All code is in a single repo, split by function:
-  - `apps/web`: Vite + React SPA (UI only, no business logic)
-  - `apps/worker`: Cloudflare Worker (Hono, API only, no business logic in routes)
-  - `packages/ui`: Presentational Apt* components only
-  - `packages/config`: Design tokens and config only
-  - `packages/core`: Business logic and data adapters only
-
-## Data Flow
-
-- UI fetches data from `/api/*` endpoints (served by worker). No direct fetches in React components—use service modules.
-- All fetches in web use relative `/api/*` URLs (never hardcode full URLs).
-- Internal API worker serves `/api/*` and may return UI-specific view models.
-- Public API worker serves `/v1/*` and must be stable + versioned.
+- `apps/web`: Vite + React SPA, routing, shell, page composition, content source
+- `apps/worker`: Cloudflare Worker API/AI subsystem
+- `packages/ui`: shared presentational APT primitives
+- `packages/config`: shared design tokens/config contracts
+- `packages/knowledge`: shared content/domain/assistant contracts
+- `packages/utils`: framework-agnostic helpers only if actively used
 
 ## Boundaries
 
-- No business logic in UI or routes: All logic lives in services or shared packages.
-- No cross-imports from `apps/*` to `packages/core`.
-- Use Vite aliases for shared packages (`@apt/ui`, `@apt/config`).
-- All AI/agent prompts must be file-based and versioned in `apps/worker/src/ai/prompts`.
-- No custom colors, fonts, or spacing—use only tokens from `packages/config`.
-- No light mode—dark-first only.
+- No app may import from another app
+- Shared code flows only from `packages/*` into apps
+- No business logic in routes or presentational components
+- Prompts are file-based and versioned in `apps/web/ai/prompts`
+- No custom colors, fonts, or spacing; use shared token contracts from `packages/config`
+- Dark-first only
 
-## Validation
+## Data Flow
 
-- Validation schemas must be centralized (no duplication).
+- Web runtime data may come from generated static assets in `apps/web/public/*` and from relative `/api/*` worker endpoints
+- No direct fetches in React components; use services/modules
+- Public API routes, if introduced, live under `/v1/*`
 
-## Data Layers
+## Source vs Generated
 
-- If D1/KV/R2/Queues are used, bindings must be declared in `wrangler.toml` and documented in `docs/PLATFORM_IDS.md`.
+- Source of truth:
+  - `apps/web/content/`
+  - `apps/web/docs/`
+  - `apps/web/data/`
+- Generated runtime copies:
+  - `apps/web/public/content/`
+  - `apps/web/public/docs/`
+  - `apps/web/public/data/`
 
-## Deployment
+Do not edit copied markdown/docs in `public/` as authored source.
 
-- Use Cloudflare Pages for web, Wrangler for workers.
-- Pages preview/prod, Workers via GitHub Actions if present.
+## Testing and Local Development
 
-## Testing
-
-- Use `pnpm test` for all packages.
-
-## Local Development
-
-- Start frontend: `cd apps/web && npm install && npm run dev`
-- Start backend: `cd apps/worker && npm install && npm run dev`
-- Frontend runs at http://localhost:5173
-- Backend runs at http://localhost:8787 (proxied via Vite for `/api`)
-
-## Examples
-
-- To add a new UI feature, create a presentational component in `packages/ui`, import it in `apps/web`, and orchestrate data via a service in `src/services`.
-- To add a new API endpoint, add a route in `apps/worker/src/routes`, implement logic in a service, and ensure no business logic leaks into the route handler.# Project Rules
-
-**[2026-01-25] NOTE:**
-This project now uses a monorepo structure. All code, docs, and AI prompts live under `apps/web/`. See [decision log](apps/web/docs/design/decision-log.md) for details.
-
-## Non-Negotiables
-
-1. **Dark-first design** - Dark mode is the default experience
-2. **Card-based layout** - Structure content using cards
-3. **Calm motion only** - No jarring animations
-4. **Semantic tokens** - Never use raw colors
-5. **Concise copy** - No marketing language
-
-## Code Standards
-
-### TypeScript
-
-- Strict mode enabled
-- Explicit types for function parameters
-- Prefer interfaces over types for objects
-
-### React
-
-- Functional components only
-- Custom hooks for shared logic
-- Lazy loading for route components (future)
-
-### CSS
-
-- Tailwind utility classes
-- CSS variables for theming
-- No inline styles except for dynamic values
-
-## File Naming
-
-- Components: PascalCase (`AptButton.tsx`)
-- Utilities: camelCase (`aptTokens.ts`)
-- Routes: PascalCase (`Home.tsx`)
-
-## Commit Messages
-
-Format: `type(scope): description`
-
-Types:
-- `feat` - New feature
-- `fix` - Bug fix
-- `docs` - Documentation
-- `style` - Formatting
-- `refactor` - Code restructuring
-- `test` - Adding tests
+- Web: `pnpm --dir apps/web dev`
+- Worker: `pnpm --dir apps/worker dev`
+- Web tests: `pnpm --dir apps/web test`
 
 ## Review Requirements
 
-- Design changes: Check against apps/web/docs/design/review-checklist.md
-- New components: Add to /design playground (apps/web/routes/DesignPlayground.tsx)
-- Deviations: Document in apps/web/docs/design/decision-log.md
+- Design changes: check `apps/web/docs/design/review-checklist.md`
+- Deviations: document in `apps/web/docs/design/decision-log.md`

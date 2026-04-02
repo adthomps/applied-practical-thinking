@@ -1,17 +1,16 @@
 # AI Agents
 
-**[2026-01-25] NOTE:**
-This project now uses a monorepo structure. All code, docs, and AI prompts live under `apps/web/`. See [decision log](apps/web/docs/design/decision-log.md) for details.
-
 This document provides instructions for AI agents working on this codebase.
 
 ## Project Overview
 
-APT (Applied Practical Thinking) is a personal portfolio and demonstration brand built with:
-- Vite + React + TypeScript
-- Tailwind CSS + shadcn/ui
-- React Router for navigation
-- Cloudflare Pages for deployment
+APT (Applied Practical Thinking) is a monorepo with:
+
+- `apps/web` - Vite + React + TypeScript public site
+- `apps/worker` - Cloudflare Worker API/AI subsystem
+- `packages/ui` - shared presentational APT primitives
+- `packages/config` - shared token/config contracts
+- `packages/knowledge` - shared content/domain/assistant contracts
 
 ## Key Rules
 
@@ -24,68 +23,83 @@ APT (Applied Practical Thinking) is a personal portfolio and demonstration brand
 <div className="bg-background text-foreground">
 <div className="bg-card text-card-foreground">
 
-// ❌ Incorrect  
+// ❌ Incorrect
 <div className="bg-gray-900 text-white">
 ```
 
 ### 2. Component Usage
 
-Use APT components from `apps/web/components/apt`:
-- `AptButton` - User-facing action buttons and shell controls
-- `AptCard` - Card containers
-- `HeroCard` - Page heroes
-- `AptTag` - Labels/tags
+Use the shared UI contract:
+
+- `@apt/ui` is the canonical source for stable reusable primitives
+- `apps/web/components/apt` may re-export shared primitives and hold app-specific composition components during migration
+
+Key shared primitives:
+
+- `AptButton` - user-facing action buttons and shell controls
+- `AptCard` - card containers
+- `HeroCard` - page heroes
+- `AptTag` - labels/tags
 
 Exception:
 - Native `<button>` is acceptable inside low-level accessible controls such as tabs, menus, and disclosure toggles when it is the correct semantic primitive.
 
 ### 3. File Organization
 
-```
-apps/web/
-├── components/apt/     # APT design system components
-├── components/ui/      # shadcn/ui base components
-├── data/              # Content registries
-├── routes/            # Page components
-└── theme/             # Design tokens
+```text
+apps/web/          # Routes, shell, page composition, content source, web-only services
+apps/worker/       # Hono routes, AI/vector/indexing runtime, worker config
+packages/ui/       # Shared presentational APT primitives
+packages/config/   # Shared token/config contracts
+packages/knowledge/# Shared content/domain/assistant types
 ```
 
-### 4. Content Changes
+### 4. Content and Generated Output
 
-Content lives in `apps/web/data/`:
-- `site.ts` - Site configuration
-- `systems.ts` - System definitions
-- `gallery.ts` - Visual gallery definitions
-- `*-index.json` - Generated content indexes for blogs, guides, podcasts, case studies, labs, demos, and systems
+Authored source lives in:
+
+- `apps/web/content/`
+- `apps/web/docs/`
+- `apps/web/data/`
+
+Generated runtime copies live in:
+
+- `apps/web/public/content/`
+- `apps/web/public/docs/`
+- `apps/web/public/data/`
+
+Do not treat copied markdown/docs in `public/` as the source of truth.
 
 ### 5. Design Deviations
 
-Log any design deviations in `apps/web/docs/design/decision-log.md`.
+Log design deviations in `apps/web/docs/design/decision-log.md`.
 
 ## Common Tasks
 
-### Add a new Lab
+### Add a new Experiment
 
-1. Add or update the lab markdown/content in `apps/web/content/labs/`
+1. Add or update the markdown/content in `apps/web/content/labs/`
 2. Rebuild content indexes via the web app scripts
-3. Labs appear canonically on `/portfolio/labs` (`/labs` is a legacy redirect)
+3. Experiments appear canonically on `/experiments` (`/labs` is a legacy redirect)
 
 ### Add a new page
 
-1. Create component in `apps/web/routes/`
-2. Add route in `apps/web/App.tsx`
-3. Add nav item in `apps/web/data/site.ts`
+1. Create the route/component in `apps/web/routes/`
+2. Add the route in `apps/web/App.tsx`
+3. Add/update navigation in `apps/web/data/site.ts`
 
 ### Modify design tokens
 
 1. Update CSS variables in `apps/web/index.css`
-2. Update TypeScript tokens in `apps/web/theme/aptTokens.ts`
-3. Document in decision log
+2. Update shared TypeScript token contracts in `packages/config/src/aptTokens.ts`
+3. Keep `apps/web/theme/aptTokens.ts` as the compatibility re-export only
+4. Document in the decision log
 
 ## Testing
 
 ```bash
-pnpm dev     # Local development
-pnpm build   # Production build
-pnpm test    # Run tests
+pnpm dev
+pnpm build
+pnpm test
+pnpm dev:worker
 ```

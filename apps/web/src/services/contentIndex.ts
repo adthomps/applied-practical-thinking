@@ -1,25 +1,7 @@
 // src/services/contentIndex.ts
 // Service to load content indexes for blog, guides, podcasts, and case-studies
 
-export type ContentIndexItem = {
-  title: string;
-  id?: string;
-  slug?: string;
-  type?: string;
-  date?: string;
-  description?: string;
-  publishedAt?: string;
-  concepts?: string[];
-  tags?: string[];
-  platforms?: string[];
-  technologies?: string[];
-  status?: string;
-  links?: Record<string, string>;
-  contentPath: string;
-  excerpt?: string;
-  [key: string]: any;
-};
-
+import type { ContentIndexItem, ContentIndexType } from "@apt/knowledge";
 
 const INDEX_PATHS = {
   blog: '/data/blog-index.json',
@@ -29,9 +11,7 @@ const INDEX_PATHS = {
   labs: '/data/labs-index.json',
   demos: '/data/demos-index.json',
   systems: '/data/systems-index.json',
-};
-
-export type ContentIndexType = keyof typeof INDEX_PATHS;
+} satisfies Record<ContentIndexType, string>;
 
 export async function fetchContentIndex(type: ContentIndexType): Promise<ContentIndexItem[]> {
   const res = await fetch(INDEX_PATHS[type]);
@@ -44,3 +24,5 @@ export async function fetchContentMarkdown(contentPath: string): Promise<string>
   if (!res.ok) throw new Error(`Failed to load content: ${contentPath}`);
   return res.text();
 }
+
+export type { ContentIndexItem, ContentIndexType };

@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { AptCard, AptCardHeader, AptCardTitle, AptCardContent, AptCardFooter } from '@/components/apt';
 import { AptButton } from '@/components/apt';
 import { AptTag } from '@/components/apt';
-
-export type Scope = 'all' | 'design-system' | 'design-thinking' | 'design-architecture' | 'tokens' | 'ui';
+import type { Scope } from "@apt/knowledge";
 
 const scopes: { value: Scope; label: string }[] = [
   { value: 'all', label: 'All' },

@@ -1,23 +1,27 @@
 # Applied Practical Thinking
 
-APT is a monorepo for the Applied Practical Thinking portfolio site. The active application lives in `apps/web/` and is a static-first Vite + React + TypeScript app styled with Tailwind CSS, shadcn/ui primitives, and the APT component system.
+APT is a monorepo for the Applied Practical Thinking platform.
 
 ## Current repo shape
 
 ```text
 apps/
-  web/       # Active frontend application
-packages/    # Reserved for future shared packages
-docs/        # Project/process documentation
+  web/       # Public Vite + React application
+  worker/    # Cloudflare Worker API/AI subsystem
+packages/
+  ui/        # Shared APT presentational primitives
+  config/    # Shared token/config contracts
+  knowledge/ # Shared content/domain/assistant contracts
+docs/        # Internal project/process documentation
 ```
 
-Design system docs, prompts, and site-facing content all live under `apps/web/`.
+Authored site content and design docs live under `apps/web/`. Shared package contracts live under `packages/`.
 
 ## Getting started
 
 Prerequisites:
 
-- Node.js 18+
+- Node.js 20+
 - `pnpm`
 
 Install dependencies:
@@ -32,6 +36,12 @@ Run the web app:
 pnpm dev
 ```
 
+Run the worker:
+
+```sh
+pnpm dev:worker
+```
+
 Build the web app:
 
 ```sh
@@ -44,21 +54,25 @@ Run tests:
 pnpm test
 ```
 
-You can also run the app directly from its workspace:
+You can also run each app directly from its workspace:
 
 ```sh
 pnpm --dir apps/web dev
 pnpm --dir apps/web build
-pnpm --dir apps/web test
+pnpm --dir apps/worker dev
 ```
 
 ## Content and design guardrails
 
-- Site content lives in `apps/web/content/` and `apps/web/data/`
-- Routes and app code live in `apps/web/routes/` and `apps/web/components/`
-- Design documentation lives in `apps/web/docs/design/`
+- Source content lives in `apps/web/content/` and authored registries live in `apps/web/data/`
+- Source design docs live in `apps/web/docs/design/`
+- Shared APT primitives live in `packages/ui/` and are re-exported through `apps/web/components/apt/` during the migration
+- Shared TypeScript token contracts live in `packages/config/`
+- Shared content/domain contracts live in `packages/knowledge/`
+- `apps/web/public/` is output-oriented:
+  - copied markdown/docs/indexes are generated artifacts
+  - authored markdown/docs should not be edited in `public/`
 - Use semantic design tokens only; avoid raw color classes in app components
-- Prefer APT components such as `AptButton`, `AptCard`, `HeroCard`, and `AptTag`
 
 ## References
 

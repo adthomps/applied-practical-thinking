@@ -1,6 +1,6 @@
 // APT Component Library
-export { AptButton, aptButtonVariants } from "./AptButton";
-export type { AptButtonProps } from "./AptButton";
+export { AptButton, aptButtonVariants } from "@apt/ui";
+export type { AptButtonProps } from "@apt/ui";
 
 export { ContentFilters } from "./ContentFilters";
 export type { FilterConfig, SelectedFilters } from "./ContentFilters";
@@ -15,12 +15,14 @@ export {
   AptCardContent,
   AptCardFooter,
   aptCardVariants,
-} from "./AptCard";
-export type { AptCardProps } from "./AptCard";
+} from "@apt/ui";
+export type { AptCardProps } from "@apt/ui";
 
-export { HeroCard } from "./HeroCard";
+export { HeroCard } from "@apt/ui";
+export type { HeroCardProps } from "@apt/ui";
 export { HeroSection } from "./HeroSection";
-export { AptTag } from "./AptTag";
+export { AptTag } from "@apt/ui";
+export type { AptTagProps } from "@apt/ui";
 export { AptEmblem } from "./AptEmblem";
 export { CosmicBackground } from "./CosmicBackground";
 

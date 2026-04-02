@@ -11,7 +11,7 @@ This project uses a modern CI/CD workflow with GitHub Actions and Cloudflare for
     - `apps/web` — Vite + React SPA frontend (Cloudflare Pages target)
     - `apps/worker` — Cloudflare Worker API backend
     - `packages/` — Shared code (do not deploy directly)
-    - `apps/worker/src/ai/prompts/` — AI prompt definitions (referenced by worker)
+    - `apps/web/ai/prompts/` — AI prompt definitions
     - `docs/` — Documentation
     - `.github/workflows/` — GitHub Actions workflow files
 

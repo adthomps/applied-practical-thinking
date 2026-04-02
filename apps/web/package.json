@@ -17,6 +17,9 @@
     "build-content-index": "pnpm run generate-content-index && pnpm run copy-content-index"
   },
   "dependencies": {
+    "@apt/config": "workspace:*",
+    "@apt/knowledge": "workspace:*",
+    "@apt/ui": "workspace:*",
     "@hookform/resolvers": "^3.10.0",
     "@radix-ui/react-accordion": "^1.2.11",
     "@radix-ui/react-alert-dialog": "^1.1.14",
