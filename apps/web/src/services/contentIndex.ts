@@ -1,28 +1,39 @@
 // src/services/contentIndex.ts
-// Service to load content indexes for blog, guides, podcasts, and case-studies
+// Runtime content/doc API client for public content indexes and details
 
-import type { ContentIndexItem, ContentIndexType } from "@apt/knowledge";
-
-const INDEX_PATHS = {
-  blog: '/data/blog-index.json',
-  guides: '/data/guides-index.json',
-  podcasts: '/data/podcasts-index.json',
-  'case-studies': '/data/case-studies-index.json',
-  labs: '/data/labs-index.json',
-  demos: '/data/demos-index.json',
-  systems: '/data/systems-index.json',
-} satisfies Record<ContentIndexType, string>;
+import type {
+  ContentDetailResponse,
+  ContentIndexItem,
+  ContentIndexType,
+  PublicDesignDocDetailResponse,
+  PublicDesignDocItem,
+} from "@apt/knowledge";
 
 export async function fetchContentIndex(type: ContentIndexType): Promise<ContentIndexItem[]> {
-  const res = await fetch(INDEX_PATHS[type]);
+  const res = await fetch(`/api/content/${type}`);
   if (!res.ok) throw new Error(`Failed to load ${type} index`);
   return res.json();
 }
 
-export async function fetchContentMarkdown(contentPath: string): Promise<string> {
-  const res = await fetch(`/content/${contentPath}`);
-  if (!res.ok) throw new Error(`Failed to load content: ${contentPath}`);
-  return res.text();
+export async function fetchContentEntry(
+  type: ContentIndexType,
+  idOrSlug: string
+): Promise<ContentDetailResponse> {
+  const res = await fetch(`/api/content/${type}/${encodeURIComponent(idOrSlug)}`);
+  if (!res.ok) throw new Error(`Failed to load ${type} entry`);
+  return res.json();
+}
+
+export async function fetchDesignDocs(): Promise<PublicDesignDocItem[]> {
+  const res = await fetch("/api/design/docs");
+  if (!res.ok) throw new Error("Failed to load design docs");
+  return res.json();
+}
+
+export async function fetchDesignDoc(slug: string): Promise<PublicDesignDocDetailResponse> {
+  const res = await fetch(`/api/design/docs/${encodeURIComponent(slug)}`);
+  if (!res.ok) throw new Error(`Failed to load design doc: ${slug}`);
+  return res.json();
 }
 
 export type { ContentIndexItem, ContentIndexType };

@@ -14,7 +14,7 @@
 - Internal docs:
   - `docs/`
 - Site/source docs:
-  - `apps/web/docs/`
+  - `apps/web/docs/design/`
 - Source content:
   - `apps/web/content/`
   - `apps/web/data/`

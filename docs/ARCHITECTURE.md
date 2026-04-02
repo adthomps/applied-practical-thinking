@@ -27,7 +27,7 @@
 
 - Source of truth:
   - `apps/web/content/`
-  - `apps/web/docs/`
+  - `apps/web/docs/design/`
   - `apps/web/data/`
 - Generated runtime copies:
   - `apps/web/public/content/`

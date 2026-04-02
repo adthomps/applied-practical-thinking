@@ -271,7 +271,7 @@ export default function PortfolioDesignArchitecture() {
           <em>Structure exists to prevent failure, not to enable creativity.</em>
         </p>
         <AptButton variant="outline" asChild>
-          <a href="/docs/design/APT-DESIGN-ARCHITECTURE.md" target="_blank">
+          <a href="/api/design/docs/architecture" target="_blank">
             <FileText className="h-4 w-4" />
             View Full Specification
           </a>

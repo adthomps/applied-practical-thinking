@@ -27,5 +27,5 @@
 
 ## Source vs Generated
 
-- Source: `apps/web/content`, `apps/web/docs`, `apps/web/data`
+- Source: `apps/web/content`, `apps/web/docs/design`, `apps/web/data`
 - Generated runtime copies: `apps/web/public/content`, `apps/web/public/docs`, `apps/web/public/data`

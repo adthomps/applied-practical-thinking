@@ -262,7 +262,7 @@ export default function PortfolioDesignThinking() {
           This is how problems are defined before solutions exist—the thinking that precedes the doing.
         </p>
         <AptButton variant="outline" asChild>
-          <a href="/docs/design/APT-DESIGN-THINKING.md" target="_blank">
+          <a href="/api/design/docs/thinking" target="_blank">
             <FileText className="h-4 w-4" />
             View Full Framework
           </a>
@@ -326,7 +326,7 @@ export default function PortfolioDesignThinking() {
         </div>
       </section>
 
-      {/* Decision Log CTA */}
+      {/* Next Step CTA */}
       <section>
         <AptCard variant="feature" padding="large">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -335,15 +335,15 @@ export default function PortfolioDesignThinking() {
                 <Brain className="h-6 w-6" />
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-1">Decision Log</h3>
+                <h3 className="text-xl font-semibold mb-1">Design Architecture</h3>
                 <p className="text-muted-foreground">
-                  Every significant design decision is documented with context, alternatives, and rationale.
+                  See how APT turns design thinking into delivery structure, ownership boundaries, and repeatable system decisions.
                 </p>
               </div>
             </div>
             <AptButton asChild>
-              <a href="/docs/design/decision-log.md" target="_blank">
-                View Decision Log
+              <a href="/api/design/docs/architecture" target="_blank">
+                View Architecture
                 <ArrowRight className="h-4 w-4" />
               </a>
             </AptButton>

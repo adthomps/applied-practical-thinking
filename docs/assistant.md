@@ -13,11 +13,12 @@ Document-grounded AI assistant for APT Design System, Design Thinking, and Desig
 - Minimal abstraction (no LangChain/agent frameworks)
 
 ## Source Priority
-1. `docs/architecture*` → Design Architecture
-2. `docs/*design*system*` or `docs/generalbrand*` → Design System
-3. `docs/*thinking*` → Design Thinking
-4. `packages/config/*` → Tokens
-5. `packages/ui/*` → UI Components
+1. `apps/web/docs/design/APT-DESIGN-ARCHITECTURE.md` → Design Architecture
+2. `apps/web/docs/design/APT-DESIGN-SYSTEM.md` and adjacent design reference docs → Design System
+3. `apps/web/docs/design/APT-DESIGN-THINKING.md` → Design Thinking
+4. `packages/config/*` → Shared tokens/config contracts
+5. `packages/ui/*` → Shared UI primitives
+6. `apps/web/content/*` → Public learn/experiment content when the question is content-specific
 
 ## API Contracts
 ### POST /api/chat

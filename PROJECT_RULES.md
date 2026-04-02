@@ -28,7 +28,7 @@
 
 - Source of truth:
   - `apps/web/content/`
-  - `apps/web/docs/`
+  - `apps/web/docs/design/`
   - `apps/web/data/`
 - Generated runtime copies:
   - `apps/web/public/content/`
@@ -36,6 +36,11 @@
   - `apps/web/public/data/`
 
 Do not edit copied markdown/docs in `public/` as authored source.
+
+Doc placement rule:
+- `docs/` is for internal repo/process/engineering docs
+- `apps/web/docs/design/` is for external-first APT design doctrine and public design reference docs
+- internal support docs such as review checklists or decision logs are source-only unless explicitly promoted to public docs
 
 ## Testing and Local Development
 

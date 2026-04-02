@@ -2,8 +2,8 @@
 
 > Structure exists to prevent failure, not to enable creativity.
 
-**[2026-01-25] NOTE:**
-This project now uses a monorepo structure. All code, docs, and AI prompts live under `apps/web/`. See [decision log](apps/web/docs/design/decision-log.md) for details.
+**[2026-04-01] NOTE:**
+This is an external-first design doctrine document. Internal repo/process guidance lives in `docs/`, while public design doctrine is authored under `apps/web/docs/design/`.
 
 This document defines the architectural patterns, deployment strategies, and enforcement rules that govern how APT projects are built, organized, and delivered.
 
@@ -29,17 +29,6 @@ Design Architecture at APT is about **predictable delivery**. It's the scaffoldi
 ---
 
 
-## Content Management
-
-For how to manage Insights and Portfolio content, and documentation requirements for changes to content structure, navigation, or design, see:
-- 'Content Management' in [README.md](../../../README.md)
-- [DOCUMENTATION_INDEX.md](../../../DOCUMENTATION_INDEX.md)
-- [apps/web/docs/design/decision-log.md](./decision-log.md)
-
-All changes to content structure, navigation, or design must be documented in the above files.
-
----
-
 ## Structural Patterns
 
 ### Monorepo Layout
@@ -51,14 +40,12 @@ All changes to content structure, navigation, or design must be documented in th
 │  └─ worker/               # Cloudflare Worker (Hono API)
 │
 ├─ packages/
-│  ├─ ui/                   # Shared UI components
-│  ├─ config/               # Design tokens, constants
-│  └─ utils/                # Shared pure utilities
+│  ├─ ui/                   # Shared APT presentational primitives
+│  ├─ config/               # Shared tokens and config contracts
+│  ├─ knowledge/            # Shared content/domain/assistant contracts
+│  └─ utils/                # Shared pure utilities if activated
 │
-├─ docs/
-│  ├─ architecture.md
-│  ├─ api.md
-│  └─ ai.md
+├─ docs/                    # Internal repo/process/engineering docs
 │
 ├─ .github/
 │  └─ workflows/
@@ -75,7 +62,7 @@ All changes to content structure, navigation, or design must be documented in th
 | No frontend logic in `worker/` | Separation of concerns |
 | No backend logic in `web/` | Security boundary |
 | Shared logic lives in `packages/` | Single source of truth |
-| AI prompts live in `apps/web/ai/prompts/` | Versioned, auditable |
+| Web-owned prompts live in `apps/web/ai/prompts/` | Versioned, auditable |
 
 ---
 
@@ -158,14 +145,12 @@ interface APIError {
 
 ### File Structure
 
-```
-apps/web/
-└─ ai/
-   ├─ prompts/
-   │  ├─ api-maintainer.md
-   │  ├─ design-maintainer.md
-   │  └─ repo-maintainer.md
-   └─ README.md
+```text
+apps/web/ai/
+└─ prompts/
+   ├─ api-maintainer.md
+   ├─ design-maintainer.md
+   └─ repo-maintainer.md
 ```
 
 ### Routing Pattern
@@ -257,22 +242,27 @@ app.post('/api/ai/generate', authMiddleware, rateLimiter, async (c) => {
 apt-site/
 ├─ apps/
 │  ├─ web/
-│  │  ├─ components/apt/   # APT design system
-│  │  ├─ routes/           # Page components
-│  │  ├─ data/             # Content registries
-│  │  ├─ theme/            # Design tokens
-│  │  └─ apps/web/ai/prompts/ # Versioned AI instructions
+│  │  ├─ routes/           # Page components and shell
+│  │  ├─ content/          # Authored public content source
+│  │  ├─ docs/design/      # Authored design doctrine
+│  │  ├─ public/           # Generated runtime content/docs/data
+│  │  └─ ai/prompts/       # Versioned web-owned AI instructions
 │  └─ worker/              # Active API and AI routing surface
 │
-├─ docs/                   # Project/process documentation
+├─ packages/               # Shared cross-app contracts
+│  ├─ ui/
+│  ├─ config/
+│  └─ knowledge/
+│
+├─ docs/                   # Internal repo/process documentation
 └─ wrangler.toml           # Pages config (worker config lives with worker)
 ```
 
 **Decisions:**
 - Monorepo keeps deploy/config boundaries explicit
 - Web remains static-first, with worker endpoints added where needed
-- Design system stays local to `apps/web`
-- AI prompts live with the web app under `apps/web/ai/prompts`
+- Shared design-system primitives live in `packages/ui`, with app composition in `apps/web`
+- Web-owned prompts live under `apps/web/ai/prompts`
 
 ### Production Microservice
 
@@ -347,4 +337,4 @@ service/
 
 - [APT Design System](./APT-DESIGN-SYSTEM.md) — Visual tokens and components
 - [APT Design Thinking](./APT-DESIGN-THINKING.md) — Problem-solving methodology
-- [Decision Log](./decision-log.md) — Architectural decision records
+- Internal review artifacts such as decision logs remain source-side support docs and are not part of the public design export by default

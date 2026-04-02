@@ -1,11 +1,23 @@
 
-// Copy all Markdown content and docs to public for frontend access
+// Copy public Markdown content and approved public docs to public for frontend access
 const fs = require('fs');
 const path = require('path');
 
-const CONTENT_TYPES = ['blog', 'guides', 'podcasts', 'case-studies', 'labs', 'demos'];
+const CONTENT_TYPES = ['blog', 'guides', 'podcasts', 'case-studies', 'labs', 'demos', 'systems'];
 const CONTENT_ROOT = path.join(__dirname, '../content');
 const PUBLIC_CONTENT_ROOT = path.join(__dirname, '../public/content');
+const DESIGN_DOCS_ROOT = path.join(__dirname, '../docs/design');
+const PUBLIC_DOCS_ROOT = path.join(__dirname, '../public/docs/design');
+const PUBLIC_DESIGN_DOCS = [
+  'APT-DESIGN-THINKING.md',
+  'APT-DESIGN-SYSTEM.md',
+  'APT-DESIGN-ARCHITECTURE.md',
+  'APT-FIGMA-TOKENS.json',
+  'design-core.md',
+  'design-demos.md',
+  'design-site.md',
+  'vpds-alignment.md',
+];
 
 for (const type of CONTENT_TYPES) {
   const srcDir = path.join(CONTENT_ROOT, type);
@@ -19,26 +31,17 @@ for (const type of CONTENT_TYPES) {
   }
 }
 
-// Copy all docs (including design) to public/docs
-const DOCS_ROOT = path.join(__dirname, '../docs');
-const PUBLIC_DOCS_ROOT = path.join(__dirname, '../public/docs');
+// Copy only approved public design docs to public/docs/design
+fs.rmSync(PUBLIC_DOCS_ROOT, { recursive: true, force: true });
+fs.mkdirSync(PUBLIC_DOCS_ROOT, { recursive: true });
 
-function copyDirRecursive(src, dest) {
-  if (!fs.existsSync(src)) return;
-  if (!fs.existsSync(dest)) fs.mkdirSync(dest, { recursive: true });
-  for (const entry of fs.readdirSync(src)) {
-    const srcPath = path.join(src, entry);
-    const destPath = path.join(dest, entry);
-    if (fs.statSync(srcPath).isDirectory()) {
-      copyDirRecursive(srcPath, destPath);
-    } else {
-      fs.copyFileSync(srcPath, destPath);
-      console.log(`Copied ${srcPath} to ${destPath}`);
-    }
-  }
+for (const file of PUBLIC_DESIGN_DOCS) {
+  const srcPath = path.join(DESIGN_DOCS_ROOT, file);
+  const destPath = path.join(PUBLIC_DOCS_ROOT, file);
+  if (!fs.existsSync(srcPath)) continue;
+  fs.copyFileSync(srcPath, destPath);
+  console.log(`Copied docs/design/${file} to public/docs/design`);
 }
-
-copyDirRecursive(DOCS_ROOT, PUBLIC_DOCS_ROOT);
 
 // Copy video files from content/videos to public/content/videos
 const VIDEO_EXTENSIONS = ['.mp4', '.webm', '.mov', '.ogg', '.m4v'];

@@ -1,42 +1,21 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { fetchContentIndex, fetchContentMarkdown, ContentIndexItem } from "@/src/services/contentIndex";
+import { ContentIndexItem } from "@/src/services/contentIndex";
 import { AptButton, AptCard } from "@/components/apt";
 import { ContentDetailPage } from "@/components/apt/ContentDetailPage";
 import { systems as systemDefinitions } from "@/data/systems";
 import { loadAllContentIndexes, resolveRelatedItems } from "@/src/services/relatedContent";
+import { useContentDetail } from "@/hooks/useContentDetail";
 
 export default function SystemDetail() {
   const { id } = useParams();
-  const [item, setItem] = useState<ContentIndexItem | null>(null);
-  const [markdown, setMarkdown] = useState("");
+  const { item, markdown, loading, error } = useContentDetail({
+    indexTypes: ["systems"],
+    idOrSlug: id,
+    match: "id",
+  });
   const [relatedItems, setRelatedItems] = useState<ContentIndexItem[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (!id) return;
-    setLoading(true);
-    fetchContentIndex("systems")
-      .then((items) => {
-        const found = items.find((i) => i.id === id);
-        setItem(found || null);
-        if (found) {
-          return fetchContentMarkdown(found.contentPath).then((raw) => {
-            // Strip YAML frontmatter if present
-            const cleaned = raw.replace(/^---[\s\S]*?---\s*/, "");
-            setMarkdown(cleaned);
-          });
-        }
-        return "";
-      })
-      .then(() => setLoading(false))
-      .catch((e) => {
-        setError(e.message);
-        setLoading(false);
-      });
-  }, [id]);
 
   useEffect(() => {
     if (!item?.related?.length) {

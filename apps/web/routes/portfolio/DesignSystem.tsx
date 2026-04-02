@@ -739,7 +739,7 @@ rounded-full → 9999px`} />
             </div>
             <div className="flex gap-3">
               <AptButton variant="outline" asChild>
-                <a href="/docs/design/APT-DESIGN-SYSTEM.md" target="_blank">
+                <a href="/api/design/docs/system" target="_blank">
                   View Markdown
                 </a>
               </AptButton>

@@ -183,9 +183,9 @@ All insights content (blogs, podcasts, guides, case studies) is managed as Markd
 - Update or add files as needed (see `DOCUMENTATION_INDEX.md` for a list).
 
 ### Site Docs (User-Facing)
-- All user-facing docs (guides, help, etc.) are in `apps/web/docs/`.
-- Add new Markdown files for new guides or help pages.
-- Edit existing files to update content.
+- APT design doctrine lives in `apps/web/docs/design/`.
+- Public learning/content markdown lives in `apps/web/content/`.
+- Generated runtime copies in `apps/web/public/docs/` and `apps/web/public/content/` should not be edited as authored source.
 
 ---
 

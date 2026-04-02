@@ -243,7 +243,11 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
           {markdown ? (
             <div>
               <article className="prose-custom">
-                <MarkdownContent markdown={markdown} contentPath={item.contentPath} />
+                <MarkdownContent
+                  markdown={markdown}
+                  contentPath={item.contentPath}
+                  assetBasePath={typeof item.assetBasePath === "string" ? item.assetBasePath : undefined}
+                />
               </article>
             </div>
           ) : null}

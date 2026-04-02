@@ -59,8 +59,15 @@ packages/knowledge/# Shared content/domain/assistant types
 Authored source lives in:
 
 - `apps/web/content/`
-- `apps/web/docs/`
+- `apps/web/docs/design/`
 - `apps/web/data/`
+
+Audience split:
+
+- `docs/` is internal operating documentation for contributors and agents
+- `apps/web/content/` is external/public content source
+- `apps/web/docs/design/` is external-first design doctrine source
+- internal support docs in `apps/web/docs/design/` are not automatically part of the public docs export
 
 Generated runtime copies live in:
 

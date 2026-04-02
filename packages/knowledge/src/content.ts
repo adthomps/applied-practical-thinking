@@ -14,6 +14,7 @@ export interface ContentIndexItem {
   title: string;
   id?: string;
   slug?: string;
+  indexType?: ContentIndexType;
   type?: string;
   date?: string;
   description?: string;
@@ -32,5 +33,23 @@ export interface ContentIndexItem {
   related?: string[];
   relatedLabs?: string[];
   thumbnail?: string;
+  assetBasePath?: string;
   [key: string]: unknown;
+}
+
+export interface ContentDetailResponse {
+  item: ContentIndexItem | null;
+  markdown: string;
+}
+
+export interface PublicDesignDocItem {
+  slug: string;
+  title: string;
+  path: string;
+  description?: string;
+}
+
+export interface PublicDesignDocDetailResponse {
+  item: PublicDesignDocItem | null;
+  markdown: string;
 }

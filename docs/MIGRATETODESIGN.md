@@ -1,15 +1,20 @@
-# Migration to Design System
+# MIGRATETODESIGN.md
 
-## Steps
-- Move all presentational components to `packages/ui`.
-- Use only tokens from `packages/config`.
-- Refactor UI to use Apt* components from `apps/web/components/apt`.
-- Document any deviations in `apps/web/docs/design/decision-log.md`.# MIGRATETODESIGN.md
+## Status
 
-## How to Migrate Features to APT Design System
+This file is now a historical migration note, not the canonical design-system spec.
 
-1. Move all design-related code to `apps/web/components/apt/`
-2. Use only semantic tokens from `apps/web/theme/aptTokens.ts`
-3. Document all design changes in `apps/web/docs/design/decision-log.md`
-4. Add new components to the design playground (`apps/web/routes/DesignPlayground.tsx`)
-5. Update docs in `apps/web/docs/design/` as needed
+The current monorepo contract is:
+
+- Shared presentational primitives live in `packages/ui`
+- Shared TypeScript token contracts live in `packages/config`
+- `apps/web/components/apt` may re-export shared primitives and own app-specific composition components
+- Canonical design doctrine lives in `apps/web/docs/design/`
+
+## Ongoing migration rules
+
+1. Move stable reusable presentational components to `packages/ui`
+2. Use shared semantic token contracts from `packages/config`
+3. Keep app-shell and route composition in `apps/web`
+4. Document durable design deviations in `apps/web/docs/design/decision-log.md`
+5. Update canonical design doctrine under `apps/web/docs/design/` when the migration changes ownership or standards

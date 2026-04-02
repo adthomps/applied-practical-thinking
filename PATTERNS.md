@@ -1,19 +1,11 @@
 # PATTERNS.md
 
-## APT Monorepo Patterns
+This root file is a pointer, not the canonical patterns handbook.
 
-- All app code lives under `apps/`
-- Shared code lives under `packages/`
-- No app imports from another app
-- Shared package imports use explicit package contracts such as `@apt/ui`, `@apt/config`, and `@apt/knowledge`
-- Internal API routes live under `/api/*`
-- Public API routes, if introduced, live under `/v1/*`
-- Prompts live in `apps/web/ai/prompts/`
-- Source markdown/docs are authored outside `public/`
+Use these internal sources of truth:
 
-## Import Rules
+- `docs/PATTERNS.md` for detailed engineering patterns and boundaries
+- `PROJECT_RULES.md` for short repo guardrails
+- `docs/ARCHITECTURE.md` for the monorepo system model
 
-- Reusable primitives belong in `packages/ui`
-- Shared token contracts belong in `packages/config`
-- Shared content/domain contracts belong in `packages/knowledge`
-- `apps/web/components/apt` may re-export stable shared primitives during migration
+Root files stay brief and directional; deeper implementation guidance lives in `docs/`.

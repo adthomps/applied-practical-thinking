@@ -3,8 +3,8 @@ import matter from "gray-matter";
 import {
   ContentIndexItem,
   ContentIndexType,
+  fetchContentEntry,
   fetchContentIndex,
-  fetchContentMarkdown,
 } from "./contentIndex";
 
 export type ContentDetailMatch = "id" | "slug" | "idOrSlug";
@@ -20,7 +20,15 @@ export function stripFrontmatter(markdown: string): string {
 }
 
 export async function fetchContentItems(indexTypes: ContentIndexType[]): Promise<ContentIndexItem[]> {
-  const all = await Promise.all(indexTypes.map((t) => fetchContentIndex(t)));
+  const all = await Promise.all(
+    indexTypes.map(async (type) => {
+      const items = await fetchContentIndex(type);
+      return items.map((item) => ({
+        ...item,
+        indexType: item.indexType || type,
+      }));
+    })
+  );
   return all.flat();
 }
 
@@ -47,10 +55,10 @@ export async function fetchContentDetail(params: {
   const items = await fetchContentItems(indexTypes);
   const item = findContentItem(items, idOrSlug, match);
 
-  if (!item?.contentPath) {
+  if (!item?.contentPath || !item.indexType) {
     return { items, item, markdown: "" };
   }
 
-  const raw = await fetchContentMarkdown(item.contentPath);
-  return { items, item, markdown: stripFrontmatter(raw) };
+  const detail = await fetchContentEntry(item.indexType, item.slug || item.id || idOrSlug);
+  return { items, item: detail.item, markdown: stripFrontmatter(detail.markdown) };
 }

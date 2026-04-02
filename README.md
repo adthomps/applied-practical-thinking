@@ -17,6 +17,20 @@ docs/        # Internal project/process documentation
 
 Authored site content and design docs live under `apps/web/`. Shared package contracts live under `packages/`.
 
+## Documentation model
+
+- `README.md` is the repo entrypoint and operating overview
+- `docs/` contains internal engineering, deployment, maintenance, workflow, and agent-facing repo docs
+- `apps/web/content/` contains authored external/public content that renders on the site
+- `apps/web/docs/design/` contains external-first design doctrine and public design reference docs
+- internal design support docs may live alongside the design doctrine source, but are not automatically public
+- `apps/web/public/` is generated runtime output only:
+  - `apps/web/public/content/`
+  - `apps/web/public/docs/`
+  - `apps/web/public/data/`
+
+Do not edit copied markdown under `apps/web/public/` as authored source.
+
 ## Getting started
 
 Prerequisites:
@@ -65,7 +79,8 @@ pnpm --dir apps/worker dev
 ## Content and design guardrails
 
 - Source content lives in `apps/web/content/` and authored registries live in `apps/web/data/`
-- Source design docs live in `apps/web/docs/design/`
+- Source design doctrine lives in `apps/web/docs/design/`
+- Internal repo/operator guidance lives in `docs/`
 - Shared APT primitives live in `packages/ui/` and are re-exported through `apps/web/components/apt/` during the migration
 - Shared TypeScript token contracts live in `packages/config/`
 - Shared content/domain contracts live in `packages/knowledge/`
