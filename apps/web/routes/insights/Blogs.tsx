@@ -36,7 +36,7 @@ export default function InsightsBlogs() {
   }, [selected.topics, blogs]);
 
   if (loading) {
-    return <div className="container py-12 text-center">Loading blogs…</div>;
+    return <div className="container py-12 text-center">Loading articles…</div>;
   }
   if (error) {
     return <div className="container py-12 text-center text-destructive">{error}</div>;

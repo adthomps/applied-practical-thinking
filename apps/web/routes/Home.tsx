@@ -22,7 +22,7 @@ const pillars = [
     title: "Applied Thinking",
     description:
       "Real problems, practical solutions. No theoretical exercises — everything connects to actual use cases.",
-    demoLink: "/labs",
+    demoLink: "/experiments",
     docsLink: "/learn",
   },
   {
@@ -30,7 +30,7 @@ const pillars = [
     title: "Reference Implementations",
     description:
       "Working code that demonstrates patterns in production-ready form, not just simplified examples.",
-    demoLink: "/labs",
+    demoLink: "/experiments",
     docsLink: "/learn",
   },
   {
@@ -38,7 +38,7 @@ const pillars = [
     title: "Patterns & Decisions",
     description:
       "Documented tradeoffs and reasoning behind every major choice. Understanding the why, not just the how.",
-    demoLink: "/systems",
+    demoLink: "/design/systems",
     docsLink: "/design",
   },
 ];
@@ -93,7 +93,7 @@ export default function Home() {
         tagline={siteConfig.fullName}
         title={siteConfig.tagline}
         description={siteConfig.description}
-        primaryCta={{ label: "Explore Labs", to: "/labs" }}
+        primaryCta={{ label: "Explore Experiments", to: "/experiments" }}
         secondaryCta={{ label: "Start Learning", to: "/learn" }}
       />
 
@@ -101,12 +101,12 @@ export default function Home() {
 
       {/* What You'll Find Here */}
       <section className="container py-16 md:py-24">
-        <div className="text-center mb-12">
+      <div className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-3">
             What you'll find here
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            Focused areas of exploration and demonstration
+            Focused areas for learning, experimentation, and design-governed reference models
           </p>
         </div>
 
@@ -132,7 +132,7 @@ export default function Home() {
               </AptCardHeader>
               <AptCardFooter className="border-0 pt-4 mt-auto">
                 <AptButton variant="primary" size="sm" asChild>
-                  <Link to={pillar.demoLink}>View demo</Link>
+                  <Link to={pillar.demoLink}>Explore</Link>
                 </AptButton>
                 <AptButton variant="ghost" size="sm" asChild>
                   <Link to={pillar.docsLink}>Read docs</Link>
@@ -171,12 +171,12 @@ export default function Home() {
           {featuredItems.map((item) => {
             // Determine link and type label
             let to = "#";
-            let typeLabel = item.type || (item.platforms ? "System" : "Lab");
+            let typeLabel = item.type || (item.platforms ? "System" : "Experiment");
             if (item.type === "lab" || item.type === "mock" || item.type === "demo") {
-              to = `/labs/${item.slug ?? item.id}`;
-              typeLabel = "Lab";
+              to = `/experiments/${item.slug ?? item.id}`;
+              typeLabel = item.type === "mock" ? "Mock" : "Concept";
             } else if (item.type === "system" || item.platforms) {
-              to = `/systems/${item.id ?? item.slug}`;
+              to = `/design/systems/${item.id ?? item.slug}`;
               typeLabel = "System";
             } else if (item.type === "blog" || item.type === "guide" || item.type === "case-study") {
               to = `/learn/${item.id ?? item.slug}`;
@@ -184,9 +184,6 @@ export default function Home() {
             } else if (item.type === "podcast") {
               to = `/learn/${item.id ?? item.slug}`;
               typeLabel = "Podcast";
-            } else if (item.type === "demo") {
-              to = `/labs/${item.slug ?? item.id}`;
-              typeLabel = "Demo";
             }
             return (
               <Link key={item.id ?? item.slug ?? item.contentPath} to={to} className="block group">
@@ -223,13 +220,13 @@ export default function Home() {
           })}
           <div className="mt-8 flex flex-wrap gap-3">
             <AptButton variant="secondary" asChild>
-              <Link to="/labs" className="gap-2">
-                All Labs <ArrowRight className="h-4 w-4" />
+              <Link to="/experiments" className="gap-2">
+                All Experiments <ArrowRight className="h-4 w-4" />
               </Link>
             </AptButton>
             <AptButton variant="secondary" asChild>
-              <Link to="/systems" className="gap-2">
-                All Systems <ArrowRight className="h-4 w-4" />
+              <Link to="/design/systems" className="gap-2">
+                Design Systems <ArrowRight className="h-4 w-4" />
               </Link>
             </AptButton>
             <AptButton variant="secondary" asChild>

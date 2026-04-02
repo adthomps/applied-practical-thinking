@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import { LabCard } from "@/components/apt/LabCard";
-import { ContentFilters, FilterConfig, SelectedFilters } from "@/components/apt";
+import { AptButton, ContentFilters, FilterConfig, SelectedFilters } from "@/components/apt";
 import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
 
 export default function PortfolioLabs() {
@@ -57,12 +58,23 @@ export default function PortfolioLabs() {
     <div className="container py-12 md:py-16">
       <div className="max-w-2xl mb-8">
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-          Labs
+          Experiments
         </h1>
         <p className="text-lg text-muted-foreground">
-          AI-assisted concept construction using tools like Lovable, Figma Make, and Copilot.
-          Ideas given shape—early, imperfect, and intentional.
+          Concepts, mocks, prototypes, and live demonstrations that make ideas tangible before they become stable references.
         </p>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-3 mb-8">
+        <AptButton variant="outline" asChild>
+          <Link to="/experiments/concepts">Browse Concepts</Link>
+        </AptButton>
+        <AptButton variant="outline" asChild>
+          <Link to="/experiments/mocks">Browse Mocks</Link>
+        </AptButton>
+        <AptButton variant="outline" asChild>
+          <Link to="/experiments/live-demos">Browse Live Demos</Link>
+        </AptButton>
       </div>
 
       <ContentFilters
@@ -85,9 +97,19 @@ export default function PortfolioLabs() {
 
           {filteredLabs.length === 0 && (
             <div className="text-center py-12 text-muted-foreground">
-              No labs match your current filters.
+              No experiments match your current filters.
             </div>
           )}
+
+          <div className="mt-10 rounded-xl border border-border bg-muted/20 p-6">
+            <h2 className="text-lg font-semibold mb-2">Looking for interactive proof?</h2>
+            <p className="text-sm text-muted-foreground mb-4">
+              Live Demos sit under Experiments as the runnable proof layer. Start with concepts or mocks for context, then open demos when you want to interact with the work.
+            </p>
+            <AptButton variant="ghost" size="sm" asChild>
+              <Link to="/experiments/live-demos">Browse Live Demos</Link>
+            </AptButton>
+          </div>
         </>
       )}
     </div>

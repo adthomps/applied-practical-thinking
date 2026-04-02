@@ -24,11 +24,6 @@ export const siteConfig = {
       description: "Guides, articles, podcasts, and worked examples for applied thinking in practice.",
       children: [
         {
-          label: "Guides",
-          path: "/learn/guides",
-          description: "Practical walkthroughs, reference guides, and worked examples.",
-        },
-        {
           label: "Articles",
           path: "/learn/articles",
           description: "Short- to medium-form writing on applied ideas and practical systems.",
@@ -38,27 +33,39 @@ export const siteConfig = {
           path: "/learn/podcasts",
           description: "Audio discussions exploring thinking, frameworks, and real-world tradeoffs.",
         },
+        {
+          label: "Guides",
+          path: "/learn/guides",
+          description: "Practical walkthroughs, reference guides, and worked examples.",
+        },
       ],
     },
     {
-      label: "Systems",
-      path: "/systems",
-      description: "Completed system models with architecture, decisions, and known tradeoffs.",
-    },
-    {
-      label: "Labs",
-      path: "/labs",
-      description: "Experiments, prototypes, and proof-of-work built in the open.",
+      label: "Experiments",
+      path: "/experiments",
+      description: "Concepts, mocks, and runnable proof that make ideas tangible before they become stable references.",
       children: [
         {
-          label: "Labs",
-          path: "/labs",
-          description: "Early, exploratory, and iterative builds that make ideas tangible.",
-          tagline: "Ideas given shape—early, imperfect, and intentional.",
+          label: "All",
+          path: "/experiments",
+          description: "The full index of exploratory work across concepts, mocks, and live demos.",
+          tagline: "Exploration made legible.",
+        },
+        {
+          label: "Concepts",
+          path: "/experiments/concepts",
+          description: "Early conceptual builds and prototype directions that give shape to an idea.",
+          tagline: "The first coherent form of an idea.",
+        },
+        {
+          label: "Mocks",
+          path: "/experiments/mocks",
+          description: "Framed representations that clarify flow, layout, and experience before implementation hardens.",
+          tagline: "Structured representations before systems settle.",
         },
         {
           label: "Live Demos",
-          path: "/labs/live-demos",
+          path: "/experiments/live-demos",
           description: "Real, running demos that make concepts observable and testable.",
           tagline: "Not products—clickable proof.",
         },
@@ -86,6 +93,18 @@ export const siteConfig = {
           path: "/design/architecture",
           description: "Repo layout, deployment flows, API contracts, and enforcement rules.",
           tagline: "Structure exists to prevent failure, not to enable creativity.",
+        },
+        {
+          label: "Systems",
+          path: "/design/systems",
+          description: "Stable system references that capture architecture, decisions, and reusable models inside the APT doctrine.",
+          tagline: "Reference models governed by the design doctrine.",
+        },
+        {
+          label: "Content Strategy",
+          path: "/design/content-strategy",
+          description: "How APT organizes information so people can understand, navigate, and apply it.",
+          tagline: "Information architecture made visible.",
         },
       ],
     },

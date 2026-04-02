@@ -47,12 +47,12 @@ function AnimatedRole({ roles }: { roles: readonly string[] }) {
 }
 
 export default function About() {
-  const [labsCount, setLabsCount] = useState(0);
+  const [experimentsCount, setExperimentsCount] = useState(0);
 
   useEffect(() => {
     fetchContentIndex("labs")
-      .then((items) => setLabsCount(items.length))
-      .catch(() => setLabsCount(0));
+      .then((items) => setExperimentsCount(items.length))
+      .catch(() => setExperimentsCount(0));
   }, []);
 
   const [insightsCount, setInsightsCount] = useState(0);
@@ -69,10 +69,10 @@ export default function About() {
 
   const projectStats = [
     {
-      label: "Labs",
-      count: labsCount,
+      label: "Experiments",
+      count: experimentsCount,
       icon: Play,
-      path: "/labs",
+      path: "/experiments",
       color: "text-primary",
     },
     {
@@ -86,7 +86,7 @@ export default function About() {
       label: "Systems",
       count: systems.length,
       icon: Settings,
-      path: "/systems",
+      path: "/design/systems",
       color: "text-muted-foreground",
     },
   ];
@@ -160,7 +160,7 @@ export default function About() {
                 {/* CTA Buttons */}
                 <div className="flex flex-wrap gap-3 justify-center md:justify-start">
                   <AptButton variant="primary" size="lg" asChild>
-                    <Link to="/labs">View My Work</Link>
+                    <Link to="/experiments">View My Work</Link>
                   </AptButton>
                   <AptButton variant="outline" size="lg" asChild>
                     <a href="#profile">

@@ -114,14 +114,18 @@ export default function Insights() {
           >
             All
           </AptButton>
-          {(["blog", "podcast", "guide"]).map((type) => (
+          {[
+            { type: "blog", label: "Articles" },
+            { type: "podcast", label: "Podcasts" },
+            { type: "guide", label: "Guides" },
+          ].map(({ type, label }) => (
             <AptButton
               key={type}
               variant={filter === type ? "primary" : "ghost"}
               size="sm"
               onClick={() => setFilter(type)}
             >
-              {type.charAt(0).toUpperCase() + type.slice(1).replace("-", " ")}
+              {label}
             </AptButton>
           ))}
         </div>

@@ -26,9 +26,12 @@ const InsightsGuides = lazy(() => import("./routes/insights/Guides"));
 // Labs / Design
 const Portfolio = lazy(() => import("./routes/Portfolio"));
 const PortfolioLabs = lazy(() => import("./routes/portfolio/Labs"));
+const PortfolioExperimentsConcepts = lazy(() => import("./routes/portfolio/ExperimentsConcepts"));
+const PortfolioExperimentsMocks = lazy(() => import("./routes/portfolio/ExperimentsMocks"));
 const PortfolioDesignSystem = lazy(() => import("./routes/portfolio/DesignSystem"));
 const PortfolioDesignThinking = lazy(() => import("./routes/portfolio/DesignThinking"));
 const PortfolioDesignArchitecture = lazy(() => import("./routes/portfolio/DesignArchitecture"));
+const PortfolioContentStrategy = lazy(() => import("./routes/portfolio/ContentStrategy"));
 const PortfolioLiveDemos = lazy(() => import("./routes/portfolio/LiveDemos"));
 const PortfolioVisualGallery = lazy(() => import("./routes/portfolio/VisualGallery"));
 const InsightDetail = lazy(() => import("./routes/InsightDetail"));
@@ -47,7 +50,7 @@ const RouteFallback = () => (
 const LegacyLabRedirect = () => {
   const { id } = useParams<{ id: string }>();
 
-  return <Navigate to={id ? `/labs/${id}` : "/labs"} replace />;
+  return <Navigate to={id ? `/experiments/${id}` : "/experiments"} replace />;
 };
 
 const LegacyLearnRedirect = () => {
@@ -59,7 +62,13 @@ const LegacyLearnRedirect = () => {
 const LegacyDemoRedirect = () => {
   const { slug } = useParams<{ slug: string }>();
 
-  return <Navigate to={slug ? `/labs/live-demos/${slug}` : "/labs/live-demos"} replace />;
+  return <Navigate to={slug ? `/experiments/live-demos/${slug}` : "/experiments/live-demos"} replace />;
+};
+
+const LegacySystemRedirect = () => {
+  const { id } = useParams<{ id: string }>();
+
+  return <Navigate to={id ? `/design/systems/${id}` : "/design/systems"} replace />;
 };
 
 const App = () => (
@@ -91,26 +100,26 @@ const App = () => (
             <Route path="/podcasts/:id" element={<LegacyLearnRedirect />} />
             <Route path="/case-studies/:id" element={<LegacyLearnRedirect />} />
             
-            {/* Labs */}
-            <Route path="/labs" element={<PortfolioLabs />} />
-            <Route path="/labs/:id" element={<PortfolioLabDetail />} />
-            <Route path="/labs/live-demos" element={<PortfolioLiveDemos />} />
-            <Route path="/labs/live-demos/:slug" element={<DemoDetail />} />
+            {/* Experiments */}
+            <Route path="/experiments" element={<PortfolioLabs />} />
+            <Route path="/experiments/concepts" element={<PortfolioExperimentsConcepts />} />
+            <Route path="/experiments/mocks" element={<PortfolioExperimentsMocks />} />
+            <Route path="/experiments/:id" element={<PortfolioLabDetail />} />
+            <Route path="/experiments/live-demos" element={<PortfolioLiveDemos />} />
+            <Route path="/experiments/live-demos/:slug" element={<DemoDetail />} />
 
             {/* Design */}
             <Route path="/design" element={<Portfolio />} />
             <Route path="/design/system" element={<PortfolioDesignSystem />} />
             <Route path="/design/thinking" element={<PortfolioDesignThinking />} />
             <Route path="/design/architecture" element={<PortfolioDesignArchitecture />} />
+            <Route path="/design/systems" element={<Systems />} />
+            <Route path="/design/systems/:id" element={<SystemDetail />} />
+            <Route path="/design/content-strategy" element={<PortfolioContentStrategy />} />
             
             {/* About */}
             <Route path="/about" element={<About />} />
             <Route path="/about/visual-gallery" element={<PortfolioVisualGallery />} />
-              {/* Systems */}
-              <Route path="/systems" element={<Systems />} />
-              <Route path="/systems/:id" element={<SystemDetail />} />
-            
-
             {/* Assistant */}
             <Route path="/assistant" element={<AssistantPage />} />
 
@@ -124,15 +133,25 @@ const App = () => (
             <Route path="/insights/guides" element={<Navigate to="/learn/guides" replace />} />
             <Route path="/insights/case-studies" element={<Navigate to="/learn/guides" replace />} />
             <Route path="/insights/:id" element={<LegacyLearnRedirect />} />
-            <Route path="/portfolio" element={<Navigate to="/labs" replace />} />
-            <Route path="/portfolio/labs" element={<Navigate to="/labs" replace />} />
+            <Route path="/portfolio" element={<Navigate to="/experiments" replace />} />
+            <Route path="/portfolio/labs" element={<Navigate to="/experiments" replace />} />
             <Route path="/portfolio/labs/:id" element={<LegacyLabRedirect />} />
             <Route path="/portfolio/design-system" element={<Navigate to="/design/system" replace />} />
             <Route path="/portfolio/design-thinking" element={<Navigate to="/design/thinking" replace />} />
             <Route path="/portfolio/design-architecture" element={<Navigate to="/design/architecture" replace />} />
-            <Route path="/portfolio/live-demos" element={<Navigate to="/labs/live-demos" replace />} />
+            <Route path="/portfolio/design-systems" element={<Navigate to="/design/systems" replace />} />
+            <Route path="/portfolio/content-strategy" element={<Navigate to="/design/content-strategy" replace />} />
+            <Route path="/portfolio/live-demos" element={<Navigate to="/experiments/live-demos" replace />} />
             <Route path="/portfolio/live-demos/:slug" element={<LegacyDemoRedirect />} />
             <Route path="/portfolio/visual-gallery" element={<Navigate to="/about/visual-gallery" replace />} />
+            <Route path="/systems" element={<LegacySystemRedirect />} />
+            <Route path="/systems/:id" element={<LegacySystemRedirect />} />
+            <Route path="/labs" element={<Navigate to="/experiments" replace />} />
+            <Route path="/labs/concepts" element={<Navigate to="/experiments/concepts" replace />} />
+            <Route path="/labs/mocks" element={<Navigate to="/experiments/mocks" replace />} />
+            <Route path="/labs/:id" element={<LegacyLabRedirect />} />
+            <Route path="/labs/live-demos" element={<Navigate to="/experiments/live-demos" replace />} />
+            <Route path="/labs/live-demos/:slug" element={<LegacyDemoRedirect />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>

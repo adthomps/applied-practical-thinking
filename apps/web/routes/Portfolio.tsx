@@ -5,6 +5,8 @@ import {
   Palette, 
   Brain, 
   Network,
+  Layers3,
+  Route,
   ArrowRight 
 } from "lucide-react";
 
@@ -15,6 +17,8 @@ const sectionIcons: Record<string, React.ComponentType<{ className?: string }>> 
   "/design/system": Palette,
   "/design/thinking": Brain,
   "/design/architecture": Network,
+  "/design/systems": Layers3,
+  "/design/content-strategy": Route,
 };
 
 export default function Portfolio() {
@@ -26,12 +30,12 @@ export default function Portfolio() {
           Design
         </h1>
         <p className="text-lg text-muted-foreground">
-          The public operating model for APT: how problems are framed, how the system is expressed, and how the architecture enforces it.
+          The public operating model for APT: how problems are framed, how the system is expressed, how architecture enforces it, and where stable system references live.
         </p>
       </section>
 
       {/* Design Sections Grid */}
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-6">
         {designSections.map((section) => {
           const Icon = sectionIcons[section.path] ?? Brain;
           return (

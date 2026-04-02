@@ -13,7 +13,7 @@ export default function DemoDetail() {
   });
 
   if (!slug) {
-    return <Navigate to="/labs/live-demos" replace />;
+    return <Navigate to="/experiments/live-demos" replace />;
   }
 
   if (loading) {
@@ -21,7 +21,7 @@ export default function DemoDetail() {
   }
 
   if (error || !demo) {
-    return <Navigate to="/labs/live-demos" replace />;
+    return <Navigate to="/experiments/live-demos" replace />;
   }
 
   // Consistent fallback for missing images, matching other detail types
@@ -29,7 +29,7 @@ export default function DemoDetail() {
 
   return (
     <ContentDetailPage
-      backHref="/labs/live-demos"
+      backHref="/experiments/live-demos"
       backLabel="Back to Live Demos"
       item={demo}
       markdown={markdown}

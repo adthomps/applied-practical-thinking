@@ -12,17 +12,7 @@ import {
   AptTag,
   AptButton,
 } from "@/components/apt";
-import {
-  Play,
-  Zap,
-  FlaskConical,
-  ExternalLink,
-  Share2,
-  Beaker,
-  Image as ImageIcon,
-  ChevronUp,
-  Clock,
-} from "lucide-react";
+import { Play, Zap, FlaskConical, ExternalLink, Share2, Beaker, ChevronUp, Clock } from "lucide-react";
 
 const typeIcons: Record<string, typeof Play> = {
   interactive: Zap,
@@ -58,7 +48,7 @@ export function DemoCard({ demo }: DemoCardProps) {
   const hasLinks = links.demo || links.figma || links.repo;
   const isComingSoon = demo.status === "coming-soon";
 
-  const detailHref = `/labs/live-demos/${demo.slug || demo.id}`;
+  const detailHref = `/experiments/live-demos/${demo.slug || demo.id}`;
 
   return (
     <div className="block group">
@@ -272,7 +262,7 @@ export function DemoCard({ demo }: DemoCardProps) {
               <div className="flex items-center gap-1 text-xs text-muted-foreground">
                 <Beaker className="h-3 w-3" />
                 <span>
-                  {relatedLabCount} lab
+                  {relatedLabCount} experiment
                   {relatedLabCount > 1 ? "s" : ""}
                 </span>
               </div>

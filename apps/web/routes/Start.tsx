@@ -6,6 +6,7 @@ import {
   Lightbulb, 
   BookOpen, 
   Layers, 
+  Beaker,
   ArrowRight, 
   Target,
   Compass,
@@ -39,17 +40,17 @@ const startingPoints = [
     color: "text-primary",
   },
   {
-    icon: Layers,
-    label: "Systems",
-    path: "/systems",
-    description: "Completed system models with architecture, tradeoffs, and reusable patterns.",
+    icon: Beaker,
+    label: "Experiments",
+    path: "/experiments",
+    description: "Concepts, mocks, and interactive proof that make ideas tangible in the open.",
     color: "text-accent",
   },
   {
-    icon: Lightbulb,
-    label: "Labs",
-    path: "/labs",
-    description: "Experiments, prototypes, and proof-of-work built in the open.",
+    icon: Layers,
+    label: "Design",
+    path: "/design",
+    description: "The doctrine behind APT, including thinking, architecture, systems, and content strategy.",
     color: "text-muted-foreground",
   },
 ];
@@ -70,8 +71,8 @@ export default function Start() {
         
         <p className="text-lg text-muted-foreground leading-relaxed">
           {siteConfig.fullName} is a personal portfolio and demonstration brand. 
-          Here you'll find learning resources, experiments, system models, and
-          design standards focused on turning real-world problems into working systems.
+          Here you'll find learning resources, experiments, and design-governed reference models
+          focused on turning real-world problems into observable systems.
         </p>
       </section>
 
@@ -131,28 +132,24 @@ export default function Start() {
             <div className="space-y-4 text-sm text-muted-foreground">
               <div className="flex gap-3">
                 <span className="text-primary font-bold">Learn</span>
-                <span>= guides, articles, podcasts, and worked examples</span>
+                <span>= articles, podcasts, guides, and worked examples</span>
               </div>
               <div className="flex gap-3">
-                <span className="text-primary font-bold">Systems</span>
-                <span>= architecture, decisions, constraints, and reusable patterns</span>
-              </div>
-              <div className="flex gap-3">
-                <span className="text-primary font-bold">Labs</span>
-                <span>= experiments, prototypes, and the live demos that support them</span>
+                <span className="text-primary font-bold">Experiments</span>
+                <span>= concepts, mocks, prototypes, and live demos that make ideas observable</span>
               </div>
               <div className="flex gap-3">
                 <span className="text-primary font-bold">Design</span>
-                <span>= the thinking, system, and architecture standards behind APT</span>
+                <span>= the thinking, system, architecture, content strategy, and system references behind APT</span>
               </div>
             </div>
 
             <div className="pt-4 border-t border-border text-center">
               <p className="text-xs text-muted-foreground mb-4">{siteConfig.disclaimer}</p>
               <div className="flex flex-wrap justify-center gap-3">
-                <Link to="/labs">
+                <Link to="/experiments">
                   <AptButton variant="primary" size="sm">
-                    Explore Labs
+                    Explore Experiments
                   </AptButton>
                 </Link>
                 <Link to="/design">
