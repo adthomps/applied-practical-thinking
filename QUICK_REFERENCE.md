@@ -14,8 +14,11 @@
 
 ## Deployment
 
-- Web: Cloudflare Pages
-- Worker: Cloudflare Workers via Wrangler
+- Web: Cloudflare Pages builds from GitHub repo updates
+- Worker: Cloudflare Workers via Wrangler / `.github/workflows/worker.yml`
+- Frontend env: `VITE_API_BASE=https://applied-practical-thinking.apt-account.workers.dev`
+- Worker env: `PUBLIC_SITE_ORIGIN=https://applied-practical-thinking.pages.dev`
+- Redeploy order: Worker first, then Pages
 
 ## Monorepo
 

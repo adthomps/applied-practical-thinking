@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { siteConfig } from "@/data/site";
-import { systems } from "@/data/systems";
 import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
 import {
   HeroSection,
@@ -15,6 +14,10 @@ import {
 } from "@/components/apt";
 import { AssistantChat } from "@/features/assistant/AssistantChat";
 import { Brain, AppWindow, Network, ArrowRight } from "lucide-react";
+
+const HOMEPAGE_FEATURE_LIMIT = 6;
+
+type HomepageFeatureLane = "experiments" | "learn" | "systems";
 
 const pillars = [
   {
@@ -43,8 +46,99 @@ const pillars = [
   },
 ];
 
+function getFeatureDate(item: ContentIndexItem) {
+  return new Date(item.date || item.publishedAt || 0).getTime();
+}
+
+function sortByFeatureDate(items: ContentIndexItem[]) {
+  return [...items].sort((a, b) => getFeatureDate(b) - getFeatureDate(a));
+}
+
+function getHomepageFeatureLane(item: ContentIndexItem): HomepageFeatureLane {
+  if (item.indexType === "labs" || item.indexType === "demos") return "experiments";
+  if (item.indexType === "systems") return "systems";
+  return "learn";
+}
+
+function selectHomepageFeatured(items: ContentIndexItem[]) {
+  const featured = sortByFeatureDate(items.filter((item) => item.featured === true));
+  const selected: ContentIndexItem[] = [];
+  const selectedIds = new Set<string>();
+
+  const addItem = (item: ContentIndexItem) => {
+    const key = item.id || item.slug || item.contentPath;
+    if (selectedIds.has(key) || selected.length >= HOMEPAGE_FEATURE_LIMIT) return;
+    selectedIds.add(key);
+    selected.push(item);
+  };
+
+  const laneCaps: Record<HomepageFeatureLane, number> = {
+    experiments: 2,
+    learn: 3,
+    systems: 1,
+  };
+
+  (Object.keys(laneCaps) as HomepageFeatureLane[]).forEach((lane) => {
+    featured
+      .filter((item) => getHomepageFeatureLane(item) === lane)
+      .slice(0, laneCaps[lane])
+      .forEach(addItem);
+  });
+
+  featured.forEach(addItem);
+
+  return selected;
+}
+
+function getHomepageFeaturedLink(item: ContentIndexItem) {
+  if (item.indexType === "labs") {
+    return {
+      to: `/experiments/${item.slug ?? item.id}`,
+      typeLabel: item.type === "mock" ? "Mock" : item.type === "lab" ? "Concept" : "Experiment",
+      laneLabel: "Experiment",
+    };
+  }
+
+  if (item.indexType === "demos") {
+    return {
+      to: `/experiments/live-demos/${item.slug ?? item.id}`,
+      typeLabel: "Live Demo",
+      laneLabel: "Experiment",
+    };
+  }
+
+  if (item.indexType === "systems" || item.type === "system" || item.platforms) {
+    return {
+      to: `/design/systems/${item.id ?? item.slug}`,
+      typeLabel: "System",
+      laneLabel: "Design",
+    };
+  }
+
+  if (item.indexType === "podcasts" || item.type === "podcast") {
+    return {
+      to: `/learn/${item.id ?? item.slug}`,
+      typeLabel: "Podcast",
+      laneLabel: "Learn",
+    };
+  }
+
+  return {
+    to: `/learn/${item.id ?? item.slug}`,
+    typeLabel:
+      item.type === "blog"
+        ? "Article"
+        : item.type === "case-study"
+          ? "Case Study"
+          : item.type === "guide"
+            ? "Guide"
+            : "Learn",
+    laneLabel: "Learn",
+  };
+}
+
 export default function Home() {
-  // Featured items - mix of labs, systems, and content
+  // Featured items - curated cross-section of experiments, learn content, and systems
   const [featuredItems, setFeaturedItems] = useState<ContentIndexItem[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -57,9 +151,10 @@ export default function Home() {
       fetchContentIndex("podcasts"),
       fetchContentIndex("case-studies"),
       fetchContentIndex("demos"),
-    ]).then(([labs, blog, guides, podcasts, caseStudies, demos]) => {
+      fetchContentIndex("systems"),
+    ]).then(([labs, blog, guides, podcasts, caseStudies, demos, systems]) => {
       if (cancelled) return;
-      // Only use ContentIndexItem[] for featuredItems
+
       const allContent: ContentIndexItem[] = [
         ...labs,
         ...blog,
@@ -67,14 +162,10 @@ export default function Home() {
         ...podcasts,
         ...caseStudies,
         ...demos,
+        ...systems,
       ];
-      const featured = allContent.filter(item => item.featured === true);
-      featured.sort((a, b) => {
-        const aDate = new Date(a.date || a.publishedAt || 0).getTime();
-        const bDate = new Date(b.date || b.publishedAt || 0).getTime();
-        return bDate - aDate;
-      });
-      setFeaturedItems(featured);
+
+      setFeaturedItems(selectHomepageFeatured(allContent));
     }).catch(() => {
       if (cancelled) return;
       setFeaturedItems([]);
@@ -154,7 +245,12 @@ export default function Home() {
       {/* Featured */}
       <section className="container pb-16 md:pb-24">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-semibold tracking-tight">Featured</h2>
+          <div className="space-y-2">
+            <h2 className="text-2xl font-semibold tracking-tight">Featured</h2>
+            <p className="text-sm text-muted-foreground">
+              A curated set of up to six recent highlights across Experiments, Learn, and Systems.
+            </p>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -169,27 +265,16 @@ export default function Home() {
             </AptCard>
           )}
           {featuredItems.map((item) => {
-            // Determine link and type label
-            let to = "#";
-            let typeLabel = item.type || (item.platforms ? "System" : "Experiment");
-            if (item.type === "lab" || item.type === "mock" || item.type === "demo") {
-              to = `/experiments/${item.slug ?? item.id}`;
-              typeLabel = item.type === "mock" ? "Mock" : "Concept";
-            } else if (item.type === "system" || item.platforms) {
-              to = `/design/systems/${item.id ?? item.slug}`;
-              typeLabel = "System";
-            } else if (item.type === "blog" || item.type === "guide" || item.type === "case-study") {
-              to = `/learn/${item.id ?? item.slug}`;
-              typeLabel = item.type === "blog" ? "Article" : item.type === "case-study" ? "Case Study" : "Guide";
-            } else if (item.type === "podcast") {
-              to = `/learn/${item.id ?? item.slug}`;
-              typeLabel = "Podcast";
-            }
+            const { to, typeLabel, laneLabel } = getHomepageFeaturedLink(item);
+
             return (
               <Link key={item.id ?? item.slug ?? item.contentPath} to={to} className="block group">
                 <AptCard variant="interactive" padding="default">
                   <div className="flex items-start justify-between mb-2">
-                    <AptTag variant="accent">{typeLabel}</AptTag>
+                    <div className="flex flex-wrap gap-2">
+                      <AptTag variant="accent">{typeLabel}</AptTag>
+                      <AptTag variant="ghost">{laneLabel}</AptTag>
+                    </div>
                     {item.status && <AptTag variant="muted">{item.status}</AptTag>}
                   </div>
                   <AptCardHeader className="p-0 mt-3">
@@ -218,23 +303,24 @@ export default function Home() {
               </Link>
             );
           })}
-          <div className="mt-8 flex flex-wrap gap-3">
-            <AptButton variant="secondary" asChild>
-              <Link to="/experiments" className="gap-2">
-                All Experiments <ArrowRight className="h-4 w-4" />
-              </Link>
-            </AptButton>
-            <AptButton variant="secondary" asChild>
-              <Link to="/design/systems" className="gap-2">
-                Design Systems <ArrowRight className="h-4 w-4" />
-              </Link>
-            </AptButton>
-            <AptButton variant="secondary" asChild>
-              <Link to="/learn" className="gap-2">
-                All Learn Content <ArrowRight className="h-4 w-4" />
-              </Link>
-            </AptButton>
-          </div>
+        </div>
+
+        <div className="mt-8 flex flex-wrap gap-3">
+          <AptButton variant="secondary" asChild>
+            <Link to="/experiments" className="gap-2">
+              All Experiments <ArrowRight className="h-4 w-4" />
+            </Link>
+          </AptButton>
+          <AptButton variant="secondary" asChild>
+            <Link to="/design/systems" className="gap-2">
+              Design Systems <ArrowRight className="h-4 w-4" />
+            </Link>
+          </AptButton>
+          <AptButton variant="secondary" asChild>
+            <Link to="/learn" className="gap-2">
+              All Learn Content <ArrowRight className="h-4 w-4" />
+            </Link>
+          </AptButton>
         </div>
       </section>
     </div>

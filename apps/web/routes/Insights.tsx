@@ -1,18 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ComponentType } from "react";
 import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
 import { InsightCard } from "@/components/apt/InsightCard";
 import {
-  AptCard,
   AptButton,
+  LandingSectionCardGrid,
   RuntimeConfigNotice,
 } from "@/components/apt";
 import { Link } from "react-router-dom";
-import { Book, FileText, Podcast, ArrowRight } from "lucide-react";
+import { Book, FileText, Podcast } from "lucide-react";
 import { siteConfig } from "@/data/site";
 import { getWorkerApiConfigError } from "@/src/services/api";
 
 
-const areaIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+const areaIcons: Record<string, ComponentType<{ className?: string }>> = {
   "/learn/articles": FileText,
   "/learn/podcasts": Podcast,
   "/learn/guides": Book,
@@ -77,50 +77,31 @@ export default function Insights() {
 
   const learnNav = siteConfig.nav.find((n) => n.path === "/learn");
   const areaSections = learnNav?.children ?? [];
+  const landingCards = areaSections.map((section) => ({
+    ...section,
+    icon: areaIcons[section.path] ?? Book,
+    metaLabel: "Learn",
+  }));
 
   return (
     <div className="container py-8 md:py-12 space-y-12">
-      {/* Header */}
-      <section className="max-w-2xl">
-        <h1 className="text-3xl font-bold tracking-tight mb-2">Learn</h1>
-        <p className="text-muted-foreground max-w-2xl">
+      <section className="max-w-3xl space-y-3">
+        <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Learn</h1>
+        <p className="text-lg text-muted-foreground">
           Guides, articles, podcasts, and worked examples for applied thinking, systems, and execution.
         </p>
       </section>
 
-      {/* Area Cards Grid */}
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {areaSections.map((section) => {
-          const Icon = areaIcons[section.path] ?? Book;
-          return (
-            <Link key={section.path} to={section.path}>
-              <AptCard variant="interactive" className="h-full">
-                <div className="p-6 space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <Icon className="h-5 w-5 text-primary" />
-                    </div>
-                    <h2 className="text-lg font-semibold">{section.label}</h2>
-                    <ArrowRight className="h-4 w-4 ml-auto text-muted-foreground" />
-                  </div>
-                  <p className="text-sm text-muted-foreground">
-                    {section.description}
-                  </p>
-                  {"tagline" in section && section.tagline && (
-                    <p className="text-xs text-primary/80 italic">
-                      {section.tagline}
-                    </p>
-                  )}
-                </div>
-              </AptCard>
-            </Link>
-          );
-        })}
-      </section>
+      <LandingSectionCardGrid items={landingCards} />
 
-      {/* Filterable Learn List */}
-      <section>
-        {/* Filters */}
+      <section className="space-y-6">
+        <div className="max-w-3xl space-y-2">
+          <h2 className="text-2xl font-semibold tracking-tight">Browse all Learn content</h2>
+          <p className="text-sm text-muted-foreground">
+            Filter across articles, podcasts, guides, and worked examples to move from orientation into deeper material.
+          </p>
+        </div>
+
         <div className="flex gap-2 mb-8">
           <AptButton
             variant={filter === "all" ? "primary" : "ghost"}

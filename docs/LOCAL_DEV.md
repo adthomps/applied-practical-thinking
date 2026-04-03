@@ -40,6 +40,18 @@ pnpm --filter ./apps/worker dev
 - Set `PUBLIC_SITE_ORIGIN` in `apps/worker/.dev.vars` so the worker can read the Pages-hosted content/doc assets during local dev (e.g., `PUBLIC_SITE_ORIGIN=http://127.0.0.1:5173`)
 - See `DEPLOYMENT.md` for production/preview settings
 
+## Local vs Production Contract
+
+- Local:
+  - Vite serves the frontend on `http://localhost:5173`
+  - the Worker serves APIs on `http://localhost:8787`
+  - Vite may proxy `/api/*` during development
+- Production:
+  - Cloudflare Pages builds and serves the frontend
+  - the Cloudflare Worker serves the public content/doc API
+  - production must not assume same-origin `/api/*`
+  - the frontend uses `VITE_API_BASE` to reach the separate Worker
+
 ## Build
 
 

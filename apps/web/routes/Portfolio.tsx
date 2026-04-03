@@ -1,5 +1,6 @@
+import { useMemo, useState, type ComponentType } from "react";
 import { Link } from "react-router-dom";
-import { AptCard } from "@/components/apt/AptCard";
+import { AptButton, AptCard, LandingSectionCardGrid } from "@/components/apt";
 import { siteConfig } from "@/data/site";
 import { 
   Palette, 
@@ -13,7 +14,7 @@ import {
 const designNav = siteConfig.nav.find(n => n.path === "/design");
 const designSections = designNav?.children ?? [];
 
-const sectionIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+const sectionIcons: Record<string, ComponentType<{ className?: string }>> = {
   "/design/system": Palette,
   "/design/thinking": Brain,
   "/design/architecture": Network,
@@ -21,49 +22,103 @@ const sectionIcons: Record<string, React.ComponentType<{ className?: string }>> 
   "/design/content-strategy": Route,
 };
 
+type DesignFilter = "all" | "doctrine" | "reference";
+
+function getDesignSectionCategory(path: string): DesignFilter {
+  return path === "/design/systems" ? "reference" : "doctrine";
+}
+
 export default function Portfolio() {
+  const [filter, setFilter] = useState<DesignFilter>("all");
+
+  const landingCards = (designSections ?? []).map((section) => ({
+    ...section,
+    icon: sectionIcons[section.path] ?? Brain,
+    metaLabel: getDesignSectionCategory(section.path) === "reference" ? "Reference" : "Doctrine",
+  }));
+
+  const filteredSections = useMemo(() => {
+    if (filter === "all") return designSections;
+    return designSections.filter((section) => getDesignSectionCategory(section.path) === filter);
+  }, [filter]);
+
   return (
-    <div className="container py-12 md:py-16 space-y-12">
-      {/* Header */}
-      <section className="max-w-2xl">
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-          Design
-        </h1>
+    <div className="container py-8 md:py-12 space-y-12">
+      <section className="max-w-3xl space-y-3">
+        <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Design</h1>
         <p className="text-lg text-muted-foreground">
           The public operating model for APT: how problems are framed, how the system is expressed, how architecture enforces it, and where stable system references live.
         </p>
       </section>
 
-      {/* Design Sections Grid */}
-      <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-6">
-        {designSections.map((section) => {
-          const Icon = sectionIcons[section.path] ?? Brain;
-          return (
-            <Link key={section.path} to={section.path}>
-              <AptCard variant="interactive" className="h-full">
-                <div className="p-6 space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <Icon className="h-5 w-5 text-primary" />
+      <LandingSectionCardGrid items={landingCards} />
+
+      <section className="space-y-6">
+        <div className="max-w-3xl space-y-2">
+          <h2 className="text-2xl font-semibold tracking-tight">Browse all Design areas</h2>
+          <p className="text-sm text-muted-foreground">
+            Move across doctrine and reference layers to see how APT defines problems, expresses systems, and documents the reusable models behind the work.
+          </p>
+        </div>
+
+        <div className="flex flex-wrap gap-2">
+          <AptButton
+            variant={filter === "all" ? "primary" : "ghost"}
+            size="sm"
+            onClick={() => setFilter("all")}
+          >
+            All
+          </AptButton>
+          <AptButton
+            variant={filter === "doctrine" ? "primary" : "ghost"}
+            size="sm"
+            onClick={() => setFilter("doctrine")}
+          >
+            Doctrine
+          </AptButton>
+          <AptButton
+            variant={filter === "reference" ? "primary" : "ghost"}
+            size="sm"
+            onClick={() => setFilter("reference")}
+          >
+            Reference
+          </AptButton>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {filteredSections.map((section) => {
+            const Icon = sectionIcons[section.path] ?? Brain;
+            const category = getDesignSectionCategory(section.path) === "reference" ? "Reference" : "Doctrine";
+
+            return (
+              <Link key={section.path} to={section.path} className="block group">
+                <AptCard variant="interactive" className="h-full">
+                  <div className="p-6 space-y-5">
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex items-center gap-3">
+                        <div className="h-11 w-11 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                          <Icon className="h-5 w-5 text-primary" />
+                        </div>
+                        <div>
+                          <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">{category}</p>
+                          <h3 className="text-lg font-semibold">{section.label}</h3>
+                        </div>
+                      </div>
+                      <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
                     </div>
-                    <h2 className="text-lg font-semibold">{section.label}</h2>
-                    <ArrowRight className="h-4 w-4 ml-auto text-muted-foreground" />
+
+                    <div className="space-y-3">
+                      <p className="text-sm text-muted-foreground">{section.description}</p>
+                      {"tagline" in section && section.tagline ? (
+                        <p className="text-xs text-primary/80 italic">{section.tagline}</p>
+                      ) : null}
+                    </div>
                   </div>
-                  
-                  <p className="text-sm text-muted-foreground">
-                    {section.description}
-                  </p>
-                  
-                  {"tagline" in section && section.tagline && (
-                    <p className="text-xs text-primary/80 italic">
-                      {section.tagline}
-                    </p>
-                  )}
-                </div>
-              </AptCard>
-            </Link>
-          );
-        })}
+                </AptCard>
+              </Link>
+            );
+          })}
+        </div>
       </section>
     </div>
   );

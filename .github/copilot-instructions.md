@@ -18,6 +18,9 @@
 - **Frontend runs at**: http://localhost:5173
 - **Backend runs at**: http://localhost:8787 (proxied via Vite for `/api`)
 - **Deploy**: Cloudflare Pages builds the frontend from repo updates, and the worker deploys separately. `VITE_API_BASE` belongs to the Cloudflare Pages project config.
+- **Production values**:
+  - `VITE_API_BASE=https://applied-practical-thinking.apt-account.workers.dev`
+  - `PUBLIC_SITE_ORIGIN=https://applied-practical-thinking.pages.dev`
 
 ## Project Conventions
 
