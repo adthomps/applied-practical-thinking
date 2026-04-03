@@ -6,7 +6,6 @@ import { fetchContentIndex } from "@/src/services/contentIndex";
 import { AptCard, AptButton, AptTag } from "@/components/apt";
 import {
   ExternalLink,
-  Mail,
   MapPin,
   Calendar,
   Github,
@@ -74,6 +73,7 @@ export default function About() {
       icon: Play,
       path: "/experiments",
       color: "text-primary",
+      description: "Concepts, mocks, and live proof",
     },
     {
       label: "Learn",
@@ -81,6 +81,7 @@ export default function About() {
       icon: Book,
       path: "/learn",
       color: "text-accent",
+      description: "Articles, podcasts, guides, and examples",
     },
     {
       label: "Systems",
@@ -88,6 +89,7 @@ export default function About() {
       icon: Settings,
       path: "/design/systems",
       color: "text-muted-foreground",
+      description: "Stable references inside the design doctrine",
     },
   ];
 
@@ -149,8 +151,12 @@ export default function About() {
                   {authorConfig.name}
                 </h1>
 
-                <p className="text-xl md:text-2xl text-muted-foreground mb-3">
-                  I'm a <AnimatedRole roles={authorConfig.roles} />
+                <p className="text-lg md:text-xl text-muted-foreground mb-2">
+                  {authorConfig.title}
+                </p>
+
+                <p className="text-base md:text-lg text-muted-foreground mb-3">
+                  I work across <AnimatedRole roles={authorConfig.roles} />
                 </p>
 
                 <p className="text-muted-foreground max-w-2xl mb-6">
@@ -177,56 +183,55 @@ export default function About() {
 
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6" id="profile">
-        {/* Left Column - Contact & Social */}
+        {/* Left Column - Profile Summary */}
         <div className="space-y-6">
-          {/* Contact Information */}
           <AptCard variant="default" padding="large">
-            <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
-              <Mail className="h-4 w-4 text-primary" />
-              Contact Information
-            </h2>
+            <div className="space-y-5">
+              <div>
+                <h2 className="text-lg font-semibold">Profile</h2>
+                <p className="text-sm text-muted-foreground mt-1">
+                  A quick view of the person, place, and channels behind APT.
+                </p>
+              </div>
 
-            <div className="space-y-3">
-              <a
-                href={`mailto:${authorConfig.contact.email}`}
-                className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <Mail className="h-4 w-4" />
-                <span>{authorConfig.contact.email}</span>
-              </a>
-            </div>
-
-            {/* Social Links */}
-            <div className="mt-6 pt-6 border-t border-border">
-              <h3 className="text-sm font-medium text-muted-foreground mb-3">
-                Social Links
-              </h3>
-              <div className="grid grid-cols-2 gap-2">
-                {socialLinks.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-3 py-2 rounded-lg bg-muted/50 hover:bg-muted transition-colors text-sm"
-                  >
-                    <link.icon className={`h-4 w-4 ${link.color}`} />
-                    <span>{link.label}</span>
-                  </a>
+              <div className="flex flex-wrap gap-2">
+                {authorConfig.roles.map((role) => (
+                  <AptTag key={role} variant="muted">
+                    {role}
+                  </AptTag>
                 ))}
               </div>
-            </div>
-          </AptCard>
 
-          {/* Location & Joined */}
-          <AptCard variant="subtle" padding="default">
-            <div className="flex items-center gap-3 text-muted-foreground mb-2">
-              <MapPin className="h-4 w-4" />
-              <span>{authorConfig.location}</span>
-            </div>
-            <div className="flex items-center gap-3 text-muted-foreground">
-              <Calendar className="h-4 w-4" />
-              <span>Joined {authorConfig.joinedDate}</span>
+              <div className="space-y-3 border-t border-border pt-5">
+                <div className="flex items-center gap-3 text-muted-foreground">
+                  <MapPin className="h-4 w-4 text-primary" />
+                  <span>{authorConfig.location}</span>
+                </div>
+                <div className="flex items-center gap-3 text-muted-foreground">
+                  <Calendar className="h-4 w-4 text-primary" />
+                  <span>Joined {authorConfig.joinedDate}</span>
+                </div>
+              </div>
+
+              <div className="border-t border-border pt-5">
+                <h3 className="text-sm font-medium text-muted-foreground mb-3">
+                  Find me
+                </h3>
+                <div className="grid grid-cols-2 gap-2">
+                  {socialLinks.map((link) => (
+                    <a
+                      key={link.label}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-3 py-2 rounded-lg bg-muted/50 hover:bg-muted transition-colors text-sm"
+                    >
+                      <link.icon className={`h-4 w-4 ${link.color}`} />
+                      <span>{link.label}</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
             </div>
           </AptCard>
         </div>
@@ -241,11 +246,11 @@ export default function About() {
             </p>
           </AptCard>
 
-          {/* Project Stats */}
+          {/* Site Snapshot */}
           <AptCard variant="default" padding="large">
-            <h2 className="text-lg font-semibold mb-2">Project Progress</h2>
+            <h2 className="text-lg font-semibold mb-2">Site Snapshot</h2>
             <p className="text-sm text-muted-foreground mb-6">
-              Current status across different project categories
+              A quick read on what is currently available across the core areas of the site.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -260,20 +265,18 @@ export default function About() {
                     padding="default"
                     className="hover:border-primary/50 transition-colors"
                   >
-                    <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center justify-between mb-3">
                       <div className="flex items-center gap-2">
                         <stat.icon className={`h-4 w-4 ${stat.color}`} />
                         <span className="font-medium">{stat.label}</span>
                       </div>
-                      <AptTag variant="muted" className="text-xs">
-                        {stat.count}
-                      </AptTag>
+                      <ArrowCount count={stat.count} />
                     </div>
-                    <div className="h-1.5 bg-muted rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-primary rounded-full transition-all group-hover:bg-primary/80"
-                        style={{ width: `${Math.min(stat.count * 20, 100)}%` }}
-                      />
+                    <p className="text-sm text-muted-foreground mb-4">
+                      {stat.description}
+                    </p>
+                    <div className="text-xs text-muted-foreground">
+                      Browse {stat.label.toLowerCase()}
                     </div>
                   </AptCard>
                 </Link>
@@ -309,12 +312,13 @@ export default function About() {
             </ul>
           </AptCard>
 
-          {/* Outside APT */}
+          {/* Outside of Work */}
           <AptCard variant="subtle" padding="large">
-            <h2 className="text-lg font-semibold mb-4">Outside of APT</h2>
+            <h2 className="text-lg font-semibold mb-4">Outside of Work</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Outside of software systems, I also keep a small nature and aerial
-              photography gallery.
+              Outside of software and systems work, I spend time with photography
+              and drone flying. The gallery is where that visual practice shows up:
+              attention to framing, limitation, observation, and perspective.
             </p>
             <AptButton variant="outline" size="sm" asChild>
               <Link to="/about/visual-gallery" className="inline-flex items-center gap-2">
@@ -326,5 +330,13 @@ export default function About() {
         </div>
       </div>
     </div>
+  );
+}
+
+function ArrowCount({ count }: { count: number }) {
+  return (
+    <AptTag variant="muted" className="text-xs">
+      {count}
+    </AptTag>
   );
 }
