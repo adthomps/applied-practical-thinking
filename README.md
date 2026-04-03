@@ -90,6 +90,11 @@ For this reason:
 - `PUBLIC_SITE_ORIGIN` must exist in the Worker runtime environment
 - GitHub Desktop pushes source changes only; Cloudflare Pages is what builds the frontend deploy
 
+Production values:
+
+- `VITE_API_BASE=https://applied-practical-thinking.apt-account.workers.dev`
+- `PUBLIC_SITE_ORIGIN=https://applied-practical-thinking.pages.dev`
+
 ## Content and design guardrails
 
 - Source content lives in `apps/web/content/` and authored registries live in `apps/web/data/`

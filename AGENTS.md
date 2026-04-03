@@ -110,3 +110,19 @@ pnpm build
 pnpm test
 pnpm dev:worker
 ```
+
+## Build And Deploy Notes
+
+- Frontend build authority:
+  - Cloudflare Pages watches the GitHub repo and builds `apps/web`
+  - `VITE_API_BASE` belongs in the Cloudflare Pages project environment
+- Worker deploy path:
+  - the Worker remains a separate Cloudflare deploy surface
+  - this repo currently keeps worker deployment automation in `.github/workflows/worker.yml`
+  - `PUBLIC_SITE_ORIGIN` belongs in `apps/worker/wrangler.toml` and/or the Worker dashboard config
+- Production values:
+  - `VITE_API_BASE=https://applied-practical-thinking.apt-account.workers.dev`
+  - `PUBLIC_SITE_ORIGIN=https://applied-practical-thinking.pages.dev`
+- Redeploy order after runtime/config changes:
+  1. deploy the Worker
+  2. deploy or rebuild Cloudflare Pages

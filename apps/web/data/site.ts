@@ -136,11 +136,6 @@ export const authorConfig = {
   
   // Profile image (relative to public/ or external URL)
   profileImage: "/profile.jpg", // Place your image in apps/web/public/profile.jpg
-
-  // Contact
-  contact: {
-    email: "test@example.com",
-  },
   
   // Social links
   social: {
