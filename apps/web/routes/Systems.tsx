@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
-import { AptCard } from "@/components/apt";
+import { AptCard, RuntimeConfigNotice } from "@/components/apt";
 import { SystemCard } from "@/components/apt/SystemCard";
+import { getWorkerApiConfigError } from "@/src/services/api";
 
 export default function Systems() {
   const [systems, setSystems] = useState<ContentIndexItem[]>([]);
@@ -22,7 +23,22 @@ export default function Systems() {
   }, []);
 
   if (loading) return <div className="container py-12 text-center">Loading systems…</div>;
-  if (error) return <div className="container py-12 text-center text-destructive">{error}</div>;
+  if (error) {
+    const configError = getWorkerApiConfigError();
+    return (
+      <div className="container py-12">
+        {configError ? (
+          <RuntimeConfigNotice
+            message={configError.message}
+            envVar={configError.envVar}
+            expectedValue={configError.expectedProductionValue}
+          />
+        ) : (
+          <div className="text-center text-destructive">{error}</div>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div className="container py-8 md:py-12">

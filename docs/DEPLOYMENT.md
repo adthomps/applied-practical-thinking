@@ -90,13 +90,30 @@ This project uses a modern CI/CD workflow with GitHub Actions and Cloudflare for
   - Set `VITE_API_BASE=http://localhost:8787` in `apps/web/.env`.
   - Set `PUBLIC_SITE_ORIGIN=http://127.0.0.1:5173` in `apps/worker/.dev.vars`.
 - **Cloudflare Pages (preview/production):**
-  - In the Cloudflare Pages dashboard, set `VITE_API_BASE` to your deployed Worker URL (e.g., `https://apt-starter-project.apt-account.workers.dev`).
+  - In the Cloudflare Pages dashboard, set `VITE_API_BASE` to your deployed Worker URL.
+  - Production value for this project: `https://applied-practical-thinking.apt-account.workers.dev`
   - **Important:** Do not include a trailing slash in the value. Use `https://apt-starter-project.apt-account.workers.dev` (not `...workers.dev/`).
   - This prevents double slashes in requests (e.g., `//api/v1/health` → 404).
 - **Cloudflare Worker (preview/production):**
   - In Wrangler or the Cloudflare Worker dashboard, set `PUBLIC_SITE_ORIGIN` to the corresponding Pages site origin for that environment.
+  - Production value for this project: `https://applied-practical-thinking.pages.dev`
   - Preview worker deployments should point at the matching Pages preview URL.
   - Production worker deployments should point at the production Pages site URL.
+
+## Production Checklist
+
+- **Pages project:** `applied-practical-thinking`
+- **Worker project:** `applied-practical-thinking-worker`
+- **Pages variable:** `VITE_API_BASE=https://applied-practical-thinking.apt-account.workers.dev`
+- **Worker variable:** `PUBLIC_SITE_ORIGIN=https://applied-practical-thinking.pages.dev`
+- **Redeploy order:** deploy Worker first, then redeploy Pages
+
+## Verification Checklist
+
+- Open `https://applied-practical-thinking.pages.dev/learn` and confirm content loads.
+- Open `https://applied-practical-thinking.pages.dev/experiments` and confirm content loads.
+- Open any Design page and confirm the “View Full …” action opens the worker-backed doc.
+- Confirm the token download still works from `https://applied-practical-thinking.pages.dev/docs/design/APT-FIGMA-TOKENS.json`.
 
 ## Best Practices
 

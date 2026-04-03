@@ -1,7 +1,8 @@
 import { useState, useMemo, useEffect } from "react";
 import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
 import { InsightCard } from "@/components/apt/InsightCard";
-import { AptButton, ContentFilters, FilterConfig, SelectedFilters } from "@/components/apt";
+import { AptButton, ContentFilters, FilterConfig, SelectedFilters, RuntimeConfigNotice } from "@/components/apt";
+import { getWorkerApiConfigError } from "@/src/services/api";
 
 export default function InsightsGuides() {
   const [guides, setGuides] = useState<ContentIndexItem[]>([]);
@@ -43,7 +44,20 @@ export default function InsightsGuides() {
     return <div className="container py-12 text-center">Loading guides…</div>;
   }
   if (error) {
-    return <div className="container py-12 text-center text-destructive">{error}</div>;
+    const configError = getWorkerApiConfigError();
+    return (
+      <div className="container py-12">
+        {configError ? (
+          <RuntimeConfigNotice
+            message={configError.message}
+            envVar={configError.envVar}
+            expectedValue={configError.expectedProductionValue}
+          />
+        ) : (
+          <div className="text-center text-destructive">{error}</div>
+        )}
+      </div>
+    );
   }
 
   return (

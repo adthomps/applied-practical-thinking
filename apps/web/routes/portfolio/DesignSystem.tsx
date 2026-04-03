@@ -29,7 +29,7 @@ import {
   Eye
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { tryGetWorkerApiUrl } from "@/src/services/api";
+import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
 
 function ColorSwatch({ name, cssVar, className }: { name: string; cssVar: string; className: string }) {
   const [copied, setCopied] = useState(false);
@@ -96,6 +96,7 @@ function Section({ id, title, description, children }: { id: string; title: stri
 
 export default function PortfolioDesignSystem() {
   const systemDocUrl = tryGetWorkerApiUrl("/api/design/docs/system");
+  const configError = getWorkerApiConfigError();
   const sections = [
     { id: "philosophy", label: "Philosophy", icon: Sparkles },
     { id: "colors", label: "Colors", icon: Palette },
@@ -135,6 +136,11 @@ export default function PortfolioDesignSystem() {
             </Link>
           </AptButton>
         </div>
+        {!systemDocUrl && configError ? (
+          <p className="text-sm text-muted-foreground mt-3">
+            Configure <code>{configError.envVar}</code> on the Pages project to enable full-doc links.
+          </p>
+        ) : null}
       </div>
 
       {/* Quick Nav */}

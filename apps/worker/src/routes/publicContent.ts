@@ -74,7 +74,7 @@ function getStaticOrigin(requestUrl: string, configuredOrigin?: string) {
   }
 
   throw new Error(
-    "PUBLIC_SITE_ORIGIN is not configured for the standalone Worker. Set it to the Cloudflare Pages site origin."
+    "Worker runtime configuration is incomplete. Set PUBLIC_SITE_ORIGIN on the Cloudflare Worker to https://applied-practical-thinking.pages.dev."
   );
 }
 
@@ -135,7 +135,14 @@ export const publicContentRoute = new Hono<{ Bindings: PublicContentBindings }>(
       );
       return c.json(items.map((item) => normalizeItem(type, item)));
     } catch (error: any) {
-      return c.json({ error: error?.message || "Failed to load content index" }, 500);
+      return c.json(
+        {
+          error: error?.message || "Failed to load content index",
+          envVar: "PUBLIC_SITE_ORIGIN",
+          expectedProductionValue: "https://applied-practical-thinking.pages.dev",
+        },
+        500
+      );
     }
   })
   .get("/api/content/:type/:idOrSlug", async (c) => {
@@ -172,7 +179,14 @@ export const publicContentRoute = new Hono<{ Bindings: PublicContentBindings }>(
       };
       return c.json(response);
     } catch (error: any) {
-      return c.json({ error: error?.message || "Failed to load content detail" }, 500);
+      return c.json(
+        {
+          error: error?.message || "Failed to load content detail",
+          envVar: "PUBLIC_SITE_ORIGIN",
+          expectedProductionValue: "https://applied-practical-thinking.pages.dev",
+        },
+        500
+      );
     }
   })
   .get("/api/design/docs", (c) => c.json(publicDesignDocs))
@@ -194,6 +208,13 @@ export const publicContentRoute = new Hono<{ Bindings: PublicContentBindings }>(
       const response: PublicDesignDocDetailResponse = { item, markdown };
       return c.json(response);
     } catch (error: any) {
-      return c.json({ error: error?.message || "Failed to load design doc" }, 500);
+      return c.json(
+        {
+          error: error?.message || "Failed to load design doc",
+          envVar: "PUBLIC_SITE_ORIGIN",
+          expectedProductionValue: "https://applied-practical-thinking.pages.dev",
+        },
+        500
+      );
     }
   });

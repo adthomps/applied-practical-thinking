@@ -2,11 +2,12 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ContentIndexItem } from "@/src/services/contentIndex";
-import { AptButton, AptCard } from "@/components/apt";
+import { AptButton, AptCard, RuntimeConfigNotice } from "@/components/apt";
 import { ContentDetailPage } from "@/components/apt/ContentDetailPage";
 import { systems as systemDefinitions } from "@/data/systems";
 import { loadAllContentIndexes, resolveRelatedItems } from "@/src/services/relatedContent";
 import { useContentDetail } from "@/hooks/useContentDetail";
+import { getWorkerApiConfigError } from "@/src/services/api";
 
 export default function SystemDetail() {
   const { id } = useParams();
@@ -29,7 +30,21 @@ export default function SystemDetail() {
   }, [item]);
 
   if (loading) return <div className="container py-12">Loading…</div>;
-  if (error || !item) return <div className="container py-12 text-destructive">{error || "System not found"}</div>;
+  if (error) {
+    const configError = getWorkerApiConfigError();
+    if (configError) {
+      return (
+        <div className="container py-12">
+          <RuntimeConfigNotice
+            message={configError.message}
+            envVar={configError.envVar}
+            expectedValue={configError.expectedProductionValue}
+          />
+        </div>
+      );
+    }
+  }
+  if (!item) return <div className="container py-12 text-destructive">System not found</div>;
 
   const systemDefinition = systemDefinitions.find((entry) => entry.id === item.id);
   const relatedExperiments = useMemo(

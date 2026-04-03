@@ -1,8 +1,9 @@
 
 import { useState, useMemo, useEffect } from "react";
 import { DemoCard } from "@/components/apt/DemoCard";
-import { ContentFilters, FilterConfig, SelectedFilters } from "@/components/apt";
+import { ContentFilters, FilterConfig, SelectedFilters, RuntimeConfigNotice } from "@/components/apt";
 import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
+import { getWorkerApiConfigError } from "@/src/services/api";
 
 export default function PortfolioLiveDemos() {
   const [selected, setSelected] = useState<SelectedFilters>({
@@ -82,7 +83,18 @@ export default function PortfolioLiveDemos() {
       {loading ? (
         <div className="text-center py-12 text-muted-foreground">Loading…</div>
       ) : error ? (
-        <div className="text-center py-12 text-destructive">{error}</div>
+        (() => {
+          const configError = getWorkerApiConfigError();
+          return configError ? (
+            <RuntimeConfigNotice
+              message={configError.message}
+              envVar={configError.envVar}
+              expectedValue={configError.expectedProductionValue}
+            />
+          ) : (
+            <div className="text-center py-12 text-destructive">{error}</div>
+          );
+        })()
       ) : sortedDemos.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {sortedDemos.map((demo) => (

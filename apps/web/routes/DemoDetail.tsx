@@ -3,6 +3,8 @@ import { Navigate, useParams } from "react-router-dom";
 import { ContentDetailPage } from "@/components/apt/ContentDetailPage";
 import { useContentDetail } from "@/hooks/useContentDetail";
 import { Play } from "lucide-react";
+import { RuntimeConfigNotice } from "@/components/apt";
+import { getWorkerApiConfigError } from "@/src/services/api";
 
 export default function DemoDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -20,7 +22,22 @@ export default function DemoDetail() {
     return <div className="container py-12 md:py-16">Loading…</div>;
   }
 
-  if (error || !demo) {
+  if (error) {
+    const configError = getWorkerApiConfigError();
+    if (configError) {
+      return (
+        <div className="container py-12 md:py-16">
+          <RuntimeConfigNotice
+            message={configError.message}
+            envVar={configError.envVar}
+            expectedValue={configError.expectedProductionValue}
+          />
+        </div>
+      );
+    }
+  }
+
+  if (!demo) {
     return <Navigate to="/experiments/live-demos" replace />;
   }
 
