@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate, useParams } from "react-router-dom";
 import { AptLayout } from "@/components/apt/AptLayout";
+import { resolveWorkerApiBase } from "@/src/services/api";
 
 // Pages
 import Home from "./routes/Home";
@@ -47,6 +48,21 @@ const RouteFallback = () => (
   <div className="container py-12 md:py-16">Loading…</div>
 );
 
+const RuntimeDebugBanner = () => {
+  if (!import.meta.env.DEV) return null;
+
+  const resolved = resolveWorkerApiBase();
+  const label = resolved.ok
+    ? `Worker API: ${resolved.baseUrl} (${resolved.source})`
+    : `Worker API missing: ${resolved.envVar}`;
+
+  return (
+    <div className="fixed bottom-4 right-4 z-50 rounded-md border border-border bg-card/95 px-3 py-2 text-xs text-muted-foreground shadow-lg backdrop-blur">
+      {label}
+    </div>
+  );
+};
+
 const LegacyLabRedirect = () => {
   const { id } = useParams<{ id: string }>();
 
@@ -76,6 +92,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <RuntimeDebugBanner />
       <BrowserRouter>
         <Suspense fallback={<RouteFallback />}>
           <Routes>

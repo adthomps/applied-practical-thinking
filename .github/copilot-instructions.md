@@ -7,7 +7,7 @@
   - `apps/worker`: Cloudflare Worker (Hono, API only, no business logic in routes)
   - `packages/ui`: Presentational Apt\* components only
   - `packages/config`: Design tokens and config only
-- **Data flow**: UI fetches data from `/api/*` endpoints (served by worker). No direct fetches in React components—use service modules.
+- **Data flow**: In production, UI fetches data from the separate Worker origin configured by `VITE_API_BASE`. Local dev may proxy `/api/*`, but production must not assume same-origin `/api`.
 - **Why**: Boundaries are enforced to prevent category errors and keep logic testable and maintainable.
 
 ## Critical Workflows
@@ -17,12 +17,13 @@
 - **Start backend**: `pnpm --dir apps/worker dev`
 - **Frontend runs at**: http://localhost:5173
 - **Backend runs at**: http://localhost:8787 (proxied via Vite for `/api`)
-- **Deploy**: Use Cloudflare Pages for web, Wrangler for workers.
+- **Deploy**: GitHub Actions currently builds and publishes the Pages frontend; Wrangler deploys the worker.
 
 ## Project Conventions
 
 - **No business logic in UI or routes**: All logic lives in services or shared packages.
-- **All fetches in web use relative `/api/*` URLs** (never hardcode full URLs).
+- **Frontend build-time config**: `VITE_API_BASE` must be present in the environment that runs `vite build`.
+- **Worker runtime config**: `PUBLIC_SITE_ORIGIN` must be present in the worker environment.
 - **No cross-imports between apps**.
 - **Use Vite aliases** for shared packages (`@apt/ui`, `@apt/config`).
 - **Web-owned AI/agent prompts** must be file-based and versioned in `apps/web/ai/prompts`.
@@ -38,6 +39,7 @@
 ## Integration Points
 
 - **Frontend-backend**: All API calls go through `/api/*` endpoints.
+- **Production frontend-backend**: build the full worker URL from `VITE_API_BASE`; do not assume same-origin `/api/*`.
 - **AI**: Web-owned prompts live in `apps/web/ai/prompts`. Worker runtime and handlers live in `apps/worker/src`.
 
 ## Examples
