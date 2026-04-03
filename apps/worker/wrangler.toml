@@ -17,8 +17,15 @@ remote = true
 enabled = false
 invocation_logs = true
 
+[vars]
+# Stable default used unless an environment overrides it. This keeps preview
+# and production from losing PUBLIC_SITE_ORIGIN if one environment is missing
+# its own vars block.
+PUBLIC_SITE_ORIGIN = "https://applied-practical-thinking.pages.dev"
+
 [env.preview]
-# Configure PUBLIC_SITE_ORIGIN to the Pages preview URL for this branch/environment.
+[env.preview.vars]
+PUBLIC_SITE_ORIGIN = "https://applied-practical-thinking.pages.dev"
 
 [env.production]
 [env.production.vars]

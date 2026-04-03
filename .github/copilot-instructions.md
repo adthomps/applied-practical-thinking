@@ -17,7 +17,7 @@
 - **Start backend**: `pnpm --dir apps/worker dev`
 - **Frontend runs at**: http://localhost:5173
 - **Backend runs at**: http://localhost:8787 (proxied via Vite for `/api`)
-- **Deploy**: GitHub Actions currently builds and publishes the Pages frontend; Wrangler deploys the worker.
+- **Deploy**: Cloudflare Pages builds the frontend from repo updates, and the worker deploys separately. `VITE_API_BASE` belongs to the Cloudflare Pages project config.
 
 ## Project Conventions
 

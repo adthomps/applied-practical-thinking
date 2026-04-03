@@ -1,185 +1,111 @@
 # Deployment
 
-This project uses GitHub Actions as the current build authority for the web frontend and Cloudflare for hosting/deployment. The frontend build and the worker runtime do not read configuration from the same place, so the deployment contract must stay explicit.
+APT deploys as two Cloudflare surfaces:
 
-## Repository Structure & Paths
+- `apps/web` builds to Cloudflare Pages from GitHub repo updates
+- `apps/worker` deploys as a separate Cloudflare Worker
 
-- **GitHub Repository:**
-  - All code and configuration live in the main GitHub repository.
-  - The repository root contains configuration, documentation, and workspace settings.
-  - Key folders:
-    - `apps/web` — Vite + React SPA frontend (Cloudflare Pages target)
-    - `apps/worker` — Cloudflare Worker API backend
-    - `packages/` — Shared code (do not deploy directly)
-    - `apps/web/ai/prompts/` — AI prompt definitions
-    - `docs/` — Documentation
-    - `.github/workflows/` — GitHub Actions workflow files
+The frontend and worker do not read configuration from the same place, so the contract must stay explicit.
 
-- **Deployment Paths:**
-  - **Web:**
-    - Set Cloudflare Pages project root to `apps/web`.
-    - Build output is typically in `apps/web/dist`.
-    - Ensure `package.json`, `vite.config.ts`, and `tsconfig.json` are present in `apps/web`.
-  - **Worker:**
-    - Set Wrangler project root to `apps/worker`.
-    - Entry point is `apps/worker/src/index.ts`.
-    - Ensure `wrangler.toml` and `package.json` are present in `apps/worker`.
+## Runtime Contract
 
-## GitHub Actions Setup
+- Frontend API origin:
+  - preferred: `VITE_API_BASE`
+  - optional runtime override: `window.__APT_RUNTIME_CONFIG__.workerApiBase`
+  - production fallback: the official Pages host `applied-practical-thinking.pages.dev` falls back to `https://applied-practical-thinking.apt-account.workers.dev`
+- Worker asset origin:
+  - `PUBLIC_SITE_ORIGIN`
 
-- **Workflow Files:**
-  - Located in `.github/workflows/` at the repo root.
-  - Typical workflows:
-    - `pages.yml` for Cloudflare Pages
-    - `worker.yml` or `deploy-worker.yml` for Cloudflare Worker
+Production values for this repo:
 
-- **Current Source of Truth:**
-  - `pages.yml` is the active builder for `apps/web`
-  - `worker.yml`/Wrangler is the active deployer for `apps/worker`
-  - Cloudflare Pages hosts the built assets, but the GitHub Actions workflow is what provides `VITE_API_BASE` during `vite build`
+- `VITE_API_BASE=https://applied-practical-thinking.apt-account.workers.dev`
+- `PUBLIC_SITE_ORIGIN=https://applied-practical-thinking.pages.dev`
 
-- **Key Settings:**
-  - Use `working-directory` in workflow steps to target `apps/web` or `apps/worker` as needed.
-  - Example:
-    ```yaml
-    - name: Install dependencies (web)
-      run: pnpm install
-      working-directory: apps/web
-    - name: Build (worker)
-      run: pnpm build
-      working-directory: apps/worker
-    ```
-  - Set environment variables and secrets in GitHub repository settings and reference them in workflows.
+Do not include trailing slashes.
 
-## Cloudflare UI/Dashboard Setup
+## Current Source Of Truth
 
-### For Pages (Web Frontend)
+- Frontend deploys:
+  - Cloudflare Pages watches the GitHub repo and builds `apps/web`
+  - GitHub Desktop is only the way commits are pushed to GitHub; it does not provide runtime config
+- Worker deploys:
+  - the Worker is separate from Pages
+  - deploy with Wrangler / Cloudflare Worker configuration and the existing worker workflow if you keep it
 
-1. Go to https://dash.cloudflare.com/
-2. Navigate to **Workers & Pages** in the sidebar.
-3. Click **Create Application**.
-4. Under "Looking to deploy pages?", click **Get Started**.
-5. Click **Get Started** on "Import an existing git repo".
-6. Select your GitHub repository and click **Begin Setup**.
-7. Set project details:
-   - **Project Name:** (e.g., `apt-web`)
-   - **Branch:** (e.g., `main` for production, or your preview branch)
-   - **Build Settings:**
-     - **Framework Preset:** (select Vite or None if custom)
-     - **Build Command:** `pnpm build` (or as defined in `apps/web/package.json`)
-     - **Build Output Directory:** `dist`
-     - **Root Directory:** `apps/web`
-   - Review and confirm settings, then deploy.
+## Where Each Value Belongs
 
-8. If GitHub Actions is the active Pages builder for this project:
-   - treat the Cloudflare Pages dashboard as the hosting target, not the authoritative frontend build environment
-   - do not rely on Pages dashboard build vars alone for `VITE_API_BASE`
-   - set `VITE_API_BASE` in `.github/workflows/pages.yml` or GitHub Actions environment variables
+- Pages / frontend build:
+  - set `VITE_API_BASE` in the Cloudflare Pages project environment
+  - because Cloudflare Pages is the frontend builder of record, this is the authoritative frontend build setting
+- Worker runtime:
+  - set `PUBLIC_SITE_ORIGIN` in Wrangler config and/or the Cloudflare Worker dashboard
 
-### For Worker (API Backend)
+The key rule is simple:
 
-1. Go to https://dash.cloudflare.com/
-2. Navigate to **Workers & Pages** in the sidebar.
-3. Click **Create Application**.
-4. Choose **Create Worker** (or "Deploy from Git" if using CI/CD).
-5. Set application values:
-   - **Project Name:** (e.g., `apt-worker`)
-   - **Build Command:** `pnpm build` (if needed)
-   - **Deploy Command:** `pnpm run deploy` or Wrangler deploy command (see `apps/worker/package.json`)
-   - **Build for non-production branches:** Yes/No (enable for preview deploys)
-   - **Non-production branches deploy command:** (same as above, or custom)
-   - **Path/Root Directory:** `apps/worker`
-   - Configure environment variables and bindings as needed (see `wrangler.toml`).
-   - Review and confirm settings, then deploy.
+- the system that builds the frontend bundle must provide `VITE_API_BASE`
 
-## Configuration Contract
+## Cloudflare Setup
 
-- The frontend (`apps/web`) uses the build-time variable `VITE_API_BASE` to determine the Worker API origin for all public content/doc requests.
-- The worker (`apps/worker`) uses the runtime variable `PUBLIC_SITE_ORIGIN` to fetch the Pages-hosted public content and design-doc assets it normalizes into API responses.
-- **Local development:**
-  - Set `VITE_API_BASE=http://localhost:8787` in `apps/web/.env`.
-  - Set `PUBLIC_SITE_ORIGIN=http://127.0.0.1:5173` in `apps/worker/.dev.vars`.
-- **GitHub Actions Pages build (current production path):**
-  - Set `VITE_API_BASE` in `.github/workflows/pages.yml` or GitHub Actions environment variables.
-  - Production value for this project: `https://applied-practical-thinking.apt-account.workers.dev`
-  - `VITE_API_BASE` must exist in the environment that runs `vite build`.
-- **Cloudflare Pages dashboard vars:**
-  - Useful only if Cloudflare Pages itself is running the build.
-  - They are not sufficient when GitHub Actions builds and publishes the frontend bundle.
-- **Cloudflare Worker (preview/production):**
-  - In Wrangler or the Cloudflare Worker dashboard, set `PUBLIC_SITE_ORIGIN` to the corresponding Pages site origin for that environment.
-  - Production value for this project: `https://applied-practical-thinking.pages.dev`
-  - Preview worker deployments should point at the matching Pages preview URL.
-  - Production worker deployments should point at the production Pages site URL.
+### Pages
 
-## Production Checklist
+- Project: `applied-practical-thinking`
+- Build output: `apps/web/dist`
+- Root build config lives in [wrangler.toml](/c:/Users/sanch/Documents/Github/Applied%20Practical%20Thinking/applied-practical-thinking/wrangler.toml)
+- Cloudflare Pages is the only frontend deployment path; the repo no longer keeps a separate GitHub Actions Pages deploy workflow
 
-- **Pages project:** `applied-practical-thinking`
-- **Worker project:** `applied-practical-thinking-worker`
-- **Frontend build variable:** `VITE_API_BASE=https://applied-practical-thinking.apt-account.workers.dev`
-- **Build owner:** GitHub Actions `pages.yml`
-- **Worker variable:** `PUBLIC_SITE_ORIGIN=https://applied-practical-thinking.pages.dev`
-- **Redeploy order:** deploy Worker first, then redeploy Pages
+Preferred frontend config:
+
+```text
+VITE_API_BASE=https://applied-practical-thinking.apt-account.workers.dev
+```
+
+### Worker
+
+- Project: `applied-practical-thinking-worker`
+- Worker config lives in [apps/worker/wrangler.toml](/c:/Users/sanch/Documents/Github/Applied%20Practical%20Thinking/applied-practical-thinking/apps/worker/wrangler.toml)
+
+Worker runtime config:
+
+```text
+PUBLIC_SITE_ORIGIN=https://applied-practical-thinking.pages.dev
+```
+
+## Local Development
+
+- frontend:
+  - `apps/web/.env`
+  - `VITE_API_BASE=http://127.0.0.1:8787`
+- worker:
+  - `apps/worker/.dev.vars`
+  - `PUBLIC_SITE_ORIGIN=http://127.0.0.1:5173`
+
+Localhost also falls back automatically to `http://127.0.0.1:8787` if `VITE_API_BASE` is missing.
+
+## Build Paths
+
+Frontend:
+
+- GitHub is the source-control origin
+- Cloudflare Pages watches the repo and runs the frontend build/deploy
+- `VITE_API_BASE` belongs in the Cloudflare Pages project settings
+
+Backend:
+
+- the Worker remains separately deployed
+- this repo currently keeps the worker deploy workflow in [worker.yml](/c:/Users/sanch/Documents/Github/Applied%20Practical%20Thinking/applied-practical-thinking/.github/workflows/worker.yml)
+- `PUBLIC_SITE_ORIGIN` belongs in Worker config
+
+## Redeploy Order
+
+1. Deploy the Worker
+2. Deploy the frontend / Pages build
 
 ## Verification Checklist
 
-- Open `https://applied-practical-thinking.pages.dev/learn` and confirm content loads.
-- Open `https://applied-practical-thinking.pages.dev/experiments` and confirm content loads.
-- Open any Design page and confirm the “View Full …” action opens the worker-backed doc.
-- Confirm the token download still works from `https://applied-practical-thinking.pages.dev/docs/design/APT-FIGMA-TOKENS.json`.
-- Confirm the live site reflects the latest GitHub Actions Pages workflow run for the current commit.
-
-## Best Practices
-
-- Never commit secrets; use GitHub/Cloudflare secrets management.
-- Keep workflow files up to date with folder structure.
-- Reference only the correct subfolders for build and deploy steps.
-- Always check your environment variable values for trailing slashes to avoid 404 errors.
-
-For more details, see the workflow files in `.github/workflows/` and Cloudflare documentation.
-
-## Web (Cloudflare Pages)
-
-- **Preview Deployments:**
-  - Every push to a non-main branch triggers a GitHub Actions workflow.
-  - The workflow builds `apps/web` and deploys to a Cloudflare Pages preview environment.
-  - Preview URLs are posted to the relevant GitHub pull request for review.
-
-- **Production Deployments:**
-  - Merging to the `main` branch triggers a production deployment via GitHub Actions.
-  - The workflow builds and deploys `apps/web` to the production Cloudflare Pages site.
-
-- **CI/CD:**
-  - All builds and deploys are managed by GitHub Actions workflows (see `.github/workflows/`).
-  - Linting, tests, and build checks run before deployment.
-
-## Worker (Cloudflare Worker)
-
-- **Preview Deployments:**
-  - Every push to a non-main branch triggers a GitHub Actions workflow.
-  - The workflow builds `apps/worker` and deploys to a Cloudflare Worker preview environment using Wrangler.
-  - Preview endpoints are posted to the relevant GitHub pull request.
-
-- **Production Deployments:**
-  - Merging to the `main` branch triggers a production deployment via GitHub Actions.
-  - The workflow builds and deploys `apps/worker` to the production Cloudflare Worker using Wrangler.
-
-- **Secrets & Environment Variables:**
-  - All secrets and environment variables are managed via Wrangler and Cloudflare dashboard.
-  - Never commit secrets to the repository.
-
-## API Routing
-
-- Worker API: `{VITE_API_BASE}/api/*` (UI-facing endpoints served by the standalone Worker)
-- Public API: `/v1/*` (versioned, public endpoints)
-
-## Deployment Flow Summary
-
-1. **Push to Feature/Preview Branch:**
-   - GitHub Actions runs build, test, and deploys preview to Cloudflare (Pages and Worker).
-   - Preview URLs are available for review and testing.
-2. **Merge to Main:**
-   - GitHub Actions runs build, test, and deploys to production (Pages and Worker).
-   - Production URLs are updated.
-
-For more details, see the workflow files in `.github/workflows/` and Cloudflare documentation.
+- Open `https://applied-practical-thinking.pages.dev/learn`
+- Confirm Learn content loads
+- Open `https://applied-practical-thinking.pages.dev/experiments`
+- Confirm Experiments content loads
+- Open a Design page and test the “View Full …” action
+- Confirm `https://applied-practical-thinking.pages.dev/docs/design/APT-FIGMA-TOKENS.json` downloads
+- If the frontend still shows a config notice, verify the Cloudflare Pages project environment includes `VITE_API_BASE`

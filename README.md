@@ -78,14 +78,17 @@ pnpm --dir apps/worker dev
 
 ## Deployment model
 
-- `apps/web` is currently built and published to Cloudflare Pages by `.github/workflows/pages.yml`
+- `apps/web` is built by Cloudflare Pages from GitHub repo updates
 - `apps/worker` is deployed separately via Wrangler / `.github/workflows/worker.yml`
 - frontend public content/doc requests use the separate Worker origin from `VITE_API_BASE`
 - worker public content/doc normalization uses `PUBLIC_SITE_ORIGIN` to read Pages-hosted assets
 
 For this reason:
-- `VITE_API_BASE` must exist in the environment that runs `vite build`
+- `VITE_API_BASE` should exist in the Cloudflare Pages environment for the web project
+- the web app also supports a runtime override via `window.__APT_RUNTIME_CONFIG__.workerApiBase`
+- the official Pages host falls back to the production Worker URL if build-time config is missing
 - `PUBLIC_SITE_ORIGIN` must exist in the Worker runtime environment
+- GitHub Desktop pushes source changes only; Cloudflare Pages is what builds the frontend deploy
 
 ## Content and design guardrails
 
