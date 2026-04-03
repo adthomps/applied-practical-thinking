@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { LabCard } from "@/components/apt/LabCard";
-import { AptButton, ContentFilters, FilterConfig, SelectedFilters } from "@/components/apt";
+import { AptButton, ContentFilters, FilterConfig, SelectedFilters, RuntimeConfigNotice } from "@/components/apt";
 import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
+import { getWorkerApiConfigError } from "@/src/services/api";
 
 export default function PortfolioLabs() {
   const [selected, setSelected] = useState<SelectedFilters>({
@@ -90,7 +91,18 @@ export default function PortfolioLabs() {
       {loading ? (
         <div className="text-center py-12 text-muted-foreground">Loading…</div>
       ) : error ? (
-        <div className="text-center py-12 text-destructive">{error}</div>
+        (() => {
+          const configError = getWorkerApiConfigError();
+          return configError ? (
+            <RuntimeConfigNotice
+              message={configError.message}
+              envVar={configError.envVar}
+              expectedValue={configError.expectedProductionValue}
+            />
+          ) : (
+            <div className="text-center py-12 text-destructive">{error}</div>
+          );
+        })()
       ) : (
         <>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

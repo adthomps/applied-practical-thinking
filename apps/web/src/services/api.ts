@@ -1,4 +1,19 @@
 const LOCAL_WORKER_API_BASE = "http://127.0.0.1:8787";
+const EXPECTED_PRODUCTION_WORKER_API_BASE =
+  "https://applied-practical-thinking.apt-account.workers.dev";
+
+export type WorkerApiConfigResolution =
+  | {
+      ok: true;
+      baseUrl: string;
+      source: "env" | "local-dev";
+    }
+  | {
+      ok: false;
+      envVar: "VITE_API_BASE";
+      expectedProductionValue: string;
+      message: string;
+    };
 
 function normalizeBaseUrl(value: string) {
   return value.trim().replace(/\/+$/, "");
@@ -9,26 +24,44 @@ function isLocalHostname(hostname: string) {
 }
 
 export function getWorkerApiBase() {
+  const resolution = resolveWorkerApiBase();
+  if (!resolution.ok) {
+    throw new Error(resolution.message);
+  }
+
+  return resolution.baseUrl;
+}
+
+export function resolveWorkerApiBase(): WorkerApiConfigResolution {
   const configured = import.meta.env.VITE_API_BASE;
   if (configured) {
-    return normalizeBaseUrl(configured);
+    return {
+      ok: true,
+      baseUrl: normalizeBaseUrl(configured),
+      source: "env",
+    };
   }
 
   if (typeof window !== "undefined" && isLocalHostname(window.location.hostname)) {
-    return LOCAL_WORKER_API_BASE;
+    return {
+      ok: true,
+      baseUrl: LOCAL_WORKER_API_BASE,
+      source: "local-dev",
+    };
   }
 
-  throw new Error(
-    "Missing VITE_API_BASE for the standalone Worker API. Set it in the Pages environment or apps/web/.env."
-  );
+  return {
+    ok: false,
+    envVar: "VITE_API_BASE",
+    expectedProductionValue: EXPECTED_PRODUCTION_WORKER_API_BASE,
+    message:
+      "Worker API base is not configured. Set VITE_API_BASE on the Cloudflare Pages project to https://applied-practical-thinking.apt-account.workers.dev.",
+  };
 }
 
 export function tryGetWorkerApiBase() {
-  try {
-    return getWorkerApiBase();
-  } catch {
-    return null;
-  }
+  const resolution = resolveWorkerApiBase();
+  return resolution.ok ? resolution.baseUrl : null;
 }
 
 export function getWorkerApiUrl(pathname: string) {
@@ -42,6 +75,11 @@ export function tryGetWorkerApiUrl(pathname: string) {
 
   const path = pathname.startsWith("/") ? pathname : `/${pathname}`;
   return `${base}${path}`;
+}
+
+export function getWorkerApiConfigError() {
+  const resolution = resolveWorkerApiBase();
+  return resolution.ok ? null : resolution;
 }
 
 async function readErrorBody(response: Response) {

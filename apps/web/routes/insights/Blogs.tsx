@@ -2,7 +2,8 @@
 import { useState, useMemo, useEffect } from "react";
 import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
 import { InsightCard } from "@/components/apt/InsightCard";
-import { ContentFilters, FilterConfig, SelectedFilters } from "@/components/apt";
+import { ContentFilters, FilterConfig, SelectedFilters, RuntimeConfigNotice } from "@/components/apt";
+import { getWorkerApiConfigError } from "@/src/services/api";
 
 export default function InsightsBlogs() {
   const [blogs, setBlogs] = useState<ContentIndexItem[]>([]);
@@ -39,7 +40,20 @@ export default function InsightsBlogs() {
     return <div className="container py-12 text-center">Loading articles…</div>;
   }
   if (error) {
-    return <div className="container py-12 text-center text-destructive">{error}</div>;
+    const configError = getWorkerApiConfigError();
+    return (
+      <div className="container py-12">
+        {configError ? (
+          <RuntimeConfigNotice
+            message={configError.message}
+            envVar={configError.envVar}
+            expectedValue={configError.expectedProductionValue}
+          />
+        ) : (
+          <div className="text-center text-destructive">{error}</div>
+        )}
+      </div>
+    );
   }
 
   return (

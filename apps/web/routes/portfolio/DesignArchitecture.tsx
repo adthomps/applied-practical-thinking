@@ -24,7 +24,7 @@ import {
   AlertTriangle,
   CheckCircle2,
 } from "lucide-react";
-import { tryGetWorkerApiUrl } from "@/src/services/api";
+import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
 
 interface ArchitecturePatternProps {
   icon: React.ReactNode;
@@ -115,6 +115,7 @@ function BoundaryCard({ title, stack, responsibilities, constraints }: BoundaryC
 
 export default function PortfolioDesignArchitecture() {
   const architectureDocUrl = tryGetWorkerApiUrl("/api/design/docs/architecture");
+  const configError = getWorkerApiConfigError();
   const patterns = [
     {
       icon: <FolderTree className="h-5 w-5" />,
@@ -283,6 +284,11 @@ export default function PortfolioDesignArchitecture() {
             View Full Specification
           </a>
         </AptButton>
+        {!architectureDocUrl && configError ? (
+          <p className="text-sm text-muted-foreground mt-3">
+            Configure <code>{configError.envVar}</code> on the Pages project to enable full-doc links.
+          </p>
+        ) : null}
       </div>
 
       {/* Principles */}

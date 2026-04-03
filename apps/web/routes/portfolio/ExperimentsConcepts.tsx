@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { LabCard } from "@/components/apt/LabCard";
-import { ContentFilters, FilterConfig, SelectedFilters } from "@/components/apt";
+import { ContentFilters, FilterConfig, SelectedFilters, RuntimeConfigNotice } from "@/components/apt";
 import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
+import { getWorkerApiConfigError } from "@/src/services/api";
 
 export default function ExperimentsConcepts() {
   const [selected, setSelected] = useState<SelectedFilters>({
@@ -62,7 +63,18 @@ export default function ExperimentsConcepts() {
       {loading ? (
         <div className="text-center py-12 text-muted-foreground">Loading…</div>
       ) : error ? (
-        <div className="text-center py-12 text-destructive">{error}</div>
+        (() => {
+          const configError = getWorkerApiConfigError();
+          return configError ? (
+            <RuntimeConfigNotice
+              message={configError.message}
+              envVar={configError.envVar}
+              expectedValue={configError.expectedProductionValue}
+            />
+          ) : (
+            <div className="text-center py-12 text-destructive">{error}</div>
+          );
+        })()
       ) : filteredLabs.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filteredLabs.map((lab) => (

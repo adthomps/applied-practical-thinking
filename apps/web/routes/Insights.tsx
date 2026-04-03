@@ -4,10 +4,12 @@ import { InsightCard } from "@/components/apt/InsightCard";
 import {
   AptCard,
   AptButton,
+  RuntimeConfigNotice,
 } from "@/components/apt";
 import { Link } from "react-router-dom";
 import { Book, FileText, Podcast, ArrowRight } from "lucide-react";
 import { siteConfig } from "@/data/site";
+import { getWorkerApiConfigError } from "@/src/services/api";
 
 
 const areaIcons: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -57,7 +59,20 @@ export default function Insights() {
     return <div className="container py-12 text-center">Loading learning content…</div>;
   }
   if (error) {
-    return <div className="container py-12 text-center text-destructive">{error}</div>;
+    const configError = getWorkerApiConfigError();
+    return (
+      <div className="container py-12">
+        {configError ? (
+          <RuntimeConfigNotice
+            message={configError.message}
+            envVar={configError.envVar}
+            expectedValue={configError.expectedProductionValue}
+          />
+        ) : (
+          <div className="text-center text-destructive">{error}</div>
+        )}
+      </div>
+    );
   }
 
   const learnNav = siteConfig.nav.find((n) => n.path === "/learn");

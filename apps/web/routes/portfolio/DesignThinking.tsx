@@ -23,7 +23,7 @@ import {
   Repeat,
   FileText,
 } from "lucide-react";
-import { tryGetWorkerApiUrl } from "@/src/services/api";
+import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
 
 interface FrameworkCardProps {
   icon: React.ReactNode;
@@ -112,6 +112,7 @@ function CaseStudyPreview({ title, problem, constraint, outcome, tags }: CaseStu
 export default function PortfolioDesignThinking() {
   const thinkingDocUrl = tryGetWorkerApiUrl("/api/design/docs/thinking");
   const architectureDocUrl = tryGetWorkerApiUrl("/api/design/docs/architecture");
+  const configError = getWorkerApiConfigError();
   const frameworks = [
     {
       icon: <Target className="h-5 w-5" />,
@@ -275,6 +276,11 @@ export default function PortfolioDesignThinking() {
             View Full Framework
           </a>
         </AptButton>
+        {!thinkingDocUrl && configError ? (
+          <p className="text-sm text-muted-foreground mt-3">
+            Configure <code>{configError.envVar}</code> on the Pages project to enable full-doc links.
+          </p>
+        ) : null}
       </div>
 
       {/* Principles */}

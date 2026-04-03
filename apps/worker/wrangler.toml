@@ -21,4 +21,5 @@ invocation_logs = true
 # Configure PUBLIC_SITE_ORIGIN to the Pages preview URL for this branch/environment.
 
 [env.production]
-# Configure PUBLIC_SITE_ORIGIN to the production Pages site origin.
+[env.production.vars]
+PUBLIC_SITE_ORIGIN = "https://applied-practical-thinking.pages.dev"

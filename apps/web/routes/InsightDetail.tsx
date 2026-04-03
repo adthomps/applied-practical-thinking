@@ -2,13 +2,14 @@ import { useParams, Link } from "react-router-dom";
 import { useContentDetail } from "@/hooks/useContentDetail";
 import { InsightMeta } from "@/components/apt/InsightMeta";
 import { ContentDetailPage } from "@/components/apt/ContentDetailPage";
-import { AptButton } from "@/components/apt";
+import { AptButton, RuntimeConfigNotice } from "@/components/apt";
 import {
   Book,
   Mic,
   FileText,
   Volume2,
 } from "lucide-react";
+import { getWorkerApiConfigError } from "@/src/services/api";
 
 const typeIcons = {
   blog: FileText,
@@ -41,15 +42,26 @@ export default function InsightDetail() {
     return <div className="container py-12 text-center">Loading…</div>;
   }
   if (error || !insight) {
+    const configError = getWorkerApiConfigError();
     return (
-      <div className="container py-12 text-center">
-        <h1 className="text-2xl font-bold mb-4">Insight not found</h1>
-        <p className="text-muted-foreground mb-6">
-          The learning resource you're looking for doesn't exist.
-        </p>
-        <AptButton variant="primary" asChild>
-          <Link to="/learn">Back to Learn</Link>
-        </AptButton>
+      <div className="container py-12">
+        {configError ? (
+          <RuntimeConfigNotice
+            message={configError.message}
+            envVar={configError.envVar}
+            expectedValue={configError.expectedProductionValue}
+          />
+        ) : (
+          <div className="text-center">
+            <h1 className="text-2xl font-bold mb-4">Insight not found</h1>
+            <p className="text-muted-foreground mb-6">
+              The learning resource you're looking for doesn't exist.
+            </p>
+            <AptButton variant="primary" asChild>
+              <Link to="/learn">Back to Learn</Link>
+            </AptButton>
+          </div>
+        )}
       </div>
     );
   }

@@ -27,6 +27,7 @@ export { AptEmblem } from "./AptEmblem";
 export { CosmicBackground } from "./CosmicBackground";
 
 export { ContentDetailPage } from "./ContentDetailPage";
+export { RuntimeConfigNotice } from "./RuntimeConfigNotice";
 
 // Demo components
 export { DemoLayout, DemoSection } from "./demo/DemoLayout";
