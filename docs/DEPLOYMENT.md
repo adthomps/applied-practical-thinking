@@ -109,3 +109,10 @@ Backend:
 - Open a Design page and test the “View Full …” action
 - Confirm `https://applied-practical-thinking.pages.dev/docs/design/APT-FIGMA-TOKENS.json` downloads
 - If the frontend still shows a config notice, verify the Cloudflare Pages project environment includes `VITE_API_BASE`
+
+## Frontend Asset Consistency
+
+- Pages serves the SPA shell through [apps/web/public/_redirects](/c:/Users/sanch/Documents/Github/Applied%20Practical%20Thinking/applied-practical-thinking/apps/web/public/_redirects)
+- cache rules live in [apps/web/public/_headers](/c:/Users/sanch/Documents/Github/Applied%20Practical%20Thinking/applied-practical-thinking/apps/web/public/_headers)
+- route HTML should revalidate quickly, while hashed files in `/assets/` stay immutable
+- if a deploy happens while someone is browsing, the frontend now retries lazy route chunks by forcing a one-time reload

@@ -1,4 +1,4 @@
-import { Suspense, lazy } from "react";
+import { Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate, useParams } from "react-router-dom";
 import { AptLayout } from "@/components/apt/AptLayout";
 import { resolveWorkerApiBase } from "@/src/services/api";
+import { lazyWithRetry } from "@/lib/lazyWithRetry";
 
 // Pages
 import Home from "./routes/Home";
@@ -14,33 +15,33 @@ import NotFound from "./pages/NotFound";
 import Systems from "./routes/Systems";
 import SystemDetail from "./routes/SystemDetail";
 
-const AssistantPage = lazy(() => import("./routes/assistant"));
-const Start = lazy(() => import("./routes/Start"));
-const About = lazy(() => import("./routes/About"));
+const AssistantPage = lazyWithRetry(() => import("./routes/assistant"));
+const Start = lazyWithRetry(() => import("./routes/Start"));
+const About = lazyWithRetry(() => import("./routes/About"));
 
 // Learn
-const Insights = lazy(() => import("./routes/Insights"));
-const InsightsBlogs = lazy(() => import("./routes/insights/Blogs"));
-const InsightsPodcasts = lazy(() => import("./routes/insights/Podcasts"));
-const InsightsGuides = lazy(() => import("./routes/insights/Guides"));
+const Insights = lazyWithRetry(() => import("./routes/Insights"));
+const InsightsBlogs = lazyWithRetry(() => import("./routes/insights/Blogs"));
+const InsightsPodcasts = lazyWithRetry(() => import("./routes/insights/Podcasts"));
+const InsightsGuides = lazyWithRetry(() => import("./routes/insights/Guides"));
 
 // Labs / Design
-const Portfolio = lazy(() => import("./routes/Portfolio"));
-const PortfolioLabs = lazy(() => import("./routes/portfolio/Labs"));
-const PortfolioExperimentsConcepts = lazy(() => import("./routes/portfolio/ExperimentsConcepts"));
-const PortfolioExperimentsMocks = lazy(() => import("./routes/portfolio/ExperimentsMocks"));
-const PortfolioDesignSystem = lazy(() => import("./routes/portfolio/DesignSystem"));
-const PortfolioDesignThinking = lazy(() => import("./routes/portfolio/DesignThinking"));
-const PortfolioDesignArchitecture = lazy(() => import("./routes/portfolio/DesignArchitecture"));
-const PortfolioContentStrategy = lazy(() => import("./routes/portfolio/ContentStrategy"));
-const PortfolioLiveDemos = lazy(() => import("./routes/portfolio/LiveDemos"));
-const PortfolioVisualGallery = lazy(() => import("./routes/portfolio/VisualGallery"));
-const InsightDetail = lazy(() => import("./routes/InsightDetail"));
-const PortfolioLabDetail = lazy(() => import("./routes/portfolio/LabDetail"));
-const DemoDetail = lazy(() => import("./routes/DemoDetail"));
+const Portfolio = lazyWithRetry(() => import("./routes/Portfolio"));
+const PortfolioLabs = lazyWithRetry(() => import("./routes/portfolio/Labs"));
+const PortfolioExperimentsConcepts = lazyWithRetry(() => import("./routes/portfolio/ExperimentsConcepts"));
+const PortfolioExperimentsMocks = lazyWithRetry(() => import("./routes/portfolio/ExperimentsMocks"));
+const PortfolioDesignSystem = lazyWithRetry(() => import("./routes/portfolio/DesignSystem"));
+const PortfolioDesignThinking = lazyWithRetry(() => import("./routes/portfolio/DesignThinking"));
+const PortfolioDesignArchitecture = lazyWithRetry(() => import("./routes/portfolio/DesignArchitecture"));
+const PortfolioContentStrategy = lazyWithRetry(() => import("./routes/portfolio/ContentStrategy"));
+const PortfolioLiveDemos = lazyWithRetry(() => import("./routes/portfolio/LiveDemos"));
+const PortfolioVisualGallery = lazyWithRetry(() => import("./routes/portfolio/VisualGallery"));
+const InsightDetail = lazyWithRetry(() => import("./routes/InsightDetail"));
+const PortfolioLabDetail = lazyWithRetry(() => import("./routes/portfolio/LabDetail"));
+const DemoDetail = lazyWithRetry(() => import("./routes/DemoDetail"));
 
 // Legacy/Utility
-const DesignPlayground = lazy(() => import("./routes/DesignPlayground"));
+const DesignPlayground = lazyWithRetry(() => import("./routes/DesignPlayground"));
 
 const queryClient = new QueryClient();
 
