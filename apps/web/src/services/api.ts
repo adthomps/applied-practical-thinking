@@ -1,12 +1,17 @@
 const LOCAL_WORKER_API_BASE = "http://127.0.0.1:8787";
 const EXPECTED_PRODUCTION_WORKER_API_BASE =
   "https://applied-practical-thinking.apt-account.workers.dev";
+const OFFICIAL_PAGES_HOST = "applied-practical-thinking.pages.dev";
+
+type RuntimeWorkerConfig = {
+  workerApiBase?: string;
+};
 
 export type WorkerApiConfigResolution =
   | {
       ok: true;
       baseUrl: string;
-      source: "env" | "local-dev";
+      source: "runtime" | "env" | "local-dev" | "known-pages-host";
     }
   | {
       ok: false;
@@ -23,6 +28,20 @@ function isLocalHostname(hostname: string) {
   return hostname === "127.0.0.1" || hostname === "localhost";
 }
 
+function isKnownPagesHostname(hostname: string) {
+  return hostname === OFFICIAL_PAGES_HOST || hostname.endsWith(`.${OFFICIAL_PAGES_HOST}`);
+}
+
+function getRuntimeConfiguredWorkerApiBase() {
+  if (typeof window === "undefined") return null;
+
+  const runtimeConfig = (window as Window & {
+    __APT_RUNTIME_CONFIG__?: RuntimeWorkerConfig;
+  }).__APT_RUNTIME_CONFIG__;
+
+  return runtimeConfig?.workerApiBase?.trim() ? normalizeBaseUrl(runtimeConfig.workerApiBase) : null;
+}
+
 export function getWorkerApiBase() {
   const resolution = resolveWorkerApiBase();
   if (!resolution.ok) {
@@ -33,6 +52,15 @@ export function getWorkerApiBase() {
 }
 
 export function resolveWorkerApiBase(): WorkerApiConfigResolution {
+  const runtimeConfigured = getRuntimeConfiguredWorkerApiBase();
+  if (runtimeConfigured) {
+    return {
+      ok: true,
+      baseUrl: runtimeConfigured,
+      source: "runtime",
+    };
+  }
+
   const configured = import.meta.env.VITE_API_BASE;
   if (configured) {
     return {
@@ -50,12 +78,20 @@ export function resolveWorkerApiBase(): WorkerApiConfigResolution {
     };
   }
 
+  if (typeof window !== "undefined" && isKnownPagesHostname(window.location.hostname)) {
+    return {
+      ok: true,
+      baseUrl: EXPECTED_PRODUCTION_WORKER_API_BASE,
+      source: "known-pages-host",
+    };
+  }
+
   return {
     ok: false,
     envVar: "VITE_API_BASE",
     expectedProductionValue: EXPECTED_PRODUCTION_WORKER_API_BASE,
     message:
-      "Worker API base is not configured. Set VITE_API_BASE on the Cloudflare Pages project to https://applied-practical-thinking.apt-account.workers.dev.",
+      "Worker API base is not configured. Set VITE_API_BASE in the environment that builds the Pages frontend, or provide window.__APT_RUNTIME_CONFIG__.workerApiBase.",
   };
 }
 

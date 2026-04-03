@@ -35,7 +35,7 @@ export function RuntimeConfigNotice({
         </div>
 
         <p className="text-xs text-muted-foreground">
-          Add this value in the Cloudflare dashboard, redeploy the Worker first, then redeploy Pages.
+          Add this value wherever the Pages frontend is built, then redeploy the frontend after the Worker.
         </p>
       </div>
     </AptCard>

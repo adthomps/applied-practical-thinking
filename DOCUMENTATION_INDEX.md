@@ -40,6 +40,7 @@ Do not edit copied markdown or docs under `apps/web/public/` as authored source.
 
 - [.github/CODEOWNERS](.github/CODEOWNERS) - active ownership rules
 - [.github/copilot-instructions.md](.github/copilot-instructions.md) - GitHub/Copilot-specific instructions
+- [.github/workflows/worker.yml](.github/workflows/worker.yml) - worker deployment automation; frontend Pages deploy is Cloudflare-managed
 
 ## Internal repo docs (`docs/`)
 
