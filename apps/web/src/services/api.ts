@@ -11,7 +11,7 @@ export type WorkerApiConfigResolution =
   | {
       ok: true;
       baseUrl: string;
-      source: "runtime" | "env" | "local-dev" | "known-pages-host";
+      source: "runtime" | "env" | "local-dev" | "known-pages-host" | "production-default";
     }
   | {
       ok: false;
@@ -83,6 +83,14 @@ export function resolveWorkerApiBase(): WorkerApiConfigResolution {
       ok: true,
       baseUrl: EXPECTED_PRODUCTION_WORKER_API_BASE,
       source: "known-pages-host",
+    };
+  }
+
+  if (typeof window !== "undefined") {
+    return {
+      ok: true,
+      baseUrl: EXPECTED_PRODUCTION_WORKER_API_BASE,
+      source: "production-default",
     };
   }
 
