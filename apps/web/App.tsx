@@ -32,6 +32,7 @@ const PortfolioExperimentsConcepts = lazyWithRetry(() => import("./routes/portfo
 const PortfolioExperimentsMocks = lazyWithRetry(() => import("./routes/portfolio/ExperimentsMocks"));
 const PortfolioDesignSystem = lazyWithRetry(() => import("./routes/portfolio/DesignSystem"));
 const PortfolioDesignThinking = lazyWithRetry(() => import("./routes/portfolio/DesignThinking"));
+const PortfolioDesignThinkingFrameworkDetail = lazyWithRetry(() => import("./routes/portfolio/DesignThinkingFrameworkDetail"));
 const PortfolioDesignArchitecture = lazyWithRetry(() => import("./routes/portfolio/DesignArchitecture"));
 const PortfolioContentStrategy = lazyWithRetry(() => import("./routes/portfolio/ContentStrategy"));
 const PortfolioLiveDemos = lazyWithRetry(() => import("./routes/portfolio/LiveDemos"));
@@ -130,6 +131,7 @@ const App = () => (
             <Route path="/design" element={<Portfolio />} />
             <Route path="/design/system" element={<PortfolioDesignSystem />} />
             <Route path="/design/thinking" element={<PortfolioDesignThinking />} />
+            <Route path="/design/thinking/:framework" element={<PortfolioDesignThinkingFrameworkDetail />} />
             <Route path="/design/architecture" element={<PortfolioDesignArchitecture />} />
             <Route path="/design/systems" element={<Systems />} />
             <Route path="/design/systems/:id" element={<SystemDetail />} />
