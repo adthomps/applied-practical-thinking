@@ -11,6 +11,7 @@ import {
   AptCardFooter,
   AptTag,
   AptButton,
+  SectionIntro,
 } from "@/components/apt";
 import { AssistantChat } from "@/features/assistant/AssistantChat";
 import { Brain, AppWindow, Network, ArrowRight } from "lucide-react";
@@ -191,15 +192,13 @@ export default function Home() {
       {/* ...existing code... */}
 
       {/* What You'll Find Here */}
-      <section className="container py-16 md:py-24">
-      <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-3">
-            What you'll find here
-          </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            Focused areas for learning, experimentation, and design-governed reference models
-          </p>
-        </div>
+      <section className="container py-12 md:py-16">
+        <SectionIntro
+          title="What you'll find here"
+          description="Focused areas for learning, experimentation, and design-governed reference models."
+          align="center"
+          className="mb-10"
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {pillars.map((pillar, index) => (
@@ -235,7 +234,7 @@ export default function Home() {
       </section>
 
       {/* Assistant Chat Section (after Featured) */}
-      <section className="container py-16 flex justify-center">
+      <section className="container py-10 md:py-12 flex justify-center">
         <div className="w-full max-w-xl">
           <AssistantChat />
         </div>
@@ -243,15 +242,12 @@ export default function Home() {
 
 
       {/* Featured */}
-      <section className="container pb-16 md:pb-24">
-        <div className="flex items-center justify-between mb-8">
-          <div className="space-y-2">
-            <h2 className="text-2xl font-semibold tracking-tight">Featured</h2>
-            <p className="text-sm text-muted-foreground">
-              A curated set of up to six recent highlights across Experiments, Learn, and Systems.
-            </p>
-          </div>
-        </div>
+      <section className="container py-12 md:py-16">
+        <SectionIntro
+          title="Featured"
+          description="A curated set of up to six recent highlights across Experiments, Learn, and Systems."
+          className="mb-8"
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {loading && featuredItems.length === 0 && (

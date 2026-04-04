@@ -6,6 +6,7 @@ import {
   ContentFilters,
   FilterConfig,
   LandingSectionCardGrid,
+  SectionIntro,
   SelectedFilters,
   RuntimeConfigNotice,
 } from "@/components/apt";
@@ -82,22 +83,22 @@ export default function PortfolioLabs() {
 
   return (
     <div className="container py-8 md:py-12 space-y-12">
-      <section className="max-w-3xl space-y-3">
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Experiments</h1>
-        <p className="text-lg text-muted-foreground">
-          Concepts, mocks, prototypes, and live demonstrations that make ideas tangible before they become stable references.
-        </p>
+      <section>
+        <SectionIntro
+          title="Experiments"
+          description="Concepts, mocks, prototypes, and live demonstrations that make ideas tangible before they become stable references."
+          titleClassName="text-3xl md:text-4xl"
+          descriptionClassName="text-lg"
+        />
       </section>
 
       <LandingSectionCardGrid items={landingCards} />
 
       <section className="space-y-6">
-        <div className="max-w-3xl space-y-2">
-          <h2 className="text-2xl font-semibold tracking-tight">Browse all Experiments</h2>
-          <p className="text-sm text-muted-foreground">
-            Filter the exploratory work by type, topic, platform, technology, and status to move from broad exploration into specific proof.
-          </p>
-        </div>
+        <SectionIntro
+          title="Browse all Experiments"
+          description="Filter the exploratory work by type, topic, platform, technology, and status to move from broad exploration into specific proof."
+        />
 
         <ContentFilters
           config={config}

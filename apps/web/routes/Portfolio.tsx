@@ -1,6 +1,6 @@
 import { useMemo, useState, type ComponentType } from "react";
 import { Link } from "react-router-dom";
-import { AptButton, AptCard, LandingSectionCardGrid } from "@/components/apt";
+import { AptButton, AptCard, LandingSectionCardGrid, SectionIntro } from "@/components/apt";
 import { siteConfig } from "@/data/site";
 import { 
   Palette, 
@@ -44,22 +44,22 @@ export default function Portfolio() {
 
   return (
     <div className="container py-8 md:py-12 space-y-12">
-      <section className="max-w-3xl space-y-3">
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Design</h1>
-        <p className="text-lg text-muted-foreground">
-          The public operating model for APT: how problems are framed, how the system is expressed, how architecture enforces it, and where stable system references live.
-        </p>
+      <section>
+        <SectionIntro
+          title="Design"
+          description="The public operating model for APT: how problems are framed, how the system is expressed, how architecture enforces it, and where stable system references live."
+          titleClassName="text-3xl md:text-4xl"
+          descriptionClassName="text-lg"
+        />
       </section>
 
       <LandingSectionCardGrid items={landingCards} />
 
       <section className="space-y-6">
-        <div className="max-w-3xl space-y-2">
-          <h2 className="text-2xl font-semibold tracking-tight">Browse all Design areas</h2>
-          <p className="text-sm text-muted-foreground">
-            Move across doctrine and reference layers to see how APT defines problems, expresses systems, and documents the reusable models behind the work.
-          </p>
-        </div>
+        <SectionIntro
+          title="Browse all Design areas"
+          description="Move across doctrine and reference layers to see how APT defines problems, expresses systems, and documents the reusable models behind the work."
+        />
 
         <div className="flex flex-wrap gap-2">
           <AptButton

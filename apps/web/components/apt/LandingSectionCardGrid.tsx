@@ -36,7 +36,7 @@ export function LandingSectionCardGrid({ items }: LandingSectionCardGridProps) {
 
                 <div className="space-y-3">
                   <div className="flex flex-wrap items-center gap-2">
-                    <h2 className="text-lg font-semibold">{item.label}</h2>
+                    <h3 className="text-lg font-semibold">{item.label}</h3>
                     {item.metaLabel ? <AptTag variant="ghost">{item.metaLabel}</AptTag> : null}
                   </div>
 

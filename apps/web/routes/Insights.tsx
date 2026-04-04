@@ -5,6 +5,7 @@ import {
   AptButton,
   LandingSectionCardGrid,
   RuntimeConfigNotice,
+  SectionIntro,
 } from "@/components/apt";
 import { Link } from "react-router-dom";
 import { Book, FileText, Podcast } from "lucide-react";
@@ -85,22 +86,22 @@ export default function Insights() {
 
   return (
     <div className="container py-8 md:py-12 space-y-12">
-      <section className="max-w-3xl space-y-3">
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Learn</h1>
-        <p className="text-lg text-muted-foreground">
-          Guides, articles, podcasts, and worked examples for applied thinking, systems, and execution.
-        </p>
+      <section>
+        <SectionIntro
+          title="Learn"
+          description="Guides, articles, podcasts, and worked examples for applied thinking, systems, and execution."
+          titleClassName="text-3xl md:text-4xl"
+          descriptionClassName="text-lg"
+        />
       </section>
 
       <LandingSectionCardGrid items={landingCards} />
 
       <section className="space-y-6">
-        <div className="max-w-3xl space-y-2">
-          <h2 className="text-2xl font-semibold tracking-tight">Browse all Learn content</h2>
-          <p className="text-sm text-muted-foreground">
-            Filter across articles, podcasts, guides, and worked examples to move from orientation into deeper material.
-          </p>
-        </div>
+        <SectionIntro
+          title="Browse all Learn content"
+          description="Filter across articles, podcasts, guides, and worked examples to move from orientation into deeper material."
+        />
 
         <div className="flex gap-2 mb-8">
           <AptButton

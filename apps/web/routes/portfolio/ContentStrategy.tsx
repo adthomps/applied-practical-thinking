@@ -7,6 +7,7 @@ import {
   AptCardHeader,
   AptCardTitle,
   AptTag,
+  SectionIntro,
 } from "@/components/apt";
 import {
   ArrowRight,
@@ -72,31 +73,29 @@ const visitorPaths = [
 export default function PortfolioContentStrategy() {
   return (
     <div className="container py-12 md:py-16 space-y-16">
-      <section className="max-w-3xl">
-        <div className="flex items-center gap-3 mb-4">
-          <AptTag variant="accent">Content Strategy</AptTag>
-        </div>
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-          How APT Organizes Information
-        </h1>
-        <p className="text-lg text-muted-foreground mb-6">
-          Content strategy at APT is not decoration. It is the information architecture that helps
-          people understand what they are looking at, why it exists, and how to move from learning
-          to reference to working proof.
-        </p>
-        <AptButton variant="outline" asChild>
-          <Link to="/start">
-            <Route className="h-4 w-4" />
-            Follow the Start Path
-          </Link>
-        </AptButton>
+      <section>
+        <SectionIntro
+          title="How APT Organizes Information"
+          description="Content strategy at APT is not decoration. It is the information architecture that helps people understand what they are looking at, why it exists, and how to move from learning to reference to working proof."
+          titleClassName="text-3xl md:text-4xl"
+          descriptionClassName="text-lg"
+          eyebrow={<AptTag variant="accent">Content Strategy</AptTag>}
+        >
+          <AptButton variant="outline" asChild>
+            <Link to="/start">
+              <Route className="h-4 w-4" />
+              Follow the Start Path
+            </Link>
+          </AptButton>
+        </SectionIntro>
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold tracking-tight mb-2">IA Principles</h2>
-        <p className="text-muted-foreground mb-6">
-          The structure exists to reduce ambiguity and make intent legible.
-        </p>
+        <SectionIntro
+          title="IA Principles"
+          description="The structure exists to reduce ambiguity and make intent legible."
+          className="mb-6"
+        />
         <div className="grid gap-4 md:grid-cols-2">
           {principles.map((principle) => (
             <AptCard key={principle} variant="subtle">
@@ -114,10 +113,11 @@ export default function PortfolioContentStrategy() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold tracking-tight mb-2">Section Roles</h2>
-        <p className="text-muted-foreground mb-6">
-          Each top-level section has a distinct job so visitors do not have to infer the structure.
-        </p>
+        <SectionIntro
+          title="Section Roles"
+          description="Each top-level section has a distinct job so visitors do not have to infer the structure."
+          className="mb-6"
+        />
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {pillars.map((pillar) => (
             <AptCard key={pillar.title} variant="interactive" className="h-full">
@@ -139,10 +139,11 @@ export default function PortfolioContentStrategy() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold tracking-tight mb-2">Audience Paths</h2>
-        <p className="text-muted-foreground mb-6">
-          The site should meet visitors where they are instead of forcing them to learn internal labels first.
-        </p>
+        <SectionIntro
+          title="Audience Paths"
+          description="The site should meet visitors where they are instead of forcing them to learn internal labels first."
+          className="mb-6"
+        />
         <div className="grid gap-6 lg:grid-cols-3">
           {visitorPaths.map((path) => (
             <AptCard key={path.title} variant="feature" className="h-full">

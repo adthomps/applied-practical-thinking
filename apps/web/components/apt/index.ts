@@ -26,6 +26,7 @@ export type { AptTagProps } from "@apt/ui";
 export { AptEmblem } from "./AptEmblem";
 export { CosmicBackground } from "./CosmicBackground";
 export { LandingSectionCardGrid } from "./LandingSectionCardGrid";
+export { SectionIntro } from "./SectionIntro";
 
 export { ContentDetailPage } from "./ContentDetailPage";
 export { RuntimeConfigNotice } from "./RuntimeConfigNotice";

@@ -21,10 +21,10 @@ export function HeroSection({
   secondaryCta,
 }: HeroSectionProps) {
   return (
-    <CosmicBackground className="min-h-[70vh] flex items-center justify-center py-16 md:py-24">
+    <CosmicBackground className="min-h-[60vh] flex items-center justify-center py-12 md:py-20">
       <div className="container max-w-3xl mx-auto text-center px-4">
         {/* Emblem */}
-        <div className="flex justify-center mb-8 apt-fade-in">
+        <div className="flex justify-center mb-6 md:mb-8 apt-fade-in">
           <AptEmblem size="xl" glow="strong" animated />
         </div>
 
@@ -39,7 +39,7 @@ export function HeroSection({
         </div>
 
         {/* Title & Description */}
-        <div className="mt-8 apt-slide-up" style={{ animationDelay: "0.2s" }}>
+        <div className="mt-6 md:mt-8 apt-slide-up" style={{ animationDelay: "0.2s" }}>
           <h2 className="text-xl md:text-2xl font-medium text-foreground/90 mb-4">
             {title}
           </h2>
@@ -51,7 +51,7 @@ export function HeroSection({
         {/* CTAs */}
         {(primaryCta || secondaryCta) && (
           <div
-            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 apt-slide-up"
+            className="mt-8 md:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 apt-slide-up"
             style={{ animationDelay: "0.3s" }}
           >
             {primaryCta && (
