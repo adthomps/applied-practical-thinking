@@ -3,6 +3,9 @@ export interface SystemDefinition {
   title: string;
   purpose: string;
   description: string;
+  referenceType?: string;
+  status?: string;
+  appliesTo?: string[];
   decisions: string[];
   tradeoffs: string[];
   concepts: string[];

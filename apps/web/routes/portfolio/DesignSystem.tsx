@@ -18,6 +18,7 @@ import {
   Box, 
   Sparkles, 
   Layout, 
+  MonitorSmartphone,
   Copy, 
   Check,
   ExternalLink,
@@ -27,6 +28,7 @@ import {
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
+import { downloadWorkerMarkdown } from "@/src/services/download";
 
 function ColorSwatch({ name, cssVar, className }: { name: string; cssVar: string; className: string }) {
   const [copied, setCopied] = useState(false);
@@ -91,12 +93,16 @@ function Section({ id, title, description, children }: { id: string; title: stri
 export default function PortfolioDesignSystem() {
   const systemDocUrl = tryGetWorkerApiUrl("/api/design/docs/system");
   const configError = getWorkerApiConfigError();
+  const handleSystemMarkdownDownload = async () => {
+    await downloadWorkerMarkdown("/api/design/docs/system", "apt-design-system.md");
+  };
   const sections = [
     { id: "philosophy", label: "Philosophy", icon: Sparkles },
     { id: "colors", label: "Colors", icon: Palette },
     { id: "contrast", label: "Contrast", icon: Eye },
     { id: "typography", label: "Typography", icon: Type },
     { id: "spacing", label: "Spacing", icon: Layout },
+    { id: "responsive", label: "Responsive", icon: MonitorSmartphone },
     { id: "components", label: "Components", icon: Box },
     { id: "animations", label: "Animations", icon: Sparkles },
   ];
@@ -125,8 +131,8 @@ export default function PortfolioDesignSystem() {
             </a>
           </AptButton>
           <AptButton variant="outline" asChild>
-            <Link to="/design">
-              View Playground
+            <Link to="/design-playground">
+              Open Playground
               <ArrowRight className="h-4 w-4" />
             </Link>
           </AptButton>
@@ -139,13 +145,13 @@ export default function PortfolioDesignSystem() {
       </SectionIntro>
 
       {/* Quick Nav */}
-      <nav className="mb-12 pb-6 border-b border-border">
-        <div className="flex flex-wrap gap-2">
+      <nav className="mb-12 overflow-x-auto pb-6 border-b border-border">
+        <div className="flex min-w-max flex-nowrap gap-2 sm:min-w-0 sm:flex-wrap">
           {sections.map((section) => (
             <a
               key={section.id}
               href={`#${section.id}`}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md text-sm bg-secondary hover:bg-secondary/80 transition-colors"
+              className="inline-flex items-center gap-2 whitespace-nowrap px-3 py-1.5 rounded-md text-sm bg-secondary hover:bg-secondary/80 transition-colors"
             >
               <section.icon className="h-4 w-4" />
               {section.label}
@@ -432,6 +438,118 @@ rounded-md  → calc(var(--radius) - 2px)
 rounded-lg  → var(--radius)
 rounded-xl  → 0.75rem
 rounded-full → 9999px`} />
+          </div>
+        </Section>
+
+        {/* Responsive */}
+        <Section
+          id="responsive"
+          title="Responsive System"
+          description="APT is mobile-first. Every surface should read cleanly on phones, scale deliberately on tablets, and expand with restraint on desktop."
+        >
+          <div className="space-y-8">
+            <div className="grid gap-4 md:grid-cols-3">
+              {[
+                {
+                  title: "Mobile First",
+                  range: "< 640px",
+                  rules: [
+                    "Single-column by default",
+                    "CTAs stack or wrap without clipping",
+                    "Quick nav can scroll horizontally",
+                    "Tap targets stay 40px+ tall",
+                  ],
+                },
+                {
+                  title: "Tablet / Mid",
+                  range: "640px - 1023px",
+                  rules: [
+                    "Two-column content where density helps",
+                    "Cards gain width before they gain complexity",
+                    "Section rhythm stays compact",
+                    "Code blocks scroll, never shrink unreadably",
+                  ],
+                },
+                {
+                  title: "Desktop",
+                  range: "1024px+",
+                  rules: [
+                    "Three-column grids only when scanning improves",
+                    "Long-form reading stays width-constrained",
+                    "Whitespace is deliberate, not decorative",
+                    "Interactive demos stay secondary to reference content",
+                  ],
+                },
+              ].map((breakpoint) => (
+                <AptCard key={breakpoint.title} variant="subtle">
+                  <AptCardHeader>
+                    <AptCardTitle className="text-lg">{breakpoint.title}</AptCardTitle>
+                    <AptCardDescription className="font-mono text-xs">{breakpoint.range}</AptCardDescription>
+                  </AptCardHeader>
+                  <AptCardContent>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                      {breakpoint.rules.map((rule) => (
+                        <li key={rule} className="flex items-start gap-2">
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                          <span>{rule}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </AptCardContent>
+                </AptCard>
+              ))}
+            </div>
+
+            <div className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
+              <AptCard variant="default" padding="large">
+                <AptCardHeader>
+                  <AptCardTitle className="text-lg">Breakpoint Strategy</AptCardTitle>
+                  <AptCardDescription>
+                    Layout expands in steps. Content never depends on a desktop-only arrangement to make sense.
+                  </AptCardDescription>
+                </AptCardHeader>
+                <AptCardContent>
+                  <CodeBlock
+                    code={`/* Mobile-first layout rules */
+grid-cols-1
+sm:grid-cols-2
+lg:grid-cols-3
+
+/* Section rhythm */
+py-12 md:py-16
+
+/* Type scaling */
+text-3xl md:text-4xl
+text-xl md:text-2xl
+
+/* Behavior rules */
+- stack first, then split
+- wrap controls before shrinking them
+- scroll code blocks horizontally
+- keep reading content width-constrained`}
+                    language="css"
+                  />
+                </AptCardContent>
+              </AptCard>
+
+              <AptCard variant="subtle" padding="large">
+                <AptCardHeader>
+                  <AptCardTitle className="text-lg">Responsive Checklist</AptCardTitle>
+                  <AptCardDescription>
+                    The baseline checks every page or component should pass before it is considered finished.
+                  </AptCardDescription>
+                </AptCardHeader>
+                <AptCardContent>
+                  <div className="space-y-3 text-sm text-muted-foreground">
+                    <p>1. Hero and section headers do not create oversized vertical gaps on mobile.</p>
+                    <p>2. Card metadata wraps without forcing unreadable card widths.</p>
+                    <p>3. Button rows wrap cleanly and preserve clear primary/secondary order.</p>
+                    <p>4. Code examples and token tables remain readable without layout breakage.</p>
+                    <p>5. Desktop layouts add clarity, not extra noise or unnecessary columns.</p>
+                  </div>
+                </AptCardContent>
+              </AptCard>
+            </div>
           </div>
         </Section>
 
@@ -766,16 +884,16 @@ rounded-full → 9999px`} />
                 Download the design tokens for Figma, Style Dictionary, or other tools.
               </p>
             </div>
-            <div className="flex gap-3">
-              <AptButton variant="outline" asChild>
-                <a
-                  href={systemDocUrl || "#"}
-                  target={systemDocUrl ? "_blank" : undefined}
-                  rel={systemDocUrl ? "noopener noreferrer" : undefined}
-                  aria-disabled={!systemDocUrl}
-                >
-                  View Markdown
-                </a>
+            <div className="flex flex-wrap gap-3">
+              <AptButton
+                variant="outline"
+                type="button"
+                onClick={() => {
+                  void handleSystemMarkdownDownload();
+                }}
+                disabled={!systemDocUrl}
+              >
+                Download Markdown
               </AptButton>
               <AptButton asChild>
                 <a href="/docs/design/APT-FIGMA-TOKENS.json" download>

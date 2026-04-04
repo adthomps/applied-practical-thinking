@@ -15,7 +15,7 @@ export const aptTokens = {
     border: "border-border",
   },
   spacing: {
-    section: "py-16 md:py-24",
+    section: "py-12 md:py-16",
     sectionCompact: "py-8 md:py-12",
     cardPadding: "p-6",
     cardPaddingLarge: "p-8",

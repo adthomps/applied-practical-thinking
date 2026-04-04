@@ -26,6 +26,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
+import { downloadWorkerMarkdown } from "@/src/services/download";
 
 interface ArchitecturePatternProps {
   icon: React.ReactNode;
@@ -117,6 +118,9 @@ function BoundaryCard({ title, stack, responsibilities, constraints }: BoundaryC
 export default function PortfolioDesignArchitecture() {
   const architectureDocUrl = tryGetWorkerApiUrl("/api/design/docs/architecture");
   const configError = getWorkerApiConfigError();
+  const handleArchitectureMarkdownDownload = async () => {
+    await downloadWorkerMarkdown("/api/design/docs/architecture", "apt-design-architecture.md");
+  };
   const patterns = [
     {
       icon: <FolderTree className="h-5 w-5" />,
@@ -189,6 +193,43 @@ export default function PortfolioDesignArchitecture() {
         "Ownership matches team structure",
       ],
       when: "Teams larger than 2 people",
+    },
+  ];
+
+  const operatingSignals = [
+    {
+      title: "Use explicit architecture when boundaries matter",
+      description: "The full architecture layer matters most when multiple deploy surfaces, shared packages, or cross-system contracts could drift without clear ownership.",
+    },
+    {
+      title: "Keep the structure proportional to the risk",
+      description: "Not every project needs heavyweight diagrams or process, but every project needs enough structure to prevent accidental coupling and deployment confusion.",
+    },
+    {
+      title: "Favor enforceable rules over aspirational guidance",
+      description: "Architecture is strongest when it creates observable boundaries in code, builds, and deploys, not just good intentions in a document.",
+    },
+  ];
+
+  const artifacts = [
+    "Repo and package boundaries that define what belongs in apps versus shared packages",
+    "Deployment contracts that name the build authority, runtime surfaces, and environment ownership",
+    "API and content boundaries that prevent the frontend and backend from drifting into each other",
+    "Decision records for architecture choices that are expensive, risky, or precedent-setting",
+  ];
+
+  const antiPatterns = [
+    {
+      title: "Boundary Erosion",
+      description: "Frontend, backend, and shared layers slowly leak into one another until no part of the system has a clear owner.",
+    },
+    {
+      title: "Tooling Split-Brain",
+      description: "Two build or deploy paths exist for the same surface, creating inconsistent artifacts and environment drift.",
+    },
+    {
+      title: "Docs That Describe a Different System",
+      description: "The architecture write-up says one thing while the repo, packages, and deployment pipeline do another.",
     },
   ];
 
@@ -272,16 +313,15 @@ export default function PortfolioDesignArchitecture() {
         <p className="text-base text-muted-foreground/80">
           <em>Structure exists to prevent failure, not to enable creativity.</em>
         </p>
-        <AptButton variant="outline" asChild>
-          <a
-            href={architectureDocUrl || "#"}
-            target={architectureDocUrl ? "_blank" : undefined}
-            rel={architectureDocUrl ? "noopener noreferrer" : undefined}
-            aria-disabled={!architectureDocUrl}
-          >
-            <FileText className="h-4 w-4" />
-            View Full Specification
-          </a>
+        <AptButton
+          variant="outline"
+          onClick={() => {
+            void handleArchitectureMarkdownDownload();
+          }}
+          disabled={!architectureDocUrl}
+        >
+          <FileText className="h-4 w-4" />
+          Download Architecture Markdown
         </AptButton>
         {!architectureDocUrl && configError ? (
           <p className="text-sm text-muted-foreground mt-3">
@@ -316,6 +356,26 @@ export default function PortfolioDesignArchitecture() {
         </div>
       </section>
 
+      <section className="mb-16">
+        <SectionIntro
+          title="When to Use It"
+          description="APT architecture becomes most visible when projects need durable boundaries, repeatable deploys, and shared ownership without ambiguity."
+          className="mb-6"
+        />
+        <div className="grid gap-4 md:grid-cols-3">
+          {operatingSignals.map((signal) => (
+            <AptCard key={signal.title} variant="subtle">
+              <AptCardHeader>
+                <AptCardTitle className="text-lg">{signal.title}</AptCardTitle>
+              </AptCardHeader>
+              <AptCardContent>
+                <p className="text-sm text-muted-foreground">{signal.description}</p>
+              </AptCardContent>
+            </AptCard>
+          ))}
+        </div>
+      </section>
+
       {/* Boundaries */}
       <section className="mb-16">
         <SectionIntro
@@ -328,6 +388,24 @@ export default function PortfolioDesignArchitecture() {
             <BoundaryCard key={boundary.title} {...boundary} />
           ))}
         </div>
+      </section>
+
+      <section className="mb-16">
+        <SectionIntro
+          title="Working Artifacts"
+          description="Good architecture leaves behind concrete operating structures, not just principles or diagrams."
+          className="mb-6"
+        />
+        <AptCard variant="default" padding="large">
+          <div className="grid gap-4 md:grid-cols-2">
+            {artifacts.map((artifact) => (
+              <div key={artifact} className="flex items-start gap-3 rounded-lg border border-border/60 bg-background/40 p-4">
+                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                <p className="text-sm text-muted-foreground">{artifact}</p>
+              </div>
+            ))}
+          </div>
+        </AptCard>
       </section>
 
       {/* Architectural Patterns */}
@@ -376,6 +454,31 @@ export default function PortfolioDesignArchitecture() {
             </div>
           </div>
         </AptCard>
+      </section>
+
+      <section className="mb-16">
+        <SectionIntro
+          title="Failure Modes"
+          description="APT architecture is designed to prevent these common structural breakdowns before they become expensive to reverse."
+          className="mb-6"
+        />
+        <div className="grid gap-4 md:grid-cols-3">
+          {antiPatterns.map((item) => (
+            <AptCard key={item.title} variant="subtle">
+              <AptCardHeader>
+                <div className="flex items-center gap-3">
+                  <div className="rounded-lg bg-primary/10 p-2 text-primary">
+                    <AlertTriangle className="h-4 w-4" />
+                  </div>
+                  <AptCardTitle className="text-lg">{item.title}</AptCardTitle>
+                </div>
+              </AptCardHeader>
+              <AptCardContent>
+                <p className="text-sm text-muted-foreground">{item.description}</p>
+              </AptCardContent>
+            </AptCard>
+          ))}
+        </div>
       </section>
 
       {/* Related Resources CTA */}

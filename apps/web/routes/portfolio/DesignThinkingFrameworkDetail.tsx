@@ -20,12 +20,16 @@ import {
   getDesignThinkingFramework,
 } from "@/data/designThinkingFrameworks";
 import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
+import { downloadWorkerMarkdown } from "@/src/services/download";
 
 export default function DesignThinkingFrameworkDetail() {
   const { framework } = useParams<{ framework: string }>();
   const entry = framework ? getDesignThinkingFramework(framework) : null;
   const thinkingDocUrl = tryGetWorkerApiUrl("/api/design/docs/thinking");
   const configError = getWorkerApiConfigError();
+  const handleThinkingMarkdownDownload = async () => {
+    await downloadWorkerMarkdown("/api/design/docs/thinking", "apt-design-thinking.md");
+  };
 
   if (!entry) {
     return <Navigate to="/design/thinking" replace />;
@@ -60,16 +64,15 @@ export default function DesignThinkingFrameworkDetail() {
           }
         >
           <div className="flex flex-wrap gap-3">
-            <AptButton variant="outline" asChild>
-              <a
-                href={thinkingDocUrl || "#"}
-                target={thinkingDocUrl ? "_blank" : undefined}
-                rel={thinkingDocUrl ? "noopener noreferrer" : undefined}
-                aria-disabled={!thinkingDocUrl}
-              >
-                <FileText className="h-4 w-4" />
-                Read Full Design Thinking Doc
-              </a>
+            <AptButton
+              variant="outline"
+              onClick={() => {
+                void handleThinkingMarkdownDownload();
+              }}
+              disabled={!thinkingDocUrl}
+            >
+              <FileText className="h-4 w-4" />
+              Download Thinking Markdown
             </AptButton>
           </div>
           {!thinkingDocUrl && configError ? (
@@ -133,6 +136,39 @@ export default function DesignThinkingFrameworkDetail() {
                 </div>
               ))}
             </div>
+          </AptCardContent>
+        </AptCard>
+      </section>
+
+      <section className="grid gap-6 lg:grid-cols-[1fr_0.9fr]">
+        <AptCard variant="default" padding="large">
+          <AptCardHeader>
+            <AptCardTitle>Expected Outputs</AptCardTitle>
+            <AptCardDescription>
+              The artifacts this framework should leave behind when it is used well.
+            </AptCardDescription>
+          </AptCardHeader>
+          <AptCardContent>
+            <ul className="space-y-2">
+              {entry.artifacts.map((artifact) => (
+                <li key={artifact} className="flex items-start gap-3 text-sm text-muted-foreground">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                  <span>{artifact}</span>
+                </li>
+              ))}
+            </ul>
+          </AptCardContent>
+        </AptCard>
+
+        <AptCard variant="subtle" padding="large">
+          <AptCardHeader>
+            <AptCardTitle>Failure Mode to Avoid</AptCardTitle>
+            <AptCardDescription>
+              The most common way this framework becomes performative instead of useful.
+            </AptCardDescription>
+          </AptCardHeader>
+          <AptCardContent>
+            <p className="text-sm text-muted-foreground">{entry.antiPattern}</p>
           </AptCardContent>
         </AptCard>
       </section>

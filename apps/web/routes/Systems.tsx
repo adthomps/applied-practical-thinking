@@ -1,13 +1,57 @@
 import { useEffect, useState } from "react";
 import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
-import { AptCard, RuntimeConfigNotice, SectionIntro } from "@/components/apt";
+import { AptCard, AptCardContent, AptCardHeader, AptCardTitle, AptTag, RuntimeConfigNotice, SectionIntro } from "@/components/apt";
 import { SystemCard } from "@/components/apt/SystemCard";
-import { getWorkerApiConfigError } from "@/src/services/api";
+import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
+import { downloadWorkerMarkdown } from "@/src/services/download";
+import { AlertTriangle, CheckCircle2, FileText, Layers3 } from "lucide-react";
 
 export default function Systems() {
   const [systems, setSystems] = useState<ContentIndexItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  const operatingSignals = [
+    {
+      title: "Capture stable models, not passing ideas",
+      description: "A system belongs here when it has enough repeatable structure to be reused, taught, or referenced across projects.",
+    },
+    {
+      title: "Use it when experiments have converged",
+      description: "Experiments prove or explore. Systems document the models and patterns that survived that exploration.",
+    },
+    {
+      title: "Favor reusable logic over project trivia",
+      description: "What belongs here should clarify a pattern, boundary, or operating model that can travel beyond one isolated implementation.",
+    },
+  ];
+
+  const artifacts = [
+    "A stable model with a clear purpose and scope",
+    "Key decisions that shape how the model works",
+    "Tradeoffs that explain what the model optimizes for",
+    "Links back to related experiments and learning content",
+  ];
+
+  const antiPatterns = [
+    {
+      title: "Archive Everything",
+      description: "Not every finished project or experiment becomes a system. If it is not reusable as a model, it does not belong here.",
+    },
+    {
+      title: "Pattern Without Context",
+      description: "A reusable pattern is incomplete if it does not explain the problem it solves, the boundary it assumes, and the cost it introduces.",
+    },
+    {
+      title: "Reference Drift",
+      description: "A system stops being useful when the public reference no longer matches the actual design, code, or deployment reality.",
+    },
+  ];
+  const systemsDocUrl = tryGetWorkerApiUrl("/api/design/docs/systems");
+
+  const handleSystemsMarkdownDownload = async () => {
+    await downloadWorkerMarkdown("/api/design/docs/systems", "apt-design-systems.md");
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -43,25 +87,129 @@ export default function Systems() {
   return (
     <div className="container py-8 md:py-12">
       <SectionIntro
-        title="Systems"
-        description="System references with documented architecture, key decisions, tradeoffs, and reusable patterns. Inside Design, Systems is the stable reference layer where exploratory work becomes a reusable model."
+        title="Reference Models"
+        description="Inside APT, Systems are the stable reference layer: reusable models, patterns, and decision structures that persist after exploratory work has been clarified."
         titleClassName="text-3xl md:text-4xl"
         descriptionClassName="text-lg max-w-2xl"
+        eyebrow={<AptTag variant="accent">Systems</AptTag>}
         className="mb-8"
-      />
+      >
+        <AptButton
+          variant="outline"
+          type="button"
+          onClick={() => {
+            void handleSystemsMarkdownDownload();
+          }}
+          disabled={!systemsDocUrl}
+        >
+          <FileText className="h-4 w-4" />
+          Download Systems Markdown
+        </AptButton>
+      </SectionIntro>
 
       <AptCard variant="subtle" className="mb-8">
         <div className="p-6 text-sm text-muted-foreground">
-          <span className="font-semibold text-foreground">Systems</span> capture coherent models and reusable patterns inside the APT design doctrine.
-          If you want concepts, mocks, or interactive proof, start in <span className="font-semibold text-foreground">Experiments</span>.
+          <span className="font-semibold text-foreground">Systems</span> is still the route and nav label, but the purpose is best understood as
+          <span className="font-semibold text-foreground"> reference models</span>: coherent patterns with documented purpose, decisions, and tradeoffs.
+          If you want concepts, mocks, or interactive proof, start in <span className="font-semibold text-foreground">Experiments</span>. If you want the stable model that remains after that work, start here.
         </div>
       </AptCard>
+
+      <section className="mb-12">
+        <SectionIntro
+          title="When to Capture a System"
+          description="A model belongs here when it has matured beyond exploration and can now serve as a reusable reference."
+          className="mb-6"
+        />
+        <div className="grid gap-4 md:grid-cols-3">
+          {operatingSignals.map((signal) => (
+            <AptCard key={signal.title} variant="subtle">
+              <AptCardHeader>
+                <AptCardTitle className="text-lg">{signal.title}</AptCardTitle>
+              </AptCardHeader>
+              <AptCardContent>
+                <p className="text-sm text-muted-foreground">{signal.description}</p>
+              </AptCardContent>
+            </AptCard>
+          ))}
+        </div>
+      </section>
+
+      <section className="mb-12">
+        <SectionIntro
+          title="What a Good System Contains"
+          description="Each entry should be useful as a reusable model, not just a record of something that happened once."
+          className="mb-6"
+        />
+        <AptCard variant="default" padding="large">
+          <div className="grid gap-4 md:grid-cols-2">
+            {artifacts.map((artifact) => (
+              <div key={artifact} className="flex items-start gap-3 rounded-lg border border-border/60 bg-background/40 p-4">
+                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                <p className="text-sm text-muted-foreground">{artifact}</p>
+              </div>
+            ))}
+          </div>
+        </AptCard>
+      </section>
+
+      <section className="mb-12">
+        <SectionIntro
+          title="Reference Failure Modes"
+          description="These are the most common ways a system reference becomes less useful than the work it is supposed to clarify."
+          className="mb-6"
+        />
+        <div className="grid gap-4 md:grid-cols-3">
+          {antiPatterns.map((item) => (
+            <AptCard key={item.title} variant="subtle">
+              <AptCardHeader>
+                <div className="flex items-center gap-3">
+                  <div className="rounded-lg bg-primary/10 p-2 text-primary">
+                    <AlertTriangle className="h-4 w-4" />
+                  </div>
+                  <AptCardTitle className="text-lg">{item.title}</AptCardTitle>
+                </div>
+              </AptCardHeader>
+              <AptCardContent>
+                <p className="text-sm text-muted-foreground">{item.description}</p>
+              </AptCardContent>
+            </AptCard>
+          ))}
+        </div>
+      </section>
+
+      <section className="mb-8">
+        <SectionIntro
+          title="Browse Reference Models"
+          description="These models capture reusable structures and patterns inside the APT design doctrine."
+          className="mb-6"
+        />
+      </section>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {systems.map((system) => (
           <SystemCard key={system.id} system={system} to={`/design/systems/${system.id}`} />
         ))}
       </div>
+
+      <AptCard variant="feature" padding="large" className="mt-12">
+        <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+          <div className="flex items-center gap-4">
+            <div className="rounded-lg bg-primary/10 p-3 text-primary">
+              <Layers3 className="h-6 w-6" />
+            </div>
+            <div>
+              <p className="mb-1 text-xs uppercase tracking-[0.16em] text-muted-foreground">Framing Note</p>
+              <h3 className="text-xl font-semibold mb-1">“Systems” currently means reference models</h3>
+              <p className="text-muted-foreground">
+                If we rename this area later, the clearest candidates are <span className="font-medium text-foreground">Reference Models</span>,
+                <span className="font-medium text-foreground"> Pattern Library</span>, or
+                <span className="font-medium text-foreground"> Operating Models</span>. Right now the page copy carries that meaning without changing the IA.
+              </p>
+            </div>
+          </div>
+        </div>
+      </AptCard>
     </div>
   );
 }
