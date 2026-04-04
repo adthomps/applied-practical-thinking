@@ -27,8 +27,10 @@ import {
 } from "lucide-react";
 import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
 import { downloadWorkerMarkdown } from "@/src/services/download";
+import { architecturePatterns } from "@/data/architecturePatterns";
 
 interface ArchitecturePatternProps {
+  slug: string;
   icon: React.ReactNode;
   title: string;
   description: string;
@@ -36,38 +38,54 @@ interface ArchitecturePatternProps {
   when: string;
 }
 
-function ArchitecturePatternCard({ icon, title, description, rules, when }: ArchitecturePatternProps) {
+function ArchitecturePatternCard({ slug, icon, title, description, rules, when }: ArchitecturePatternProps) {
   return (
-    <AptCard variant="interactive" className="h-full">
-      <AptCardHeader>
-        <div className="flex items-center gap-3 mb-2">
-          <div className="p-2 rounded-lg bg-primary/10 text-primary">
-            {icon}
+    <Link to={`/design/architecture/${slug}`} className="block group">
+      <AptCard variant="interactive" className="h-full">
+        <AptCardHeader>
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className="p-2 rounded-lg bg-primary/10 text-primary">
+                {icon}
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground mb-1">
+                  Pattern
+                </p>
+                <AptCardTitle>{title}</AptCardTitle>
+              </div>
+            </div>
+            <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
           </div>
-          <AptCardTitle>{title}</AptCardTitle>
-        </div>
-        <AptCardDescription>{description}</AptCardDescription>
-      </AptCardHeader>
-      <AptCardContent>
-        <div className="space-y-4">
-          <div>
-            <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">Hard Rules</p>
-            <ul className="space-y-1.5">
-              {rules.map((rule, i) => (
-                <li key={i} className="flex items-start gap-2 text-sm">
-                  <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-accent mt-0.5" />
-                  {rule}
-                </li>
-              ))}
-            </ul>
+          <AptCardDescription>{description}</AptCardDescription>
+        </AptCardHeader>
+        <AptCardContent>
+          <div className="space-y-4">
+            <div>
+              <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">Hard Rules</p>
+              <ul className="space-y-1.5">
+                {rules.slice(0, 3).map((rule, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-accent mt-0.5" />
+                    {rule}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="pt-3 border-t border-border">
+              <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">When to apply</p>
+              <p className="text-sm text-muted-foreground">{when}</p>
+            </div>
+            <div className="pt-1">
+              <span className="inline-flex items-center gap-1.5 text-sm font-medium text-primary">
+                Open pattern
+                <ArrowRight className="h-4 w-4" />
+              </span>
+            </div>
           </div>
-          <div className="pt-3 border-t border-border">
-            <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">When to apply</p>
-            <p className="text-sm text-muted-foreground">{when}</p>
-          </div>
-        </div>
-      </AptCardContent>
-    </AptCard>
+        </AptCardContent>
+      </AptCard>
+    </Link>
   );
 }
 
@@ -121,80 +139,7 @@ export default function PortfolioDesignArchitecture() {
   const handleArchitectureMarkdownDownload = async () => {
     await downloadWorkerMarkdown("/api/design/docs/architecture", "apt-design-architecture.md");
   };
-  const patterns = [
-    {
-      icon: <FolderTree className="h-5 w-5" />,
-      title: "Monorepo Layout",
-      description: "Unified codebase with explicit boundaries between apps and packages.",
-      rules: [
-        "No code at repo root",
-        "Apps contain deployable units only",
-        "Shared logic lives in packages/",
-        "Docs live with the code",
-      ],
-      when: "Multi-app projects or shared component libraries",
-    },
-    {
-      icon: <Layers className="h-5 w-5" />,
-      title: "Frontend/Backend Split",
-      description: "Clear separation between client and server concerns.",
-      rules: [
-        "No fetch calls in components",
-        "API routes under /api/*",
-        "Validation at boundaries",
-        "Types shared via packages",
-      ],
-      when: "Any project with server-side logic",
-    },
-    {
-      icon: <Bot className="h-5 w-5" />,
-      title: "AI Prompt Ownership",
-      description: "Prompts are versioned code, not inline strings.",
-      rules: [
-        "Prompts live in ai/prompts/",
-        "Each prompt has a documented owner",
-        "AI endpoints are explicitly routed",
-        "AI doesn't bypass auth or validation",
-      ],
-      when: "Projects using AI assistance or LLM integrations",
-    },
-    {
-      icon: <Workflow className="h-5 w-5" />,
-      title: "CI/CD Pipeline",
-      description: "Automated, reproducible deployments from version control.",
-      rules: [
-        "PRs trigger preview deploys",
-        "Main branch deploys to staging",
-        "Release tags deploy to production",
-        "No manual production deploys",
-      ],
-      when: "Every project—no exceptions",
-    },
-    {
-      icon: <Shield className="h-5 w-5" />,
-      title: "Branch Protection",
-      description: "Enforce quality gates before code reaches production.",
-      rules: [
-        "Require PR reviews (1+)",
-        "Require passing status checks",
-        "Squash merge only",
-        "No force push to protected branches",
-      ],
-      when: "Team projects or anything in production",
-    },
-    {
-      icon: <Code2 className="h-5 w-5" />,
-      title: "Code Ownership",
-      description: "Explicit ownership for code review and accountability.",
-      rules: [
-        "CODEOWNERS file in repo root",
-        "Owners auto-assigned as reviewers",
-        "Cross-team changes require dual approval",
-        "Ownership matches team structure",
-      ],
-      when: "Teams larger than 2 people",
-    },
-  ];
+  const patterns = architecturePatterns;
 
   const operatingSignals = [
     {

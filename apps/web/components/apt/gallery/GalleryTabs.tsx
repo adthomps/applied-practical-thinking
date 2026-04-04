@@ -8,29 +8,29 @@ interface GalleryTabsProps {
 
 export function GalleryTabs({ activeTab, onTabChange }: GalleryTabsProps) {
   return (
-    <div className="flex flex-wrap gap-2 p-1 bg-muted/50 rounded-lg border border-border">
-      {galleryCategories.map((category) => {
-        const Icon = category.icon;
-        const isActive = activeTab === category.id;
-        
-        return (
-          <button
-            key={category.id}
-            onClick={() => onTabChange(category.id)}
-            className={cn(
-              "flex items-center gap-2 px-4 py-2.5 rounded-md text-sm font-medium transition-all duration-200",
-              "flex-1 min-w-[140px] justify-center",
-              isActive
-                ? "bg-background text-foreground shadow-sm border border-border"
-                : "text-muted-foreground hover:text-foreground hover:bg-background/50"
-            )}
-          >
-            <Icon className="h-4 w-4" />
-            <span className="hidden sm:inline">{category.label}</span>
-            <span className="sm:hidden">{category.label.split(" ")[0]}</span>
-          </button>
-        );
-      })}
+    <div className="overflow-x-auto pb-1">
+      <div className="flex min-w-max gap-2 rounded-lg border border-border bg-muted/40 p-1 sm:min-w-0 sm:flex-wrap">
+        {galleryCategories.map((category) => {
+          const Icon = category.icon;
+          const isActive = activeTab === category.id;
+
+          return (
+            <button
+              key={category.id}
+              onClick={() => onTabChange(category.id)}
+              className={cn(
+                "inline-flex items-center gap-2 whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium transition-all duration-200",
+                isActive
+                  ? "border border-border bg-background text-foreground shadow-sm"
+                  : "text-muted-foreground hover:bg-background/50 hover:text-foreground"
+              )}
+            >
+              <Icon className="h-4 w-4" />
+              <span>{category.label}</span>
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 }

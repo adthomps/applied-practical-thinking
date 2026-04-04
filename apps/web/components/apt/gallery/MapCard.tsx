@@ -9,8 +9,7 @@ interface MapCardProps {
 
 export function MapCard({ item }: MapCardProps) {
   return (
-    <AptCard variant="default" className="overflow-hidden">
-      {/* Header */}
+    <AptCard variant="interactive" className="overflow-hidden">
       <div className="p-4 border-b border-border">
         <div className="flex items-center gap-2 mb-1">
           <MapPin className="h-5 w-5 text-primary" />
@@ -44,7 +43,7 @@ export function MapCard({ item }: MapCardProps) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <AptButton variant="outline" size="sm" className="gap-2">
+                <AptButton variant="ghost" size="sm" className="gap-2">
                   Open in Google Maps
                   <ExternalLink className="h-3 w-3" />
                 </AptButton>

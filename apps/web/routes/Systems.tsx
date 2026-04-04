@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
-import { AptCard, AptCardContent, AptCardHeader, AptCardTitle, AptTag, RuntimeConfigNotice, SectionIntro } from "@/components/apt";
+import { AptButton, AptCard, AptCardContent, AptCardHeader, AptCardTitle, AptTag, RuntimeConfigNotice, SectionIntro } from "@/components/apt";
 import { SystemCard } from "@/components/apt/SystemCard";
 import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
 import { downloadWorkerMarkdown } from "@/src/services/download";
