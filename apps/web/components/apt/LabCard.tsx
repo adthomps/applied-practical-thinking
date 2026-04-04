@@ -70,29 +70,40 @@ export function LabCard({ lab }: LabCardProps) {
         </AptTag>
       }
       status={lab.status === "archived" ? <AptTag variant="muted">Archived</AptTag> : null}
-      highlight={lab.problem ? <p className="text-sm font-medium text-primary">{lab.problem}</p> : null}
+      highlight={
+        lab.problem ? (
+          <p className="line-clamp-1 text-sm font-medium text-primary">{lab.problem}</p>
+        ) : null
+      }
       metadata={
         <div className="flex flex-wrap gap-1.5">
-          {platforms.slice(0, 2).map((platform) => (
+          {platforms.slice(0, 1).map((platform) => (
             <AptTag key={platform} variant="default">
               {platform}
             </AptTag>
           ))}
-          {technologies.slice(0, 3).map((tech) => (
+          {technologies.slice(0, 2).map((tech) => (
             <AptTag key={tech} variant="muted">
               {tech}
             </AptTag>
           ))}
+          {platforms.length + technologies.length > 3 ? (
+            <span className="text-xs text-muted-foreground">
+              +{platforms.length + technologies.length - 3} more
+            </span>
+          ) : null}
         </div>
       }
       footerMeta={
-        lab.date
-          ? new Date(lab.date as string).toLocaleDateString("en-US", {
-              month: "short",
-              day: "numeric",
-              year: "numeric",
-            })
-          : null
+        lab.date ? (
+          new Date(lab.date as string).toLocaleDateString("en-US", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          })
+        ) : (
+          <span>Experiment</span>
+        )
       }
       action={quickAction}
     />
