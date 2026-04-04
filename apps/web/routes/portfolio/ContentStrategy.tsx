@@ -178,19 +178,24 @@ export default function PortfolioContentStrategy() {
 
       <section>
         <SectionIntro
-          title="IA Principles"
-          description="The structure exists to reduce ambiguity and make intent legible."
+          title="Information Architecture (IA) Principles"
+          description="IA stands for information architecture: the naming, grouping, and connection rules that make a site understandable before a visitor learns the internal vocabulary."
           className="mb-6"
         />
         <div className="grid gap-4 md:grid-cols-2">
           {principles.map((principle) => (
-            <AptCard key={principle} variant="subtle">
+            <AptCard key={principle} variant="default" className="h-full">
               <AptCardContent className="pt-6">
                 <div className="flex items-start gap-3">
                   <div className="mt-0.5 rounded-lg bg-primary/10 p-2 text-primary">
                     <Route className="h-4 w-4" />
                   </div>
-                  <p className="text-sm text-foreground">{principle}</p>
+                  <div className="space-y-2">
+                    <p className="text-sm font-medium text-foreground">{principle}</p>
+                    <p className="text-sm text-muted-foreground">
+                      This principle helps keep APT clear enough that visitors can follow intent, not just labels.
+                    </p>
+                  </div>
                 </div>
               </AptCardContent>
             </AptCard>

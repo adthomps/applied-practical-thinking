@@ -1,7 +1,5 @@
-import { useState } from "react";
-import { ExternalLink, Play } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { AptCard } from "@/components/apt/AptCard";
-import { AptButton } from "@/components/apt/AptButton";
 import { AptTag } from "@/components/apt/AptTag";
 import type { GalleryItem as GalleryItemBase } from "@/data/gallery";
 
@@ -15,11 +13,10 @@ interface GalleryCardProps {
 
 export function GalleryCard({ item }: GalleryCardProps) {
   const isVideo = item.platform === "youtube";
-  const buttonLabel = isVideo ? "View Video" : "View Album";
+  const buttonLabel = isVideo ? "Open motion piece" : "Open gallery";
 
   return (
-    <AptCard variant="interactive" className="overflow-hidden group">
-      {/* Media: Only show embedded video for video projects, no cover image or play overlay */}
+    <AptCard variant="interactive" className="group relative overflow-hidden">
       <div className="relative aspect-[4/3] overflow-hidden">
         {isVideo && item.embedUrl ? (
           <iframe
@@ -38,12 +35,9 @@ export function GalleryCard({ item }: GalleryCardProps) {
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         )}
-        {/* Gradient Overlay removed for cleaner video display */}
       </div>
 
-      {/* Content */}
       <div className="p-4 space-y-3">
-        {/* Title, Location & Date Row */}
         <div className="flex items-start justify-between gap-2">
           <div>
             <h3 className="font-semibold text-foreground leading-tight line-clamp-2">
@@ -55,27 +49,31 @@ export function GalleryCard({ item }: GalleryCardProps) {
               </span>
             )}
           </div>
-          <AptTag variant="outline" size="sm" className="shrink-0">
-            {item.location}
+          <AptTag variant="muted" size="sm" className="shrink-0">
+            {item.platform === "youtube" ? "Motion" : item.platform === "flickr" ? "Gallery" : item.platform}
           </AptTag>
         </div>
 
-        {/* Description */}
         <p className="text-sm text-muted-foreground line-clamp-2">
           {item.description}
         </p>
 
-        {/* Action Button */}
+        <div className="flex items-center justify-between gap-3 pt-1">
+          <span className="text-xs text-muted-foreground">{item.location}</span>
+          <span className="inline-flex items-center gap-1.5 text-sm font-medium text-primary">
+            {buttonLabel}
+            <ExternalLink className="h-4 w-4" />
+          </span>
+        </div>
+
         <a
           href={item.externalUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="block"
+          className="absolute inset-0"
+          aria-label={buttonLabel}
         >
-          <AptButton variant="outline" className="w-full gap-2">
-            {buttonLabel}
-            <ExternalLink className="h-4 w-4" />
-          </AptButton>
+          <span className="sr-only">{buttonLabel}</span>
         </a>
       </div>
     </AptCard>
