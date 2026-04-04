@@ -7,10 +7,9 @@ import {
   AptCardTitle,
   AptCardDescription,
   AptCardContent,
-  AptCardFooter,
   AptTag,
   AptEmblem,
-  HeroCard,
+  SectionIntro,
 } from "@/components/apt";
 import { ContrastChecker } from "@/components/apt/ContrastChecker";
 import { 
@@ -21,8 +20,6 @@ import {
   Layout, 
   Copy, 
   Check,
-  Circle,
-  Square,
   ExternalLink,
   ArrowRight,
   Download,
@@ -85,10 +82,7 @@ function CodeBlock({ code, language = "tsx" }: { code: string; language?: string
 function Section({ id, title, description, children }: { id: string; title: string; description: string; children: React.ReactNode }) {
   return (
     <section id={id} className="scroll-mt-24">
-      <div className="mb-6">
-        <h2 className="text-2xl font-semibold tracking-tight mb-2">{title}</h2>
-        <p className="text-muted-foreground">{description}</p>
-      </div>
+      <SectionIntro title={title} description={description} className="mb-6" />
       {children}
     </section>
   );
@@ -110,19 +104,20 @@ export default function PortfolioDesignSystem() {
   return (
     <div className="container py-12 md:py-16">
       {/* Hero */}
-      <div className="max-w-3xl mb-12">
-        <div className="flex items-center gap-3 mb-4">
-          <AptTag variant="accent">Design System</AptTag>
-          <AptTag variant="outline">v1.0</AptTag>
-        </div>
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-          APT Design System
-        </h1>
-        <p className="text-lg text-muted-foreground mb-6">
-          A dark-first, card-based design system built for clarity, consistency, and calm. 
-          Tokens, semantics, components, and constraints—all documented for portability.
-        </p>
-        <div className="flex gap-3">
+      <SectionIntro
+        title="APT Design System"
+        description="A dark-first, card-based design system built for clarity, consistency, and calm. Tokens, semantics, components, and constraints, all documented for portability."
+        titleClassName="text-3xl md:text-4xl"
+        descriptionClassName="text-lg"
+        eyebrow={
+          <div className="flex items-center gap-3">
+            <AptTag variant="accent">Design System</AptTag>
+            <AptTag variant="outline">v1.0</AptTag>
+          </div>
+        }
+        className="mb-12"
+      >
+        <div className="flex flex-wrap gap-3">
           <AptButton asChild>
             <a href="/docs/design/APT-FIGMA-TOKENS.json" download>
               <Download className="h-4 w-4" />
@@ -141,7 +136,7 @@ export default function PortfolioDesignSystem() {
             Configure <code>{configError.envVar}</code> on the Pages project to enable full-doc links.
           </p>
         ) : null}
-      </div>
+      </SectionIntro>
 
       {/* Quick Nav */}
       <nav className="mb-12 pb-6 border-b border-border">
@@ -447,6 +442,32 @@ rounded-full → 9999px`} />
           description="Core components with variants and interactive examples."
         >
           <div className="space-y-12">
+            <AptCard variant="subtle" padding="large">
+              <div className="grid gap-4 md:grid-cols-3">
+                <div className="space-y-2">
+                  <p className="text-sm font-semibold">Section Card</p>
+                  <p className="text-sm text-muted-foreground">
+                    Large orientation cards for landing pages and top-level navigation choices.
+                  </p>
+                  <code className="rounded bg-muted px-2 py-1 text-xs">interactive + roomy copy + directional CTA</code>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-sm font-semibold">Browse Card</p>
+                  <p className="text-sm text-muted-foreground">
+                    Mid-density cards for Learn, Experiments, and Systems indexes.
+                  </p>
+                  <code className="rounded bg-muted px-2 py-1 text-xs">feature + media + short metadata + one action</code>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-sm font-semibold">Supporting / Detail Card</p>
+                  <p className="text-sm text-muted-foreground">
+                    Lower-emphasis cards for sidebars, snapshots, related content, and doctrine support.
+                  </p>
+                  <code className="rounded bg-muted px-2 py-1 text-xs">default or subtle + compact content</code>
+                </div>
+              </div>
+            </AptCard>
+
             {/* Buttons */}
             <div>
               <h3 className="text-lg font-semibold mb-4">AptButton</h3>

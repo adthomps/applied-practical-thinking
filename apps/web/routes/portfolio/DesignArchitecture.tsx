@@ -7,6 +7,7 @@ import {
   AptCardDescription,
   AptCardContent,
   AptTag,
+  SectionIntro,
 } from "@/components/apt";
 import {
   FolderTree,
@@ -260,17 +261,15 @@ export default function PortfolioDesignArchitecture() {
   return (
     <div className="container py-12 md:py-16">
       {/* Hero */}
-      <div className="max-w-3xl mb-12">
-        <div className="flex items-center gap-3 mb-4">
-          <AptTag variant="accent">Design Architecture</AptTag>
-        </div>
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-          How Projects Get Built
-        </h1>
-        <p className="text-lg text-muted-foreground mb-2">
-          Repo layout, deployment flows, API contracts, AI routing, and enforcement rules.
-        </p>
-        <p className="text-base text-muted-foreground/80 mb-6">
+      <SectionIntro
+        title="How Projects Get Built"
+        description="Repo layout, deployment flows, API contracts, AI routing, and enforcement rules."
+        titleClassName="text-3xl md:text-4xl"
+        descriptionClassName="text-lg"
+        eyebrow={<AptTag variant="accent">Design Architecture</AptTag>}
+        className="mb-12"
+      >
+        <p className="text-base text-muted-foreground/80">
           <em>Structure exists to prevent failure, not to enable creativity.</em>
         </p>
         <AptButton variant="outline" asChild>
@@ -289,11 +288,15 @@ export default function PortfolioDesignArchitecture() {
             Configure <code>{configError.envVar}</code> on the Pages project to enable full-doc links.
           </p>
         ) : null}
-      </div>
+      </SectionIntro>
 
       {/* Principles */}
       <section className="mb-16">
-        <h2 className="text-2xl font-semibold tracking-tight mb-6">Core Principles</h2>
+        <SectionIntro
+          title="Core Principles"
+          description="The governing architectural positions that keep the system legible and enforceable."
+          className="mb-6"
+        />
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {principles.map((principle) => (
             <AptCard key={principle.title} variant="subtle">
@@ -315,10 +318,11 @@ export default function PortfolioDesignArchitecture() {
 
       {/* Boundaries */}
       <section className="mb-16">
-        <h2 className="text-2xl font-semibold tracking-tight mb-2">Frontend/Backend Boundaries</h2>
-        <p className="text-muted-foreground mb-6">
-          Clear separation of concerns between client and server.
-        </p>
+        <SectionIntro
+          title="Frontend/Backend Boundaries"
+          description="Clear separation of concerns between client and server."
+          className="mb-6"
+        />
         <div className="grid gap-6 md:grid-cols-2">
           {boundaries.map((boundary) => (
             <BoundaryCard key={boundary.title} {...boundary} />
@@ -328,10 +332,11 @@ export default function PortfolioDesignArchitecture() {
 
       {/* Architectural Patterns */}
       <section className="mb-16">
-        <h2 className="text-2xl font-semibold tracking-tight mb-2">Architectural Patterns</h2>
-        <p className="text-muted-foreground mb-6">
-          Repeatable structures for common project needs.
-        </p>
+        <SectionIntro
+          title="Architectural Patterns"
+          description="Repeatable structures for common project needs."
+          className="mb-6"
+        />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {patterns.map((pattern) => (
             <ArchitecturePatternCard key={pattern.title} {...pattern} />
@@ -341,10 +346,11 @@ export default function PortfolioDesignArchitecture() {
 
       {/* Deployment Flow */}
       <section className="mb-16">
-        <h2 className="text-2xl font-semibold tracking-tight mb-2">Deployment Flow</h2>
-        <p className="text-muted-foreground mb-6">
-          From commit to production, every step is automated.
-        </p>
+        <SectionIntro
+          title="Deployment Flow"
+          description="From commit to production, every step is automated."
+          className="mb-6"
+        />
         <AptCard variant="feature" padding="large">
           <div className="grid gap-4 md:grid-cols-3">
             <div className="text-center p-4">

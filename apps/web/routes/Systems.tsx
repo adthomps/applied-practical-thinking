@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
-import { AptCard, RuntimeConfigNotice } from "@/components/apt";
+import { AptCard, RuntimeConfigNotice, SectionIntro } from "@/components/apt";
 import { SystemCard } from "@/components/apt/SystemCard";
 import { getWorkerApiConfigError } from "@/src/services/api";
 
@@ -42,14 +42,13 @@ export default function Systems() {
 
   return (
     <div className="container py-8 md:py-12">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold tracking-tight mb-2">Systems</h1>
-        <p className="text-muted-foreground max-w-2xl">
-          System references with documented architecture, key decisions, tradeoffs,
-          and reusable patterns. Inside Design, Systems is the stable reference layer
-          where exploratory work becomes a reusable model.
-        </p>
-      </div>
+      <SectionIntro
+        title="Systems"
+        description="System references with documented architecture, key decisions, tradeoffs, and reusable patterns. Inside Design, Systems is the stable reference layer where exploratory work becomes a reusable model."
+        titleClassName="text-3xl md:text-4xl"
+        descriptionClassName="text-lg max-w-2xl"
+        className="mb-8"
+      />
 
       <AptCard variant="subtle" className="mb-8">
         <div className="p-6 text-sm text-muted-foreground">

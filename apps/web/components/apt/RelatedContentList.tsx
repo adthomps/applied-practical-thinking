@@ -22,9 +22,11 @@ export function RelatedContentList({ related }: { related: string[] }) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {items.map((item) => (
           <Link key={item.id || item.slug} to={getContentUrl(item)}>
-            <AptCard variant="muted" className="h-full">
-              <AptCardTitle>{item.title}</AptCardTitle>
-              <AptCardDescription>{item.summary || item.description}</AptCardDescription>
+            <AptCard variant="subtle" padding="compact" className="h-full">
+              <AptCardTitle className="text-base">{item.title}</AptCardTitle>
+              <AptCardDescription className="mt-2">
+                {item.summary || item.description}
+              </AptCardDescription>
             </AptCard>
           </Link>
         ))}

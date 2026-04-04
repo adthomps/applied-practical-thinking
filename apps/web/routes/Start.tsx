@@ -1,35 +1,17 @@
 import { Link } from "react-router-dom";
-import { AptCard } from "@/components/apt/AptCard";
-import { AptButton } from "@/components/apt/AptButton";
+import { AptButton, AptCard, AptTag, LandingSectionCardGrid, SectionIntro } from "@/components/apt";
 import { siteConfig } from "@/data/site";
-import { 
-  Lightbulb, 
-  BookOpen, 
-  Layers, 
+import {
+  ArrowRight,
   Beaker,
-  ArrowRight, 
-  Target,
+  BookOpen,
   Compass,
-  Zap
+  Layers,
+  Lightbulb,
+  Route,
+  Target,
+  Zap,
 } from "lucide-react";
-
-const coreIdeas = [
-  {
-    icon: Target,
-    title: "Systems Over Screens",
-    description: "Focus on the underlying logic, constraints, and relationships—not just the UI.",
-  },
-  {
-    icon: Layers,
-    title: "Decisions Over Demos",
-    description: "Value the thinking process and tradeoffs more than polished outputs.",
-  },
-  {
-    icon: Compass,
-    title: "Applied Practical Thinking",
-    description: "Theory is useful only when it translates into observable, testable artifacts.",
-  },
-];
 
 const startingPoints = [
   {
@@ -37,132 +19,181 @@ const startingPoints = [
     label: "Learn",
     path: "/learn",
     description: "Guides, articles, podcasts, and worked examples for applied thinking and systems.",
-    color: "text-primary",
+    tagline: "Start here when you want ideas, explanation, and practical framing.",
+    metaLabel: "Entry Point",
   },
   {
     icon: Beaker,
     label: "Experiments",
     path: "/experiments",
     description: "Concepts, mocks, and interactive proof that make ideas tangible in the open.",
-    color: "text-accent",
+    tagline: "Start here when you want to inspect artifacts and working proof.",
+    metaLabel: "Entry Point",
   },
   {
     icon: Layers,
     label: "Design",
     path: "/design",
     description: "The doctrine behind APT, including thinking, architecture, systems, and content strategy.",
-    color: "text-muted-foreground",
+    tagline: "Start here when you want the governing model behind the work.",
+    metaLabel: "Entry Point",
+  },
+];
+
+const principles = [
+  {
+    icon: Target,
+    title: "Systems over screens",
+    description: "APT starts with structure, constraints, and relationships before UI polish.",
+  },
+  {
+    icon: Layers,
+    title: "Decisions over demos",
+    description: "The reasoning behind choices matters as much as the artifact itself.",
+  },
+  {
+    icon: Compass,
+    title: "Applied, not abstract",
+    description: "Ideas should resolve into observable artifacts, reference models, or practical guidance.",
+  },
+];
+
+const visitorPaths = [
+  {
+    title: "Start with Learn",
+    path: "/learn",
+    summary: "Use Learn when you want the clearest entry into APT through articles, podcasts, guides, and worked examples.",
+    details: "Best for orientation, understanding the language of the site, and moving from broad ideas into concrete methods.",
+  },
+  {
+    title: "Start with Experiments",
+    path: "/experiments",
+    summary: "Use Experiments when you want concepts, mocks, and live proof before reading the reference layers.",
+    details: "Best for people who want to see artifacts first and understand ideas through what has been made observable.",
+  },
+  {
+    title: "Start with Design",
+    path: "/design",
+    summary: "Use Design when you want the doctrine, standards, systems, and content strategy behind APT itself.",
+    details: "Best for understanding why the site is organized this way and how stable references differ from exploratory proof.",
   },
 ];
 
 export default function Start() {
   return (
-    <div className="container py-12 md:py-16 space-y-16">
-      {/* Hero */}
-      <section className="text-center max-w-3xl mx-auto space-y-6">
+    <div className="container py-8 md:py-12 space-y-12">
+      <section className="max-w-3xl mx-auto text-center space-y-5">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm">
           <Zap className="h-4 w-4" />
           Welcome to APT
         </div>
-        
+
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
           New here? Start with the essentials.
         </h1>
-        
+
         <p className="text-lg text-muted-foreground leading-relaxed">
-          {siteConfig.fullName} is a personal portfolio and demonstration brand. 
-          Here you'll find learning resources, experiments, and design-governed reference models
-          focused on turning real-world problems into observable systems.
+          {siteConfig.fullName} is organized to help you understand what APT is, what has been built,
+          and where to go deeper into the methods behind it.
         </p>
       </section>
 
-      {/* Core Ideas */}
-      <section className="space-y-8">
-        <div className="text-center">
-          <h2 className="text-2xl font-semibold mb-2">Core Principles</h2>
-          <p className="text-muted-foreground">The philosophy behind everything here.</p>
-        </div>
-        
+      <section className="space-y-6">
+        <SectionIntro
+          title="Where to begin"
+          description="Choose the entry point that matches your intent instead of learning the taxonomy first."
+        />
+
+        <LandingSectionCardGrid items={startingPoints} />
+      </section>
+
+      <section className="space-y-6">
+        <SectionIntro
+          title="How APT thinks"
+          description="These are not standalone slogans. They are the orientation layer for the fuller design doctrine."
+        />
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {coreIdeas.map((idea) => (
-            <AptCard key={idea.title} variant="subtle" className="text-center">
-              <div className="flex flex-col items-center gap-4 p-6">
-                <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                  <idea.icon className="h-6 w-6 text-primary" />
+          {principles.map((idea) => (
+            <AptCard key={idea.title} variant="subtle" className="h-full">
+              <div className="p-6 space-y-4">
+                <div className="h-11 w-11 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <idea.icon className="h-5 w-5 text-primary" />
                 </div>
-                <h3 className="text-lg font-semibold">{idea.title}</h3>
-                <p className="text-sm text-muted-foreground">{idea.description}</p>
+                <div className="space-y-2">
+                  <h3 className="text-lg font-semibold">{idea.title}</h3>
+                  <p className="text-sm text-muted-foreground">{idea.description}</p>
+                </div>
+              </div>
+            </AptCard>
+          ))}
+        </div>
+
+        <div className="flex flex-wrap gap-3">
+          <AptButton variant="outline" asChild>
+            <Link to="/design/thinking" className="gap-2">
+              Design Thinking <ArrowRight className="h-4 w-4" />
+            </Link>
+          </AptButton>
+          <AptButton variant="ghost" asChild>
+            <Link to="/design/content-strategy" className="gap-2">
+              Content Strategy <ArrowRight className="h-4 w-4" />
+            </Link>
+          </AptButton>
+        </div>
+      </section>
+
+      <section className="space-y-6">
+        <SectionIntro
+          title="How this site works"
+          description="APT is organized around visitor intent: understand the ideas, inspect the proof, or study the governing system."
+        />
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {visitorPaths.map((path) => (
+            <AptCard key={path.title} variant="interactive" className="h-full">
+              <div className="p-6 space-y-5">
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <Route className="h-4 w-4 text-primary" />
+                    <AptTag variant="ghost">Suggested Path</AptTag>
+                  </div>
+                  <h3 className="text-lg font-semibold">{path.title}</h3>
+                  <p className="text-sm text-muted-foreground">{path.summary}</p>
+                  <p className="text-sm text-muted-foreground">{path.details}</p>
+                </div>
+
+                <AptButton variant="outline" size="sm" asChild>
+                  <Link to={path.path} className="gap-2">
+                    Open
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </AptButton>
               </div>
             </AptCard>
           ))}
         </div>
       </section>
 
-      {/* Starting Points */}
-      <section className="space-y-8">
-        <div className="text-center">
-          <h2 className="text-2xl font-semibold mb-2">Where to Begin</h2>
-          <p className="text-muted-foreground">Choose your entry point based on what interests you.</p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {startingPoints.map((point) => (
-            <Link key={point.path} to={point.path}>
-              <AptCard variant="interactive" className="h-full">
-                <div className="p-6 space-y-4">
-                  <div className="flex items-center gap-3">
-                    <point.icon className={`h-5 w-5 ${point.color}`} />
-                    <span className="font-semibold">{point.label}</span>
-                    <ArrowRight className="h-4 w-4 ml-auto text-muted-foreground" />
-                  </div>
-                  <p className="text-sm text-muted-foreground">{point.description}</p>
-                </div>
-              </AptCard>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* How to Navigate */}
-      <section className="max-w-2xl mx-auto">
+      <section className="max-w-3xl">
         <AptCard variant="elevated">
-          <div className="p-8 space-y-6">
-            <h2 className="text-xl font-semibold text-center">How This Site Works</h2>
-            
-            <div className="space-y-4 text-sm text-muted-foreground">
-              <div className="flex gap-3">
-                <span className="text-primary font-bold">Learn</span>
-                <span>= articles, podcasts, guides, and worked examples</span>
-              </div>
-              <div className="flex gap-3">
-                <span className="text-primary font-bold">Experiments</span>
-                <span>= concepts, mocks, prototypes, and live demos that make ideas observable</span>
-              </div>
-              <div className="flex gap-3">
-                <span className="text-primary font-bold">Design</span>
-                <span>= the thinking, system, architecture, content strategy, and system references behind APT</span>
-              </div>
-            </div>
+          <div className="p-8 space-y-5">
+            <h2 className="text-xl font-semibold">One note before you explore</h2>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              {siteConfig.disclaimer} APT is meant to make thinking visible through working artifacts,
+              reference models, and documented reasoning rather than present itself as a finished product suite.
+            </p>
 
-            <div className="pt-4 border-t border-border text-center">
-              <p className="text-xs text-muted-foreground mb-4">{siteConfig.disclaimer}</p>
-              <div className="flex flex-wrap justify-center gap-3">
-                <Link to="/experiments">
-                  <AptButton variant="primary" size="sm">
-                    Explore Experiments
-                  </AptButton>
-                </Link>
-                <Link to="/design">
-                  <AptButton variant="outline" size="sm">
-                    Explore Design
-                  </AptButton>
-                </Link>
-                <Link to="/about">
-                  <AptButton variant="outline" size="sm">
-                    Learn About Me
-                  </AptButton>
-                </Link>
-              </div>
+            <div className="flex flex-wrap gap-3">
+              <AptButton variant="primary" asChild>
+                <Link to="/experiments">Explore Experiments</Link>
+              </AptButton>
+              <AptButton variant="outline" asChild>
+                <Link to="/learn">Start with Learn</Link>
+              </AptButton>
+              <AptButton variant="ghost" asChild>
+                <Link to="/about">Learn About Me</Link>
+              </AptButton>
             </div>
           </div>
         </AptCard>

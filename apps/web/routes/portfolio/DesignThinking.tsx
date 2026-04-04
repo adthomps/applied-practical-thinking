@@ -7,11 +7,11 @@ import {
   AptCardDescription,
   AptCardContent,
   AptTag,
+  SectionIntro,
 } from "@/components/apt";
 import {
   Brain,
   Target,
-  Lightbulb,
   Scale,
   GitBranch,
   CheckCircle2,
@@ -254,17 +254,14 @@ export default function PortfolioDesignThinking() {
   return (
     <div className="container py-12 md:py-16">
       {/* Hero */}
-      <div className="max-w-3xl mb-12">
-        <div className="flex items-center gap-3 mb-4">
-          <AptTag variant="accent">Design Thinking</AptTag>
-        </div>
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-          How Problems Get Solved
-        </h1>
-        <p className="text-lg text-muted-foreground mb-6">
-          Problem framing, assumption testing, constraint mapping, and decision-making in practice. 
-          This is how problems are defined before solutions exist—the thinking that precedes the doing.
-        </p>
+      <SectionIntro
+        title="How Problems Get Solved"
+        description="Problem framing, assumption testing, constraint mapping, and decision-making in practice. This is how problems are defined before solutions exist, the thinking that precedes the doing."
+        titleClassName="text-3xl md:text-4xl"
+        descriptionClassName="text-lg"
+        eyebrow={<AptTag variant="accent">Design Thinking</AptTag>}
+        className="mb-12"
+      >
         <AptButton variant="outline" asChild>
           <a
             href={thinkingDocUrl || "#"}
@@ -281,11 +278,15 @@ export default function PortfolioDesignThinking() {
             Configure <code>{configError.envVar}</code> on the Pages project to enable full-doc links.
           </p>
         ) : null}
-      </div>
+      </SectionIntro>
 
       {/* Principles */}
       <section className="mb-16">
-        <h2 className="text-2xl font-semibold tracking-tight mb-6">Core Principles</h2>
+        <SectionIntro
+          title="Core Principles"
+          description="The governing habits behind how APT frames problems before it proposes solutions."
+          className="mb-6"
+        />
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {principles.map((principle) => (
             <AptCard key={principle.title} variant="subtle">
@@ -307,10 +308,11 @@ export default function PortfolioDesignThinking() {
 
       {/* Frameworks */}
       <section className="mb-16">
-        <h2 className="text-2xl font-semibold tracking-tight mb-2">Thinking Frameworks</h2>
-        <p className="text-muted-foreground mb-6">
-          Repeatable processes for tackling different types of problems.
-        </p>
+        <SectionIntro
+          title="Thinking Frameworks"
+          description="Repeatable processes for tackling different types of problems."
+          className="mb-6"
+        />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {frameworks.map((framework) => (
             <FrameworkCard key={framework.title} {...framework} />
@@ -320,13 +322,11 @@ export default function PortfolioDesignThinking() {
 
       {/* Case Studies */}
       <section className="mb-16">
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <h2 className="text-2xl font-semibold tracking-tight mb-2">Applied Examples</h2>
-            <p className="text-muted-foreground">
-              Real decisions from APT projects, documented for reference.
-            </p>
-          </div>
+        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between mb-6">
+          <SectionIntro
+            title="Applied Examples"
+            description="Real decisions from APT projects, documented for reference."
+          />
           <AptButton variant="ghost" asChild>
             <Link to="/learn/guides">
               All Guides <ArrowRight className="h-4 w-4" />
