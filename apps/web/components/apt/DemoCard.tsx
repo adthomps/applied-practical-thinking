@@ -59,9 +59,9 @@ export function DemoCard({ demo }: DemoCardProps) {
       detailTo={detailHref}
       title={demo.title}
       description={isComingSoon ? "This demo is under development." : demo.description}
+      icon={<TypeIcon className="h-5 w-5" />}
       eyebrow={
         <AptTag variant="accent">
-          <TypeIcon className="h-3 w-3 mr-1" />
           {typeLabels[demo.type as string] || demo.type || "Demo"}
         </AptTag>
       }
@@ -76,22 +76,6 @@ export function DemoCard({ demo }: DemoCardProps) {
         ) : null
       }
       highlight={demo.problem ? <p className="text-sm font-medium text-primary">{demo.problem}</p> : null}
-      media={
-        <div className="relative aspect-video border-b border-border/50 bg-muted/30 flex items-center justify-center">
-          {demo.thumbnail ? (
-            <img
-              src={demo.thumbnail}
-              alt={demo.title}
-              className="h-full w-full object-cover"
-            />
-          ) : (
-            <div className="flex h-full w-full flex-col items-center justify-center gap-2 text-muted-foreground/50">
-              <TypeIcon className="h-8 w-8" />
-              <span className="text-xs">{typeLabels[demo.type as string] || demo.type || "Demo"}</span>
-            </div>
-          )}
-        </div>
-      }
       metadata={
         <div className="flex flex-wrap gap-1.5">
           {platforms.slice(0, 2).map((platform) => (

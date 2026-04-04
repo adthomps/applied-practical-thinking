@@ -14,6 +14,7 @@ type BrowseCardProps = {
   detailTo: string;
   title: string;
   description?: string;
+  icon?: ReactNode;
   media?: ReactNode;
   eyebrow?: ReactNode;
   status?: ReactNode;
@@ -27,6 +28,7 @@ export function BrowseCard({
   detailTo,
   title,
   description,
+  icon,
   media,
   eyebrow,
   status,
@@ -45,12 +47,20 @@ export function BrowseCard({
         ) : null}
 
         <div className="flex flex-1 flex-col p-5">
-          {(eyebrow || status) && (
+          {(icon || status) && (
             <div className="mb-3 flex items-start justify-between gap-2">
-              <div className="flex flex-wrap items-center gap-2">{eyebrow}</div>
+              {icon ? (
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  {icon}
+                </div>
+              ) : (
+                <div />
+              )}
               {status ? <div className="shrink-0">{status}</div> : null}
             </div>
           )}
+
+          {eyebrow ? <div className="mb-3 flex flex-wrap items-center gap-2">{eyebrow}</div> : null}
 
           <div className="space-y-1.5">
             <Link to={detailTo} className="block transition-colors group-hover:text-primary focus:outline-none">

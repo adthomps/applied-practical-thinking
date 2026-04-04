@@ -63,30 +63,14 @@ export function LabCard({ lab }: LabCardProps) {
       detailTo={`${basePath}/${labId}`}
       title={lab.title}
       description={lab.description}
+      icon={<TypeIcon className="h-5 w-5" />}
       eyebrow={
         <AptTag variant="accent">
-          <TypeIcon className="h-3 w-3 mr-1" />
           {typeLabels[lab.type as string] || lab.type || "Experiment"}
         </AptTag>
       }
       status={lab.status === "archived" ? <AptTag variant="muted">Archived</AptTag> : null}
       highlight={lab.problem ? <p className="text-sm font-medium text-primary">{lab.problem}</p> : null}
-      media={
-        <div className="relative aspect-video border-b border-border/50 bg-muted/30 flex items-center justify-center">
-          {lab.thumbnail ? (
-            <img
-              src={lab.thumbnail}
-              alt={lab.title}
-              className="h-full w-full object-cover"
-            />
-          ) : (
-            <div className="flex h-full w-full flex-col items-center justify-center gap-2 text-muted-foreground/50">
-              <TypeIcon className="h-8 w-8" />
-              <span className="text-xs">{typeLabels[lab.type as string] || lab.type || "Experiment"}</span>
-            </div>
-          )}
-        </div>
-      }
       metadata={
         <div className="flex flex-wrap gap-1.5">
           {platforms.slice(0, 2).map((platform) => (

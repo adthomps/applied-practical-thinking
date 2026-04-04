@@ -26,29 +26,16 @@ export function InsightCard({ insight, to }: InsightCardProps) {
       detailTo={to}
       title={insight.title}
       description={insight.description}
+      icon={<Icon className="h-5 w-5" />}
       eyebrow={
         <>
           <AptTag variant="accent">
-            <Icon className="h-3 w-3 mr-1" />
             {typeLabels[insight.type] || "Learn"}
           </AptTag>
           {insight.duration ? (
             <span className="text-xs text-muted-foreground">{insight.duration}</span>
           ) : null}
         </>
-      }
-      media={
-        <div className="relative aspect-video border-b border-border/50 bg-muted/30 flex items-center justify-center">
-          {insight.thumbnail ? (
-            <img
-              src={insight.thumbnail}
-              alt={insight.title}
-              className="h-full w-full object-cover"
-            />
-          ) : (
-            <Icon className="h-12 w-12 text-muted-foreground/30" />
-          )}
-        </div>
       }
       metadata={
         insight.concepts && insight.concepts.length > 0 ? (
