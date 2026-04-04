@@ -13,7 +13,7 @@ import {
   AptButton,
   SectionIntro,
 } from "@/components/apt";
-import { AssistantChat } from "@/features/assistant/AssistantChat";
+import { AssistantChat, ASSISTANT_CHAT_ENABLED } from "@/features/assistant/AssistantChat";
 import { Brain, AppWindow, Network, ArrowRight } from "lucide-react";
 
 const HOMEPAGE_FEATURE_LIMIT = 6;
@@ -233,12 +233,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Assistant Chat Section (after Featured) */}
-      <section className="container py-10 md:py-12 flex justify-center">
-        <div className="w-full max-w-xl">
-          <AssistantChat />
-        </div>
-      </section>
+      {ASSISTANT_CHAT_ENABLED ? (
+        <section className="container py-10 md:py-12 flex justify-center">
+          <div className="w-full max-w-xl">
+            <AssistantChat />
+          </div>
+        </section>
+      ) : null}
 
 
       {/* Featured */}

@@ -442,6 +442,32 @@ rounded-full → 9999px`} />
           description="Core components with variants and interactive examples."
         >
           <div className="space-y-12">
+            <AptCard variant="subtle" padding="large">
+              <div className="grid gap-4 md:grid-cols-3">
+                <div className="space-y-2">
+                  <p className="text-sm font-semibold">Section Card</p>
+                  <p className="text-sm text-muted-foreground">
+                    Large orientation cards for landing pages and top-level navigation choices.
+                  </p>
+                  <code className="rounded bg-muted px-2 py-1 text-xs">interactive + roomy copy + directional CTA</code>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-sm font-semibold">Browse Card</p>
+                  <p className="text-sm text-muted-foreground">
+                    Mid-density cards for Learn, Experiments, and Systems indexes.
+                  </p>
+                  <code className="rounded bg-muted px-2 py-1 text-xs">feature + media + short metadata + one action</code>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-sm font-semibold">Supporting / Detail Card</p>
+                  <p className="text-sm text-muted-foreground">
+                    Lower-emphasis cards for sidebars, snapshots, related content, and doctrine support.
+                  </p>
+                  <code className="rounded bg-muted px-2 py-1 text-xs">default or subtle + compact content</code>
+                </div>
+              </div>
+            </AptCard>
+
             {/* Buttons */}
             <div>
               <h3 className="text-lg font-semibold mb-4">AptButton</h3>
