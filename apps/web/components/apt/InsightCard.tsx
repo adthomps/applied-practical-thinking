@@ -32,30 +32,37 @@ export function InsightCard({ insight, to }: InsightCardProps) {
           <AptTag variant="accent">
             {typeLabels[insight.type] || "Learn"}
           </AptTag>
-          {insight.duration ? (
-            <span className="text-xs text-muted-foreground">{insight.duration}</span>
-          ) : null}
         </>
       }
       metadata={
         insight.concepts && insight.concepts.length > 0 ? (
           <div className="flex flex-wrap gap-1.5">
-            {insight.concepts.slice(0, 3).map((concept: string) => (
+            {insight.concepts.slice(0, 2).map((concept: string) => (
               <AptTag key={concept} variant="muted" size="sm">
                 {concept}
               </AptTag>
             ))}
+            {insight.concepts.length > 2 ? (
+              <span className="text-xs text-muted-foreground">
+                +{insight.concepts.length - 2} more
+              </span>
+            ) : null}
           </div>
         ) : null
       }
       footerMeta={
-        insight.publishedAt
-          ? new Date(insight.publishedAt).toLocaleDateString("en-US", {
-              month: "short",
-              day: "numeric",
-              year: "numeric",
-            })
-          : null
+        <div className="flex flex-wrap items-center gap-2">
+          {insight.publishedAt ? (
+            <span>
+              {new Date(insight.publishedAt).toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
+                year: "numeric",
+              })}
+            </span>
+          ) : null}
+          {insight.duration ? <span>{insight.duration}</span> : null}
+        </div>
       }
     />
   );
