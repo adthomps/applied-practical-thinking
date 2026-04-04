@@ -17,6 +17,8 @@ export type DesignThinkingFramework = {
   whyItMatters: string;
   steps: string[];
   prompts: string[];
+  artifacts: string[];
+  antiPattern: string;
   icon: ReactNode;
 };
 
@@ -41,6 +43,12 @@ export const designThinkingFrameworks: DesignThinkingFramework[] = [
       "Who feels the consequence first?",
       "What would improve if this were resolved well?",
     ],
+    artifacts: [
+      "Problem statement with observable symptom and impact",
+      "Root-cause chain or 5 Whys summary",
+      "Reframed opportunity statement",
+    ],
+    antiPattern: "Jumping to a favored solution before the problem is clear enough to challenge.",
     icon: <Target className="h-5 w-5" />,
   },
   {
@@ -63,6 +71,12 @@ export const designThinkingFrameworks: DesignThinkingFramework[] = [
       "Which assumption would make this direction collapse if false?",
       "What is the cheapest way to test that belief?",
     ],
+    artifacts: [
+      "Assumption inventory ranked by certainty and consequence",
+      "Validation plan for the highest-risk beliefs",
+      "Decision update based on evidence gathered",
+    ],
+    antiPattern: "Treating stakeholder confidence as evidence and skipping the cheap validation step.",
     icon: <AlertTriangle className="h-5 w-5" />,
   },
   {
@@ -85,6 +99,12 @@ export const designThinkingFrameworks: DesignThinkingFramework[] = [
       "What are we treating as fixed that may only be habitual?",
       "Which constraint creates the most useful focus?",
     ],
+    artifacts: [
+      "Hard vs soft constraint list",
+      "Ranked constraint map showing solution pressure",
+      "Reduced solution-space summary",
+    ],
+    antiPattern: "Fighting every limitation instead of using constraints to clarify the solution space.",
     icon: <Scale className="h-5 w-5" />,
   },
   {
@@ -107,6 +127,12 @@ export const designThinkingFrameworks: DesignThinkingFramework[] = [
       "Which branch creates optionality and which one closes it down?",
       "What is the second-order cost of being wrong here?",
     ],
+    artifacts: [
+      "Decision map with viable branches",
+      "Tradeoff summary including reversibility and downside",
+      "Chosen path with explicit rationale",
+    ],
+    antiPattern: "Comparing options only on short-term upside while ignoring reversibility and second-order cost.",
     icon: <GitBranch className="h-5 w-5" />,
   },
   {
@@ -129,6 +155,12 @@ export const designThinkingFrameworks: DesignThinkingFramework[] = [
       "What would count as success or failure?",
       "What changes because of what we learned?",
     ],
+    artifacts: [
+      "Iteration hypothesis",
+      "Success criteria and measures",
+      "Pivot, persevere, or pause decision log",
+    ],
+    antiPattern: "Calling motion iteration without defining what the cycle is supposed to teach.",
     icon: <Repeat className="h-5 w-5" />,
   },
   {
@@ -151,6 +183,12 @@ export const designThinkingFrameworks: DesignThinkingFramework[] = [
       "Where does change propagate or loop back?",
       "Which intervention changes the system rather than just one symptom?",
     ],
+    artifacts: [
+      "System boundary definition",
+      "Relationship or feedback-loop map",
+      "Leverage-point shortlist",
+    ],
+    antiPattern: "Fixing one visible symptom in isolation and causing a different failure elsewhere in the system.",
     icon: <Layers className="h-5 w-5" />,
   },
 ];

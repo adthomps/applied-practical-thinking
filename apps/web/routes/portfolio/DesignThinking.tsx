@@ -13,17 +13,16 @@ import {
   Brain,
   Target,
   Scale,
-  GitBranch,
   CheckCircle2,
   ArrowRight,
   AlertTriangle,
   Compass,
-  Layers,
   Eye,
   Repeat,
   FileText,
 } from "lucide-react";
 import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
+import { downloadWorkerMarkdown } from "@/src/services/download";
 import { designThinkingFrameworks } from "@/data/designThinkingFrameworks";
 
 interface FrameworkCardProps {
@@ -133,6 +132,14 @@ export default function PortfolioDesignThinking() {
   const configError = getWorkerApiConfigError();
   const frameworks = designThinkingFrameworks;
 
+  const handleThinkingMarkdownDownload = async () => {
+    await downloadWorkerMarkdown("/api/design/docs/thinking", "apt-design-thinking.md");
+  };
+
+  const handleArchitectureMarkdownDownload = async () => {
+    await downloadWorkerMarkdown("/api/design/docs/architecture", "apt-design-architecture.md");
+  };
+
   const principles = [
     {
       icon: <Compass className="h-5 w-5" />,
@@ -164,6 +171,43 @@ export default function PortfolioDesignThinking() {
       title: "Optimize for Learning",
       description: "The goal isn't to be right the first time. It's to be less wrong faster.",
     },
+  ];
+
+  const operatingSignals = [
+    {
+      title: "Use formal thinking when stakes are high",
+      description: "Use the full process when decisions are expensive to reverse, contested, or likely to set precedent for future work.",
+    },
+    {
+      title: "Keep it light when the path is already proven",
+      description: "Do not over-formalize simple, low-risk work. The method should add clarity, not bureaucracy.",
+    },
+    {
+      title: "Document reasoning, not just the answer",
+      description: "The value of design thinking compounds when future teams can see why a path was chosen and when it should be revisited.",
+    },
+  ];
+
+  const antiPatterns = [
+    {
+      title: "Analysis Paralysis",
+      description: "Research and planning continue indefinitely, but no decision or learning loop ever closes.",
+    },
+    {
+      title: "Solution-First Thinking",
+      description: "The team falls in love with a direction before it has defined the problem clearly enough to evaluate alternatives.",
+    },
+    {
+      title: "Iteration Theater",
+      description: "Versions keep shipping without explicit hypotheses, measures, or captured learning.",
+    },
+  ];
+
+  const artifacts = [
+    "Problem statements that define the symptom, affected people, and impact",
+    "Assumption maps that expose what is known, believed, and guessed",
+    "Constraint lists that separate hard boundaries from inherited defaults",
+    "Decision records that explain why a path was chosen and what could invalidate it",
   ];
 
   const caseStudies = [
@@ -202,16 +246,15 @@ export default function PortfolioDesignThinking() {
         className="mb-12"
       >
         <div className="flex flex-wrap gap-3">
-          <AptButton variant="outline" asChild>
-            <a
-              href={thinkingDocUrl || "#"}
-              target={thinkingDocUrl ? "_blank" : undefined}
-              rel={thinkingDocUrl ? "noopener noreferrer" : undefined}
-              aria-disabled={!thinkingDocUrl}
-            >
-              <FileText className="h-4 w-4" />
-              Read Full Design Thinking Doc
-            </a>
+          <AptButton
+            variant="outline"
+            onClick={() => {
+              void handleThinkingMarkdownDownload();
+            }}
+            disabled={!thinkingDocUrl}
+          >
+            <FileText className="h-4 w-4" />
+            Download Thinking Markdown
           </AptButton>
           <AptButton variant="ghost" asChild>
             <Link to="/design/architecture">
@@ -267,6 +310,44 @@ export default function PortfolioDesignThinking() {
         </div>
       </section>
 
+      <section className="mb-16">
+        <SectionIntro
+          title="When to Use It"
+          description="APT design thinking is most valuable when the cost of being wrong is meaningful and the right move is not obvious yet."
+          className="mb-6"
+        />
+        <div className="grid gap-4 md:grid-cols-3">
+          {operatingSignals.map((signal) => (
+            <AptCard key={signal.title} variant="subtle">
+              <AptCardHeader>
+                <AptCardTitle className="text-lg">{signal.title}</AptCardTitle>
+              </AptCardHeader>
+              <AptCardContent>
+                <p className="text-sm text-muted-foreground">{signal.description}</p>
+              </AptCardContent>
+            </AptCard>
+          ))}
+        </div>
+      </section>
+
+      <section className="mb-16">
+        <SectionIntro
+          title="Working Artifacts"
+          description="Good thinking leaves durable outputs behind so decisions can be inspected, challenged, and reused later."
+          className="mb-6"
+        />
+        <AptCard variant="default" padding="large">
+          <div className="grid gap-4 md:grid-cols-2">
+            {artifacts.map((artifact) => (
+              <div key={artifact} className="flex items-start gap-3 rounded-lg border border-border/60 bg-background/40 p-4">
+                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                <p className="text-sm text-muted-foreground">{artifact}</p>
+              </div>
+            ))}
+          </div>
+        </AptCard>
+      </section>
+
       {/* Case Studies */}
       <section className="mb-16">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between mb-6">
@@ -283,6 +364,31 @@ export default function PortfolioDesignThinking() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {caseStudies.map((study) => (
             <CaseStudyPreview key={study.title} {...study} />
+          ))}
+        </div>
+      </section>
+
+      <section className="mb-16">
+        <SectionIntro
+          title="Failure Modes"
+          description="These are the patterns APT is trying to prevent. Design thinking becomes valuable when it keeps teams out of these traps."
+          className="mb-6"
+        />
+        <div className="grid gap-4 md:grid-cols-3">
+          {antiPatterns.map((item) => (
+            <AptCard key={item.title} variant="subtle">
+              <AptCardHeader>
+                <div className="flex items-center gap-3">
+                  <div className="rounded-lg bg-primary/10 p-2 text-primary">
+                    <AlertTriangle className="h-4 w-4" />
+                  </div>
+                  <AptCardTitle className="text-lg">{item.title}</AptCardTitle>
+                </div>
+              </AptCardHeader>
+              <AptCardContent>
+                <p className="text-sm text-muted-foreground">{item.description}</p>
+              </AptCardContent>
+            </AptCard>
           ))}
         </div>
       </section>
@@ -313,16 +419,16 @@ export default function PortfolioDesignThinking() {
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </AptButton>
-              <AptButton variant="ghost" asChild>
-                <a
-                  href={architectureDocUrl || "#"}
-                  target={architectureDocUrl ? "_blank" : undefined}
-                  rel={architectureDocUrl ? "noopener noreferrer" : undefined}
-                  aria-disabled={!architectureDocUrl}
-                >
-                  <FileText className="h-4 w-4" />
-                  Read Architecture Doc
-                </a>
+              <AptButton
+                variant="ghost"
+                type="button"
+                onClick={() => {
+                  void handleArchitectureMarkdownDownload();
+                }}
+                disabled={!architectureDocUrl}
+              >
+                <FileText className="h-4 w-4" />
+                Download Architecture Markdown
               </AptButton>
             </div>
           </div>

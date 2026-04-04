@@ -2,13 +2,16 @@ import { useMemo, useState, type ComponentType } from "react";
 import { Link } from "react-router-dom";
 import { AptButton, AptCard, LandingSectionCardGrid, SectionIntro } from "@/components/apt";
 import { siteConfig } from "@/data/site";
+import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
+import { downloadWorkerMarkdown } from "@/src/services/download";
 import { 
   Palette, 
   Brain, 
   Network,
   Layers3,
   Route,
-  ArrowRight 
+  ArrowRight,
+  FileText,
 } from "lucide-react";
 
 const designNav = siteConfig.nav.find(n => n.path === "/design");
@@ -30,6 +33,12 @@ function getDesignSectionCategory(path: string): DesignFilter {
 
 export default function Portfolio() {
   const [filter, setFilter] = useState<DesignFilter>("all");
+  const overviewDocUrl = tryGetWorkerApiUrl("/api/design/docs/overview");
+  const configError = getWorkerApiConfigError();
+
+  const handleOverviewMarkdownDownload = async () => {
+    await downloadWorkerMarkdown("/api/design/docs/overview", "apt-design-overview.md");
+  };
 
   const landingCards = (designSections ?? []).map((section) => ({
     ...section,
@@ -50,7 +59,24 @@ export default function Portfolio() {
           description="The public operating model for APT: how problems are framed, how the system is expressed, how architecture enforces it, and where stable system references live."
           titleClassName="text-3xl md:text-4xl"
           descriptionClassName="text-lg"
-        />
+        >
+          <AptButton
+            variant="outline"
+            type="button"
+            onClick={() => {
+              void handleOverviewMarkdownDownload();
+            }}
+            disabled={!overviewDocUrl}
+          >
+            <FileText className="h-4 w-4" />
+            Download Design Markdown
+          </AptButton>
+          {!overviewDocUrl && configError ? (
+            <p className="text-sm text-muted-foreground mt-3">
+              Configure <code>{configError.envVar}</code> on the Pages project to enable full-doc links.
+            </p>
+          ) : null}
+        </SectionIntro>
       </section>
 
       <LandingSectionCardGrid items={landingCards} />

@@ -126,14 +126,14 @@ export default function About() {
       <div className="relative mb-12">
         <AptCard variant="feature" padding="none" className="overflow-hidden">
           {/* Background gradient */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/8 via-transparent to-accent/8" />
 
-          <div className="relative p-8 md:p-12">
+          <div className="relative p-7 md:p-10">
             <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
               {/* Profile Photo */}
               <div className="shrink-0">
                 <div className="relative">
-                  <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-muted border-4 border-primary/50 overflow-hidden flex items-center justify-center">
+                  <div className="w-28 h-28 md:w-32 md:h-32 rounded-full bg-muted border-2 border-primary/40 overflow-hidden flex items-center justify-center">
                     <img
                       src={authorConfig.profileImage}
                       alt={authorConfig.name + " profile photo"}
@@ -141,12 +141,16 @@ export default function About() {
                     />
                   </div>
                   {/* Glow effect */}
-                  <div className="absolute inset-0 rounded-full bg-primary/20 blur-xl -z-10" />
+                  <div className="absolute inset-0 rounded-full bg-primary/12 blur-lg -z-10" />
                 </div>
               </div>
 
               {/* Profile Info */}
               <div className="flex-1 text-center md:text-left">
+                <div className="mb-3 flex justify-center md:justify-start">
+                  <AptTag variant="accent">About</AptTag>
+                </div>
+
                 <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-2">
                   {authorConfig.name}
                 </h1>
@@ -169,9 +173,9 @@ export default function About() {
                     <Link to="/experiments">View My Work</Link>
                   </AptButton>
                   <AptButton variant="outline" size="lg" asChild>
-                    <a href="#profile">
+                    <a href="#principles">
                       <User className="h-4 w-4 mr-2" />
-                      View Profile
+                      View Principles
                     </a>
                   </AptButton>
                 </div>
@@ -183,7 +187,103 @@ export default function About() {
 
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6" id="profile">
-        {/* Left Column - Profile Summary */}
+        {/* Main Column - Bio & Site Context */}
+        <div className="lg:col-span-2 space-y-6">
+          {/* Full Bio */}
+          <AptCard variant="default" padding="large">
+            <h2 className="text-lg font-semibold mb-4">About Me</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              {authorConfig.bio}
+            </p>
+          </AptCard>
+
+          {/* Principles */}
+          <AptCard variant="default" padding="large" id="principles">
+            <h2 className="text-lg font-semibold mb-2">Principles</h2>
+            <p className="text-sm text-muted-foreground mb-4">
+              The core ideas that shape how I build, evaluate, and present work through APT.
+            </p>
+            <ul className="space-y-3 text-muted-foreground">
+              <li className="flex items-start gap-2">
+                <span className="text-primary font-medium">→</span>
+                <span>
+                  <strong className="text-foreground">Systems over screens.</strong>{" "}
+                  Focus on how things work together, not just how they look.
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-primary font-medium">→</span>
+                <span>
+                  <strong className="text-foreground">Decisions over demos.</strong>{" "}
+                  The reasoning matters more than the result.
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-primary font-medium">→</span>
+                <span>
+                  <strong className="text-foreground">Practical over perfect.</strong>{" "}
+                  Working code with known limitations beats theoretical elegance.
+                </span>
+              </li>
+            </ul>
+          </AptCard>
+
+          {/* Site Snapshot */}
+          <AptCard variant="default" padding="large">
+            <h2 className="text-lg font-semibold mb-2">Site Snapshot</h2>
+            <p className="text-sm text-muted-foreground mb-6">
+              The current public surfaces of APT and what each area is designed to help you do.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {projectStats.map((stat) => (
+                <Link
+                  key={stat.label}
+                  to={stat.path}
+                  className="group"
+                >
+                  <AptCard
+                    variant="subtle"
+                    padding="default"
+                    className="hover:border-primary/50 transition-colors"
+                  >
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-2">
+                        <stat.icon className={`h-4 w-4 ${stat.color}`} />
+                        <span className="font-medium">{stat.label}</span>
+                      </div>
+                      <ArrowCount count={stat.count} />
+                    </div>
+                    <p className="text-sm text-muted-foreground mb-4">
+                      {stat.description}
+                    </p>
+                    <div className="text-xs text-muted-foreground">
+                      Open {stat.label.toLowerCase()}
+                    </div>
+                  </AptCard>
+                </Link>
+              ))}
+            </div>
+          </AptCard>
+
+          {/* Outside of Work */}
+          <AptCard variant="subtle" padding="large">
+            <h2 className="text-lg font-semibold mb-4">Outside of Work</h2>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              Outside of software and systems work, I spend time with photography
+              and drone flying. The gallery is where that visual practice shows up:
+              attention to framing, limitation, observation, and perspective.
+            </p>
+            <AptButton variant="outline" size="sm" asChild>
+              <Link to="/about/visual-gallery" className="inline-flex items-center gap-2">
+                {siteConfig.appliedGalleryLabel}
+                <ExternalLink className="h-3.5 w-3.5" />
+              </Link>
+            </AptButton>
+          </AptCard>
+        </div>
+
+        {/* Sidebar - Profile Summary */}
         <div className="space-y-6">
           <AptCard variant="default" padding="large">
             <div className="space-y-5">
@@ -233,99 +333,6 @@ export default function About() {
                 </div>
               </div>
             </div>
-          </AptCard>
-        </div>
-
-        {/* Right Column - Bio & Stats */}
-        <div className="lg:col-span-2 space-y-6">
-          {/* Full Bio */}
-          <AptCard variant="default" padding="large">
-            <h2 className="text-lg font-semibold mb-4">About Me</h2>
-            <p className="text-muted-foreground leading-relaxed">
-              {authorConfig.bio}
-            </p>
-          </AptCard>
-
-          {/* Site Snapshot */}
-          <AptCard variant="default" padding="large">
-            <h2 className="text-lg font-semibold mb-2">Site Snapshot</h2>
-            <p className="text-sm text-muted-foreground mb-6">
-              A quick read on what is currently available across the core areas of the site.
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {projectStats.map((stat) => (
-                <Link
-                  key={stat.label}
-                  to={stat.path}
-                  className="group"
-                >
-                  <AptCard
-                    variant="subtle"
-                    padding="default"
-                    className="hover:border-primary/50 transition-colors"
-                  >
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="flex items-center gap-2">
-                        <stat.icon className={`h-4 w-4 ${stat.color}`} />
-                        <span className="font-medium">{stat.label}</span>
-                      </div>
-                      <ArrowCount count={stat.count} />
-                    </div>
-                    <p className="text-sm text-muted-foreground mb-4">
-                      {stat.description}
-                    </p>
-                    <div className="text-xs text-muted-foreground">
-                      Browse {stat.label.toLowerCase()}
-                    </div>
-                  </AptCard>
-                </Link>
-              ))}
-            </div>
-          </AptCard>
-
-          {/* Principles */}
-          <AptCard variant="default" padding="large">
-            <h2 className="text-lg font-semibold mb-4">Principles</h2>
-            <ul className="space-y-3 text-muted-foreground">
-              <li className="flex items-start gap-2">
-                <span className="text-primary font-medium">→</span>
-                <span>
-                  <strong className="text-foreground">Systems over screens.</strong>{" "}
-                  Focus on how things work together, not just how they look.
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-primary font-medium">→</span>
-                <span>
-                  <strong className="text-foreground">Decisions over demos.</strong>{" "}
-                  The reasoning matters more than the result.
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-primary font-medium">→</span>
-                <span>
-                  <strong className="text-foreground">Practical over perfect.</strong>{" "}
-                  Working code with known limitations beats theoretical elegance.
-                </span>
-              </li>
-            </ul>
-          </AptCard>
-
-          {/* Outside of Work */}
-          <AptCard variant="subtle" padding="large">
-            <h2 className="text-lg font-semibold mb-4">Outside of Work</h2>
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              Outside of software and systems work, I spend time with photography
-              and drone flying. The gallery is where that visual practice shows up:
-              attention to framing, limitation, observation, and perspective.
-            </p>
-            <AptButton variant="outline" size="sm" asChild>
-              <Link to="/about/visual-gallery" className="inline-flex items-center gap-2">
-                {siteConfig.appliedGalleryLabel}
-                <ExternalLink className="h-3.5 w-3.5" />
-              </Link>
-            </AptButton>
           </AptCard>
         </div>
       </div>

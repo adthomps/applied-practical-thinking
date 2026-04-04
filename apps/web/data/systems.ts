@@ -7,6 +7,9 @@ export const systems: System[] = [
     purpose: "Portfolio and demonstration platform",
     description:
       "This site itself—a Vite + React + Tailwind stack deployed on Cloudflare Pages with optional Hono worker APIs.",
+    referenceType: "Operating Model",
+    status: "Active",
+    appliesTo: ["Public sites", "Content platforms", "Static-first products"],
     decisions: [
       "Static-first with optional API layer",
       "Single design system for all demos",
@@ -40,6 +43,9 @@ export const systems: System[] = [
     purpose: "Reference implementations for authentication flows",
     description:
       "A collection of auth patterns including session management, JWT handling, and OAuth integrations with security considerations.",
+    referenceType: "Pattern Library",
+    status: "Active",
+    appliesTo: ["Web apps", "APIs", "Protected product surfaces"],
     decisions: [
       "httpOnly cookies over localStorage",
       "Refresh token rotation",
@@ -72,6 +78,9 @@ export const systems: System[] = [
     purpose: "Lightweight ETL for small-scale analytics",
     description:
       "A simple but robust pattern for extracting, transforming, and loading data with observability and error recovery.",
+    referenceType: "Reference Model",
+    status: "Active",
+    appliesTo: ["Batch analytics", "Scheduled processing", "Small-scale data workflows"],
     decisions: [
       "Idempotent transforms",
       "Dead letter queues for failures",
@@ -104,6 +113,9 @@ export const systems: System[] = [
     purpose: "Visual project scaffolding and design system customization tool",
     description:
       "A visual interface for configuring and generating UI projects using shadcn's open-code component registry. Enables real-time customization and open code ownership.",
+    referenceType: "Tooling Reference",
+    status: "External",
+    appliesTo: ["Design system setup", "Frontend scaffolding", "Open-code UI workflows"],
     decisions: [
       "Open code ownership: components are copied, not imported",
       "Visual builder for real-time customization",

@@ -50,6 +50,34 @@ export default function DesignPlayground() {
       </div>
 
       <div className="space-y-12">
+        <DemoLayout
+          title="Responsive Checks"
+          description="A lightweight test surface for mobile-first layout rules before components are used on public pages."
+        >
+          <DemoSection title="Button Wrap Behavior">
+            <div className="flex flex-wrap gap-3">
+              <AptButton variant="primary">Primary Action</AptButton>
+              <AptButton variant="outline">Secondary Action</AptButton>
+              <AptButton variant="ghost">Tertiary Action</AptButton>
+            </div>
+          </DemoSection>
+
+          <DemoSection title="Card Grid Expansion">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {["Mobile first", "Tablet split", "Desktop restraint"].map((title) => (
+                <AptCard key={title} variant="interactive">
+                  <AptCardHeader>
+                    <AptCardTitle>{title}</AptCardTitle>
+                    <AptCardDescription>
+                      This card should stay legible at narrow widths and gain columns only when space genuinely helps scanning.
+                    </AptCardDescription>
+                  </AptCardHeader>
+                </AptCard>
+              ))}
+            </div>
+          </DemoSection>
+        </DemoLayout>
+
         {/* Hero Card Variants */}
         <DemoLayout
           title="Hero Card"
@@ -162,7 +190,7 @@ export default function DesignPlayground() {
           </DemoSection>
 
           <DemoSection title="Card Variants">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
               <AptCard variant="default">
                 <AptCardTitle className="text-sm">Default</AptCardTitle>
               </AptCard>

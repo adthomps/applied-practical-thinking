@@ -9,9 +9,12 @@ const PUBLIC_CONTENT_ROOT = path.join(__dirname, '../public/content');
 const DESIGN_DOCS_ROOT = path.join(__dirname, '../docs/design');
 const PUBLIC_DOCS_ROOT = path.join(__dirname, '../public/docs/design');
 const PUBLIC_DESIGN_DOCS = [
+  'APT-DESIGN-OVERVIEW.md',
   'APT-DESIGN-THINKING.md',
   'APT-DESIGN-SYSTEM.md',
   'APT-DESIGN-ARCHITECTURE.md',
+  'APT-CONTENT-STRATEGY.md',
+  'APT-DESIGN-SYSTEMS.md',
   'APT-FIGMA-TOKENS.json',
   'design-core.md',
   'design-demos.md',

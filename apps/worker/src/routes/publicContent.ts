@@ -16,6 +16,12 @@ const DEV_WEB_ORIGIN = "http://127.0.0.1:5173";
 
 const publicDesignDocs: PublicDesignDocItem[] = [
   {
+    slug: "overview",
+    title: "APT Design Overview",
+    path: "APT-DESIGN-OVERVIEW.md",
+    description: "The public operating model for how APT organizes design doctrine, standards, and reference layers.",
+  },
+  {
     slug: "thinking",
     title: "APT Design Thinking",
     path: "APT-DESIGN-THINKING.md",
@@ -32,6 +38,18 @@ const publicDesignDocs: PublicDesignDocItem[] = [
     title: "APT Design Architecture",
     path: "APT-DESIGN-ARCHITECTURE.md",
     description: "Repo layout, deployment flows, API contracts, and enforcement rules.",
+  },
+  {
+    slug: "content-strategy",
+    title: "APT Content Strategy",
+    path: "APT-CONTENT-STRATEGY.md",
+    description: "How APT organizes information architecture, visitor paths, and content maturity.",
+  },
+  {
+    slug: "systems",
+    title: "APT Systems Reference Models",
+    path: "APT-DESIGN-SYSTEMS.md",
+    description: "How APT defines stable reference models and what belongs in the Systems layer.",
   },
   {
     slug: "core",
