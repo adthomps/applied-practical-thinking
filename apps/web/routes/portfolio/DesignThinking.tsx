@@ -24,8 +24,10 @@ import {
   FileText,
 } from "lucide-react";
 import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
+import { designThinkingFrameworks } from "@/data/designThinkingFrameworks";
 
 interface FrameworkCardProps {
+  slug: string;
   icon: React.ReactNode;
   title: string;
   description: string;
@@ -33,40 +35,56 @@ interface FrameworkCardProps {
   when: string;
 }
 
-function FrameworkCard({ icon, title, description, steps, when }: FrameworkCardProps) {
+function FrameworkCard({ slug, icon, title, description, steps, when }: FrameworkCardProps) {
   return (
-    <AptCard variant="interactive" className="h-full">
-      <AptCardHeader>
-        <div className="flex items-center gap-3 mb-2">
-          <div className="p-2 rounded-lg bg-primary/10 text-primary">
-            {icon}
+    <Link to={`/design/thinking/${slug}`} className="block group">
+      <AptCard variant="interactive" className="h-full">
+        <AptCardHeader>
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className="p-2 rounded-lg bg-primary/10 text-primary">
+                {icon}
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground mb-1">
+                  Framework
+                </p>
+                <AptCardTitle className="text-lg">{title}</AptCardTitle>
+              </div>
+            </div>
+            <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
           </div>
-          <AptCardTitle>{title}</AptCardTitle>
-        </div>
-        <AptCardDescription>{description}</AptCardDescription>
-      </AptCardHeader>
-      <AptCardContent>
-        <div className="space-y-4">
-          <div>
-            <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">Process</p>
-            <ol className="space-y-1.5">
-              {steps.map((step, i) => (
-                <li key={i} className="flex items-start gap-2 text-sm">
-                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-secondary text-xs flex items-center justify-center">
-                    {i + 1}
-                  </span>
-                  {step}
-                </li>
-              ))}
-            </ol>
+          <AptCardDescription>{description}</AptCardDescription>
+        </AptCardHeader>
+        <AptCardContent>
+          <div className="space-y-4">
+            <div>
+              <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">Process</p>
+              <ol className="space-y-1.5">
+                {steps.slice(0, 3).map((step, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm">
+                    <span className="flex-shrink-0 w-5 h-5 rounded-full bg-secondary text-xs flex items-center justify-center">
+                      {i + 1}
+                    </span>
+                    {step}
+                  </li>
+                ))}
+              </ol>
+            </div>
+            <div className="pt-3 border-t border-border">
+              <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">When to use</p>
+              <p className="text-sm text-muted-foreground">{when}</p>
+            </div>
+            <div className="pt-1">
+              <span className="inline-flex items-center gap-1.5 text-sm font-medium text-primary">
+                Open framework
+                <ArrowRight className="h-4 w-4" />
+              </span>
+            </div>
           </div>
-          <div className="pt-3 border-t border-border">
-            <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">When to use</p>
-            <p className="text-sm text-muted-foreground">{when}</p>
-          </div>
-        </div>
-      </AptCardContent>
-    </AptCard>
+        </AptCardContent>
+      </AptCard>
+    </Link>
   );
 }
 
@@ -113,86 +131,7 @@ export default function PortfolioDesignThinking() {
   const thinkingDocUrl = tryGetWorkerApiUrl("/api/design/docs/thinking");
   const architectureDocUrl = tryGetWorkerApiUrl("/api/design/docs/architecture");
   const configError = getWorkerApiConfigError();
-  const frameworks = [
-    {
-      icon: <Target className="h-5 w-5" />,
-      title: "Problem Framing",
-      description: "Define the problem before jumping to solutions.",
-      steps: [
-        "State the observable symptom",
-        "Identify who experiences it",
-        "Quantify the impact",
-        "Ask 'why' 5 times",
-        "Reframe as opportunity",
-      ],
-      when: "Starting any new project or when solutions aren't working",
-    },
-    {
-      icon: <AlertTriangle className="h-5 w-5" />,
-      title: "Assumption Mapping",
-      description: "Surface and test the beliefs driving decisions.",
-      steps: [
-        "List all assumptions",
-        "Rate by risk and certainty",
-        "Identify killer assumptions",
-        "Design validation tests",
-        "Update based on evidence",
-      ],
-      when: "Before major investments or when facing uncertainty",
-    },
-    {
-      icon: <Scale className="h-5 w-5" />,
-      title: "Constraint Analysis",
-      description: "Use limitations as creative forcing functions.",
-      steps: [
-        "List hard constraints (non-negotiable)",
-        "List soft constraints (preferences)",
-        "Identify hidden constraints",
-        "Rank by impact on solution space",
-        "Design within, not around",
-      ],
-      when: "When the solution space feels too large or undefined",
-    },
-    {
-      icon: <GitBranch className="h-5 w-5" />,
-      title: "Decision Trees",
-      description: "Map decision points and their consequences.",
-      steps: [
-        "Identify the core decision",
-        "Branch into options",
-        "Map second-order effects",
-        "Assign probabilities",
-        "Calculate expected value",
-      ],
-      when: "Facing irreversible decisions or multiple viable paths",
-    },
-    {
-      icon: <Repeat className="h-5 w-5" />,
-      title: "Iteration Cycles",
-      description: "Build learning into the development process.",
-      steps: [
-        "Define the hypothesis",
-        "Build minimum viable test",
-        "Measure against criteria",
-        "Learn and document",
-        "Decide: pivot, persevere, or pause",
-      ],
-      when: "Building anything new or improving existing systems",
-    },
-    {
-      icon: <Layers className="h-5 w-5" />,
-      title: "Systems Mapping",
-      description: "Understand the relationships between components.",
-      steps: [
-        "Identify system boundaries",
-        "Map inputs and outputs",
-        "Trace feedback loops",
-        "Find leverage points",
-        "Model interventions",
-      ],
-      when: "Dealing with complex, interconnected problems",
-    },
-  ];
+  const frameworks = designThinkingFrameworks;
 
   const principles = [
     {
@@ -262,17 +201,25 @@ export default function PortfolioDesignThinking() {
         eyebrow={<AptTag variant="accent">Design Thinking</AptTag>}
         className="mb-12"
       >
-        <AptButton variant="outline" asChild>
-          <a
-            href={thinkingDocUrl || "#"}
-            target={thinkingDocUrl ? "_blank" : undefined}
-            rel={thinkingDocUrl ? "noopener noreferrer" : undefined}
-            aria-disabled={!thinkingDocUrl}
-          >
-            <FileText className="h-4 w-4" />
-            View Full Framework
-          </a>
-        </AptButton>
+        <div className="flex flex-wrap gap-3">
+          <AptButton variant="outline" asChild>
+            <a
+              href={thinkingDocUrl || "#"}
+              target={thinkingDocUrl ? "_blank" : undefined}
+              rel={thinkingDocUrl ? "noopener noreferrer" : undefined}
+              aria-disabled={!thinkingDocUrl}
+            >
+              <FileText className="h-4 w-4" />
+              Read Full Design Thinking Doc
+            </a>
+          </AptButton>
+          <AptButton variant="ghost" asChild>
+            <Link to="/design/architecture">
+              Continue to Architecture
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </AptButton>
+        </div>
         {!thinkingDocUrl && configError ? (
           <p className="text-sm text-muted-foreground mt-3">
             Configure <code>{configError.envVar}</code> on the Pages project to enable full-doc links.
@@ -343,29 +290,41 @@ export default function PortfolioDesignThinking() {
       {/* Next Step CTA */}
       <section>
         <AptCard variant="feature" padding="large">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
             <div className="flex items-center gap-4">
               <div className="p-3 rounded-lg bg-primary/10 text-primary">
                 <Brain className="h-6 w-6" />
               </div>
               <div>
+                <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground mb-1">
+                  Next Design Layer
+                </p>
                 <h3 className="text-xl font-semibold mb-1">Design Architecture</h3>
                 <p className="text-muted-foreground">
                   See how APT turns design thinking into delivery structure, ownership boundaries, and repeatable system decisions.
                 </p>
               </div>
             </div>
-            <AptButton asChild>
-              <a
-                href={architectureDocUrl || "#"}
-                target={architectureDocUrl ? "_blank" : undefined}
-                rel={architectureDocUrl ? "noopener noreferrer" : undefined}
-                aria-disabled={!architectureDocUrl}
-              >
-                View Architecture
-                <ArrowRight className="h-4 w-4" />
-              </a>
-            </AptButton>
+
+            <div className="flex flex-wrap gap-3">
+              <AptButton variant="outline" asChild>
+                <Link to="/design/architecture">
+                  Open Architecture Page
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </AptButton>
+              <AptButton variant="ghost" asChild>
+                <a
+                  href={architectureDocUrl || "#"}
+                  target={architectureDocUrl ? "_blank" : undefined}
+                  rel={architectureDocUrl ? "noopener noreferrer" : undefined}
+                  aria-disabled={!architectureDocUrl}
+                >
+                  <FileText className="h-4 w-4" />
+                  Read Architecture Doc
+                </a>
+              </AptButton>
+            </div>
           </div>
         </AptCard>
       </section>

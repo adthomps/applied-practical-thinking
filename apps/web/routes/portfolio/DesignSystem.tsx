@@ -42,9 +42,9 @@ function ColorSwatch({ name, cssVar, className }: { name: string; cssVar: string
       type="button"
       onClick={handleCopy}
       variant="ghost"
-      className="group h-auto justify-start p-0 text-left"
+      className="group flex h-auto w-full flex-col items-start justify-start p-0 text-left"
     >
-      <div className={`h-16 rounded-lg border border-border mb-2 ${className} transition-transform group-hover:scale-105`} />
+      <div className={`mb-2 h-16 w-full rounded-lg border border-border ${className} transition-transform group-hover:scale-[1.02]`} />
       <p className="text-sm font-medium">{name}</p>
       <p className="text-xs text-muted-foreground font-mono">{cssVar}</p>
       {copied && <p className="text-xs text-accent">Copied!</p>}
@@ -397,11 +397,11 @@ fontFamily: {
                 <AptCardContent>
                   <div className="space-y-4">
                     {[
-                      { name: "Section", value: "py-16 md:py-24", description: "Major page sections" },
+                      { name: "Section", value: "py-12 md:py-16", description: "Major page sections" },
                       { name: "Section Compact", value: "py-8 md:py-12", description: "Condensed sections" },
-                      { name: "Card Padding", value: "p-6", description: "Standard card interior" },
+                      { name: "Card Padding", value: "p-5 to p-6", description: "Standard browse and support card interior" },
                       { name: "Card Large", value: "p-8", description: "Hero/feature cards" },
-                      { name: "Gap", value: "gap-6", description: "Grid/flex spacing" },
+                      { name: "Gap", value: "gap-5 to gap-6", description: "Grid/flex spacing" },
                       { name: "Gap Large", value: "gap-8", description: "Larger component gaps" },
                     ].map((item) => (
                       <div key={item.name} className="flex justify-between items-start">
@@ -456,7 +456,7 @@ rounded-full → 9999px`} />
                   <p className="text-sm text-muted-foreground">
                     Mid-density cards for Learn, Experiments, and Systems indexes.
                   </p>
-                  <code className="rounded bg-muted px-2 py-1 text-xs">feature + media + short metadata + one action</code>
+                  <code className="rounded bg-muted px-2 py-1 text-xs">interactive + icon-led header + short metadata + light footer</code>
                 </div>
                 <div className="space-y-2">
                   <p className="text-sm font-semibold">Supporting / Detail Card</p>
