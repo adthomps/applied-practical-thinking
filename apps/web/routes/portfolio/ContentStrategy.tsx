@@ -7,10 +7,12 @@ import {
   AptCardHeader,
   AptCardTitle,
   AptTag,
+  DesignDocVersionSwitcher,
   ReviewBundleCallout,
   SectionIntro,
 } from "@/components/apt";
 import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
+import { useDesignDocVersion } from "@/hooks/useDesignDocVersion";
 import { downloadWorkerMarkdown } from "@/src/services/download";
 import {
   ArrowRight,
@@ -133,11 +135,14 @@ const contentLifecycle = [
 ];
 
 export default function PortfolioContentStrategy() {
-  const contentStrategyDocUrl = tryGetWorkerApiUrl("/api/design/docs/content-strategy");
+  const contentStrategyVersion = useDesignDocVersion("content-strategy");
+  const contentStrategyDocUrl = tryGetWorkerApiUrl(contentStrategyVersion.downloadApiPath);
+  const contentStrategyCanonicalUrl = contentStrategyVersion.canonicalPath || null;
   const configError = getWorkerApiConfigError();
 
   const handleContentStrategyMarkdownDownload = async () => {
-    await downloadWorkerMarkdown("/api/design/docs/content-strategy", "apt-content-strategy.md");
+    const majorSuffix = contentStrategyVersion.activeMajor ? `-v${contentStrategyVersion.activeMajor}` : "";
+    await downloadWorkerMarkdown(contentStrategyVersion.downloadApiPath, `apt-content-strategy${majorSuffix}.md`);
   };
 
   return (
@@ -168,7 +173,15 @@ export default function PortfolioContentStrategy() {
               <FileText className="h-4 w-4" />
               Download Content Strategy Markdown
             </AptButton>
+            {contentStrategyCanonicalUrl ? (
+              <AptButton variant="ghost" asChild>
+                <a href={contentStrategyCanonicalUrl} target="_blank" rel="noreferrer">
+                  Open canonical
+                </a>
+              </AptButton>
+            ) : null}
           </div>
+          <DesignDocVersionSwitcher versionState={contentStrategyVersion} />
           {!contentStrategyDocUrl && configError ? (
             <p className="text-sm text-muted-foreground mt-3">
               Configure <code>{configError.envVar}</code> on the Pages project to enable full-doc links.

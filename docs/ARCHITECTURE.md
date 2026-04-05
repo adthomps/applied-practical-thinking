@@ -34,4 +34,28 @@
   - `apps/web/public/docs/`
   - `apps/web/public/data/`
 
+## Design Docs Versioning (v1+)
+
+- Unified policy for design doctrine and review artifacts is defined in `apps/web/docs/design/APT-DESIGN-VERSIONING.md`
+- Internal authoring remains in `apps/web/docs/design/`
+- Canonical public release paths are versioned under `/docs/design/v{major}/*`
+- Latest-stable compatibility aliases remain available at `/docs/design/*`
+- External publishing exposes only the latest stable major unless explicitly changed by policy
+
+## Repository Structure
+
+- All runtime code lives in `apps/` and `packages/`
+- Active apps:
+  - `apps/web/` — public site, routing, shell, content source, web-only services
+  - `apps/worker/` — Cloudflare Worker API/AI subsystem
+- Shared packages:
+  - `packages/ui/` — shared presentational APT primitives
+  - `packages/config/` — shared token/config contracts
+  - `packages/knowledge/` — shared content/domain/assistant types
+  - `packages/utils/` — framework-agnostic helpers only if activated
+- Internal docs: `docs/`
+- Site/source docs: `apps/web/docs/design/`
+- Source content: `apps/web/content/`, `apps/web/data/`
+- Generated runtime output: `apps/web/public/`
+
 If D1/KV/R2/Queues are used, see `docs/PLATFORM_IDS.md`.

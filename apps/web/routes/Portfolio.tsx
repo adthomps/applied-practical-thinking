@@ -1,8 +1,9 @@
 import { useMemo, useState, type ComponentType } from "react";
 import { Link } from "react-router-dom";
-import { AptButton, AptCard, AptTag, LandingSectionCardGrid, SectionIntro } from "@/components/apt";
+import { AptButton, AptCard, AptTag, DesignDocVersionSwitcher, LandingSectionCardGrid, SectionIntro } from "@/components/apt";
 import { siteConfig } from "@/data/site";
 import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
+import { useDesignDocVersion } from "@/hooks/useDesignDocVersion";
 import { downloadWorkerMarkdown } from "@/src/services/download";
 import { 
   Palette, 
@@ -35,11 +36,14 @@ function getDesignSectionCategory(path: string): DesignFilter {
 
 export default function Portfolio() {
   const [filter, setFilter] = useState<DesignFilter>("all");
-  const overviewDocUrl = tryGetWorkerApiUrl("/api/design/docs/overview");
+  const overviewVersion = useDesignDocVersion("overview");
+  const overviewDocUrl = tryGetWorkerApiUrl(overviewVersion.downloadApiPath);
+  const overviewCanonicalUrl = overviewVersion.canonicalPath || null;
   const configError = getWorkerApiConfigError();
 
   const handleOverviewMarkdownDownload = async () => {
-    await downloadWorkerMarkdown("/api/design/docs/overview", "apt-design-overview.md");
+    const majorSuffix = overviewVersion.activeMajor ? `-v${overviewVersion.activeMajor}` : "";
+    await downloadWorkerMarkdown(overviewVersion.downloadApiPath, `apt-design-overview${majorSuffix}.md`);
   };
 
   const landingCards = (designSections ?? []).map((section) => ({
@@ -80,7 +84,15 @@ export default function Portfolio() {
               <FileText className="h-4 w-4" />
               Download Design Markdown
             </AptButton>
+            {overviewCanonicalUrl ? (
+              <AptButton variant="ghost" asChild>
+                <a href={overviewCanonicalUrl} target="_blank" rel="noreferrer">
+                  Open canonical
+                </a>
+              </AptButton>
+            ) : null}
           </div>
+          <DesignDocVersionSwitcher versionState={overviewVersion} />
           {!overviewDocUrl && configError ? (
             <p className="text-sm text-muted-foreground mt-3">
               Configure <code>{configError.envVar}</code> on the Pages project to enable full-doc links.

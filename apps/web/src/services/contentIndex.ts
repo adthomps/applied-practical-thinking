@@ -7,6 +7,8 @@ import type {
   ContentIndexType,
   PublicDesignDocDetailResponse,
   PublicDesignDocItem,
+  PublicDesignDocVersionsResponse,
+  PublicReviewBundleManifest,
 } from "@apt/knowledge";
 import { fetchWorkerJson } from "./api";
 
@@ -31,6 +33,25 @@ export async function fetchDesignDoc(slug: string): Promise<PublicDesignDocDetai
   return fetchWorkerJson<PublicDesignDocDetailResponse>(
     `/api/design/docs/${encodeURIComponent(slug)}`
   );
+}
+
+export async function fetchDesignDocVersion(
+  slug: string,
+  major: number
+): Promise<PublicDesignDocDetailResponse> {
+  return fetchWorkerJson<PublicDesignDocDetailResponse>(
+    `/api/design/docs/${encodeURIComponent(slug)}/${encodeURIComponent(String(major))}`
+  );
+}
+
+export async function fetchDesignDocVersions(slug: string): Promise<PublicDesignDocVersionsResponse> {
+  return fetchWorkerJson<PublicDesignDocVersionsResponse>(
+    `/api/design/docs/${encodeURIComponent(slug)}/versions`
+  );
+}
+
+export async function fetchDesignReviewBundleManifest(): Promise<PublicReviewBundleManifest> {
+  return fetchWorkerJson<PublicReviewBundleManifest>("/api/design/review-bundle");
 }
 
 export type { ContentIndexItem, ContentIndexType };

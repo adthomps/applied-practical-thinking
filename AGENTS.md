@@ -79,7 +79,7 @@ Do not treat copied markdown/docs in `public/` as the source of truth.
 
 ### 5. Design Deviations
 
-Log design deviations in `apps/web/docs/design/decision-log.md`.
+Log design deviations in `docs/DECISION_LOG.md`.
 
 ## Common Tasks
 

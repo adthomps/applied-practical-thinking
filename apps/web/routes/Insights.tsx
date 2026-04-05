@@ -1,4 +1,5 @@
 import { useEffect, useState, type ComponentType } from "react";
+import { Book, FileText, Network, Podcast } from "lucide-react";
 import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
 import { InsightCard } from "@/components/apt/InsightCard";
 import {
@@ -7,7 +8,6 @@ import {
   RuntimeConfigNotice,
   SectionIntro,
 } from "@/components/apt";
-import { Book, FileText, Network, Podcast } from "lucide-react";
 import { siteConfig } from "@/data/site";
 import { getWorkerApiConfigError } from "@/src/services/api";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
@@ -28,12 +28,10 @@ export default function Insights() {
   });
 
   const [filter, setFilter] = useState<string | "all">("all");
-  const [insights, setInsights] = useState<ContentIndexItem[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [insights, setInsights] = useState<ContentIndexItem[] | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    setLoading(true);
     Promise.all([
       fetchContentIndex("blog"),
       fetchContentIndex("guides"),
@@ -47,18 +45,18 @@ export default function Insights() {
           ...podcasts,
           ...reviews,
         ].sort((a, b) => (b.publishedAt || "").localeCompare(a.publishedAt || "")));
-        setLoading(false);
       })
       .catch((e) => {
         setError(e.message);
-        setLoading(false);
       });
   }, []);
 
+  const loading = insights === null && !error;
+
   const filteredContent =
     filter === "all"
-      ? insights
-      : insights.filter((c) =>
+      ? (insights ?? [])
+      : (insights ?? []).filter((c) =>
           filter === "practice" ? c.type === "guide" || c.type === "design-review" : c.type === filter
         );
 

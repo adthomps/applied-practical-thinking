@@ -33,8 +33,6 @@ Do not edit copied markdown or docs under `apps/web/public/` as authored source.
 - [DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md) - canonical doc placement map
 - [PROJECT_RULES.md](PROJECT_RULES.md) - guardrails and source-vs-generated rules
 - [QUICK_REFERENCE.md](QUICK_REFERENCE.md) - short operational cheatsheet
-- [DESIGN.md](DESIGN.md) - root pointer to canonical APT design doctrine
-- [PATTERNS.md](PATTERNS.md) - short pointer to the detailed engineering patterns handbook in `docs/`
 
 ## Root-adjacent repo metadata
 
@@ -44,22 +42,23 @@ Do not edit copied markdown or docs under `apps/web/public/` as authored source.
 
 ## Internal repo docs (`docs/`)
 
-- [AI_AGENTS.md](docs/AI_AGENTS.md)
-- [AI_PROMPT.md](docs/AI_PROMPT.md)
-- [AI.md](docs/AI.md)
-- [ARCHITECTURE.md](docs/ARCHITECTURE.md)
-- [assistant.md](docs/assistant.md)
-- [BRAND.md](docs/BRAND.md)
-- [DEPLOYMENT.md](docs/DEPLOYMENT.md)
-- [evals.md](docs/evals.md)
-- [LOCAL_DEV.md](docs/LOCAL_DEV.md)
-- [MAINTENANCE.md](docs/MAINTENANCE.md)
-- [MIGRATETODESIGN.md](docs/MIGRATETODESIGN.md)
-- [PATTERNS.md](docs/PATTERNS.md)
-- [PLATFORM_IDS.md](docs/PLATFORM_IDS.md)
-- [REP_STRUCTURE.md](docs/REP_STRUCTURE.md)
-- [SECURITY.md](docs/SECURITY.md)
-- [TESTING.md](docs/TESTING.md)
+- [AI_AGENTS.md](docs/AI_AGENTS.md) - AI agent contract: prompt governance, auth rules, package contracts
+- [AI_PROMPT.md](docs/AI_PROMPT.md) - AI prompt authoring standards
+- [ARCHITECTURE.md](docs/ARCHITECTURE.md) - monorepo structure, data flow, boundaries, source/generated split
+- [ASSISTANT.md](docs/ASSISTANT.md) - APT Design Assistant full spec
+- [BRAND.md](docs/BRAND.md) - brand quick reference
+- [DECISION_LOG.md](docs/DECISION_LOG.md) - design deviation and decision record
+- [DEPLOYMENT.md](docs/DEPLOYMENT.md) - Cloudflare deploy contracts, env vars, redeploy order
+- [EVALS.md](docs/EVALS.md) - AI assistant evaluation prompts and criteria
+- [LEARN_CONTENT_INVENTORY.md](docs/LEARN_CONTENT_INVENTORY.md) - editorial inventory of Learn content
+- [LOCAL_DEV.md](docs/LOCAL_DEV.md) - local development setup and commands
+- [MAINTENANCE.md](docs/MAINTENANCE.md) - how to add/edit content and pages
+- [MIGRATE_TO_DESIGN.md](docs/MIGRATE_TO_DESIGN.md) - component ownership migration history
+- [PATTERNS.md](docs/PATTERNS.md) - engineering patterns: UI, API, shared, integration
+- [PLATFORM_IDS.md](docs/PLATFORM_IDS.md) - Cloudflare bindings documentation
+- [REVIEW_CHECKLIST.md](docs/REVIEW_CHECKLIST.md) - design review checklist
+- [SECURITY.md](docs/SECURITY.md) - security practices and guardrails
+- [TESTING.md](docs/TESTING.md) - testing strategy and commands
 
 ## Design doctrine (`apps/web/docs/design/`)
 
@@ -69,13 +68,10 @@ Do not edit copied markdown or docs under `apps/web/public/` as authored source.
 - [APT-DESIGN-SYSTEM.md](apps/web/docs/design/APT-DESIGN-SYSTEM.md)
 - [APT-DESIGN-ARCHITECTURE.md](apps/web/docs/design/APT-DESIGN-ARCHITECTURE.md)
 - [APT-REVIEW-STANDARD.md](apps/web/docs/design/APT-REVIEW-STANDARD.md)
-- Supporting design references in the same folder such as `design-core.md`, `design-site.md`, `design-demos.md`, and `vpds-alignment.md`
-
-## Internal design support docs
-
-- [decision-log.md](apps/web/docs/design/decision-log.md) - internal deviation and decision record
-- [review-checklist.md](apps/web/docs/design/review-checklist.md) - internal design review checklist
-- These may live next to the design doctrine source, but they are not part of the default public docs export
+- [APT-DESIGN-CORE.md](apps/web/docs/design/APT-DESIGN-CORE.md) - Foundational design principles and system intent
+- [APT-DESIGN-SITE.md](apps/web/docs/design/APT-DESIGN-SITE.md) - Site-specific design patterns and application details
+- [APT-DESIGN-DEMOS.md](apps/web/docs/design/APT-DESIGN-DEMOS.md) - Patterns and examples for demo-oriented pages
+- [APT-VPDS-ALIGNMENT.md](apps/web/docs/design/APT-VPDS-ALIGNMENT.md) - Visual and product design alignment guidance
 
 ## Public content source (`apps/web/content/`)
 
@@ -85,4 +81,4 @@ Do not edit copied markdown or docs under `apps/web/public/` as authored source.
 ## Additional guidance
 
 - Structural or design changes should be reflected in [README.md](README.md), [DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md), and the relevant design doctrine doc
-- Design deviations belong in [apps/web/docs/design/decision-log.md](apps/web/docs/design/decision-log.md)
+- Design deviations belong in [docs/DECISION_LOG.md](docs/DECISION_LOG.md)

@@ -1,0 +1,217 @@
+{
+  "id": "apt-design-docs-manifest",
+  "title": "APT Design Docs Manifest",
+  "kind": "design-docs-manifest",
+  "manifestVersion": "2.0.0",
+  "semanticVersion": "2.0.0",
+  "updatedAt": "2026-04-05",
+  "supportedMajors": [1, 2],
+  "currentStableMajor": 2,
+  "policy": {
+    "externalVisibility": "latest-stable-only",
+    "canonicalPathPattern": "/docs/design/v{major}/{file}",
+    "aliasPathPattern": "/docs/design/{file}",
+    "sourcePathPattern": "apps/web/docs/design/versions/v{major}/{file}"
+  },
+  "documents": [
+    {
+      "docId": "design-overview",
+      "slug": "overview",
+      "title": "APT Design Overview",
+      "description": "The public operating model for how APT organizes design doctrine, standards, and reference layers.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/APT-DESIGN-OVERVIEW.md",
+      "versions": [
+        {
+          "major": 1,
+          "semanticVersion": "1.0.0",
+          "status": "stable",
+          "sourcePath": "versions/v1/APT-DESIGN-OVERVIEW.md",
+          "canonicalPath": "/docs/design/v1/APT-DESIGN-OVERVIEW.md",
+          "publishedAt": "2026-04-05",
+          "changelog": "Initial baseline."
+        },
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/APT-DESIGN-OVERVIEW.md",
+          "canonicalPath": "/docs/design/v2/APT-DESIGN-OVERVIEW.md",
+          "publishedAt": "2026-04-05",
+          "changelog": "v2 kickoff with preserved canonical v1."
+        }
+      ]
+    },
+    {
+      "docId": "design-thinking",
+      "slug": "thinking",
+      "title": "APT Design Thinking",
+      "description": "Problem framing, assumptions, constraints, and decision-making in practice.",
+      "latestMajor": 1,
+      "aliasPath": "/docs/design/APT-DESIGN-THINKING.md",
+      "versions": [
+        {
+          "major": 1,
+          "semanticVersion": "1.0.0",
+          "status": "stable",
+          "sourcePath": "versions/v1/APT-DESIGN-THINKING.md",
+          "canonicalPath": "/docs/design/v1/APT-DESIGN-THINKING.md",
+          "publishedAt": "2026-04-05",
+          "changelog": "Initial baseline."
+        }
+      ]
+    },
+    {
+      "docId": "design-system",
+      "slug": "system",
+      "title": "APT Design System",
+      "description": "APT's visual language, semantic tokens, components, and usage rules.",
+      "latestMajor": 1,
+      "aliasPath": "/docs/design/APT-DESIGN-SYSTEM.md",
+      "versions": [
+        {
+          "major": 1,
+          "semanticVersion": "1.0.0",
+          "status": "stable",
+          "sourcePath": "versions/v1/APT-DESIGN-SYSTEM.md",
+          "canonicalPath": "/docs/design/v1/APT-DESIGN-SYSTEM.md",
+          "publishedAt": "2026-04-05",
+          "changelog": "Initial baseline."
+        }
+      ]
+    },
+    {
+      "docId": "design-architecture",
+      "slug": "architecture",
+      "title": "APT Design Architecture",
+      "description": "Repo layout, deployment flows, API contracts, and enforcement rules.",
+      "latestMajor": 1,
+      "aliasPath": "/docs/design/APT-DESIGN-ARCHITECTURE.md",
+      "versions": [
+        {
+          "major": 1,
+          "semanticVersion": "1.0.0",
+          "status": "stable",
+          "sourcePath": "versions/v1/APT-DESIGN-ARCHITECTURE.md",
+          "canonicalPath": "/docs/design/v1/APT-DESIGN-ARCHITECTURE.md",
+          "publishedAt": "2026-04-05",
+          "changelog": "Initial baseline."
+        }
+      ]
+    },
+    {
+      "docId": "content-strategy",
+      "slug": "content-strategy",
+      "title": "APT Content Strategy",
+      "description": "How APT organizes information architecture, visitor paths, and content maturity.",
+      "latestMajor": 1,
+      "aliasPath": "/docs/design/APT-CONTENT-STRATEGY.md",
+      "versions": [
+        {
+          "major": 1,
+          "semanticVersion": "1.0.0",
+          "status": "stable",
+          "sourcePath": "versions/v1/APT-CONTENT-STRATEGY.md",
+          "canonicalPath": "/docs/design/v1/APT-CONTENT-STRATEGY.md",
+          "publishedAt": "2026-04-05",
+          "changelog": "Initial baseline."
+        }
+      ]
+    },
+    {
+      "docId": "design-systems-reference",
+      "slug": "systems",
+      "title": "APT Systems Reference Models",
+      "description": "How APT defines stable reference models and what belongs in the Systems layer.",
+      "latestMajor": 1,
+      "aliasPath": "/docs/design/APT-DESIGN-SYSTEMS.md",
+      "versions": [
+        {
+          "major": 1,
+          "semanticVersion": "1.0.0",
+          "status": "stable",
+          "sourcePath": "versions/v1/APT-DESIGN-SYSTEMS.md",
+          "canonicalPath": "/docs/design/v1/APT-DESIGN-SYSTEMS.md",
+          "publishedAt": "2026-04-05",
+          "changelog": "Initial baseline."
+        }
+      ]
+    },
+    {
+      "docId": "design-core",
+      "slug": "core",
+      "title": "Design Core",
+      "description": "Foundational design principles and system intent.",
+      "latestMajor": 1,
+      "aliasPath": "/docs/design/APT-DESIGN-CORE.md",
+      "versions": [
+        {
+          "major": 1,
+          "semanticVersion": "1.0.0",
+          "status": "stable",
+          "sourcePath": "versions/v1/APT-DESIGN-CORE.md",
+          "canonicalPath": "/docs/design/v1/APT-DESIGN-CORE.md",
+          "publishedAt": "2026-04-05",
+          "changelog": "Initial baseline."
+        }
+      ]
+    },
+    {
+      "docId": "design-site",
+      "slug": "site",
+      "title": "Design Site",
+      "description": "Site-specific design patterns and application details.",
+      "latestMajor": 1,
+      "aliasPath": "/docs/design/APT-DESIGN-SITE.md",
+      "versions": [
+        {
+          "major": 1,
+          "semanticVersion": "1.0.0",
+          "status": "stable",
+          "sourcePath": "versions/v1/APT-DESIGN-SITE.md",
+          "canonicalPath": "/docs/design/v1/APT-DESIGN-SITE.md",
+          "publishedAt": "2026-04-05",
+          "changelog": "Initial baseline."
+        }
+      ]
+    },
+    {
+      "docId": "design-demos",
+      "slug": "demos",
+      "title": "Design Demos",
+      "description": "Patterns and examples for demo-oriented pages and prototypes.",
+      "latestMajor": 1,
+      "aliasPath": "/docs/design/APT-DESIGN-DEMOS.md",
+      "versions": [
+        {
+          "major": 1,
+          "semanticVersion": "1.0.0",
+          "status": "stable",
+          "sourcePath": "versions/v1/APT-DESIGN-DEMOS.md",
+          "canonicalPath": "/docs/design/v1/APT-DESIGN-DEMOS.md",
+          "publishedAt": "2026-04-05",
+          "changelog": "Initial baseline."
+        }
+      ]
+    },
+    {
+      "docId": "vpds-alignment",
+      "slug": "vpds-alignment",
+      "title": "VPDS Alignment",
+      "description": "Visual and product design alignment guidance.",
+      "latestMajor": 1,
+      "aliasPath": "/docs/design/APT-VPDS-ALIGNMENT.md",
+      "versions": [
+        {
+          "major": 1,
+          "semanticVersion": "1.0.0",
+          "status": "stable",
+          "sourcePath": "versions/v1/APT-VPDS-ALIGNMENT.md",
+          "canonicalPath": "/docs/design/v1/APT-VPDS-ALIGNMENT.md",
+          "publishedAt": "2026-04-05",
+          "changelog": "Initial baseline."
+        }
+      ]
+    }
+  ]
+}

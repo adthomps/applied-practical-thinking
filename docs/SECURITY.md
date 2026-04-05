@@ -1,19 +1,12 @@
-# Security
-
-## Guardrails
-- No secrets or credentials in code or config files.
-- Use environment variables for all sensitive data.
-- All Cloudflare bindings must be declared in `wrangler.toml`.
-- Validate all external input using centralized schemas.
-
-## Review
-- All security-related changes require review.# SECURITY.md
+# SECURITY.md
 
 ## Security Practices
 
-- All secrets managed via Cloudflare environment bindings (see wrangler.toml)
-- No secrets in code or config files
-- API endpoints validate all inputs
+- No secrets or credentials in code or config files
+- All secrets managed via Cloudflare environment bindings (see `wrangler.toml`)
+- All Cloudflare bindings must be declared in `wrangler.toml`
+- API endpoints validate all external inputs using centralized schemas
 - Public API (`/v1/*`) is versioned and stable
 - Internal API (`/api/*`) is not exposed publicly
-- Document all security changes in `apps/web/docs/design/decision-log.md`
+- All security-related changes require review
+- Document security changes in `docs/DECISION_LOG.md`

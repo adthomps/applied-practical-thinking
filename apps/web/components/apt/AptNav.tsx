@@ -1,31 +1,17 @@
+import { useState, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { siteConfig, NavItem } from "@/data/site";
-import { Menu, X, ChevronDown } from "lucide-react";
-import { useState, useRef, useEffect } from "react";
 
 function NavDropdown({ item, isLast = false }: { item: NavItem; isLast?: boolean }) {
   const location = useLocation();
   const [open, setOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const [alignRight, setAlignRight] = useState(false);
   
   const isActive = location.pathname === item.path || 
     item.children?.some(child => location.pathname.startsWith(child.path));
-
-  // Check if dropdown would overflow viewport
-  useEffect(() => {
-    if (open && dropdownRef.current) {
-      const rect = dropdownRef.current.getBoundingClientRect();
-      const viewportWidth = window.innerWidth;
-      if (rect.right > viewportWidth - 16) {
-        setAlignRight(true);
-      } else {
-        setAlignRight(false);
-      }
-    }
-  }, [open]);
 
   const handleMouseEnter = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -90,7 +76,7 @@ function NavDropdown({ item, isLast = false }: { item: NavItem; isLast?: boolean
         ref={dropdownRef}
         className={cn(
           "absolute top-full pt-2 z-[100] transition-all",
-          alignRight || isLast ? "right-0" : "left-0",
+          isLast ? "right-0" : "left-0",
           open ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
         )}
       >

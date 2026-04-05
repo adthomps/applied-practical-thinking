@@ -50,5 +50,5 @@ Doc placement rule:
 
 ## Review Requirements
 
-- Design changes: check `apps/web/docs/design/review-checklist.md`
-- Deviations: document in `apps/web/docs/design/decision-log.md`
+- Design changes: check `docs/REVIEW_CHECKLIST.md`
+- Deviations: document in `docs/DECISION_LOG.md`

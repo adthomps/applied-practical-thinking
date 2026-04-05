@@ -93,7 +93,7 @@ Portfolio sections are managed as structured data and/or Markdown in `apps/web/d
 ### Design System
 - Documented in `apps/web/docs/design/` with shared token contracts in `packages/config` (`apps/web/theme/aptTokens.ts` is the compatibility re-export).
 - To add a new design system doc, create a Markdown file in `apps/web/docs/design/`.
-- To update tokens, edit the relevant files and log changes in `decision-log.md`.
+- To update tokens, edit the relevant files and log changes in `docs/DECISION_LOG.md`.
 
 ### Design Thinking
 - Add or edit content in `apps/web/data/` (e.g., `designThinking.ts` if present) or as Markdown in `apps/web/content/design-thinking/`.
@@ -187,12 +187,20 @@ All Learn content (articles, podcasts, guides, design reviews) is managed as Mar
 - Public learning/content markdown lives in `apps/web/content/`.
 - Generated runtime copies in `apps/web/public/docs/` and `apps/web/public/content/` should not be edited as authored source.
 
+### Design Doctrine Versioning (v1+)
+- Use the unified policy in `apps/web/docs/design/APT-DESIGN-VERSIONING.md` for thinking, system, architecture, systems, strategy, review standard, and AI review bundle artifacts.
+- Classify every change as semantic major, minor, or patch before publishing.
+- For major and minor updates, add a decision entry in `docs/DECISION_LOG.md` with rationale and consequences.
+- Publish canonical public docs under `/docs/design/v{major}/` and keep `/docs/design/*` aliases pointed to the latest stable major.
+- Update the design docs manifest and AI bundle metadata together so API and UI consumers see consistent version data.
+- Do not edit files in `apps/web/public/docs/design/` manually; regenerate from source and scripts.
+
 ---
 
 ## 5. Design System
 
 - Shared design tokens are authored in `packages/config`, with `apps/web/theme/aptTokens.ts` kept as the compatibility re-export.
-- To update tokens, edit these files and document changes in `apps/web/docs/design/decision-log.md`.
+- To update tokens, edit these files and document changes in `docs/DECISION_LOG.md`.
 - All UI components should use Apt* components from `apps/web/components/apt/`.
 - For new design patterns, update docs in `apps/web/docs/design/`.
 
@@ -220,7 +228,7 @@ All Learn content (articles, podcasts, guides, design reviews) is managed as Mar
 ## 8. Review & Logging
 
 - All changes to design, prompts, or business logic must be reviewed.
-- Log all design deviations in `apps/web/docs/design/decision-log.md`.
+- Log all design deviations in `docs/DECISION_LOG.md`.
 - For major changes, update `DOCUMENTATION_INDEX.md` and relevant docs.
 
 ---

@@ -61,6 +61,27 @@ type ContentDetailPageProps = {
   shareEnabled?: boolean;
 };
 
+type ActionLinkProps = {
+  href: string;
+  children: ReactNode;
+};
+
+function ActionLink({ href, children }: ActionLinkProps) {
+  if (href.startsWith("/") && !href.startsWith("//")) {
+    return (
+      <Link to={href} className="block">
+        {children}
+      </Link>
+    );
+  }
+
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer" className="block">
+      {children}
+    </a>
+  );
+}
+
 export function ContentDetailPage(props: ContentDetailPageProps) {
   const {
     backHref,
@@ -115,22 +136,6 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
     if (k.includes("review")) return `/learn/${id}`;
     if (k.includes("system")) return `/design/systems/${id}`;
     return href;
-  };
-
-  const ActionLink = ({ href, children, linkKey }: { href: string; children: ReactNode; linkKey?: string }) => {
-    const finalHref = linkKey ? getInternalUrl(linkKey, href) : href;
-    if (isInternalHref(finalHref)) {
-      return (
-        <Link to={finalHref} className="block">
-          {children}
-        </Link>
-      );
-    }
-    return (
-      <a href={finalHref} target="_blank" rel="noopener noreferrer" className="block">
-        {children}
-      </a>
-    );
   };
 
   const links = item.links || {};
@@ -311,7 +316,7 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
               <AptCard>
                 <div className="p-6 space-y-4">
                   {links.demo ? (
-                    <ActionLink href={links.demo}>
+                    <ActionLink href={getInternalUrl("demo", links.demo)}>
                       <AptButton variant="primary" className="w-full">
                         <ExternalLink className="h-4 w-4 mr-2" />
                         View Demo
@@ -320,7 +325,7 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
                   ) : null}
 
                   {links.repo ? (
-                    <ActionLink href={links.repo}>
+                    <ActionLink href={getInternalUrl("repo", links.repo)}>
                       <AptButton variant="outline" className="w-full">
                         <Github className="h-4 w-4 mr-2" />
                         Repository
@@ -329,7 +334,7 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
                   ) : null}
 
                   {links.figma ? (
-                    <ActionLink href={links.figma}>
+                    <ActionLink href={getInternalUrl("figma", links.figma)}>
                       <AptButton variant="outline" className="w-full">
                         <ExternalLink className="h-4 w-4 mr-2" />
                         Figma
@@ -338,7 +343,7 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
                   ) : null}
 
                   {links.lovable ? (
-                    <ActionLink href={links.lovable}>
+                    <ActionLink href={getInternalUrl("lovable", links.lovable)}>
                       <AptButton variant="outline" className="w-full">
                         <ExternalLink className="h-4 w-4 mr-2" />
                         Lovable
@@ -374,7 +379,7 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
                         <div key={type}>
                           <div className="text-xs font-semibold text-muted-foreground mb-1 mt-2">{label}</div>
                           {grouped[type].map((link) => (
-                            <ActionLink key={link.key} href={link.href} linkKey={link.key}>
+                            <ActionLink key={link.key} href={getInternalUrl(link.key, link.href)}>
                               <AptButton variant={hasAnyLinks ? "outline" : "primary"} className="w-full">
                                 {icon}
                                 {link.label}
@@ -386,7 +391,7 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
                     ).concat(
                       grouped.other?.length
                         ? grouped.other.map((link) => (
-                            <ActionLink key={link.key} href={link.href} linkKey={link.key}>
+                            <ActionLink key={link.key} href={getInternalUrl(link.key, link.href)}>
                               <AptButton variant={hasAnyLinks ? "outline" : "primary"} className="w-full">
                                 <ExternalLink className="h-4 w-4 mr-2" />
                                 {link.label}

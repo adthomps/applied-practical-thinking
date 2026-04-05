@@ -43,13 +43,87 @@ export interface ContentDetailResponse {
 }
 
 export interface PublicDesignDocItem {
+  docId?: string;
   slug: string;
   title: string;
   path: string;
   description?: string;
+  semanticVersion?: string;
+  major?: number;
+  latestMajor?: number;
+  publishedAt?: string;
+  changelog?: string;
+  status?: string;
+  aliasPath?: string;
+  canonicalPath?: string;
+}
+
+export interface PublicDesignDocVersionItem {
+  major: number;
+  semanticVersion?: string;
+  status?: string;
+  publishedAt?: string;
+  changelog?: string;
+  canonicalPath?: string;
 }
 
 export interface PublicDesignDocDetailResponse {
   item: PublicDesignDocItem | null;
   markdown: string;
+}
+
+export interface PublicDesignDocVersionsResponse {
+  slug: string;
+  title: string;
+  latestMajor?: number;
+  versions: PublicDesignDocVersionItem[];
+}
+
+export interface PublicReviewBundleFile {
+  id: string;
+  title: string;
+  url: string;
+  contentType?: string;
+  ui?: {
+    cardOrder: number;
+    ctaOrder?: number;
+    ctaLabel?: string;
+    ctaVariant?: "primary" | "secondary" | "ghost" | "outline" | "link" | "accent";
+    tagLabel: string;
+    tagVariant: "default" | "accent" | "muted" | "primary" | "secondary" | "outline" | "ghost";
+    icon: "bot" | "download" | "file-text" | "hard-drive-download" | "network" | "palette" | "route" | "sparkles";
+    description?: string;
+  };
+}
+
+export interface PublicReviewBundleDocument {
+  id: string;
+  title: string;
+  path: string;
+  format?: string;
+  role?: string;
+  useFor?: string[];
+}
+
+export interface PublicReviewBundleHandoff {
+  name: string;
+  documents: string[];
+  requiresTargetArtifact?: boolean;
+  ui?: {
+    title: string;
+    order: number;
+    targetArtifactLabel?: string;
+  };
+}
+
+export interface PublicReviewBundleManifest {
+  id: string;
+  title?: string;
+  version?: string;
+  docsMajor?: number;
+  docsMajors?: number[];
+  updatedAt?: string;
+  bundleFiles?: PublicReviewBundleFile[];
+  documents?: PublicReviewBundleDocument[];
+  recommendedHandoffs?: PublicReviewBundleHandoff[];
 }

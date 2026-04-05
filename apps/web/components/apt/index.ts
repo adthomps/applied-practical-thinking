@@ -29,6 +29,7 @@ export { LandingSectionCardGrid } from "./LandingSectionCardGrid";
 export { SectionIntro } from "./SectionIntro";
 export { BrowseCard } from "./BrowseCard";
 export { ReviewBundleCallout } from "./ReviewBundleCallout";
+export { DesignDocVersionSwitcher } from "./DesignDocVersionSwitcher";
 
 export { ContentDetailPage } from "./ContentDetailPage";
 export { RuntimeConfigNotice } from "./RuntimeConfigNotice";

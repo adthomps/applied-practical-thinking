@@ -4,6 +4,13 @@ This bundle is the fastest public handoff for an AI reviewer, external collabora
 
 Start here, then open or download the linked doctrine documents that match the work under review.
 
+Version metadata:
+
+- Bundle version: `2.0.0`
+- Design docs majors: `1`, `2` (mixed-major rollout)
+- Canonical public root pattern: `/docs/design/v{major}/`
+- Latest-stable alias root: `/docs/design/`
+
 ---
 
 ## Core Bundle

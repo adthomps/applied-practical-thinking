@@ -1,3 +1,11 @@
+---
+docId: design-core
+slug: core
+major: 1
+semanticVersion: 1.0.0
+status: stable
+publishedAt: 2026-04-05
+---
 # APT Design Core
 
 Foundational design principles and tokens for the APT design system.
@@ -68,3 +76,4 @@ Use the `--radius` token:
 - `rounded-lg` - Cards, buttons
 - `rounded-xl` - Hero cards
 - `rounded-md` - Small elements
+

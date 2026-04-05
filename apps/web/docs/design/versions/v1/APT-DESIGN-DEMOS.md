@@ -1,3 +1,11 @@
+---
+docId: design-demos
+slug: demos
+major: 1
+semanticVersion: 1.0.0
+status: stable
+publishedAt: 2026-04-05
+---
 # APT Demo Design
 
 Patterns for demo pages and interactive examples.
@@ -69,3 +77,4 @@ The `/design` route is the design playground:
 - All component variants
 - Stress tests (long content)
 - Normalized ID catalog
+
