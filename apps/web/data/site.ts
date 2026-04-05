@@ -111,6 +111,12 @@ export const siteConfig = {
           description: "How APT organizes information so people can understand, navigate, and apply it.",
           tagline: "Information architecture made visible.",
         },
+        {
+          label: "AI Review Bundle",
+          path: "/design/review-bundle",
+          description: "A single public handoff for AI reviewers with the review standard and the core doctrine documents in one place.",
+          tagline: "One entry point for standards-based review.",
+        },
       ],
     },
     {

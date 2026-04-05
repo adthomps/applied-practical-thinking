@@ -21,7 +21,7 @@ export function InsightMeta({ insight, showType = true, showDate = true, showCon
   return (
     <div className="flex items-center gap-3 mb-4">
       {showType ? (
-        <AptTag variant="accent">
+        <AptTag variant="primary">
           <Icon className="h-3 w-3 mr-1" />
           {typeLabels[insight.type]}
         </AptTag>

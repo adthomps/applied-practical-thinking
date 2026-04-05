@@ -7,6 +7,7 @@ import {
   AptCardDescription,
   AptCardContent,
   AptTag,
+  ReviewBundleCallout,
   SectionIntro,
 } from "@/components/apt";
 import {
@@ -49,9 +50,7 @@ function ArchitecturePatternCard({ slug, icon, title, description, rules, when }
                 {icon}
               </div>
               <div>
-                <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground mb-1">
-                  Pattern
-                </p>
+                <AptTag variant="outline" size="sm" className="mb-2">Pattern</AptTag>
                 <AptCardTitle>{title}</AptCardTitle>
               </div>
             </div>
@@ -456,6 +455,7 @@ export default function PortfolioDesignArchitecture() {
           </div>
         </AptCard>
       </section>
+      <ReviewBundleCallout />
     </div>
   );
 }

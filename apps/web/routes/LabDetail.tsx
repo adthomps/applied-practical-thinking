@@ -23,6 +23,7 @@ import {
   Mic,
   BookOpen,
 } from "lucide-react";
+import { getStatusTagDefinition } from "@/lib/tagSemantics";
 
 const typeIcons: Record<string, typeof Lightbulb> = {
   concept: Lightbulb,
@@ -73,6 +74,7 @@ export default function LabDetail() {
     if (!id) return undefined;
     return labsIndex.find((l) => l.id === id || l.slug === id);
   }, [id, labsIndex]);
+  const statusTag = getStatusTagDefinition(lab?.status as string | undefined);
 
   const labIndex = useMemo(() => {
     if (!id) return -1;
@@ -139,13 +141,11 @@ export default function LabDetail() {
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center gap-2 mb-4">
-          <AptTag variant="accent">
+          <AptTag variant="primary">
             <TypeIcon className="h-3 w-3 mr-1" />
             {typeLabels[labType] ?? labType}
           </AptTag>
-          <AptTag variant={lab.status === "active" ? "default" : "muted"}>
-            {lab.status}
-          </AptTag>
+          {statusTag ? <AptTag variant={statusTag.variant}>{statusTag.label}</AptTag> : null}
         </div>
 
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">

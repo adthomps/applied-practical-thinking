@@ -9,6 +9,7 @@ import {
   ExternalLink,
   Github,
 } from "lucide-react";
+import { getStatusTagDefinition } from "@/lib/tagSemantics";
 
 const typeIcons: Record<string, typeof Lightbulb> = {
   concept: Lightbulb,
@@ -31,6 +32,7 @@ export function LabCard({ lab }: LabCardProps) {
 
   const platforms = Array.isArray(lab.platforms) ? lab.platforms : [];
   const technologies = Array.isArray(lab.technologies) ? lab.technologies : [];
+  const statusTag = getStatusTagDefinition(lab.status as string | undefined);
 
   const links = lab.links || {};
   const basePath = "/experiments";
@@ -65,11 +67,11 @@ export function LabCard({ lab }: LabCardProps) {
       description={lab.description}
       icon={<TypeIcon className="h-5 w-5" />}
       eyebrow={
-        <AptTag variant="accent">
+        <AptTag variant="primary">
           {typeLabels[lab.type as string] || lab.type || "Experiment"}
         </AptTag>
       }
-      status={lab.status === "archived" ? <AptTag variant="muted">Archived</AptTag> : null}
+      status={statusTag ? <AptTag variant={statusTag.variant}>{statusTag.label}</AptTag> : null}
       highlight={
         lab.problem ? (
           <p className="line-clamp-1 text-sm font-medium text-primary">{lab.problem}</p>

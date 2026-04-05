@@ -4,9 +4,11 @@ This root file is a pointer, not the canonical design spec.
 
 Use these source-of-truth docs instead:
 
+- `apps/web/docs/design/APT-AI-REVIEW-BUNDLE.md`
 - `apps/web/docs/design/APT-DESIGN-THINKING.md`
 - `apps/web/docs/design/APT-DESIGN-SYSTEM.md`
 - `apps/web/docs/design/APT-DESIGN-ARCHITECTURE.md`
+- `apps/web/docs/design/APT-REVIEW-STANDARD.md`
 - `apps/web/docs/design/decision-log.md`
 
 Implementation ownership:

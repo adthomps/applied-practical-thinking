@@ -7,6 +7,7 @@ This directory contains role-specific prompts for AI agents.
 - [repo-maintainer.md](prompts/repo-maintainer.md) - General repository maintenance
 - [design-maintainer.md](prompts/design-maintainer.md) - Design system changes
 - [api-maintainer.md](prompts/api-maintainer.md) - API/Worker development
+- [reviewer.md](prompts/reviewer.md) - Review existing work and new builds against APT standards
 
 ## Usage
 
@@ -16,3 +17,5 @@ These prompts are internal operating instructions. Public-facing content and doc
 
 - `apps/web/content/`
 - approved public docs in `apps/web/docs/design/`
+
+When an external AI or working agent needs a pointable standards document, use `apps/web/docs/design/APT-REVIEW-STANDARD.md` as the primary handoff.

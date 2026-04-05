@@ -16,6 +16,7 @@ import {
 } from "@/components/apt";
 import { AssistantChat, ASSISTANT_CHAT_ENABLED } from "@/features/assistant/AssistantChat";
 import { Brain, AppWindow, Network, ArrowRight } from "lucide-react";
+import { getStatusTagDefinition } from "@/lib/tagSemantics";
 
 const HOMEPAGE_FEATURE_LIMIT = 6;
 
@@ -271,16 +272,17 @@ export default function Home() {
           )}
           {featuredItems.map((item) => {
             const { to, typeLabel, laneLabel } = getHomepageFeaturedLink(item);
+            const statusTag = getStatusTagDefinition(item.status as string | undefined);
 
             return (
               <Link key={item.id ?? item.slug ?? item.contentPath} to={to} className="block group">
                 <AptCard variant="interactive" padding="default">
                   <div className="flex items-start justify-between mb-2">
                     <div className="flex flex-wrap gap-2">
-                      <AptTag variant="accent">{typeLabel}</AptTag>
-                      <AptTag variant="ghost">{laneLabel}</AptTag>
+                      <AptTag variant="primary">{typeLabel}</AptTag>
+                      <AptTag variant="accent">{laneLabel}</AptTag>
                     </div>
-                    {item.status && <AptTag variant="muted">{item.status}</AptTag>}
+                    {statusTag ? <AptTag variant={statusTag.variant}>{statusTag.label}</AptTag> : null}
                   </div>
                   <AptCardHeader className="p-0 mt-3">
                     <AptCardTitle>{item.title}</AptCardTitle>

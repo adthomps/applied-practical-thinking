@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
-import { AptButton, AptCard, AptCardContent, AptCardHeader, AptCardTitle, AptTag, RuntimeConfigNotice, SectionIntro } from "@/components/apt";
+import { AptButton, AptCard, AptCardContent, AptCardHeader, AptCardTitle, AptTag, ReviewBundleCallout, RuntimeConfigNotice, SectionIntro } from "@/components/apt";
 import { SystemCard } from "@/components/apt/SystemCard";
 import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
 import { downloadWorkerMarkdown } from "@/src/services/download";
@@ -205,7 +205,7 @@ export default function Systems() {
               <Layers3 className="h-6 w-6" />
             </div>
             <div>
-              <p className="mb-1 text-xs uppercase tracking-[0.16em] text-muted-foreground">Framing Note</p>
+              <AptTag variant="outline" size="sm" className="mb-2">Framing Note</AptTag>
               <h3 className="text-xl font-semibold mb-1">“Systems” currently means reference models</h3>
               <p className="text-muted-foreground">
                 If we rename this area later, the clearest candidates are <span className="font-medium text-foreground">Reference Models</span>,
@@ -216,6 +216,8 @@ export default function Systems() {
           </div>
         </div>
       </AptCard>
+
+      <ReviewBundleCallout />
     </div>
   );
 }

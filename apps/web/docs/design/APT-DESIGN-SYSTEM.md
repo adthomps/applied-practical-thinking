@@ -442,6 +442,22 @@ import { AptButton } from "@/components/apt";
 
 **Sizes:** `sm` (10px), `default` (12px)
 
+**Semantic usage:**
+
+- Use `accent` for section or area identity such as `Systems` or other navigational framing labels.
+- Use `primary` for item or content type such as `Guide`, `Article`, `Reference Model`, or `Podcast`.
+- Use `outline` for role and meta labels such as `Entry Point`, `Doctrine`, `Reference`, `Framework`, and `Suggested Path`.
+- Use `secondary` for active or currently valid state labels such as `Active`, `Stable`, or `Live`.
+- Use `default` for neutral taxonomy that should remain visible in scanning, such as platform or applicability scope chips.
+- Use `muted` for supporting taxonomy and lower-emphasis states such as concepts, technologies, or archived/inactive states.
+- Use `ghost` only for intentionally de-emphasized inline labels. Do not use it for a label that carries core navigation, type, role, or status meaning.
+
+**Review rule:**
+
+- If two tags mean different things, they should not share the same variant by convenience.
+- If a label carries semantic meaning, use `AptTag` instead of recreating a pill with ad hoc route-level styling.
+- When the same category appears across routes, preserve the same variant unless the design doctrine changes.
+
 ### AptEmblem
 
 The brand emblem with animated glow ring.

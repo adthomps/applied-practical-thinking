@@ -28,6 +28,7 @@ export { CosmicBackground } from "./CosmicBackground";
 export { LandingSectionCardGrid } from "./LandingSectionCardGrid";
 export { SectionIntro } from "./SectionIntro";
 export { BrowseCard } from "./BrowseCard";
+export { ReviewBundleCallout } from "./ReviewBundleCallout";
 
 export { ContentDetailPage } from "./ContentDetailPage";
 export { RuntimeConfigNotice } from "./RuntimeConfigNotice";

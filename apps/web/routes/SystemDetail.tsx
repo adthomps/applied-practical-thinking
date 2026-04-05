@@ -10,6 +10,7 @@ import { useContentDetail } from "@/hooks/useContentDetail";
 import { getWorkerApiConfigError } from "@/src/services/api";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
 import { ExternalLink, Network } from "lucide-react";
+import { getStatusTagDefinition } from "@/lib/tagSemantics";
 
 export default function SystemDetail() {
   const { id } = useParams();
@@ -42,6 +43,7 @@ export default function SystemDetail() {
   );
 
   const hasMissingState = !loading && !item;
+  const statusTag = getStatusTagDefinition(systemDefinition?.status ?? item?.status);
 
   usePageMetadata(
     hasMissingState
@@ -93,12 +95,12 @@ export default function SystemDetail() {
   const systemOverview = systemDefinition?.purpose || item.description;
   const headerMeta = (
     <div className="flex flex-wrap gap-2">
-      <AptTag variant="accent">Reference Model</AptTag>
+      <AptTag variant="primary">Reference Model</AptTag>
       {systemDefinition?.referenceType ? (
         <AptTag variant="outline">{systemDefinition.referenceType}</AptTag>
       ) : null}
-      {systemDefinition?.status ? (
-        <AptTag variant="secondary">{systemDefinition.status}</AptTag>
+      {statusTag ? (
+        <AptTag variant={statusTag.variant}>{statusTag.label}</AptTag>
       ) : null}
     </div>
   );
@@ -159,7 +161,7 @@ export default function SystemDetail() {
             {systemDefinition.appliesTo?.length ? (
               <div className="flex flex-wrap gap-2">
                 {systemDefinition.appliesTo.map((scope) => (
-                  <AptTag key={scope} variant="ghost">
+                  <AptTag key={scope} variant="default">
                     {scope}
                   </AptTag>
                 ))}

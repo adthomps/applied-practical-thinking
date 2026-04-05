@@ -1,0 +1,202 @@
+{
+  "id": "apt-ai-review-bundle",
+  "title": "APT AI Review Bundle",
+  "version": "2026-04-04",
+  "hashAlgorithm": "sha256",
+  "bundleHash": "computed-during-build",
+  "kind": "ai-review-bundle",
+  "entrypoints": {
+    "route": "/design/review-bundle",
+    "markdownBundle": "/docs/design/APT-AI-REVIEW-BUNDLE.md",
+    "reviewStandard": "/docs/design/APT-REVIEW-STANDARD.md"
+  },
+  "bundleFiles": [
+    {
+      "id": "bundle-manifest-json",
+      "title": "APT AI Review Bundle JSON Manifest",
+      "url": "/docs/design/APT-AI-REVIEW-BUNDLE.json",
+      "contentType": "application/json"
+    },
+    {
+      "id": "bundle-markdown",
+      "title": "APT AI Review Bundle Markdown",
+      "url": "/docs/design/APT-AI-REVIEW-BUNDLE.md",
+      "contentType": "text/markdown"
+    },
+    {
+      "id": "review-standard-markdown",
+      "title": "APT Review Standard",
+      "url": "/docs/design/APT-REVIEW-STANDARD.md",
+      "contentType": "text/markdown"
+    },
+    {
+      "id": "design-thinking-markdown",
+      "title": "APT Design Thinking",
+      "url": "/docs/design/APT-DESIGN-THINKING.md",
+      "contentType": "text/markdown"
+    },
+    {
+      "id": "design-system-markdown",
+      "title": "APT Design System",
+      "url": "/docs/design/APT-DESIGN-SYSTEM.md",
+      "contentType": "text/markdown"
+    },
+    {
+      "id": "design-architecture-markdown",
+      "title": "APT Design Architecture",
+      "url": "/docs/design/APT-DESIGN-ARCHITECTURE.md",
+      "contentType": "text/markdown"
+    },
+    {
+      "id": "content-strategy-markdown",
+      "title": "APT Content Strategy",
+      "url": "/docs/design/APT-CONTENT-STRATEGY.md",
+      "contentType": "text/markdown"
+    },
+    {
+      "id": "design-systems-markdown",
+      "title": "APT Design Systems",
+      "url": "/docs/design/APT-DESIGN-SYSTEMS.md",
+      "contentType": "text/markdown"
+    }
+  ],
+  "documents": [
+    {
+      "id": "review-standard",
+      "title": "APT Review Standard",
+      "path": "/docs/design/APT-REVIEW-STANDARD.md",
+      "format": "markdown",
+      "role": "umbrella-review-contract",
+      "useFor": [
+        "information architecture review",
+        "design system review",
+        "architecture boundary review",
+        "systems framing review",
+        "content strategy review"
+      ]
+    },
+    {
+      "id": "bundle-markdown",
+      "title": "APT AI Review Bundle",
+      "path": "/docs/design/APT-AI-REVIEW-BUNDLE.md",
+      "format": "markdown",
+      "role": "human-readable-handoff",
+      "useFor": [
+        "external reviewer handoff",
+        "portable standards bundle",
+        "quick doctrine orientation"
+      ]
+    },
+    {
+      "id": "design-thinking",
+      "title": "APT Design Thinking",
+      "path": "/docs/design/APT-DESIGN-THINKING.md",
+      "format": "markdown",
+      "role": "doctrine",
+      "useFor": [
+        "problem framing",
+        "constraints",
+        "alternatives",
+        "decision quality"
+      ]
+    },
+    {
+      "id": "design-system",
+      "title": "APT Design System",
+      "path": "/docs/design/APT-DESIGN-SYSTEM.md",
+      "format": "markdown",
+      "role": "doctrine",
+      "useFor": [
+        "tokens",
+        "components",
+        "spacing ownership",
+        "shared primitives"
+      ]
+    },
+    {
+      "id": "design-architecture",
+      "title": "APT Design Architecture",
+      "path": "/docs/design/APT-DESIGN-ARCHITECTURE.md",
+      "format": "markdown",
+      "role": "doctrine",
+      "useFor": [
+        "repo boundaries",
+        "deployment surfaces",
+        "api ownership",
+        "prompt ownership"
+      ]
+    },
+    {
+      "id": "content-strategy",
+      "title": "APT Content Strategy",
+      "path": "/docs/design/APT-CONTENT-STRATEGY.md",
+      "format": "markdown",
+      "role": "doctrine",
+      "useFor": [
+        "navigation",
+        "visitor intent",
+        "section roles",
+        "content placement"
+      ]
+    },
+    {
+      "id": "design-systems-reference",
+      "title": "APT Design Systems",
+      "path": "/docs/design/APT-DESIGN-SYSTEMS.md",
+      "format": "markdown",
+      "role": "reference",
+      "useFor": [
+        "reference models",
+        "systems framing",
+        "relationship mapping"
+      ]
+    }
+  ],
+  "recommendedHandoffs": [
+    {
+      "name": "route-review",
+      "documents": [
+        "review-standard",
+        "design-system",
+        "content-strategy"
+      ],
+      "requiresTargetArtifact": true
+    },
+    {
+      "name": "component-review",
+      "documents": [
+        "review-standard",
+        "design-system",
+        "design-architecture"
+      ],
+      "requiresTargetArtifact": true
+    },
+    {
+      "name": "architecture-review",
+      "documents": [
+        "review-standard",
+        "design-architecture"
+      ],
+      "requiresTargetArtifact": true
+    },
+    {
+      "name": "doctrine-review",
+      "documents": [
+        "review-standard",
+        "design-thinking",
+        "content-strategy"
+      ],
+      "requiresTargetArtifact": true
+    }
+  ],
+  "outputContract": {
+    "ordering": [
+      "findings-first",
+      "violated-standard",
+      "structural-impact",
+      "smallest-correction"
+    ],
+    "preferRootCause": true,
+    "allowPreferenceComments": true
+  }
+}

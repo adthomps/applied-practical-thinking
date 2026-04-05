@@ -31,7 +31,7 @@ export function RuntimeConfigNotice({
 
         <div className="flex flex-wrap gap-2">
           <AptTag variant="outline">{envVar}</AptTag>
-          {expectedValue ? <AptTag variant="ghost">{expectedValue}</AptTag> : null}
+          {expectedValue ? <AptTag variant="default">{expectedValue}</AptTag> : null}
         </div>
 
         <p className="text-xs text-muted-foreground">

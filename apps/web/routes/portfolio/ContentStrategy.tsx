@@ -7,6 +7,7 @@ import {
   AptCardHeader,
   AptCardTitle,
   AptTag,
+  ReviewBundleCallout,
   SectionIntro,
 } from "@/components/apt";
 import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
@@ -337,6 +338,7 @@ export default function PortfolioContentStrategy() {
           ))}
         </div>
       </section>
+      <ReviewBundleCallout />
     </div>
   );
 }
