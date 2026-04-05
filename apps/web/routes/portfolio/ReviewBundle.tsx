@@ -1,4 +1,16 @@
+import { useMemo } from "react";
 import { Link } from "react-router-dom";
+import {
+  ArrowRight,
+  Bot,
+  Download,
+  FileText,
+  HardDriveDownload,
+  Network,
+  Palette,
+  Route,
+  Sparkles,
+} from "lucide-react";
 import {
   AptButton,
   AptCard,
@@ -10,77 +22,7 @@ import {
   AptTag,
   SectionIntro,
 } from "@/components/apt";
-import {
-  ArrowRight,
-  Bot,
-  Download,
-  FileText,
-  FolderOpen,
-  HardDriveDownload,
-  Network,
-  Palette,
-  Route,
-  Sparkles,
-} from "lucide-react";
-
-const bundleDocs = [
-  {
-    title: "Review Standard",
-    path: "/docs/design/APT-REVIEW-STANDARD.md",
-    filename: "APT-REVIEW-STANDARD.md",
-    description: "The umbrella review contract for IA, design system usage, design architecture, systems, and content strategy.",
-    icon: Bot,
-    tag: "Start Here",
-  },
-  {
-    title: "AI Review Bundle",
-    path: "/docs/design/APT-AI-REVIEW-BUNDLE.md",
-    filename: "APT-AI-REVIEW-BUNDLE.md",
-    description: "The compact handoff file that tells an outside reviewer which doctrine documents to pair with the target work.",
-    icon: FolderOpen,
-    tag: "Bundle",
-  },
-  {
-    title: "JSON Manifest",
-    path: "/docs/design/APT-AI-REVIEW-BUNDLE.json",
-    filename: "APT-AI-REVIEW-BUNDLE.json",
-    description: "A machine-readable manifest for tool-driven review workflows, including entry points, document inventory, and recommended handoff sets.",
-    icon: HardDriveDownload,
-    tag: "Machine Readable",
-  },
-  {
-    title: "Design Thinking",
-    path: "/docs/design/APT-DESIGN-THINKING.md",
-    filename: "APT-DESIGN-THINKING.md",
-    description: "Use for problem framing, constraints, alternatives, and decision quality.",
-    icon: Sparkles,
-    tag: "Doctrine",
-  },
-  {
-    title: "Design System",
-    path: "/docs/design/APT-DESIGN-SYSTEM.md",
-    filename: "APT-DESIGN-SYSTEM.md",
-    description: "Use for tokens, components, spacing ownership, and shared APT primitives.",
-    icon: Palette,
-    tag: "Doctrine",
-  },
-  {
-    title: "Design Architecture",
-    path: "/docs/design/APT-DESIGN-ARCHITECTURE.md",
-    filename: "APT-DESIGN-ARCHITECTURE.md",
-    description: "Use for monorepo boundaries, deployment surfaces, prompt ownership, and service separation.",
-    icon: Network,
-    tag: "Doctrine",
-  },
-  {
-    title: "Content Strategy",
-    path: "/docs/design/APT-CONTENT-STRATEGY.md",
-    filename: "APT-CONTENT-STRATEGY.md",
-    description: "Use for naming, visitor intent, navigation, and content placement.",
-    icon: Route,
-    tag: "Doctrine",
-  },
-];
+import { useReviewBundleManifest } from "@/hooks/useReviewBundleManifest";
 
 const routeCompanions = [
   {
@@ -115,26 +57,120 @@ const routeCompanions = [
   },
 ];
 
-const handoffBundles = [
-  {
-    title: "Route review",
-    items: ["Review Standard", "Design System", "Content Strategy", "Target route or page"],
-  },
-  {
-    title: "Component review",
-    items: ["Review Standard", "Design System", "Design Architecture", "Target component"],
-  },
-  {
-    title: "Architecture review",
-    items: ["Review Standard", "Design Architecture", "Target repo area or service boundary"],
-  },
-  {
-    title: "Doctrine review",
-    items: ["Review Standard", "Design Thinking", "Content Strategy", "Target doctrine change"],
-  },
-];
+type BundleCard = {
+  id: string;
+  title: string;
+  path: string;
+  filename: string;
+  description: string;
+  tag: string;
+  tagVariant: "default" | "accent" | "muted" | "primary" | "secondary" | "outline" | "ghost";
+  icon: typeof Bot;
+  order: number;
+};
+
+type BundleCta = {
+  id: string;
+  label: string;
+  url: string;
+  variant: "primary" | "secondary" | "ghost" | "outline" | "link" | "accent";
+  icon: typeof Bot;
+  order: number;
+};
+
+function filenameFromUrl(url: string) {
+  const [withoutQuery] = url.split("?");
+  const segments = withoutQuery.split("/").filter(Boolean);
+  return segments[segments.length - 1] || withoutQuery;
+}
+
+const bundleIconMap: Record<string, typeof Bot> = {
+  bot: Bot,
+  download: Download,
+  "file-text": FileText,
+  "hard-drive-download": HardDriveDownload,
+  network: Network,
+  palette: Palette,
+  route: Route,
+  sparkles: Sparkles,
+};
+
+function getIconFromManifest(iconName: string | undefined) {
+  if (!iconName) return FileText;
+  return bundleIconMap[iconName] || FileText;
+}
 
 export default function PortfolioReviewBundle() {
+  const { manifest, loading, error } = useReviewBundleManifest();
+  const docsMajors = useMemo(() => {
+    if (Array.isArray(manifest?.docsMajors) && manifest?.docsMajors.length > 0) {
+      return [...manifest.docsMajors].sort((a, b) => b - a);
+    }
+    return typeof manifest?.docsMajor === "number" ? [manifest.docsMajor] : [];
+  }, [manifest]);
+
+  const actionButtons = useMemo(() => {
+    const files = manifest?.bundleFiles || [];
+    const ctas: BundleCta[] = files
+      .filter((file) => typeof file.ui?.ctaOrder === "number" && Boolean(file.ui?.ctaLabel) && Boolean(file.ui?.ctaVariant))
+      .map((file) => ({
+        id: file.id,
+        label: file.ui?.ctaLabel || file.title,
+        url: file.url,
+        variant: (file.ui?.ctaVariant || "primary") as BundleCta["variant"],
+        icon: getIconFromManifest(file.ui?.icon),
+        order: file.ui?.ctaOrder || 0,
+      }))
+      .sort((left, right) => left.order - right.order);
+
+    return ctas;
+  }, [manifest]);
+
+  const bundleCards = useMemo(() => {
+    const files = manifest?.bundleFiles || [];
+    const cards = files
+      .filter((file) => typeof file.ui?.cardOrder === "number" && Boolean(file.ui?.tagLabel) && Boolean(file.ui?.tagVariant))
+      .map((file): BundleCard => {
+        const ui = file.ui!;
+
+        return {
+          id: file.id,
+          title: file.title,
+          path: file.url,
+          filename: filenameFromUrl(file.url),
+          description: ui.description || `Portable review asset (${file.contentType || "file"}).`,
+          tag: ui.tagLabel,
+          tagVariant: ui.tagVariant,
+          icon: getIconFromManifest(ui.icon),
+          order: ui.cardOrder,
+        };
+      })
+      .sort((left, right) => left.order - right.order);
+
+    return cards;
+  }, [manifest]);
+
+  const handoffBundles = useMemo(() => {
+    const handoffs = manifest?.recommendedHandoffs || [];
+    const docsById = new Map((manifest?.documents || []).map((doc) => [doc.id, doc.title]));
+
+    return handoffs
+      .filter((handoff) => typeof handoff.ui?.order === "number" && Boolean(handoff.ui?.title))
+      .map((handoff) => {
+        const items = handoff.documents.map((id) => docsById.get(id) || id);
+        if (handoff.requiresTargetArtifact) {
+          items.push(handoff.ui?.targetArtifactLabel || "Target artifact");
+        }
+
+        return {
+          title: handoff.ui?.title || handoff.name,
+          items,
+          order: handoff.ui?.order || 0,
+        };
+      })
+      .sort((left, right) => left.order - right.order);
+  }, [manifest]);
+
   return (
     <div className="container py-12 md:py-16 space-y-16">
       <section>
@@ -146,25 +182,30 @@ export default function PortfolioReviewBundle() {
           eyebrow={<AptTag variant="accent">AI Review Bundle</AptTag>}
         >
           <div className="flex flex-wrap gap-3">
-            <AptButton asChild>
-              <a href="/docs/design/APT-REVIEW-STANDARD.md" download>
-                <Download className="h-4 w-4" />
-                Download Review Standard
-              </a>
-            </AptButton>
-            <AptButton variant="outline" asChild>
-              <a href="/docs/design/APT-AI-REVIEW-BUNDLE.md" download>
-                <FileText className="h-4 w-4" />
-                Download Bundle Markdown
-              </a>
-            </AptButton>
-            <AptButton variant="ghost" asChild>
-              <a href="/docs/design/APT-AI-REVIEW-BUNDLE.json" download>
-                <HardDriveDownload className="h-4 w-4" />
-                Download JSON Manifest
-              </a>
-            </AptButton>
+            {actionButtons.map((file) => {
+              const Icon = file.icon;
+
+              return (
+              <AptButton key={file.id} variant={file.variant} asChild>
+                <a href={file.url} download>
+                  <Icon className="h-4 w-4" />
+                  {file.label}
+                </a>
+              </AptButton>
+            );
+          })}
           </div>
+          <div className="flex flex-wrap gap-2">
+            {manifest?.version ? <AptTag variant="outline">Bundle v{manifest.version}</AptTag> : null}
+            {docsMajors.map((major) => (
+              <AptTag key={major} variant="muted">Docs v{major}</AptTag>
+            ))}
+            {manifest?.updatedAt ? <AptTag variant="ghost">Updated {manifest.updatedAt}</AptTag> : null}
+          </div>
+          {loading && <p className="text-sm text-muted-foreground">Loading review bundle metadata…</p>}
+          {error && !loading && (
+            <p className="text-sm text-muted-foreground">Review bundle metadata could not be loaded right now.</p>
+          )}
         </SectionIntro>
       </section>
 
@@ -176,17 +217,22 @@ export default function PortfolioReviewBundle() {
         />
 
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {bundleDocs.map((doc) => {
+          {bundleCards.map((doc) => {
             const Icon = doc.icon;
+            const preferredMajor = docsMajors[0];
+            const canonicalPath =
+              preferredMajor && doc.path.startsWith("/docs/design/") && !/\/docs\/design\/v\d+\//.test(doc.path)
+                ? doc.path.replace("/docs/design/", `/docs/design/v${preferredMajor}/`)
+                : null;
             return (
-              <AptCard key={doc.title} variant="interactive" padding="large" className="h-full flex flex-col">
+              <AptCard key={doc.id} variant="interactive" padding="large" className="h-full flex flex-col">
                 <AptCardHeader className="p-0">
                   <div className="flex items-start justify-between gap-4 mb-3">
                     <div className="flex items-center gap-3">
                       <div className="rounded-lg bg-primary/10 p-2 text-primary">
                         <Icon className="h-5 w-5" />
                       </div>
-                      <AptTag variant={doc.tag === "Start Here" ? "accent" : "ghost"}>{doc.tag}</AptTag>
+                      <AptTag variant={doc.tagVariant}>{doc.tag}</AptTag>
                     </div>
                   </div>
                   <AptCardTitle className="text-lg">{doc.title}</AptCardTitle>
@@ -208,10 +254,27 @@ export default function PortfolioReviewBundle() {
                       Download
                     </a>
                   </AptButton>
+                  {canonicalPath ? (
+                    <AptButton variant="ghost" size="sm" asChild>
+                      <a href={canonicalPath} target="_blank" rel="noreferrer">
+                        Canonical
+                      </a>
+                    </AptButton>
+                  ) : null}
                 </AptCardFooter>
               </AptCard>
             );
           })}
+          {!loading && !error && bundleCards.length === 0 && (
+            <AptCard variant="subtle" padding="large" className="md:col-span-2 xl:col-span-3">
+              <AptCardHeader className="p-0">
+                <AptCardTitle className="text-lg">No bundle files available</AptCardTitle>
+                <AptCardDescription>
+                  The review bundle manifest did not return any portable bundle files.
+                </AptCardDescription>
+              </AptCardHeader>
+            </AptCard>
+          )}
         </div>
       </section>
 
@@ -267,6 +330,16 @@ export default function PortfolioReviewBundle() {
               </AptCardContent>
             </AptCard>
           ))}
+          {!loading && !error && handoffBundles.length === 0 && (
+            <AptCard variant="subtle" padding="large" className="md:col-span-2 xl:col-span-4">
+              <AptCardHeader className="p-0">
+                <AptCardTitle className="text-lg">No handoff sets available</AptCardTitle>
+                <AptCardDescription>
+                  The review bundle manifest did not include recommended handoff sets.
+                </AptCardDescription>
+              </AptCardHeader>
+            </AptCard>
+          )}
         </div>
       </section>
     </div>

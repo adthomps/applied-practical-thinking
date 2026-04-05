@@ -24,7 +24,9 @@ export async function loadAllContentIndexes(): Promise<Record<string, ContentInd
           if (item.id) all[item.id] = item;
           if (item.slug) all[item.slug] = item;
         }
-      } catch {}
+      } catch {
+        return;
+      }
     })
   );
   return all;

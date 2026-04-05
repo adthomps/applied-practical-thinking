@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
-import { AptButton, AptCard, AptCardDescription, AptCardFooter, AptCardHeader, AptCardTitle, AptTag } from "@apt/ui";
 import { Bot, Download } from "lucide-react";
+import { AptButton, AptCard, AptCardDescription, AptCardFooter, AptCardHeader, AptCardTitle, AptTag } from "@apt/ui";
+import { useReviewBundleManifest } from "@/hooks/useReviewBundleManifest";
 
 export function ReviewBundleCallout() {
+  const { manifest } = useReviewBundleManifest();
+  const bundleManifestFile = manifest?.bundleFiles?.find((file) => file.contentType?.toLowerCase().includes("json"));
+
   return (
     <section className="mt-16 pt-8 border-t border-border">
       <AptCard variant="subtle" padding="large">
@@ -22,12 +26,14 @@ export function ReviewBundleCallout() {
           <AptButton variant="outline" asChild>
             <Link to="/design/review-bundle">Open AI Review Bundle</Link>
           </AptButton>
-          <AptButton variant="ghost" asChild>
-            <a href="/docs/design/APT-AI-REVIEW-BUNDLE.json" download>
-              <Download className="h-4 w-4" />
-              Download JSON Manifest
-            </a>
-          </AptButton>
+          {bundleManifestFile && (
+            <AptButton variant="ghost" asChild>
+              <a href={bundleManifestFile.url} download>
+                <Download className="h-4 w-4" />
+                Download JSON Manifest
+              </a>
+            </AptButton>
+          )}
         </AptCardFooter>
       </AptCard>
     </section>

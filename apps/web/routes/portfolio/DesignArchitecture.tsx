@@ -1,16 +1,5 @@
 import { Link } from "react-router-dom";
 import {
-  AptButton,
-  AptCard,
-  AptCardHeader,
-  AptCardTitle,
-  AptCardDescription,
-  AptCardContent,
-  AptTag,
-  ReviewBundleCallout,
-  SectionIntro,
-} from "@/components/apt";
-import {
   FolderTree,
   Server,
   Globe,
@@ -19,14 +8,24 @@ import {
   Bot,
   ArrowRight,
   FileText,
-  Layers,
-  Code2,
   Cloud,
-  Workflow,
   AlertTriangle,
   CheckCircle2,
 } from "lucide-react";
+import {
+  AptButton,
+  AptCard,
+  AptCardHeader,
+  AptCardTitle,
+  AptCardDescription,
+  AptCardContent,
+  AptTag,
+  DesignDocVersionSwitcher,
+  ReviewBundleCallout,
+  SectionIntro,
+} from "@/components/apt";
 import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
+import { useDesignDocVersion } from "@/hooks/useDesignDocVersion";
 import { downloadWorkerMarkdown } from "@/src/services/download";
 import { architecturePatterns } from "@/data/architecturePatterns";
 
@@ -133,10 +132,13 @@ function BoundaryCard({ title, stack, responsibilities, constraints }: BoundaryC
 }
 
 export default function PortfolioDesignArchitecture() {
-  const architectureDocUrl = tryGetWorkerApiUrl("/api/design/docs/architecture");
+  const architectureVersion = useDesignDocVersion("architecture");
+  const architectureDocUrl = tryGetWorkerApiUrl(architectureVersion.downloadApiPath);
+  const architectureCanonicalUrl = architectureVersion.canonicalPath || null;
   const configError = getWorkerApiConfigError();
   const handleArchitectureMarkdownDownload = async () => {
-    await downloadWorkerMarkdown("/api/design/docs/architecture", "apt-design-architecture.md");
+    const majorSuffix = architectureVersion.activeMajor ? `-v${architectureVersion.activeMajor}` : "";
+    await downloadWorkerMarkdown(architectureVersion.downloadApiPath, `apt-design-architecture${majorSuffix}.md`);
   };
   const patterns = architecturePatterns;
 
@@ -267,6 +269,14 @@ export default function PortfolioDesignArchitecture() {
           <FileText className="h-4 w-4" />
           Download Architecture Markdown
         </AptButton>
+        {architectureCanonicalUrl ? (
+          <AptButton variant="ghost" asChild>
+            <a href={architectureCanonicalUrl} target="_blank" rel="noreferrer">
+              Open canonical
+            </a>
+          </AptButton>
+        ) : null}
+        <DesignDocVersionSwitcher versionState={architectureVersion} />
         {!architectureDocUrl && configError ? (
           <p className="text-sm text-muted-foreground mt-3">
             Configure <code>{configError.envVar}</code> on the Pages project to enable full-doc links.

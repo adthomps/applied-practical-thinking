@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { AlertTriangle, CheckCircle2, FileText, Layers3 } from "lucide-react";
 import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
-import { AptButton, AptCard, AptCardContent, AptCardHeader, AptCardTitle, AptTag, ReviewBundleCallout, RuntimeConfigNotice, SectionIntro } from "@/components/apt";
+import { AptButton, AptCard, AptCardContent, AptCardHeader, AptCardTitle, AptTag, DesignDocVersionSwitcher, ReviewBundleCallout, RuntimeConfigNotice, SectionIntro } from "@/components/apt";
 import { SystemCard } from "@/components/apt/SystemCard";
 import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
+import { useDesignDocVersion } from "@/hooks/useDesignDocVersion";
 import { downloadWorkerMarkdown } from "@/src/services/download";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
-import { AlertTriangle, CheckCircle2, FileText, Layers3 } from "lucide-react";
 
 export default function Systems() {
   usePageMetadata({
@@ -13,9 +15,11 @@ export default function Systems() {
     description: "Stable system references that capture reusable models, key decisions, tradeoffs, and related learning material.",
   });
 
-  const [systems, setSystems] = useState<ContentIndexItem[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [systems, setSystems] = useState<ContentIndexItem[] | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const location = useLocation();
+  const isDesignSystemsRoute = location.pathname.startsWith("/design/systems");
+  const systemsVersion = useDesignDocVersion("systems");
 
   const operatingSignals = [
     {
@@ -53,24 +57,25 @@ export default function Systems() {
       description: "A system stops being useful when the public reference no longer matches the actual design, code, or deployment reality.",
     },
   ];
-  const systemsDocUrl = tryGetWorkerApiUrl("/api/design/docs/systems");
+  const systemsDocUrl = tryGetWorkerApiUrl(systemsVersion.downloadApiPath);
+  const systemsCanonicalUrl = systemsVersion.canonicalPath || null;
 
   const handleSystemsMarkdownDownload = async () => {
-    await downloadWorkerMarkdown("/api/design/docs/systems", "apt-design-systems.md");
+    const majorSuffix = systemsVersion.activeMajor ? `-v${systemsVersion.activeMajor}` : "";
+    await downloadWorkerMarkdown(systemsVersion.downloadApiPath, `apt-design-systems${majorSuffix}.md`);
   };
 
   useEffect(() => {
-    setLoading(true);
     fetchContentIndex("systems")
       .then((items) => {
         setSystems(items);
-        setLoading(false);
       })
       .catch((e) => {
         setError(e.message);
-        setLoading(false);
       });
   }, []);
+
+  const loading = systems === null && !error;
 
   if (loading) return <div className="container py-12 text-center">Loading systems…</div>;
   if (error) {
@@ -100,17 +105,27 @@ export default function Systems() {
         eyebrow={<AptTag variant="accent">Systems</AptTag>}
         className="mb-8"
       >
-        <AptButton
-          variant="outline"
-          type="button"
-          onClick={() => {
-            void handleSystemsMarkdownDownload();
-          }}
-          disabled={!systemsDocUrl}
-        >
-          <FileText className="h-4 w-4" />
-          Download Systems Markdown
-        </AptButton>
+        <div className="flex flex-wrap gap-3">
+          <AptButton
+            variant="outline"
+            type="button"
+            onClick={() => {
+              void handleSystemsMarkdownDownload();
+            }}
+            disabled={!systemsDocUrl}
+          >
+            <FileText className="h-4 w-4" />
+            Download Systems Markdown
+          </AptButton>
+          {systemsCanonicalUrl ? (
+            <AptButton variant="ghost" asChild>
+              <a href={systemsCanonicalUrl} target="_blank" rel="noreferrer">
+                Open canonical
+              </a>
+            </AptButton>
+          ) : null}
+        </div>
+        {isDesignSystemsRoute ? <DesignDocVersionSwitcher versionState={systemsVersion} /> : null}
       </SectionIntro>
 
       <AptCard variant="subtle" className="mb-8">
@@ -193,7 +208,7 @@ export default function Systems() {
       </section>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {systems.map((system) => (
+        {(systems ?? []).map((system) => (
           <SystemCard key={system.id} system={system} to={`/design/systems/${system.id}`} />
         ))}
       </div>

@@ -37,7 +37,7 @@ Document-grounded AI assistant for APT Design System, Design Thinking, and Desig
 ## Setup
 - Requires OpenAI API key (env: OPENAI_API_KEY)
 - Configure wrangler for new endpoints
-- See docs/evals.md for evaluation prompts
+- See docs/EVALS.md for evaluation prompts
 
 ## UI/UX
 - Chat interface with streaming responses

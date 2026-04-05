@@ -7,6 +7,7 @@ import {
   AptCardDescription,
   AptCardContent,
   AptTag,
+  DesignDocVersionSwitcher,
   ReviewBundleCallout,
   SectionIntro,
 } from "@/components/apt";
@@ -23,6 +24,7 @@ import {
   FileText,
 } from "lucide-react";
 import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
+import { useDesignDocVersion } from "@/hooks/useDesignDocVersion";
 import { downloadWorkerMarkdown } from "@/src/services/download";
 import { designThinkingFrameworks } from "@/data/designThinkingFrameworks";
 
@@ -126,13 +128,16 @@ function CaseStudyPreview({ title, problem, constraint, outcome, tags }: CaseStu
 }
 
 export default function PortfolioDesignThinking() {
-  const thinkingDocUrl = tryGetWorkerApiUrl("/api/design/docs/thinking");
+  const thinkingVersion = useDesignDocVersion("thinking");
+  const thinkingDocUrl = tryGetWorkerApiUrl(thinkingVersion.downloadApiPath);
   const architectureDocUrl = tryGetWorkerApiUrl("/api/design/docs/architecture");
+  const thinkingCanonicalUrl = thinkingVersion.canonicalPath || null;
   const configError = getWorkerApiConfigError();
   const frameworks = designThinkingFrameworks;
 
   const handleThinkingMarkdownDownload = async () => {
-    await downloadWorkerMarkdown("/api/design/docs/thinking", "apt-design-thinking.md");
+    const majorSuffix = thinkingVersion.activeMajor ? `-v${thinkingVersion.activeMajor}` : "";
+    await downloadWorkerMarkdown(thinkingVersion.downloadApiPath, `apt-design-thinking${majorSuffix}.md`);
   };
 
   const handleArchitectureMarkdownDownload = async () => {
@@ -261,7 +266,15 @@ export default function PortfolioDesignThinking() {
               <ArrowRight className="h-4 w-4" />
             </Link>
           </AptButton>
+          {thinkingCanonicalUrl ? (
+            <AptButton variant="ghost" asChild>
+              <a href={thinkingCanonicalUrl} target="_blank" rel="noreferrer">
+                Open canonical
+              </a>
+            </AptButton>
+          ) : null}
         </div>
+        <DesignDocVersionSwitcher versionState={thinkingVersion} />
         {!thinkingDocUrl && configError ? (
           <p className="text-sm text-muted-foreground mt-3">
             Configure <code>{configError.envVar}</code> on the Pages project to enable full-doc links.

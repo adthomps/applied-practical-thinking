@@ -1,6 +1,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { ExternalLink, Network } from "lucide-react";
 import { ContentIndexItem } from "@/src/services/contentIndex";
 import { AptButton, AptCard, AptTag, RuntimeConfigNotice } from "@/components/apt";
 import { ContentDetailPage } from "@/components/apt/ContentDetailPage";
@@ -9,7 +10,6 @@ import { loadAllContentIndexes, resolveRelatedItems } from "@/src/services/relat
 import { useContentDetail } from "@/hooks/useContentDetail";
 import { getWorkerApiConfigError } from "@/src/services/api";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
-import { ExternalLink, Network } from "lucide-react";
 import { getStatusTagDefinition } from "@/lib/tagSemantics";
 
 export default function SystemDetail() {
@@ -25,13 +25,17 @@ export default function SystemDetail() {
     () => systemDefinitions.find((entry) => entry.id === item?.id),
     [item?.id]
   );
+  const visibleRelatedItems = useMemo(
+    () => (item?.related?.length ? relatedItems : []),
+    [item?.related, relatedItems]
+  );
   const relatedExperiments = useMemo(
-    () => relatedItems.filter((entry) => entry.type === "lab" || entry.type === "mock" || entry.type === "demo"),
-    [relatedItems]
+    () => visibleRelatedItems.filter((entry) => entry.type === "lab" || entry.type === "mock" || entry.type === "demo"),
+    [visibleRelatedItems]
   );
   const relatedLearn = useMemo(
     () =>
-      relatedItems.filter(
+      visibleRelatedItems.filter(
         (entry) =>
           entry.type === "article" ||
           entry.type === "blog" ||
@@ -39,7 +43,7 @@ export default function SystemDetail() {
           entry.type === "podcast" ||
           entry.type === "design-review"
       ),
-    [relatedItems]
+    [visibleRelatedItems]
   );
 
   const hasMissingState = !loading && !item;
@@ -66,13 +70,19 @@ export default function SystemDetail() {
 
   useEffect(() => {
     if (!item?.related?.length) {
-      setRelatedItems([]);
       return;
     }
 
+    let cancelled = false;
     loadAllContentIndexes().then((all) => {
-      setRelatedItems(resolveRelatedItems(item.related || [], all));
+      if (!cancelled) {
+        setRelatedItems(resolveRelatedItems(item.related || [], all));
+      }
     });
+
+    return () => {
+      cancelled = true;
+    };
   }, [item]);
 
   if (loading) return <div className="container py-12">Loading…</div>;

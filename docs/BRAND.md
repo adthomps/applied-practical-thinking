@@ -8,7 +8,7 @@ Canonical brand and design behavior lives in:
 
 - `apps/web/docs/design/APT-DESIGN-SYSTEM.md`
 - `apps/web/docs/design/APT-DESIGN-THINKING.md`
-- `apps/web/docs/design/decision-log.md`
+- `docs/DECISION_LOG.md`
 
 ## Current rules
 
@@ -20,5 +20,5 @@ Canonical brand and design behavior lives in:
 
 ## Change policy
 
-- Brand or design deviations must be logged in `apps/web/docs/design/decision-log.md`
+- Brand or design deviations must be logged in `docs/DECISION_LOG.md`
 - If a brand rule becomes durable product doctrine, update the canonical design docs under `apps/web/docs/design/`

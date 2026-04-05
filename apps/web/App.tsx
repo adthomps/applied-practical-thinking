@@ -10,10 +10,10 @@ import { lazyWithRetry } from "@/lib/lazyWithRetry";
 
 // Pages
 import Home from "./routes/Home";
-import NotFound from "./pages/NotFound";
 
-import Systems from "./routes/Systems";
-import SystemDetail from "./routes/SystemDetail";
+const Systems = lazyWithRetry(() => import("./routes/Systems"));
+const SystemDetail = lazyWithRetry(() => import("./routes/SystemDetail"));
+const NotFound = lazyWithRetry(() => import("./pages/NotFound"));
 
 const AssistantPage = lazyWithRetry(() => import("./routes/assistant"));
 const Start = lazyWithRetry(() => import("./routes/Start"));

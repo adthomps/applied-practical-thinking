@@ -27,7 +27,7 @@ You are maintaining the APT repository. Follow these guidelines:
 - `apps/web/index.css` - CSS variables (design tokens)
 - `packages/config/src/aptTokens.ts` - Shared TypeScript token contract
 - `apps/web/data/site.ts` - Site configuration
-- `apps/web/docs/design/decision-log.md` - Internal deviation log
+- `docs/DECISION_LOG.md` - Internal deviation log
 
 ## Common Patterns
 

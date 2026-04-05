@@ -1,4 +1,4 @@
-# MIGRATETODESIGN.md
+# MIGRATE_TO_DESIGN.md
 
 ## Status
 
@@ -16,5 +16,5 @@ The current monorepo contract is:
 1. Move stable reusable presentational components to `packages/ui`
 2. Use shared semantic token contracts from `packages/config`
 3. Keep app-shell and route composition in `apps/web`
-4. Document durable design deviations in `apps/web/docs/design/decision-log.md`
+4. Document durable design deviations in `docs/DECISION_LOG.md`
 5. Update canonical design doctrine under `apps/web/docs/design/` when the migration changes ownership or standards

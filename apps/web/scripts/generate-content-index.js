@@ -2,6 +2,7 @@
 // Usage: node scripts/generate-content-index.js
 // Generates JSON index files for each content type (blog, guides, podcasts, design-reviews)
 // by parsing Markdown frontmatter in apps/web/content/*
+/* eslint-disable @typescript-eslint/no-require-imports */
 
 const fs = require('fs');
 const path = require('path');

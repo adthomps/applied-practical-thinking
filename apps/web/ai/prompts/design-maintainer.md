@@ -58,6 +58,6 @@ After changes:
 ## Deviations
 
 If you must deviate from standards:
-1. Document in `apps/web/docs/design/decision-log.md`
+1. Document in `docs/DECISION_LOG.md`
 2. Include rationale
 3. List alternatives considered

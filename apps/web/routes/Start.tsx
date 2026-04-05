@@ -1,5 +1,15 @@
 import { Link } from "react-router-dom";
 import {
+  ArrowRight,
+  Beaker,
+  BookOpen,
+  Compass,
+  Layers,
+  Route,
+  Target,
+  Zap,
+} from "lucide-react";
+import {
   AptButton,
   AptCard,
   AptCardContent,
@@ -12,17 +22,6 @@ import {
   SectionIntro,
 } from "@/components/apt";
 import { siteConfig } from "@/data/site";
-import {
-  ArrowRight,
-  Beaker,
-  BookOpen,
-  Compass,
-  Layers,
-  Lightbulb,
-  Route,
-  Target,
-  Zap,
-} from "lucide-react";
 
 const startingPoints = [
   {

@@ -6,32 +6,30 @@ import { ContentFilters, FilterConfig, SelectedFilters, RuntimeConfigNotice } fr
 import { getWorkerApiConfigError } from "@/src/services/api";
 
 export default function InsightsBlogs() {
-  const [blogs, setBlogs] = useState<ContentIndexItem[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [blogs, setBlogs] = useState<ContentIndexItem[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [selected, setSelected] = useState<SelectedFilters>({ topics: [] });
 
   useEffect(() => {
-    setLoading(true);
     fetchContentIndex("blog")
       .then((data) => {
         setBlogs(data.sort((a, b) => (b.publishedAt || "").localeCompare(a.publishedAt || "")));
-        setLoading(false);
       })
       .catch((e) => {
         setError(e.message);
-        setLoading(false);
       });
   }, []);
 
+  const loading = blogs === null && !error;
+
   const config = useMemo<FilterConfig>(() => {
-    const topics = [...new Set(blogs.flatMap((b) => b.concepts || []))].sort();
+    const topics = [...new Set((blogs ?? []).flatMap((b) => b.concepts || []))].sort();
     return { topics };
   }, [blogs]);
 
   const filteredBlogs = useMemo(() => {
-    if (!selected.topics?.length) return blogs;
-    return blogs.filter((blog) =>
+    if (!selected.topics?.length) return blogs ?? [];
+    return (blogs ?? []).filter((blog) =>
       selected.topics?.some((t) => (blog.concepts || []).includes(t))
     );
   }, [selected.topics, blogs]);
@@ -72,7 +70,7 @@ export default function InsightsBlogs() {
         selected={selected}
         onChange={setSelected}
         resultCount={filteredBlogs.length}
-        totalCount={blogs.length}
+        totalCount={(blogs ?? []).length}
       />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

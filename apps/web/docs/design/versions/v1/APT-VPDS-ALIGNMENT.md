@@ -1,3 +1,11 @@
+---
+docId: vpds-alignment
+slug: vpds-alignment
+major: 1
+semanticVersion: 1.0.0
+status: stable
+publishedAt: 2026-04-05
+---
 # VPDS Alignment
 
 Visual and Product Design System alignment guide.
@@ -45,3 +53,4 @@ All designs must work across:
 1. Design changes reviewed against the internal review checklist
 2. Product changes reviewed for consistency
 3. Deviations logged in the internal decision log
+

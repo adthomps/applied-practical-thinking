@@ -112,5 +112,5 @@ Production values:
 
 - [APT Design Architecture](apps/web/docs/design/APT-DESIGN-ARCHITECTURE.md)
 - [APT Design System](apps/web/docs/design/APT-DESIGN-SYSTEM.md)
-- [Decision Log](apps/web/docs/design/decision-log.md)
+- [Decision Log](docs/DECISION_LOG.md)
 - [Documentation Index](DOCUMENTATION_INDEX.md)

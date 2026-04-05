@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import {
   ContentDetailMatch,
@@ -12,6 +12,7 @@ export function useContentDetail(params: {
   match?: ContentDetailMatch;
 }) {
   const { indexTypes, idOrSlug, match } = params;
+  const indexTypesKey = useMemo(() => indexTypes.join("|"), [indexTypes]);
 
   const [items, setItems] = useState<ContentIndexItem[]>([]);
   const [item, setItem] = useState<ContentIndexItem | null>(null);
@@ -52,8 +53,9 @@ export function useContentDetail(params: {
         if (cancelled) return;
         setError(e?.message || "Failed to load content");
       } finally {
-        if (cancelled) return;
-        setLoading(false);
+        if (!cancelled) {
+          setLoading(false);
+        }
       }
     }
 
@@ -62,7 +64,7 @@ export function useContentDetail(params: {
     return () => {
       cancelled = true;
     };
-  }, [indexTypes.join("|"), idOrSlug, match]);
+  }, [indexTypes, indexTypesKey, idOrSlug, match]);
 
   return { items, item, markdown, loading, error };
 }

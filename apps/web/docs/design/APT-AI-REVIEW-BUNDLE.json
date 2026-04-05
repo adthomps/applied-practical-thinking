@@ -1,7 +1,15 @@
 {
   "id": "apt-ai-review-bundle",
   "title": "APT AI Review Bundle",
-  "version": "2026-04-04",
+  "version": "2.0.0",
+  "docsMajor": 2,
+  "docsMajors": [1, 2],
+  "updatedAt": "2026-04-05",
+  "compatibility": {
+    "externalVisibility": "latest-stable-only",
+    "canonicalRoot": "/docs/design/v{major}/",
+    "aliasRoot": "/docs/design/"
+  },
   "hashAlgorithm": "sha256",
   "bundleHash": "computed-during-build",
   "kind": "ai-review-bundle",
@@ -15,49 +23,114 @@
       "id": "bundle-manifest-json",
       "title": "APT AI Review Bundle JSON Manifest",
       "url": "/docs/design/APT-AI-REVIEW-BUNDLE.json",
-      "contentType": "application/json"
+      "contentType": "application/json",
+      "ui": {
+        "cardOrder": 3,
+        "ctaOrder": 3,
+        "ctaLabel": "Download JSON Manifest",
+        "ctaVariant": "ghost",
+        "tagLabel": "Machine Readable",
+        "tagVariant": "outline",
+        "icon": "hard-drive-download",
+        "description": "Machine-readable manifest for tool-driven review workflows, including entry points, document inventory, and handoff sets."
+      }
     },
     {
       "id": "bundle-markdown",
       "title": "APT AI Review Bundle Markdown",
       "url": "/docs/design/APT-AI-REVIEW-BUNDLE.md",
-      "contentType": "text/markdown"
+      "contentType": "text/markdown",
+      "ui": {
+        "cardOrder": 2,
+        "ctaOrder": 2,
+        "ctaLabel": "Download Bundle Markdown",
+        "ctaVariant": "outline",
+        "tagLabel": "Bundle",
+        "tagVariant": "secondary",
+        "icon": "file-text",
+        "description": "Compact human-readable handoff that tells external reviewers which doctrine files to pair with the target artifact."
+      }
     },
     {
       "id": "review-standard-markdown",
       "title": "APT Review Standard",
       "url": "/docs/design/APT-REVIEW-STANDARD.md",
-      "contentType": "text/markdown"
+      "contentType": "text/markdown",
+      "ui": {
+        "cardOrder": 1,
+        "ctaOrder": 1,
+        "ctaLabel": "Download Review Standard",
+        "ctaVariant": "primary",
+        "tagLabel": "Start Here",
+        "tagVariant": "accent",
+        "icon": "bot",
+        "description": "Umbrella review contract for information architecture, design system usage, design architecture, systems framing, and content strategy."
+      }
     },
     {
       "id": "design-thinking-markdown",
       "title": "APT Design Thinking",
       "url": "/docs/design/APT-DESIGN-THINKING.md",
-      "contentType": "text/markdown"
+      "contentType": "text/markdown",
+      "ui": {
+        "cardOrder": 4,
+        "tagLabel": "Doctrine",
+        "tagVariant": "ghost",
+        "icon": "sparkles",
+        "description": "Use for problem framing, constraints, alternatives, and decision quality."
+      }
     },
     {
       "id": "design-system-markdown",
       "title": "APT Design System",
       "url": "/docs/design/APT-DESIGN-SYSTEM.md",
-      "contentType": "text/markdown"
+      "contentType": "text/markdown",
+      "ui": {
+        "cardOrder": 5,
+        "tagLabel": "Doctrine",
+        "tagVariant": "ghost",
+        "icon": "palette",
+        "description": "Use for tokens, components, spacing ownership, and shared APT primitives."
+      }
     },
     {
       "id": "design-architecture-markdown",
       "title": "APT Design Architecture",
       "url": "/docs/design/APT-DESIGN-ARCHITECTURE.md",
-      "contentType": "text/markdown"
+      "contentType": "text/markdown",
+      "ui": {
+        "cardOrder": 6,
+        "tagLabel": "Doctrine",
+        "tagVariant": "ghost",
+        "icon": "network",
+        "description": "Use for monorepo boundaries, deployment surfaces, prompt ownership, and service separation."
+      }
     },
     {
       "id": "content-strategy-markdown",
       "title": "APT Content Strategy",
       "url": "/docs/design/APT-CONTENT-STRATEGY.md",
-      "contentType": "text/markdown"
+      "contentType": "text/markdown",
+      "ui": {
+        "cardOrder": 7,
+        "tagLabel": "Doctrine",
+        "tagVariant": "ghost",
+        "icon": "route",
+        "description": "Use for naming, visitor intent, navigation, and content placement."
+      }
     },
     {
       "id": "design-systems-markdown",
       "title": "APT Design Systems",
       "url": "/docs/design/APT-DESIGN-SYSTEMS.md",
-      "contentType": "text/markdown"
+      "contentType": "text/markdown",
+      "ui": {
+        "cardOrder": 8,
+        "tagLabel": "Reference",
+        "tagVariant": "outline",
+        "icon": "download",
+        "description": "Use for systems framing, relationship mapping, and stable reference models."
+      }
     }
   ],
   "documents": [
@@ -160,7 +233,12 @@
         "design-system",
         "content-strategy"
       ],
-      "requiresTargetArtifact": true
+      "requiresTargetArtifact": true,
+      "ui": {
+        "title": "Route review",
+        "order": 1,
+        "targetArtifactLabel": "Target route or page"
+      }
     },
     {
       "name": "component-review",
@@ -169,7 +247,12 @@
         "design-system",
         "design-architecture"
       ],
-      "requiresTargetArtifact": true
+      "requiresTargetArtifact": true,
+      "ui": {
+        "title": "Component review",
+        "order": 2,
+        "targetArtifactLabel": "Target component"
+      }
     },
     {
       "name": "architecture-review",
@@ -177,7 +260,12 @@
         "review-standard",
         "design-architecture"
       ],
-      "requiresTargetArtifact": true
+      "requiresTargetArtifact": true,
+      "ui": {
+        "title": "Architecture review",
+        "order": 3,
+        "targetArtifactLabel": "Target repo area or service boundary"
+      }
     },
     {
       "name": "doctrine-review",
@@ -186,7 +274,12 @@
         "design-thinking",
         "content-strategy"
       ],
-      "requiresTargetArtifact": true
+      "requiresTargetArtifact": true,
+      "ui": {
+        "title": "Doctrine review",
+        "order": 4,
+        "targetArtifactLabel": "Target doctrine change"
+      }
     }
   ],
   "outputContract": {

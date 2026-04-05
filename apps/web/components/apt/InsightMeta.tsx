@@ -1,6 +1,5 @@
 import { AptTag } from "@/components/apt/AptTag";
-import { Clock } from "lucide-react";
-import { Book, Mic, FileText, Podcast } from "lucide-react";
+import { Book, Clock, FileText, Podcast } from "lucide-react";
 
 export function InsightMeta({ insight, showType = true, showDate = true, showConcepts = true }) {
   const typeIcons = {

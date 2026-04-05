@@ -1,6 +1,20 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
+  Palette,
+  Type,
+  Box,
+  Sparkles,
+  Layout,
+  MonitorSmartphone,
+  Copy,
+  Check,
+  ExternalLink,
+  ArrowRight,
+  Download,
+  Eye,
+} from "lucide-react";
+import {
   AptButton,
   AptCard,
   AptCardHeader,
@@ -8,27 +22,15 @@ import {
   AptCardDescription,
   AptCardContent,
   AptTag,
+  DesignDocVersionSwitcher,
   AptEmblem,
   ReviewBundleCallout,
   SectionIntro,
 } from "@/components/apt";
 import { ContrastChecker } from "@/components/apt/ContrastChecker";
-import { 
-  Palette, 
-  Type, 
-  Box, 
-  Sparkles, 
-  Layout, 
-  MonitorSmartphone,
-  Copy, 
-  Check,
-  ExternalLink,
-  ArrowRight,
-  Download,
-  Eye
-} from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
+import { useDesignDocVersion } from "@/hooks/useDesignDocVersion";
 import { downloadWorkerMarkdown } from "@/src/services/download";
 
 function ColorSwatch({ name, cssVar, className }: { name: string; cssVar: string; className: string }) {
@@ -55,7 +57,7 @@ function ColorSwatch({ name, cssVar, className }: { name: string; cssVar: string
   );
 }
 
-function CodeBlock({ code, language = "tsx" }: { code: string; language?: string }) {
+function CodeBlock({ code }: { code: string }) {
   const [copied, setCopied] = useState(false);
   
   const handleCopy = () => {
@@ -92,10 +94,13 @@ function Section({ id, title, description, children }: { id: string; title: stri
 }
 
 export default function PortfolioDesignSystem() {
-  const systemDocUrl = tryGetWorkerApiUrl("/api/design/docs/system");
+  const systemVersion = useDesignDocVersion("system");
+  const systemDocUrl = tryGetWorkerApiUrl(systemVersion.downloadApiPath);
+  const systemCanonicalUrl = systemVersion.canonicalPath || null;
   const configError = getWorkerApiConfigError();
   const handleSystemMarkdownDownload = async () => {
-    await downloadWorkerMarkdown("/api/design/docs/system", "apt-design-system.md");
+    const majorSuffix = systemVersion.activeMajor ? `-v${systemVersion.activeMajor}` : "";
+    await downloadWorkerMarkdown(systemVersion.downloadApiPath, `apt-design-system${majorSuffix}.md`);
   };
   const sections = [
     { id: "philosophy", label: "Philosophy", icon: Sparkles },
@@ -119,7 +124,6 @@ export default function PortfolioDesignSystem() {
         eyebrow={
           <div className="flex items-center gap-3">
             <AptTag variant="accent">Design System</AptTag>
-            <AptTag variant="outline">v1.0</AptTag>
           </div>
         }
         className="mb-12"
@@ -131,13 +135,21 @@ export default function PortfolioDesignSystem() {
               Download Tokens
             </a>
           </AptButton>
-          <AptButton variant="outline" asChild>
-            <Link to="/design-playground">
-              Open Playground
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </AptButton>
-        </div>
+            <AptButton variant="outline" asChild>
+              <Link to="/design-playground">
+                Open Playground
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </AptButton>
+            {systemCanonicalUrl ? (
+              <AptButton variant="ghost" asChild>
+                <a href={systemCanonicalUrl} target="_blank" rel="noreferrer">
+                  Open canonical
+                </a>
+              </AptButton>
+            ) : null}
+          </div>
+        <DesignDocVersionSwitcher versionState={systemVersion} />
         {!systemDocUrl && configError ? (
           <p className="text-sm text-muted-foreground mt-3">
             Configure <code>{configError.envVar}</code> on the Pages project to enable full-doc links.

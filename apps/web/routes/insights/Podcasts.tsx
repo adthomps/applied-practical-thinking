@@ -5,40 +5,38 @@ import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex
 import { getWorkerApiConfigError } from "@/src/services/api";
 
 export default function InsightsPodcasts() {
-  const [podcasts, setPodcasts] = useState<ContentIndexItem[]>([]);
+  const [podcasts, setPodcasts] = useState<ContentIndexItem[] | null>(null);
   const [selected, setSelected] = useState<SelectedFilters>({
     topics: [],
   });
 
   // Get unique filter options
   const config = useMemo<FilterConfig>(() => {
-    const topics = [...new Set(podcasts.flatMap((b) => b.concepts || []))].sort();
+    const topics = [...new Set((podcasts ?? []).flatMap((b) => b.concepts || []))].sort();
     return { topics };
   }, [podcasts]);
 
   // Filter podcasts
   const filteredPodcasts = useMemo(() => {
-    if (!selected.topics?.length) return podcasts;
-    return podcasts.filter((podcast) =>
+    if (!selected.topics?.length) return podcasts ?? [];
+    return (podcasts ?? []).filter((podcast) =>
       selected.topics?.some((t) => (podcast.concepts || []).includes(t))
     );
   }, [selected.topics, podcasts]);
 
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    setLoading(true);
     fetchContentIndex("podcasts")
       .then((data) => {
         setPodcasts(data.sort((a, b) => (b.publishedAt || "").localeCompare(a.publishedAt || "")));
-        setLoading(false);
       })
       .catch((e) => {
         setError(e.message);
-        setLoading(false);
       });
   }, []);
+
+  const loading = podcasts === null && !error;
   if (loading) {
     return <div className="container py-12 text-center">Loading podcasts…</div>;
   }
@@ -75,7 +73,7 @@ export default function InsightsPodcasts() {
         selected={selected}
         onChange={setSelected}
         resultCount={filteredPodcasts.length}
-        totalCount={podcasts.length}
+        totalCount={(podcasts ?? []).length}
       />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

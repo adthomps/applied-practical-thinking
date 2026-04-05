@@ -223,7 +223,7 @@ export function MarkdownContent(props: { markdown: string; contentPath?: string;
               if (line.trim().startsWith('%%')) continue;
               filtered.push(line);
             }
-            let diagramCode = filtered.join('\n').trim();
+            const diagramCode = filtered.join('\n').trim();
             out.push(<MermaidRenderer key={`mermaid-${index}`} code={diagramCode} />);
           } else {
             out.push(

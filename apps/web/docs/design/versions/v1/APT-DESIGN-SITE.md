@@ -1,3 +1,11 @@
+---
+docId: design-site
+slug: site
+major: 1
+semanticVersion: 1.0.0
+status: stable
+publishedAt: 2026-04-05
+---
 # APT Site Design
 
 Site-specific design patterns and component implementations.
@@ -82,3 +90,4 @@ Variants:
 | Feature cards | `grid-cols-1 sm:grid-cols-2 lg:grid-cols-4` |
 | Lab/System cards | `grid-cols-1 md:grid-cols-2` |
 | Content lists | `grid-cols-1 md:grid-cols-2` |
+

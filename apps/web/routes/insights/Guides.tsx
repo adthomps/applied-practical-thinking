@@ -11,34 +11,32 @@ export default function InsightsGuides() {
     description: "Practical guides and design reviews for applied thinking, repeatable workflows, and artifact review.",
   });
 
-  const [guides, setGuides] = useState<ContentIndexItem[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [guides, setGuides] = useState<ContentIndexItem[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [selected, setSelected] = useState<SelectedFilters>({ topics: [] });
   const [subtype, setSubtype] = useState<"all" | "guide" | "design-review">("all");
 
   useEffect(() => {
-    setLoading(true);
     Promise.all([fetchContentIndex("guides"), fetchContentIndex("design-reviews")])
       .then(([guideItems, reviews]) => {
         setGuides(
           [...guideItems, ...reviews].sort((a, b) => (b.publishedAt || "").localeCompare(a.publishedAt || ""))
         );
-        setLoading(false);
       })
       .catch((e) => {
         setError(e.message);
-        setLoading(false);
       });
   }, []);
 
+  const loading = guides === null && !error;
+
   const config = useMemo<FilterConfig>(() => {
-    const topics = [...new Set(guides.flatMap((b) => b.concepts || []))].sort();
+    const topics = [...new Set((guides ?? []).flatMap((b) => b.concepts || []))].sort();
     return { topics };
   }, [guides]);
 
   const filteredGuides = useMemo(() => {
-    return guides.filter((guide) => {
+    return (guides ?? []).filter((guide) => {
       const matchesTopics =
         !selected.topics?.length || selected.topics.some((t) => (guide.concepts || []).includes(t));
       const matchesSubtype = subtype === "all" || guide.type === subtype;
@@ -99,7 +97,7 @@ export default function InsightsGuides() {
         selected={selected}
         onChange={setSelected}
         resultCount={filteredGuides.length}
-        totalCount={guides.length}
+        totalCount={(guides ?? []).length}
       />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

@@ -5,9 +5,7 @@ import mermaid from "mermaid";
 let mermaidInitialized = false;
 export function MermaidRenderer({ code }: { code: string }) {
   const [error, setError] = useState<string | null>(null);
-  if (!code.trim()) {
-    return null;
-  }
+  const hasCode = code.trim().length > 0;
   // Use the real diagram code from markdown
   const renderCode = code;
   const containerRef = useRef<HTMLDivElement>(null);
@@ -38,6 +36,10 @@ export function MermaidRenderer({ code }: { code: string }) {
     };
   }, []);
   useEffect(() => {
+    if (!hasCode) {
+      return;
+    }
+
     const styleId = "apt-mermaid-style";
     if (!document.getElementById(styleId)) {
       const style = document.createElement("style");
@@ -79,8 +81,12 @@ export function MermaidRenderer({ code }: { code: string }) {
       `;
       document.head.appendChild(style);
     }
-    if (containerRef.current) {
-      try {
+    if (!containerRef.current) {
+      return;
+    }
+
+    Promise.resolve()
+      .then(() => {
         // One-time init so HTML labels (br/span) work, and we align to APT tokens.
         if (!mermaidInitialized) {
           mermaid.initialize({
@@ -97,19 +103,24 @@ export function MermaidRenderer({ code }: { code: string }) {
         }
 
         const id = `mermaid-diagram-${Math.random().toString(36).slice(2)}`;
-        (mermaid as any).render(id, renderCode).then((result: any) => {
-          if (!containerRef.current) return;
-          containerRef.current.innerHTML = result?.svg || "";
-          if (typeof result?.bindFunctions === "function") {
-            result.bindFunctions(containerRef.current);
-          }
-        });
+        return (mermaid as any).render(id, renderCode);
+      })
+      .then((result: any) => {
+        if (!containerRef.current) return;
+        containerRef.current.innerHTML = result?.svg || "";
+        if (typeof result?.bindFunctions === "function") {
+          result.bindFunctions(containerRef.current);
+        }
         setError(null);
-      } catch (e: any) {
+      })
+      .catch((e: any) => {
         setError(e?.message || "Mermaid rendering failed");
-      }
-    }
-  }, [renderCode, themeVars]);
+      });
+  }, [hasCode, renderCode, themeVars]);
+
+  if (!hasCode) {
+    return null;
+  }
 
   if (error) {
     return (
