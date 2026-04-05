@@ -1,6 +1,6 @@
 import { useMemo, useState, type ComponentType } from "react";
 import { Link } from "react-router-dom";
-import { AptButton, AptCard, LandingSectionCardGrid, SectionIntro } from "@/components/apt";
+import { AptButton, AptCard, AptTag, LandingSectionCardGrid, SectionIntro } from "@/components/apt";
 import { siteConfig } from "@/data/site";
 import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
 import { downloadWorkerMarkdown } from "@/src/services/download";
@@ -12,6 +12,7 @@ import {
   Route,
   ArrowRight,
   FileText,
+  Bot,
 } from "lucide-react";
 
 const designNav = siteConfig.nav.find(n => n.path === "/design");
@@ -23,6 +24,7 @@ const sectionIcons: Record<string, ComponentType<{ className?: string }>> = {
   "/design/architecture": Network,
   "/design/systems": Layers3,
   "/design/content-strategy": Route,
+  "/design/review-bundle": Bot,
 };
 
 type DesignFilter = "all" | "doctrine" | "reference";
@@ -60,17 +62,25 @@ export default function Portfolio() {
           titleClassName="text-3xl md:text-4xl"
           descriptionClassName="text-lg"
         >
-          <AptButton
-            variant="outline"
-            type="button"
-            onClick={() => {
-              void handleOverviewMarkdownDownload();
-            }}
-            disabled={!overviewDocUrl}
-          >
-            <FileText className="h-4 w-4" />
-            Download Design Markdown
-          </AptButton>
+          <div className="flex flex-wrap gap-3">
+            <AptButton asChild>
+              <Link to="/design/review-bundle">
+                <Bot className="h-4 w-4" />
+                Open AI Review Bundle
+              </Link>
+            </AptButton>
+            <AptButton
+              variant="outline"
+              type="button"
+              onClick={() => {
+                void handleOverviewMarkdownDownload();
+              }}
+              disabled={!overviewDocUrl}
+            >
+              <FileText className="h-4 w-4" />
+              Download Design Markdown
+            </AptButton>
+          </div>
           {!overviewDocUrl && configError ? (
             <p className="text-sm text-muted-foreground mt-3">
               Configure <code>{configError.envVar}</code> on the Pages project to enable full-doc links.
@@ -126,7 +136,7 @@ export default function Portfolio() {
                           <Icon className="h-5 w-5 text-primary" />
                         </div>
                         <div>
-                          <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">{category}</p>
+                          <AptTag variant="outline" size="sm" className="mb-2">{category}</AptTag>
                           <h3 className="text-lg font-semibold">{section.label}</h3>
                         </div>
                       </div>

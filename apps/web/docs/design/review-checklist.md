@@ -2,6 +2,8 @@
 
 Use this checklist before merging design changes.
 
+For an AI-usable and broader review contract that covers IA, design system usage, architecture boundaries, systems, and content strategy, start with `APT-REVIEW-STANDARD.md` in this same folder.
+
 ## Colors
 
 - [ ] All colors use semantic tokens (no raw colors)
@@ -28,7 +30,9 @@ Use this checklist before merging design changes.
 - [ ] Uses APT components (`AptButton`, `AptCard`, etc.)
 - [ ] Button variants match action importance
 - [ ] Interactive elements have hover states
-- [ ] Tags/badges categorize appropriately
+- [ ] Tags/badges use consistent semantics: area identity, item type, meta role, status, and supporting taxonomy are visually distinct
+- [ ] Tag-like metadata uses `AptTag` instead of route-level custom pills or raw uppercase label text
+- [ ] `ghost` tags are only used for intentionally de-emphasized inline labels, not for core semantic chips
 - [ ] Native `<button>` is reserved for low-level accessible controls (tabs, menus, toggles); user-facing action controls use `AptButton`
 
 ## Motion

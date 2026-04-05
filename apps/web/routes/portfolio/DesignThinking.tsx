@@ -7,6 +7,7 @@ import {
   AptCardDescription,
   AptCardContent,
   AptTag,
+  ReviewBundleCallout,
   SectionIntro,
 } from "@/components/apt";
 import {
@@ -45,9 +46,7 @@ function FrameworkCard({ slug, icon, title, description, steps, when }: Framewor
                 {icon}
               </div>
               <div>
-                <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground mb-1">
-                  Framework
-                </p>
+                <AptTag variant="outline" size="sm" className="mb-2">Framework</AptTag>
                 <AptCardTitle className="text-lg">{title}</AptCardTitle>
               </div>
             </div>
@@ -402,9 +401,7 @@ export default function PortfolioDesignThinking() {
                 <Brain className="h-6 w-6" />
               </div>
               <div>
-                <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground mb-1">
-                  Next Design Layer
-                </p>
+                <AptTag variant="outline" size="sm" className="mb-2">Next Design Layer</AptTag>
                 <h3 className="text-xl font-semibold mb-1">Design Architecture</h3>
                 <p className="text-muted-foreground">
                   See how APT turns design thinking into delivery structure, ownership boundaries, and repeatable system decisions.
@@ -434,6 +431,7 @@ export default function PortfolioDesignThinking() {
           </div>
         </AptCard>
       </section>
+      <ReviewBundleCallout />
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { BrowseCard, AptTag } from "@/components/apt";
 import { Network } from "lucide-react";
 import { systems as systemDefinitions } from "@/data/systems";
 import type { ContentIndexItem } from "@/src/services/contentIndex";
+import { getStatusTagDefinition } from "@/lib/tagSemantics";
 
 export interface SystemCardProps {
   system: ContentIndexItem;
@@ -11,6 +12,7 @@ export interface SystemCardProps {
 export function SystemCard({ system, to }: SystemCardProps) {
   const systemDefinition = systemDefinitions.find((entry) => entry.id === system.id);
   const appliesTo = systemDefinition?.appliesTo?.slice(0, 2) ?? [];
+  const statusTag = getStatusTagDefinition(systemDefinition?.status);
 
   return (
     <BrowseCard
@@ -20,7 +22,7 @@ export function SystemCard({ system, to }: SystemCardProps) {
       icon={<Network className="h-5 w-5" />}
       eyebrow={
         <div className="flex flex-wrap items-center gap-2">
-          <AptTag variant="accent">Reference Model</AptTag>
+          <AptTag variant="primary">Reference Model</AptTag>
           {systemDefinition?.referenceType ? (
             <AptTag variant="outline" size="sm">
               {systemDefinition.referenceType}
@@ -29,9 +31,9 @@ export function SystemCard({ system, to }: SystemCardProps) {
         </div>
       }
       status={
-        systemDefinition?.status ? (
-          <AptTag variant="secondary" size="sm">
-            {systemDefinition.status}
+        statusTag ? (
+          <AptTag variant={statusTag.variant} size="sm">
+            {statusTag.label}
           </AptTag>
         ) : null
       }

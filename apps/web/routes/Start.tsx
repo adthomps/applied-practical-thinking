@@ -1,5 +1,16 @@
 import { Link } from "react-router-dom";
-import { AptButton, AptCard, AptTag, LandingSectionCardGrid, SectionIntro } from "@/components/apt";
+import {
+  AptButton,
+  AptCard,
+  AptCardContent,
+  AptCardDescription,
+  AptCardFooter,
+  AptCardHeader,
+  AptCardTitle,
+  AptTag,
+  LandingSectionCardGrid,
+  SectionIntro,
+} from "@/components/apt";
 import { siteConfig } from "@/data/site";
 import {
   ArrowRight,
@@ -83,9 +94,11 @@ export default function Start() {
   return (
     <div className="container py-8 md:py-12 space-y-12">
       <section className="max-w-3xl mx-auto text-center space-y-5">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm">
+        <div className="flex justify-center">
+          <AptTag variant="accent" className="inline-flex items-center gap-2 px-3 py-1 text-sm">
           <Zap className="h-4 w-4" />
           Welcome to APT
+          </AptTag>
         </div>
 
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
@@ -115,16 +128,16 @@ export default function Start() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {principles.map((idea) => (
-            <AptCard key={idea.title} variant="subtle" className="h-full">
-              <div className="p-6 space-y-4">
+            <AptCard key={idea.title} variant="subtle" padding="large" className="h-full flex flex-col">
+              <AptCardHeader className="p-0 space-y-4">
                 <div className="h-11 w-11 rounded-lg bg-primary/10 flex items-center justify-center">
                   <idea.icon className="h-5 w-5 text-primary" />
                 </div>
                 <div className="space-y-2">
-                  <h3 className="text-lg font-semibold">{idea.title}</h3>
-                  <p className="text-sm text-muted-foreground">{idea.description}</p>
+                  <AptCardTitle className="text-lg">{idea.title}</AptCardTitle>
+                  <AptCardDescription>{idea.description}</AptCardDescription>
                 </div>
-              </div>
+              </AptCardHeader>
             </AptCard>
           ))}
         </div>
@@ -151,51 +164,51 @@ export default function Start() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {visitorPaths.map((path) => (
-            <AptCard key={path.title} variant="interactive" className="h-full">
-              <div className="p-6 space-y-5">
-                <div className="space-y-3">
-                  <div className="flex items-center gap-2">
-                    <Route className="h-4 w-4 text-primary" />
-                    <AptTag variant="ghost">Suggested Path</AptTag>
-                  </div>
-                  <h3 className="text-lg font-semibold">{path.title}</h3>
-                  <p className="text-sm text-muted-foreground">{path.summary}</p>
-                  <p className="text-sm text-muted-foreground">{path.details}</p>
+            <AptCard key={path.title} variant="interactive" padding="large" className="h-full flex flex-col">
+              <AptCardHeader className="p-0 space-y-3">
+                <div className="flex items-center gap-2">
+                  <Route className="h-4 w-4 text-primary" />
+                  <AptTag variant="outline">Suggested Path</AptTag>
                 </div>
-
+                <AptCardTitle className="text-lg">{path.title}</AptCardTitle>
+                <AptCardDescription>{path.summary}</AptCardDescription>
+              </AptCardHeader>
+              <AptCardContent className="mt-5">
+                <AptCardDescription>{path.details}</AptCardDescription>
+              </AptCardContent>
+              <AptCardFooter className="mt-auto px-0 pb-0">
                 <AptButton variant="outline" size="sm" asChild>
                   <Link to={path.path} className="gap-2">
                     Open
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                 </AptButton>
-              </div>
+              </AptCardFooter>
             </AptCard>
           ))}
         </div>
       </section>
 
       <section className="max-w-3xl">
-        <AptCard variant="elevated">
-          <div className="p-8 space-y-5">
-            <h2 className="text-xl font-semibold">One note before you explore</h2>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+        <AptCard variant="elevated" padding="large">
+          <AptCardHeader className="p-0">
+            <AptCardTitle className="text-xl">One note before you explore</AptCardTitle>
+            <AptCardDescription>
               {siteConfig.disclaimer} APT is meant to make thinking visible through working artifacts,
               reference models, and documented reasoning rather than present itself as a finished product suite.
-            </p>
-
-            <div className="flex flex-wrap gap-3">
-              <AptButton variant="primary" asChild>
-                <Link to="/experiments">Explore Experiments</Link>
-              </AptButton>
-              <AptButton variant="outline" asChild>
-                <Link to="/learn">Start with Learn</Link>
-              </AptButton>
-              <AptButton variant="ghost" asChild>
-                <Link to="/about">Learn About Me</Link>
-              </AptButton>
-            </div>
-          </div>
+            </AptCardDescription>
+          </AptCardHeader>
+          <AptCardFooter className="flex-wrap border-0 px-0 pb-0">
+            <AptButton variant="primary" asChild>
+              <Link to="/experiments">Explore Experiments</Link>
+            </AptButton>
+            <AptButton variant="outline" asChild>
+              <Link to="/learn">Start with Learn</Link>
+            </AptButton>
+            <AptButton variant="ghost" asChild>
+              <Link to="/about">Learn About Me</Link>
+            </AptButton>
+          </AptCardFooter>
         </AptCard>
       </section>
     </div>

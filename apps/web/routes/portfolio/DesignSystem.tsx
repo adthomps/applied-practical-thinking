@@ -9,6 +9,7 @@ import {
   AptCardContent,
   AptTag,
   AptEmblem,
+  ReviewBundleCallout,
   SectionIntro,
 } from "@/components/apt";
 import { ContrastChecker } from "@/components/apt/ContrastChecker";
@@ -905,6 +906,8 @@ text-xl md:text-2xl
           </div>
         </AptCard>
       </div>
+
+      <ReviewBundleCallout />
     </div>
   );
 }

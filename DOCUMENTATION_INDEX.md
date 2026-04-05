@@ -63,9 +63,12 @@ Do not edit copied markdown or docs under `apps/web/public/` as authored source.
 
 ## Design doctrine (`apps/web/docs/design/`)
 
+- [APT-AI-REVIEW-BUNDLE.json](apps/web/docs/design/APT-AI-REVIEW-BUNDLE.json)
+- [APT-AI-REVIEW-BUNDLE.md](apps/web/docs/design/APT-AI-REVIEW-BUNDLE.md)
 - [APT-DESIGN-THINKING.md](apps/web/docs/design/APT-DESIGN-THINKING.md)
 - [APT-DESIGN-SYSTEM.md](apps/web/docs/design/APT-DESIGN-SYSTEM.md)
 - [APT-DESIGN-ARCHITECTURE.md](apps/web/docs/design/APT-DESIGN-ARCHITECTURE.md)
+- [APT-REVIEW-STANDARD.md](apps/web/docs/design/APT-REVIEW-STANDARD.md)
 - Supporting design references in the same folder such as `design-core.md`, `design-site.md`, `design-demos.md`, and `vpds-alignment.md`
 
 ## Internal design support docs

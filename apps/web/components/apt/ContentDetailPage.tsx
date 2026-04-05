@@ -9,6 +9,7 @@ import { ContentIndexItem } from "@/src/services/contentIndex";
 import { RelatedContentList } from "@/components/apt/RelatedContentList";
 import { useToast } from "@/hooks/use-toast";
 import { shareOrCopy } from "@/src/services/share";
+import { getStatusTagDefinition } from "@/lib/tagSemantics";
 import {
   ArrowLeft,
   ExternalLink,
@@ -96,6 +97,7 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
   const currentIdentifiers = new Set(
     [item.id, item.slug].filter((value): value is string => typeof value === "string" && value.length > 0)
   );
+  const statusTag = getStatusTagDefinition(item.status as string | undefined);
 
   const isInternalHref = (href: string) => href.startsWith("/") && !href.startsWith("//");
 
@@ -228,7 +230,7 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
               {item.type && !headerMeta ? (
                 <AptTag variant="primary">{contentTypeLabels[item.type] || item.type}</AptTag>
               ) : null}
-              {item.status ? <AptTag variant="secondary">{item.status}</AptTag> : null}
+              {statusTag ? <AptTag variant={statusTag.variant}>{statusTag.label}</AptTag> : null}
             </div>
             <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
               {item.title}
@@ -417,7 +419,7 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
                 <h3 className="text-sm font-semibold mb-4">Concepts</h3>
                 <div className="flex flex-wrap gap-2">
                   {conceptsForSidebar.map((concept: string) => (
-                    <AptTag key={concept} variant="ghost">
+                    <AptTag key={concept} variant="muted">
                       {concept}
                     </AptTag>
                   ))}
@@ -433,7 +435,7 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
                 <h3 className="text-sm font-semibold mb-4">Platforms</h3>
                 <div className="flex flex-wrap gap-2">
                   {platformsForSidebar.map((platform: string) => (
-                    <AptTag key={platform} variant="secondary">
+                    <AptTag key={platform} variant="default">
                       {platform}
                     </AptTag>
                   ))}
@@ -449,7 +451,7 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
                 <h3 className="text-sm font-semibold mb-4">Technologies</h3>
                 <div className="flex flex-wrap gap-2">
                   {technologiesForSidebar.map((tech: string) => (
-                    <AptTag key={tech} variant="outline">
+                    <AptTag key={tech} variant="muted">
                       {tech}
                     </AptTag>
                   ))}

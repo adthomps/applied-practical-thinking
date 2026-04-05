@@ -3,7 +3,8 @@ import {
   BrowseCard,
   AptTag,
 } from "@/components/apt";
-import { Play, Zap, FlaskConical, ExternalLink, Clock, Github, Beaker } from "lucide-react";
+import { Play, Zap, FlaskConical, ExternalLink, Github, Beaker } from "lucide-react";
+import { getStatusTagDefinition } from "@/lib/tagSemantics";
 
 const typeIcons: Record<string, typeof Play> = {
   interactive: Zap,
@@ -29,6 +30,7 @@ export function DemoCard({ demo }: DemoCardProps) {
 
   const links = demo.links || {};
   const isComingSoon = demo.status === "coming-soon";
+  const statusTag = getStatusTagDefinition(demo.status as string | undefined);
 
   const detailHref = `/experiments/live-demos/${demo.slug || demo.id}`;
   const quickAction = !isComingSoon && (links.demo || links.figma || links.repo)
@@ -61,20 +63,11 @@ export function DemoCard({ demo }: DemoCardProps) {
       description={isComingSoon ? "This demo is under development." : demo.description}
       icon={<TypeIcon className="h-5 w-5" />}
       eyebrow={
-        <AptTag variant="accent">
+        <AptTag variant="primary">
           {typeLabels[demo.type as string] || demo.type || "Demo"}
         </AptTag>
       }
-      status={
-        demo.status === "coming-soon" ? (
-          <AptTag variant="muted">
-            <Clock className="h-3 w-3 mr-1" />
-            Coming Soon
-          </AptTag>
-        ) : demo.status === "archived" ? (
-          <AptTag variant="muted">Archived</AptTag>
-        ) : null
-      }
+      status={statusTag ? <AptTag variant={statusTag.variant}>{statusTag.label}</AptTag> : null}
       highlight={
         demo.problem ? (
           <p className="line-clamp-1 text-sm font-medium text-primary">{demo.problem}</p>

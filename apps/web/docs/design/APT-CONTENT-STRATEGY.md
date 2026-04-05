@@ -70,6 +70,15 @@ Good content strategy leaves behind:
 - cross-links that connect related material without collapsing it together
 - a clear authored-source model so public content, doctrine, and internal docs do not drift
 
+Labels and badges are part of that IA, not decorative garnish. A visitor should be able to distinguish area identity, content type, meta role, and status at a glance. If a badge changes color or treatment arbitrarily between routes, the IA has already started to drift.
+
+Use labels to clarify role:
+
+- section or area identity should read as a stable framing cue
+- content type should read as what the user is opening
+- meta role labels such as `Entry Point` or `Doctrine` should explain how to interpret the card
+- supporting taxonomy should stay visually quieter than type and role labels
+
 ---
 
 ## Audience Paths
