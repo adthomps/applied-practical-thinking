@@ -21,7 +21,7 @@ export const siteConfig = {
     {
       label: "Learn",
       path: "/learn",
-      description: "Guides, articles, podcasts, and worked examples for applied thinking in practice.",
+      description: "Articles, podcasts, practice material, and systems for applied thinking in practice.",
       children: [
         {
           label: "Articles",
@@ -34,9 +34,14 @@ export const siteConfig = {
           description: "Audio discussions exploring thinking, frameworks, and real-world tradeoffs.",
         },
         {
-          label: "Guides",
-          path: "/learn/guides",
-          description: "Practical walkthroughs, reference guides, and worked examples.",
+          label: "Practice",
+          path: "/learn/practice",
+          description: "Guides and design reviews that turn ideas into repeatable work.",
+        },
+        {
+          label: "Systems",
+          path: "/learn/systems",
+          description: "Reference models with decisions, tradeoffs, and production guidance.",
         },
       ],
     },

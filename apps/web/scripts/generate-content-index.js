@@ -1,13 +1,13 @@
 // scripts/generate-content-index.js
 // Usage: node scripts/generate-content-index.js
-// Generates JSON index files for each content type (blog, guides, podcasts, case-studies)
+// Generates JSON index files for each content type (blog, guides, podcasts, design-reviews)
 // by parsing Markdown frontmatter in apps/web/content/*
 
 const fs = require('fs');
 const path = require('path');
 const matter = require('gray-matter');
 
-const CONTENT_TYPES = ['blog', 'guides', 'podcasts', 'case-studies'];
+const CONTENT_TYPES = ['blog', 'guides', 'podcasts', 'design-reviews'];
 const CONTENT_ROOT = path.join(__dirname, '../content');
 const OUTPUT_ROOT = path.join(__dirname, '../data');
 

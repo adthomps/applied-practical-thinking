@@ -2,9 +2,10 @@
 title: AI & Developer's Journey
 featured: true
 id: "07-ai-developers-journey-blog"
-type: "blog"
+type: "article"
 description: "Reflects on the evolution of software development with AI at the forefront. Explores modern frameworks, testing practices, and the future of career paths for developers."
-thumbnail: /content/blogs/07-ai-developers-journey-blog.png
+status: "draft"
+thumbnail: /content/blogs/07-ai-developers-journey-blog.svg
 publishedAt: "2025-10-05"
 concepts:
   - AI in Development

@@ -2,9 +2,10 @@
 title: AI & Storytelling - Creative Coding
 featured: true
 id: "08-creative-coding-storytelling-blog"
-type: "blog"
+type: "article"
 description: "Examines the intersection of AI and creative coding, highlighting how generative art and narrative systems are reshaping digital storytelling."
-thumbnail: /content/blogs/08-creative-coding-storytelling-blog.png
+status: "draft"
+thumbnail: /content/blogs/08-creative-coding-storytelling-blog.svg
 publishedAt: "2025-10-12"
 concepts:
   - Creative Coding

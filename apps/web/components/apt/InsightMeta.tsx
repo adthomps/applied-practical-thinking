@@ -2,26 +2,30 @@ import { AptTag } from "@/components/apt/AptTag";
 import { Clock } from "lucide-react";
 import { Book, Mic, FileText, Podcast } from "lucide-react";
 
-export function InsightMeta({ insight, showDate = true, showConcepts = true }) {
+export function InsightMeta({ insight, showType = true, showDate = true, showConcepts = true }) {
   const typeIcons = {
+    article: FileText,
     blog: FileText,
     podcast: Podcast,
     guide: Book,
-    "case-study": Book,
+    "design-review": Book,
   };
   const typeLabels = {
-    blog: "Blog",
+    article: "Article",
+    blog: "Article",
     podcast: "Podcast",
     guide: "Guide",
-    "case-study": "Case Study",
+    "design-review": "Design Review",
   };
   const Icon = typeIcons[insight.type] || Book;
   return (
     <div className="flex items-center gap-3 mb-4">
-      <AptTag variant="accent">
-        <Icon className="h-3 w-3 mr-1" />
-        {typeLabels[insight.type]}
-      </AptTag>
+      {showType ? (
+        <AptTag variant="accent">
+          <Icon className="h-3 w-3 mr-1" />
+          {typeLabels[insight.type]}
+        </AptTag>
+      ) : null}
       {insight.duration && (
         <span className="flex items-center text-xs text-muted-foreground">
           <Clock className="h-4 w-4 mr-1" />

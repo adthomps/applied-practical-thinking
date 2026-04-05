@@ -36,7 +36,7 @@ Do not overcomplicate simple structures. The strategy should create clarity, not
 
 ### Learn
 
-Articles, podcasts, guides, and worked examples that help people understand and apply the ideas.
+Articles, podcasts, guides, design reviews, and systems that help people understand and apply the ideas.
 
 ### Experiments
 

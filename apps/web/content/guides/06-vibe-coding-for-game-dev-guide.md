@@ -1,145 +1,137 @@
 ---
-title: "AI System Instructions For Transaction Analysis Guide"
+title: "Vibe Coding for Game Dev"
 featured: false
-id: "ai-system-instructions-for-transaction-analysis-guide"
+id: "06-vibe-coding-for-game-dev-guide"
 type: "guide"
-description: "Step-by-step guide for implementing structured AI instructions in payments. Covers schemas, testing, monitoring, and compliance considerations without external references."
+description: "A practical guide to using AI-assisted prototyping in game development without losing system clarity, testability, or the path to production."
 thumbnail: /content/guides/06-vibe-coding-for-game-dev-guide.png
-publishedAt: "2025-08-17"
+publishedAt: "2025-08-22"
 concepts:
-  - continuous-delivery
-  - teams
-  - product
+  - Game Development
+  - AI-Assisted Prototyping
+  - Systems Design
+  - Prototyping
+  - Simulation Projects
 platforms:
   - Web
   - Cloud
-  - Payment Gateway
 technologies:
   - Cloudflare
   - OpenAI
 links:
-  Blog: 01-ai-system-instructions-for-transaction-analysis
-  Podcast: 01-ai-system-instructions-for-transaction-analysis-podcast
+  Blog: 06-vibe-coding-for-game-dev-blog
+  Podcast: 
+  Guide: 06-vibe-coding-for-game-dev-guide
   Case: 
-  Guide: 
   Article: 
   Slides: 
 ---
 
 ## Introduction
 
-This guide outlines how to implement structured system instructions in payment environments. The goal is to ensure AI delivers predictable, explainable results in fraud detection and transaction analysis while remaining flexible for iteration.
+AI can make game prototyping dramatically faster, but speed is only useful if the prototype stays legible. This guide is about turning "vibe coding" from a loose intuition into a usable workflow for RTS, simulation, and systems-heavy concepts.
 
-## 1. Define the Role & Boundaries
+## 1. Decide What the Prototype Is Testing
+
+Before generating assets, UI, or mission text, write down the actual question:
+
+- Is the prototype testing feel?
+- Is it testing readability?
+- Is it testing progression or economy balance?
+- Is it testing whether generated content creates useful variation?
+
+If the question is vague, the output will be noisy. A prototype should narrow uncertainty, not expand it.
+
+## 2. Keep the Core Loop Small and Observable
+
+The first prototype does not need broad scope. It needs a readable loop.
+
+For an RTS or simulation prototype, focus on a few checks:
+
+1. Can the player understand the current state quickly?
+2. Are the available actions obvious enough to test?
+3. Does the system create meaningful pressure or tradeoffs?
+4. Can one change in the rules produce an observable difference?
+
+If you cannot answer those questions from a rough build, more generated content will not help.
+
+## 3. Separate Stable Rules From Disposable Scaffolding
+
+One of the biggest mistakes in AI-assisted prototyping is letting temporary outputs look more durable than they are.
+
+Track three categories clearly:
+
+- stable rules: mechanics you intend to keep and refine
+- experimental rules: mechanics under active evaluation
+- generated scaffolding: placeholder missions, dialogue, maps, or UI
+
+That separation makes later cleanup possible.
+
+## 4. Use Generated Content as a Test Harness
+
+AI is useful for creating variation around a mechanic so the mechanic can be judged under different conditions.
+
+Examples:
+
+- map seeds that expose pathing issues
+- generated encounter tables that stress pacing
+- placeholder faction or unit descriptions that test player comprehension
+- rough dialogue that reveals whether mission structure is readable
+
+Generated output should help you test the design. It should not be mistaken for the design itself.
+
+## 5. Record the Prototype Contract
+
+Create a short prototype contract for every build:
 
 ```json
 {
-  "role": "Fraud Analyst",
-  "objective": "Classify transactions as APPROVE, DECLINE, or ESCALATE with explanation.",
-  "constraints": [
-    "Never guess if data is missing",
-    "If unclear, always return ESCALATE"
-  ]
+  "prototype": "economy-loop-v2",
+  "question": "Does fuel scarcity create meaningful route choices?",
+  "stableRules": ["movement", "capture", "resource tick"],
+  "generatedScaffolding": ["mission text", "map layout seeds"],
+  "exitCriteria": ["players can explain tradeoff", "one optimal loop does not dominate"]
 }
 ```
-Treat this as a contract — not prose.
 
-## 2. Input Schema
+This does two things: it makes review easier, and it gives the prototype a clean path toward becoming a real feature.
 
-```json
-{
-  "transaction_id": "string",
-  "amount": "number",
-  "currency": "string",
-  "avs_result": "string",
-  "cvv_result": "string",
-  "merchant_category_code": "string",
-  "ip_country": "string"
-}
-```
-Reject or sanitize inputs that don’t conform.
+## 6. Review Feel With Evidence, Not Memory
 
-## 3. Output Schema
+After each iteration, log a small set of observations:
 
-```json
-{
-  "decision": "APPROVE | DECLINE | ESCALATE",
-  "reasoning": "string",
-  "risk_flags": ["AVS_MISMATCH", "HIGH_VALUE", "IP_GEO_MISMATCH"]
-}
-```
-Predefine allowed values.
+- what felt clearer or weaker than expected
+- where players hesitated
+- which generated elements helped versus distracted
+- what changed between versions
 
-## 4. Test with Known Cases
+Vibe coding fails when everything depends on memory and impression. Lightweight notes are enough to make comparisons real.
 
-✅ Approved: AVS + CVV match, low risk.
+## 7. Know When to Graduate the Prototype
 
-❌ Declined: AVS mismatch, high-risk location.
+Once a mechanic looks worth keeping, stop treating it like an experiment and start turning it into a system.
 
-⚠️ Escalated: Missing CVV data.
+That usually means:
 
-Log mismatches for tuning.
+- formalizing data structures
+- replacing generated placeholders with owned content where needed
+- writing tests for critical rules
+- documenting balancing assumptions
+- deciding what remains dynamic versus authored
 
-## 5. Error Handling
+This is the transition from interesting motion to durable game design.
 
-```python
-response = call_ai(transaction)
-if not validate_schema(response):
-  return {"decision": "ESCALATE", "reasoning": "Invalid AI output"}
-```
+## Review Table
 
-## 6. Monitor & Iterate
-
-Compare AI vs. human reviewer outcomes.
-
-Analyze failure patterns.
-
-Update instruction boundaries.
-
-Re-test continuously.
-
-## 7. Compliance & Explainability
-
-Every output should include:
-
-- Decision (approve/decline/escalate)
-- Reasoning (human-readable)
-- Audit Trail (timestamp, inputs, outputs, instruction version)
-
-## Example Flow
-
-```mermaid
-%%{init:{
-  "securityLevel":"loose",
-  "flowchart":{"htmlLabels":true,"useMaxWidth":true,"diagramPadding":16,"padding":12,"curve":"linear"},
-  "themeVariables":{
-    "decisionBg":"#22c55e",
-    "decisionBorder":"#16a34a",
-    "escalateBg":"#f59e42",
-    "escalateBorder":"#b45309"
-  }
-}}%%
-flowchart TD
-  A["Transaction API"] --> B["Schema Validation"]
-  B --> SE["Schema Enforcement"]
-  SE --> C["AI with Instruction Set"]
-  C --> D{"Valid Output?"}
-  D -->|Yes| E["Decision JSON"]:::decision
-  D -->|No| F["Fallback Escalate"]:::escalate
-  E --> G["Dashboard & Analyst Oversight"]
-  F --> G
-  G --> AT["Audit Trail"]
-  AT -.-> C
-
-  %% Node styles
-  E:::decision
-  F:::escalate
-  classDef decision fill:#22c55e,stroke:#16a34a,color:#fff;
-  classDef escalate fill:#f59e42,stroke:#b45309,color:#fff;
-
-```
+| Area | Question |
+| --- | --- |
+| Goal clarity | Is the prototype testing one meaningful uncertainty? |
+| Loop quality | Can the player read and act on the core loop? |
+| Rule clarity | Are stable rules distinct from temporary scaffolding? |
+| Evidence | Can the team explain why one version is better than another? |
+| Production path | Is there a clear next step if the mechanic is worth keeping? |
 
 ## Conclusion
 
-System instructions are the backbone of reliable AI in payments. With schemas, clear boundaries, and continuous monitoring, teams can move from unpredictable “black box” answers to auditable and trusted outputs.
+Vibe coding becomes useful in game development when it creates faster insight without destroying structure. Keep the prototype small, preserve rule clarity, treat generated output as a harness, and move deliberately from exploration to system design.
 

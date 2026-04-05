@@ -4,9 +4,15 @@ import { AptButton, AptCard, AptCardContent, AptCardHeader, AptCardTitle, AptTag
 import { SystemCard } from "@/components/apt/SystemCard";
 import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
 import { downloadWorkerMarkdown } from "@/src/services/download";
+import { usePageMetadata } from "@/hooks/usePageMetadata";
 import { AlertTriangle, CheckCircle2, FileText, Layers3 } from "lucide-react";
 
 export default function Systems() {
+  usePageMetadata({
+    title: "Reference Models",
+    description: "Stable system references that capture reusable models, key decisions, tradeoffs, and related learning material.",
+  });
+
   const [systems, setSystems] = useState<ContentIndexItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

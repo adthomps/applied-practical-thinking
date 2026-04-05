@@ -7,6 +7,8 @@ const PUBLIC_DATA_DIR = path.join(__dirname, '../public/data');
 
 if (!fs.existsSync(PUBLIC_DATA_DIR)) fs.mkdirSync(PUBLIC_DATA_DIR);
 
+fs.rmSync(path.join(PUBLIC_DATA_DIR, 'case-studies-index.json'), { force: true });
+
 const files = fs
   .readdirSync(DATA_DIR)
   .filter((f) => /-index\d*\.json$/.test(f));

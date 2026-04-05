@@ -39,6 +39,22 @@ Systems mapping is a visual way to understand how different parts of a product o
 3. Identify feedback loops
 4. Look for leverage points
 
+## Applied Example: The APT Lab Pattern
+
+One useful way to read systems mapping is as a pre-prototyping discipline, not a documentation artifact added after the work. In the APT Lab pattern, the map came first.
+
+- ambiguous goals were translated into named actors, constraints, and feedback paths
+- rapid prototypes were used to test the highest-risk links in the system rather than polishing the whole surface
+- stakeholder feedback was scheduled against the map so the team could tell whether a change affected a local screen or the wider operating model
+
+That sequence matters. The map reduced ambiguity, the prototype reduced risk, and the feedback loop prevented the team from treating the first coherent concept as the final answer.
+
+## What This Example Clarifies
+
+- systems thinking is most useful before architecture feels settled
+- prototypes work best when they are attached to a specific uncertainty in the map
+- feedback gets better when people can point to a shared model instead of arguing from isolated opinions
+
 ## Pitfalls
 
 - Overcomplicating the map

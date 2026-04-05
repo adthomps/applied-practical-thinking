@@ -21,8 +21,8 @@ technologies:
   - OpenAI
 links:
   Blog: 02-ai-powered-cloud-development-blog
-  Podcast: 02-ai-powered-cloud-development-podcast
-  Case: 02-ai-powered-cloud-development=case
+  Podcast: 
+  Case: 
   Guide: 02-ai-powered-cloud-development-guide
   Article: 
   Slides: 
@@ -211,5 +211,5 @@ sequenceDiagram
 
 ## Conclusion
 
-System instructions are the backbone of reliable AI in payments. With schemas, clear boundaries, and continuous monitoring, teams can move from unpredictable “black box” answers to auditable and trusted outputs.
+AI-powered cloud development works best when modern tooling speeds up execution without weakening engineering discipline. Treat AI as leverage inside a reviewable workflow, keep the architecture simple, and use edge-native deployment only where it creates real operational advantages.
 

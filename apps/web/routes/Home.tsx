@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { siteConfig } from "@/data/site";
+import { authorConfig, siteConfig } from "@/data/site";
 import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
+import { usePageMetadata } from "@/hooks/usePageMetadata";
 import {
   HeroSection,
   AptCard,
@@ -127,10 +128,10 @@ function getHomepageFeaturedLink(item: ContentIndexItem) {
   return {
     to: `/learn/${item.id ?? item.slug}`,
     typeLabel:
-      item.type === "blog"
+      item.type === "article" || item.type === "blog"
         ? "Article"
-        : item.type === "case-study"
-          ? "Case Study"
+        : item.type === "design-review"
+          ? "Design Review"
           : item.type === "guide"
             ? "Guide"
             : "Learn",
@@ -139,6 +140,13 @@ function getHomepageFeaturedLink(item: ContentIndexItem) {
 }
 
 export default function Home() {
+  usePageMetadata({
+    title: siteConfig.fullName,
+    description: siteConfig.description,
+    image: authorConfig.profileImage,
+    imageAlt: `${siteConfig.fullName} social preview`,
+  });
+
   // Featured items - curated cross-section of experiments, learn content, and systems
   const [featuredItems, setFeaturedItems] = useState<ContentIndexItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -150,10 +158,10 @@ export default function Home() {
       fetchContentIndex("blog"),
       fetchContentIndex("guides"),
       fetchContentIndex("podcasts"),
-      fetchContentIndex("case-studies"),
+      fetchContentIndex("design-reviews"),
       fetchContentIndex("demos"),
       fetchContentIndex("systems"),
-    ]).then(([labs, blog, guides, podcasts, caseStudies, demos, systems]) => {
+    ]).then(([labs, blog, guides, podcasts, reviews, demos, systems]) => {
       if (cancelled) return;
 
       const allContent: ContentIndexItem[] = [
@@ -161,7 +169,7 @@ export default function Home() {
         ...blog,
         ...guides,
         ...podcasts,
-        ...caseStudies,
+        ...reviews,
         ...demos,
         ...systems,
       ];

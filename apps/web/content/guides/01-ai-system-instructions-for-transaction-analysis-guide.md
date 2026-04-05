@@ -1,15 +1,16 @@
 ---
 title: "AI System Instructions For Transaction Analysis Guide"
 featured: false
-id: "ai-system-instructions-for-transaction-analysis-guide"
+id: "01-ai-system-instructions-for-transaction-analysis-guide"
 type: "guide"
 description: "Step-by-step guide for implementing structured AI instructions in payments. Covers schemas, testing, monitoring, and compliance considerations without external references."
 thumbnail: /content/guides/01-ai-system-instructions-for-transaction-analysis-guide.png
 publishedAt: "2025-08-17"
 concepts:
-  - continuous-delivery
-  - teams
-  - product
+  - AI
+  - Transactions Analysis
+  - Fraud & Risk Analysts
+  - API Architects
 platforms:
   - Web
   - Cloud
@@ -18,10 +19,10 @@ technologies:
   - Cloudflare
   - OpenAI
 links:
-  Blog: 01-ai-system-instructions-for-transaction-analysis
+  Blog: 01-ai-system-instructions-for-transaction-analysis-blog
   Podcast: 01-ai-system-instructions-for-transaction-analysis-podcast
   Case: 
-  Guide: 
+  Guide: 01-ai-system-instructions-for-transaction-analysis-guide
   Article: 
   Slides: 
 ---

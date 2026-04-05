@@ -81,14 +81,30 @@ function normalizeOrigin(value: string) {
   return value.trim().replace(/\/+$/, "");
 }
 
-function getStaticOrigin(requestUrl: string, configuredOrigin?: string) {
-  if (configuredOrigin?.trim()) {
-    return normalizeOrigin(configuredOrigin);
+function isLocalDevOrigin(value: string) {
+  try {
+    const url = new URL(value);
+    return (
+      (url.hostname === "127.0.0.1" || url.hostname === "localhost") &&
+      url.port !== "8787"
+    );
+  } catch {
+    return false;
   }
+}
 
+function getStaticOrigin(requestUrl: string, configuredOrigin?: string, requestOrigin?: string) {
   const current = new URL(requestUrl);
   if ((current.hostname === "127.0.0.1" || current.hostname === "localhost") && current.port === "8787") {
-    return DEV_WEB_ORIGIN;
+    if (requestOrigin && isLocalDevOrigin(requestOrigin)) {
+      return normalizeOrigin(requestOrigin);
+    }
+
+    return "http://127.0.0.1:8080";
+  }
+
+  if (configuredOrigin?.trim()) {
+    return normalizeOrigin(configuredOrigin);
   }
 
   throw new Error(
@@ -96,8 +112,13 @@ function getStaticOrigin(requestUrl: string, configuredOrigin?: string) {
   );
 }
 
-async function fetchStaticText(requestUrl: string, pathname: string, configuredOrigin?: string) {
-  const origin = getStaticOrigin(requestUrl, configuredOrigin);
+async function fetchStaticText(
+  requestUrl: string,
+  pathname: string,
+  configuredOrigin?: string,
+  requestOrigin?: string
+) {
+  const origin = getStaticOrigin(requestUrl, configuredOrigin, requestOrigin);
   const res = await fetch(`${origin}${pathname}`);
   if (!res.ok) {
     throw new Error(`Failed to load static asset: ${pathname}`);
@@ -106,8 +127,13 @@ async function fetchStaticText(requestUrl: string, pathname: string, configuredO
   return res.text();
 }
 
-async function fetchStaticJson<T>(requestUrl: string, pathname: string, configuredOrigin?: string): Promise<T> {
-  const origin = getStaticOrigin(requestUrl, configuredOrigin);
+async function fetchStaticJson<T>(
+  requestUrl: string,
+  pathname: string,
+  configuredOrigin?: string,
+  requestOrigin?: string
+): Promise<T> {
+  const origin = getStaticOrigin(requestUrl, configuredOrigin, requestOrigin);
   const res = await fetch(`${origin}${pathname}`);
   if (!res.ok) {
     throw new Error(`Failed to load static asset: ${pathname}`);
@@ -141,6 +167,7 @@ function normalizeItem(type: ContentIndexType, item: ContentIndexItem): ContentI
 export const publicContentRoute = new Hono<{ Bindings: PublicContentBindings }>()
   .get("/api/content/:type", async (c) => {
     const type = c.req.param("type") as ContentIndexType;
+    const requestOrigin = c.req.header("origin");
     if (!contentIndexTypes.includes(type)) {
       return c.json({ error: `Unsupported content type: ${type}` }, 404);
     }
@@ -149,7 +176,8 @@ export const publicContentRoute = new Hono<{ Bindings: PublicContentBindings }>(
       const items = await fetchStaticJson<ContentIndexItem[]>(
         c.req.url,
         `/data/${type}-index.json`,
-        c.env.PUBLIC_SITE_ORIGIN
+        c.env.PUBLIC_SITE_ORIGIN,
+        requestOrigin
       );
       return c.json(items.map((item) => normalizeItem(type, item)));
     } catch (error: any) {
@@ -166,6 +194,7 @@ export const publicContentRoute = new Hono<{ Bindings: PublicContentBindings }>(
   .get("/api/content/:type/:idOrSlug", async (c) => {
     const type = c.req.param("type") as ContentIndexType;
     const idOrSlug = c.req.param("idOrSlug");
+    const requestOrigin = c.req.header("origin");
 
     if (!contentIndexTypes.includes(type)) {
       return c.json({ error: `Unsupported content type: ${type}` }, 404);
@@ -175,7 +204,8 @@ export const publicContentRoute = new Hono<{ Bindings: PublicContentBindings }>(
       const items = await fetchStaticJson<ContentIndexItem[]>(
         c.req.url,
         `/data/${type}-index.json`,
-        c.env.PUBLIC_SITE_ORIGIN
+        c.env.PUBLIC_SITE_ORIGIN,
+        requestOrigin
       );
       const normalizedItems = items.map((item) => normalizeItem(type, item));
       const item =
@@ -189,7 +219,8 @@ export const publicContentRoute = new Hono<{ Bindings: PublicContentBindings }>(
       const rawMarkdown = await fetchStaticText(
         c.req.url,
         `/content/${item.contentPath}`,
-        c.env.PUBLIC_SITE_ORIGIN
+        c.env.PUBLIC_SITE_ORIGIN,
+        requestOrigin
       );
       const response: ContentDetailResponse = {
         item,
@@ -221,7 +252,8 @@ export const publicContentRoute = new Hono<{ Bindings: PublicContentBindings }>(
       const markdown = await fetchStaticText(
         c.req.url,
         `/docs/design/${item.path}`,
-        c.env.PUBLIC_SITE_ORIGIN
+        c.env.PUBLIC_SITE_ORIGIN,
+        c.req.header("origin")
       );
       const response: PublicDesignDocDetailResponse = { item, markdown };
       return c.json(response);

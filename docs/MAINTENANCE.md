@@ -26,7 +26,7 @@ This guide explains how to add or edit content in all major areas of the APT mon
 
 ## Asset Management for Content Types
 
-For all content types (blogs, podcasts, guides, case studies, labs, demos):
+For all content types (articles, podcasts, guides, design reviews, labs, demos):
 
 - **Local images, audio, and video files** referenced in markdown must be placed in:
   - `apps/web/public/content/<type>/<slug-or-filename>/`
@@ -43,7 +43,7 @@ For all content types (blogs, podcasts, guides, case studies, labs, demos):
 | blog         | public/content/blog/my-post/my-image.png                      | ![](./my-image.png)                          |
 | podcast      | public/content/podcasts/episode-1/episode.mp3                 | [audio](./episode.mp3)                       |
 | guides       | public/content/guides/my-guide/diagram.png                    | ![](./diagram.png)                           |
-| case studies | public/content/case-studies/case-xyz/cover.jpg                | ![](./cover.jpg)                             |
+| design reviews | public/content/design-reviews/review-xyz/cover.jpg            | ![](./cover.jpg)                             |
 | labs         | public/content/labs/lab-abc/screenshot.png                    | ![](./screenshot.png)                        |
 | demos        | public/content/demos/demo-123/demo-video.mp4                  | [video](./demo-video.mp4)                    |
 
@@ -73,7 +73,7 @@ For gallery, design, or architecture images, continue using `apps/web/public/ima
 ### Add/Edit Content Registries
 Labs and systems are defined in TypeScript files in `apps/web/data/`:
   - `labs.ts`, `systems.ts`, etc.
-For blogs, podcasts, guides, and case studies, each entry is a Markdown file with YAML frontmatter in `apps/web/content/{blog,guides,podcasts,case-studies}/`.
+For articles, podcasts, guides, and design reviews, each entry is a Markdown file with YAML frontmatter in `apps/web/content/{blog,guides,podcasts,design-reviews}/`.
 To add a new item, create a new Markdown file in the appropriate folder with the required frontmatter fields (see below).
 To edit, update the Markdown file directly.
 
@@ -119,18 +119,18 @@ Portfolio sections are managed as structured data and/or Markdown in `apps/web/d
 
 ---
 
-## 3. Insights Content (Blogs, Podcasts, Guides, Case Studies)
+## 3. Insights Content (Articles, Podcasts, Guides, Design Reviews)
 
-All insights content (blogs, podcasts, guides, case studies) is managed as Markdown files with YAML frontmatter in their respective folders under `apps/web/content/`.
+All Learn content (articles, podcasts, guides, design reviews) is managed as Markdown files with YAML frontmatter in their respective folders under `apps/web/content/`.
 
 
-### Add/Edit a Blog, Podcast, Guide, or Case Study
+### Add/Edit an Article, Podcast, Guide, or Design Review
 - **Content:**
   - Each entry is a Markdown file in the appropriate folder:
-    - Blogs: `apps/web/content/blog/`
+    - Articles: `apps/web/content/blog/`
     - Guides: `apps/web/content/guides/`
     - Podcasts: `apps/web/content/podcasts/`
-    - Case studies: `apps/web/content/case-studies/`
+    - Design reviews: `apps/web/content/design-reviews/`
   - The file must start with YAML frontmatter containing fields like `title`, `id`, `type`, `description`, `publishedAt`, and any other relevant metadata (see below for example).
   - The body of the file is the full content, using Markdown formatting.
 - **Images, Audio, Video:**

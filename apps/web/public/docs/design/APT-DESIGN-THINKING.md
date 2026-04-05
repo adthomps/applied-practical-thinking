@@ -419,7 +419,7 @@ Document decisions that are:
 **Problem:** Insights and Portfolio content overlapped, confusing visitors.
 
 **Systems Mapping:**
-- Insights = narrative (blogs, podcasts, case studies)
+- Learn = explanation and practice (articles, podcasts, guides, design reviews)
 - Portfolio = artifacts (labs, demos, design system)
 - Cross-linking creates relationships without duplication
 

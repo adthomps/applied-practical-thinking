@@ -7,7 +7,7 @@ const ALL_INDEX_TYPES: ContentIndexType[] = [
   "blog",
   "guides",
   "podcasts",
-  "case-studies",
+  "design-reviews",
   "labs",
   "demos",
   "systems",

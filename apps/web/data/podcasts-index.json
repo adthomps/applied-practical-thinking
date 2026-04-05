@@ -1,7 +1,78 @@
 [
   {
-    "id": "ai-system instructions-for-transaction-analysis-podcast",
-    "slug": "ai-system instructions-for-transaction-analysis-podcast",
+    "id": "shadcn-ui-builder-podcast",
+    "slug": "shadcn-ui-builder-podcast",
+    "title": "Podcast: Exploring shadcn UI Builder",
+    "type": "podcast",
+    "description": "Episode notes on when shadcn UI Builder helps design-system work, where it creates leverage, and where teams still need strong architectural judgment.",
+    "publishedAt": "2026-02-14",
+    "featured": false,
+    "concepts": [
+      "Design Systems",
+      "Open Code",
+      "UI Tooling",
+      "Prototyping"
+    ],
+    "platforms": [
+      "Web"
+    ],
+    "technologies": [
+      "shadcn/ui",
+      "Radix UI"
+    ],
+    "status": "",
+    "links": {
+      "Blog": null,
+      "Podcast": "shadcn-ui-builder-podcast",
+      "Guide": null,
+      "Case": null,
+      "Article": null,
+      "Slides": null
+    },
+    "related": [],
+    "contentPath": "podcasts/shadcn-ui-builder-podcast.md",
+    "excerpt": "Episode Summary\r \r This episode examines shadcn UI Builder from a pragmatic product and designsystems perspective. The tool is interesting not because it generates pretty screens, but because it shifts how teams bootstrap opencode UI foundations.\r \r  Segment 1: What the Builder Actually Changes (0:005:00)\r \r  Teams can configure themes, component styles, and project preferences visually before generating code."
+  },
+  {
+    "id": "02-ai-powered-cloud-development-podcast",
+    "slug": "02-ai-powered-cloud-development-podcast",
+    "title": "AI-Powered Cloud Development Podcast",
+    "type": "podcast",
+    "description": "Episode notes on using AI-assisted workflows with React, Hono, Cloudflare, and GitHub without sacrificing reviewability, architecture, or deployment discipline.",
+    "publishedAt": "2025-08-22",
+    "featured": false,
+    "concepts": [
+      "Cloud Development",
+      "React",
+      "Hono",
+      "Cloudflare",
+      "AI Development Workflows"
+    ],
+    "platforms": [
+      "Web",
+      "Cloud"
+    ],
+    "technologies": [
+      "Cloudflare",
+      "OpenAI"
+    ],
+    "status": "",
+    "thumbnail": "/content/podcasts/02-ai-powered-cloud-development-podcast.png",
+    "links": {
+      "Blog": "02-ai-powered-cloud-development-blog",
+      "Podcast": "02-ai-powered-cloud-development-podcast",
+      "Guide": "02-ai-powered-cloud-development-guide",
+      "Case": null,
+      "Article": null,
+      "Slides": null
+    },
+    "related": [],
+    "contentPath": "podcasts/02-ai-powered-cloud-development-podcast.md",
+    "excerpt": "Episode Summary\r \r This episode looks at what actually changes when AIassisted coding meets a modern edgenative stack. The interesting part is not that code can be generated faster. It is that the surrounding workflow has to become more disciplined if teams want to keep speed without introducing hidden fragility.\r \r  Segment 1: Why This Stack Works (0:007:00)\r \r  React keeps the UI layer familiar and componentdriven."
+  },
+  {
+    "id": "01-ai-system-instructions-for-transaction-analysis-podcast",
+    "slug": "01-ai-system-instructions-for-transaction-analysis-podcast",
     "title": "AI System Instructions For Transaction Analysis Podcast",
     "type": "podcast",
     "description": "A conversational deep dive into constructing AI system instructions. Discusses design patterns, compliance, and lessons from transaction analysis.",
@@ -24,90 +95,16 @@
     "status": "",
     "thumbnail": "/content/podcasts/01-ai-system-instructions-for-transaction-analysis-podcast.png",
     "links": {
-      "Blog": "01-ai-system-instructions-for-transaction-analysis",
-      "Podcast": null,
+      "Blog": "01-ai-system-instructions-for-transaction-analysis-blog",
+      "Podcast": "01-ai-system-instructions-for-transaction-analysis-podcast",
       "Guide": "01-ai-system-instructions-for-transaction-analysis-guide",
       "Case": null,
       "Article": null,
       "Slides": null
     },
     "related": [],
-    "contentPath": "podcasts/01-ai-system-instructions-for-transaction-analysis-podcast copy.md",
-    "excerpt": "Episode Summary\r \r In this episode, we explore how AI interprets financial transactions, why system instructions act as guardrails, and lessons learned where clarity of rules made or broke fraud detection outcomes.\r \r  Segment 1: Why Accuracy in AI Matters Most (0:00–2:30)\r  HighStakes Decisions: In payments and fraud detection, speed is essential—but accuracy is nonnegotiable.\r  The Risk Window: A splitsecond decision between “approve” or “decline” carries major operational risk."
-  },
-  {
-    "id": "ai-system instructions-for-transaction-analysis-podcast",
-    "slug": "ai-system instructions-for-transaction-analysis-podcast",
-    "title": "AI System Instructions For Transaction Analysis Podcast",
-    "type": "podcast",
-    "description": "A conversational deep dive into constructing AI system instructions. Discusses design patterns, compliance, and lessons from transaction analysis.",
-    "publishedAt": "2025-08-17",
-    "featured": true,
-    "concepts": [
-      "learning",
-      "feedback",
-      "teams"
-    ],
-    "platforms": [
-      "Web",
-      "Cloud",
-      "Payment Gateway"
-    ],
-    "technologies": [
-      "Cloudflare",
-      "OpenAI"
-    ],
-    "status": "",
-    "thumbnail": "/content/podcasts/02-ai-powered-cloud-development-podcast.png",
-    "links": {
-      "Blog": "02-ai-powered-cloud-development-blog",
-      "Podcast": null,
-      "Guide": "02-ai-powered-cloud-development-guide",
-      "Case": null,
-      "Article": null,
-      "Slides": null
-    },
-    "related": [],
-    "contentPath": "podcasts/02-ai-powered-cloud-development-podcast.md",
-    "excerpt": "Episode Summary\r \r In this episode, we explore how AI interprets financial transactions, why system instructions act as guardrails, and lessons learned where clarity of rules made or broke fraud detection outcomes.\r \r  Segment 1: Why Accuracy in AI Matters Most (0:00–2:30)\r  HighStakes Decisions: In payments and fraud detection, speed is essential—but accuracy is nonnegotiable.\r  The Risk Window: A splitsecond decision between “approve” or “decline” carries major operational risk."
-  },
-  {
-    "id": "learning-loops-podcast",
-    "slug": "learning-loops-podcast",
-    "title": "Learning Loops Podcast",
-    "type": "podcast",
-    "description": "Exploring how teams can build better products by closing the feedback loop.",
-    "publishedAt": "2023-12-20",
-    "featured": true,
-    "concepts": [
-      "learning",
-      "feedback",
-      "teams"
-    ],
-    "platforms": [],
-    "technologies": [],
-    "status": "",
-    "links": {},
-    "related": [],
-    "contentPath": "podcasts/learning-loops-podcast.md",
-    "excerpt": "Episode Summary\r \r We talk with product leaders about how they use feedback loops to:\r \r  Improve product quality\r  Reduce wasted effort\r  Build stronger teams"
-  },
-  {
-    "id": "shadcn-ui-builder-podcast",
-    "slug": "shadcn-ui-builder-podcast",
-    "title": "Podcast: Exploring shadcn UI Builder",
-    "type": "podcast",
-    "description": "A discussion on the features, use cases, and future of the shadcn UI Builder.",
-    "publishedAt": "2026-02-14",
-    "featured": false,
-    "concepts": [],
-    "platforms": [],
-    "technologies": [],
-    "status": "",
-    "links": {},
-    "related": [],
-    "contentPath": "podcasts/shadcn-ui-builder-podcast.md",
-    "excerpt": "_Content coming soon._"
+    "contentPath": "podcasts/01-ai-system-instructions-for-transaction-analysis-podcast.md",
+    "excerpt": "Episode Summary\r \r In this episode, we explore how AI interprets financial transactions, why system instructions act as guardrails, and lessons learned where clarity of rules made or broke fraud detection outcomes.\r \r  Segment 1: Why Accuracy in AI Matters Most (0:002:30)\r \r  Highstakes decisions: In payments and fraud detection, speed is essential, but accuracy is nonnegotiable."
   },
   {
     "id": "systems-thinking-podcast",
@@ -129,5 +126,26 @@
     "related": [],
     "contentPath": "podcasts/systems-thinking-podcast.md",
     "excerpt": "Episode Summary\r \r In this episode, we explore why featurefocused development often leads to fragmented products and burnedout teams. The alternative? Systems thinking.\r \r  Key Topics Discussed\r \r  The Feature Trap (00:00  12:30)"
+  },
+  {
+    "id": "learning-loops-podcast",
+    "slug": "learning-loops-podcast",
+    "title": "Learning Loops Podcast",
+    "type": "podcast",
+    "description": "Exploring how teams can build better products by closing the feedback loop.",
+    "publishedAt": "2023-12-20",
+    "featured": true,
+    "concepts": [
+      "learning",
+      "feedback",
+      "teams"
+    ],
+    "platforms": [],
+    "technologies": [],
+    "status": "",
+    "links": {},
+    "related": [],
+    "contentPath": "podcasts/learning-loops-podcast.md",
+    "excerpt": "Episode Summary\r \r We talk with product leaders about how they use feedback loops to:\r \r  Improve product quality\r  Reduce wasted effort\r  Build stronger teams"
   }
 ]

@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const CONTENT_TYPES = ['blog', 'guides', 'podcasts', 'case-studies', 'labs', 'demos', 'systems'];
+const CONTENT_TYPES = ['blog', 'guides', 'podcasts', 'design-reviews', 'labs', 'demos', 'systems'];
 const CONTENT_ROOT = path.join(__dirname, '../content');
 const PUBLIC_CONTENT_ROOT = path.join(__dirname, '../public/content');
 const DESIGN_DOCS_ROOT = path.join(__dirname, '../docs/design');
@@ -22,10 +22,22 @@ const PUBLIC_DESIGN_DOCS = [
   'vpds-alignment.md',
 ];
 
+function removeTopLevelMarkdownFiles(dir) {
+  if (!fs.existsSync(dir)) return;
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (entry.isFile() && entry.name.endsWith('.md')) {
+      fs.rmSync(path.join(dir, entry.name), { force: true });
+    }
+  }
+}
+
+fs.rmSync(path.join(PUBLIC_CONTENT_ROOT, 'case-studies'), { recursive: true, force: true });
+
 for (const type of CONTENT_TYPES) {
   const srcDir = path.join(CONTENT_ROOT, type);
   const destDir = path.join(PUBLIC_CONTENT_ROOT, type);
-  if (!fs.existsSync(destDir)) fs.mkdirSync(destDir, { recursive: true });
+  fs.mkdirSync(destDir, { recursive: true });
+  removeTopLevelMarkdownFiles(destDir);
   if (!fs.existsSync(srcDir)) continue;
   const files = fs.readdirSync(srcDir).filter(f => f.endsWith('.md'));
   for (const file of files) {

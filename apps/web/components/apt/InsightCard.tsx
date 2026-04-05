@@ -8,17 +8,19 @@ export interface InsightCardProps {
 
 export function InsightCard({ insight, to }: InsightCardProps) {
   const typeIcons = {
+    article: FileText,
     blog: FileText,
     podcast: Podcast,
     guide: Book,
-    "case-study": Book,
+    "design-review": Book,
   };
   const Icon = typeIcons[insight.type] || Book;
   const typeLabels = {
+    article: "Article",
     blog: "Article",
     podcast: "Podcast",
     guide: "Guide",
-    "case-study": "Case Study",
+    "design-review": "Design Review",
   };
 
   return (

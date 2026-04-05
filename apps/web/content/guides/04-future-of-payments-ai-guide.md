@@ -1,7 +1,7 @@
 ---
 title: "The Future of Payments & AI - Smarter, Faster, Safer for Everyone"
 featured: false
-id: "04-future-of-payments-ai-guide-guide"
+id: "04-future-of-payments-ai-guide"
 type: "guide"
 description: "A practical beginner’s guide to AI in payments, designed for SMBs and emerging merchants. Covers today’s AI use cases (fraud detection, routing, analytics), why they matter, and how businesses can prepare responsibly. Includes a checklist to help SMBs adopt AI-powered payment tools with confidence."
 thumbnail: /content/guides/04-future-of-payments-ai-guide.png
@@ -21,8 +21,8 @@ technologies:
   - OpenAI
 links:
   Blog: 04-future-of-payments-ai-blog
-  Podcast: 04-future-of-payments-ai-podcast
-  Case: 04-future-of-payments-ai-case
+  Podcast: 
+  Case: 
   Guide: 04-future-of-payments-ai-guide
   Article: 
   Slides: 

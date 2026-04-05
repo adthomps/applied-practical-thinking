@@ -8,6 +8,7 @@ import { systems as systemDefinitions } from "@/data/systems";
 import { loadAllContentIndexes, resolveRelatedItems } from "@/src/services/relatedContent";
 import { useContentDetail } from "@/hooks/useContentDetail";
 import { getWorkerApiConfigError } from "@/src/services/api";
+import { usePageMetadata } from "@/hooks/usePageMetadata";
 import { ExternalLink, Network } from "lucide-react";
 
 export default function SystemDetail() {
@@ -18,6 +19,48 @@ export default function SystemDetail() {
     match: "id",
   });
   const [relatedItems, setRelatedItems] = useState<ContentIndexItem[]>([]);
+
+  const systemDefinition = useMemo(
+    () => systemDefinitions.find((entry) => entry.id === item?.id),
+    [item?.id]
+  );
+  const relatedExperiments = useMemo(
+    () => relatedItems.filter((entry) => entry.type === "lab" || entry.type === "mock" || entry.type === "demo"),
+    [relatedItems]
+  );
+  const relatedLearn = useMemo(
+    () =>
+      relatedItems.filter(
+        (entry) =>
+          entry.type === "article" ||
+          entry.type === "blog" ||
+          entry.type === "guide" ||
+          entry.type === "podcast" ||
+          entry.type === "design-review"
+      ),
+    [relatedItems]
+  );
+
+  const hasMissingState = !loading && !item;
+
+  usePageMetadata(
+    hasMissingState
+      ? {
+          title: "System not found",
+          description: "The requested system reference could not be found.",
+          noIndex: true,
+        }
+      : item
+        ? {
+            title: item.title,
+            description: item.description,
+            imageAlt: item.title,
+          }
+        : {
+            title: "Reference Models",
+            description: "Loading reference model details.",
+          }
+  );
 
   useEffect(() => {
     if (!item?.related?.length) {
@@ -46,16 +89,6 @@ export default function SystemDetail() {
     }
   }
   if (!item) return <div className="container py-12 text-destructive">System not found</div>;
-
-  const systemDefinition = systemDefinitions.find((entry) => entry.id === item.id);
-  const relatedExperiments = useMemo(
-    () => relatedItems.filter((entry) => entry.type === "lab" || entry.type === "mock" || entry.type === "demo"),
-    [relatedItems]
-  );
-  const relatedLearn = useMemo(
-    () => relatedItems.filter((entry) => entry.type === "blog" || entry.type === "guide" || entry.type === "podcast" || entry.type === "case-study"),
-    [relatedItems]
-  );
 
   const systemOverview = systemDefinition?.purpose || item.description;
   const headerMeta = (

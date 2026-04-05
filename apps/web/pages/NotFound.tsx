@@ -1,8 +1,15 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { usePageMetadata } from "@/hooks/usePageMetadata";
 
 const NotFound = () => {
   const location = useLocation();
+
+  usePageMetadata({
+    title: "Page not found",
+    description: "The page you requested does not exist on Applied Practical Thinking.",
+    noIndex: true,
+  });
 
   useEffect(() => {
     console.error("404 Error: User attempted to access non-existent route:", location.pathname);

@@ -3,20 +3,26 @@ import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex
 import { InsightCard } from "@/components/apt/InsightCard";
 import { AptButton, ContentFilters, FilterConfig, SelectedFilters, RuntimeConfigNotice } from "@/components/apt";
 import { getWorkerApiConfigError } from "@/src/services/api";
+import { usePageMetadata } from "@/hooks/usePageMetadata";
 
 export default function InsightsGuides() {
+  usePageMetadata({
+    title: "Practice",
+    description: "Practical guides and design reviews for applied thinking, repeatable workflows, and artifact review.",
+  });
+
   const [guides, setGuides] = useState<ContentIndexItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selected, setSelected] = useState<SelectedFilters>({ topics: [] });
-  const [subtype, setSubtype] = useState<"all" | "guide" | "case-study">("all");
+  const [subtype, setSubtype] = useState<"all" | "guide" | "design-review">("all");
 
   useEffect(() => {
     setLoading(true);
-    Promise.all([fetchContentIndex("guides"), fetchContentIndex("case-studies")])
-      .then(([guideItems, caseStudies]) => {
+    Promise.all([fetchContentIndex("guides"), fetchContentIndex("design-reviews")])
+      .then(([guideItems, reviews]) => {
         setGuides(
-          [...guideItems, ...caseStudies].sort((a, b) => (b.publishedAt || "").localeCompare(a.publishedAt || ""))
+          [...guideItems, ...reviews].sort((a, b) => (b.publishedAt || "").localeCompare(a.publishedAt || ""))
         );
         setLoading(false);
       })
@@ -41,7 +47,7 @@ export default function InsightsGuides() {
   }, [selected.topics, guides, subtype]);
 
   if (loading) {
-    return <div className="container py-12 text-center">Loading guides…</div>;
+    return <div className="container py-12 text-center">Loading practice content…</div>;
   }
   if (error) {
     const configError = getWorkerApiConfigError();
@@ -64,10 +70,10 @@ export default function InsightsGuides() {
     <div className="container py-12 md:py-16">
       <div className="max-w-2xl mb-8">
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-          Guides
+          Practice
         </h1>
         <p className="text-lg text-muted-foreground">
-          Practical walkthroughs, reference guides, and worked examples for applied thinking.
+          Practical guides and design reviews for applied thinking. Use guides to learn the workflow and reviews to see how decisions hold up against real artifacts.
         </p>
       </div>
 
@@ -75,11 +81,11 @@ export default function InsightsGuides() {
         {[
           { value: "all", label: "All" },
           { value: "guide", label: "Guides" },
-          { value: "case-study", label: "Case Studies" },
+          { value: "design-review", label: "Design Reviews" },
         ].map((option) => (
           <AptButton
             key={option.value}
-            onClick={() => setSubtype(option.value as "all" | "guide" | "case-study")}
+            onClick={() => setSubtype(option.value as "all" | "guide" | "design-review")}
             variant={subtype === option.value ? "primary" : "ghost"}
             size="sm"
           >
@@ -104,7 +110,7 @@ export default function InsightsGuides() {
 
       {filteredGuides.length === 0 && (
         <div className="text-center py-12 text-muted-foreground">
-          No guides or case studies match your filters.
+          No practice items match your filters.
         </div>
       )}
     </div>

@@ -1,5 +1,6 @@
 ---
 id: "shadcn-ui-builder"
+type: "system"
 title: "shadcn UI Builder"
 description: "A visual project scaffolding tool for customizing and generating UI projects using shadcn's open-code component registry."
 date: "2026-02-14"

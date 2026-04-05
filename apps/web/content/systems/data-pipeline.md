@@ -6,9 +6,6 @@ description: "Lightweight ETL for small-scale analytics with robust error recove
 publishedAt: "2026-02-01"
 featured: false
 tags: ["data", "etl", "observability"]
-related:
-  - case-study-data-pipeline
-  - guide-to-etl-pipeline
 ---
 
 A simple but robust pattern for extracting, transforming, and loading data with observability and error recovery.
@@ -21,6 +18,6 @@ A simple but robust pattern for extracting, transforming, and loading data with 
 
 ## Learning Resources
 - **Rationale:** Idempotency for safe retries. Dead letter queues for error handling.
-- **Case Studies:** case-study-data-pipeline
-- **Tutorials:** guide-to-etl-pipeline
+- **Practice:** Validate retry behavior, dead-letter handling, and schema boundaries before expanding the pipeline surface.
+- **Tutorials:** Write the ingest and recovery path down as a checklist before introducing more jobs or connectors.
 - **Glossary:** ETL, Idempotency, Dead Letter Queue, Schema Validation

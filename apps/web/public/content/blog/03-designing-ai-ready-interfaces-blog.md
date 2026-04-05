@@ -2,7 +2,7 @@
 title: Designing AI-Ready Interfaces with Visa Product Design System
 featured: true
 id: "03-designing-ai-ready-interfaces-blog"
-type: "blog"
+type: "article"
 description: "Covers how to merge enterprise-grade design systems with AI-driven functionality in payment, support, and developer-facing tools. Focuses on maintaining compliance, accessibility, and trust while integrating predictive AI components."
 thumbnail: /content/blogs/03-designing-ai-ready-interfaces-blog.png
 publishedAt: "2025-08-31"
@@ -20,7 +20,7 @@ technologies:
   - OpenAI
 links:
   Blog: 03-designing-ai-ready-interfaces-blog
-  Podcast: 03-designing-ai-ready-interfaces-podcast
+  Podcast: 
   Guide: 03-designing-ai-ready-interfaces-guide
   Case: 
   Article: 
