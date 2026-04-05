@@ -97,6 +97,10 @@ export default function PortfolioDesignSystem() {
   const systemVersion = useDesignDocVersion("system");
   const systemDocUrl = tryGetWorkerApiUrl(systemVersion.downloadApiPath);
   const systemCanonicalUrl = systemVersion.canonicalPath || null;
+  const checklistCanonicalMajor = systemVersion.activeMajor || systemVersion.latestMajor;
+  const checklistCanonicalUrl = checklistCanonicalMajor
+    ? `/docs/design/v${checklistCanonicalMajor}/APT-DESIGN-SYSTEM-LINT-CHECKLIST.md`
+    : null;
   const configError = getWorkerApiConfigError();
   const handleSystemMarkdownDownload = async () => {
     const majorSuffix = systemVersion.activeMajor ? `-v${systemVersion.activeMajor}` : "";
@@ -162,6 +166,42 @@ export default function PortfolioDesignSystem() {
           </p>
         ) : null}
       </SectionIntro>
+
+      <section className="mb-12">
+        <AptCard variant="subtle" padding="large">
+          <AptCardHeader>
+            <AptCardTitle className="text-xl">Design System Lint Checklist</AptCardTitle>
+            <AptCardDescription>
+              Critical gate checklist for design-system compliance. Use it as the review standard before marking UI work complete.
+            </AptCardDescription>
+          </AptCardHeader>
+          <AptCardContent className="flex flex-wrap gap-3">
+            <AptButton variant="primary" asChild>
+              <a href="/docs/design/APT-DESIGN-SYSTEM-LINT-CHECKLIST.md" target="_blank" rel="noreferrer">
+                Open Checklist
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            </AptButton>
+            <AptButton variant="outline" asChild>
+              <a href="/docs/design/APT-DESIGN-SYSTEM-LINT-CHECKLIST.md" download>
+                Download Markdown
+              </a>
+            </AptButton>
+            <AptButton variant="ghost" asChild>
+              <a href="/docs/design/APT-DESIGN-SYSTEM-LINT-CHECKLIST.json" download>
+                Download JSON
+              </a>
+            </AptButton>
+            {checklistCanonicalUrl ? (
+              <AptButton variant="link" asChild>
+                <a href={checklistCanonicalUrl} target="_blank" rel="noreferrer">
+                  Open canonical version
+                </a>
+              </AptButton>
+            ) : null}
+          </AptCardContent>
+        </AptCard>
+      </section>
 
       {/* Quick Nav */}
       <nav className="mb-12 overflow-x-auto pb-6 border-b border-border">

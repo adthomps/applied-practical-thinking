@@ -51,9 +51,10 @@ export const aptTokens = {
 
 After changes:
 1. Check `/design` playground renders correctly
-2. Run through the internal review checklist
+2. Run through `apps/web/docs/design/APT-DESIGN-SYSTEM-LINT-CHECKLIST.md`
 3. Test all variants
 4. Update component documentation
+5. Treat unresolved critical checklist failures as merge blockers unless a decision-log exception is linked
 
 ## Deviations
 

@@ -571,6 +571,9 @@ apps/web/
 - **Design System Lint Checklist (Markdown)**: `apps/web/docs/design/APT-DESIGN-SYSTEM-LINT-CHECKLIST.md`
 - **Design System Lint Checklist (JSON)**: `apps/web/docs/design/APT-DESIGN-SYSTEM-LINT-CHECKLIST.json`
 
+Merge policy:
+- Unresolved critical lint checklist failures block merge unless a documented exception is linked in `docs/DECISION_LOG.md`.
+
 ---
 
 ## Version

@@ -47,7 +47,7 @@
       "slug": "thinking",
       "title": "APT Design Thinking",
       "description": "Problem framing, assumptions, constraints, and decision-making in practice.",
-      "latestMajor": 1,
+      "latestMajor": 2,
       "aliasPath": "/docs/design/APT-DESIGN-THINKING.md",
       "versions": [
         {
@@ -58,6 +58,15 @@
           "canonicalPath": "/docs/design/v1/APT-DESIGN-THINKING.md",
           "publishedAt": "2026-04-05",
           "changelog": "Initial baseline."
+        },
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/APT-DESIGN-THINKING.md",
+          "canonicalPath": "/docs/design/v2/APT-DESIGN-THINKING.md",
+          "publishedAt": "2026-04-05",
+          "changelog": "v2 kickoff aligned to lint gate and doctrine enforcement."
         }
       ]
     },
@@ -66,7 +75,7 @@
       "slug": "system",
       "title": "APT Design System",
       "description": "APT's visual language, semantic tokens, components, and usage rules.",
-      "latestMajor": 1,
+      "latestMajor": 2,
       "aliasPath": "/docs/design/APT-DESIGN-SYSTEM.md",
       "versions": [
         {
@@ -77,6 +86,15 @@
           "canonicalPath": "/docs/design/v1/APT-DESIGN-SYSTEM.md",
           "publishedAt": "2026-04-05",
           "changelog": "Initial baseline."
+        },
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/APT-DESIGN-SYSTEM.md",
+          "canonicalPath": "/docs/design/v2/APT-DESIGN-SYSTEM.md",
+          "publishedAt": "2026-04-05",
+          "changelog": "v2 kickoff aligned to lint gate and doctrine enforcement."
         }
       ]
     },
@@ -85,7 +103,7 @@
       "slug": "architecture",
       "title": "APT Design Architecture",
       "description": "Repo layout, deployment flows, API contracts, and enforcement rules.",
-      "latestMajor": 1,
+      "latestMajor": 2,
       "aliasPath": "/docs/design/APT-DESIGN-ARCHITECTURE.md",
       "versions": [
         {
@@ -96,6 +114,15 @@
           "canonicalPath": "/docs/design/v1/APT-DESIGN-ARCHITECTURE.md",
           "publishedAt": "2026-04-05",
           "changelog": "Initial baseline."
+        },
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/APT-DESIGN-ARCHITECTURE.md",
+          "canonicalPath": "/docs/design/v2/APT-DESIGN-ARCHITECTURE.md",
+          "publishedAt": "2026-04-05",
+          "changelog": "v2 kickoff aligned to lint gate and doctrine enforcement."
         }
       ]
     },

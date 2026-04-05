@@ -16,15 +16,17 @@ Required contracts:
 2. Follow internal AI behavior rules in `.github/copilot-instructions.md` when operating inside the repo.
 3. Enforce visual decisions from `apps/web/docs/design/tokens.json`.
 4. Preserve layout baseline from `apps/web/components/apt/AptLayout.tsx`.
+5. Run output against `apps/web/docs/design/APT-DESIGN-SYSTEM-LINT-CHECKLIST.md` and satisfy all critical checks.
 
 Hard constraints:
 - Use semantic tokens only.
 - Use shared APT primitives (`AptButton`, `AptCard`, `AptTag`) for user-facing controls and containers.
 - Do not introduce custom ad hoc layout scaffolds that conflict with `AptLayout`.
 - Keep authored source and generated output boundaries clear.
+- Include loading, empty, error, and success states where applicable.
 
 Deliverable format:
 - Output the artifact.
 - List any assumptions.
 - List which rule each major choice satisfies.
-
+- Report checklist outcome as `Pass`, `Pass with fixes`, or `Fail`.

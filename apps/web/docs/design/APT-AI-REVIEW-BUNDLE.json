@@ -158,7 +158,7 @@
         "tagLabel": "Checklist",
         "tagVariant": "secondary",
         "icon": "file-text",
-        "description": "Practical checklist for design-system lint and pre-ship compliance checks."
+        "description": "Critical pass-gate checklist for design-system lint and merge-readiness."
       }
     },
     {

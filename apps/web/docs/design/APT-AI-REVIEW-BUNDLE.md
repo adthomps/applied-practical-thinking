@@ -30,7 +30,7 @@ Version metadata:
 7. `APT-AI-INSTRUCTIONS-REFERENCE.md`
    - External strict AI instruction contract for collaborators and tool-driven handoffs.
 8. `APT-DESIGN-SYSTEM-LINT-CHECKLIST.md`
-   - Practical lint checklist for validating design-system compliance before shipping.
+   - Critical pass-gate checklist for validating design-system compliance before merge.
 
 ---
 

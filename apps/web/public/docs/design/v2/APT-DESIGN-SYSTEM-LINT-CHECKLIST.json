@@ -1,88 +1,237 @@
 {
   "id": "apt-design-system-lint-checklist",
   "title": "APT Design System Lint Checklist",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "updatedAt": "2026-04-05",
-  "audience": [
-    "design reviewers",
-    "frontend contributors",
-    "ai collaborators"
-  ],
-  "passCriteria": {
-    "mustPassAllMustItems": true,
-    "neverViolationsRequireException": true
-  },
+  "purpose": "Validate that a UI build follows the APT design system consistently across structure, styling, behavior, and state handling.",
+  "passRule": "A build should not be considered complete until all critical items pass.",
+  "mergeGatePolicy": "Unresolved critical failures block merge unless a documented exception is linked in docs/DECISION_LOG.md.",
   "sections": [
     {
-      "id": "tokens-visual-contract",
-      "title": "Tokens and Visual Contract",
-      "must": [
-        "Use semantic tokens for color and surface classes.",
-        "Align visual choices with apps/web/docs/design/tokens.json.",
-        "Prefer @apt/ui primitives for reusable patterns."
+      "id": "brand-design-intent",
+      "title": "Brand & Design Intent",
+      "critical": [
+        "The UI feels calm, clear, and structured.",
+        "The interface does not feel like a marketing site.",
+        "The design emphasizes understanding and usability over novelty.",
+        "Decisions, hierarchy, and purpose are visually clear."
       ],
-      "never": [
-        "Use raw color utilities when tokenized equivalents exist.",
-        "Hard-code ad hoc visual values that bypass token contracts."
+      "failConditions": [
+        "There is visual noise with no meaning.",
+        "The page feels flashy, trendy, or over-designed.",
+        "The UI communicates hype instead of clarity."
       ]
     },
     {
-      "id": "component-contract",
-      "title": "Component Contract",
-      "must": [
-        "Use AptButton, AptCard, HeroCard, and AptTag for user-facing patterns when applicable.",
-        "Keep component variants semantic and doctrine-aligned.",
-        "Preserve accessibility semantics."
+      "id": "theme-color-usage",
+      "title": "Theme & Color Usage",
+      "critical": [
+        "The UI is dark-first.",
+        "All colors come from semantic tokens.",
+        "No raw hex, rgb, or ad hoc hsl values are used in components.",
+        "Primary and accent colors are used intentionally, not decoratively.",
+        "Borders, surfaces, and text colors follow the system hierarchy."
       ],
-      "never": [
-        "Replace shared primitives with one-off lookalikes without documented intent.",
-        "Break variant semantics for convenience."
+      "failConditions": [
+        "Decorative gradients appear without semantic purpose.",
+        "Accent color is overused.",
+        "Multiple unrelated accent colors are used in the same section.",
+        "Color is doing the job of spacing or hierarchy."
       ]
     },
     {
-      "id": "layout-baseline",
-      "title": "Layout Baseline",
-      "must": [
-        "Preserve shell structure in apps/web/components/apt/AptLayout.tsx.",
-        "Keep clear content hierarchy and section rhythm.",
-        "Maintain mobile-first responsive behavior."
+      "id": "typography",
+      "title": "Typography",
+      "critical": [
+        "Only the approved font stack is used.",
+        "Type scale follows the system hierarchy.",
+        "Headings, body text, and captions are visually distinct.",
+        "Text remains readable at all screen sizes.",
+        "Font size and weight choices feel deliberate and limited."
       ],
-      "never": [
-        "Introduce layout changes that conflict with design architecture without a logged decision."
+      "failConditions": [
+        "More than one primary font is used.",
+        "Random font sizes or weights are introduced.",
+        "Typography feels crowded, tiny, oversized, or inconsistent.",
+        "Heading levels are skipped without reason."
       ]
     },
     {
-      "id": "content-docs-integrity",
-      "title": "Content and Docs Integrity",
-      "must": [
-        "Treat apps/web/docs/design as source of truth for doctrine.",
-        "Update review and handoff assets when doctrine changes.",
-        "Update versioned docs and metadata for structural standards changes."
+      "id": "spacing-alignment",
+      "title": "Spacing & Alignment",
+      "critical": [
+        "All spacing uses the approved spacing scale.",
+        "Layout rhythm is consistent across sections and cards.",
+        "Elements align cleanly to a visible grid.",
+        "Padding and gaps feel intentional and repeatable.",
+        "Cards and sections have consistent internal spacing."
       ],
-      "never": [
-        "Treat generated apps/web/public/docs content as authored source."
+      "failConditions": [
+        "Arbitrary spacing values are used.",
+        "Components are almost aligned.",
+        "Similar elements have visibly different spacing.",
+        "Dense sections feel cramped or loose without reason."
       ]
     },
     {
-      "id": "ai-enforcement-layers",
-      "title": "AI and Enforcement Layers",
-      "must": [
-        "Align output to APT-DESIGN-SYSTEM.md.",
-        "Align output to .github/copilot-instructions.md (internal).",
-        "Align output to APT-AI-INSTRUCTIONS-REFERENCE.md (external).",
-        "Align output to apps/web/docs/design/tokens.json.",
-        "Align output to apps/web/components/apt/AptLayout.tsx."
+      "id": "layout-responsive",
+      "title": "Layout & Responsive Behavior",
+      "critical": [
+        "The layout is mobile-first.",
+        "Content makes sense in a single-column layout.",
+        "Controls wrap before becoming cramped.",
+        "Reading content remains width-constrained.",
+        "Desktop adds clarity, not unnecessary density."
       ],
-      "never": [
-        "Generate instructions that conflict with the enforcement contracts."
+      "failConditions": [
+        "The UI only works well on desktop.",
+        "Cards become unreadable on smaller screens.",
+        "Rows break awkwardly on mobile.",
+        "Desktop introduces extra columns with no usability gain."
+      ]
+    },
+    {
+      "id": "card-based-structure",
+      "title": "Card-Based Structure",
+      "critical": [
+        "Content is organized using semantic card containers.",
+        "Cards create clear grouping and hierarchy.",
+        "Card variants are used consistently.",
+        "Interactive cards are visibly interactive.",
+        "Hero or feature card usage is limited and intentional."
+      ],
+      "failConditions": [
+        "Free-floating content appears without structure.",
+        "Every card uses a different visual treatment.",
+        "Too many cards compete equally for attention.",
+        "Card interactivity is unclear."
+      ]
+    },
+    {
+      "id": "components-pattern-reuse",
+      "title": "Components & Pattern Reuse",
+      "critical": [
+        "Existing APT components are reused where appropriate.",
+        "New component patterns are introduced only when necessary.",
+        "Buttons, tags, cards, and layout sections behave consistently.",
+        "Similar actions have similar visual treatment.",
+        "Component variants are chosen intentionally."
+      ],
+      "failConditions": [
+        "Repeated custom one-off patterns appear.",
+        "The same action looks different in different places.",
+        "Default framework components are used without adaptation.",
+        "The UI looks like uncustomized Tailwind, Bootstrap, or shadcn defaults."
+      ]
+    },
+    {
+      "id": "interaction-motion",
+      "title": "Interaction & Motion",
+      "critical": [
+        "Motion is subtle and purposeful.",
+        "Hover, focus, and pressed states are clearly defined.",
+        "Motion durations stay within the system range.",
+        "Interaction feedback improves understanding.",
+        "Keyboard interaction is supported where relevant."
+      ],
+      "failConditions": [
+        "Motion is decorative or distracting.",
+        "Bounce, overshoot, parallax, or looping effects are used.",
+        "Interactive elements lack visible feedback.",
+        "Focus states are missing or weak."
+      ]
+    },
+    {
+      "id": "states-edge-cases",
+      "title": "States & Edge Cases",
+      "critical": [
+        "Loading state exists and is visible.",
+        "Empty state exists and is understandable.",
+        "Error state exists and explains what happened.",
+        "Success state exists where applicable.",
+        "Partial data and no-data cases are handled."
+      ],
+      "failConditions": [
+        "Blank areas appear during loading.",
+        "Failures are silent.",
+        "Empty screens do not explain next steps.",
+        "Only the happy path is implemented."
+      ]
+    },
+    {
+      "id": "content-copy-expression",
+      "title": "Content & Copy Expression",
+      "critical": [
+        "Labels are plain and descriptive.",
+        "Copy is clear, direct, and low-noise.",
+        "UI language matches the APT tone.",
+        "Navigation labels are functional, not clever.",
+        "Placeholder copy does not remain in final build."
+      ],
+      "failConditions": [
+        "Marketing or hype language appears.",
+        "Labels are vague, aspirational, or trendy.",
+        "Copy creates ambiguity about purpose.",
+        "Placeholder lorem ipsum or filler text remains."
+      ]
+    },
+    {
+      "id": "accessibility-readability",
+      "title": "Accessibility & Readability",
+      "critical": [
+        "Text contrast is readable against all surfaces.",
+        "Interactive targets are large enough on mobile.",
+        "Focus states are visible.",
+        "Content remains readable when zoomed.",
+        "Tables, code blocks, and long text remain usable on small screens."
+      ],
+      "failConditions": [
+        "Contrast drops below practical readability.",
+        "Small touch targets are present.",
+        "Focus is invisible.",
+        "Horizontal overflow breaks general content layout."
+      ]
+    },
+    {
+      "id": "ai-agent-compliance",
+      "title": "AI / Agent Compliance",
+      "critical": [
+        "No new visual tokens were invented.",
+        "Existing patterns were reused before new ones were created.",
+        "The output does not look like a generic framework scaffold.",
+        "The build includes all required system states.",
+        "The result matches the APT design system, not the model's default habits."
+      ],
+      "failConditions": [
+        "Arbitrary colors, spacing, or typography were introduced.",
+        "Layout drift appeared across screens.",
+        "Agent-generated defaults were left untouched.",
+        "Looks fine replaced actual compliance."
       ]
     }
   ],
-  "quickChecks": [
-    "Validate mobile and desktop layouts.",
-    "Validate token usage for new styles.",
-    "Validate CTA priority and ordering.",
-    "Validate checklist and doctrine links.",
-    "Validate no new raw color utility classes."
+  "fastFailRules": [
+    "Decorative gradients are used excessively.",
+    "Spacing is inconsistent.",
+    "Too many fonts or type styles are used.",
+    "The UI looks like default Bootstrap / Tailwind / shadcn.",
+    "Loading, empty, error, or edge states are missing."
+  ],
+  "reviewerDecision": [
+    {
+      "value": "pass",
+      "label": "Pass",
+      "description": "compliant with APT design system"
+    },
+    {
+      "value": "pass_with_fixes",
+      "label": "Pass with fixes",
+      "description": "minor issues only"
+    },
+    {
+      "value": "fail",
+      "label": "Fail",
+      "description": "non-compliant, revise before merge"
+    }
   ]
 }
