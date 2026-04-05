@@ -36,7 +36,7 @@ const aptSectionContentVariants = cva("mx-auto w-full", {
 });
 
 export interface AptSectionProps
-  extends React.HTMLAttributes<HTMLElement>,
+  extends Omit<React.HTMLAttributes<HTMLElement>, "title">,
     VariantProps<typeof aptSectionVariants>,
     VariantProps<typeof aptSectionContentVariants> {
   title?: React.ReactNode;
@@ -89,4 +89,3 @@ const AptSection = React.forwardRef<HTMLElement, AptSectionProps>(
 AptSection.displayName = "AptSection";
 
 export { AptSection, aptSectionVariants, aptSectionContentVariants };
-
