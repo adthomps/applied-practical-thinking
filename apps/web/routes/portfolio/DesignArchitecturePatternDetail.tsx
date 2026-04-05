@@ -87,15 +87,11 @@ export default function DesignArchitecturePatternDetail() {
           <AptCardContent>
             <div className="space-y-5">
               <div>
-                <p className="mb-2 text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
-                  When to apply
-                </p>
+                <AptTag variant="outline" size="sm" className="mb-2">When to apply</AptTag>
                 <p className="text-sm text-muted-foreground">{entry.when}</p>
               </div>
               <div>
-                <p className="mb-3 text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
-                  Hard rules
-                </p>
+                <AptTag variant="outline" size="sm" className="mb-3">Hard rules</AptTag>
                 <ul className="space-y-2">
                   {entry.rules.map((rule) => (
                     <li key={rule} className="flex items-start gap-3 text-sm">
@@ -164,9 +160,7 @@ export default function DesignArchitecturePatternDetail() {
                         {patternEntry.icon}
                       </div>
                       <div>
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">
-                          Pattern
-                        </p>
+                        <AptTag variant="outline" size="sm" className="mb-2">Pattern</AptTag>
                         <h3 className="text-lg font-semibold">{patternEntry.title}</h3>
                       </div>
                     </div>
@@ -192,9 +186,7 @@ export default function DesignArchitecturePatternDetail() {
                 <Network className="h-6 w-6" />
               </div>
               <div>
-                <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground mb-1">
-                  Design Architecture
-                </p>
+                <AptTag variant="outline" size="sm" className="mb-2">Design Architecture</AptTag>
                 <h3 className="text-xl font-semibold mb-1">Return to the Full Pattern Set</h3>
                 <p className="text-muted-foreground">
                   Use the overview page to compare patterns and connect them back to the broader APT architecture model.
