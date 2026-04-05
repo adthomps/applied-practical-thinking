@@ -35,16 +35,14 @@ Unresolved critical failures block merge unless a documented exception is linked
 
 - The UI is dark-first.
 - All colors come from semantic tokens.
+- Accent is limited to interactive elements, selected states, badges/tags, and large callouts.
 - No raw hex, rgb, or ad hoc hsl values are used in components.
-- Primary and accent colors are used intentionally, not decoratively.
-- Borders, surfaces, and text colors follow the system hierarchy.
 
 ### Fail conditions
 
+- Accent is used in body text, captions, or dense metadata.
+- Non-underlined inline paragraph links use accent without clear interactivity.
 - Decorative gradients appear without semantic purpose.
-- Accent color is overused.
-- Multiple unrelated accent colors are used in the same section.
-- Color is doing the job of spacing or hierarchy.
 
 ## 3. Typography
 
@@ -52,66 +50,58 @@ Unresolved critical failures block merge unless a documented exception is linked
 
 - Only the approved font stack is used.
 - Type scale follows the system hierarchy.
+- Lead token is used for page/section/hero supporting intros where applicable.
 - Headings, body text, and captions are visually distinct.
-- Text remains readable at all screen sizes.
-- Font size and weight choices feel deliberate and limited.
 
 ### Fail conditions
 
+- Lead copy is missing where intro bridge is required.
 - More than one primary font is used.
 - Random font sizes or weights are introduced.
-- Typography feels crowded, tiny, oversized, or inconsistent.
-- Heading levels are skipped without reason.
 
 ## 4. Spacing & Alignment
 
 ### Critical
 
-- All spacing uses the approved spacing scale.
-- Layout rhythm is consistent across sections and cards.
-- Elements align cleanly to a visible grid.
-- Padding and gaps feel intentional and repeatable.
-- Cards and sections have consistent internal spacing.
+- Spacing uses fixed semantic spacing tokens.
+- `cardPaddingDense` (`p-5`) is used for metadata-heavy compact cards.
+- `cardPaddingDefault` (`p-6`) is used for default prose/support cards.
+- `cardPaddingFeature` (`p-8`) is used for hero/feature emphasis only.
 
 ### Fail conditions
 
 - Arbitrary spacing values are used.
-- Components are almost aligned.
+- Legacy spacing ranges are used as ad hoc selection guidance.
 - Similar elements have visibly different spacing.
-- Dense sections feel cramped or loose without reason.
 
 ## 5. Layout & Responsive Behavior
 
 ### Critical
 
-- The layout is mobile-first.
-- Content makes sense in a single-column layout.
+- Layout is mobile-first.
+- Content makes sense in single-column mode.
 - Controls wrap before becoming cramped.
-- Reading content remains width-constrained.
 - Desktop adds clarity, not unnecessary density.
 
 ### Fail conditions
 
-- The UI only works well on desktop.
-- Cards become unreadable on smaller screens.
-- Rows break awkwardly on mobile.
+- UI only works well on desktop.
+- Rows/cards break awkwardly on mobile.
 - Desktop introduces extra columns with no usability gain.
 
 ## 6. Card-Based Structure
 
 ### Critical
 
-- Content is organized using semantic card containers.
-- Cards create clear grouping and hierarchy.
-- Card variants are used consistently.
-- Interactive cards are visibly interactive.
-- Hero or feature card usage is limited and intentional.
+- Canonical variants only: `default`, `interactive`, `elevated`, `hero`.
+- Variant usage matches declared purpose.
+- Hero variant appears at most once per view.
+- Interactive cards are clearly interactive.
 
 ### Fail conditions
 
-- Free-floating content appears without structure.
-- Every card uses a different visual treatment.
-- Too many cards compete equally for attention.
+- Non-canonical variants (`feature`, `subtle`) are introduced in new guidance.
+- Multiple cards compete as hero-level emphasis.
 - Card interactivity is unclear.
 
 ## 7. Components & Pattern Reuse
@@ -119,51 +109,44 @@ Unresolved critical failures block merge unless a documented exception is linked
 ### Critical
 
 - Existing APT components are reused where appropriate.
-- New component patterns are introduced only when necessary.
-- Buttons, tags, cards, and layout sections behave consistently.
+- New patterns are introduced only when necessary.
 - Similar actions have similar visual treatment.
-- Component variants are chosen intentionally.
 
 ### Fail conditions
 
-- Repeated custom one-off patterns appear.
-- The same action looks different in different places.
-- Default framework components are used without adaptation.
-- The UI looks like uncustomized Tailwind, Bootstrap, or shadcn defaults.
+- Repeated one-off patterns appear.
+- Default framework styling is left uncustomized.
+- Same action appears with inconsistent treatment.
 
 ## 8. Interaction & Motion
 
 ### Critical
 
-- Motion is subtle and purposeful.
-- Hover, focus, and pressed states are clearly defined.
-- Motion durations stay within the system range.
-- Interaction feedback improves understanding.
-- Keyboard interaction is supported where relevant.
+- Hover/focus/press transitions are 150-200ms.
+- Standard UI transitions are 180-250ms.
+- Entrances/view transitions are 220-320ms.
+- Hero transitions are <= 400ms and rare.
 
 ### Fail conditions
 
-- Motion is decorative or distracting.
-- Bounce, overshoot, parallax, or looping effects are used.
-- Interactive elements lack visible feedback.
-- Focus states are missing or weak.
+- Bounce, overshoot, parallax, or decorative looping effects are used.
+- Motion timing exceeds allowed ranges without documented exception.
+- Interaction feedback is missing or weak.
 
 ## 9. States & Edge Cases
 
 ### Critical
 
-- Loading state exists and is visible.
-- Empty state exists and is understandable.
-- Error state exists and explains what happened.
-- Success state exists where applicable.
-- Partial data and no-data cases are handled.
+- Loading, empty, error, success (if relevant), and partial-data states are defined.
+- Loading preserves final layout shape.
+- Error state explains next step/retry action.
+- Empty state includes concise context and action where relevant.
 
 ### Fail conditions
 
-- Blank areas appear during loading.
+- Any required state is missing.
 - Failures are silent.
-- Empty screens do not explain next steps.
-- Only the happy path is implemented.
+- Happy-path-only implementation is shipped.
 
 ## 10. Content & Copy Expression
 
@@ -171,60 +154,53 @@ Unresolved critical failures block merge unless a documented exception is linked
 
 - Labels are plain and descriptive.
 - Copy is clear, direct, and low-noise.
-- UI language matches the APT tone.
-- Navigation labels are functional, not clever.
-- Placeholder copy does not remain in final build.
+- UI language matches APT tone.
 
 ### Fail conditions
 
-- Marketing or hype language appears.
-- Labels are vague, aspirational, or trendy.
-- Copy creates ambiguity about purpose.
-- Placeholder lorem ipsum or filler text remains.
+- Marketing/hype language appears.
+- Labels are vague or trendy.
+- Placeholder/filler text remains.
 
 ## 11. Accessibility & Readability
 
 ### Critical
 
-- Text contrast is readable against all surfaces.
-- Interactive targets are large enough on mobile.
+- Contrast is readable across surfaces.
 - Focus states are visible.
-- Content remains readable when zoomed.
-- Tables, code blocks, and long text remain usable on small screens.
+- Touch targets are mobile-appropriate.
+- Long text/tables/code remain usable on small screens.
 
 ### Fail conditions
 
-- Contrast drops below practical readability.
-- Small touch targets are present.
 - Focus is invisible.
-- Horizontal overflow breaks general content layout.
+- Contrast drops below practical readability.
+- Horizontal overflow breaks core content.
 
 ## 12. AI / Agent Compliance
 
 ### Critical
 
-- No new visual tokens were invented.
-- Existing patterns were reused before new ones were created.
-- The output does not look like a generic framework scaffold.
-- The build includes all required system states.
-- The result matches the APT design system, not the model's default habits.
+- No new visual tokens are invented.
+- No arbitrary spacing/radius/shadow values are introduced.
+- No inline style usage except dynamic measurement needs.
+- Result matches APT system contracts, not generic scaffold defaults.
 
 ### Fail conditions
 
-- Arbitrary colors, spacing, or typography were introduced.
-- Layout drift appeared across screens.
-- Agent-generated defaults were left untouched.
-- Looks fine replaced actual compliance.
+- Agent defaults are left untouched.
+- Non-canonical variants or token misuse appear.
+- "Looks fine" replaces contract-level compliance.
 
 ## Fast Pass / Fail Summary
 
-A build should fail review if any of the below are true:
+A build should fail review if any are true:
 
-- Decorative gradients are used excessively.
-- Spacing is inconsistent.
-- Too many fonts or type styles are used.
-- The UI looks like default Bootstrap / Tailwind / shadcn.
-- Loading, empty, error, or edge states are missing.
+- Accent misuse in non-interactive dense text.
+- Spacing token misuse or arbitrary spacing values.
+- Non-canonical card variant guidance appears.
+- Required states are missing.
+- Motion timing breaches defined ranges.
 
 ## Reviewer Decision
 

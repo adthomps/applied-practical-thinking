@@ -66,7 +66,7 @@
           "sourcePath": "versions/v2/APT-DESIGN-THINKING.md",
           "canonicalPath": "/docs/design/v2/APT-DESIGN-THINKING.md",
           "publishedAt": "2026-04-05",
-          "changelog": "v2 kickoff aligned to lint gate and doctrine enforcement."
+          "changelog": "Strict refinement pass: design-to-delivery guard rails and non-happy-path requirements."
         }
       ]
     },
@@ -94,7 +94,7 @@
           "sourcePath": "versions/v2/APT-DESIGN-SYSTEM.md",
           "canonicalPath": "/docs/design/v2/APT-DESIGN-SYSTEM.md",
           "publishedAt": "2026-04-05",
-          "changelog": "v2 kickoff aligned to lint gate and doctrine enforcement."
+          "changelog": "Strict refinement pass: accent restrictions, lead token, fixed spacing, state patterns, motion rules, and 4-variant model."
         }
       ]
     },
@@ -122,7 +122,7 @@
           "sourcePath": "versions/v2/APT-DESIGN-ARCHITECTURE.md",
           "canonicalPath": "/docs/design/v2/APT-DESIGN-ARCHITECTURE.md",
           "publishedAt": "2026-04-05",
-          "changelog": "v2 kickoff aligned to lint gate and doctrine enforcement."
+          "changelog": "v2 governance sync for strict doctrine enforcement with unchanged runtime boundaries."
         }
       ]
     },
