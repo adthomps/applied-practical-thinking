@@ -175,3 +175,33 @@ The initial v1 design docs publishing model copied authored files directly into 
 **Consequences:**
 - Positive: Safe mixed-major rollout, clearer public metadata, deterministic publishing.
 - Negative: Higher manifest/frontmatter maintenance burden and stricter publish validation.
+
+---
+
+### [APT-006] Design Lint Critical Gate And Core Doctrine v2 Kickoff
+
+**Date:** 2026-04-05  
+**Author:** Codex  
+**Status:** Accepted
+
+**Context:**
+The initial lint checklist was useful but too compact for consistent review outcomes. We needed a stricter, explicit quality gate and a controlled way to begin v2 doctrine updates without forcing all docs to move majors at once.
+
+**Decision:**
+- Adopt the 12-section APT Design System Lint Checklist as the canonical lint contract (markdown + machine-readable JSON).
+- Treat unresolved critical checklist failures as merge blockers unless a documented exception is linked in this decision log.
+- Kick off doctrine v2 for `Design Thinking`, `Design System`, and `Design Architecture` only, while keeping other doctrine docs on v1.
+- Keep v2 entries in `candidate` status until route/checklist verification is complete.
+
+**Rationale:**
+- Improves review consistency across humans and AI agents.
+- Makes pass/fail criteria explicit and auditable.
+- Preserves per-doc majoring flexibility while v2 rollout is still partial.
+
+**Alternatives Considered:**
+1. Keep checklist advisory-only - rejected: did not prevent drift.
+2. Force all doctrine docs to v2 immediately - rejected: higher migration risk and unnecessary churn.
+
+**Consequences:**
+- Positive: Stronger quality gate, clearer governance, safer incremental v2 rollout.
+- Negative: More checklist/metadata maintenance overhead and stricter PR requirements.

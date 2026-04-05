@@ -10,6 +10,13 @@
 - **Data flow**: In production, UI fetches data from the separate Worker origin configured by `VITE_API_BASE`. Local dev may proxy `/api/*`, but production must not assume same-origin `/api`.
 - **Why**: Boundaries are enforced to prevent category errors and keep logic testable and maintainable.
 
+## Source Relationship
+
+- Internal authority for repo execution behavior: `.github/copilot-instructions.md` (this file)
+- External curated sibling for public handoff: `apps/web/docs/design/APT-AI-INSTRUCTIONS-REFERENCE.md`
+
+The external document is strict but intentionally excludes internal-only workflow details.
+
 ## Critical Workflows
 
 - **Install dependencies**: `pnpm install`
@@ -32,6 +39,8 @@
 - **Web-owned AI/agent prompts** must be file-based and versioned in `apps/web/ai/prompts`.
 - **No custom colors, fonts, or spacing**—use only tokens from `packages/config`.
 - **No light mode**—dark-first only.
+- **Machine-readable visual contract**: `apps/web/docs/design/tokens.json` must be treated as the AI-facing token enforcement source in addition to doctrine text.
+- **Layout baseline**: `apps/web/components/apt/AptLayout.tsx` is the shell scaffold contract.
 
 ## Patterns
 
@@ -49,3 +58,15 @@
 
 - To add a new UI feature, create a presentational component in `packages/ui`, import it in `apps/web`, and orchestrate data via a web service module.
 - To add a new API endpoint, add a route in `apps/worker/src/routes`, implement logic in a service, and ensure no business logic leaks into the route handler.
+
+## Strict Enforcement Summary
+
+MUST:
+- Use semantic tokens and shared APT primitives for user-facing UI.
+- Keep boundaries between authored source and generated output.
+- Align generated/scaffold output to `AptLayout` and design doctrine.
+
+NEVER:
+- Introduce raw color utilities where semantic tokens exist.
+- Treat `apps/web/public/*` docs as authored source of truth.
+- Bypass declared repo boundaries for convenience.

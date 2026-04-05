@@ -507,6 +507,21 @@ Document decisions that are:
 
 ---
 
+## Four Enforcement Layers
+
+Use this framework with the full enforcement stack:
+
+1. **Design doctrine + structure**: this document plus Design System and Design Architecture doctrine.
+2. **Internal AI behavior control**: `.github/copilot-instructions.md` (authoritative for repo execution).
+3. **External AI reference for collaborators**: `APT-AI-INSTRUCTIONS-REFERENCE.md` (strict public-safe sibling).
+4. **Machine-readable visual enforcement**: `apps/web/docs/design/tokens.json`.
+5. **Layout baseline scaffold**: `apps/web/components/apt/AptLayout.tsx`.
+6. **Starter prompt template**: `apps/web/ai/prompts/start-prompt-example.md`.
+
+When AI output conflicts with this thinking model, the output must be revised, not rationalized.
+
+---
+
 ## Version
 
 **v1.0.0** — January 2026
@@ -514,4 +529,3 @@ Document decisions that are:
 ---
 
 *APT Design Thinking Framework — Applied Practical Thinking*
-

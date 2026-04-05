@@ -240,6 +240,23 @@ app.post('/api/ai/generate', authMiddleware, rateLimiter, async (c) => {
 
 ---
 
+## Four Enforcement Layers
+
+The architecture layer operationalizes the enforcement stack:
+
+1. **Design doctrine**: governs philosophy and structure.
+2. **Internal AI behavior control**: `.github/copilot-instructions.md` (authoritative for in-repo operations).
+3. **External AI contract**: `APT-AI-INSTRUCTIONS-REFERENCE.md` for public reviewers/collaborators.
+4. **Machine-readable visual enforcement**: `apps/web/docs/design/tokens.json`.
+5. **Layout scaffold baseline**: `apps/web/components/apt/AptLayout.tsx`.
+6. **Starter prompt alignment**: `apps/web/ai/prompts/start-prompt-example.md`.
+
+Source relationship rule:
+- Internal instructions control repo behavior.
+- External instructions are strict but curated for public handoff.
+
+---
+
 ## Applied Examples
 
 ### APT Site Architecture
@@ -346,4 +363,3 @@ service/
 - [APT Design System](./APT-DESIGN-SYSTEM.md) — Visual tokens and components
 - [APT Design Thinking](./APT-DESIGN-THINKING.md) — Problem-solving methodology
 - Internal review artifacts such as decision logs remain source-side support docs and are not part of the public design export by default
-

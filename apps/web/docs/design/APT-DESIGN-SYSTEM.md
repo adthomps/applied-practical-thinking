@@ -567,6 +567,12 @@ apps/web/
 - **TypeScript Tokens**: `packages/config/src/aptTokens.ts`
 - **Compatibility Re-export**: `apps/web/theme/aptTokens.ts`
 - **JSON (Figma/Style Dictionary)**: `apps/web/docs/design/APT-FIGMA-TOKENS.json`
+- **Machine-Readable Enforcement Contract**: `apps/web/docs/design/tokens.json`
+- **Design System Lint Checklist (Markdown)**: `apps/web/docs/design/APT-DESIGN-SYSTEM-LINT-CHECKLIST.md`
+- **Design System Lint Checklist (JSON)**: `apps/web/docs/design/APT-DESIGN-SYSTEM-LINT-CHECKLIST.json`
+
+Merge policy:
+- Unresolved critical lint checklist failures block merge unless a documented exception is linked in `docs/DECISION_LOG.md`.
 
 ---
 

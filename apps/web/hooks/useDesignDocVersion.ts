@@ -3,6 +3,8 @@ import { useSearchParams } from "react-router-dom";
 import type { PublicDesignDocVersionItem } from "@apt/knowledge";
 import { fetchDesignDocVersions } from "@/src/services/contentIndex";
 
+const EMPTY_VERSIONS: PublicDesignDocVersionItem[] = [];
+
 export type DesignDocVersionState = {
   loading: boolean;
   error: string | null;
@@ -36,10 +38,10 @@ export function resolveActiveDesignDocMajor(params: {
 
 export function useDesignDocVersion(slug: string): DesignDocVersionState {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [versions, setVersions] = useState<PublicDesignDocVersionItem[]>([]);
-  const [latestMajor, setLatestMajor] = useState<number | null>(null);
+  const [resolvedSlug, setResolvedSlug] = useState<string | null>(null);
+  const [resolvedError, setResolvedError] = useState<string | null>(null);
+  const [resolvedVersions, setResolvedVersions] = useState<PublicDesignDocVersionItem[]>([]);
+  const [resolvedLatestMajor, setResolvedLatestMajor] = useState<number | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -49,20 +51,28 @@ export function useDesignDocVersion(slug: string): DesignDocVersionState {
     fetchDesignDocVersions(slug)
       .then((response) => {
         if (cancelled) return;
-        setVersions(response.versions || []);
-        setLatestMajor(response.latestMajor ?? null);
-        setLoading(false);
+        setResolvedVersions(response.versions || []);
+        setResolvedLatestMajor(response.latestMajor ?? null);
+        setResolvedError(null);
+        setResolvedSlug(slug);
       })
       .catch((err: unknown) => {
         if (cancelled) return;
-        setError(err instanceof Error ? err.message : "Failed to load design doc versions.");
-        setLoading(false);
+        setResolvedVersions([]);
+        setResolvedLatestMajor(null);
+        setResolvedError(err instanceof Error ? err.message : "Failed to load design doc versions.");
+        setResolvedSlug(slug);
       });
 
     return () => {
       cancelled = true;
     };
   }, [slug]);
+
+  const loading = resolvedSlug !== slug;
+  const error = resolvedSlug === slug ? resolvedError : null;
+  const versions = resolvedSlug === slug ? resolvedVersions : EMPTY_VERSIONS;
+  const latestMajor = resolvedSlug === slug ? resolvedLatestMajor : null;
 
   const selectedMajorFromUrl = parseMajor(searchParams.get("v"));
 

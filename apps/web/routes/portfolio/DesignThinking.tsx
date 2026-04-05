@@ -119,7 +119,7 @@ function CaseStudyPreview({ title, problem, constraint, outcome, tags }: CaseStu
           </div>
           <div>
             <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Outcome</p>
-            <p className="text-sm text-accent">{outcome}</p>
+            <p className="text-sm text-foreground">{outcome}</p>
           </div>
         </div>
       </AptCardContent>

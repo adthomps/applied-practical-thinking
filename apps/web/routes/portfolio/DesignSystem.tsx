@@ -52,7 +52,7 @@ function ColorSwatch({ name, cssVar, className }: { name: string; cssVar: string
       <div className={`mb-2 h-16 w-full rounded-lg border border-border ${className} transition-transform group-hover:scale-[1.02]`} />
       <p className="text-sm font-medium">{name}</p>
       <p className="text-xs text-muted-foreground font-mono">{cssVar}</p>
-      {copied && <p className="text-xs text-accent">Copied!</p>}
+      {copied && <p className="text-xs text-muted-foreground">Copied!</p>}
     </AptButton>
   );
 }
@@ -97,6 +97,10 @@ export default function PortfolioDesignSystem() {
   const systemVersion = useDesignDocVersion("system");
   const systemDocUrl = tryGetWorkerApiUrl(systemVersion.downloadApiPath);
   const systemCanonicalUrl = systemVersion.canonicalPath || null;
+  const checklistCanonicalMajor = systemVersion.activeMajor || systemVersion.latestMajor;
+  const checklistCanonicalUrl = checklistCanonicalMajor
+    ? `/docs/design/v${checklistCanonicalMajor}/APT-DESIGN-SYSTEM-LINT-CHECKLIST.md`
+    : null;
   const configError = getWorkerApiConfigError();
   const handleSystemMarkdownDownload = async () => {
     const majorSuffix = systemVersion.activeMajor ? `-v${systemVersion.activeMajor}` : "";
@@ -135,20 +139,20 @@ export default function PortfolioDesignSystem() {
               Download Tokens
             </a>
           </AptButton>
+          <AptButton variant="outline" asChild>
+            <Link to="/design-playground">
+              Open Playground
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </AptButton>
+          {systemCanonicalUrl ? (
             <AptButton variant="outline" asChild>
-              <Link to="/design-playground">
-                Open Playground
-                <ArrowRight className="h-4 w-4" />
-              </Link>
+              <a href={systemCanonicalUrl} target="_blank" rel="noreferrer">
+                Open Canonical
+              </a>
             </AptButton>
-            {systemCanonicalUrl ? (
-              <AptButton variant="ghost" asChild>
-                <a href={systemCanonicalUrl} target="_blank" rel="noreferrer">
-                  Open canonical
-                </a>
-              </AptButton>
-            ) : null}
-          </div>
+          ) : null}
+        </div>
         <DesignDocVersionSwitcher versionState={systemVersion} />
         {!systemDocUrl && configError ? (
           <p className="text-sm text-muted-foreground mt-3">
@@ -156,6 +160,42 @@ export default function PortfolioDesignSystem() {
           </p>
         ) : null}
       </SectionIntro>
+
+      <section className="mb-12">
+        <AptCard variant="subtle" padding="large">
+          <AptCardHeader>
+            <AptCardTitle className="text-xl">Design System Lint Checklist</AptCardTitle>
+            <AptCardDescription>
+              Critical gate checklist for design-system compliance. This is the canonical action surface for lint review and artifact downloads.
+            </AptCardDescription>
+          </AptCardHeader>
+          <AptCardContent className="flex flex-wrap gap-3">
+            <AptButton variant="primary" asChild>
+              <a href="/docs/design/APT-DESIGN-SYSTEM-LINT-CHECKLIST.md" target="_blank" rel="noreferrer">
+                Open Checklist
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            </AptButton>
+            <AptButton variant="outline" asChild>
+              <a href="/docs/design/APT-DESIGN-SYSTEM-LINT-CHECKLIST.md" download>
+                Download Markdown
+              </a>
+            </AptButton>
+            <AptButton variant="outline" asChild>
+              <a href="/docs/design/APT-DESIGN-SYSTEM-LINT-CHECKLIST.json" download>
+                Download Checklist JSON
+              </a>
+            </AptButton>
+            {checklistCanonicalUrl ? (
+              <AptButton variant="outline" asChild>
+                <a href={checklistCanonicalUrl} target="_blank" rel="noreferrer">
+                  Open Canonical Version
+                </a>
+              </AptButton>
+            ) : null}
+          </AptCardContent>
+        </AptCard>
+      </section>
 
       {/* Quick Nav */}
       <nav className="mb-12 overflow-x-auto pb-6 border-b border-border">
@@ -906,12 +946,12 @@ text-xl md:text-2xl
                 }}
                 disabled={!systemDocUrl}
               >
-                Download Markdown
+                Download System Markdown
               </AptButton>
               <AptButton asChild>
                 <a href="/docs/design/APT-FIGMA-TOKENS.json" download>
                   <Download className="h-4 w-4" />
-                  Download JSON
+                  Download Tokens JSON
                 </a>
               </AptButton>
             </div>

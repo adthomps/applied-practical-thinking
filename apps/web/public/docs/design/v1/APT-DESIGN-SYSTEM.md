@@ -575,6 +575,20 @@ apps/web/
 - **TypeScript Tokens**: `packages/config/src/aptTokens.ts`
 - **Compatibility Re-export**: `apps/web/theme/aptTokens.ts`
 - **JSON (Figma/Style Dictionary)**: `apps/web/docs/design/APT-FIGMA-TOKENS.json`
+- **Machine-Readable Enforcement Contract**: `apps/web/docs/design/tokens.json`
+- **Design System Lint Checklist (Markdown)**: `apps/web/docs/design/APT-DESIGN-SYSTEM-LINT-CHECKLIST.md`
+- **Design System Lint Checklist (JSON)**: `apps/web/docs/design/APT-DESIGN-SYSTEM-LINT-CHECKLIST.json`
+
+---
+
+## Four Enforcement Layers
+
+1. **Design doctrine**: `APT-DESIGN-SYSTEM.md`, `APT-DESIGN-THINKING.md`, `APT-DESIGN-ARCHITECTURE.md`
+2. **Internal AI behavior control**: `.github/copilot-instructions.md` (repo authority)
+3. **External AI instructions reference**: `APT-AI-INSTRUCTIONS-REFERENCE.md` (public-safe strict sibling)
+4. **Machine-readable visual consistency**: `tokens.json`
+5. **Layout baseline**: `apps/web/components/apt/AptLayout.tsx`
+6. **Starter prompt template**: `apps/web/ai/prompts/start-prompt-example.md`
 
 ---
 
@@ -585,4 +599,3 @@ apps/web/
 ---
 
 *APT Design System — Applied Practical Thinking*
-

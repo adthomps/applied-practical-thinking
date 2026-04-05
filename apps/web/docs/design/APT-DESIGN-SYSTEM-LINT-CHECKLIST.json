@@ -1,0 +1,216 @@
+{
+  "id": "apt-design-system-lint-checklist",
+  "title": "APT Design System Lint Checklist",
+  "version": "2.1.0",
+  "updatedAt": "2026-04-05",
+  "purpose": "Validate that a UI build follows the APT design system consistently across structure, styling, behavior, and state handling.",
+  "passRule": "A build should not be considered complete until all critical items pass.",
+  "mergeGatePolicy": "Unresolved critical failures block merge unless a documented exception is linked in docs/DECISION_LOG.md.",
+  "sections": [
+    {
+      "id": "brand-design-intent",
+      "title": "Brand & Design Intent",
+      "critical": [
+        "The UI feels calm, clear, and structured.",
+        "The interface does not feel like a marketing site.",
+        "The design emphasizes understanding and usability over novelty.",
+        "Decisions, hierarchy, and purpose are visually clear."
+      ],
+      "failConditions": [
+        "There is visual noise with no meaning.",
+        "The page feels flashy, trendy, or over-designed.",
+        "The UI communicates hype instead of clarity."
+      ]
+    },
+    {
+      "id": "theme-color-usage",
+      "title": "Theme & Color Usage",
+      "critical": [
+        "The UI is dark-first.",
+        "All colors come from semantic tokens.",
+        "Accent is limited to interactive elements, selected states, badges/tags, and large callouts.",
+        "No raw hex, rgb, or ad hoc hsl values are used in components."
+      ],
+      "failConditions": [
+        "Accent is used in body text, captions, or dense metadata.",
+        "Non-underlined inline paragraph links use accent without clear interactivity.",
+        "Decorative gradients appear without semantic purpose."
+      ]
+    },
+    {
+      "id": "typography",
+      "title": "Typography",
+      "critical": [
+        "Only the approved font stack is used.",
+        "Type scale follows the system hierarchy.",
+        "Lead token is used for page/section/hero supporting intros where applicable.",
+        "Headings, body text, and captions are visually distinct."
+      ],
+      "failConditions": [
+        "Lead copy is missing where intro bridge is required.",
+        "More than one primary font is used.",
+        "Random font sizes or weights are introduced."
+      ]
+    },
+    {
+      "id": "spacing-alignment",
+      "title": "Spacing & Alignment",
+      "critical": [
+        "Spacing uses fixed semantic spacing tokens.",
+        "cardPaddingDense (p-5) is used for metadata-heavy compact cards.",
+        "cardPaddingDefault (p-6) is used for default prose/support cards.",
+        "cardPaddingFeature (p-8) is used for hero/feature emphasis only."
+      ],
+      "failConditions": [
+        "Arbitrary spacing values are used.",
+        "Legacy spacing ranges are used as ad hoc guidance.",
+        "Similar elements have visibly different spacing."
+      ]
+    },
+    {
+      "id": "layout-responsive",
+      "title": "Layout & Responsive Behavior",
+      "critical": [
+        "Layout is mobile-first.",
+        "Content makes sense in single-column mode.",
+        "Controls wrap before becoming cramped.",
+        "Desktop adds clarity, not unnecessary density."
+      ],
+      "failConditions": [
+        "UI only works well on desktop.",
+        "Rows/cards break awkwardly on mobile.",
+        "Desktop introduces extra columns with no usability gain."
+      ]
+    },
+    {
+      "id": "card-based-structure",
+      "title": "Card-Based Structure",
+      "critical": [
+        "Canonical variants allowed: default, interactive, elevated, hero, subtle, feature.",
+        "Variant usage matches declared purpose.",
+        "Hero appears at most once per view.",
+        "Interactive cards are clearly interactive.",
+        "Feature and hero are not used as default repeated list-card treatments."
+      ],
+      "failConditions": [
+        "Multiple cards compete as hero-level emphasis.",
+        "Feature is used as baseline treatment for dense repeated grids/lists.",
+        "Hero is used repeatedly in one view.",
+        "Card interactivity is unclear."
+      ]
+    },
+    {
+      "id": "components-pattern-reuse",
+      "title": "Components & Pattern Reuse",
+      "critical": [
+        "Existing APT components are reused where appropriate.",
+        "New patterns are introduced only when necessary.",
+        "Similar actions have similar visual treatment.",
+        "AptSection is used for shared section rhythm/width where appropriate."
+      ],
+      "failConditions": [
+        "Repeated one-off patterns appear.",
+        "Default framework styling is left uncustomized.",
+        "Same action appears with inconsistent treatment."
+      ]
+    },
+    {
+      "id": "interaction-motion",
+      "title": "Interaction & Motion",
+      "critical": [
+        "Hover/focus/press transitions are 150-200ms.",
+        "Standard UI transitions are 180-250ms.",
+        "Entrances/view transitions are 220-320ms.",
+        "Hero transitions are <= 400ms and rare."
+      ],
+      "failConditions": [
+        "Bounce, overshoot, parallax, or decorative looping effects are used.",
+        "Motion timing exceeds allowed ranges without documented exception.",
+        "Interaction feedback is missing or weak."
+      ]
+    },
+    {
+      "id": "states-edge-cases",
+      "title": "States & Edge Cases",
+      "critical": [
+        "Loading, empty, error, success (if relevant), and partial-data states are defined.",
+        "Loading preserves final layout shape.",
+        "Error state explains next step/retry action.",
+        "Empty state includes concise context and action where relevant."
+      ],
+      "failConditions": [
+        "Any required state is missing.",
+        "Failures are silent.",
+        "Happy-path-only implementation is shipped."
+      ]
+    },
+    {
+      "id": "content-copy-expression",
+      "title": "Content & Copy Expression",
+      "critical": [
+        "Labels are plain and descriptive.",
+        "Copy is clear, direct, and low-noise.",
+        "UI language matches APT tone."
+      ],
+      "failConditions": [
+        "Marketing/hype language appears.",
+        "Labels are vague or trendy.",
+        "Placeholder/filler text remains."
+      ]
+    },
+    {
+      "id": "accessibility-readability",
+      "title": "Accessibility & Readability",
+      "critical": [
+        "Contrast is readable across surfaces.",
+        "Focus states are visible.",
+        "Touch targets are mobile-appropriate.",
+        "Long text/tables/code remain usable on small screens."
+      ],
+      "failConditions": [
+        "Focus is invisible.",
+        "Contrast drops below practical readability.",
+        "Horizontal overflow breaks core content."
+      ]
+    },
+    {
+      "id": "ai-agent-compliance",
+      "title": "AI / Agent Compliance",
+      "critical": [
+        "No new visual tokens are invented.",
+        "No arbitrary spacing/radius/shadow values are introduced.",
+        "No inline style usage except dynamic measurement needs.",
+        "Result matches APT contracts, not generic scaffold defaults."
+      ],
+      "failConditions": [
+        "Agent defaults are left untouched.",
+        "Feature/hero misuse or token misuse appear.",
+        "Looks fine replaces contract-level compliance."
+      ]
+    }
+  ],
+  "fastFailRules": [
+    "Accent misuse appears in non-interactive dense text.",
+    "Spacing token misuse or arbitrary spacing values appear.",
+    "Feature/hero are used as default repeated list-card treatments.",
+    "Required states are missing.",
+    "Motion timing breaches defined ranges."
+  ],
+  "reviewerDecision": [
+    {
+      "value": "pass",
+      "label": "Pass",
+      "description": "compliant with APT design system"
+    },
+    {
+      "value": "pass_with_fixes",
+      "label": "Pass with fixes",
+      "description": "minor issues only"
+    },
+    {
+      "value": "fail",
+      "label": "Fail",
+      "description": "non-compliant, revise before merge"
+    }
+  ]
+}

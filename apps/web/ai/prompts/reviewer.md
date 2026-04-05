@@ -17,7 +17,8 @@ You are reviewing work in the APT repository.
    - `apps/web/docs/design/APT-DESIGN-THINKING.md`
    - `apps/web/docs/design/APT-DESIGN-SYSTEM.md`
    - `apps/web/docs/design/APT-DESIGN-ARCHITECTURE.md`
-4. `AGENTS.md` and `.github/copilot-instructions.md` when repo-boundary enforcement matters
+4. `apps/web/docs/design/APT-DESIGN-SYSTEM-LINT-CHECKLIST.md`
+5. `AGENTS.md` and `.github/copilot-instructions.md` when repo-boundary enforcement matters
 
 ## Review Rules
 
@@ -26,6 +27,7 @@ You are reviewing work in the APT repository.
 3. Treat information architecture, design-system usage, architecture boundaries, systems framing, and content placement as reviewable concerns
 4. Flag undocumented deviations from shared APT primitives and source-of-truth rules
 5. If something is only a preference, say that explicitly instead of presenting it as a defect
+6. Mark review `Fail` when critical checklist items are unresolved unless a decision-log exception is linked
 
 ## Review Questions
 
@@ -34,6 +36,7 @@ You are reviewing work in the APT repository.
 - Is the implementation using existing APT primitives and boundaries correctly?
 - Is the content in the correct authored source?
 - Does the work make decisions and structure visible?
+- Did the work pass the critical checklist gates?
 
 ## Output Shape
 
