@@ -93,15 +93,17 @@ Unresolved critical failures block merge unless a documented exception is linked
 
 ### Critical
 
-- Canonical variants only: `default`, `interactive`, `elevated`, `hero`.
+- Canonical variants allowed: `default`, `interactive`, `elevated`, `hero`, `subtle`, `feature`.
 - Variant usage matches declared purpose.
 - Hero variant appears at most once per view.
 - Interactive cards are clearly interactive.
+- `feature` and `hero` are not used as default repeated list-card treatments.
 
 ### Fail conditions
 
-- Non-canonical variants (`feature`, `subtle`) are introduced in new guidance.
 - Multiple cards compete as hero-level emphasis.
+- `feature` is used as baseline treatment for dense repeated grids/lists.
+- `hero` is used repeatedly in one view.
 - Card interactivity is unclear.
 
 ## 7. Components & Pattern Reuse
@@ -111,6 +113,7 @@ Unresolved critical failures block merge unless a documented exception is linked
 - Existing APT components are reused where appropriate.
 - New patterns are introduced only when necessary.
 - Similar actions have similar visual treatment.
+- `AptSection` is used for shared section rhythm/width where appropriate.
 
 ### Fail conditions
 
@@ -198,7 +201,7 @@ A build should fail review if any are true:
 
 - Accent misuse in non-interactive dense text.
 - Spacing token misuse or arbitrary spacing values.
-- Non-canonical card variant guidance appears.
+- `feature`/`hero` are used as default repeated list-card treatments.
 - Required states are missing.
 - Motion timing breaches defined ranges.
 

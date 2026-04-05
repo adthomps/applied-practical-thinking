@@ -20,6 +20,8 @@ export type { AptCardProps } from "@apt/ui";
 
 export { HeroCard } from "@apt/ui";
 export type { HeroCardProps } from "@apt/ui";
+export { AptSection, aptSectionVariants, aptSectionContentVariants } from "@apt/ui";
+export type { AptSectionProps } from "@apt/ui";
 export { HeroSection } from "./HeroSection";
 export { AptTag } from "@apt/ui";
 export type { AptTagProps } from "@apt/ui";

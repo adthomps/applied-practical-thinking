@@ -94,7 +94,7 @@
           "sourcePath": "versions/v2/APT-DESIGN-SYSTEM.md",
           "canonicalPath": "/docs/design/v2/APT-DESIGN-SYSTEM.md",
           "publishedAt": "2026-04-05",
-          "changelog": "Strict refinement pass: accent restrictions, lead token, fixed spacing, state patterns, motion rules, and 4-variant model."
+          "changelog": "Strict refinement pass: accent restrictions, lead token, fixed spacing, state patterns, motion rules, AptSection, and 6-variant matrix governance."
         }
       ]
     },

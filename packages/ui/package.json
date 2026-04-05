@@ -7,6 +7,7 @@
     ".": "./src/index.ts",
     "./AptButton": "./src/AptButton.tsx",
     "./AptCard": "./src/AptCard.tsx",
+    "./AptSection": "./src/AptSection.tsx",
     "./AptTag": "./src/AptTag.tsx",
     "./HeroCard": "./src/HeroCard.tsx"
   },

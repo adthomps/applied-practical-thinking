@@ -17,3 +17,6 @@ export type { AptTagProps } from "./AptTag";
 
 export { HeroCard } from "./HeroCard";
 export type { HeroCardProps } from "./HeroCard";
+
+export { AptSection, aptSectionVariants, aptSectionContentVariants } from "./AptSection";
+export type { AptSectionProps } from "./AptSection";

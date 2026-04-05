@@ -99,7 +99,7 @@ Every proposed UI change must explicitly account for:
 1. Accent restrictions
 2. Lead typography usage for intro bridges
 3. Fixed semantic spacing rules
-4. Canonical 4-card variant model (`default`, `interactive`, `elevated`, `hero`)
+4. Canonical 6-card variant model (`default`, `interactive`, `elevated`, `hero`, `subtle`, `feature`) with usage guard rails
 5. State pattern requirements (loading, empty, error, success-if-relevant, partial-data)
 6. Motion timing rules and anti-pattern bans
 7. AI misuse-prevention constraints

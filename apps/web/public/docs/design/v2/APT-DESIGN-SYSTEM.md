@@ -23,10 +23,13 @@ APT Design System is a strict UI contract for calm, structured, production-grade
 7. [Spacing](#spacing)
 8. [Semantic Spacing Rules](#semantic-spacing-rules)
 9. [Card Variant Usage Matrix](#card-variant-usage-matrix)
-10. [State Patterns](#state-patterns)
-11. [Motion Timing Rules](#motion-timing-rules)
-12. [AI / Agent Misuse Prevention](#ai--agent-misuse-prevention)
-13. [Usage Guidelines](#usage-guidelines)
+10. [AptSection Primitive](#aptsection-primitive)
+11. [State Patterns](#state-patterns)
+12. [Motion Timing Rules](#motion-timing-rules)
+13. [AI / Agent Misuse Prevention](#ai--agent-misuse-prevention)
+14. [Button and Card API Contract](#button-and-card-api-contract)
+15. [Component Inventory](#component-inventory)
+16. [Usage Guidelines](#usage-guidelines)
 
 ---
 
@@ -189,7 +192,7 @@ Do not replace body copy with lead in dense sections.
 
 ## Card Variant Usage Matrix
 
-Canonical variants (4 only):
+Canonical variants (6):
 
 | Variant | Purpose | Allowed Contexts | Disallowed Contexts |
 |---------|---------|------------------|---------------------|
@@ -197,11 +200,58 @@ Canonical variants (4 only):
 | `interactive` | Clickable navigation/selection | Route cards, selectable lists | Non-clickable static content |
 | `elevated` | Emphasized non-clickable content | Priority summaries, key info blocks | Primary navigation selection |
 | `hero` | Top-of-page emphasis | One per view, page hero only | Repeated in content grids |
+| `subtle` | Low-emphasis support container | Secondary metadata, supporting sidecards | Primary CTA surfaces, key narrative blocks |
+| `feature` | Mid/high-emphasis featured content | Spotlight modules, summary callouts, guided paths | Dense repeated list cards, default content grids |
 
-Non-canonical in doctrine:
+Guard rails:
 
-- `feature` and `subtle` are deprecated as recommended variants.
-- Existing usage may remain temporarily, but new doctrine guidance must use the 4 canonical variants.
+- `hero` cannot be used as the default list/grid card style.
+- `feature` cannot be the default treatment for repeated cards in feed/list layouts.
+- If more than one card in a view competes with hero-level emphasis, reduce to `elevated`, `default`, or `subtle`.
+
+### Variant Example Mapping
+
+- `default`: docs/support prose cards
+- `interactive`: navigation pickers and selectable tiles
+- `elevated`: highlighted summary with no click affordance
+- `hero`: top-of-page spotlight, max one per view
+- `subtle`: contextual metadata and secondary support clusters
+- `feature`: intentional spotlight in a mixed hierarchy, not the baseline pattern
+
+---
+
+## AptSection Primitive
+
+`AptSection` is a shared structural primitive in `@apt/ui` used to standardize section rhythm and width.
+
+API:
+
+- `spacing`: `default | compact | none`
+- `width`: `prose | content | wide | full`
+- `tone`: `default | subtle | elevated`
+- optional header support: `title`, `description`, `eyebrow`, `actions`
+
+Use `AptSection` to enforce card-based structure and predictable layout rhythm without replacing `SectionIntro`.
+
+Example:
+
+```tsx
+<AptSection
+  spacing="default"
+  width="content"
+  tone="subtle"
+  title="Design Standards"
+  description="Portable section scaffold with token-friendly defaults."
+  actions={<AptButton variant="outline">Read doctrine</AptButton>}
+>
+  <AptCard variant="default" padding="default">
+    <AptCardHeader>
+      <AptCardTitle>Shared baseline</AptCardTitle>
+      <AptCardDescription>Card-based structure with calm motion.</AptCardDescription>
+    </AptCardHeader>
+  </AptCard>
+</AptSection>
+```
 
 ---
 
@@ -279,7 +329,7 @@ Reject output when any of these appear:
 - default scaffold styling left unadapted
 - accent misuse in body/caption/dense metadata text
 - missing required state patterns
-- non-canonical card variant guidance in new docs
+- `hero` or `feature` misused as default list-card treatment
 
 AI review output must include:
 
@@ -289,12 +339,28 @@ AI review output must include:
 
 ---
 
+## Button and Card API Contract
+
+`AptButton` contract:
+
+- Variants: `primary | secondary | outline | ghost | accent | link`
+- Sizes: `sm | default | lg | icon`
+
+`AptCard` contract:
+
+- Variants: `default | elevated | interactive | hero | subtle | feature`
+- Subcomponents: `AptCardHeader | AptCardTitle | AptCardDescription | AptCardContent | AptCardFooter`
+
+These interfaces are backward-compatible and remain the canonical reusable surface for app routes.
+
+---
+
 ## Usage Guidelines
 
 ### Do
 
 - Use semantic tokens and canonical spacing rules.
-- Use 4 canonical card variants with declared intent.
+- Use all 6 canonical card variants with declared intent and guard rails.
 - Add state patterns before considering a view complete.
 - Use lead typography for intro bridges between heading and body.
 
@@ -304,6 +370,29 @@ AI review output must include:
 - Introduce one-off spacing/radius/shadow values.
 - Use accent as decorative body emphasis.
 - Ship async surfaces without explicit state definitions.
+
+---
+
+## Component Inventory
+
+### Current Major Primitives
+
+- `AptButton`
+- `AptCard` (+ `AptCardHeader`, `AptCardTitle`, `AptCardDescription`, `AptCardContent`, `AptCardFooter`)
+- `AptSection`
+- `AptTag`
+- `HeroCard`
+- `SectionIntro` (app-facing composition helper)
+
+### Missing Shared Primitives (Priority Tiers)
+
+P1 (recommended next):
+
+- `AptStatePanel` for standardized loading/empty/error/success/partial wrappers
+
+P2 (optional, based on repeat pattern confirmation):
+
+- `AptField` for shared form field baseline and consistent label/help/error composition
 
 Merge policy:
 

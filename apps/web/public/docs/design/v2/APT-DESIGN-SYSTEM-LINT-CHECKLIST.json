@@ -86,14 +86,16 @@
       "id": "card-based-structure",
       "title": "Card-Based Structure",
       "critical": [
-        "Canonical variants only: default, interactive, elevated, hero.",
+        "Canonical variants allowed: default, interactive, elevated, hero, subtle, feature.",
         "Variant usage matches declared purpose.",
         "Hero appears at most once per view.",
-        "Interactive cards are clearly interactive."
+        "Interactive cards are clearly interactive.",
+        "Feature and hero are not used as default repeated list-card treatments."
       ],
       "failConditions": [
-        "Non-canonical variants (feature, subtle) are introduced in new guidance.",
         "Multiple cards compete as hero-level emphasis.",
+        "Feature is used as baseline treatment for dense repeated grids/lists.",
+        "Hero is used repeatedly in one view.",
         "Card interactivity is unclear."
       ]
     },
@@ -103,7 +105,8 @@
       "critical": [
         "Existing APT components are reused where appropriate.",
         "New patterns are introduced only when necessary.",
-        "Similar actions have similar visual treatment."
+        "Similar actions have similar visual treatment.",
+        "AptSection is used for shared section rhythm/width where appropriate."
       ],
       "failConditions": [
         "Repeated one-off patterns appear.",
@@ -181,7 +184,7 @@
       ],
       "failConditions": [
         "Agent defaults are left untouched.",
-        "Non-canonical variants or token misuse appear.",
+        "Feature/hero misuse or token misuse appear.",
         "Looks fine replaces contract-level compliance."
       ]
     }
@@ -189,7 +192,7 @@
   "fastFailRules": [
     "Accent misuse appears in non-interactive dense text.",
     "Spacing token misuse or arbitrary spacing values appear.",
-    "Non-canonical card variant guidance appears.",
+    "Feature/hero are used as default repeated list-card treatments.",
     "Required states are missing.",
     "Motion timing breaches defined ranges."
   ],
