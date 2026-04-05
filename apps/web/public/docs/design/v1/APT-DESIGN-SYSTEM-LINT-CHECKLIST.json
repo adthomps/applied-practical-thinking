@@ -1,0 +1,88 @@
+{
+  "id": "apt-design-system-lint-checklist",
+  "title": "APT Design System Lint Checklist",
+  "version": "1.0.0",
+  "updatedAt": "2026-04-05",
+  "audience": [
+    "design reviewers",
+    "frontend contributors",
+    "ai collaborators"
+  ],
+  "passCriteria": {
+    "mustPassAllMustItems": true,
+    "neverViolationsRequireException": true
+  },
+  "sections": [
+    {
+      "id": "tokens-visual-contract",
+      "title": "Tokens and Visual Contract",
+      "must": [
+        "Use semantic tokens for color and surface classes.",
+        "Align visual choices with apps/web/docs/design/tokens.json.",
+        "Prefer @apt/ui primitives for reusable patterns."
+      ],
+      "never": [
+        "Use raw color utilities when tokenized equivalents exist.",
+        "Hard-code ad hoc visual values that bypass token contracts."
+      ]
+    },
+    {
+      "id": "component-contract",
+      "title": "Component Contract",
+      "must": [
+        "Use AptButton, AptCard, HeroCard, and AptTag for user-facing patterns when applicable.",
+        "Keep component variants semantic and doctrine-aligned.",
+        "Preserve accessibility semantics."
+      ],
+      "never": [
+        "Replace shared primitives with one-off lookalikes without documented intent.",
+        "Break variant semantics for convenience."
+      ]
+    },
+    {
+      "id": "layout-baseline",
+      "title": "Layout Baseline",
+      "must": [
+        "Preserve shell structure in apps/web/components/apt/AptLayout.tsx.",
+        "Keep clear content hierarchy and section rhythm.",
+        "Maintain mobile-first responsive behavior."
+      ],
+      "never": [
+        "Introduce layout changes that conflict with design architecture without a logged decision."
+      ]
+    },
+    {
+      "id": "content-docs-integrity",
+      "title": "Content and Docs Integrity",
+      "must": [
+        "Treat apps/web/docs/design as source of truth for doctrine.",
+        "Update review and handoff assets when doctrine changes.",
+        "Update versioned docs and metadata for structural standards changes."
+      ],
+      "never": [
+        "Treat generated apps/web/public/docs content as authored source."
+      ]
+    },
+    {
+      "id": "ai-enforcement-layers",
+      "title": "AI and Enforcement Layers",
+      "must": [
+        "Align output to APT-DESIGN-SYSTEM.md.",
+        "Align output to .github/copilot-instructions.md (internal).",
+        "Align output to APT-AI-INSTRUCTIONS-REFERENCE.md (external).",
+        "Align output to apps/web/docs/design/tokens.json.",
+        "Align output to apps/web/components/apt/AptLayout.tsx."
+      ],
+      "never": [
+        "Generate instructions that conflict with the enforcement contracts."
+      ]
+    }
+  ],
+  "quickChecks": [
+    "Validate mobile and desktop layouts.",
+    "Validate token usage for new styles.",
+    "Validate CTA priority and ordering.",
+    "Validate checklist and doctrine links.",
+    "Validate no new raw color utility classes."
+  ]
+}

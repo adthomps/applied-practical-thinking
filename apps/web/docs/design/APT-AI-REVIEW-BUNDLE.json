@@ -131,6 +131,48 @@
         "icon": "download",
         "description": "Use for systems framing, relationship mapping, and stable reference models."
       }
+    },
+    {
+      "id": "ai-instructions-reference-markdown",
+      "title": "APT AI Instructions Reference (External)",
+      "url": "/docs/design/APT-AI-INSTRUCTIONS-REFERENCE.md",
+      "contentType": "text/markdown",
+      "ui": {
+        "cardOrder": 9,
+        "tagLabel": "External Rules",
+        "tagVariant": "outline",
+        "icon": "shield-check",
+        "description": "Public strict AI behavior contract for external collaborators and handoff scenarios."
+      }
+    },
+    {
+      "id": "design-system-lint-checklist-markdown",
+      "title": "APT Design System Lint Checklist",
+      "url": "/docs/design/APT-DESIGN-SYSTEM-LINT-CHECKLIST.md",
+      "contentType": "text/markdown",
+      "ui": {
+        "cardOrder": 10,
+        "ctaOrder": 4,
+        "ctaLabel": "Download Lint Checklist",
+        "ctaVariant": "outline",
+        "tagLabel": "Checklist",
+        "tagVariant": "secondary",
+        "icon": "file-text",
+        "description": "Practical checklist for design-system lint and pre-ship compliance checks."
+      }
+    },
+    {
+      "id": "design-system-lint-checklist-json",
+      "title": "APT Design System Lint Checklist JSON",
+      "url": "/docs/design/APT-DESIGN-SYSTEM-LINT-CHECKLIST.json",
+      "contentType": "application/json",
+      "ui": {
+        "cardOrder": 11,
+        "tagLabel": "Machine Readable",
+        "tagVariant": "outline",
+        "icon": "hard-drive-download",
+        "description": "Machine-readable checklist contract for automated lint and policy tooling."
+      }
     }
   ],
   "documents": [
@@ -222,6 +264,42 @@
         "reference models",
         "systems framing",
         "relationship mapping"
+      ]
+    },
+    {
+      "id": "ai-instructions-reference",
+      "title": "APT AI Instructions Reference (External)",
+      "path": "/docs/design/APT-AI-INSTRUCTIONS-REFERENCE.md",
+      "format": "markdown",
+      "role": "external-ai-instructions",
+      "useFor": [
+        "external collaborator onboarding",
+        "strict AI behavior handoff",
+        "public-safe enforcement reference"
+      ]
+    },
+    {
+      "id": "design-system-lint-checklist",
+      "title": "APT Design System Lint Checklist",
+      "path": "/docs/design/APT-DESIGN-SYSTEM-LINT-CHECKLIST.md",
+      "format": "markdown",
+      "role": "design-system-checklist",
+      "useFor": [
+        "pre-ship design lint checks",
+        "design-system policy validation",
+        "component and route compliance review"
+      ]
+    },
+    {
+      "id": "design-system-lint-checklist-json",
+      "title": "APT Design System Lint Checklist JSON",
+      "path": "/docs/design/APT-DESIGN-SYSTEM-LINT-CHECKLIST.json",
+      "format": "json",
+      "role": "design-system-checklist-machine-readable",
+      "useFor": [
+        "automation and tooling ingestion",
+        "machine-readable policy checks",
+        "lint gate integrations"
       ]
     }
   ],

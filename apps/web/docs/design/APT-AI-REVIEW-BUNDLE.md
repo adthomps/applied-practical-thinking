@@ -27,6 +27,10 @@ Version metadata:
    - Use when reviewing navigation, section roles, visitor intent, and content placement.
 6. `APT-DESIGN-SYSTEMS.md`
    - Use when reviewing reference models, system framing, and how relationships are made visible.
+7. `APT-AI-INSTRUCTIONS-REFERENCE.md`
+   - External strict AI instruction contract for collaborators and tool-driven handoffs.
+8. `APT-DESIGN-SYSTEM-LINT-CHECKLIST.md`
+   - Practical lint checklist for validating design-system compliance before shipping.
 
 ---
 

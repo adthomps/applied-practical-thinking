@@ -15,9 +15,19 @@ const STATIC_PUBLIC_DESIGN_DOCS = [
   DESIGN_DOCS_MANIFEST,
   REVIEW_BUNDLE_MANIFEST,
   'APT-AI-REVIEW-BUNDLE.md',
+  'APT-AI-INSTRUCTIONS-REFERENCE.md',
+  'APT-DESIGN-SYSTEM-LINT-CHECKLIST.md',
+  'APT-DESIGN-SYSTEM-LINT-CHECKLIST.json',
   'APT-REVIEW-STANDARD.md',
   'APT-DESIGN-VERSIONING.md',
   'APT-FIGMA-TOKENS.json',
+  'tokens.json',
+];
+const STATIC_VERSIONED_PUBLIC_DESIGN_DOCS = [
+  'APT-AI-INSTRUCTIONS-REFERENCE.md',
+  'tokens.json',
+  'APT-DESIGN-SYSTEM-LINT-CHECKLIST.md',
+  'APT-DESIGN-SYSTEM-LINT-CHECKLIST.json',
 ];
 
 function isNonEmptyString(value) {
@@ -305,6 +315,22 @@ function publishDesignDocsFromManifest({ designDocsRoot = DESIGN_DOCS_ROOT, publ
 
     fs.copyFileSync(srcPath, destPath);
     console.log(`Copied docs/design/${file} to public/docs/design`);
+  }
+
+  const supportedMajors = Array.isArray(manifest.supportedMajors) ? manifest.supportedMajors : [];
+  for (const major of supportedMajors) {
+    const majorNumber = Number(major);
+    if (!Number.isInteger(majorNumber)) continue;
+
+    for (const file of STATIC_VERSIONED_PUBLIC_DESIGN_DOCS) {
+      const srcPath = path.join(designDocsRoot, file);
+      if (!fs.existsSync(srcPath)) continue;
+
+      const destPath = path.join(publicDocsRoot, `v${majorNumber}`, file);
+      fs.mkdirSync(path.dirname(destPath), { recursive: true });
+      fs.copyFileSync(srcPath, destPath);
+      console.log(`Copied docs/design/${file} to public/docs/design/v${majorNumber}`);
+    }
   }
 
   return manifest;

@@ -135,6 +135,12 @@ export default function PortfolioDesignSystem() {
               Download Tokens
             </a>
           </AptButton>
+          <AptButton variant="secondary" asChild>
+            <a href="/docs/design/APT-DESIGN-SYSTEM-LINT-CHECKLIST.md" target="_blank" rel="noreferrer">
+              Open Lint Checklist
+              <ArrowRight className="h-4 w-4" />
+            </a>
+          </AptButton>
             <AptButton variant="outline" asChild>
               <Link to="/design-playground">
                 Open Playground
@@ -912,6 +918,16 @@ text-xl md:text-2xl
                 <a href="/docs/design/APT-FIGMA-TOKENS.json" download>
                   <Download className="h-4 w-4" />
                   Download JSON
+                </a>
+              </AptButton>
+              <AptButton variant="secondary" asChild>
+                <a href="/docs/design/APT-DESIGN-SYSTEM-LINT-CHECKLIST.md" download>
+                  Download Lint Checklist
+                </a>
+              </AptButton>
+              <AptButton variant="ghost" asChild>
+                <a href="/docs/design/APT-DESIGN-SYSTEM-LINT-CHECKLIST.json" download>
+                  Download Checklist JSON
                 </a>
               </AptButton>
             </div>
