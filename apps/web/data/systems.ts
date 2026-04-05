@@ -32,7 +32,7 @@ export const systems: System[] = [
     },
     learningResources: {
       rationale: "Static-first for speed and simplicity. Unified design system for consistency.",
-      caseStudies: ["case-study-apt-lab", "case-study-portfolio-redesign"],
+      practice: ["systems-mapping-guide", "design-review-portfolio-redesign"],
       tutorials: ["guide-to-deployment", "guide-to-content-management"],
       glossary: ["SSR", "SPA", "API", "Design System"]
     }
@@ -67,7 +67,7 @@ export const systems: System[] = [
     },
     learningResources: {
       rationale: "httpOnly cookies for security. Token rotation for safety. Rate limiting to prevent abuse.",
-      caseStudies: ["case-study-auth-flow"],
+      practice: [],
       tutorials: ["guide-to-auth-patterns"],
       glossary: ["JWT", "OAuth", "Session", "Rate Limiting"]
     }
@@ -102,7 +102,7 @@ export const systems: System[] = [
     },
     learningResources: {
       rationale: "Idempotency for safe retries. Dead letter queues for error handling.",
-      caseStudies: ["case-study-data-pipeline"],
+      practice: [],
       tutorials: ["guide-to-etl-pipeline"],
       glossary: ["ETL", "Idempotency", "Dead Letter Queue", "Schema Validation"]
     }
@@ -141,7 +141,7 @@ export const systems: System[] = [
     },
     learningResources: {
       rationale: "Open code for flexibility and control. Visual builder accelerates design system setup.",
-      caseStudies: [],
+      practice: ["shadcn-ui-builder-guide", "design-review-shadcn-ui-builder"],
       tutorials: ["guide-to-shadcn-ui-builder"],
       glossary: ["Design System", "Visual Builder", "Open Code"]
     }

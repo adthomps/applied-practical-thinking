@@ -1,46 +1,186 @@
 [
   {
-    "id": "01-ai-system-instructions-for-transaction-analysis-blog",
-    "slug": "01-ai-system-instructions-for-transaction-analysis-blog",
-    "title": "Constructing System Instructions for AI-Driven API & Transaction Analysis",
-    "type": "blog",
-    "description": "How structured instructions and schema enforcement can help AI systems in payments and fraud detection deliver consistent, explainable results. Discusses prompt design, decision boundaries, and compliance considerations without external references.",
-    "publishedAt": "2025-08-17",
+    "id": "09-decision-driven-development-blog",
+    "slug": "09-decision-driven-development-blog",
+    "title": "Decision-Driven Development",
+    "type": "article",
+    "description": "Why documenting decisions is more valuable than documenting code, and how to build a decision log that actually gets used.",
+    "publishedAt": "2026-02-15",
     "featured": true,
     "concepts": [
-      "AI",
-      "Transactions Analysis",
-      "Fraud & Risk Analysts",
-      "API Architects"
+      "architecture",
+      "documentation",
+      "teams"
     ],
     "platforms": [
       "Web",
-      "Cloud",
-      "Payment Gateway"
+      "Cloud"
     ],
     "technologies": [
       "Cloudflare",
       "OpenAI"
     ],
     "status": "",
-    "thumbnail": "/content/blogs/01-ai-system-instructions-for-transaction-analysis-blog.png",
+    "thumbnail": "/content/blogs/09-decision-driven-development-blog.svg",
     "links": {
-      "Blog": "01-ai-system-instructions-for-transaction-analysis-blog",
-      "Podcast": "01-ai-system-instructions-for-transaction-analysis-podcast",
-      "Guide": "01-ai-system-instructions-for-transaction-analysis-guide",
+      "Blog": "09-decision-driven-development-blog",
+      "Podcast": null,
+      "Guide": null,
+      "Case": null,
+      "Article": null,
+      "Slides": null
+    },
+    "related": [
+      "decision-log"
+    ],
+    "contentPath": "blog/09-decision-driven-development-blog.md",
+    "excerpt": "The Problem with Code Documentation\r \r Most teams focus on documenting what the code does. Comments explain functions, READMEs describe setup steps, and wikis outline architecture. But there's a critical gap: why decisions were made.\r \r  Why Decisions Matter More\r \r When you revisit code six months later, knowing what it does is usually obvious from reading it. What's not obvious is:"
+  },
+  {
+    "id": "shadcn-ui-builder-blog",
+    "slug": "shadcn-ui-builder-blog",
+    "title": "shadcn UI Builder: First Impressions",
+    "type": "article",
+    "description": "A pragmatic look at where shadcn UI Builder creates leverage, where it stops, and why open-code ownership changes the quality of the conversation around UI tooling.",
+    "publishedAt": "2026-02-14",
+    "featured": false,
+    "concepts": [
+      "Design Systems",
+      "Open Code",
+      "UI Tooling",
+      "Prototyping"
+    ],
+    "platforms": [
+      "Web"
+    ],
+    "technologies": [
+      "shadcn/ui",
+      "Radix UI"
+    ],
+    "status": "",
+    "links": {
+      "Article": "shadcn-ui-builder-blog",
+      "Podcast": "shadcn-ui-builder-podcast",
+      "Guide": "shadcn-ui-builder-guide",
+      "Review": "design-review-shadcn-ui-builder",
+      "Slides": null
+    },
+    "related": [],
+    "contentPath": "blog/shadcn-ui-builder-blog.md",
+    "excerpt": "Why This Tool Matters\r \r Most UI builders create the same tradeoff: speed now in exchange for ownership later. They are useful during exploration, but the moment a team needs control, accessibility review, or integration into an existing system, the generated surface becomes a liability.\r \r shadcn UI Builder is more interesting because it changes that tradeoff. The output is still code the team owns. That means the conversation shifts from \"should we trust the tool?\" to \"where in the workflow does this tool create the most leverage?\"\r \r  Open Code Changes the Quality of the Decision"
+  },
+  {
+    "id": "10-feedback-multiplier-blog",
+    "slug": "10-feedback-multiplier-blog",
+    "title": "Feedback is a Multiplier",
+    "type": "article",
+    "description": "How regular feedback loops can multiply your team’s effectiveness.",
+    "publishedAt": "2026-02-05",
+    "featured": false,
+    "concepts": [
+      "feedback",
+      "teams",
+      "effectiveness"
+    ],
+    "platforms": [
+      "Web",
+      "Cloud"
+    ],
+    "technologies": [
+      "Cloudflare",
+      "OpenAI"
+    ],
+    "status": "",
+    "thumbnail": "/content/blogs/10-feedback-multiplier-blog.svg",
+    "links": {
+      "Article": "10-feedback-multiplier-blog",
+      "Podcast": null,
+      "Guide": null,
+      "Slides": null
+    },
+    "related": [],
+    "contentPath": "blog/10-feedback-multiplier-blog.md",
+    "excerpt": "Introduction\r \r Feedback is not just a way to correct mistakes after the fact. In a healthy team, feedback changes the quality of the next decision, the next handoff, and the next iteration. That is why it behaves more like a multiplier than a repair tool.\r \r  Feedback Loops Beat Feedback Events\r \r  Surfaces issues early"
+  },
+  {
+    "id": "05-photography-for-technologists-blog",
+    "slug": "05-photography-for-technologists-blog",
+    "title": "Photography for Technologists - Systems Thinking Behind the Lens",
+    "type": "article",
+    "description": "Explores how engineering habits like constraint framing, repeatable workflows, and signal review can strengthen photography without flattening creativity.",
+    "publishedAt": "2025-09-21",
+    "featured": true,
+    "concepts": [
+      "Photography",
+      "Systems Thinking",
+      "Creative Operations",
+      "Storytelling",
+      "Craft Under Constraint"
+    ],
+    "platforms": [
+      "Web",
+      "Cloud"
+    ],
+    "technologies": [
+      "Cloudflare",
+      "OpenAI"
+    ],
+    "status": "",
+    "thumbnail": "/content/blogs/05-photography-for-technologists-blog.png",
+    "links": {
+      "Blog": "05-photography-for-technologists-blog",
+      "Podcast": null,
+      "Guide": "05-photography-for-technologists-guide",
       "Case": null,
       "Article": null,
       "Slides": null
     },
     "related": [],
-    "contentPath": "blog/01-ai-system-instructions-for-transaction-analysis-blog.md",
-    "excerpt": "Introduction\r \r This article explores how structured system instructions and schema enforcement can help AI systems deliver consistent, explainable decisions in payments and fraud detection. It covers prompt engineering, decision boundaries, and explainability hooks to ensure predictable AI outputs in regulated, highstakes environments.\r \r In payments and fraud detection, speed is essential — but accuracy is nonnegotiable. The space between raw transaction data and a confident “Approve” or “Decline” decision is where operational risk lies. False declines can create unnecessary revenue loss and strain customer trust, while missed fraud can lead to chargebacks, penalties, and reputational harm.\r \r  Why System Instructions Matter"
+    "contentPath": "blog/05-photography-for-technologists.md",
+    "excerpt": "Introduction\r \r Photography can look like the opposite of engineering. One appears intuitive and expressive; the other appears structured and exact. In practice, the overlap is larger than most people admit.\r \r The same habits that help build reliable systems also improve visual work: define the goal, understand the constraints, choose the right signals, and create a repeatable workflow that does not collapse under real conditions. That approach does not make photography less creative. It makes creativity more deliberate.\r \r  Start With Constraints, Not Gear"
+  },
+  {
+    "id": "03-designing-ai-ready-interfaces-blog",
+    "slug": "03-designing-ai-ready-interfaces-blog",
+    "title": "Designing AI-Ready Interfaces with Visa Product Design System",
+    "type": "article",
+    "description": "Covers how to merge enterprise-grade design systems with AI-driven functionality in payment, support, and developer-facing tools. Focuses on maintaining compliance, accessibility, and trust while integrating predictive AI components.",
+    "publishedAt": "2025-08-31",
+    "featured": true,
+    "concepts": [
+      "Design Systems",
+      "AI in Payments",
+      "UI/UX",
+      "Accessibility",
+      "Enterprise Applications"
+    ],
+    "platforms": [
+      "Web",
+      "Cloud"
+    ],
+    "technologies": [
+      "Cloudflare",
+      "OpenAI"
+    ],
+    "status": "",
+    "thumbnail": "/content/blogs/03-designing-ai-ready-interfaces-blog.png",
+    "links": {
+      "Blog": "03-designing-ai-ready-interfaces-blog",
+      "Podcast": null,
+      "Guide": "03-designing-ai-ready-interfaces-guide",
+      "Case": null,
+      "Article": null,
+      "Slides": null
+    },
+    "related": [],
+    "contentPath": "blog/03-designing-ai-ready-interfaces-blog.md",
+    "excerpt": "Introduction\r \r The Visa Product Design System (VPDS) provides a robust foundation for building secure, accessible, and brandconsistent experiences. But when layered with AIpowered features—like predictive fraud insights, selfservice customer support, or intelligent onboarding flows—the design challenge shifts.  \r \r AI brings new considerations: adaptive content zones, explainability requirements, and realtime interactions. This article covers how to integrate AI components into VPDSdriven interfaces, maintain compliance and usability, and leverage Cloudflarebased deployment to move prototypes into production. Expect actionable patterns for balancing innovation with the trust and clarity required in payments.  \r \r  From Prototype to Production"
   },
   {
     "id": "02-ai-powered-cloud-development-blog",
     "slug": "02-ai-powered-cloud-development-blog",
     "title": "AI-Powered Cloud Development with React, Hono, and Cloudflare",
-    "type": "blog",
+    "type": "article",
     "description": "Demonstrates how AI-assisted tooling, modern frontend frameworks, and edge computing work together to accelerate secure, scalable web application development. Highlights a static-first + API prefix architecture, AI-powered testing, and performance optimization at the edge.",
     "publishedAt": "2025-08-22",
     "featured": true,
@@ -74,56 +214,19 @@
     "excerpt": "Introduction\r \r Modern cloud development demands speed, scalability, and flexibility. A powerful combination emerging today is React for UI, Hono for backend routing, and Cloudflare Workers for edge deployment. Add in AIassisted coding, and developers can scaffold features, automate tests, and streamline deployment faster than ever.  \r \r This post explores how you can use AI, pnpm, and GitHub workflows to build, version, and deploy applications in a modern cloudnative stack. \r \r  Why This Stack?"
   },
   {
-    "id": "03-designing-ai-ready-interfaces-blog",
-    "slug": "03-designing-ai-ready-interfaces-blog",
-    "title": "Designing AI-Ready Interfaces with Visa Product Design System",
-    "type": "blog",
-    "description": "Covers how to merge enterprise-grade design systems with AI-driven functionality in payment, support, and developer-facing tools. Focuses on maintaining compliance, accessibility, and trust while integrating predictive AI components.",
-    "publishedAt": "2025-08-31",
-    "featured": true,
-    "concepts": [
-      "Design Systems",
-      "AI in Payments",
-      "UI/UX",
-      "Accessibility",
-      "Enterprise Applications"
-    ],
-    "platforms": [
-      "Web",
-      "Cloud"
-    ],
-    "technologies": [
-      "Cloudflare",
-      "OpenAI"
-    ],
-    "status": "",
-    "thumbnail": "/content/blogs/03-designing-ai-ready-interfaces-blog.png",
-    "links": {
-      "Blog": "03-designing-ai-ready-interfaces-blog",
-      "Podcast": "03-designing-ai-ready-interfaces-podcast",
-      "Guide": "03-designing-ai-ready-interfaces-guide",
-      "Case": null,
-      "Article": null,
-      "Slides": null
-    },
-    "related": [],
-    "contentPath": "blog/03-designing-ai-ready-interfaces-blog.md",
-    "excerpt": "Introduction\r \r The Visa Product Design System (VPDS) provides a robust foundation for building secure, accessible, and brandconsistent experiences. But when layered with AIpowered features—like predictive fraud insights, selfservice customer support, or intelligent onboarding flows—the design challenge shifts.  \r \r AI brings new considerations: adaptive content zones, explainability requirements, and realtime interactions. This article covers how to integrate AI components into VPDSdriven interfaces, maintain compliance and usability, and leverage Cloudflarebased deployment to move prototypes into production. Expect actionable patterns for balancing innovation with the trust and clarity required in payments.  \r \r  From Prototype to Production"
-  },
-  {
     "id": "04-future-of-payments-ai-blog",
     "slug": "04-future-of-payments-ai-blog",
     "title": "The Future of Payments & AI - Smarter, Faster, Safer for Everyone",
-    "type": "blog",
+    "type": "article",
     "description": "Explores how AI is transforming payments to be smarter, faster, and safer — with a focus on how small and mid-sized businesses can access enterprise-grade tools like fraud prevention, hosted checkout, and real-time insights. Highlights opportunities and cautions around compliance, oversight, and inclusivity.",
     "publishedAt": "2025-08-22",
     "featured": true,
     "concepts": [
-      "Cloud Development",
-      "React",
-      "Hono",
-      "Cloudflare",
-      "AI Development Workflows"
+      "AI in Payments",
+      "Real-Time Payments",
+      "Fraud Detection",
+      "Emerging Business Enablement",
+      "Payment Innovation"
     ],
     "platforms": [
       "Web",
@@ -137,65 +240,28 @@
     "thumbnail": "/content/blogs/04-future-of-payments-ai-blog-blog.png",
     "links": {
       "Blog": "04-future-of-payments-ai-blog",
-      "Podcast": "04-future-of-payments-ai-blog-podcast",
-      "Guide": "04-future-of-payments-ai-blog-guide",
+      "Podcast": null,
+      "Guide": "04-future-of-payments-ai-guide",
       "Case": null,
       "Article": null,
       "Slides": null
     },
     "related": [],
     "contentPath": "blog/04-future-of-payments-ai-blog.md",
-    "excerpt": "Introduction\r \r Artificial intelligence (AI) is no longer a distant concept—it’s already embedded in how we shop, pay, and manage money. In payments, AI is moving us from reactive systems to proactive intelligence: transactions are becoming smarter, faster, and safer.  \r \r For large enterprises, AI represents scale and optimization. For small businesses and entrepreneurs just stepping into ecommerce or retail, AI represents access—leveling the playing field by delivering enterprisegrade tools in simple, plugandplay ways.  \r \r  Smarter Experiences"
-  },
-  {
-    "id": "05-photography-for-technologists-blog",
-    "slug": "05-photography-for-technologists-blog",
-    "title": "Photography for Technologists - Capturing Innovation",
-    "type": "blog",
-    "description": "Discusses how developers can apply problem-solving and systematic thinking to photography. Explores balancing creativity and precision, leveraging metadata and automation, and building a visually cohesive portfolio.",
-    "publishedAt": "2025-09-21",
-    "featured": true,
-    "concepts": [
-      "Photography",
-      "Creativity",
-      "Technology",
-      "Storytelling",
-      "Creative Workflows"
-    ],
-    "platforms": [
-      "Web",
-      "Cloud"
-    ],
-    "technologies": [
-      "Cloudflare",
-      "OpenAI"
-    ],
-    "status": "",
-    "thumbnail": "/content/blogs/05-photography-for-technologists-blog.png",
-    "links": {
-      "Blog": "05-photography-for-technologists-blog",
-      "Podcast": "05-photography-for-technologists-podcast",
-      "Guide": "05-photography-for-technologists-guide",
-      "Case": null,
-      "Article": null,
-      "Slides": null
-    },
-    "related": [],
-    "contentPath": "blog/05-photography-for-technologists.md",
-    "excerpt": "Introduction\r \r In this piece, I’ll share how I translate my experience in building structured, highperformance systems into visual storytelling. We’ll cover composition techniques with an analytical edge, using light and shadow for dynamic shots, leveraging metadata and automation in postprocessing, and building a portfolio that reflects both creative and technical expertise. This is about merging art and logic into every frame.\r \r  Example: Metadata Automation Script\r \r ```python"
+    "excerpt": "Introduction\r \r Artificial intelligence in payments is often framed as a race toward automation. That framing is too shallow. The more useful question is this: where does AI reduce friction without hiding risk?\r \r In payments, the winning pattern is not \"replace people with models.\" It is to use AI to improve three things that already matter: decision quality, operating speed, and confidence under uncertainty. That matters most for small and midsized businesses, which rarely have specialized fraud teams, payments analysts, or custombuilt tooling.\r \r  What AI Actually Changes"
   },
   {
     "id": "06-vibe-coding-for-game-dev-blog",
     "slug": "06-vibe-coding-for-game-dev-blog",
     "title": "Vibe Coding for Game Dev - AI-Enhanced RTS & Simulation Projects",
-    "type": "blog",
-    "description": "Exploring a rapid prototyping workflow for retro-inspired games with AI-driven dynamic content generation.",
+    "type": "article",
+    "description": "Explores when AI-assisted game prototyping is useful, where it breaks down, and how to keep experimentation legible enough to become a real system later.",
     "publishedAt": "2025-08-22",
     "featured": true,
     "concepts": [
       "Game Development",
-      "AI in Games",
-      "Vibe Coding",
+      "AI-Assisted Prototyping",
+      "Systems Design",
       "Prototyping",
       "Simulation Projects"
     ],
@@ -210,8 +276,8 @@
     "status": "",
     "thumbnail": "/content/blogs/06-vibe-coding-for-game-dev-blog.png",
     "links": {
-      "Blog": "06-vibe-coding-for-game-dev=blog",
-      "Podcast": "06-vibe-coding-for-game-dev-podcast",
+      "Blog": "06-vibe-coding-for-game-dev-blog",
+      "Podcast": null,
       "Guide": "06-vibe-coding-for-game-dev-guide",
       "Case": null,
       "Article": null,
@@ -219,167 +285,43 @@
     },
     "related": [],
     "contentPath": "blog/06-vibe-coding-for-game-dev-blog.md",
-    "excerpt": "Introduction\r \r In this article, I break down how I used vibe coding to prototype a retro RTS inspired by Battletech, MechWarrior, and Command & Conquer. We’ll explore using Python or JavaScript for early builds, integrating AI to generate maps, missions, and dialogue, and leveraging tools like Cloudflare Workers for multiplayer logic. Whether for hobby projects or AIenhanced commercial concepts, this workflow makes game dev more accessible and experimental than ever.\r \r  Example: AIGenerated Map Script\r \r ```python"
+    "excerpt": "Introduction\r \r \"Vibe coding\" is a useful phrase only if it points to a real working mode. At its best, it describes a fast exploratory loop: sketch a mechanic, test the feel, change the rule, try again. At its worst, it becomes an excuse for unstructured output that never turns into a game anyone can maintain.\r \r For game development, the difference matters. Games are systems, not just screens. Even a rough prototype has interacting rules around movement, state, difficulty, pacing, and feedback. AI can accelerate experimentation, but it does not remove the need for coherent system design.\r \r  Where AI Actually Helps"
   },
   {
-    "id": "07-ai-developers-journey-blog",
-    "slug": "07-ai-developers-journey-blog",
-    "title": "AI & Developer's Journey",
-    "type": "blog",
-    "description": "Reflects on the evolution of software development with AI at the forefront. Explores modern frameworks, testing practices, and the future of career paths for developers.",
-    "publishedAt": "2025-10-05",
+    "id": "01-ai-system-instructions-for-transaction-analysis-blog",
+    "slug": "01-ai-system-instructions-for-transaction-analysis-blog",
+    "title": "Constructing System Instructions for AI-Driven API & Transaction Analysis",
+    "type": "article",
+    "description": "How structured instructions and schema enforcement can help AI systems in payments and fraud detection deliver consistent, explainable results. Discusses prompt design, decision boundaries, and compliance considerations without external references.",
+    "publishedAt": "2025-08-17",
     "featured": true,
     "concepts": [
-      "AI in Development",
-      "Modern Frameworks",
-      "Testing Practices",
-      "Career Growth"
+      "AI",
+      "Transactions Analysis",
+      "Fraud & Risk Analysts",
+      "API Architects"
     ],
     "platforms": [
       "Web",
-      "Cloud"
+      "Cloud",
+      "Payment Gateway"
     ],
     "technologies": [
       "Cloudflare",
       "OpenAI"
     ],
     "status": "",
-    "thumbnail": "/content/blogs/07-ai-developers-journey-blog.png",
+    "thumbnail": "/content/blogs/01-ai-system-instructions-for-transaction-analysis-blog.png",
     "links": {
-      "Blog": "07-ai-developers-journey-blog",
-      "Podcast": "07-ai-developers-journey-podcast",
-      "Guide": "07-ai-developers-journey-guide",
+      "Blog": "01-ai-system-instructions-for-transaction-analysis-blog",
+      "Podcast": "01-ai-system-instructions-for-transaction-analysis-podcast",
+      "Guide": "01-ai-system-instructions-for-transaction-analysis-guide",
       "Case": null,
       "Article": null,
       "Slides": null
     },
     "related": [],
-    "contentPath": "blog/07-ai-developers-journey-blog.md",
-    "excerpt": "Introduction\r \r Software development is changing — not just the tools we use, but the way we think about building. This post explores AI’s role in shaping frameworks, testing, and careers.\r \r  Conclusion\r \r Coming soon............"
-  },
-  {
-    "id": "08-creative-coding-storytelling-blog",
-    "slug": "08-creative-coding-storytelling-blog",
-    "title": "AI & Storytelling - Creative Coding",
-    "type": "blog",
-    "description": "Examines the intersection of AI and creative coding, highlighting how generative art and narrative systems are reshaping digital storytelling.",
-    "publishedAt": "2025-10-12",
-    "featured": true,
-    "concepts": [
-      "Creative Coding",
-      "AI Storytelling",
-      "Generative Art",
-      "Innovation"
-    ],
-    "platforms": [
-      "Web",
-      "Cloud"
-    ],
-    "technologies": [
-      "Cloudflare",
-      "OpenAI"
-    ],
-    "status": "",
-    "thumbnail": "/content/blogs/08-creative-coding-storytelling-blog.png",
-    "links": {
-      "Blog": "08-creative-coding-storytelling-blog",
-      "Podcast": "08-creative-coding-storytelling-podcast",
-      "Guide": "08-creative-coding-storytelling-guide",
-      "Case": null,
-      "Article": null,
-      "Slides": null
-    },
-    "related": [],
-    "contentPath": "blog/08-creative-coding-storytelling-blog.md",
-    "excerpt": "Introduction\r \r Code doesn’t just power systems — it tells stories. This post explores how AI is amplifying the creative coding movement and opening new frontiers in art and tech.\r \r  Conclusion\r \r Coming soon...."
-  },
-  {
-    "id": "09-decision-driven-development-blog",
-    "slug": "09-decision-driven-development-blog",
-    "title": "Decision-Driven Development",
-    "type": "blog",
-    "description": "Why documenting decisions is more valuable than documenting code, and how to build a decision log that actually gets used.",
-    "publishedAt": "2026-02-15",
-    "featured": true,
-    "concepts": [
-      "architecture",
-      "documentation",
-      "teams"
-    ],
-    "platforms": [
-      "Web",
-      "Cloud"
-    ],
-    "technologies": [
-      "Cloudflare",
-      "OpenAI"
-    ],
-    "status": "",
-    "thumbnail": "/content/blogs/09-decision-driven-development-blog.png",
-    "links": {
-      "Blog": "09-decision-driven-development-blog",
-      "Podcast": "09-decision-driven-development-podcast",
-      "Guide": "09-decision-driven-development-guide",
-      "Case": null,
-      "Article": null,
-      "Slides": null
-    },
-    "related": [
-      "decision-log"
-    ],
-    "contentPath": "blog/09-decision-driven-development-blog.md",
-    "excerpt": "The Problem with Code Documentation\r \r Most teams focus on documenting what the code does. Comments explain functions, READMEs describe setup steps, and wikis outline architecture. But there's a critical gap: why decisions were made.\r \r  Why Decisions Matter More\r \r When you revisit code six months later, knowing what it does is usually obvious from reading it. What's not obvious is:"
-  },
-  {
-    "id": "10-feedback-multiplier-blog",
-    "slug": "10-feedback-multiplier-blog",
-    "title": "Feedback is a Multiplier",
-    "type": "blog",
-    "description": "How regular feedback loops can multiply your team’s effectiveness.",
-    "publishedAt": "2026-02-05",
-    "featured": false,
-    "concepts": [
-      "feedback",
-      "teams",
-      "effectiveness"
-    ],
-    "platforms": [
-      "Web",
-      "Cloud"
-    ],
-    "technologies": [
-      "Cloudflare",
-      "OpenAI"
-    ],
-    "status": "",
-    "thumbnail": "/content/blogs/10-feedback-multiplier-blog.png",
-    "links": {
-      "Blog": "10-feedback-multiplier-blog",
-      "Podcast": "10-feedback-multiplier-podcast",
-      "Guide": "10-feedback-multiplier-guide",
-      "Case": null,
-      "Article": null,
-      "Slides": null
-    },
-    "related": [],
-    "contentPath": "blog/10-feedback-multiplier-blog.md",
-    "excerpt": "Introduction\r \r Feedback isn’t just a way to fix mistakes—it’s a multiplier for team effectiveness. Here’s why.\r \r  Why Feedback Matters\r \r  Surfaces issues early"
-  },
-  {
-    "id": "shadcn-ui-builder-blog",
-    "slug": "shadcn-ui-builder-blog",
-    "title": "shadcn UI Builder: First Impressions",
-    "type": "blog",
-    "description": "A first look at the new shadcn UI Builder and its impact on design system workflows.",
-    "publishedAt": "2026-02-14",
-    "featured": false,
-    "concepts": [],
-    "platforms": [],
-    "technologies": [],
-    "status": "",
-    "links": {},
-    "related": [],
-    "contentPath": "blog/shadcn-ui-builder-blog.md",
-    "excerpt": "_Content coming soon._"
+    "contentPath": "blog/01-ai-system-instructions-for-transaction-analysis-blog.md",
+    "excerpt": "Introduction\r \r This article explores how structured system instructions and schema enforcement can help AI systems deliver consistent, explainable decisions in payments and fraud detection. It covers prompt engineering, decision boundaries, and explainability hooks to ensure predictable AI outputs in regulated, highstakes environments.\r \r In payments and fraud detection, speed is essential — but accuracy is nonnegotiable. The space between raw transaction data and a confident “Approve” or “Decline” decision is where operational risk lies. False declines can create unnecessary revenue loss and strain customer trust, while missed fraud can lead to chargebacks, penalties, and reputational harm.\r \r  Why System Instructions Matter"
   }
 ]

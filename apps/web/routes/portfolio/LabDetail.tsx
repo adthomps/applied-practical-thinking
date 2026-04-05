@@ -41,18 +41,20 @@ export default function PortfolioLabDetail() {
     return <Navigate to="/experiments" replace />;
   }
 
-  // Use a consistent fallback icon/label for missing images, matching blogs/podcasts/guides/case-studies
+  // Use a consistent fallback icon/label for missing images, matching article and guide detail pages.
   const typeIcons = {
     lab: FlaskConical,
     demo: Play,
     guide: Book,
+    article: FileText,
     blog: FileText,
   };
   const typeLabels = {
     lab: "Lab",
     demo: "Demo",
     guide: "Guide",
-    blog: "Blog",
+    article: "Article",
+    blog: "Article",
   };
   const type = lab.type || "lab";
   const TypeIcon = typeIcons[type] || FlaskConical;

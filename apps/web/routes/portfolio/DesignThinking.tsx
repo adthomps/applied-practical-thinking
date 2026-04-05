@@ -348,7 +348,7 @@ export default function PortfolioDesignThinking() {
         </AptCard>
       </section>
 
-      {/* Case Studies */}
+      {/* Applied Examples */}
       <section className="mb-16">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between mb-6">
           <SectionIntro
@@ -356,8 +356,8 @@ export default function PortfolioDesignThinking() {
             description="Real decisions from APT projects, documented for reference."
           />
           <AptButton variant="ghost" asChild>
-            <Link to="/learn/guides">
-              All Guides <ArrowRight className="h-4 w-4" />
+            <Link to="/learn/practice">
+              All Practice <ArrowRight className="h-4 w-4" />
             </Link>
           </AptButton>
         </div>

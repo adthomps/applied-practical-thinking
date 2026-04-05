@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { siteConfig, authorConfig } from "@/data/site";
 import { systems } from "../data/systems";
 import { fetchContentIndex } from "@/src/services/contentIndex";
+import { usePageMetadata } from "@/hooks/usePageMetadata";
 import { AptCard, AptButton, AptTag } from "@/components/apt";
 import {
   ExternalLink,
@@ -46,6 +47,13 @@ function AnimatedRole({ roles }: { roles: readonly string[] }) {
 }
 
 export default function About() {
+  usePageMetadata({
+    title: "About",
+    description: siteConfig.nav.find((item) => item.path === "/about")?.description || siteConfig.description,
+    image: authorConfig.profileImage,
+    imageAlt: `${authorConfig.name} profile photo`,
+  });
+
   const [experimentsCount, setExperimentsCount] = useState(0);
 
   useEffect(() => {
@@ -60,9 +68,9 @@ export default function About() {
       fetchContentIndex("blog"),
       fetchContentIndex("guides"),
       fetchContentIndex("podcasts"),
-      fetchContentIndex("case-studies"),
+      fetchContentIndex("design-reviews"),
     ])
-      .then(([blog, guides, podcasts, caseStudies]) => setInsightsCount(blog.length + guides.length + podcasts.length + caseStudies.length))
+      .then(([blog, guides, podcasts, reviews]) => setInsightsCount(blog.length + guides.length + podcasts.length + reviews.length))
       .catch(() => setInsightsCount(0));
   }, []);
 
@@ -81,7 +89,7 @@ export default function About() {
       icon: Book,
       path: "/learn",
       color: "text-accent",
-      description: "Articles, podcasts, guides, and examples",
+      description: "Articles, podcasts, and practice material",
     },
     {
       label: "Systems",

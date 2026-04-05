@@ -105,6 +105,46 @@ export function MarkdownContent(props: { markdown: string; contentPath?: string;
     let inOl = false;
     let olItems: React.ReactNode[] = [];
 
+    const parseTableCells = (value: string) =>
+      value
+        .trim()
+        .replace(/^\|/, "")
+        .replace(/\|$/, "")
+        .split("|")
+        .map((cell) => cell.trim());
+
+    const renderTable = (header: string[], rows: string[][], key: string) => {
+      out.push(
+        <div key={`table-wrap-${key}`} className="my-6 overflow-x-auto rounded-lg border border-border/50">
+          <table className="w-full border-collapse text-sm">
+            <thead className="bg-muted/40">
+              <tr>
+                {header.map((cell, index) => (
+                  <th key={`th-${key}-${index}`} className="px-4 py-3 text-left font-semibold text-foreground">
+                    {renderInline(cell)}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row, rowIndex) => (
+                <tr key={`tr-${key}-${rowIndex}`} className="border-t border-border/50">
+                  {row.map((cell, cellIndex) => (
+                    <td
+                      key={`td-${key}-${rowIndex}-${cellIndex}`}
+                      className="px-4 py-3 align-top text-muted-foreground"
+                    >
+                      {renderInline(cell)}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+    };
+
     const flushLists = (key: string) => {
       if (inUl && ulItems.length) {
         out.push(
@@ -126,8 +166,31 @@ export function MarkdownContent(props: { markdown: string; contentPath?: string;
       olItems = [];
     };
 
-    lines.forEach((rawLine, index) => {
+    for (let index = 0; index < lines.length; index += 1) {
+      const rawLine = lines[index];
       const line = rawLine.replace(/\s+$/, "");
+      const nextLine = lines[index + 1]?.replace(/\s+$/, "") || "";
+
+      if (/^\|.*\|\s*$/.test(line) && /^\|?(\s*:?-+:?\s*\|)+\s*:?-+:?\s*\|?\s*$/.test(nextLine)) {
+        flushLists(String(index));
+
+        const header = parseTableCells(line);
+        const rows: string[][] = [];
+        index += 2;
+
+        while (index < lines.length) {
+          const tableLine = lines[index].replace(/\s+$/, "");
+          if (!/^\|.*\|\s*$/.test(tableLine)) {
+            index -= 1;
+            break;
+          }
+          rows.push(parseTableCells(tableLine));
+          index += 1;
+        }
+
+        renderTable(header, rows, String(index));
+        continue;
+      }
 
       // Code fences with language
       if (line.startsWith("```")) {
@@ -137,7 +200,7 @@ export function MarkdownContent(props: { markdown: string; contentPath?: string;
           const langMatch = line.match(/^```([a-zA-Z0-9_-]*)/);
           codeLang = langMatch && langMatch[1] ? langMatch[1].toLowerCase() : undefined;
           inCodeBlock = true;
-          return;
+          continue;
         } else {
           // Closing code block
           const code = codeContent.join("\n");
@@ -170,19 +233,19 @@ export function MarkdownContent(props: { markdown: string; contentPath?: string;
           codeContent = [];
           codeLang = undefined;
           inCodeBlock = false;
-          return;
+          continue;
         }
       }
       if (inCodeBlock) {
         codeContent.push(rawLine);
-        return;
+        continue;
       }
 
       // Horizontal rule
       if (line.trim() === "---") {
         flushLists(String(index));
         out.push(<hr key={`hr-${index}`} className="my-8 border-border/60" />);
-        return;
+        continue;
       }
 
       // Images on their own line
@@ -204,7 +267,7 @@ export function MarkdownContent(props: { markdown: string; contentPath?: string;
             ) : null}
           </figure>
         );
-        return;
+        continue;
       }
 
       // Headings
@@ -218,7 +281,7 @@ export function MarkdownContent(props: { markdown: string; contentPath?: string;
             {line.replace(/^#\s+/, "")}
           </h1>
         );
-        return;
+        continue;
       }
 
       if (line.startsWith("## ")) {
@@ -231,7 +294,7 @@ export function MarkdownContent(props: { markdown: string; contentPath?: string;
             {line.replace(/^##\s+/, "")}
           </h2>
         );
-        return;
+        continue;
       }
 
       if (line.startsWith("### ")) {
@@ -244,7 +307,7 @@ export function MarkdownContent(props: { markdown: string; contentPath?: string;
             {line.replace(/^###\s+/, "")}
           </h3>
         );
-        return;
+        continue;
       }
 
       // Blockquotes
@@ -258,7 +321,7 @@ export function MarkdownContent(props: { markdown: string; contentPath?: string;
             {renderInline(line.replace(/^>\s+/, ""))}
           </blockquote>
         );
-        return;
+        continue;
       }
 
       // Unordered list items
@@ -270,7 +333,7 @@ export function MarkdownContent(props: { markdown: string; contentPath?: string;
         ulItems.push(
           <li key={`uli-${index}`}>{renderInline(line.replace(/^[-*]\s+/, ""))}</li>
         );
-        return;
+        continue;
       }
 
       // Ordered list items
@@ -282,7 +345,7 @@ export function MarkdownContent(props: { markdown: string; contentPath?: string;
         olItems.push(
           <li key={`oli-${index}`}>{renderInline(line.replace(/^\d+\.\s+/, ""))}</li>
         );
-        return;
+        continue;
       }
 
       // Bold-only pass: **bold** segments (keeps it simple)
@@ -302,13 +365,13 @@ export function MarkdownContent(props: { markdown: string; contentPath?: string;
             )}
           </p>
         );
-        return;
+        continue;
       }
 
       // Empty line breaks lists
       if (!line.trim()) {
         flushLists(String(index));
-        return;
+        continue;
       }
 
       // Paragraph
@@ -318,7 +381,7 @@ export function MarkdownContent(props: { markdown: string; contentPath?: string;
           {renderInline(line)}
         </p>
       );
-    });
+    }
 
     flushLists("end");
 

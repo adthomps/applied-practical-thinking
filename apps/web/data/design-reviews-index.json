@@ -1,0 +1,88 @@
+[
+  {
+    "id": "design-review-shadcn-ui-builder",
+    "slug": "design-review-shadcn-ui-builder",
+    "title": "Design Review: Adopting shadcn UI Builder",
+    "type": "design-review",
+    "description": "A design review of shadcn UI Builder as a bootstrap tool for design-system work, with attention to code ownership and governance boundaries.",
+    "publishedAt": "2026-02-14",
+    "featured": false,
+    "concepts": [
+      "Design Systems",
+      "Open Code",
+      "UI Tooling",
+      "Governance",
+      "design-system",
+      "shadcn",
+      "tooling",
+      "governance"
+    ],
+    "platforms": [
+      "Web"
+    ],
+    "technologies": [
+      "shadcn/ui",
+      "Radix UI"
+    ],
+    "status": "",
+    "links": {
+      "Article": "shadcn-ui-builder-blog",
+      "Podcast": "shadcn-ui-builder-podcast",
+      "Guide": "shadcn-ui-builder-guide",
+      "System": "shadcn-ui-builder"
+    },
+    "related": [],
+    "contentPath": "design-reviews/design-review-shadcn-ui-builder.md",
+    "excerpt": "Review Goal\r \r Determine whether shadcn UI Builder belongs inside a serious designsystem workflow or only inside exploration.\r \r  Review Criteria\r \r  Can the generated output be reviewed and maintained inside the local repository?"
+  },
+  {
+    "id": "design-review-design-system-rollout",
+    "slug": "design-review-design-system-rollout",
+    "title": "Design Review: Design System Rollout",
+    "type": "design-review",
+    "description": "A review of a design-system rollout focused on adoption mechanics, documentation quality, and migration discipline.",
+    "publishedAt": "2024-02-20",
+    "featured": true,
+    "concepts": [
+      "design-system",
+      "ui",
+      "product",
+      "rollout",
+      "governance"
+    ],
+    "platforms": [],
+    "technologies": [],
+    "status": "",
+    "links": {
+      "Guide": "shadcn-ui-builder-guide"
+    },
+    "related": [],
+    "contentPath": "design-reviews/design-review-design-system-rollout.md",
+    "excerpt": "Review Goal\r \r Assess whether the rollout strategy improved consistency and delivery speed without creating hidden migration debt.\r \r  What Was Strong\r \r  the system gave teams a shared visual and structural baseline"
+  },
+  {
+    "id": "design-review-portfolio-redesign",
+    "slug": "design-review-portfolio-redesign",
+    "title": "Design Review: Portfolio Redesign",
+    "type": "design-review",
+    "description": "A review of the APT portfolio redesign focused on content structure, navigation clarity, and long-term maintainability.",
+    "publishedAt": "2024-01-05",
+    "featured": true,
+    "concepts": [
+      "portfolio",
+      "redesign",
+      "systems-thinking",
+      "content-strategy"
+    ],
+    "platforms": [],
+    "technologies": [],
+    "status": "",
+    "links": {
+      "System": "apt-site",
+      "Guide": "systems-mapping-guide"
+    },
+    "related": [],
+    "contentPath": "design-reviews/design-review-portfolio-redesign.md",
+    "excerpt": "Review Goal\r \r Evaluate whether the portfolio redesign improved clarity without turning the site into a harder system to maintain.\r \r  What Was Under Review\r \r  modular content structure instead of hardcoded pages"
+  }
+]

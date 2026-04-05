@@ -96,7 +96,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <RuntimeDebugBanner />
-      <BrowserRouter>
+      <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <Suspense fallback={<RouteFallback />}>
           <Routes>
             <Route element={<AptLayout />}>
@@ -111,7 +111,8 @@ const App = () => (
             <Route path="/learn" element={<Insights />} />
             <Route path="/learn/articles" element={<InsightsBlogs />} />
             <Route path="/learn/podcasts" element={<InsightsPodcasts />} />
-            <Route path="/learn/guides" element={<InsightsGuides />} />
+            <Route path="/learn/practice" element={<InsightsGuides />} />
+            <Route path="/learn/systems" element={<Systems />} />
             <Route path="/learn/:id" element={<InsightDetail />} />
 
             {/* Canonical detail aliases */}
@@ -119,6 +120,7 @@ const App = () => (
             <Route path="/guides/:id" element={<LegacyLearnRedirect />} />
             <Route path="/podcasts/:id" element={<LegacyLearnRedirect />} />
             <Route path="/case-studies/:id" element={<LegacyLearnRedirect />} />
+            <Route path="/design-reviews/:id" element={<LegacyLearnRedirect />} />
             
             {/* Experiments */}
             <Route path="/experiments" element={<PortfolioLabs />} />
@@ -152,9 +154,10 @@ const App = () => (
             <Route path="/insights" element={<Navigate to="/learn" replace />} />
             <Route path="/insights/blogs" element={<Navigate to="/learn/articles" replace />} />
             <Route path="/insights/podcasts" element={<Navigate to="/learn/podcasts" replace />} />
-            <Route path="/insights/guides" element={<Navigate to="/learn/guides" replace />} />
-            <Route path="/insights/case-studies" element={<Navigate to="/learn/guides" replace />} />
+            <Route path="/insights/guides" element={<Navigate to="/learn/practice" replace />} />
+            <Route path="/insights/case-studies" element={<Navigate to="/learn/practice" replace />} />
             <Route path="/insights/:id" element={<LegacyLearnRedirect />} />
+            <Route path="/learn/guides" element={<Navigate to="/learn/practice" replace />} />
             <Route path="/portfolio" element={<Navigate to="/experiments" replace />} />
             <Route path="/portfolio/labs" element={<Navigate to="/experiments" replace />} />
             <Route path="/portfolio/labs/:id" element={<LegacyLabRedirect />} />

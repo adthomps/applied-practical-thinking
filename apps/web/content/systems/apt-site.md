@@ -7,8 +7,8 @@ publishedAt: "2026-02-01"
 featured: false
 tags: ["vite", "react", "cloudflare"]
 related:
-  - case-study-apt-lab
-  - case-study-portfolio-redesign
+  - systems-mapping-guide
+  - design-review-portfolio-redesign
   - portfolio-website
 ---
 
@@ -22,6 +22,6 @@ This site itself—a Vite + React + Tailwind stack deployed on Cloudflare Pages 
 
 ## Learning Resources
 - **Rationale:** Static-first for speed and simplicity. Unified design system for consistency.
-- **Case Studies:** case-study-apt-lab, case-study-portfolio-redesign
+- **Practice:** systems-mapping-guide, design-review-portfolio-redesign
 - **Tutorials:** guide-to-deployment, guide-to-content-management
 - **Glossary:** SSR, SPA, API, Design System

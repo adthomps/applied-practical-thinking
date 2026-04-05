@@ -7,20 +7,26 @@ import {
   RuntimeConfigNotice,
   SectionIntro,
 } from "@/components/apt";
-import { Link } from "react-router-dom";
-import { Book, FileText, Podcast } from "lucide-react";
+import { Book, FileText, Network, Podcast } from "lucide-react";
 import { siteConfig } from "@/data/site";
 import { getWorkerApiConfigError } from "@/src/services/api";
+import { usePageMetadata } from "@/hooks/usePageMetadata";
 
 
 const areaIcons: Record<string, ComponentType<{ className?: string }>> = {
   "/learn/articles": FileText,
   "/learn/podcasts": Podcast,
-  "/learn/guides": Book,
+  "/learn/practice": Book,
+  "/learn/systems": Network,
 };
 
 
 export default function Insights() {
+  usePageMetadata({
+    title: "Learn",
+    description: "Articles, podcasts, practice material, and systems for applied thinking, execution, and review.",
+  });
+
   const [filter, setFilter] = useState<string | "all">("all");
   const [insights, setInsights] = useState<ContentIndexItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -32,14 +38,14 @@ export default function Insights() {
       fetchContentIndex("blog"),
       fetchContentIndex("guides"),
       fetchContentIndex("podcasts"),
-      fetchContentIndex("case-studies"),
+      fetchContentIndex("design-reviews"),
     ])
-      .then(([blog, guides, podcasts, caseStudies]) => {
+      .then(([blog, guides, podcasts, reviews]) => {
         setInsights([
           ...blog,
           ...guides,
           ...podcasts,
-          ...caseStudies,
+          ...reviews,
         ].sort((a, b) => (b.publishedAt || "").localeCompare(a.publishedAt || "")));
         setLoading(false);
       })
@@ -53,7 +59,7 @@ export default function Insights() {
     filter === "all"
       ? insights
       : insights.filter((c) =>
-          filter === "guide" ? c.type === "guide" || c.type === "case-study" : c.type === filter
+          filter === "practice" ? c.type === "guide" || c.type === "design-review" : c.type === filter
         );
 
   if (loading) {
@@ -89,7 +95,7 @@ export default function Insights() {
       <section>
         <SectionIntro
           title="Learn"
-          description="Guides, articles, podcasts, and worked examples for applied thinking, systems, and execution."
+          description="Articles, podcasts, practice material, and systems for applied thinking, execution, and review."
           titleClassName="text-3xl md:text-4xl"
           descriptionClassName="text-lg"
         />
@@ -100,7 +106,7 @@ export default function Insights() {
       <section className="space-y-6">
         <SectionIntro
           title="Browse all Learn content"
-          description="Filter across articles, podcasts, guides, and worked examples to move from orientation into deeper material."
+          description="Filter across articles, podcasts, guides, and design reviews to move from orientation into repeatable practice."
         />
 
         <div className="flex gap-2 mb-8">
@@ -112,9 +118,9 @@ export default function Insights() {
             All
           </AptButton>
           {[
-            { type: "blog", label: "Articles" },
+            { type: "article", label: "Articles" },
             { type: "podcast", label: "Podcasts" },
-            { type: "guide", label: "Guides" },
+            { type: "practice", label: "Practice" },
           ].map(({ type, label }) => (
             <AptButton
               key={type}

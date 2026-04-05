@@ -10,19 +10,22 @@ import {
   Volume2,
 } from "lucide-react";
 import { getWorkerApiConfigError } from "@/src/services/api";
+import { usePageMetadata } from "@/hooks/usePageMetadata";
 
 const typeIcons = {
+  article: FileText,
   blog: FileText,
   podcast: Mic,
   guide: Book,
-  "case-study": Book,
+  "design-review": Book,
 };
 
 const typeLabels = {
-  blog: "Blog Post",
+  article: "Article",
+  blog: "Article",
   podcast: "Podcast Episode",
   guide: "Guide",
-  "case-study": "Mock Case Study",
+  "design-review": "Design Review",
 };
 
 export default function InsightDetail() {
@@ -33,10 +36,33 @@ export default function InsightDetail() {
     loading,
     error,
   } = useContentDetail({
-    indexTypes: ["blog", "guides", "podcasts", "case-studies"],
+    indexTypes: ["blog", "guides", "podcasts", "design-reviews"],
     idOrSlug: id,
     match: "id",
   });
+
+  const hasMissingState = !loading && (Boolean(error) || !insight);
+
+  usePageMetadata(
+    hasMissingState
+      ? {
+          title: "Insight not found",
+          description: "The requested learning resource could not be found.",
+          noIndex: true,
+        }
+      : insight
+        ? {
+            title: insight.title,
+            description: insight.description,
+            image: insight.thumbnail,
+            imageAlt: insight.title,
+            type: insight.type === "podcast" ? "website" : "article",
+          }
+        : {
+            title: "Learn",
+            description: "Loading learning content.",
+          }
+  );
 
   if (loading) {
     return <div className="container py-12 text-center">Loading…</div>;
@@ -122,8 +148,7 @@ export default function InsightDetail() {
       item={insight}
       markdown={markdown}
       aboutTitle="Summary"
-      //markdownTitle="Full Content"
-      headerMeta={<InsightMeta insight={insight} showDate={false} showConcepts={false} />}
+      headerMeta={<InsightMeta insight={insight} showType={false} showDate={false} showConcepts={false} />}
       heroFallback={
         <div className="flex flex-col items-center gap-2 text-muted-foreground/50">
           <TypeIcon className="h-12 w-12" />

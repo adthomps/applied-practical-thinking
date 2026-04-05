@@ -36,8 +36,8 @@ export function RelatedContentList({ related }: { related: string[] }) {
 }
 
 function getContentUrl(item: ContentIndexItem): string {
-  if (item.type === "blog") return `/learn/${item.id}`;
-  if (item.type === "case-study") return `/learn/${item.id}`;
+  if (item.type === "article" || item.type === "blog") return `/learn/${item.id}`;
+  if (item.type === "design-review") return `/learn/${item.id}`;
   if (item.type === "guide") return `/learn/${item.id}`;
   if (item.type === "podcast") return `/learn/${item.id}`;
   if (item.type === "lab" || item.type === "mock" || item.type === "demo") return `/experiments/${item.slug || item.id}`;

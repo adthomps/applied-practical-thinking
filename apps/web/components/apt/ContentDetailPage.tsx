@@ -17,6 +17,14 @@ import {
   Share2,
 } from "lucide-react";
 
+const contentTypeLabels: Record<string, string> = {
+  article: "Article",
+  blog: "Article",
+  podcast: "Podcast",
+  guide: "Guide",
+  "design-review": "Design Review",
+};
+
 type ContentDetailPageProps = {
   backHref: string;
   backLabel: string;
@@ -85,6 +93,9 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
 
   const publishedRaw = (item.publishedAt as string | undefined) || (item.date as string | undefined);
   const publishedLabel = formatDate(publishedRaw);
+  const currentIdentifiers = new Set(
+    [item.id, item.slug].filter((value): value is string => typeof value === "string" && value.length > 0)
+  );
 
   const isInternalHref = (href: string) => href.startsWith("/") && !href.startsWith("//");
 
@@ -93,13 +104,14 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
   const getInternalUrl = (key: string, href: string) => {
     if (href.startsWith("http")) return href;
     if (isInternalHref(href)) return href;
-    // Use item's id for internal routing if available
     const k = key.toLowerCase();
-    const id = item?.id || href.replace(/^\/+/, "");
+    const id = href.replace(/^\/+/, "");
+    if (k.includes("article")) return `/learn/${id}`;
     if (k.includes("blog")) return `/learn/${id}`;
     if (k.includes("podcast")) return `/learn/${id}`;
     if (k.includes("guide")) return `/learn/${id}`;
-    if (k.includes("case")) return `/learn/${id}`;
+    if (k.includes("review")) return `/learn/${id}`;
+    if (k.includes("system")) return `/design/systems/${id}`;
     return href;
   };
 
@@ -121,14 +133,22 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
 
   const links = item.links || {};
   const extraLinks = Object.entries(links)
-    .filter(([key, value]) => Boolean(value) && !["demo", "repo", "figma", "lovable"].includes(key))
+    .filter(([key, value]) => {
+      if (!value) return false;
+      if (["demo", "repo", "figma", "lovable"].includes(key)) return false;
+      const normalizedTarget = String(value).replace(/^\/+/, "");
+      return !currentIdentifiers.has(normalizedTarget);
+    })
     .map(([key, value]) => ({
       key,
       href: value,
       label:
         {
+          blog: "Article",
           website: "Website",
           article: "Article",
+          review: "Design Review",
+          system: "System",
           read: "Read",
           listen: "Listen",
           youtube: "YouTube",
@@ -205,7 +225,9 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
           <div>
             {headerMeta ? <div className="mb-3">{headerMeta}</div> : null}
             <div className="flex items-center gap-2 mb-3">
-              {item.type ? <AptTag variant="primary">{item.type}</AptTag> : null}
+              {item.type && !headerMeta ? (
+                <AptTag variant="primary">{contentTypeLabels[item.type] || item.type}</AptTag>
+              ) : null}
               {item.status ? <AptTag variant="secondary">{item.status}</AptTag> : null}
             </div>
             <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
@@ -231,25 +253,30 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
 
           {/* Description */}
           {item.description ? (
-            <div>
-              <h2 className="text-xl font-semibold mb-4">{aboutTitle}</h2>
-              <p className="text-muted-foreground leading-relaxed">
-                {item.description}
-              </p>
-            </div>
+            <AptCard variant="subtle">
+              <div className="p-6 md:p-8">
+                <h2 className="text-sm font-semibold text-primary mb-3 uppercase tracking-wide">{aboutTitle}</h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            </AptCard>
           ) : null}
 
           {/* Markdown */}
           {markdown ? (
-            <div>
-              <article className="prose-custom">
-                <MarkdownContent
-                  markdown={markdown}
-                  contentPath={item.contentPath}
-                  assetBasePath={typeof item.assetBasePath === "string" ? item.assetBasePath : undefined}
-                />
-              </article>
-            </div>
+            <AptCard>
+              <div className="p-6 md:p-8">
+                {markdownTitle ? <h2 className="text-xl font-semibold mb-6">{markdownTitle}</h2> : null}
+                <article className="prose-custom">
+                  <MarkdownContent
+                    markdown={markdown}
+                    contentPath={item.contentPath}
+                    assetBasePath={typeof item.assetBasePath === "string" ? item.assetBasePath : undefined}
+                  />
+                </article>
+              </div>
+            </AptCard>
           ) : null}
 
           {mainBottom ? <div>{mainBottom}</div> : null}
@@ -261,7 +288,7 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
         </div>
 
         {/* Sidebar */}
-        <div className="space-y-6">
+        <div className="space-y-6 lg:sticky lg:top-24 self-start">
           {sidebarTop ? <div>{sidebarTop}</div> : null}
 
           {/* Published */}
@@ -321,17 +348,17 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
                   {/* Group extra links by type for clarity */}
                   {(() => {
                     const typeGroups = [
-                      { type: 'blog', label: 'Blog', icon: <ExternalLink className="h-4 w-4 mr-2" /> },
+                      { type: 'article', label: 'Article', icon: <ExternalLink className="h-4 w-4 mr-2" /> },
                       { type: 'podcast', label: 'Podcast', icon: <ExternalLink className="h-4 w-4 mr-2" /> },
                       { type: 'guide', label: 'Guide', icon: <ExternalLink className="h-4 w-4 mr-2" /> },
-                      { type: 'caseStudy', label: 'Case Study', icon: <ExternalLink className="h-4 w-4 mr-2" /> },
+                      { type: 'review', label: 'Design Review', icon: <ExternalLink className="h-4 w-4 mr-2" /> },
                     ];
                     // Map keys to types
                     const keyToType = (key) => {
-                      if (key.includes('blog')) return 'blog';
+                      if (key.includes('article') || key.includes('blog')) return 'article';
                       if (key.includes('podcast')) return 'podcast';
                       if (key.includes('guide')) return 'guide';
-                      if (key.includes('case')) return 'caseStudy';
+                      if (key.includes('review')) return 'review';
                       return 'other';
                     };
                     const grouped = {};

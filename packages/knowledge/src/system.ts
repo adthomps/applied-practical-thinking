@@ -24,7 +24,7 @@ export interface SystemDefinition {
   };
   learningResources?: {
     rationale?: string;
-    caseStudies?: string[];
+    practice?: string[];
     tutorials?: string[];
     glossary?: string[];
   };

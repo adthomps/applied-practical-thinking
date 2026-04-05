@@ -2,9 +2,9 @@
 title: "Decision-Driven Development"
 featured: true
 id: "09-decision-driven-development-blog"
-type: "blog"
+type: "article"
 description: "Why documenting decisions is more valuable than documenting code, and how to build a decision log that actually gets used."
-thumbnail: /content/blogs/09-decision-driven-development-blog.png
+thumbnail: /content/blogs/09-decision-driven-development-blog.svg
 publishedAt: "2026-02-15"
 concepts:
   - architecture
@@ -18,8 +18,8 @@ technologies:
   - OpenAI
 links:
   Blog: 09-decision-driven-development-blog
-  Podcast: 09-decision-driven-development-podcast
-  Guide: 09-decision-driven-development-guide
+  Podcast: 
+  Guide: 
   Case: 
   Article: 
   Slides: 

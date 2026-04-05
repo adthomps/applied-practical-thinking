@@ -2,7 +2,7 @@
 title: AI-Powered Cloud Development with React, Hono, and Cloudflare
 featured: true
 id: "02-ai-powered-cloud-development-blog"
-type: "blog"
+type: "article"
 description: "Demonstrates how AI-assisted tooling, modern frontend frameworks, and edge computing work together to accelerate secure, scalable web application development. Highlights a static-first + API prefix architecture, AI-powered testing, and performance optimization at the edge."
 thumbnail: /content/blogs/02-ai-powered-cloud-development-blog.png
 publishedAt: "2025-08-22"

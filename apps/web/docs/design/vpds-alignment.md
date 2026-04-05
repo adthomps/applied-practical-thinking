@@ -14,7 +14,7 @@ Visual design serves the product purpose:
 - **Labs**: Exploration, experimentation → More visual flexibility
 - **Systems**: Production-ready → Conservative, stable design
 - **Learn**: Content consumption → Typography-focused
-- **Strong**: Case studies → Decision-focused layout
+- **Practice**: Guides and design reviews → Decision-focused layout
 
 ### 2. Consistency Over Novelty
 

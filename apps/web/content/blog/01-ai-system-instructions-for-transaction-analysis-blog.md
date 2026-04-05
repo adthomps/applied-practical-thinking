@@ -2,7 +2,7 @@
 title: Constructing System Instructions for AI-Driven API & Transaction Analysis
 featured: true
 id: "01-ai-system-instructions-for-transaction-analysis-blog"
-type: "blog"
+type: "article"
 description: "How structured instructions and schema enforcement can help AI systems in payments and fraud detection deliver consistent, explainable results. Discusses prompt design, decision boundaries, and compliance considerations without external references."
 thumbnail: /content/blogs/01-ai-system-instructions-for-transaction-analysis-blog.png
 publishedAt: "2025-08-17"

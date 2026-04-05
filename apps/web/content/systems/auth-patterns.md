@@ -6,9 +6,6 @@ description: "Reference implementations for authentication flows including JWT, 
 publishedAt: "2026-02-01"
 featured: false
 tags: ["security", "auth", "patterns"]
-related:
-  - case-study-auth-flow
-  - guide-to-auth-patterns
 ---
 
 A collection of auth patterns including session management, JWT handling, and OAuth integrations with security considerations.
@@ -21,6 +18,6 @@ A collection of auth patterns including session management, JWT handling, and OA
 
 ## Learning Resources
 - **Rationale:** httpOnly cookies for security. Token rotation for safety. Rate limiting to prevent abuse.
-- **Case Studies:** case-study-auth-flow
-- **Tutorials:** guide-to-auth-patterns
+- **Practice:** Apply this model only after you have defined cookie boundaries, refresh policies, and failure handling explicitly.
+- **Tutorials:** Capture the target flow as a system map or review before turning it into reusable code.
 - **Glossary:** JWT, OAuth, Session, Rate Limiting

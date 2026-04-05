@@ -19,8 +19,8 @@ technologies:
   - OpenAI
 links:
   Blog: 03-designing-ai-ready-interfaces-blog
-  Podcast: 03-designing-ai-ready-interfaces-podcast
-  Case: 03-designing-ai-ready-interfaces-case
+  Podcast: 
+  Case: 
   Guide: 03-designing-ai-ready-interfaces-guide
   Article: 
   Slides: 

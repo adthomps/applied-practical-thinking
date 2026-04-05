@@ -1,145 +1,126 @@
 ---
-title: "AI System Instructions For Transaction Analysis Guide"
+title: "AI & Storytelling - Creative Coding"
 featured: false
-id: "ai-system-instructions-for-transaction-analysis-guide"
+id: "08-creative-coding-storytelling-guide"
 type: "guide"
-description: "Step-by-step guide for implementing structured AI instructions in payments. Covers schemas, testing, monitoring, and compliance considerations without external references."
-thumbnail: /content/guides/01-ai-systeminstructions-for-transaction-analysis-guide.png
-publishedAt: "2025-08-17"
+description: "A practical guide to using AI in creative coding projects without losing authorship, narrative intent, or the structure needed for repeatable experiments."
+thumbnail: /content/guides/08-creative-coding-storytelling-guide.svg
+publishedAt: "2025-10-12"
 concepts:
-  - continuous-delivery
-  - teams
-  - product
+  - Creative Coding
+  - AI Storytelling
+  - Generative Art
+  - Innovation
 platforms:
   - Web
   - Cloud
-  - Payment Gateway
 technologies:
   - Cloudflare
   - OpenAI
 links:
-  Blog: 01-ai-system-instructions-for-transaction-analysis
-  Podcast: 01-ai-system-instructions-for-transaction-analysis-podcast
+  Blog: 
+  Podcast: 
+  Guide: 08-creative-coding-storytelling-guide
   Case: 
-  Guide: 
   Article: 
   Slides: 
 ---
 
 ## Introduction
 
-This guide outlines how to implement structured system instructions in payment environments. The goal is to ensure AI delivers predictable, explainable results in fraud detection and transaction analysis while remaining flexible for iteration.
+Creative coding gets more interesting when AI is used as a collaborator in variation, pacing, and structure rather than as a button that produces finished work. The challenge is preserving authorship while still benefiting from generative range.
 
-## 1. Define the Role & Boundaries
+This guide outlines a practical way to build narrative or visual experiments that stay intentional.
+
+## 1. Start With the Experience, Not the Model
+
+Before choosing a tool, define the experience you want to create:
+
+- What should the audience notice or feel?
+- Is the piece about surprise, rhythm, narrative progression, or interaction?
+- What should remain authored by you?
+- Where would variation genuinely improve the work?
+
+AI is useful only after those boundaries are clear.
+
+## 2. Pick the Layer Where Generation Helps
+
+Generative systems can help at different levels:
+
+- visual motifs or prompt-driven assets
+- branching dialogue or narrative variations
+- ambient text or environmental detail
+- parameter suggestions for animation, sound, or interaction
+
+Do not generate every layer at once. Choose one variable at a time so you can still tell what is affecting the outcome.
+
+## 3. Preserve a Human Authorship Layer
+
+Even highly generative work benefits from a stable authored core.
+
+That core might be:
+
+- the narrative structure
+- the visual language
+- the rules for transitions and pacing
+- the interaction model
+- the editorial decisions about what stays and what gets removed
+
+Authorship is not reduced by using generative systems. It is reduced when no one can explain why the piece is shaped the way it is.
+
+## 4. Create a Prompt or Rule Contract
+
+Use a small contract to define how the system is allowed to vary:
 
 ```json
 {
-  "role": "Fraud Analyst",
-  "objective": "Classify transactions as APPROVE, DECLINE, or ESCALATE with explanation.",
-  "constraints": [
-    "Never guess if data is missing",
-    "If unclear, always return ESCALATE"
-  ]
+  "project": "city-echoes",
+  "authoredCore": ["scene order", "interaction timing", "color palette"],
+  "generatedLayer": ["ambient text", "background motifs"],
+  "guardrails": ["keep tone reflective", "avoid direct exposition", "limit output length"]
 }
 ```
-Treat this as a contract — not prose.
 
-## 2. Input Schema
+This makes it easier to iterate without losing the identity of the project.
 
-```json
-{
-  "transaction_id": "string",
-  "amount": "number",
-  "currency": "string",
-  "avs_result": "string",
-  "cvv_result": "string",
-  "merchant_category_code": "string",
-  "ip_country": "string"
-}
-```
-Reject or sanitize inputs that don’t conform.
+## 5. Evaluate Output Like an Editor
 
-## 3. Output Schema
+Generated output should be reviewed with explicit criteria:
 
-```json
-{
-  "decision": "APPROVE | DECLINE | ESCALATE",
-  "reasoning": "string",
-  "risk_flags": ["AVS_MISMATCH", "HIGH_VALUE", "IP_GEO_MISMATCH"]
-}
-```
-Predefine allowed values.
+- Does it strengthen the emotional or narrative direction?
+- Is it repetitive, noisy, or generic?
+- Does it clash with the authored voice?
+- Would the piece be clearer if this element were removed?
 
-## 4. Test with Known Cases
+Creative coding improves when curation is treated as part of the craft, not as cleanup after the fact.
 
-✅ Approved: AVS + CVV match, low risk.
+## 6. Design for Repeatable Experiments
 
-❌ Declined: AVS mismatch, high-risk location.
+If the work is interactive or procedural, you need enough structure to compare iterations.
 
-⚠️ Escalated: Missing CVV data.
+Useful practices include:
 
-Log mismatches for tuning.
+- versioning prompts or rule sets
+- saving representative outputs
+- logging parameter changes between builds
+- testing with a narrow audience before widening scope
 
-## 5. Error Handling
+This keeps the project learnable instead of mysterious.
 
-```python
-response = call_ai(transaction)
-if not validate_schema(response):
-  return {"decision": "ESCALATE", "reasoning": "Invalid AI output"}
-```
+## 7. Know When to Stop Generating
 
-## 6. Monitor & Iterate
+Generative systems can tempt you into endless expansion. More variation does not automatically create a better piece.
 
-Compare AI vs. human reviewer outcomes.
+Stop when:
 
-Analyze failure patterns.
+- the system is reinforcing the concept rather than distracting from it
+- additional variation produces mostly noise
+- the editorial shape feels deliberate
+- the audience can actually read what matters
 
-Update instruction boundaries.
-
-Re-test continuously.
-
-## 7. Compliance & Explainability
-
-Every output should include:
-
-- Decision (approve/decline/escalate)
-- Reasoning (human-readable)
-- Audit Trail (timestamp, inputs, outputs, instruction version)
-
-## Example Flow
-
-```mermaid
-%%{init:{
-  "securityLevel":"loose",
-  "flowchart":{"htmlLabels":true,"useMaxWidth":true,"diagramPadding":16,"padding":12,"curve":"linear"},
-  "themeVariables":{
-    "decisionBg":"#22c55e",
-    "decisionBorder":"#16a34a",
-    "escalateBg":"#f59e42",
-    "escalateBorder":"#b45309"
-  }
-}}%%
-flowchart TD
-  A["Transaction API"] --> B["Schema Validation"]
-  B --> SE["Schema Enforcement"]
-  SE --> C["AI with Instruction Set"]
-  C --> D{"Valid Output?"}
-  D -->|Yes| E["Decision JSON"]:::decision
-  D -->|No| F["Fallback Escalate"]:::escalate
-  E --> G["Dashboard & Analyst Oversight"]
-  F --> G
-  G --> AT["Audit Trail"]
-  AT -.-> C
-
-  %% Node styles
-  E:::decision
-  F:::escalate
-  classDef decision fill:#22c55e,stroke:#16a34a,color:#fff;
-  classDef escalate fill:#f59e42,stroke:#b45309,color:#fff;
-
-```
+Completion in creative coding often comes from narrowing, not adding.
 
 ## Conclusion
 
-System instructions are the backbone of reliable AI in payments. With schemas, clear boundaries, and continuous monitoring, teams can move from unpredictable “black box” answers to auditable and trusted outputs.
+AI and storytelling work well together when generation serves a designed experience instead of replacing it. Keep the authored core explicit, decide where variation belongs, and evaluate outputs with editorial discipline. That is how creative coding stays expressive without becoming directionless.
 
