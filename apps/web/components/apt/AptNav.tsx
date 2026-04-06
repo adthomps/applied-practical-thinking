@@ -4,14 +4,28 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { siteConfig, NavItem } from "@/data/site";
 
+function normalizePath(path: string) {
+  if (!path) return "/";
+  if (path === "/") return "/";
+  return path.replace(/\/+$/, "");
+}
+
+function isRouteActive(pathname: string, routePath: string) {
+  const current = normalizePath(pathname);
+  const target = normalizePath(routePath);
+
+  if (target === "/") return current === "/";
+  return current === target || current.startsWith(`${target}/`);
+}
+
 function NavDropdown({ item, isLast = false }: { item: NavItem; isLast?: boolean }) {
   const location = useLocation();
   const [open, setOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   
-  const isActive = location.pathname === item.path || 
-    item.children?.some(child => location.pathname.startsWith(child.path));
+  const isActive = isRouteActive(location.pathname, item.path) ||
+    item.children?.some((child) => isRouteActive(location.pathname, child.path));
 
   const handleMouseEnter = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -90,7 +104,7 @@ function NavDropdown({ item, isLast = false }: { item: NavItem; isLast?: boolean
           {/* Children */}
           <div className="py-2 max-h-[calc(100vh-8rem)] overflow-y-auto">
             {item.children.map((child) => {
-              const isChildActive = location.pathname.startsWith(child.path);
+              const isChildActive = isRouteActive(location.pathname, child.path);
               return (
                 <Link
                   key={child.path}
@@ -130,8 +144,8 @@ function MobileNavItem({ item, onClose }: { item: NavItem; onClose: () => void }
   const location = useLocation();
   const [expanded, setExpanded] = useState(false);
   
-  const isActive = location.pathname === item.path || 
-    item.children?.some(child => location.pathname.startsWith(child.path));
+  const isActive = isRouteActive(location.pathname, item.path) ||
+    item.children?.some((child) => isRouteActive(location.pathname, child.path));
 
   if (!item.children) {
     return (
@@ -177,7 +191,7 @@ function MobileNavItem({ item, onClose }: { item: NavItem; onClose: () => void }
               onClick={onClose}
               className={cn(
                 "block px-3 py-2 text-sm rounded-md transition-colors",
-                location.pathname.startsWith(child.path)
+                isRouteActive(location.pathname, child.path)
                   ? "text-foreground bg-accent"
                   : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
               )}

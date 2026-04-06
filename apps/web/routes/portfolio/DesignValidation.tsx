@@ -4,7 +4,6 @@ import {
   ShieldCheck,
   ShieldAlert,
   ShieldX,
-  ArrowRight,
 } from "lucide-react";
 import {
   AptButton,
@@ -15,6 +14,7 @@ import {
   AptCardTitle,
   AptTag,
   SectionIntro,
+  ValidationStatusCallout,
 } from "@/components/apt";
 import { useValidationReport } from "@/hooks/useValidationReport";
 
@@ -184,12 +184,11 @@ export default function PortfolioDesignValidation() {
           </section>
 
           <section className="pt-2">
-            <AptButton variant="ghost" asChild>
-              <a href="/design/review-bundle">
-                Open AI Review Bundle
-                <ArrowRight className="h-4 w-4" />
-              </a>
-            </AptButton>
+            <ValidationStatusCallout
+              title="Use with AI Review Bundle"
+              description="Pair this status snapshot with the AI Review Bundle when handing off standards-based reviews."
+              showReviewBundleLink
+            />
           </section>
         </>
       ) : null}

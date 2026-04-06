@@ -21,6 +21,7 @@ import {
   AptCardTitle,
   AptTag,
   SectionIntro,
+  ValidationStatusCallout,
 } from "@/components/apt";
 import { useReviewBundleManifest } from "@/hooks/useReviewBundleManifest";
 
@@ -54,6 +55,11 @@ const routeCompanions = [
     title: "Systems",
     path: "/design/systems",
     description: "Use when the review depends on stable reference models and system relationships.",
+  },
+  {
+    title: "Validation",
+    path: "/design/validation",
+    description: "Use when you need the latest public-safe governance and compliance snapshot.",
   },
 ];
 
@@ -207,6 +213,14 @@ export default function PortfolioReviewBundle() {
             <p className="text-sm text-muted-foreground">Review bundle metadata could not be loaded right now.</p>
           )}
         </SectionIntro>
+      </section>
+
+      <section>
+        <ValidationStatusCallout
+          title="Validation Snapshot"
+          description="This bundle and the validation surface are paired: use validation for current conformance status, and this bundle for standards and handoff assets."
+          showReviewBundleLink={false}
+        />
       </section>
 
       <section>
