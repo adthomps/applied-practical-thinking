@@ -1,3 +1,11 @@
+---
+title: APT Design Assistant
+version: v2
+status: candidate
+audience: developer
+visibility: public
+source: manual
+---
 # APT Design Assistant
 
 ## Purpose
@@ -13,9 +21,9 @@ Document-grounded AI assistant for APT Design System, Design Thinking, and Desig
 - Minimal abstraction (no LangChain/agent frameworks)
 
 ## Source Priority
-1. `apps/web/docs/design/APT-DESIGN-ARCHITECTURE.md` → Design Architecture
-2. `apps/web/docs/design/APT-DESIGN-SYSTEM.md` and adjacent design reference docs → Design System
-3. `apps/web/docs/design/APT-DESIGN-THINKING.md` → Design Thinking
+1. `apps/web/docs/design/versions/v2/APT-DESIGN-ARCHITECTURE.md` → Design Architecture
+2. `apps/web/docs/design/versions/v2/APT-DESIGN-SYSTEM.md` and adjacent design reference docs → Design System
+3. `apps/web/docs/design/versions/v2/APT-DESIGN-THINKING.md` → Design Thinking
 4. `packages/config/*` → Shared tokens/config contracts
 5. `packages/ui/*` → Shared UI primitives
 6. `apps/web/content/*` → Public learn/experiment content when the question is content-specific

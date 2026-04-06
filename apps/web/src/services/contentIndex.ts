@@ -11,6 +11,7 @@ import type {
   PublicReviewBundleManifest,
 } from "@apt/knowledge";
 import { fetchWorkerJson } from "./api";
+import type { PublicValidationReport } from "@/src/types/validationReport";
 
 export async function fetchContentIndex(type: ContentIndexType): Promise<ContentIndexItem[]> {
   return fetchWorkerJson<ContentIndexItem[]>(`/api/content/${type}`);
@@ -52,6 +53,14 @@ export async function fetchDesignDocVersions(slug: string): Promise<PublicDesign
 
 export async function fetchDesignReviewBundleManifest(): Promise<PublicReviewBundleManifest> {
   return fetchWorkerJson<PublicReviewBundleManifest>("/api/design/review-bundle");
+}
+
+export async function fetchPublicValidationReport(): Promise<PublicValidationReport> {
+  const response = await fetch("/docs/design/validation/LATEST.json");
+  if (!response.ok) {
+    throw new Error(`Failed to load validation report: ${response.status}`);
+  }
+  return (await response.json()) as PublicValidationReport;
 }
 
 export type { ContentIndexItem, ContentIndexType };

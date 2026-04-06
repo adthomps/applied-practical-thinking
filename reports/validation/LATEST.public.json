@@ -1,0 +1,161 @@
+{
+  "run": {
+    "timestamp": "2026-04-06T03:52:45.429Z",
+    "completedAt": "2026-04-06T03:52:45.458Z",
+    "durationMs": 29,
+    "gitSha": "5b374de"
+  },
+  "mode": "quick",
+  "recommendation": "pass",
+  "sections": {
+    "designSystem": {
+      "status": "pass",
+      "checks": [
+        {
+          "name": "audited-doctrine-metadata",
+          "status": "pass",
+          "severity": "low",
+          "message": "verify-audited-doctrine-metadata passed"
+        },
+        {
+          "name": "frontmatter-wave1",
+          "status": "pass",
+          "severity": "low",
+          "message": "Wave 1 missing metadata files: 0"
+        }
+      ]
+    },
+    "architecture": {
+      "status": "pass",
+      "checks": [
+        {
+          "name": "design-doc-alias-policy",
+          "status": "pass",
+          "severity": "low",
+          "message": "verify-design-doc-alias-sync passed"
+        },
+        {
+          "name": "frontmatter-wave2",
+          "status": "pass",
+          "severity": "low",
+          "message": "Wave 2 missing metadata files: 0"
+        }
+      ]
+    },
+    "docsGovernance": {
+      "status": "pass",
+      "checks": [
+        {
+          "name": "frontmatter-report",
+          "status": "pass",
+          "severity": "low",
+          "message": "Frontmatter gaps in scoped docs: 0"
+        }
+      ],
+      "frontmatter": {
+        "scannedCount": 113,
+        "inScopeCount": 42,
+        "missingCount": 0,
+        "waves": [
+          {
+            "id": "wave1",
+            "label": "Design static + AI prompts",
+            "enforceOn": "2026-04-20",
+            "total": 10,
+            "passed": 10,
+            "missing": 0,
+            "exceptions": 0
+          },
+          {
+            "id": "wave2",
+            "label": "Internal operational docs",
+            "enforceOn": "2026-05-15",
+            "total": 24,
+            "passed": 23,
+            "missing": 0,
+            "exceptions": 1
+          },
+          {
+            "id": "wave3",
+            "label": "Worker AI docs + .github docs",
+            "enforceOn": "2026-06-15",
+            "total": 8,
+            "passed": 7,
+            "missing": 0,
+            "exceptions": 1
+          }
+        ]
+      }
+    },
+    "tests": {
+      "status": "pass",
+      "checks": [
+        {
+          "name": "apps-web-tests",
+          "status": "not_run",
+          "severity": "low",
+          "message": "tests not requested"
+        }
+      ]
+    }
+  },
+  "severitySummary": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0
+  },
+  "findings": [],
+  "exceptionSummary": [
+    {
+      "waveId": "wave2",
+      "reason": "Historical log format is preserved; frontmatter rollout deferred."
+    },
+    {
+      "waveId": "wave3",
+      "reason": "GitHub PR template structure is preserved; metadata rollout deferred."
+    }
+  ],
+  "waveProgress": [
+    {
+      "id": "wave1",
+      "label": "Design static + AI prompts",
+      "enforceOn": "2026-04-20",
+      "total": 10,
+      "passed": 10,
+      "missing": 0,
+      "exceptions": 0,
+      "completionPercent": 100
+    },
+    {
+      "id": "wave2",
+      "label": "Internal operational docs",
+      "enforceOn": "2026-05-15",
+      "total": 24,
+      "passed": 23,
+      "missing": 0,
+      "exceptions": 1,
+      "completionPercent": 95.8
+    },
+    {
+      "id": "wave3",
+      "label": "Worker AI docs + .github docs",
+      "enforceOn": "2026-06-15",
+      "total": 8,
+      "passed": 7,
+      "missing": 0,
+      "exceptions": 1,
+      "completionPercent": 87.5
+    }
+  ],
+  "triage": {
+    "groupedByWaveAndFolder": {},
+    "topQuickFixes": []
+  },
+  "checks": {
+    "verifyDesignDocAliasSync": "pass",
+    "verifyAuditedDoctrineMetadata": "pass",
+    "frontmatterReport": "pass",
+    "tests": "not_run"
+  }
+}

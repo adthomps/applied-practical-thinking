@@ -18,4 +18,4 @@ These prompts are internal operating instructions. Public-facing content and doc
 - `apps/web/content/`
 - approved public docs in `apps/web/docs/design/`
 
-When an external AI or working agent needs a pointable standards document, use `apps/web/docs/design/APT-REVIEW-STANDARD.md` as the primary handoff.
+When an external AI or working agent needs a pointable standards document, use `apps/web/docs/design/static/APT-REVIEW-STANDARD.md` as the primary handoff.

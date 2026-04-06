@@ -1,3 +1,11 @@
+---
+title: PLATFORM_IDS.md
+version: v2
+status: candidate
+audience: developer
+visibility: public
+source: manual
+---
 # PLATFORM_IDS.md
 
 ## Cloudflare Platform IDs and Bindings

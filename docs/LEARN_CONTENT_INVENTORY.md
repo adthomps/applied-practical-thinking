@@ -1,3 +1,11 @@
+---
+title: Learn Content Inventory
+version: v2
+status: candidate
+audience: developer
+visibility: public
+source: manual
+---
 # Learn Content Inventory
 
 This inventory records the current editorial decision for every Learn item after the April 2026 cleanup pass.

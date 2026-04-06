@@ -1,3 +1,11 @@
+---
+title: Design Architecture
+version: v2
+status: candidate
+audience: developer
+visibility: public
+source: manual
+---
 # Design Architecture
 
 APT's architecture is modular, monorepo-based, and enforces strict boundaries between UI, API, and business logic.

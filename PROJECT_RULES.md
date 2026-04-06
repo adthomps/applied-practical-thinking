@@ -1,3 +1,11 @@
+---
+title: Project Rules
+version: v2
+status: candidate
+audience: developer
+visibility: public
+source: manual
+---
 # Project Rules
 
 ## Monorepo Structure
@@ -39,8 +47,15 @@ Do not edit copied markdown/docs in `public/` as authored source.
 
 Doc placement rule:
 - `docs/` is for internal repo/process/engineering docs
-- `apps/web/docs/design/` is for external-first APT design doctrine and public design reference docs
+- `apps/web/docs/design/` is for external-first APT design doctrine and public design reference docs with 2 zones:
+  - `versions/v*/` authored canonical doctrine versions
+  - `static/` authored static support docs/contracts
+  - `tokens.json` is generated from canonical `static/APT-TOKENS-CONTRACT.json`
 - internal support docs such as review checklists or decision logs are source-only unless explicitly promoted to public docs
+- Documentation architecture standard is defined in `apps/web/docs/design/versions/v2/APT-DESIGN-ARCHITECTURE.md` (Documentation Architecture section)
+- Phased metadata enforcement schedule is defined in `docs/DOCUMENTATION_METADATA_ROLLOUT.md`
+- Target-state public docs app location is `apps/docs` (planned, not yet active in this pass)
+- OpenAPI is the target-state source of truth for API reference contracts (generation flow planned, not yet active)
 
 ## Testing and Local Development
 

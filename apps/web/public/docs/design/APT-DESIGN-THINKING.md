@@ -135,7 +135,7 @@ Use this framework with the enforcement stack:
 1. Design doctrine (`Design Thinking`, `Design System`, `Design Architecture`)
 2. Internal AI behavior control (`.github/copilot-instructions.md`)
 3. External AI reference (`APT-AI-INSTRUCTIONS-REFERENCE.md`)
-4. Machine-readable visual enforcement (`apps/web/docs/design/tokens.json`)
+4. Machine-readable visual enforcement (`apps/web/docs/design/static/APT-TOKENS-CONTRACT.json`)
 5. Layout baseline scaffold (`apps/web/components/apt/AptLayout.tsx`)
 6. Starter prompt template (`apps/web/ai/prompts/start-prompt-example.md`)
 

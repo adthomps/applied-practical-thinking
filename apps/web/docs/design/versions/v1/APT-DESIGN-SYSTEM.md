@@ -574,7 +574,7 @@ apps/web/
 - **CSS Variables**: `apps/web/index.css`
 - **TypeScript Tokens**: `packages/config/src/aptTokens.ts`
 - **Compatibility Re-export**: `apps/web/theme/aptTokens.ts`
-- **JSON (Figma/Style Dictionary)**: `apps/web/docs/design/APT-FIGMA-TOKENS.json`
+- **JSON (Figma/Style Dictionary)**: `apps/web/docs/design/APT-TOKENS.json`
 - **Machine-Readable Enforcement Contract**: `apps/web/docs/design/tokens.json`
 - **Design System Lint Checklist (Markdown)**: `apps/web/docs/design/APT-DESIGN-SYSTEM-LINT-CHECKLIST.md`
 - **Design System Lint Checklist (JSON)**: `apps/web/docs/design/APT-DESIGN-SYSTEM-LINT-CHECKLIST.json`

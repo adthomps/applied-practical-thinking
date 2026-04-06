@@ -11,6 +11,10 @@
     "build:web": "pnpm --dir apps/web build",
     "test:web": "pnpm --dir apps/web test",
     "lint:web": "pnpm --dir apps/web lint",
+    "validation-report:web": "pnpm --dir apps/web run validation-report",
+    "validation-report:web:full": "pnpm --dir apps/web run validation-report:full",
+    "validation-frontmatter-autofix:web": "pnpm --dir apps/web run validation-frontmatter-autofix",
+    "docs:frontmatter-report": "pnpm --dir apps/web run frontmatter-report",
     "dev:worker": "pnpm --dir apps/worker dev",
     "deploy:worker": "pnpm --dir apps/worker deploy"
   }

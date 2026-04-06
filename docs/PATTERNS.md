@@ -1,3 +1,11 @@
+---
+title: PATTERNS.md
+version: v2
+status: candidate
+audience: developer
+visibility: public
+source: manual
+---
 # PATTERNS.md
 
 ## UI

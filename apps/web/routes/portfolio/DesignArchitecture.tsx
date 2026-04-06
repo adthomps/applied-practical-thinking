@@ -8,6 +8,7 @@ import {
   Bot,
   ArrowRight,
   FileText,
+  Download,
   Cloud,
   AlertTriangle,
   CheckCircle2,
@@ -28,6 +29,7 @@ import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api"
 import { useDesignDocVersion } from "@/hooks/useDesignDocVersion";
 import { downloadWorkerMarkdown } from "@/src/services/download";
 import { architecturePatterns } from "@/data/architecturePatterns";
+import { useValidationReport } from "@/hooks/useValidationReport";
 
 interface ArchitecturePatternProps {
   slug: string;
@@ -135,7 +137,15 @@ export default function PortfolioDesignArchitecture() {
   const architectureVersion = useDesignDocVersion("architecture");
   const architectureDocUrl = tryGetWorkerApiUrl(architectureVersion.downloadApiPath);
   const architectureCanonicalUrl = architectureVersion.canonicalPath || null;
+  const architectureCanonicalMajor = architectureVersion.activeMajor || architectureVersion.latestMajor;
+  const architectureExamplesCanonicalUrl = architectureCanonicalMajor
+    ? `/docs/design/v${architectureCanonicalMajor}/APT-ARCHITECTURE-EXAMPLES.md`
+    : null;
+  const architectureReferenceCanonicalUrl = architectureCanonicalMajor
+    ? `/docs/design/v${architectureCanonicalMajor}/APT-ARCHITECTURE-REFERENCE.json`
+    : null;
   const configError = getWorkerApiConfigError();
+  const { report: validationReport } = useValidationReport();
   const handleArchitectureMarkdownDownload = async () => {
     const majorSuffix = architectureVersion.activeMajor ? `-v${architectureVersion.activeMajor}` : "";
     await downloadWorkerMarkdown(architectureVersion.downloadApiPath, `apt-design-architecture${majorSuffix}.md`);
@@ -283,6 +293,83 @@ export default function PortfolioDesignArchitecture() {
           </p>
         ) : null}
       </SectionIntro>
+
+      <section className="mb-16">
+        <AptCard variant="subtle" padding="large">
+          <AptCardHeader>
+            <AptCardTitle className="text-xl">Architecture Checklist & Reference</AptCardTitle>
+            <AptCardDescription>
+              Critical architecture gate artifacts for boundary, routing, deploy authority, and AI ownership validation.
+            </AptCardDescription>
+          </AptCardHeader>
+          <AptCardContent className="flex flex-wrap gap-3">
+            <AptButton asChild>
+              <a href="/docs/design/APT-ARCHITECTURE-EXAMPLES.md" target="_blank" rel="noreferrer">
+                Open Architecture Examples
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            </AptButton>
+            <AptButton variant="outline" asChild>
+              <a href="/docs/design/APT-ARCHITECTURE-EXAMPLES.md" download>
+                <Download className="h-4 w-4" />
+                Download Examples Markdown
+              </a>
+            </AptButton>
+            <AptButton variant="outline" asChild>
+              <a href="/docs/design/APT-ARCHITECTURE-REFERENCE.json" download>
+                <Download className="h-4 w-4" />
+                Download Reference JSON
+              </a>
+            </AptButton>
+            {architectureExamplesCanonicalUrl ? (
+              <AptButton variant="ghost" asChild>
+                <a href={architectureExamplesCanonicalUrl} target="_blank" rel="noreferrer">
+                  Open Examples Canonical
+                </a>
+              </AptButton>
+            ) : null}
+            {architectureReferenceCanonicalUrl ? (
+              <AptButton variant="ghost" asChild>
+                <a href={architectureReferenceCanonicalUrl} target="_blank" rel="noreferrer">
+                  Open Reference Canonical
+                </a>
+              </AptButton>
+            ) : null}
+          </AptCardContent>
+        </AptCard>
+      </section>
+
+      <section className="mb-16">
+        <AptCard variant="subtle" padding="large">
+          <AptCardHeader>
+            <AptCardTitle className="text-xl">Validation Status</AptCardTitle>
+            <AptCardDescription>
+              Current public-safe validation snapshot for design system, architecture, and docs governance.
+            </AptCardDescription>
+          </AptCardHeader>
+          <AptCardContent className="flex flex-wrap items-center gap-3">
+            <AptTag variant={validationReport?.recommendation === "pass" ? "accent" : "outline"}>
+              {validationReport ? validationReport.recommendation : "unavailable"}
+            </AptTag>
+            <AptButton variant="outline" asChild>
+              <Link to="/design/validation">
+                Open Validation Page
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </AptButton>
+            <AptButton variant="outline" asChild>
+              <a href="/docs/design/validation/LATEST.md" download>
+                Download Validation Markdown
+              </a>
+            </AptButton>
+            <AptButton variant="outline" asChild>
+              <a href="/docs/design/validation/LATEST.json" download>
+                Download Validation JSON
+              </a>
+            </AptButton>
+          </AptCardContent>
+        </AptCard>
+      </section>
 
       {/* Principles */}
       <section className="mb-16">

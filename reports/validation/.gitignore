@@ -1,0 +1,4 @@
+validation-*.json
+validation-*.md
+!LATEST.json
+!LATEST.md

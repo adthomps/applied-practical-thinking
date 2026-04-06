@@ -2,7 +2,7 @@
 docId: design-architecture
 slug: architecture
 major: 2
-semanticVersion: 2.0.0
+semanticVersion: 2.4.0
 status: candidate
 publishedAt: 2026-04-05
 ---
@@ -10,357 +10,269 @@ publishedAt: 2026-04-05
 
 > Structure exists to prevent failure, not to enable creativity.
 
-**[2026-04-01] NOTE:**
-This is an external-first design doctrine document. Internal repo/process guidance lives in `docs/`, while public design doctrine is authored under `apps/web/docs/design/`.
+This document defines enforceable architecture rules for APT delivery: repo boundaries, data flow ownership, deploy authority, AI prompt ownership, documentation architecture, and merge-gate checks.
 
-This document defines the architectural patterns, deployment strategies, and enforcement rules that govern how APT projects are built, organized, and delivered.
-
----
-
-## Philosophy
-
-Design Architecture at APT is about **predictable delivery**. It's the scaffolding that ensures:
-
-- Code lives where it belongs
-- Boundaries are respected
-- Deployments are reproducible
-- AI assistance has clear ownership
-
-**Core Beliefs**
-
-1. **Monorepo by default** — Shared code, unified tooling, atomic commits
-2. **Static-first, API-optional** — Frontend deploys independently; backend is additive
-3. **Boundaries over flexibility** — Clear separation prevents accidental coupling
-4. **Docs as code** — Architecture decisions live in version control
-5. **AI-aware from day one** — Prompt ownership and routing are first-class concerns
+It is the authoritative doctrine for both system architecture and documentation architecture.
 
 ---
 
+## Architecture Guard Rails (MUST / NEVER)
 
-## Structural Patterns
+### Boundary Ownership
 
-### Monorepo Layout
+**MUST**
+- Keep frontend composition and route rendering in `apps/web`.
+- Keep API, auth, and external integrations in `apps/worker`.
+- Keep reusable presentational primitives in `packages/ui`.
+- Keep shared contracts in `packages/config` and `packages/knowledge`.
 
-```
-.
-├─ apps/
-│  ├─ web/                  # Vite + React frontend
-│  └─ worker/               # Cloudflare Worker (Hono API)
-│
-├─ packages/
-│  ├─ ui/                   # Shared APT presentational primitives
-│  ├─ config/               # Shared tokens and config contracts
-│  ├─ knowledge/            # Shared content/domain/assistant contracts
-│  └─ utils/                # Shared pure utilities if activated
-│
-├─ docs/                    # Internal repo/process/engineering docs
-│
-├─ .github/
-│  └─ workflows/
-│
-├─ wrangler.toml
-└─ pnpm-workspace.yaml
-```
+**NEVER**
+- Add backend execution logic to `apps/web` route/components.
+- Add frontend rendering concerns to `apps/worker` handlers.
+- Duplicate shared contracts across app-specific folders.
 
-### Hard Rules
+### Source-of-Truth Boundaries
 
-| Rule | Rationale |
-|------|-----------|
-| No code at repo root | Forces explicit placement |
-| No frontend logic in `worker/` | Separation of concerns |
-| No backend logic in `web/` | Security boundary |
-| Shared logic lives in `packages/` | Single source of truth |
-| Web-owned prompts live in `apps/web/ai/prompts/` | Versioned, auditable |
+**MUST**
+- Treat authored doctrine in `apps/web/docs/design/` as source-of-truth for current public design guidance.
+- Treat `public/docs/design` as generated output only.
+- Record major architecture deviations in `docs/DECISION_LOG.md`.
+
+**NEVER**
+- Edit generated public docs as primary authored source.
+- Ship architecture boundary changes without doctrine or decision-log alignment.
 
 ---
 
-## Frontend/Backend Boundaries
+## Documentation Architecture (Canonical Section)
 
-### Frontend (`apps/web`)
+Documentation is an explicit architecture layer, not a byproduct.
+This section is the canonical documentation architecture doctrine.
+`APT-ARCHITECTURE-DOC.md` is a compatibility shim that points here.
 
-**Responsibilities:**
-- UI rendering and state management
-- Route handling and navigation
-- API client calls (never direct DB access)
-- Asset bundling and optimization
+### Current State (Today)
 
-**Stack:** Vite + React + TypeScript + Tailwind + shadcn/ui
+- Internal docs canonical: `docs/`
+- External-first design/public doctrine canonical: `apps/web/docs/design/`
+- Generated runtime output: `apps/web/public/docs/*`
 
-**Rules:**
-- No `fetch` calls in components (use `services/`)
-- Components are presentational by default
-- Pages orchestrate data and layout
-- All styling through Tailwind tokens
+### Design Doctrine File Structure (2-Zone Source Model)
 
-### Backend (`apps/worker`)
-
-**Responsibilities:**
-- API endpoints under `/api/*`
-- Authentication and authorization
-- Database queries and mutations
-- External service integrations
-- AI endpoint handling
-
-**Stack:** Cloudflare Workers + Hono + TypeScript
-
-**Rules:**
-- Validation before execution
-- Idempotent operations where possible
-- Streaming responses for AI/long operations
-- All secrets via environment bindings
-
----
-
-## API Contracts
-
-### Design Principles
-
-1. **REST-first** — Standard HTTP verbs, predictable URLs
-2. **Schema at boundaries** — Validate inputs, type outputs
-3. **Error consistency** — Standard error envelope
-4. **Versioning via path** — `/api/v1/...` when breaking changes
-
-### Standard Error Envelope
-
-```typescript
-interface APIError {
-  error: {
-    code: string;       // Machine-readable: "VALIDATION_FAILED"
-    message: string;    // Human-readable
-    details?: unknown;  // Additional context
-  };
-}
-```
-
-### Authentication Pattern
-
-```typescript
-// httpOnly cookie for web clients
-// Bearer token for mobile/API clients
-// Refresh token rotation for long sessions
-```
-
----
-
-## AI Routing & Prompt Ownership
-
-### Principles
-
-1. **Prompts are code** — Versioned, reviewed, tested
-2. **Explicit routing** — AI endpoints are clearly marked
-3. **Ownership documented** — Each prompt has an owner
-4. **Boundaries respected** — AI doesn't bypass auth or validation
-
-### File Structure
+Source model under `apps/web/docs/design/`:
 
 ```text
-apps/web/ai/
-└─ prompts/
-   ├─ api-maintainer.md
-   ├─ design-maintainer.md
-   └─ repo-maintainer.md
+apps/web/docs/design/
+├─ APT-DESIGN-DOCS-MANIFEST.json   # version routing/control plane
+├─ versions/
+│  ├─ v1/                          # immutable historical major
+│  └─ v2/                          # active authored candidate/stable majors
+└─ static/                         # authored support contracts (review/lint/tokens/instructions)
 ```
 
-### Routing Pattern
+Rules:
+- `versions/*` is the canonical authored doctrine source.
+- `static/*` is the canonical authored support-contract source.
+- `APT-DESIGN-DOCS-MANIFEST.json` maps per-doc latest majors and canonical paths.
+- Source alias files are not stored at `apps/web/docs/design` root.
+- Latest aliases are generated only during publish into `apps/web/public/docs/design/*`.
 
-```typescript
-// apps/worker/src/routes/ai.ts
-app.post('/api/ai/generate', authMiddleware, rateLimiter, async (c) => {
-  // 1. Validate request
-  // 2. Load appropriate prompt
-  // 3. Call AI service
-  // 4. Stream or return response
-});
+### Target State (Standard)
+
+- Internal system documentation canonical: `docs/`
+- External documentation app canonical: `apps/docs`
+- API reference canonical source: OpenAPI specification, published as generated reference in docs app
+
+Status:
+- `apps/docs` and full OpenAPI-generated docs flow are defined standards but **not yet active** in this pass.
+- This pass is definition-first to avoid structural migration risk.
+
+### Documentation Guard Rails (MUST / NEVER)
+
+**MUST**
+- Keep one canonical source per context:
+  - internal system understanding -> `docs/`
+  - external/public guidance -> current governed design docs (`apps/web/docs/design/`) until `apps/docs` migration is activated
+  - API contract truth -> OpenAPI specification (target-state authoritative)
+- Separate internal vs external documentation by audience and safety.
+- Require metadata for newly introduced documentation-architecture artifacts.
+- Allow duplication only when purpose and audience differ.
+
+**NEVER**
+- Share one markdown source file as both internal and external truth.
+- Blindly copy/paste between internal and public docs without explicit ownership.
+- Expose internal-only operational/sensitive detail in external docs.
+
+### Metadata Standard (New Artifacts: Strict)
+
+For new documentation-architecture markdown docs, metadata MUST include:
+- `title`
+- `version`
+- `status`
+- `audience`
+- `visibility`
+- `source`
+
+Recommended values:
+- status: `draft | beta | candidate | stable | deprecated`
+- audience: `public | customer | developer | internal`
+- visibility: `public | protected | internal`
+- source: `manual | generated-openapi | generated-json | hybrid`
+
+Legacy docs migrate gradually to this metadata standard.
+
+### Phased Metadata Enforcement Rollout
+
+Repo-wide markdown metadata enforcement is intentionally phased:
+
+- Wave 1 (enforce on 2026-04-20): `apps/web/docs/design/static/*.md`, `apps/web/ai/prompts/*.md`
+- Wave 2 (enforce on 2026-05-15): `docs/*.md` plus root operational docs (`README.md`, `PROJECT_RULES.md`, `DOCUMENTATION_INDEX.md`, `AGENTS.md`, `QUICK_REFERENCE.md`)
+- Wave 3 (enforce on 2026-06-15): `apps/worker/src/ai/docs/*.md`, `.github/*.md`
+
+Current behavior:
+- `frontmatter-report` runs in governance as report-only (non-blocking) until each wave reaches enforcement date.
+- strict blocking remains active for governed design doctrine metadata contracts.
+- unified governance reporting runs via `validation-report`, producing internal JSON/Markdown artifacts at `reports/validation/` (`LATEST.*` + timestamped history).
+- publish generates public-safe validation artifacts at `/docs/design/validation/LATEST.json` and `/docs/design/validation/LATEST.md` with route `/design/validation`.
+
+Rollout policy and exceptions are maintained in `docs/DOCUMENTATION_METADATA_ROLLOUT.md`.
+
+### OpenAPI Contract Placeholder (Planned, Not Yet Active)
+
+Authoritative model:
+
+```text
+OpenAPI spec
+  -> Generate API reference
+  -> Publish in target docs app API section
+  -> Enhance with guides and examples
 ```
+
+Ownership target:
+- OpenAPI spec: API owner
+- Generated reference output: docs/product owner with API owner review
+
+This model is documented now and activated in a future migration phase.
 
 ---
 
-## CI/CD Flows
+## Service/Data Flow Reference
 
-### Deployment Model
+Use this flow as the default operating pattern:
 
-```
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│  Push to Branch │────▶│  Preview Deploy │────▶│  PR Review      │
-└─────────────────┘     └─────────────────┘     └─────────────────┘
-                                                        │
-                                                        ▼
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│  Production     │◀────│  Merge to Main  │◀────│  Approval       │
-└─────────────────┘     └─────────────────┘     └─────────────────┘
+```text
+Route/Page (apps/web/routes)
+  -> Service Adapter (apps/web/src/services)
+  -> Worker Endpoint (/api/* in apps/worker)
+  -> External System / Data Store
 ```
 
-### Environments
-
-| Environment | Trigger | URL Pattern |
-|-------------|---------|-------------|
-| Preview | Any branch push | `{branch}.{project}.pages.dev` |
-| Staging | `main` branch | `staging.{project}.pages.dev` |
-| Production | Release tag | `{project}.pages.dev` / custom domain |
-
-### Pipeline Stages
-
-1. **Lint** — ESLint, TypeScript, Prettier
-2. **Test** — Unit tests, integration tests
-3. **Build** — Vite build, Worker bundling
-4. **Deploy** — Cloudflare Pages/Workers
-5. **Verify** — Health checks, smoke tests
+Rules:
+- Components stay presentational whenever possible.
+- Services own request shaping and error mapping.
+- Worker routes own validation, authorization, and side effects.
+- Cross-boundary contracts remain typed and version-aware.
 
 ---
 
-## Enforcement Rules
+## Deploy Authority Matrix
 
-### Pre-commit Hooks
+| Surface | Build/Deploy Authority | Primary Config Ownership | Rule |
+|---|---|---|---|
+| Web app (`apps/web`) | Cloudflare Pages | `VITE_API_BASE` in Pages env | Web deploy is static-first and independent. |
+| Worker API (`apps/worker`) | Cloudflare Workers | `PUBLIC_SITE_ORIGIN` + Worker bindings | Worker deploy owns runtime API behavior. |
+| Design docs publish | `copy-content-to-public.cjs` | `apps/web/docs/design` manifest/frontmatter | Manifest and metadata must match canonical contracts. |
 
-```yaml
-# .husky/pre-commit
-- lint-staged
-- type-check
-- test:affected
-```
-
-### Branch Protection
-
-| Rule | Setting |
-|------|---------|
-| Require PR reviews | 1+ approval |
-| Require status checks | lint, test, build |
-| Require linear history | Squash merge |
-| No force push | Protected |
-
-### Code Ownership
-
-```
-# CODEOWNERS
-/apps/web/              @frontend-team
-/apps/web/ai/prompts/   @ai-team
-/apps/worker/           @backend-team
-/docs/                  @all
-```
+Enforcement:
+- Deploy order after runtime config changes: Worker first, Pages second.
+- No manual dual-path deploy logic for the same surface.
 
 ---
 
-## Four Enforcement Layers
+## Anti-Patterns and Fail Conditions
 
-The architecture layer operationalizes the enforcement stack:
+### Boundary Erosion
+- Signal: route code directly implements backend logic or contracts.
+- Fail condition: web/worker responsibilities become mixed in same layer.
 
-1. **Design doctrine**: governs philosophy and structure.
-2. **Internal AI behavior control**: `.github/copilot-instructions.md` (authoritative for in-repo operations).
-3. **External AI contract**: `APT-AI-INSTRUCTIONS-REFERENCE.md` for public reviewers/collaborators.
-4. **Machine-readable visual enforcement**: `apps/web/docs/design/tokens.json`.
-5. **Layout scaffold baseline**: `apps/web/components/apt/AptLayout.tsx`.
-6. **Starter prompt alignment**: `apps/web/ai/prompts/start-prompt-example.md`.
+### Tooling Split-Brain
+- Signal: two independent build/deploy paths produce conflicting artifacts.
+- Fail condition: production state cannot be traced to one authoritative pipeline.
 
-Source relationship rule:
-- Internal instructions control repo behavior.
-- External instructions are strict but curated for public handoff.
+### Documentation Drift
+- Signal: doctrine and repo behavior disagree on ownership/rules.
+- Fail condition: architecture docs describe a system that is not what ships.
 
----
-
-## Applied Examples
-
-### APT Site Architecture
-
-**Pattern:** Static-first portfolio with active worker-backed API surface
-
-```
-apt-site/
-├─ apps/
-│  ├─ web/
-│  │  ├─ routes/           # Page components and shell
-│  │  ├─ content/          # Authored public content source
-│  │  ├─ docs/design/      # Authored design doctrine
-│  │  ├─ public/           # Generated runtime content/docs/data
-│  │  └─ ai/prompts/       # Versioned web-owned AI instructions
-│  └─ worker/              # Active API and AI routing surface
-│
-├─ packages/               # Shared cross-app contracts
-│  ├─ ui/
-│  ├─ config/
-│  └─ knowledge/
-│
-├─ docs/                   # Internal repo/process documentation
-└─ wrangler.toml           # Pages config (worker config lives with worker)
-```
-
-**Decisions:**
-- Monorepo keeps deploy/config boundaries explicit
-- Web remains static-first, with worker endpoints added where needed
-- Shared design-system primitives live in `packages/ui`, with app composition in `apps/web`
-- Web-owned prompts live under `apps/web/ai/prompts`
-
-### Production Microservice
-
-**Pattern:** API-first with worker functions
-
-```
-service/
-├─ apps/
-│  ├─ web/                 # Admin dashboard
-│  └─ worker/              # Core API
-│
-├─ packages/
-│  ├─ types/               # Shared TypeScript types
-│  └─ validation/          # Zod schemas
-│
-└─ docs/
-   └─ api.md               # OpenAPI spec
-```
-
-**Decisions:**
-- Monorepo for shared types
-- Worker handles all business logic
-- Web is thin admin UI only
-- Validation schemas shared between frontend/backend
+### Internal/External Leakage
+- Signal: internal constraints or sensitive operational detail appears in external docs.
+- Fail condition: audience boundary is broken.
 
 ---
 
-## Anti-Patterns
+## AI Prompt Ownership and Routing
 
-| Anti-Pattern | Problem | Cure |
-|--------------|---------|------|
-| **Flat repo** | No clear ownership | Organize into apps/packages |
-| **Shared mutable state** | Race conditions | Isolate per-request |
-| **Inline prompts** | Unversioned, untestable | Extract to `apps/web/ai/prompts/` |
-| **Manual deploys** | Inconsistent, error-prone | CI/CD automation |
-| **Missing boundaries** | Spaghetti dependencies | Enforce via linting |
-| **Undocumented APIs** | Integration friction | Schema-first design |
+Prompt ownership is architectural, not optional.
 
----
+**MUST**
+- Keep AI prompt assets versioned in `apps/web/ai/prompts/`.
+- Map prompt usage to review and maintainer roles.
+- Keep internal execution authority in `.github/copilot-instructions.md`.
+- Keep external/public collaborator rules in `APT-AI-INSTRUCTIONS-REFERENCE.md`.
+- Use documentation architecture artifacts when reviewing documentation-boundary changes.
 
-## Quick Reference
-
-### New Project Checklist
-
-- [ ] Repo structure follows pattern
-- [ ] README with setup instructions
-- [ ] CI/CD pipeline configured
-- [ ] Branch protection enabled
-- [ ] CODEOWNERS defined
-- [ ] API contracts documented
-- [ ] AI prompts versioned
-
-### Deployment Checklist
-
-- [ ] Environment variables configured
-- [ ] Secrets in secure storage
-- [ ] Health checks passing
-- [ ] Error monitoring enabled
-- [ ] Performance baseline captured
-
-### Architecture Decision Checklist
-
-- [ ] Problem clearly stated
-- [ ] Alternatives considered
-- [ ] Tradeoffs documented
-- [ ] Decision recorded in log
-- [ ] Team notified
+**NEVER**
+- Publish internal-only operational constraints in public handoff artifacts.
+- Bypass architecture or documentation-boundary checks because output is AI-assisted.
 
 ---
 
-## Related Documents
+## Architecture Lint / Review Checklist (Critical Gate)
 
-- [APT Design System](./APT-DESIGN-SYSTEM.md) — Visual tokens and components
-- [APT Design Thinking](./APT-DESIGN-THINKING.md) — Problem-solving methodology
-- Internal review artifacts such as decision logs remain source-side support docs and are not part of the public design export by default
+A change is not review-complete if any critical architecture item fails.
 
+Critical checks:
+1. Boundary ownership remains explicit (`apps/web`, `apps/worker`, `packages/*`).
+2. Service/data flow follows route -> service -> worker -> integration.
+3. Deploy authority remains single-path and traceable.
+4. Prompt ownership and audience split (internal vs external) are preserved.
+5. Documentation architecture boundaries (canonical source + audience separation) are preserved.
+6. No source-of-truth drift between doctrine and repo behavior.
+
+Reviewer decision:
+- `Pass` — Architecture-aligned.
+- `Pass with fixes` — Non-critical issues only.
+- `Fail` — Any critical item unresolved.
+
+Merge policy:
+- Unresolved critical architecture failures block merge unless a linked exception exists in `docs/DECISION_LOG.md`.
+
+---
+
+## Applied Examples and Reference Artifacts
+
+Use these with this doctrine:
+
+- `APT-ARCHITECTURE-EXAMPLES.md`
+- `APT-ARCHITECTURE-REFERENCE.json`
+- `APT-ARCHITECTURE-DOC.md`
+- `APT-ARCHITECTURE-DOC-EXAMPLES.md`
+- `APT-ARCHITECTURE-DOC-REFERENCE.json`
+
+---
+
+## v2 Changelog
+
+- `2.4.0` (2026-04-05): updated doctrine file-structure guidance to strict 2-zone source model (`versions/` + `static/`) with manifest control plane and publish-generated aliases only.
+- `2.3.0` (2026-04-05): consolidated documentation architecture doctrine authority into this file; `APT-ARCHITECTURE-DOC.md` is now a compatibility shim/reference entrypoint.
+- `2.2.0` (2026-04-05): documentation architecture standard integrated (current vs target mapping, canonical-source rules, metadata standard, OpenAPI target placeholders, and doc-boundary gate checks).
+- `2.1.0` (2026-04-05): strict guard rails, explicit flow/deploy matrices, fail-condition anti-patterns, architecture critical-gate checklist, and examples/reference artifact alignment.
+- `2.0.0` (2026-04-05): v2 governance sync for strict doctrine enforcement with unchanged runtime boundaries.
+
+---
+
+## Related Doctrine
+
+- `APT-ARCHITECTURE-DOC.md` (compatibility shim)
+- `APT-DESIGN-THINKING.md`
+- `APT-DESIGN-SYSTEM.md`
+- `APT-REVIEW-STANDARD.md`
+- `APT-AI-INSTRUCTIONS-REFERENCE.md`

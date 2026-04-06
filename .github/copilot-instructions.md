@@ -1,3 +1,11 @@
+---
+title: Copilot Instructions
+version: v2
+status: candidate
+audience: developer
+visibility: public
+source: manual
+---
 # Copilot Instructions
 
 ## Big Picture

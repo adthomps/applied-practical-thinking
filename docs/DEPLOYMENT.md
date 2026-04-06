@@ -1,3 +1,11 @@
+---
+title: Deployment
+version: v2
+status: candidate
+audience: developer
+visibility: public
+source: manual
+---
 # Deployment
 
 APT deploys as two Cloudflare surfaces:
@@ -107,7 +115,7 @@ Backend:
 - Open `https://applied-practical-thinking.pages.dev/experiments`
 - Confirm Experiments content loads
 - Open a Design page and test the “View Full …” action
-- Confirm `https://applied-practical-thinking.pages.dev/docs/design/APT-FIGMA-TOKENS.json` downloads
+- Confirm `https://applied-practical-thinking.pages.dev/docs/design/APT-TOKENS.json` downloads
 - If the frontend still shows a config notice, verify the Cloudflare Pages project environment includes `VITE_API_BASE`
 
 ## Frontend Asset Consistency

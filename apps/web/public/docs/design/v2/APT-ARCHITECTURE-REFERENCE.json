@@ -1,0 +1,80 @@
+{
+  "id": "architecture-reference",
+  "title": "APT Design Architecture Reference",
+  "kind": "architecture-reference",
+  "semanticVersion": "2.0.0",
+  "major": 2,
+  "status": "candidate",
+  "publishedAt": "2026-04-05",
+  "criticalGate": {
+    "mergeBlockRule": "Unresolved critical architecture failures block merge unless a linked exception exists in docs/DECISION_LOG.md.",
+    "reviewerDecision": ["Pass", "Pass with fixes", "Fail"]
+  },
+  "rules": [
+    {
+      "id": "boundary-ownership",
+      "critical": true,
+      "must": [
+        "Keep frontend composition in apps/web",
+        "Keep API/auth/integration execution in apps/worker",
+        "Keep shared reusable contracts in packages/*"
+      ],
+      "never": [
+        "Do not run backend execution logic in web routes/components",
+        "Do not render frontend concerns in worker handlers"
+      ]
+    },
+    {
+      "id": "service-data-flow",
+      "critical": true,
+      "must": [
+        "Use route -> service -> worker -> integration flow",
+        "Validate at worker boundaries before side effects"
+      ],
+      "never": [
+        "Do not bypass service adapters for data-driven route logic"
+      ]
+    },
+    {
+      "id": "deploy-authority",
+      "critical": true,
+      "must": [
+        "Pages owns web build/deploy",
+        "Worker owns API runtime deploy",
+        "Deploy Worker before Pages when runtime config changes"
+      ],
+      "never": [
+        "Do not maintain conflicting deploy authorities for one surface"
+      ]
+    },
+    {
+      "id": "prompt-ownership",
+      "critical": true,
+      "must": [
+        "Keep internal AI operational authority in .github/copilot-instructions.md",
+        "Use APT-AI-INSTRUCTIONS-REFERENCE.md for external/public handoff"
+      ],
+      "never": [
+        "Do not publish internal-only operational instructions in external bundles"
+      ]
+    },
+    {
+      "id": "docs-parity",
+      "critical": true,
+      "must": [
+        "Architecture docs must match repo/deploy reality",
+        "Record major deviations in docs/DECISION_LOG.md"
+      ],
+      "never": [
+        "Do not leave doctrine drift unresolved after architecture changes"
+      ]
+    }
+  ],
+  "fastFailRules": [
+    "Mixed frontend/backend ownership in same layer",
+    "Service layer bypass in data-driven route work",
+    "Ambiguous deploy authority",
+    "Broken internal vs external AI instructions split",
+    "Doctrine and implementation drift"
+  ]
+}

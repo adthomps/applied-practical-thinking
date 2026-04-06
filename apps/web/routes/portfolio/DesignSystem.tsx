@@ -32,6 +32,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
 import { useDesignDocVersion } from "@/hooks/useDesignDocVersion";
 import { downloadWorkerMarkdown } from "@/src/services/download";
+import { useValidationReport } from "@/hooks/useValidationReport";
 
 function ColorSwatch({ name, cssVar, className }: { name: string; cssVar: string; className: string }) {
   const [copied, setCopied] = useState(false);
@@ -102,6 +103,7 @@ export default function PortfolioDesignSystem() {
     ? `/docs/design/v${checklistCanonicalMajor}/APT-DESIGN-SYSTEM-LINT-CHECKLIST.md`
     : null;
   const configError = getWorkerApiConfigError();
+  const { report: validationReport } = useValidationReport();
   const handleSystemMarkdownDownload = async () => {
     const majorSuffix = systemVersion.activeMajor ? `-v${systemVersion.activeMajor}` : "";
     await downloadWorkerMarkdown(systemVersion.downloadApiPath, `apt-design-system${majorSuffix}.md`);
@@ -134,7 +136,7 @@ export default function PortfolioDesignSystem() {
       >
         <div className="flex flex-wrap gap-3">
           <AptButton asChild>
-            <a href="/docs/design/APT-FIGMA-TOKENS.json" download>
+            <a href="/docs/design/APT-TOKENS.json" download>
               <Download className="h-4 w-4" />
               Download Tokens
             </a>
@@ -193,6 +195,38 @@ export default function PortfolioDesignSystem() {
                 </a>
               </AptButton>
             ) : null}
+          </AptCardContent>
+        </AptCard>
+      </section>
+
+      <section className="mb-12">
+        <AptCard variant="subtle" padding="large">
+          <AptCardHeader>
+            <AptCardTitle className="text-xl">Validation Status</AptCardTitle>
+            <AptCardDescription>
+              Public-safe snapshot for designSystem, architecture, and docsGovernance checks.
+            </AptCardDescription>
+          </AptCardHeader>
+          <AptCardContent className="flex flex-wrap items-center gap-3">
+            <AptTag variant={validationReport?.recommendation === "pass" ? "accent" : "outline"}>
+              {validationReport ? validationReport.recommendation : "unavailable"}
+            </AptTag>
+            <AptButton variant="outline" asChild>
+              <Link to="/design/validation">
+                Open Validation Page
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </AptButton>
+            <AptButton variant="outline" asChild>
+              <a href="/docs/design/validation/LATEST.md" download>
+                Download Validation Markdown
+              </a>
+            </AptButton>
+            <AptButton variant="outline" asChild>
+              <a href="/docs/design/validation/LATEST.json" download>
+                Download Validation JSON
+              </a>
+            </AptButton>
           </AptCardContent>
         </AptCard>
       </section>
@@ -949,7 +983,7 @@ text-xl md:text-2xl
                 Download System Markdown
               </AptButton>
               <AptButton asChild>
-                <a href="/docs/design/APT-FIGMA-TOKENS.json" download>
+                <a href="/docs/design/APT-TOKENS.json" download>
                   <Download className="h-4 w-4" />
                   Download Tokens JSON
                 </a>

@@ -1,3 +1,12 @@
+---
+title: APT Reviewer Prompt
+version: v1
+status: draft
+audience: internal
+visibility: internal
+source: manual
+---
+
 # APT Reviewer Prompt
 
 You are reviewing work in the APT repository.
@@ -11,14 +20,24 @@ You are reviewing work in the APT repository.
 
 ## Required Reading Order
 
-1. `apps/web/docs/design/APT-REVIEW-STANDARD.md`
+1. `apps/web/docs/design/static/APT-REVIEW-STANDARD.md`
 2. The target route, component, document, or feature under review
 3. The matching doctrine source for the area being reviewed:
-   - `apps/web/docs/design/APT-DESIGN-THINKING.md`
-   - `apps/web/docs/design/APT-DESIGN-SYSTEM.md`
-   - `apps/web/docs/design/APT-DESIGN-ARCHITECTURE.md`
-4. `apps/web/docs/design/APT-DESIGN-SYSTEM-LINT-CHECKLIST.md`
+   - `apps/web/docs/design/versions/v2/APT-DESIGN-THINKING.md`
+   - `apps/web/docs/design/versions/v2/APT-DESIGN-SYSTEM.md`
+   - `apps/web/docs/design/versions/v2/APT-DESIGN-ARCHITECTURE.md`
+4. `apps/web/docs/design/static/APT-DESIGN-SYSTEM-LINT-CHECKLIST.md`
 5. `AGENTS.md` and `.github/copilot-instructions.md` when repo-boundary enforcement matters
+
+For architecture-boundary reviews, also read:
+- `apps/web/docs/design/versions/v2/APT-ARCHITECTURE-EXAMPLES.md`
+- `apps/web/docs/design/versions/v2/APT-ARCHITECTURE-REFERENCE.json`
+
+For documentation-boundary reviews, also read:
+- `apps/web/docs/design/versions/v2/APT-DESIGN-ARCHITECTURE.md` (section: `Documentation Architecture (Canonical Section)`)
+- `apps/web/docs/design/versions/v2/APT-ARCHITECTURE-DOC-EXAMPLES.md`
+- `apps/web/docs/design/versions/v2/APT-ARCHITECTURE-DOC-REFERENCE.json`
+- `apps/web/docs/design/versions/v2/APT-ARCHITECTURE-DOC.md` (compatibility shim)
 
 ## Review Rules
 
@@ -28,6 +47,9 @@ You are reviewing work in the APT repository.
 4. Flag undocumented deviations from shared APT primitives and source-of-truth rules
 5. If something is only a preference, say that explicitly instead of presenting it as a defect
 6. Mark review `Fail` when critical checklist items are unresolved unless a decision-log exception is linked
+7. Mark review `Fail` when critical architecture gate items are unresolved unless a decision-log exception is linked
+8. Mark review `Fail` when critical documentation architecture gate items are unresolved unless a decision-log exception is linked
+9. Mark review `Fail` when source alias files are present under `apps/web/docs/design/` or audited doctrine metadata contract keys are missing
 
 ## Review Questions
 
@@ -45,6 +67,13 @@ You are reviewing work in the APT repository.
 3. Suggest the smallest correction that restores alignment
 4. Keep the overview short unless asked for a walkthrough
 
+Architecture-specific output requirement:
+- Findings-first output must name the exact architecture rule and whether it is critical-gate blocking.
+
+Documentation-architecture output requirement:
+- Findings-first output must name the exact documentation architecture rule and whether it is critical-gate blocking.
+- Findings must explicitly call out source alias policy violations and audited metadata non-compliance when present.
+
 ## Public Handoff
 
-If an outside AI or collaborator needs a single standards file, point them to `apps/web/docs/design/APT-REVIEW-STANDARD.md` before giving them repo-specific prompts.
+If an outside AI or collaborator needs a single standards file, point them to `apps/web/docs/design/static/APT-REVIEW-STANDARD.md` before giving them repo-specific prompts.

@@ -1,3 +1,12 @@
+---
+title: APT Design System Lint Checklist
+version: v2
+status: candidate
+audience: developer
+visibility: public
+source: manual
+---
+
 # APT Design System Lint Checklist
 
 Use this as a manual review checklist, PR template section, or AI self-check before code is considered complete.

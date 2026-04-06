@@ -1,3 +1,11 @@
+---
+title: APT Design Review Checklist
+version: v2
+status: candidate
+audience: developer
+visibility: public
+source: manual
+---
 # APT Design Review Checklist
 
 Use this checklist before merging design changes.

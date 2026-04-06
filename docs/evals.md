@@ -1,3 +1,11 @@
+---
+title: APT Design Assistant Evaluation Prompts
+version: v2
+status: candidate
+audience: developer
+visibility: public
+source: manual
+---
 # APT Design Assistant Evaluation Prompts
 
 ## Expected Behaviors
@@ -32,7 +40,7 @@
 > How does APT define design thinking?
 
 **Expected:**
-- Answer from `apps/web/docs/design/APT-DESIGN-THINKING.md`
+- Answer from `apps/web/docs/design/versions/v2/APT-DESIGN-THINKING.md`
 - Citations to relevant section
 - Prefer higher-priority source if overlap
 

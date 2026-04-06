@@ -1,3 +1,11 @@
+---
+title: TESTING.md
+version: v2
+status: candidate
+audience: developer
+visibility: public
+source: manual
+---
 # TESTING.md
 
 ## Testing Strategy

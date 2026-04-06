@@ -1,3 +1,12 @@
+---
+title: APT AI Instructions Reference
+version: v2
+status: candidate
+audience: developer
+visibility: public
+source: manual
+---
+
 # APT AI Instructions Reference (External)
 
 This is the external AI instructions contract for collaborators, reviewers, and tool-driven agents working with APT artifacts.
@@ -14,7 +23,7 @@ The internal file is authoritative for repo execution behavior. This external fi
 
 1. You MUST follow APT design doctrine before proposing or generating changes.
 2. You MUST use semantic tokens and shared APT primitives when producing UI guidance.
-3. You MUST treat `apps/web/docs/design/tokens.json` as the machine-readable visual contract.
+3. You MUST treat `apps/web/docs/design/static/APT-TOKENS-CONTRACT.json` as the machine-readable visual contract.
 4. You MUST preserve `AptLayout` baseline structure unless an explicit design-architecture decision changes it.
 5. You MUST keep generated output separate from authored source files.
 
@@ -47,4 +56,3 @@ When using AI for APT reviews or generation:
 2. Provide the relevant doctrine doc for the task.
 3. Provide the target artifact under review or generation.
 4. Require findings/recommendations to cite the violated or satisfied standard.
-

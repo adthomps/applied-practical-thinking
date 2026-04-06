@@ -1,3 +1,12 @@
+---
+title: Design Maintainer Prompt
+version: v1
+status: draft
+audience: internal
+visibility: internal
+source: manual
+---
+
 # Design Maintainer Prompt
 
 You are maintaining the APT design system. Follow these guidelines:
@@ -51,10 +60,36 @@ export const aptTokens = {
 
 After changes:
 1. Check `/design` playground renders correctly
-2. Run through `apps/web/docs/design/APT-DESIGN-SYSTEM-LINT-CHECKLIST.md`
+2. Run through `apps/web/docs/design/static/APT-DESIGN-SYSTEM-LINT-CHECKLIST.md`
 3. Test all variants
 4. Update component documentation
 5. Treat unresolved critical checklist failures as merge blockers unless a decision-log exception is linked
+
+## Architecture Gate (Required for Boundary-Affecting Work)
+
+Before changing repo boundaries, service routing, deployment ownership, or AI prompt ownership:
+1. Read `apps/web/docs/design/versions/v2/APT-DESIGN-ARCHITECTURE.md`
+2. Read `apps/web/docs/design/versions/v2/APT-ARCHITECTURE-EXAMPLES.md`
+3. Validate against `apps/web/docs/design/versions/v2/APT-ARCHITECTURE-REFERENCE.json`
+4. Record any critical architecture failure as merge-blocking unless a linked `docs/DECISION_LOG.md` exception exists
+
+For architecture reviews, report findings first:
+1. Finding and severity
+2. Violated architecture rule
+3. Structural impact
+4. Smallest correction
+
+## Documentation Architecture Gate (Required for Documentation-Boundary Work)
+
+Before changing documentation types, locations, audience split, canonical source rules, or API docs model:
+1. Read `apps/web/docs/design/versions/v2/APT-DESIGN-ARCHITECTURE.md` (section: `Documentation Architecture (Canonical Section)`)
+2. Read `apps/web/docs/design/versions/v2/APT-ARCHITECTURE-DOC-EXAMPLES.md`
+3. Validate against `apps/web/docs/design/versions/v2/APT-ARCHITECTURE-DOC-REFERENCE.json`
+4. Treat unresolved critical documentation architecture failures as merge-blocking unless a linked `docs/DECISION_LOG.md` exception exists
+5. Ensure source alias files are absent and governance passes (`pnpm --dir apps/web run verify-doc-governance`) before publish/review
+
+Compatibility note:
+- `apps/web/docs/design/versions/v2/APT-ARCHITECTURE-DOC.md` is a shim for stable URL compatibility and redirects doctrine authority to design architecture.
 
 ## Deviations
 

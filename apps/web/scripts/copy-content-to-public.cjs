@@ -9,10 +9,13 @@ const CONTENT_ROOT = path.join(__dirname, '../content');
 const PUBLIC_CONTENT_ROOT = path.join(__dirname, '../public/content');
 const DESIGN_DOCS_ROOT = path.join(__dirname, '../docs/design');
 const PUBLIC_DOCS_ROOT = path.join(__dirname, '../public/docs/design');
+const REPO_ROOT = path.resolve(__dirname, '../../..');
+const VALIDATION_REPORTS_ROOT = path.join(REPO_ROOT, 'reports', 'validation');
+const PUBLIC_VALIDATION_ROOT = path.join(PUBLIC_DOCS_ROOT, 'validation');
 const REVIEW_BUNDLE_MANIFEST = 'APT-AI-REVIEW-BUNDLE.json';
 const DESIGN_DOCS_MANIFEST = 'APT-DESIGN-DOCS-MANIFEST.json';
+const PUBLIC_VALIDATION_FILES = ['LATEST.json', 'LATEST.md'];
 const STATIC_PUBLIC_DESIGN_DOCS = [
-  DESIGN_DOCS_MANIFEST,
   REVIEW_BUNDLE_MANIFEST,
   'APT-AI-REVIEW-BUNDLE.md',
   'APT-AI-INSTRUCTIONS-REFERENCE.md',
@@ -20,7 +23,8 @@ const STATIC_PUBLIC_DESIGN_DOCS = [
   'APT-DESIGN-SYSTEM-LINT-CHECKLIST.json',
   'APT-REVIEW-STANDARD.md',
   'APT-DESIGN-VERSIONING.md',
-  'APT-FIGMA-TOKENS.json',
+  'APT-TOKENS.json',
+  'APT-TOKENS-CONTRACT.json',
   'tokens.json',
 ];
 const STATIC_VERSIONED_PUBLIC_DESIGN_DOCS = [
@@ -29,9 +33,25 @@ const STATIC_VERSIONED_PUBLIC_DESIGN_DOCS = [
   'APT-DESIGN-SYSTEM-LINT-CHECKLIST.md',
   'APT-DESIGN-SYSTEM-LINT-CHECKLIST.json',
 ];
+const AUDITED_DOCTRINE_DOC_IDS = new Set([
+  'design-thinking',
+  'design-system',
+  'design-architecture',
+  'design-systems-reference',
+  'content-strategy',
+]);
+const REVIEW_BUNDLE_MARKDOWN_METADATA = {
+  requiredKeys: ['docId', 'slug', 'major', 'semanticVersion', 'status', 'publishedAt'],
+};
 
 function isNonEmptyString(value) {
   return typeof value === 'string' && value.trim().length > 0;
+}
+
+function hasRequiredMetadataValue(value) {
+  if (value instanceof Date) return true;
+  if (Number.isInteger(value)) return true;
+  return isNonEmptyString(value);
 }
 
 function toPosixPath(value) {
@@ -56,6 +76,22 @@ function toPublicDocsFilePath(publicDocsRoot, docsPathname) {
   const normalized = ensureDesignPath(docsPathname, 'Design docs path');
   const relative = normalized.replace('/docs/design/', '');
   return path.join(publicDocsRoot, ...relative.split('/'));
+}
+
+function resolveStaticDesignDocPath(designDocsRoot, filename) {
+  const staticPath = path.join(designDocsRoot, 'static', filename);
+  if (fs.existsSync(staticPath)) return staticPath;
+  const legacyRootPath = path.join(designDocsRoot, filename);
+  if (fs.existsSync(legacyRootPath)) return legacyRootPath;
+  return null;
+}
+
+function readCanonicalTokensContract(designDocsRoot) {
+  const contractPath = resolveStaticDesignDocPath(designDocsRoot, 'APT-TOKENS-CONTRACT.json');
+  if (!contractPath || !fs.existsSync(contractPath)) {
+    throw new Error('Missing canonical tokens contract: apps/web/docs/design/static/APT-TOKENS-CONTRACT.json');
+  }
+  return fs.readFileSync(contractPath, 'utf8');
 }
 
 function readDesignDocsManifest(designDocsRoot = DESIGN_DOCS_ROOT) {
@@ -95,6 +131,54 @@ function getLatestVersionEntry(doc) {
   return sorted[0] || null;
 }
 
+function getManifestAliasCandidates({ designDocsRoot = DESIGN_DOCS_ROOT, manifest = null } = {}) {
+  const resolvedManifest = manifest || readDesignDocsManifest(designDocsRoot);
+  const aliases = [];
+
+  for (const doc of resolvedManifest.documents || []) {
+    const latest = getLatestVersionEntry(doc);
+    if (!latest) {
+      throw new Error(`Unable to resolve latest version for ${doc.docId}`);
+    }
+
+    const aliasPathname = doc.aliasPath || `/docs/design/${pathFromAlias(latest.canonicalPath || '')}`;
+    const aliasFilename = pathFromAlias(aliasPathname);
+    const aliasPath = path.join(designDocsRoot, aliasFilename);
+
+    aliases.push({
+      docId: doc.docId,
+      aliasPathname,
+      aliasFilename,
+      aliasPath,
+    });
+  }
+
+  return aliases.sort((a, b) => a.aliasFilename.localeCompare(b.aliasFilename));
+}
+
+function assertDesignDocAliasesInSync({ designDocsRoot = DESIGN_DOCS_ROOT } = {}) {
+  const manifest = readDesignDocsManifest(designDocsRoot);
+  const aliases = getManifestAliasCandidates({ designDocsRoot, manifest });
+  const failures = [];
+
+  for (const alias of aliases) {
+    if (fs.existsSync(alias.aliasPath)) {
+      failures.push(
+        `${alias.docId}: source alias file present (${alias.aliasFilename}). Remove source aliases; aliases are publish-generated only.`
+      );
+    }
+  }
+
+  if (failures.length > 0) {
+    throw new Error(`Design docs source alias policy check failed:\n${failures.map((failure) => `- ${failure}`).join('\n')}`);
+  }
+}
+
+function syncDesignDocAliasesFromManifest({ designDocsRoot = DESIGN_DOCS_ROOT } = {}) {
+  assertDesignDocAliasesInSync({ designDocsRoot });
+  console.log('No source aliases to sync. Aliases are generated during publish to public/docs/design.');
+}
+
 function validateDocVersionFrontmatter({ designDocsRoot, doc, version }) {
   const relativeSource = toPosixPath(version.sourcePath || '');
   if (!isNonEmptyString(relativeSource)) {
@@ -107,16 +191,32 @@ function validateDocVersionFrontmatter({ designDocsRoot, doc, version }) {
   }
 
   const raw = fs.readFileSync(sourcePath, 'utf8');
-  const parsed = matter(raw);
-  const data = parsed.data || {};
+  const sourceExtension = path.extname(sourcePath).toLowerCase();
+  let data = {};
+  if (sourceExtension === '.json') {
+    try {
+      data = JSON.parse(raw);
+    } catch (error) {
+      throw new Error(`Invalid JSON metadata in ${sourcePath}: ${String(error && error.message ? error.message : error)}`);
+    }
+  } else {
+    const parsed = matter(raw);
+    data = parsed.data || {};
+  }
   const normalizedPublishedAt =
     data.publishedAt instanceof Date ? data.publishedAt.toISOString().slice(0, 10) : String(data.publishedAt || '');
+  const resolvedDocId =
+    sourceExtension === '.json' ? String(data.docId || data.id || '') : String(data.docId || '');
+  const resolvedSlug =
+    sourceExtension === '.json'
+      ? (data.slug === undefined || data.slug === null || String(data.slug).trim() === '' ? String(doc.slug || '') : String(data.slug))
+      : String(data.slug || '');
 
-  if (data.docId !== doc.docId) {
-    throw new Error(`Frontmatter mismatch in ${sourcePath}: docId expected ${doc.docId}, found ${String(data.docId)}`);
+  if (resolvedDocId !== String(doc.docId || '')) {
+    throw new Error(`Frontmatter mismatch in ${sourcePath}: docId expected ${doc.docId}, found ${resolvedDocId || 'undefined'}`);
   }
-  if (data.slug !== doc.slug) {
-    throw new Error(`Frontmatter mismatch in ${sourcePath}: slug expected ${doc.slug}, found ${String(data.slug)}`);
+  if (resolvedSlug !== String(doc.slug || '')) {
+    throw new Error(`Frontmatter mismatch in ${sourcePath}: slug expected ${doc.slug}, found ${resolvedSlug || 'undefined'}`);
   }
   if (Number(data.major) !== Number(version.major)) {
     throw new Error(`Frontmatter mismatch in ${sourcePath}: major expected ${version.major}, found ${String(data.major)}`);
@@ -136,6 +236,43 @@ function validateDocVersionFrontmatter({ designDocsRoot, doc, version }) {
   }
 
   return sourcePath;
+}
+
+function assertAuditedDoctrineMetadataContract({ designDocsRoot = DESIGN_DOCS_ROOT } = {}) {
+  const manifest = readDesignDocsManifest(designDocsRoot);
+  const audited = (manifest.documents || []).filter((doc) => AUDITED_DOCTRINE_DOC_IDS.has(doc.docId));
+  const failures = [];
+
+  for (const doc of audited) {
+    const latest = getLatestVersionEntry(doc);
+    if (!latest) {
+      failures.push(`${doc.docId}: missing latest version entry`);
+      continue;
+    }
+
+    try {
+      validateDocVersionFrontmatter({ designDocsRoot, doc, version: latest });
+    } catch (error) {
+      failures.push(`${doc.docId}: ${String(error && error.message ? error.message : error)}`);
+    }
+  }
+
+  const reviewBundlePath = resolveStaticDesignDocPath(designDocsRoot, 'APT-AI-REVIEW-BUNDLE.md');
+  if (!reviewBundlePath || !fs.existsSync(reviewBundlePath)) {
+    failures.push('APT-AI-REVIEW-BUNDLE.md: missing file');
+  } else {
+    const parsed = matter(fs.readFileSync(reviewBundlePath, 'utf8'));
+    const data = parsed.data || {};
+    for (const key of REVIEW_BUNDLE_MARKDOWN_METADATA.requiredKeys) {
+      if (!hasRequiredMetadataValue(data[key])) {
+        failures.push(`APT-AI-REVIEW-BUNDLE.md: missing required metadata key "${key}"`);
+      }
+    }
+  }
+
+  if (failures.length > 0) {
+    throw new Error(`Audited doctrine metadata contract failed:\n${failures.map((failure) => `- ${failure}`).join('\n')}`);
+  }
 }
 
 function collectReviewBundleManifestValidationErrors(manifest) {
@@ -208,8 +345,8 @@ function validateReviewBundleManifestOrThrow(manifest) {
 }
 
 function buildReviewBundleManifestForPublic(designDocsRoot = DESIGN_DOCS_ROOT) {
-  const manifestPath = path.join(designDocsRoot, REVIEW_BUNDLE_MANIFEST);
-  if (!fs.existsSync(manifestPath)) return null;
+  const manifestPath = resolveStaticDesignDocPath(designDocsRoot, REVIEW_BUNDLE_MANIFEST);
+  if (!manifestPath || !fs.existsSync(manifestPath)) return null;
 
   const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
   validateReviewBundleManifestOrThrow(manifest);
@@ -220,8 +357,8 @@ function buildReviewBundleManifestForPublic(designDocsRoot = DESIGN_DOCS_ROOT) {
 
   for (const document of manifest.documents || []) {
     const docFilename = path.posix.basename(document.path || '');
-    const docPath = path.join(designDocsRoot, docFilename);
-    if (!fs.existsSync(docPath)) continue;
+    const docPath = resolveStaticDesignDocPath(designDocsRoot, docFilename);
+    if (!docPath || !fs.existsSync(docPath)) continue;
     hash.update(docFilename);
     hash.update(fs.readFileSync(docPath));
   }
@@ -263,7 +400,7 @@ function publishDesignDocsFromManifest({ designDocsRoot = DESIGN_DOCS_ROOT, publ
   const reviewBundleManifestForPublic = buildReviewBundleManifestForPublic(designDocsRoot);
 
   fs.mkdirSync(publicDocsRoot, { recursive: true });
-  const expectedTopLevelFiles = new Set(STATIC_PUBLIC_DESIGN_DOCS);
+  const expectedTopLevelFiles = new Set([DESIGN_DOCS_MANIFEST, ...STATIC_PUBLIC_DESIGN_DOCS]);
 
   for (const doc of manifest.documents || []) {
     const latest = getLatestVersionEntry(doc);
@@ -300,10 +437,14 @@ function publishDesignDocsFromManifest({ designDocsRoot = DESIGN_DOCS_ROOT, publ
     if (shouldRemove) fs.rmSync(path.join(publicDocsRoot, entry.name), { force: true });
   }
 
-  for (const file of STATIC_PUBLIC_DESIGN_DOCS) {
-    const srcPath = path.join(designDocsRoot, file);
-    if (!fs.existsSync(srcPath)) continue;
+  const manifestSrcPath = path.join(designDocsRoot, DESIGN_DOCS_MANIFEST);
+  if (fs.existsSync(manifestSrcPath)) {
+    const manifestDestPath = path.join(publicDocsRoot, DESIGN_DOCS_MANIFEST);
+    fs.copyFileSync(manifestSrcPath, manifestDestPath);
+    console.log(`Copied docs/design/${DESIGN_DOCS_MANIFEST} to public/docs/design`);
+  }
 
+  for (const file of STATIC_PUBLIC_DESIGN_DOCS) {
     const destPath = path.join(publicDocsRoot, file);
     fs.mkdirSync(path.dirname(destPath), { recursive: true });
 
@@ -312,6 +453,15 @@ function publishDesignDocsFromManifest({ designDocsRoot = DESIGN_DOCS_ROOT, publ
       console.log(`Generated docs/design/${file} for public/docs/design`);
       continue;
     }
+
+    if (file === 'tokens.json') {
+      fs.writeFileSync(destPath, readCanonicalTokensContract(designDocsRoot), 'utf8');
+      console.log(`Generated docs/design/${file} from APT-TOKENS-CONTRACT.json`);
+      continue;
+    }
+
+    const srcPath = resolveStaticDesignDocPath(designDocsRoot, file);
+    if (!srcPath || !fs.existsSync(srcPath)) continue;
 
     fs.copyFileSync(srcPath, destPath);
     console.log(`Copied docs/design/${file} to public/docs/design`);
@@ -323,11 +473,18 @@ function publishDesignDocsFromManifest({ designDocsRoot = DESIGN_DOCS_ROOT, publ
     if (!Number.isInteger(majorNumber)) continue;
 
     for (const file of STATIC_VERSIONED_PUBLIC_DESIGN_DOCS) {
-      const srcPath = path.join(designDocsRoot, file);
-      if (!fs.existsSync(srcPath)) continue;
-
       const destPath = path.join(publicDocsRoot, `v${majorNumber}`, file);
       fs.mkdirSync(path.dirname(destPath), { recursive: true });
+
+      if (file === 'tokens.json') {
+        fs.writeFileSync(destPath, readCanonicalTokensContract(designDocsRoot), 'utf8');
+        console.log(`Generated docs/design/v${majorNumber}/${file} from APT-TOKENS-CONTRACT.json`);
+        continue;
+      }
+
+      const srcPath = resolveStaticDesignDocPath(designDocsRoot, file);
+      if (!srcPath || !fs.existsSync(srcPath)) continue;
+
       fs.copyFileSync(srcPath, destPath);
       console.log(`Copied docs/design/${file} to public/docs/design/v${majorNumber}`);
     }
@@ -367,9 +524,43 @@ function copyVideosToPublic(contentRoot = CONTENT_ROOT, publicContentRoot = PUBL
   }
 }
 
+function publishValidationReports({
+  reportsRoot = VALIDATION_REPORTS_ROOT,
+  publicValidationRoot = PUBLIC_VALIDATION_ROOT,
+} = {}) {
+  const publicJsonSource = path.join(reportsRoot, 'LATEST.public.json');
+  const publicMdSource = path.join(reportsRoot, 'LATEST.public.md');
+
+  if (!fs.existsSync(publicJsonSource) || !fs.existsSync(publicMdSource)) {
+    throw new Error(
+      [
+        'Missing public-safe validation report artifacts.',
+        `Expected: ${publicJsonSource}`,
+        `Expected: ${publicMdSource}`,
+        'Run `pnpm --dir apps/web run validation-report` before publishing docs.',
+      ].join('\n')
+    );
+  }
+
+  fs.mkdirSync(publicValidationRoot, { recursive: true });
+  for (const entry of fs.readdirSync(publicValidationRoot, { withFileTypes: true })) {
+    if (!entry.isFile()) continue;
+    if (!PUBLIC_VALIDATION_FILES.includes(entry.name)) {
+      fs.rmSync(path.join(publicValidationRoot, entry.name), { force: true });
+    }
+  }
+
+  fs.copyFileSync(publicJsonSource, path.join(publicValidationRoot, 'LATEST.json'));
+  fs.copyFileSync(publicMdSource, path.join(publicValidationRoot, 'LATEST.md'));
+  console.log('Copied public-safe validation report artifacts to public/docs/design/validation');
+}
+
 function main() {
   copyContentToPublic();
+  assertDesignDocAliasesInSync();
+  assertAuditedDoctrineMetadataContract();
   publishDesignDocsFromManifest();
+  publishValidationReports();
   copyVideosToPublic();
 }
 
@@ -381,8 +572,13 @@ module.exports = {
   buildReviewBundleManifestForPublic,
   copyContentToPublic,
   copyVideosToPublic,
+  publishValidationReports,
+  assertAuditedDoctrineMetadataContract,
+  assertDesignDocAliasesInSync,
   getLatestVersionEntry,
+  getManifestAliasCandidates,
   publishDesignDocsFromManifest,
   readDesignDocsManifest,
+  syncDesignDocAliasesFromManifest,
   validateDocVersionFrontmatter,
 };

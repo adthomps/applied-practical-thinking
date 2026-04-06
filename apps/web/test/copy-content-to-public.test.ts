@@ -7,6 +7,7 @@ import { describe, expect, it } from "vitest";
 const require = createRequire(import.meta.url);
 const {
   publishDesignDocsFromManifest,
+  publishValidationReports,
 } = require("../scripts/copy-content-to-public.cjs");
 
 function writeJson(filePath: string, value: unknown) {
@@ -64,6 +65,16 @@ describe("copy-content-to-public design docs publishing", () => {
       documents: [],
       recommendedHandoffs: [],
     });
+    writeJson(path.join(designDocsRoot, "static", "APT-TOKENS-CONTRACT.json"), {
+      id: "apt-tokens-contract",
+      docId: "tokens-contract",
+      slug: "tokens",
+      major: 2,
+      semanticVersion: "2.0.0",
+      status: "candidate",
+      publishedAt: "2026-04-05",
+      tokens: {},
+    });
     writeDoc(
       path.join(designDocsRoot, "versions", "v1", "APT-DESIGN-OVERVIEW.md"),
       `---\ndocId: design-overview\nslug: overview\nmajor: 1\nsemanticVersion: 1.0.0\nstatus: stable\npublishedAt: 2026-04-05\n---\n\n# v1\n`
@@ -83,6 +94,36 @@ describe("copy-content-to-public design docs publishing", () => {
     expect(fs.readFileSync(path.join(publicDocsRoot, "v1", "APT-DESIGN-OVERVIEW.md"), "utf8")).toContain("# v1");
     expect(fs.readFileSync(path.join(publicDocsRoot, "v2", "APT-DESIGN-OVERVIEW.md"), "utf8")).toContain("# v2");
     expect(fs.readFileSync(path.join(publicDocsRoot, "APT-DESIGN-OVERVIEW.md"), "utf8")).toContain("# v2");
+  });
+
+  it("publishes only latest public-safe validation artifacts", () => {
+    const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "apt-validation-publish-"));
+    const reportsRoot = path.join(tempRoot, "reports", "validation");
+    const publicValidationRoot = path.join(tempRoot, "public", "docs", "design", "validation");
+
+    writeJson(path.join(reportsRoot, "LATEST.public.json"), { recommendation: "pass" });
+    writeDoc(path.join(reportsRoot, "LATEST.public.md"), "# Validation\n");
+    writeDoc(path.join(publicValidationRoot, "stale.md"), "old");
+
+    publishValidationReports({ reportsRoot, publicValidationRoot });
+
+    expect(fs.existsSync(path.join(publicValidationRoot, "LATEST.json"))).toBe(true);
+    expect(fs.existsSync(path.join(publicValidationRoot, "LATEST.md"))).toBe(true);
+    expect(fs.existsSync(path.join(publicValidationRoot, "stale.md"))).toBe(false);
+    expect(fs.readFileSync(path.join(publicValidationRoot, "LATEST.json"), "utf8")).toContain("pass");
+  });
+
+  it("fails when public-safe validation artifacts are missing", () => {
+    const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "apt-validation-publish-"));
+    const reportsRoot = path.join(tempRoot, "reports", "validation");
+    const publicValidationRoot = path.join(tempRoot, "public", "docs", "design", "validation");
+
+    fs.mkdirSync(reportsRoot, { recursive: true });
+    writeDoc(path.join(reportsRoot, "LATEST.public.md"), "# Validation\n");
+
+    expect(() => publishValidationReports({ reportsRoot, publicValidationRoot })).toThrow(
+      /Missing public-safe validation report artifacts/
+    );
   });
 
   it("fails when frontmatter metadata does not match manifest metadata", () => {
@@ -119,6 +160,16 @@ describe("copy-content-to-public design docs publishing", () => {
       bundleFiles: [],
       documents: [],
       recommendedHandoffs: [],
+    });
+    writeJson(path.join(designDocsRoot, "static", "APT-TOKENS-CONTRACT.json"), {
+      id: "apt-tokens-contract",
+      docId: "tokens-contract",
+      slug: "tokens",
+      major: 2,
+      semanticVersion: "2.0.0",
+      status: "candidate",
+      publishedAt: "2026-04-05",
+      tokens: {},
     });
 
     writeDoc(

@@ -1,3 +1,11 @@
+---
+title: AI_PROMPT.md
+version: v2
+status: candidate
+audience: developer
+visibility: public
+source: manual
+---
 # AI_PROMPT.md
 
 ## AI Prompt Authoring

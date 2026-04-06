@@ -1,3 +1,12 @@
+---
+title: API Maintainer Prompt
+version: v1
+status: draft
+audience: internal
+visibility: internal
+source: manual
+---
+
 # API Maintainer Prompt
 
 You are maintaining the APT API layer (Cloudflare Worker).

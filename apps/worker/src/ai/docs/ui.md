@@ -1,3 +1,11 @@
+---
+title: UI Components
+version: v2
+status: candidate
+audience: developer
+visibility: public
+source: manual
+---
 # UI Components
 
 APT UI is built from Apt* components only. No direct HTML or raw Tailwind classes allowed in app code.
