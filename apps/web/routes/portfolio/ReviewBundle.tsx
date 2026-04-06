@@ -81,10 +81,43 @@ type BundleCta = {
   order: number;
 };
 
+type HandoffDocument = {
+  id: string;
+  title: string;
+  path: string;
+};
+
+type HandoffBundle = {
+  id: string;
+  title: string;
+  order: number;
+  targetArtifactLabel: string;
+  documents: HandoffDocument[];
+};
+
 function filenameFromUrl(url: string) {
   const [withoutQuery] = url.split("?");
   const segments = withoutQuery.split("/").filter(Boolean);
   return segments[segments.length - 1] || withoutQuery;
+}
+
+function slugify(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function downloadTextFile(filename: string, contents: string) {
+  const blob = new Blob([contents], { type: "text/markdown;charset=utf-8" });
+  const objectUrl = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = objectUrl;
+  anchor.download = filename;
+  document.body.appendChild(anchor);
+  anchor.click();
+  document.body.removeChild(anchor);
+  URL.revokeObjectURL(objectUrl);
 }
 
 const bundleIconMap: Record<string, typeof Bot> = {
@@ -157,24 +190,77 @@ export default function PortfolioReviewBundle() {
 
   const handoffBundles = useMemo(() => {
     const handoffs = manifest?.recommendedHandoffs || [];
-    const docsById = new Map((manifest?.documents || []).map((doc) => [doc.id, doc.title]));
+    const docsById = new Map((manifest?.documents || []).map((doc) => [doc.id, doc]));
 
-    return handoffs
+    const bundles: HandoffBundle[] = handoffs
       .filter((handoff) => typeof handoff.ui?.order === "number" && Boolean(handoff.ui?.title))
       .map((handoff) => {
-        const items = handoff.documents.map((id) => docsById.get(id) || id);
-        if (handoff.requiresTargetArtifact) {
-          items.push(handoff.ui?.targetArtifactLabel || "Target artifact");
-        }
+        const documents = handoff.documents
+          .map((id) => {
+            const doc = docsById.get(id);
+            if (!doc) return null;
+            return {
+              id,
+              title: doc.title || id,
+              path: doc.path || "",
+            };
+          })
+          .filter((doc): doc is HandoffDocument => Boolean(doc && doc.path));
 
         return {
+          id: handoff.name,
           title: handoff.ui?.title || handoff.name,
-          items,
+          targetArtifactLabel: handoff.ui?.targetArtifactLabel || "Target artifact",
+          documents,
           order: handoff.ui?.order || 0,
         };
       })
       .sort((left, right) => left.order - right.order);
+
+    return bundles;
   }, [manifest]);
+
+  function buildHandoffBundleMarkdown(bundle: HandoffBundle) {
+    const docsMajorsLabel = docsMajors.length > 0 ? docsMajors.join(", ") : "unknown";
+    const now = new Date().toISOString();
+    const lines: string[] = [
+      "# APT AI Review Handoff Bundle",
+      "",
+      `- Bundle: ${bundle.title}`,
+      `- Generated: ${now}`,
+      `- Bundle manifest version: ${manifest?.version || "unknown"}`,
+      `- Design docs majors: ${docsMajorsLabel}`,
+      "",
+      "## Review Instructions",
+      "",
+      "1. Read `APT-REVIEW-STANDARD.md` first if included below.",
+      "2. Open the target artifact and compare against each governing document.",
+      `3. Include target artifact context: ${bundle.targetArtifactLabel}.`,
+      "4. Output findings first with violated standard and smallest corrective action.",
+      "",
+      "## Included Files",
+      "",
+    ];
+
+    for (const doc of bundle.documents) {
+      lines.push(`- ${doc.title}`);
+      lines.push(`  - URL: ${doc.path}`);
+    }
+
+    lines.push("");
+    lines.push("## Validation Snapshot");
+    lines.push("");
+    lines.push("- Markdown: /docs/design/validation/LATEST.md");
+    lines.push("- JSON: /docs/design/validation/LATEST.json");
+    lines.push("");
+
+    return `${lines.join("\n")}\n`;
+  }
+
+  function downloadHandoffBundle(bundle: HandoffBundle) {
+    const filename = `apt-review-handoff-${slugify(bundle.id || bundle.title)}.md`;
+    downloadTextFile(filename, buildHandoffBundleMarkdown(bundle));
+  }
 
   return (
     <div className="container py-12 md:py-16 space-y-16">
@@ -327,20 +413,35 @@ export default function PortfolioReviewBundle() {
 
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {handoffBundles.map((bundle) => (
-            <AptCard key={bundle.title} variant="default" padding="large" className="h-full">
+            <AptCard key={bundle.id} variant="default" padding="large" className="h-full flex flex-col">
               <AptCardHeader className="p-0">
                 <AptCardTitle className="text-lg">{bundle.title}</AptCardTitle>
               </AptCardHeader>
               <AptCardContent>
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  {bundle.items.map((item) => (
-                    <li key={item} className="flex items-start gap-2">
+                  {bundle.documents.map((item) => (
+                    <li key={item.id} className="flex items-start gap-2">
                       <span className="mt-1 h-1.5 w-1.5 rounded-full bg-primary" />
-                      <span>{item}</span>
+                      <span>{item.title}</span>
                     </li>
                   ))}
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-primary" />
+                    <span>{bundle.targetArtifactLabel}</span>
+                  </li>
                 </ul>
               </AptCardContent>
+              <AptCardFooter className="mt-auto flex-wrap px-0 pb-0 border-0">
+                <AptButton
+                  variant="outline"
+                  size="sm"
+                  type="button"
+                  onClick={() => downloadHandoffBundle(bundle)}
+                >
+                  <Download className="h-4 w-4" />
+                  Download Handoff Pack
+                </AptButton>
+              </AptCardFooter>
             </AptCard>
           ))}
           {!loading && !error && handoffBundles.length === 0 && (
