@@ -12,7 +12,7 @@ type ValidationStatusCalloutProps = {
 export function ValidationStatusCallout({
   title = "Validation Status",
   description = "Public-safe snapshot for designSystem, architecture, and docsGovernance checks.",
-  showReviewBundleLink = false,
+  showReviewBundleLink = true,
 }: ValidationStatusCalloutProps) {
   const { report, loading, error } = useValidationReport();
   const recommendation = report?.recommendation || "unavailable";
@@ -26,12 +26,14 @@ export function ValidationStatusCallout({
       </AptCardHeader>
       <AptCardContent className="flex flex-wrap items-center gap-3">
         <AptTag variant={recommendationVariant}>{recommendation}</AptTag>
-        <AptButton variant="outline" asChild>
-          <Link to="/design/validation">
-            Open Validation Page
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-        </AptButton>
+        {showReviewBundleLink ? (
+          <AptButton variant="outline" asChild>
+            <Link to="/design/review-bundle">
+              Open AI Review Bundle
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </AptButton>
+        ) : null}
         <AptButton variant="outline" asChild>
           <a href="/docs/design/validation/LATEST.md" download>
             <Download className="h-4 w-4" />
@@ -44,14 +46,6 @@ export function ValidationStatusCallout({
             Download JSON
           </a>
         </AptButton>
-        {showReviewBundleLink ? (
-          <AptButton variant="ghost" asChild>
-            <Link to="/design/review-bundle">
-              Open AI Review Bundle
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </AptButton>
-        ) : null}
         {loading ? <p className="w-full text-xs text-muted-foreground">Loading validation status…</p> : null}
         {error ? <p className="w-full text-xs text-muted-foreground">Validation status unavailable right now.</p> : null}
       </AptCardContent>

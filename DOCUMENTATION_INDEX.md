@@ -106,7 +106,7 @@ How to edit safely:
 4. Public validation snapshot publishes to:
    - `/docs/design/validation/LATEST.json`
    - `/docs/design/validation/LATEST.md`
-   - route: `/design/validation`
+   - surfaced in route: `/design/review-bundle`
 5. Use `pnpm --dir apps/web run validation-frontmatter-autofix -- --wave=wave1` for preview-only metadata autofix proposals.
 6. Use `pnpm --dir apps/web run validation-frontmatter-autofix -- --wave=wave1 --apply` to apply Wave 1 metadata fixes.
 7. Run `pnpm --dir apps/web run copy-content-to-public`.

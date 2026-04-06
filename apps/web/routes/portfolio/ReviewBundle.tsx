@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import {
   ArrowRight,
   Bot,
+  BookOpen,
   Download,
   FileText,
   HardDriveDownload,
   Network,
   Palette,
   Route,
+  ShieldCheck,
   Sparkles,
 } from "lucide-react";
 import {
@@ -56,11 +58,6 @@ const routeCompanions = [
     path: "/design/systems",
     description: "Use when the review depends on stable reference models and system relationships.",
   },
-  {
-    title: "Validation",
-    path: "/design/validation",
-    description: "Use when you need the latest public-safe governance and compliance snapshot.",
-  },
 ];
 
 type BundleCard = {
@@ -92,12 +89,14 @@ function filenameFromUrl(url: string) {
 
 const bundleIconMap: Record<string, typeof Bot> = {
   bot: Bot,
+  "book-open": BookOpen,
   download: Download,
   "file-text": FileText,
   "hard-drive-download": HardDriveDownload,
   network: Network,
   palette: Palette,
   route: Route,
+  "shield-check": ShieldCheck,
   sparkles: Sparkles,
 };
 

@@ -2,9 +2,9 @@
 docId: ai-review-bundle
 slug: review-bundle
 major: 2
-semanticVersion: 2.3.0
+semanticVersion: 2.4.0
 status: candidate
-publishedAt: 2026-04-05
+publishedAt: 2026-04-06
 title: APT AI Review Bundle
 version: v2
 audience: developer
@@ -19,11 +19,11 @@ Start here, then open or download the linked doctrine documents that match the w
 
 Version metadata:
 
-- Bundle version: `2.3.0`
+- Bundle version: `2.4.0`
 - Design docs majors: `1`, `2` (mixed-major rollout)
 - Canonical public root pattern: `/docs/design/v{major}/`
 - Latest-stable alias root: `/docs/design/`
-- Validation snapshot (public-safe): `/design/validation` with downloadable `/docs/design/validation/LATEST.json` and `/docs/design/validation/LATEST.md`
+- Validation snapshot (public-safe): surfaced in `/design/review-bundle` with downloadable `/docs/design/validation/LATEST.json` and `/docs/design/validation/LATEST.md`
 
 ---
 
@@ -57,6 +57,10 @@ Version metadata:
    - External strict AI instruction contract for collaborators and tool-driven handoffs.
 14. `APT-DESIGN-SYSTEM-LINT-CHECKLIST.md`
    - Critical pass-gate checklist for validating design-system compliance before merge.
+15. `/docs/design/validation/LATEST.md`
+   - Public-safe validation snapshot in human-readable form for review-ready status checks.
+16. `/docs/design/validation/LATEST.json`
+   - Public-safe machine-readable validation snapshot for AI/tooling workflows.
 
 ---
 
@@ -85,6 +89,7 @@ Version metadata:
 - `APT-ARCHITECTURE-REFERENCE.json`
 - `APT-DESIGN-ARCHITECTURE.md` (Documentation Architecture section)
 - `APT-ARCHITECTURE-DOC-REFERENCE.json`
+- `/docs/design/validation/LATEST.json`
 
 ### Reviewing New Design Doctrine or Taxonomy
 
@@ -93,6 +98,7 @@ Version metadata:
 - `APT-DESIGN-THINKING.md`
 - `APT-CONTENT-STRATEGY.md`
 - `APT-DESIGN-ARCHITECTURE.md` (Documentation Architecture section)
+- `/docs/design/validation/LATEST.md`
 
 ---
 
