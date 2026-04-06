@@ -16,6 +16,10 @@ const RECOMMENDATIONS = {
   passWithFixes: 'pass_with_fixes',
   fail: 'fail',
 };
+const PUBLIC_REPORT_FILENAMES = {
+  json: 'LATEST.public.json',
+  md: 'LATEST.public.md',
+};
 
 function normalizeText(value) {
   return String(value || '').trim();
@@ -443,6 +447,108 @@ function renderMarkdownReport(report) {
   return `${lines.join('\n')}\n`;
 }
 
+function sanitizeReportForPublic(report) {
+  const safeRun = {
+    timestamp: report?.run?.timestamp || null,
+    completedAt: report?.run?.completedAt || null,
+    durationMs: report?.run?.durationMs ?? null,
+    gitSha: report?.run?.gitSha || null,
+  };
+
+  const safeFindings = Array.isArray(report?.findings)
+    ? report.findings.map((finding) => ({
+        section: finding.section,
+        severity: finding.severity,
+        message: finding.message,
+        waveId: finding.waveId || null,
+      }))
+    : [];
+
+  const safeExceptions = Array.isArray(report?.exceptionSummary)
+    ? report.exceptionSummary.map((entry) => ({
+        waveId: entry.waveId || null,
+        reason: entry.reason || '',
+      }))
+    : [];
+
+  return {
+    run: safeRun,
+    mode: report?.mode || 'quick',
+    recommendation: report?.recommendation || RECOMMENDATIONS.pass,
+    sections: report?.sections || {},
+    severitySummary: report?.severitySummary || { critical: 0, high: 0, medium: 0, low: 0 },
+    findings: safeFindings,
+    exceptionSummary: safeExceptions,
+    waveProgress: Array.isArray(report?.waveProgress) ? report.waveProgress : [],
+    triage: report?.triage || { groupedByWaveAndFolder: {}, topQuickFixes: [] },
+    checks: report?.checks || {},
+  };
+}
+
+function renderPublicMarkdownReport(report) {
+  const lines = [];
+  lines.push('# APT Validation Report (Public)');
+  lines.push('');
+  lines.push(`- Timestamp: ${report.run.timestamp || 'unknown'}`);
+  lines.push(`- Duration: ${report.run.durationMs === null ? 'unknown' : `${report.run.durationMs}ms`}`);
+  lines.push(`- Recommendation: ${report.recommendation}`);
+  lines.push('');
+  lines.push('## Section Outcomes');
+  lines.push('');
+
+  const sectionOrder = ['designSystem', 'architecture', 'docsGovernance', 'tests'];
+  for (const sectionName of sectionOrder) {
+    const section = report.sections[sectionName];
+    if (!section) continue;
+    lines.push(`### ${sectionName}`);
+    lines.push(`- Status: ${section.status}`);
+    for (const check of section.checks || []) {
+      lines.push(`- ${check.name}: ${check.status} (${check.severity}) - ${check.message}`);
+    }
+    lines.push('');
+  }
+
+  lines.push('## Severity Summary');
+  lines.push('');
+  for (const severity of SEVERITY_ORDER) {
+    lines.push(`- ${severity}: ${report.severitySummary[severity]}`);
+  }
+  lines.push('');
+
+  lines.push('## Findings');
+  lines.push('');
+  if (!Array.isArray(report.findings) || report.findings.length === 0) {
+    lines.push('- None');
+  } else {
+    for (const finding of report.findings) {
+      lines.push(`- [${finding.severity}] ${finding.section}: ${finding.message}`);
+    }
+  }
+  lines.push('');
+
+  lines.push('## Exception Summary');
+  lines.push('');
+  if (!Array.isArray(report.exceptionSummary) || report.exceptionSummary.length === 0) {
+    lines.push('- None');
+  } else {
+    for (const exception of report.exceptionSummary) {
+      lines.push(`- [${exception.waveId || 'unscoped'}] ${exception.reason}`);
+    }
+  }
+  lines.push('');
+
+  lines.push('## Wave Progress');
+  lines.push('');
+  for (const wave of report.waveProgress || []) {
+    lines.push(
+      `- ${wave.id} (${wave.label}): passed=${wave.passed}/${wave.total}, missing=${wave.missing}, exceptions=${wave.exceptions}, complete=${wave.completionPercent}%`
+    );
+  }
+  lines.push('');
+
+  return `${lines.join('\n')}\n`;
+}
+
 function ensureReportsDir() {
   fs.mkdirSync(REPORTS_ROOT, { recursive: true });
 }
@@ -468,6 +574,22 @@ function writeReportArtifacts(report) {
     mdPath,
     latestJsonPath,
     latestMdPath,
+  };
+}
+
+function writePublicReportArtifacts(report) {
+  ensureReportsDir();
+  const publicJsonPath = path.join(REPORTS_ROOT, PUBLIC_REPORT_FILENAMES.json);
+  const publicMdPath = path.join(REPORTS_ROOT, PUBLIC_REPORT_FILENAMES.md);
+  const publicReport = sanitizeReportForPublic(report);
+  const publicMarkdown = renderPublicMarkdownReport(publicReport);
+
+  fs.writeFileSync(publicJsonPath, `${JSON.stringify(publicReport, null, 2)}\n`, 'utf8');
+  fs.writeFileSync(publicMdPath, publicMarkdown, 'utf8');
+
+  return {
+    publicJsonPath,
+    publicMdPath,
   };
 }
 
@@ -564,12 +686,15 @@ function main() {
   const args = parseArgs(process.argv.slice(2));
   const report = buildReport({ includeTests: args.includeTests });
   const artifacts = writeReportArtifacts(report);
+  const publicArtifacts = writePublicReportArtifacts(report);
 
   console.log('Validation report written:');
   console.log(`- ${artifacts.jsonPath}`);
   console.log(`- ${artifacts.mdPath}`);
   console.log(`- ${artifacts.latestJsonPath}`);
   console.log(`- ${artifacts.latestMdPath}`);
+  console.log(`- ${publicArtifacts.publicJsonPath}`);
+  console.log(`- ${publicArtifacts.publicMdPath}`);
   console.log(`Recommendation: ${report.recommendation}`);
 
   if (report.checks.verifyDesignDocAliasSync !== 'pass' || report.checks.verifyAuditedDoctrineMetadata !== 'pass') {
@@ -582,12 +707,16 @@ if (require.main === module) {
 }
 
 module.exports = {
+  PUBLIC_REPORT_FILENAMES,
   RECOMMENDATIONS,
   SEVERITY_ORDER,
   bucketFindings,
   buildReport,
   computeRecommendation,
   renderMarkdownReport,
+  renderPublicMarkdownReport,
+  sanitizeReportForPublic,
   timestampForFilename,
+  writePublicReportArtifacts,
   writeReportArtifacts,
 };

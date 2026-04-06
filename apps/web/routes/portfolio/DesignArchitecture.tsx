@@ -29,6 +29,7 @@ import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api"
 import { useDesignDocVersion } from "@/hooks/useDesignDocVersion";
 import { downloadWorkerMarkdown } from "@/src/services/download";
 import { architecturePatterns } from "@/data/architecturePatterns";
+import { useValidationReport } from "@/hooks/useValidationReport";
 
 interface ArchitecturePatternProps {
   slug: string;
@@ -144,6 +145,7 @@ export default function PortfolioDesignArchitecture() {
     ? `/docs/design/v${architectureCanonicalMajor}/APT-ARCHITECTURE-REFERENCE.json`
     : null;
   const configError = getWorkerApiConfigError();
+  const { report: validationReport } = useValidationReport();
   const handleArchitectureMarkdownDownload = async () => {
     const majorSuffix = architectureVersion.activeMajor ? `-v${architectureVersion.activeMajor}` : "";
     await downloadWorkerMarkdown(architectureVersion.downloadApiPath, `apt-design-architecture${majorSuffix}.md`);
@@ -333,6 +335,38 @@ export default function PortfolioDesignArchitecture() {
                 </a>
               </AptButton>
             ) : null}
+          </AptCardContent>
+        </AptCard>
+      </section>
+
+      <section className="mb-16">
+        <AptCard variant="subtle" padding="large">
+          <AptCardHeader>
+            <AptCardTitle className="text-xl">Validation Status</AptCardTitle>
+            <AptCardDescription>
+              Current public-safe validation snapshot for design system, architecture, and docs governance.
+            </AptCardDescription>
+          </AptCardHeader>
+          <AptCardContent className="flex flex-wrap items-center gap-3">
+            <AptTag variant={validationReport?.recommendation === "pass" ? "accent" : "outline"}>
+              {validationReport ? validationReport.recommendation : "unavailable"}
+            </AptTag>
+            <AptButton variant="outline" asChild>
+              <Link to="/design/validation">
+                Open Validation Page
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </AptButton>
+            <AptButton variant="outline" asChild>
+              <a href="/docs/design/validation/LATEST.md" download>
+                Download Validation Markdown
+              </a>
+            </AptButton>
+            <AptButton variant="outline" asChild>
+              <a href="/docs/design/validation/LATEST.json" download>
+                Download Validation JSON
+              </a>
+            </AptButton>
           </AptCardContent>
         </AptCard>
       </section>

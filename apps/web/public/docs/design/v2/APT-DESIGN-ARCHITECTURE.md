@@ -131,6 +131,8 @@ Repo-wide markdown metadata enforcement is intentionally phased:
 Current behavior:
 - `frontmatter-report` runs in governance as report-only (non-blocking) until each wave reaches enforcement date.
 - strict blocking remains active for governed design doctrine metadata contracts.
+- unified governance reporting runs via `validation-report`, producing internal JSON/Markdown artifacts at `reports/validation/` (`LATEST.*` + timestamped history).
+- publish generates public-safe validation artifacts at `/docs/design/validation/LATEST.json` and `/docs/design/validation/LATEST.md` with route `/design/validation`.
 
 Rollout policy and exceptions are maintained in `docs/DOCUMENTATION_METADATA_ROLLOUT.md`.
 

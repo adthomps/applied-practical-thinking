@@ -1,9 +1,6 @@
-# APT Validation Report
+# APT Validation Report (Public)
 
 - Timestamp: 2026-04-06T03:42:12.646Z
-- Git SHA: 1c88d23
-- Branch: preview
-- Runner: sanch
 - Duration: 33ms
 - Recommendation: pass
 
@@ -40,19 +37,12 @@
 
 ## Exception Summary
 
-- docs/DECISION_LOG.md [wave2] - Historical log format is preserved; frontmatter rollout deferred.
-- .github/pull_request_template.md [wave3] - GitHub PR template structure is preserved; metadata rollout deferred.
+- [wave2] Historical log format is preserved; frontmatter rollout deferred.
+- [wave3] GitHub PR template structure is preserved; metadata rollout deferred.
 
 ## Wave Progress
 
 - wave1 (Design static + AI prompts): passed=10/10, missing=0, exceptions=0, complete=100%
 - wave2 (Internal operational docs): passed=23/24, missing=0, exceptions=1, complete=95.8%
 - wave3 (Worker AI docs + .github docs): passed=7/8, missing=0, exceptions=1, complete=87.5%
-
-## Triage (Grouped by Wave/Folder)
-
-- None
-## Top 10 Quickest Fixes
-
-- None
 

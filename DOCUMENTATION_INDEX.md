@@ -103,9 +103,13 @@ How to edit safely:
 1. Edit versioned doctrine in `apps/web/docs/design/versions/v*/...`.
 2. Run `pnpm --dir apps/web run verify-doc-governance` (writes validation reports to `reports/validation/`).
 3. Run `pnpm --dir apps/web run validation-report:full` when you also want test outcomes in the same report.
-4. Use `pnpm --dir apps/web run validation-frontmatter-autofix -- --wave=wave1` for preview-only metadata autofix proposals.
-5. Use `pnpm --dir apps/web run validation-frontmatter-autofix -- --wave=wave1 --apply` to apply Wave 1 metadata fixes.
-6. Run `pnpm --dir apps/web run copy-content-to-public`.
+4. Public validation snapshot publishes to:
+   - `/docs/design/validation/LATEST.json`
+   - `/docs/design/validation/LATEST.md`
+   - route: `/design/validation`
+5. Use `pnpm --dir apps/web run validation-frontmatter-autofix -- --wave=wave1` for preview-only metadata autofix proposals.
+6. Use `pnpm --dir apps/web run validation-frontmatter-autofix -- --wave=wave1 --apply` to apply Wave 1 metadata fixes.
+7. Run `pnpm --dir apps/web run copy-content-to-public`.
 
 ## Public content source (`apps/web/content/`)
 

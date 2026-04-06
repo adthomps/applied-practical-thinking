@@ -1,3 +1,12 @@
+---
+title: APT AI Instructions Reference
+version: v2
+status: candidate
+audience: developer
+visibility: public
+source: manual
+---
+
 # APT AI Instructions Reference (External)
 
 This is the external AI instructions contract for collaborators, reviewers, and tool-driven agents working with APT artifacts.

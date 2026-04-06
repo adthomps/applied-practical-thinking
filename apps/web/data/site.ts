@@ -100,6 +100,12 @@ export const siteConfig = {
           tagline: "Structure exists to prevent failure, not to enable creativity.",
         },
         {
+          label: "Validation",
+          path: "/design/validation",
+          description: "Latest public validation status for design system, architecture, and docs governance.",
+          tagline: "Trust comes from visible checks.",
+        },
+        {
           label: "Systems",
           path: "/design/systems",
           description: "Stable system references that capture architecture, decisions, and reusable models inside the APT doctrine.",

@@ -9,8 +9,12 @@ const CONTENT_ROOT = path.join(__dirname, '../content');
 const PUBLIC_CONTENT_ROOT = path.join(__dirname, '../public/content');
 const DESIGN_DOCS_ROOT = path.join(__dirname, '../docs/design');
 const PUBLIC_DOCS_ROOT = path.join(__dirname, '../public/docs/design');
+const REPO_ROOT = path.resolve(__dirname, '../../..');
+const VALIDATION_REPORTS_ROOT = path.join(REPO_ROOT, 'reports', 'validation');
+const PUBLIC_VALIDATION_ROOT = path.join(PUBLIC_DOCS_ROOT, 'validation');
 const REVIEW_BUNDLE_MANIFEST = 'APT-AI-REVIEW-BUNDLE.json';
 const DESIGN_DOCS_MANIFEST = 'APT-DESIGN-DOCS-MANIFEST.json';
+const PUBLIC_VALIDATION_FILES = ['LATEST.json', 'LATEST.md'];
 const STATIC_PUBLIC_DESIGN_DOCS = [
   REVIEW_BUNDLE_MANIFEST,
   'APT-AI-REVIEW-BUNDLE.md',
@@ -520,11 +524,43 @@ function copyVideosToPublic(contentRoot = CONTENT_ROOT, publicContentRoot = PUBL
   }
 }
 
+function publishValidationReports({
+  reportsRoot = VALIDATION_REPORTS_ROOT,
+  publicValidationRoot = PUBLIC_VALIDATION_ROOT,
+} = {}) {
+  const publicJsonSource = path.join(reportsRoot, 'LATEST.public.json');
+  const publicMdSource = path.join(reportsRoot, 'LATEST.public.md');
+
+  if (!fs.existsSync(publicJsonSource) || !fs.existsSync(publicMdSource)) {
+    throw new Error(
+      [
+        'Missing public-safe validation report artifacts.',
+        `Expected: ${publicJsonSource}`,
+        `Expected: ${publicMdSource}`,
+        'Run `pnpm --dir apps/web run validation-report` before publishing docs.',
+      ].join('\n')
+    );
+  }
+
+  fs.mkdirSync(publicValidationRoot, { recursive: true });
+  for (const entry of fs.readdirSync(publicValidationRoot, { withFileTypes: true })) {
+    if (!entry.isFile()) continue;
+    if (!PUBLIC_VALIDATION_FILES.includes(entry.name)) {
+      fs.rmSync(path.join(publicValidationRoot, entry.name), { force: true });
+    }
+  }
+
+  fs.copyFileSync(publicJsonSource, path.join(publicValidationRoot, 'LATEST.json'));
+  fs.copyFileSync(publicMdSource, path.join(publicValidationRoot, 'LATEST.md'));
+  console.log('Copied public-safe validation report artifacts to public/docs/design/validation');
+}
+
 function main() {
   copyContentToPublic();
   assertDesignDocAliasesInSync();
   assertAuditedDoctrineMetadataContract();
   publishDesignDocsFromManifest();
+  publishValidationReports();
   copyVideosToPublic();
 }
 
@@ -536,6 +572,7 @@ module.exports = {
   buildReviewBundleManifestForPublic,
   copyContentToPublic,
   copyVideosToPublic,
+  publishValidationReports,
   assertAuditedDoctrineMetadataContract,
   assertDesignDocAliasesInSync,
   getLatestVersionEntry,

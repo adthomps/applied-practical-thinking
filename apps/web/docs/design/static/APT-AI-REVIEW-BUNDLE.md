@@ -23,6 +23,7 @@ Version metadata:
 - Design docs majors: `1`, `2` (mixed-major rollout)
 - Canonical public root pattern: `/docs/design/v{major}/`
 - Latest-stable alias root: `/docs/design/`
+- Validation snapshot (public-safe): `/design/validation` with downloadable `/docs/design/validation/LATEST.json` and `/docs/design/validation/LATEST.md`
 
 ---
 

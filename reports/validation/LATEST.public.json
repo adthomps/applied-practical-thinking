@@ -3,9 +3,7 @@
     "timestamp": "2026-04-06T03:42:12.646Z",
     "completedAt": "2026-04-06T03:42:12.679Z",
     "durationMs": 33,
-    "gitSha": "1c88d23",
-    "branch": "preview",
-    "runner": "sanch"
+    "gitSha": "1c88d23"
   },
   "mode": "quick",
   "recommendation": "pass",
@@ -110,12 +108,10 @@
   "findings": [],
   "exceptionSummary": [
     {
-      "relativePath": "docs/DECISION_LOG.md",
       "waveId": "wave2",
       "reason": "Historical log format is preserved; frontmatter rollout deferred."
     },
     {
-      "relativePath": ".github/pull_request_template.md",
       "waveId": "wave3",
       "reason": "GitHub PR template structure is preserved; metadata rollout deferred."
     }
