@@ -1,3 +1,12 @@
+---
+title: APT Design Versioning
+version: v2
+status: candidate
+audience: developer
+visibility: public
+source: manual
+---
+
 # APT Design Versioning
 
 Unified versioning policy for APT design doctrine and review artifacts.

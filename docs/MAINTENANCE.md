@@ -1,3 +1,11 @@
+---
+title: Maintenance
+version: v2
+status: candidate
+audience: developer
+visibility: public
+source: manual
+---
 # Maintenance
 
 This guide explains how to add or edit content in all major areas of the APT monorepo. Follow these instructions to keep the site, docs, and system up to date and consistent.
@@ -91,8 +99,9 @@ Portfolio sections are managed as structured data and/or Markdown in `apps/web/d
 - Place images, audio, or video for labs in `apps/web/public/content/labs/<slug>/` and reference them in the object or markdown.
 
 ### Design System
-- Documented in `apps/web/docs/design/` with shared token contracts in `packages/config` (`apps/web/theme/aptTokens.ts` is the compatibility re-export).
-- To add a new design system doc, create a Markdown file in `apps/web/docs/design/`.
+- Documented in `apps/web/docs/design/versions/v2/` with shared token contracts in `packages/config` (`apps/web/theme/aptTokens.ts` is the compatibility re-export).
+- To add or update a governed design-system doctrine doc, edit `apps/web/docs/design/versions/v*/...` and update manifest metadata.
+- To add or update support contracts (lint/review bundle/tokens reference), edit `apps/web/docs/design/static/...`.
 - To update tokens, edit the relevant files and log changes in `docs/DECISION_LOG.md`.
 
 ### Design Thinking
@@ -100,8 +109,8 @@ Portfolio sections are managed as structured data and/or Markdown in `apps/web/d
 - Add new Markdown files for guides, principles, or frameworks.
 
 ### Design Architecture
-- Architecture docs live in `apps/web/docs/design/` (e.g., `APT-DESIGN-ARCHITECTURE.md`).
-- Add new architecture docs as Markdown files in this folder.
+- Architecture doctrine lives in `apps/web/docs/design/versions/v2/` (e.g., `APT-DESIGN-ARCHITECTURE.md`).
+- Add new governed architecture docs in `versions/v*/` and keep support contracts in `static/`.
 - Update diagrams/images in `apps/web/public/images/architecture/`.
 
 
@@ -183,16 +192,17 @@ All Learn content (articles, podcasts, guides, design reviews) is managed as Mar
 - Update or add files as needed (see `DOCUMENTATION_INDEX.md` for a list).
 
 ### Site Docs (User-Facing)
-- APT design doctrine lives in `apps/web/docs/design/`.
+- APT design doctrine source lives in `apps/web/docs/design/versions/` (governed docs) and `apps/web/docs/design/static/` (support contracts), with `APT-DESIGN-DOCS-MANIFEST.json` as control plane.
 - Public learning/content markdown lives in `apps/web/content/`.
 - Generated runtime copies in `apps/web/public/docs/` and `apps/web/public/content/` should not be edited as authored source.
 
 ### Design Doctrine Versioning (v1+)
-- Use the unified policy in `apps/web/docs/design/APT-DESIGN-VERSIONING.md` for thinking, system, architecture, systems, strategy, review standard, and AI review bundle artifacts.
+- Use the unified policy in `apps/web/docs/design/static/APT-DESIGN-VERSIONING.md` for thinking, system, architecture, systems, strategy, review standard, and AI review bundle artifacts.
 - Classify every change as semantic major, minor, or patch before publishing.
 - For major and minor updates, add a decision entry in `docs/DECISION_LOG.md` with rationale and consequences.
 - Publish canonical public docs under `/docs/design/v{major}/` and keep `/docs/design/*` aliases pointed to the latest stable major.
 - Update the design docs manifest and AI bundle metadata together so API and UI consumers see consistent version data.
+- Do not add source alias files at `apps/web/docs/design/` root; aliases are publish-generated output only.
 - Do not edit files in `apps/web/public/docs/design/` manually; regenerate from source and scripts.
 
 ---
@@ -202,7 +212,7 @@ All Learn content (articles, podcasts, guides, design reviews) is managed as Mar
 - Shared design tokens are authored in `packages/config`, with `apps/web/theme/aptTokens.ts` kept as the compatibility re-export.
 - To update tokens, edit these files and document changes in `docs/DECISION_LOG.md`.
 - All UI components should use Apt* components from `apps/web/components/apt/`.
-- For new design patterns, update docs in `apps/web/docs/design/`.
+- For new design patterns, update governed doctrine in `apps/web/docs/design/versions/v*/...` and support contracts in `apps/web/docs/design/static/...`.
 
 ---
 

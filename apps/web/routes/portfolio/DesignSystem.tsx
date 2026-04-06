@@ -134,7 +134,7 @@ export default function PortfolioDesignSystem() {
       >
         <div className="flex flex-wrap gap-3">
           <AptButton asChild>
-            <a href="/docs/design/APT-FIGMA-TOKENS.json" download>
+            <a href="/docs/design/APT-TOKENS.json" download>
               <Download className="h-4 w-4" />
               Download Tokens
             </a>
@@ -949,7 +949,7 @@ text-xl md:text-2xl
                 Download System Markdown
               </AptButton>
               <AptButton asChild>
-                <a href="/docs/design/APT-FIGMA-TOKENS.json" download>
+                <a href="/docs/design/APT-TOKENS.json" download>
                   <Download className="h-4 w-4" />
                   Download Tokens JSON
                 </a>

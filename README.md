@@ -1,3 +1,11 @@
+---
+title: Applied Practical Thinking
+version: v2
+status: candidate
+audience: developer
+visibility: public
+source: manual
+---
 # Applied Practical Thinking
 
 APT is a monorepo for the Applied Practical Thinking platform.
@@ -23,13 +31,28 @@ Authored site content and design docs live under `apps/web/`. Shared package con
 - `docs/` contains internal engineering, deployment, maintenance, workflow, and agent-facing repo docs
 - `apps/web/content/` contains authored external/public content that renders on the site
 - `apps/web/docs/design/` contains external-first design doctrine and public design reference docs
+- `apps/web/docs/design/` uses a 2-zone source model:
+  - `versions/v*/` authored canonical doctrine versions
+  - `static/` authored static support docs/contracts (review bundle, lint contracts, token JSON, instructions/reference)
+  - `tokens.json` is generated compatibility output from canonical `static/APT-TOKENS-CONTRACT.json`
+- Documentation architecture standard is defined in `apps/web/docs/design/versions/v2/APT-DESIGN-ARCHITECTURE.md` (Documentation Architecture section)
 - internal design support docs may live alongside the design doctrine source, but are not automatically public
 - `apps/web/public/` is generated runtime output only:
   - `apps/web/public/content/`
   - `apps/web/public/docs/`
   - `apps/web/public/data/`
 
+Current-state vs target-state docs architecture:
+- Current-state canonical public docs source: `apps/web/docs/design/`
+- Target-state canonical public docs source (planned): `apps/docs`
+- Current pass is definition-first; no `apps/docs` structure migration is active yet
+
 Do not edit copied markdown under `apps/web/public/` as authored source.
+
+Safe edit flow for design docs:
+1. Edit `apps/web/docs/design/versions/v*/...` for doctrine changes or `apps/web/docs/design/static/...` for static support docs.
+2. Run `pnpm --dir apps/web run verify-doc-governance`.
+3. Run `pnpm --dir apps/web run copy-content-to-public`.
 
 ## Getting started
 
@@ -110,7 +133,8 @@ Production values:
 
 ## References
 
-- [APT Design Architecture](apps/web/docs/design/APT-DESIGN-ARCHITECTURE.md)
-- [APT Design System](apps/web/docs/design/APT-DESIGN-SYSTEM.md)
+- [APT Design Architecture](apps/web/docs/design/versions/v2/APT-DESIGN-ARCHITECTURE.md)
+- [APT Documentation Architecture (Compatibility Shim)](apps/web/docs/design/versions/v2/APT-ARCHITECTURE-DOC.md)
+- [APT Design System](apps/web/docs/design/versions/v2/APT-DESIGN-SYSTEM.md)
 - [Decision Log](docs/DECISION_LOG.md)
 - [Documentation Index](DOCUMENTATION_INDEX.md)

@@ -1,3 +1,12 @@
+---
+title: APT Review Standard
+version: v2
+status: candidate
+audience: developer
+visibility: public
+source: manual
+---
+
 # APT Review Standard
 
 > Review should tell you what is structurally wrong, why it matters, and what standard it violates.
@@ -85,6 +94,8 @@ Use the design-architecture lens to verify that code and content live in the cor
 - business logic leaks into route components
 - routes become a second service layer
 - generated or copied content is edited as if it were authored source
+- manifest-governed alias files drift from their latest version sources
+- audited doctrine metadata/frontmatter contract is missing required keys
 - prompts or standards drift into undocumented locations
 
 Reference: `APT-DESIGN-ARCHITECTURE.md`
@@ -159,6 +170,8 @@ APT work is not ready when any of the following are true:
 - the UI bypasses existing APT primitives without a documented reason
 - architecture boundaries are crossed for convenience
 - generated/public copies are treated as the source of truth
+- manifest-governed doctrine aliases do not match latest canonical version sources
+- required audited doctrine frontmatter metadata is missing
 - copy introduces more ambiguity than orientation
 - the work makes artifacts visible but leaves the reasoning invisible
 

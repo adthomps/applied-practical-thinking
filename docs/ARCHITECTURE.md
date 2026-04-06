@@ -1,3 +1,11 @@
+---
+title: ARCHITECTURE.md
+version: v2
+status: candidate
+audience: developer
+visibility: public
+source: manual
+---
 # ARCHITECTURE.md
 
 ## APT Monorepo Architecture
@@ -36,10 +44,13 @@
 
 ## Design Docs Versioning (v1+)
 
-- Unified policy for design doctrine and review artifacts is defined in `apps/web/docs/design/APT-DESIGN-VERSIONING.md`
-- Internal authoring remains in `apps/web/docs/design/`
+- Unified policy for design doctrine and review artifacts is defined in `apps/web/docs/design/static/APT-DESIGN-VERSIONING.md`
+- Internal authoring remains in `apps/web/docs/design/versions/*` and `apps/web/docs/design/static/*`
+- `apps/web/docs/design/APT-DESIGN-DOCS-MANIFEST.json` remains the manifest control plane for per-doc major routing
 - Canonical public release paths are versioned under `/docs/design/v{major}/*`
 - Latest-stable compatibility aliases remain available at `/docs/design/*`
+- Source aliases are not stored in `apps/web/docs/design`; they are generated during publish to `apps/web/public/docs/design/*`
+- Validation reporting artifacts are generated under `reports/validation/` (`LATEST.json`, `LATEST.md`, plus timestamped run files)
 - External publishing exposes only the latest stable major unless explicitly changed by policy
 
 ## Repository Structure
@@ -54,7 +65,7 @@
   - `packages/knowledge/` — shared content/domain/assistant types
   - `packages/utils/` — framework-agnostic helpers only if activated
 - Internal docs: `docs/`
-- Site/source docs: `apps/web/docs/design/`
+- Site/source docs: `apps/web/docs/design/versions/` + `apps/web/docs/design/static/` with `APT-DESIGN-DOCS-MANIFEST.json` control plane
 - Source content: `apps/web/content/`, `apps/web/data/`
 - Generated runtime output: `apps/web/public/`
 

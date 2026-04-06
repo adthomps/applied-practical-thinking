@@ -64,6 +64,16 @@ describe("copy-content-to-public design docs publishing", () => {
       documents: [],
       recommendedHandoffs: [],
     });
+    writeJson(path.join(designDocsRoot, "static", "APT-TOKENS-CONTRACT.json"), {
+      id: "apt-tokens-contract",
+      docId: "tokens-contract",
+      slug: "tokens",
+      major: 2,
+      semanticVersion: "2.0.0",
+      status: "candidate",
+      publishedAt: "2026-04-05",
+      tokens: {},
+    });
     writeDoc(
       path.join(designDocsRoot, "versions", "v1", "APT-DESIGN-OVERVIEW.md"),
       `---\ndocId: design-overview\nslug: overview\nmajor: 1\nsemanticVersion: 1.0.0\nstatus: stable\npublishedAt: 2026-04-05\n---\n\n# v1\n`
@@ -119,6 +129,16 @@ describe("copy-content-to-public design docs publishing", () => {
       bundleFiles: [],
       documents: [],
       recommendedHandoffs: [],
+    });
+    writeJson(path.join(designDocsRoot, "static", "APT-TOKENS-CONTRACT.json"), {
+      id: "apt-tokens-contract",
+      docId: "tokens-contract",
+      slug: "tokens",
+      major: 2,
+      semanticVersion: "2.0.0",
+      status: "candidate",
+      publishedAt: "2026-04-05",
+      tokens: {},
     });
 
     writeDoc(

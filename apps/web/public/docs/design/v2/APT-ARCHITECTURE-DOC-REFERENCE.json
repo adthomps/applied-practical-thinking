@@ -1,0 +1,21 @@
+{
+  "id": "documentation-architecture-reference",
+  "title": "APT Documentation Architecture Reference (Compatibility Stub)",
+  "kind": "documentation-architecture-compatibility-reference",
+  "major": 2,
+  "semanticVersion": "2.1.0",
+  "status": "deprecated",
+  "publishedAt": "2026-04-05",
+  "isCompatibilityStub": true,
+  "canonicalDoctrinePath": "/docs/design/APT-DESIGN-ARCHITECTURE.md#documentation-architecture-canonical-section",
+  "compatibilityShimPath": "/docs/design/APT-ARCHITECTURE-DOC.md",
+  "canonicalCompanionPaths": [
+    "/docs/design/APT-DESIGN-ARCHITECTURE.md#documentation-architecture-canonical-section",
+    "/docs/design/APT-ARCHITECTURE-DOC-EXAMPLES.md"
+  ],
+  "compatibilityPolicy": {
+    "purpose": "Preserve stable URL contracts while avoiding duplicate policy authority.",
+    "authoritativeSource": "/docs/design/APT-DESIGN-ARCHITECTURE.md#documentation-architecture-canonical-section",
+    "reviewRule": "Treat this file as redirect/metadata only; evaluate doctrine rules in the canonical source."
+  }
+}

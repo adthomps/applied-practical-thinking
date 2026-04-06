@@ -8,6 +8,7 @@ import {
   Bot,
   ArrowRight,
   FileText,
+  Download,
   Cloud,
   AlertTriangle,
   CheckCircle2,
@@ -135,6 +136,13 @@ export default function PortfolioDesignArchitecture() {
   const architectureVersion = useDesignDocVersion("architecture");
   const architectureDocUrl = tryGetWorkerApiUrl(architectureVersion.downloadApiPath);
   const architectureCanonicalUrl = architectureVersion.canonicalPath || null;
+  const architectureCanonicalMajor = architectureVersion.activeMajor || architectureVersion.latestMajor;
+  const architectureExamplesCanonicalUrl = architectureCanonicalMajor
+    ? `/docs/design/v${architectureCanonicalMajor}/APT-ARCHITECTURE-EXAMPLES.md`
+    : null;
+  const architectureReferenceCanonicalUrl = architectureCanonicalMajor
+    ? `/docs/design/v${architectureCanonicalMajor}/APT-ARCHITECTURE-REFERENCE.json`
+    : null;
   const configError = getWorkerApiConfigError();
   const handleArchitectureMarkdownDownload = async () => {
     const majorSuffix = architectureVersion.activeMajor ? `-v${architectureVersion.activeMajor}` : "";
@@ -283,6 +291,51 @@ export default function PortfolioDesignArchitecture() {
           </p>
         ) : null}
       </SectionIntro>
+
+      <section className="mb-16">
+        <AptCard variant="subtle" padding="large">
+          <AptCardHeader>
+            <AptCardTitle className="text-xl">Architecture Checklist & Reference</AptCardTitle>
+            <AptCardDescription>
+              Critical architecture gate artifacts for boundary, routing, deploy authority, and AI ownership validation.
+            </AptCardDescription>
+          </AptCardHeader>
+          <AptCardContent className="flex flex-wrap gap-3">
+            <AptButton asChild>
+              <a href="/docs/design/APT-ARCHITECTURE-EXAMPLES.md" target="_blank" rel="noreferrer">
+                Open Architecture Examples
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            </AptButton>
+            <AptButton variant="outline" asChild>
+              <a href="/docs/design/APT-ARCHITECTURE-EXAMPLES.md" download>
+                <Download className="h-4 w-4" />
+                Download Examples Markdown
+              </a>
+            </AptButton>
+            <AptButton variant="outline" asChild>
+              <a href="/docs/design/APT-ARCHITECTURE-REFERENCE.json" download>
+                <Download className="h-4 w-4" />
+                Download Reference JSON
+              </a>
+            </AptButton>
+            {architectureExamplesCanonicalUrl ? (
+              <AptButton variant="ghost" asChild>
+                <a href={architectureExamplesCanonicalUrl} target="_blank" rel="noreferrer">
+                  Open Examples Canonical
+                </a>
+              </AptButton>
+            ) : null}
+            {architectureReferenceCanonicalUrl ? (
+              <AptButton variant="ghost" asChild>
+                <a href={architectureReferenceCanonicalUrl} target="_blank" rel="noreferrer">
+                  Open Reference Canonical
+                </a>
+              </AptButton>
+            ) : null}
+          </AptCardContent>
+        </AptCard>
+      </section>
 
       {/* Principles */}
       <section className="mb-16">

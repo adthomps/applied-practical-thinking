@@ -205,3 +205,198 @@ The initial lint checklist was useful but too compact for consistent review outc
 **Consequences:**
 - Positive: Stronger quality gate, clearer governance, safer incremental v2 rollout.
 - Negative: More checklist/metadata maintenance overhead and stricter PR requirements.
+
+---
+
+### [APT-007] Architecture v2 Refinement With Enforceable References
+
+**Date:** 2026-04-05  
+**Author:** Codex  
+**Status:** Accepted
+
+**Context:**
+Architecture doctrine was directionally strong but still too principle-heavy for consistent enforcement in reviews and AI-assisted implementation. We needed explicit guard rails, machine-readable references, and stronger handoff alignment without forcing a new major.
+
+**Decision:**
+- Extend `APT-DESIGN-ARCHITECTURE` v2 as `candidate` with stricter MUST/NEVER boundary rules, deploy authority matrix, service-flow reference, and critical architecture gate language.
+- Add `APT-ARCHITECTURE-EXAMPLES.md` and `APT-ARCHITECTURE-REFERENCE.json` as external-first architecture enforcement artifacts.
+- Add those artifacts to manifest and AI review bundle handoff contracts.
+- Update architecture-related AI prompts with findings-first architecture gate behavior and merge-block policy for unresolved critical violations.
+
+**Rationale:**
+- Converts architecture from advisory guidance into enforceable operational contract.
+- Improves review consistency for humans and AI by pairing narrative doctrine with machine-readable checks.
+- Maintains partial v2 rollout safety without introducing v3 churn.
+
+**Alternatives Considered:**
+1. Keep architecture as principle-only doctrine - rejected: inconsistent review outcomes and drift risk.
+2. Start architecture v3 immediately - rejected: unnecessary major churn while v2 is still candidate.
+
+**Consequences:**
+- Positive: Stronger architecture governance, clearer handoff references, better AI review determinism.
+- Negative: Additional manifest/bundle maintenance and stricter review discipline required.
+
+---
+
+### [APT-008] Documentation Architecture Standardization (Definition-First)
+
+**Date:** 2026-04-05  
+**Author:** Codex  
+**Status:** Accepted
+
+**Context:**
+Documentation rules were present across multiple files but not yet defined as a first-class architecture standard with enforceable contracts, examples, and machine-readable checks.
+
+**Decision:**
+- Add Documentation Architecture as a major section in `APT-DESIGN-ARCHITECTURE` v2.
+- Introduce three external-first doctrine artifacts:
+  - `APT-ARCHITECTURE-DOC.md`
+  - `APT-ARCHITECTURE-DOC-EXAMPLES.md`
+  - `APT-ARCHITECTURE-DOC-REFERENCE.json`
+- Keep current public docs source under `apps/web/docs/design/` for now.
+- Define `apps/docs` and OpenAPI-generated API reference model as target-state contracts (planned, not yet active).
+- Add documentation-architecture checks to review bundle and AI prompt reading-order/gating contracts.
+
+**Rationale:**
+- Makes documentation a formal architecture layer rather than implicit process guidance.
+- Reduces internal/external leakage and source-of-truth drift.
+- Enables decision-safe migration to `apps/docs` later without forcing immediate file-structure churn.
+
+**Alternatives Considered:**
+1. Immediate migration to `apps/docs` in same pass - rejected: high change surface and avoidable risk.
+2. Keep documentation architecture as informal guidance - rejected: weak enforceability and inconsistent reviews.
+
+**Consequences:**
+- Positive: Clear documentation architecture contract with enforceable review gates and machine-readable policy.
+- Negative: Additional doctrine/manifest maintenance and phased migration coordination required.
+
+---
+
+### [APT-009] Doctrine Integrity Enforcement (Alias Sync + Metadata Contract)
+
+**Date:** 2026-04-05  
+**Author:** Codex  
+**Status:** Accepted
+
+**Context:**
+Audited doctrine surfaces showed drift between alias docs and manifest-selected latest sources, plus inconsistent metadata treatment. This reduced trust in review outcomes and AI/tool-driven governance checks.
+
+**Decision:**
+- Enforce `alias == latest version source` for all manifest-governed docs via automated verification and sync commands.
+- Add audited doctrine metadata verification across the six governed audit surfaces:
+  - `APT-DESIGN-THINKING.md`
+  - `APT-DESIGN-SYSTEM.md`
+  - `APT-DESIGN-ARCHITECTURE.md`
+  - `APT-DESIGN-SYSTEMS.md`
+  - `APT-CONTENT-STRATEGY.md`
+  - `APT-AI-REVIEW-BUNDLE.md`
+- Adopt strict-frontmatter governance for the audited set with no exceptions in this phase.
+- Normalize status vocabulary to include `candidate`.
+
+**Rationale:**
+- Eliminates compatibility alias drift as a hidden source of doctrine inconsistency.
+- Makes metadata contract checks predictable for both human reviewers and AI tooling.
+- Aligns policy language with actual rollout states already used in v2 governance.
+
+**Alternatives Considered:**
+1. Keep alias syncing as informal/manual process - rejected: high drift risk.
+2. Allow metadata exceptions in audited set - rejected: weakens contract clarity at rollout stage.
+
+**Consequences:**
+- Positive: deterministic doctrine integrity checks and stronger merge-gate enforcement.
+- Negative: stricter pre-merge discipline and additional validation steps in local workflow/CI.
+
+---
+
+### [APT-010] Architecture Doctrine Consolidation (Documentation Architecture Merge)
+
+**Date:** 2026-04-05  
+**Author:** Codex  
+**Status:** Accepted
+
+**Context:**
+`APT-DESIGN-ARCHITECTURE.md` and `APT-ARCHITECTURE-DOC.md` both described documentation architecture policy, which created duplicate authority and review ambiguity.
+
+**Decision:**
+- Consolidate doctrine authority into `APT-DESIGN-ARCHITECTURE.md` (Documentation Architecture section).
+- Keep `APT-ARCHITECTURE-DOC.md` as a compatibility shim for stable URLs and historical references.
+- Retain `APT-ARCHITECTURE-DOC-EXAMPLES.md` and `APT-ARCHITECTURE-DOC-REFERENCE.json` as supporting artifacts that reference the canonical section.
+- Update prompts, review bundle metadata, and governance/index docs to point to the consolidated source of truth.
+
+**Rationale:**
+- Removes duplicated doctrine ownership while preserving backward-compatible links.
+- Keeps external/public URL contracts stable.
+- Preserves compact doctrine structure with machine-readable and examples companions.
+
+**Alternatives Considered:**
+1. Keep duplicate doctrine files authoritative - rejected: unclear rule ownership and higher drift risk.
+2. Delete `APT-ARCHITECTURE-DOC.md` outright - rejected: breaks stable links and external references.
+
+**Consequences:**
+- Positive: single authoritative doctrine path with lower review ambiguity.
+- Negative: requires ongoing shim wording discipline so no second authority emerges.
+
+---
+
+### [APT-011] Design Docs 2-Zone Source Model (Publish-Generated Aliases)
+
+**Date:** 2026-04-05  
+**Author:** Codex  
+**Status:** Accepted
+
+**Context:**
+The source tree previously included compatibility alias files alongside versioned doctrine and static support artifacts. That layout increased source noise and made contributors treat aliases like authored files.
+
+**Decision:**
+- Adopt a strict 2-zone source model for design docs:
+  - `apps/web/docs/design/versions/` for governed authored doctrine
+  - `apps/web/docs/design/static/` for authored support contracts
+- Keep `apps/web/docs/design/APT-DESIGN-DOCS-MANIFEST.json` as the control plane for per-doc major routing and publish behavior.
+- Remove source alias files from `apps/web/docs/design/` root.
+- Keep public compatibility URLs by generating aliases at publish time into `/docs/design/*` (from versioned sources), while canonical majors continue at `/docs/design/v*/...`.
+- Update governance checks to enforce source-alias absence and metadata compliance.
+
+**Rationale:**
+- Reduces authored-source duplication and review noise.
+- Clarifies contributor workflow: edit only `versions/*` and `static/*`.
+- Preserves external/public URL stability without reintroducing source alias drift.
+
+**Alternatives Considered:**
+1. Keep source aliases with stricter sync checks - rejected: continued source clutter and contributor confusion.
+2. Remove aliases from both source and public URLs - rejected: breaks compatibility contracts for consumers.
+
+**Consequences:**
+- Positive: cleaner source structure, simpler edit model, unchanged public URL contracts.
+- Negative: docs/prompts/governance wording needed a broad alignment sweep; alias validation semantics changed from drift-check to source-absence policy.
+
+---
+
+### [APT-012] Phased Markdown Metadata Enforcement (Project-Wide)
+
+**Date:** 2026-04-05  
+**Author:** Codex  
+**Status:** Accepted
+
+**Context:**
+After adopting the design-docs 2-zone model, repo-wide documentation metadata remained inconsistent outside governed doctrine files. Immediate global blocking would create large migration risk.
+
+**Decision:**
+- Keep strict metadata enforcement for manifest-governed design doctrine artifacts.
+- Add a report-only project-wide `frontmatter-report` governance step now.
+- Enforce markdown metadata in phased waves:
+  - Wave 1 (2026-04-20): `apps/web/docs/design/static/*.md`, `apps/web/ai/prompts/*.md`
+  - Wave 2 (2026-05-15): `docs/*.md` and root operational docs
+  - Wave 3 (2026-06-15): `apps/worker/src/ai/docs/*.md`, `.github/*.md`
+- Maintain explicit rollout exceptions in `docs/DOCUMENTATION_METADATA_ROLLOUT.md`.
+
+**Rationale:**
+- Preserves merge velocity while removing ambiguity about enforcement direction.
+- Provides deterministic visibility now, strict blocking later, and clear ownership by wave.
+
+**Alternatives Considered:**
+1. Immediate global strict enforcement - rejected: high churn/risk in one pass.
+2. Keep metadata best-effort indefinitely - rejected: weak governance and drift risk.
+
+**Consequences:**
+- Positive: consistent roadmap to full metadata compliance with low disruption.
+- Negative: temporary dual state where some scopes are report-only until enforcement dates.

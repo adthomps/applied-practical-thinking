@@ -74,6 +74,25 @@ That separation keeps the site legible and prevents everything from collapsing i
 
 ---
 
+## 2-Zone Quick Reference
+
+Design doctrine source uses a strict 2-zone model:
+
+- `apps/web/docs/design/versions/v*/`  
+  canonical authored doctrine versions
+- `apps/web/docs/design/static/`  
+  canonical authored support contracts (review bundle, lint checklist, token contracts, AI instructions reference)
+
+Control plane:
+- `apps/web/docs/design/APT-DESIGN-DOCS-MANIFEST.json` maps per-doc majors and publish paths
+
+Generated outputs:
+- `/docs/design/*` latest aliases are generated at publish time
+- `/docs/design/v*/...` canonical major paths are generated at publish time
+- `apps/web/public/docs/*` is output-only, never authored source
+
+---
+
 ## What Good Design Doctrine Produces
 
 - A clear public vocabulary for how APT is organized
@@ -100,5 +119,4 @@ That separation keeps the site legible and prevents everything from collapsing i
 - [APT Content Strategy](./APT-CONTENT-STRATEGY.md)
 - [APT Systems Reference Models](./APT-DESIGN-SYSTEMS.md)
 - [APT Design Versioning](./APT-DESIGN-VERSIONING.md)
-
 

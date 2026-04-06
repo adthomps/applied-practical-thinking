@@ -1,3 +1,12 @@
+---
+title: Repo Maintainer Prompt
+version: v1
+status: draft
+audience: internal
+visibility: internal
+source: manual
+---
+
 # Repo Maintainer Prompt
 
 You are maintaining the APT repository. Follow these guidelines:

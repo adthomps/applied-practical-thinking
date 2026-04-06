@@ -1,3 +1,11 @@
+---
+title: BRAND.md
+version: v2
+status: candidate
+audience: developer
+visibility: public
+source: manual
+---
 # BRAND.md
 
 ## Purpose
@@ -6,8 +14,8 @@ Internal brand quick reference for repo contributors.
 
 Canonical brand and design behavior lives in:
 
-- `apps/web/docs/design/APT-DESIGN-SYSTEM.md`
-- `apps/web/docs/design/APT-DESIGN-THINKING.md`
+- `apps/web/docs/design/versions/v2/APT-DESIGN-SYSTEM.md`
+- `apps/web/docs/design/versions/v2/APT-DESIGN-THINKING.md`
 - `docs/DECISION_LOG.md`
 
 ## Current rules

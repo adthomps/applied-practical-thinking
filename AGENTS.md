@@ -1,3 +1,11 @@
+---
+title: AI Agents
+version: v2
+status: candidate
+audience: developer
+visibility: public
+source: manual
+---
 # AI Agents
 
 This document provides instructions for AI agents working on this codebase.

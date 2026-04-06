@@ -1,3 +1,11 @@
+---
+title: SECURITY.md
+version: v2
+status: candidate
+audience: developer
+visibility: public
+source: manual
+---
 # SECURITY.md
 
 ## Security Practices

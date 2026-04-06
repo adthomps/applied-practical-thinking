@@ -1,3 +1,11 @@
+---
+title: AI_AGENTS.md
+version: v2
+status: candidate
+audience: developer
+visibility: public
+source: manual
+---
 # AI_AGENTS.md
 
 ## AI Agent Contract

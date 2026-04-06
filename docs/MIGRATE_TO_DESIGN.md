@@ -1,3 +1,11 @@
+---
+title: MIGRATE_TO_DESIGN.md
+version: v2
+status: candidate
+audience: developer
+visibility: public
+source: manual
+---
 # MIGRATE_TO_DESIGN.md
 
 ## Status

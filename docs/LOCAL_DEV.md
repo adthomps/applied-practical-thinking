@@ -1,3 +1,11 @@
+---
+title: Local Development
+version: v2
+status: candidate
+audience: developer
+visibility: public
+source: manual
+---
 # Local Development
 
 This project uses a monorepo structure with separate apps for the frontend (web) and backend (worker). All development is done using pnpm workspaces and Vite for fast iteration.

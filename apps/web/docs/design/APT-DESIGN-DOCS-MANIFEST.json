@@ -99,6 +99,25 @@
       ]
     },
     {
+      "docId": "tokens-guide",
+      "slug": "tokens",
+      "title": "APT Tokens",
+      "description": "Human-readable companion for token values and enforcement contracts.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/APT-TOKENS.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/APT-TOKENS.md",
+          "canonicalPath": "/docs/design/v2/APT-TOKENS.md",
+          "publishedAt": "2026-04-05",
+          "changelog": "Initial tokens markdown guide aligned to APT-TOKENS.json and tokens.json contracts."
+        }
+      ]
+    },
+    {
       "docId": "design-architecture",
       "slug": "architecture",
       "title": "APT Design Architecture",
@@ -117,12 +136,107 @@
         },
         {
           "major": 2,
-          "semanticVersion": "2.0.0",
+          "semanticVersion": "2.4.0",
           "status": "candidate",
           "sourcePath": "versions/v2/APT-DESIGN-ARCHITECTURE.md",
           "canonicalPath": "/docs/design/v2/APT-DESIGN-ARCHITECTURE.md",
           "publishedAt": "2026-04-05",
-          "changelog": "v2 governance sync for strict doctrine enforcement with unchanged runtime boundaries."
+          "changelog": "2-zone source model documentation update: versions+static with manifest control plane and publish-generated aliases only."
+        }
+      ]
+    },
+    {
+      "docId": "documentation-architecture",
+      "slug": "documentation-architecture",
+      "title": "APT Documentation Architecture",
+      "description": "Compatibility shim entrypoint for documentation architecture; canonical doctrine is in APT-DESIGN-ARCHITECTURE.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/APT-ARCHITECTURE-DOC.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.1.0",
+          "status": "deprecated",
+          "sourcePath": "versions/v2/APT-ARCHITECTURE-DOC.md",
+          "canonicalPath": "/docs/design/v2/APT-ARCHITECTURE-DOC.md",
+          "publishedAt": "2026-04-05",
+          "changelog": "Converted to compatibility shim; canonical documentation architecture doctrine moved to APT-DESIGN-ARCHITECTURE."
+        }
+      ]
+    },
+    {
+      "docId": "documentation-architecture-examples",
+      "slug": "documentation-architecture-examples",
+      "title": "APT Documentation Architecture Examples",
+      "description": "Compatibility examples stub that preserves stable URLs and redirects normative policy to the canonical design architecture section.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/APT-ARCHITECTURE-DOC-EXAMPLES.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.1.0",
+          "status": "deprecated",
+          "sourcePath": "versions/v2/APT-ARCHITECTURE-DOC-EXAMPLES.md",
+          "canonicalPath": "/docs/design/v2/APT-ARCHITECTURE-DOC-EXAMPLES.md",
+          "publishedAt": "2026-04-05",
+          "changelog": "Converted to thin compatibility stub; canonical doctrine authority remains in APT-DESIGN-ARCHITECTURE."
+        }
+      ]
+    },
+    {
+      "docId": "documentation-architecture-reference",
+      "slug": "documentation-architecture-reference",
+      "title": "APT Documentation Architecture Reference",
+      "description": "Compatibility reference stub that preserves stable URLs and points to canonical documentation architecture doctrine.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/APT-ARCHITECTURE-DOC-REFERENCE.json",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.1.0",
+          "status": "deprecated",
+          "sourcePath": "versions/v2/APT-ARCHITECTURE-DOC-REFERENCE.json",
+          "canonicalPath": "/docs/design/v2/APT-ARCHITECTURE-DOC-REFERENCE.json",
+          "publishedAt": "2026-04-05",
+          "changelog": "Converted to thin compatibility metadata stub; canonical rules live in APT-DESIGN-ARCHITECTURE."
+        }
+      ]
+    },
+    {
+      "docId": "architecture-examples",
+      "slug": "architecture-examples",
+      "title": "APT Design Architecture Examples",
+      "description": "Good/bad examples for boundary ownership, routing, deploy authority, and AI handoff behavior.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/APT-ARCHITECTURE-EXAMPLES.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/APT-ARCHITECTURE-EXAMPLES.md",
+          "canonicalPath": "/docs/design/v2/APT-ARCHITECTURE-EXAMPLES.md",
+          "publishedAt": "2026-04-05",
+          "changelog": "Initial architecture examples contract for external-first review and implementation guidance."
+        }
+      ]
+    },
+    {
+      "docId": "architecture-reference",
+      "slug": "architecture-reference",
+      "title": "APT Design Architecture Reference",
+      "description": "Machine-readable architecture rules and critical-gate checklist contract for AI/tooling.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/APT-ARCHITECTURE-REFERENCE.json",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/APT-ARCHITECTURE-REFERENCE.json",
+          "canonicalPath": "/docs/design/v2/APT-ARCHITECTURE-REFERENCE.json",
+          "publishedAt": "2026-04-05",
+          "changelog": "Initial machine-readable architecture enforcement and fast-fail rules."
         }
       ]
     },

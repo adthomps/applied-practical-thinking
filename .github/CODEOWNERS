@@ -1,6 +1,16 @@
+# Global fallback owner
+* @all
+
+# Frontend
 /apps/web/                 @frontend-team
+
+# Backend
 /apps/worker/              @backend-team
+
+# Shared packages
 /packages/ui/              @design-team
 /apps/web/ai/prompts/      @ai-team
+
+# Documentation
 /apps/web/docs/design/     @all
 /docs/                     @all

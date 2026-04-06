@@ -1,3 +1,16 @@
+---
+docId: ai-review-bundle
+slug: review-bundle
+major: 2
+semanticVersion: 2.3.0
+status: candidate
+publishedAt: 2026-04-05
+title: APT AI Review Bundle
+version: v2
+audience: developer
+visibility: public
+source: manual
+---
 # APT AI Review Bundle
 
 This bundle is the fastest public handoff for an AI reviewer, external collaborator, or working agent that needs to review APT work against the governing standards.
@@ -6,7 +19,7 @@ Start here, then open or download the linked doctrine documents that match the w
 
 Version metadata:
 
-- Bundle version: `2.0.0`
+- Bundle version: `2.3.0`
 - Design docs majors: `1`, `2` (mixed-major rollout)
 - Canonical public root pattern: `/docs/design/v{major}/`
 - Latest-stable alias root: `/docs/design/`
@@ -21,15 +34,27 @@ Version metadata:
    - Use when reviewing problem framing, constraints, tradeoffs, and decision quality.
 3. `APT-DESIGN-SYSTEM.md`
    - Use when reviewing tokens, shared primitives, component structure, and visual consistency.
-4. `APT-DESIGN-ARCHITECTURE.md`
-   - Use when reviewing repo boundaries, deploy surfaces, API ownership, and AI prompt ownership.
-5. `APT-CONTENT-STRATEGY.md`
+4. `APT-TOKENS.md`
+   - Human-readable token guide covering value/enforcement contract roles and update workflow.
+5. `APT-DESIGN-ARCHITECTURE.md`
+   - Use when reviewing repo boundaries, deploy surfaces, API ownership, AI prompt ownership, and the canonical Documentation Architecture section.
+6. `APT-ARCHITECTURE-EXAMPLES.md`
+   - Use when validating implementation against good/bad architecture examples and fast-fail boundary checks.
+7. `APT-ARCHITECTURE-REFERENCE.json`
+   - Machine-readable architecture rules/checklist for AI or tooling-driven enforcement.
+8. `APT-ARCHITECTURE-DOC.md`
+   - Compatibility shim entrypoint; canonical documentation architecture doctrine lives in `APT-DESIGN-ARCHITECTURE.md` (Documentation Architecture section).
+9. `APT-ARCHITECTURE-DOC-EXAMPLES.md`
+   - Good/bad documentation architecture examples and fast-fail patterns.
+10. `APT-ARCHITECTURE-DOC-REFERENCE.json`
+   - Machine-readable documentation architecture checks for policy and review tooling.
+11. `APT-CONTENT-STRATEGY.md`
    - Use when reviewing navigation, section roles, visitor intent, and content placement.
-6. `APT-DESIGN-SYSTEMS.md`
+12. `APT-DESIGN-SYSTEMS.md`
    - Use when reviewing reference models, system framing, and how relationships are made visible.
-7. `APT-AI-INSTRUCTIONS-REFERENCE.md`
+13. `APT-AI-INSTRUCTIONS-REFERENCE.md`
    - External strict AI instruction contract for collaborators and tool-driven handoffs.
-8. `APT-DESIGN-SYSTEM-LINT-CHECKLIST.md`
+14. `APT-DESIGN-SYSTEM-LINT-CHECKLIST.md`
    - Critical pass-gate checklist for validating design-system compliance before merge.
 
 ---
@@ -55,6 +80,10 @@ Version metadata:
 - `APT-REVIEW-STANDARD.md`
 - the target files
 - `APT-DESIGN-ARCHITECTURE.md`
+- `APT-ARCHITECTURE-EXAMPLES.md`
+- `APT-ARCHITECTURE-REFERENCE.json`
+- `APT-DESIGN-ARCHITECTURE.md` (Documentation Architecture section)
+- `APT-ARCHITECTURE-DOC-REFERENCE.json`
 
 ### Reviewing New Design Doctrine or Taxonomy
 
@@ -62,6 +91,7 @@ Version metadata:
 - the target doctrine or IA change
 - `APT-DESIGN-THINKING.md`
 - `APT-CONTENT-STRATEGY.md`
+- `APT-DESIGN-ARCHITECTURE.md` (Documentation Architecture section)
 
 ---
 

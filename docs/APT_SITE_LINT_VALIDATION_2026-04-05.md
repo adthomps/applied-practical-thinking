@@ -1,3 +1,11 @@
+---
+title: APT Site Lint Validation Report
+version: v2
+status: candidate
+audience: developer
+visibility: public
+source: manual
+---
 # APT Site Lint Validation Report
 
 Date: 2026-04-05
