@@ -45,8 +45,6 @@ export function useDesignDocVersion(slug: string): DesignDocVersionState {
 
   useEffect(() => {
     let cancelled = false;
-    setLoading(true);
-    setError(null);
 
     fetchDesignDocVersions(slug)
       .then((response) => {
