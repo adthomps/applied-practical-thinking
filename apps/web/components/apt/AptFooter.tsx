@@ -1,7 +1,10 @@
-import { siteConfig } from "@/data/site";
+import { authorConfig, siteConfig } from "@/data/site";
 
 export function AptFooter() {
-  const year = new Date().getFullYear();
+  const currentYear = new Date().getFullYear();
+  const joinedYearMatch = authorConfig.joinedDate.match(/\d{4}/);
+  const startYear = joinedYearMatch ? Number(joinedYearMatch[0]) : currentYear;
+  const yearLabel = startYear < currentYear ? `${startYear}-${currentYear}` : `${currentYear}`;
   return (
     <footer className="border-t border-border bg-background">
       <div className="container py-8">
@@ -10,7 +13,10 @@ export function AptFooter() {
             {siteConfig.name} — {siteConfig.fullName}
           </p>
           <p className="text-xs text-muted-foreground mt-1">
-            {siteConfig.disclaimer} &copy; {year} {siteConfig.fullName}. All rights reserved.
+            {siteConfig.disclaimer}
+          </p>
+          <p className="text-xs text-muted-foreground mt-1">
+            © {yearLabel} {authorConfig.name}. Applied Practical Thinking. All rights reserved.
           </p>
           <hr className="my-4 border-border/60" />
           <p className="text-xs text-muted-foreground mt-2">
