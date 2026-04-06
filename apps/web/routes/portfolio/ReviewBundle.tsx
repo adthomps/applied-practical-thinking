@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import {
   ArrowRight,
   Bot,
+  BookOpen,
   Download,
   FileText,
   HardDriveDownload,
   Network,
   Palette,
   Route,
+  ShieldCheck,
   Sparkles,
 } from "lucide-react";
 import {
@@ -21,6 +23,7 @@ import {
   AptCardTitle,
   AptTag,
   SectionIntro,
+  ValidationStatusCallout,
 } from "@/components/apt";
 import { useReviewBundleManifest } from "@/hooks/useReviewBundleManifest";
 
@@ -86,12 +89,14 @@ function filenameFromUrl(url: string) {
 
 const bundleIconMap: Record<string, typeof Bot> = {
   bot: Bot,
+  "book-open": BookOpen,
   download: Download,
   "file-text": FileText,
   "hard-drive-download": HardDriveDownload,
   network: Network,
   palette: Palette,
   route: Route,
+  "shield-check": ShieldCheck,
   sparkles: Sparkles,
 };
 
@@ -207,6 +212,14 @@ export default function PortfolioReviewBundle() {
             <p className="text-sm text-muted-foreground">Review bundle metadata could not be loaded right now.</p>
           )}
         </SectionIntro>
+      </section>
+
+      <section>
+        <ValidationStatusCallout
+          title="Validation Snapshot"
+          description="This bundle and the validation surface are paired: use validation for current conformance status, and this bundle for standards and handoff assets."
+          showReviewBundleLink={false}
+        />
       </section>
 
       <section>

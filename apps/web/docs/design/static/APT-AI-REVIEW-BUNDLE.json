@@ -1,13 +1,13 @@
 {
   "id": "apt-ai-review-bundle",
   "title": "APT AI Review Bundle",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "docsMajor": 2,
   "docsMajors": [
     1,
     2
   ],
-  "updatedAt": "2026-04-05",
+  "updatedAt": "2026-04-06",
   "compatibility": {
     "externalVisibility": "latest-stable-only",
     "canonicalRoot": "/docs/design/v{major}/",
@@ -19,7 +19,10 @@
   "entrypoints": {
     "route": "/design/review-bundle",
     "markdownBundle": "/docs/design/APT-AI-REVIEW-BUNDLE.md",
-    "reviewStandard": "/docs/design/APT-REVIEW-STANDARD.md"
+    "reviewStandard": "/docs/design/APT-REVIEW-STANDARD.md",
+    "validationRoute": "/design/review-bundle",
+    "validationMarkdown": "/docs/design/validation/LATEST.md",
+    "validationJson": "/docs/design/validation/LATEST.json"
   },
   "bundleFiles": [
     {
@@ -214,6 +217,38 @@
         "tagVariant": "outline",
         "icon": "hard-drive-download",
         "description": "Machine-readable checklist contract for automated lint and policy tooling."
+      }
+    },
+    {
+      "id": "validation-status-markdown",
+      "title": "Design Validation Status Markdown (Public-safe)",
+      "url": "/docs/design/validation/LATEST.md",
+      "contentType": "text/markdown",
+      "ui": {
+        "cardOrder": 17,
+        "ctaOrder": 5,
+        "ctaLabel": "Download Validation Markdown",
+        "ctaVariant": "outline",
+        "tagLabel": "Validation",
+        "tagVariant": "secondary",
+        "icon": "shield-check",
+        "description": "Public-safe latest validation status snapshot for Design System, Architecture, and Docs Governance."
+      }
+    },
+    {
+      "id": "validation-status-json",
+      "title": "Design Validation Status JSON (Public-safe)",
+      "url": "/docs/design/validation/LATEST.json",
+      "contentType": "application/json",
+      "ui": {
+        "cardOrder": 18,
+        "ctaOrder": 6,
+        "ctaLabel": "Download Validation JSON",
+        "ctaVariant": "outline",
+        "tagLabel": "Machine Readable",
+        "tagVariant": "outline",
+        "icon": "hard-drive-download",
+        "description": "Public-safe machine-readable validation status for AI review and automation workflows."
       }
     },
     {
@@ -421,6 +456,30 @@
       ]
     },
     {
+      "id": "validation-status-markdown",
+      "title": "Design Validation Status Markdown (Public-safe)",
+      "path": "/docs/design/validation/LATEST.md",
+      "format": "markdown",
+      "role": "validation-status-human-readable",
+      "useFor": [
+        "human-readable current governance status",
+        "review readiness snapshot",
+        "public-safe compliance context"
+      ]
+    },
+    {
+      "id": "validation-status-json",
+      "title": "Design Validation Status JSON (Public-safe)",
+      "path": "/docs/design/validation/LATEST.json",
+      "format": "json",
+      "role": "validation-status-machine-readable",
+      "useFor": [
+        "AI and tooling ingestion",
+        "status gating context",
+        "public-safe governance automation"
+      ]
+    },
+    {
       "id": "documentation-architecture",
       "title": "APT Documentation Architecture",
       "path": "/docs/design/APT-ARCHITECTURE-DOC.md",
@@ -495,7 +554,8 @@
         "design-architecture",
         "architecture-examples",
         "architecture-reference-json",
-        "documentation-architecture-reference-json"
+        "documentation-architecture-reference-json",
+        "validation-status-json"
       ],
       "requiresTargetArtifact": true,
       "ui": {
@@ -512,7 +572,8 @@
         "tokens-guide",
         "content-strategy",
         "design-architecture",
-        "documentation-architecture-reference-json"
+        "documentation-architecture-reference-json",
+        "validation-status-markdown"
       ],
       "requiresTargetArtifact": true,
       "ui": {

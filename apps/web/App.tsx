@@ -35,7 +35,6 @@ const PortfolioDesignThinking = lazyWithRetry(() => import("./routes/portfolio/D
 const PortfolioDesignThinkingFrameworkDetail = lazyWithRetry(() => import("./routes/portfolio/DesignThinkingFrameworkDetail"));
 const PortfolioDesignArchitecture = lazyWithRetry(() => import("./routes/portfolio/DesignArchitecture"));
 const PortfolioDesignArchitecturePatternDetail = lazyWithRetry(() => import("./routes/portfolio/DesignArchitecturePatternDetail"));
-const PortfolioDesignValidation = lazyWithRetry(() => import("./routes/portfolio/DesignValidation"));
 const PortfolioContentStrategy = lazyWithRetry(() => import("./routes/portfolio/ContentStrategy"));
 const PortfolioReviewBundle = lazyWithRetry(() => import("./routes/portfolio/ReviewBundle"));
 const PortfolioLiveDemos = lazyWithRetry(() => import("./routes/portfolio/LiveDemos"));
@@ -139,7 +138,6 @@ const App = () => (
             <Route path="/design/thinking/:framework" element={<PortfolioDesignThinkingFrameworkDetail />} />
             <Route path="/design/architecture" element={<PortfolioDesignArchitecture />} />
             <Route path="/design/architecture/:pattern" element={<PortfolioDesignArchitecturePatternDetail />} />
-            <Route path="/design/validation" element={<PortfolioDesignValidation />} />
             <Route path="/design/systems" element={<Systems />} />
             <Route path="/design/systems/:id" element={<SystemDetail />} />
             <Route path="/design/content-strategy" element={<PortfolioContentStrategy />} />
@@ -168,7 +166,6 @@ const App = () => (
             <Route path="/portfolio/design-system" element={<Navigate to="/design/system" replace />} />
             <Route path="/portfolio/design-thinking" element={<Navigate to="/design/thinking" replace />} />
             <Route path="/portfolio/design-architecture" element={<Navigate to="/design/architecture" replace />} />
-            <Route path="/portfolio/design-validation" element={<Navigate to="/design/validation" replace />} />
             <Route path="/portfolio/design-systems" element={<Navigate to="/design/systems" replace />} />
             <Route path="/portfolio/content-strategy" element={<Navigate to="/design/content-strategy" replace />} />
             <Route path="/portfolio/live-demos" element={<Navigate to="/experiments/live-demos" replace />} />

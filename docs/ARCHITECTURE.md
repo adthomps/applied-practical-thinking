@@ -52,7 +52,7 @@ source: manual
 - Source aliases are not stored in `apps/web/docs/design`; they are generated during publish to `apps/web/public/docs/design/*`
 - Validation reporting artifacts are generated under `reports/validation/` (`LATEST.json`, `LATEST.md`, plus timestamped run files)
 - Public-safe validation snapshots are published to `/docs/design/validation/LATEST.json` and `/docs/design/validation/LATEST.md`
-- Public validation route: `/design/validation`
+- Public validation status is surfaced in `/design/review-bundle`
 - External publishing exposes only the latest stable major unless explicitly changed by policy
 
 ## Repository Structure
