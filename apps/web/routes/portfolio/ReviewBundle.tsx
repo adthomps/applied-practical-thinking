@@ -318,11 +318,6 @@ export default function PortfolioReviewBundle() {
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {bundleCards.map((doc) => {
             const Icon = doc.icon;
-            const preferredMajor = docsMajors[0];
-            const canonicalPath =
-              preferredMajor && doc.path.startsWith("/docs/design/") && !/\/docs\/design\/v\d+\//.test(doc.path)
-                ? doc.path.replace("/docs/design/", `/docs/design/v${preferredMajor}/`)
-                : null;
             return (
               <AptCard key={doc.id} variant="interactive" padding="large" className="h-full flex flex-col">
                 <AptCardHeader className="p-0">
@@ -353,13 +348,6 @@ export default function PortfolioReviewBundle() {
                       Download
                     </a>
                   </AptButton>
-                  {canonicalPath ? (
-                    <AptButton variant="ghost" size="sm" asChild>
-                      <a href={canonicalPath} target="_blank" rel="noreferrer">
-                        Canonical
-                      </a>
-                    </AptButton>
-                  ) : null}
                 </AptCardFooter>
               </AptCard>
             );
