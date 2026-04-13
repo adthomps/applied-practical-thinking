@@ -1,17 +1,19 @@
 ---
 title: Search
+slug: patterns/search
+title: Search
 version: v2
+major: 2
+semanticVersion: 2.0.0
+status: candidate
+publishedAt: 2026-04-12
 description: Search input and results pattern with suggestions and keyboard interactions.
----
 
 ## Intent
 
 Provide a fast, discoverable search input with optional suggestions, typeahead, and result navigation.
 
 ## Anatomy
-
-- Search input
-- Suggestions / typeahead list
 - Result list / navigation
 
 ## Accessibility
@@ -35,9 +37,6 @@ See `examples/search.example.tsx`.
 Debounce input before calling APIs and prefer server-side search for large corpora. Support query param sync.
 
 ## Variants
-
-- Inline search
-- Full-screen search overlay
 - Faceted search
 
 ## Tests & QA

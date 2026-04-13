@@ -1,6 +1,12 @@
 ---
+docId: pattern-notification-tray
+slug: patterns/notification-tray
 title: Notification Tray
 version: v2
+major: 2
+semanticVersion: 2.0.0
+status: candidate
+publishedAt: 2026-04-12
 description: Persistent, dismissible tray for system and account notifications.
 ---
 

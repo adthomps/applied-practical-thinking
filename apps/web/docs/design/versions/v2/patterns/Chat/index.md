@@ -1,6 +1,12 @@
 ---
+docId: pattern-chat
+slug: patterns/chat
 title: Chat
 version: v2
+major: 2
+semanticVersion: 2.0.0
+status: candidate
+publishedAt: 2026-04-12
 description: Real-time conversational UI pattern for user-agent interactions.
 ---
 

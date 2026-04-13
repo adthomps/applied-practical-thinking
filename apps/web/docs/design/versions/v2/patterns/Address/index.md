@@ -1,6 +1,12 @@
 ---
+docId: pattern-address
+slug: patterns/address
 title: Address
 version: v2
+major: 2
+semanticVersion: 2.0.0
+status: candidate
+publishedAt: 2026-04-12
 description: Standardized pattern for capturing postal and billing addresses.
 ---
 

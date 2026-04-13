@@ -1,6 +1,12 @@
 ---
+docId: pattern-filters
+slug: patterns/filters
 title: Filters
 version: v2
+major: 2
+semanticVersion: 2.0.0
+status: candidate
+publishedAt: 2026-04-12
 description: UI patterns for filtering collections and result sets.
 ---
 

@@ -1,6 +1,12 @@
 ---
 title: One-Time Passcode (OTP)
+docId: pattern-one-time-passcode
+slug: patterns/one-time-passcode
 version: v2
+major: 2
+semanticVersion: 2.0.0
+status: candidate
+publishedAt: 2026-04-12
 description: Short-lived passcode entry pattern for authentication flows.
 ---
 

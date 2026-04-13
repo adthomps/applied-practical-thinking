@@ -1,6 +1,12 @@
 ---
+docId: pattern-dynamic-table
+slug: patterns/dynamic-table
 title: Dynamic Table
 version: v2
+major: 2
+semanticVersion: 2.0.0
+status: candidate
+publishedAt: 2026-04-12
 description: Tables that support client-side interactions: sorting, filtering, pagination, and column actions.
 ---
 

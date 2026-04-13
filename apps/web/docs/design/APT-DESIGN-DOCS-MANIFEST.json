@@ -393,5 +393,253 @@
         }
       ]
     }
+    ,
+    {
+      "docId": "pattern-address",
+      "slug": "patterns/address",
+      "title": "Address",
+      "description": "Address input and validation pattern for capture and formatting.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/patterns/Address.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/patterns/Address/index.md",
+          "canonicalPath": "/docs/design/v2/patterns/Address/index.md",
+          "publishedAt": "2026-04-12",
+          "changelog": "Scaffolded pattern doc."
+        }
+      ]
+    },
+    {
+      "docId": "pattern-application-layout",
+      "slug": "patterns/application-layout",
+      "title": "Application Layout",
+      "description": "Layout patterns and scaffolding for multi-screen applications.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/patterns/Application-Layout.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/patterns/Application-Layout/index.md",
+          "canonicalPath": "/docs/design/v2/patterns/Application-Layout/index.md",
+          "publishedAt": "2026-04-12",
+          "changelog": "Scaffolded pattern doc."
+        }
+      ]
+    },
+    {
+      "docId": "pattern-card-input",
+      "slug": "patterns/card-input",
+      "title": "Card Input",
+      "description": "Composable card-based input pattern for compact data capture.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/patterns/Card-Input.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/patterns/Card-Input/index.md",
+          "canonicalPath": "/docs/design/v2/patterns/Card-Input/index.md",
+          "publishedAt": "2026-04-12",
+          "changelog": "Scaffolded pattern doc."
+        }
+      ]
+    },
+    {
+      "docId": "pattern-chat",
+      "slug": "patterns/chat",
+      "title": "Chat",
+      "description": "Conversational UI pattern including streaming, turns, and moderation guidance.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/patterns/Chat.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/patterns/Chat/index.md",
+          "canonicalPath": "/docs/design/v2/patterns/Chat/index.md",
+          "publishedAt": "2026-04-12",
+          "changelog": "Scaffolded pattern doc."
+        }
+      ]
+    },
+    {
+      "docId": "pattern-dynamic-table",
+      "slug": "patterns/dynamic-table",
+      "title": "Dynamic Table",
+      "description": "Tables with client-side operations: sorting, filtering, and virtualized rendering.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/patterns/Dynamic-Table.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/patterns/Dynamic-Table/index.md",
+          "canonicalPath": "/docs/design/v2/patterns/Dynamic-Table/index.md",
+          "publishedAt": "2026-04-12",
+          "changelog": "Scaffolded pattern doc."
+        }
+      ]
+    },
+    {
+      "docId": "pattern-feedback-status",
+      "slug": "patterns/feedback-status",
+      "title": "Feedback & Status",
+      "description": "Transient feedback patterns: toasts, banners, and persistent status components.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/patterns/Feedback-Status.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/patterns/Feedback-Status/index.md",
+          "canonicalPath": "/docs/design/v2/patterns/Feedback-Status/index.md",
+          "publishedAt": "2026-04-12",
+          "changelog": "Scaffolded pattern doc."
+        }
+      ]
+    },
+    {
+      "docId": "pattern-file-upload",
+      "slug": "patterns/file-upload",
+      "title": "File Upload",
+      "description": "Client & server file upload pattern, chunking, progress, and validation.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/patterns/File-Upload.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/patterns/File-Upload/index.md",
+          "canonicalPath": "/docs/design/v2/patterns/File-Upload/index.md",
+          "publishedAt": "2026-04-12",
+          "changelog": "Scaffolded pattern doc."
+        }
+      ]
+    },
+    {
+      "docId": "pattern-filters",
+      "slug": "patterns/filters",
+      "title": "Filters",
+      "description": "Filtering patterns for lists and search results with composable controls.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/patterns/Filters.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/patterns/Filters/index.md",
+          "canonicalPath": "/docs/design/v2/patterns/Filters/index.md",
+          "publishedAt": "2026-04-12",
+          "changelog": "Scaffolded pattern doc."
+        }
+      ]
+    },
+    {
+      "docId": "pattern-forms",
+      "slug": "patterns/forms",
+      "title": "Forms",
+      "description": "Form patterns, validation, progressive disclosure, and large-form ergonomics.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/patterns/Forms.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/patterns/Forms/index.md",
+          "canonicalPath": "/docs/design/v2/patterns/Forms/index.md",
+          "publishedAt": "2026-04-12",
+          "changelog": "Scaffolded pattern doc."
+        }
+      ]
+    },
+    {
+      "docId": "pattern-notification-tray",
+      "slug": "patterns/notification-tray",
+      "title": "Notification Tray",
+      "description": "Persistent notification center and ephemeral tray interactions.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/patterns/Notification-Tray.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/patterns/Notification-Tray/index.md",
+          "canonicalPath": "/docs/design/v2/patterns/Notification-Tray/index.md",
+          "publishedAt": "2026-04-12",
+          "changelog": "Scaffolded pattern doc."
+        }
+      ]
+    },
+    {
+      "docId": "pattern-one-time-passcode",
+      "slug": "patterns/one-time-passcode",
+      "title": "One-Time Passcode",
+      "description": "OTP input pattern for short-lived authentication codes.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/patterns/One-Time-Passcode.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/patterns/One-Time-Passcode/index.md",
+          "canonicalPath": "/docs/design/v2/patterns/One-Time-Passcode/index.md",
+          "publishedAt": "2026-04-12",
+          "changelog": "Scaffolded pattern doc."
+        }
+      ]
+    },
+    {
+      "docId": "pattern-search",
+      "slug": "patterns/search",
+      "title": "Search",
+      "description": "Search input and results pattern with suggestions and keyboard interactions.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/patterns/Search.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/patterns/Search/index.md",
+          "canonicalPath": "/docs/design/v2/patterns/Search/index.md",
+          "publishedAt": "2026-04-12",
+          "changelog": "Scaffolded pattern doc."
+        }
+      ]
+    },
+    {
+      "docId": "pattern-wizard",
+      "slug": "patterns/wizard",
+      "title": "Wizard",
+      "description": "Multi-step guided flow pattern for complex, staged tasks.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/patterns/Wizard.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/patterns/Wizard/index.md",
+          "canonicalPath": "/docs/design/v2/patterns/Wizard/index.md",
+          "publishedAt": "2026-04-12",
+          "changelog": "Scaffolded pattern doc."
+        }
+      ]
+    }
   ]
 }

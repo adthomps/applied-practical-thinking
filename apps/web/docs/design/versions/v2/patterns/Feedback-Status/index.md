@@ -1,6 +1,12 @@
 ---
+docId: pattern-feedback-status
+slug: patterns/feedback-status
 title: Feedback / Status
 version: v2
+major: 2
+semanticVersion: 2.0.0
+status: candidate
+publishedAt: 2026-04-12
 description: Patterns for transient and persistent feedback indicating status, success, error, and loading.
 ---
 

@@ -1,6 +1,12 @@
 ---
 title: Wizard
+docId: pattern-wizard
+slug: patterns/wizard
 version: v2
+major: 2
+semanticVersion: 2.0.0
+status: candidate
+publishedAt: 2026-04-12
 description: Multi-step guided flow pattern for complex, staged tasks.
 ---
 
