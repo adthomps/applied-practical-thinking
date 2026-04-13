@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "QueryResponse",
+  "type": "object",
+  "required": ["queryId", "candidates", "composedResponse"],
+  "properties": {
+    "queryId": { "type": "string" },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["chunkId", "score", "snippet"],
+        "properties": {
+          "chunkId": { "type": "string" },
+          "score": { "type": "number" },
+          "snippet": { "type": "string" },
+          "citation": { "type": "string" }
+        }
+      }
+    },
+    "composedResponse": { "type": "object" }
+  },
+  "additionalProperties": true
+}

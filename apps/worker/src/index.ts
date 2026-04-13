@@ -3,6 +3,9 @@ import { Hono } from 'hono';
 import { chatRoute } from './routes/chat';
 import { publicContentRoute } from './routes/publicContent';
 import { reportRoute } from './routes/report';
+import { ingestRoute } from './routes/ingest';
+import { queryRoute } from './routes/query';
+import { feedbackRoute } from './routes/feedback';
 
 const app = new Hono();
 
@@ -36,6 +39,9 @@ app.get('/api/debug/env', (c) => {
 app.route('/', chatRoute); // Mount chatRoute at root so /api/chat works
 app.route('/', publicContentRoute);
 app.route('/', reportRoute); // Mount reportRoute at root so /api/report works
+app.route('/', ingestRoute);
+app.route('/', queryRoute);
+app.route('/', feedbackRoute);
 
 app.get('/', (c) => c.text('APT Worker API is running'));
 

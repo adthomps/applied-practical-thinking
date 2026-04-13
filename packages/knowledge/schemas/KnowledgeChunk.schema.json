@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "KnowledgeChunk",
+  "type": "object",
+  "required": ["id", "source", "text", "publishedAt"],
+  "properties": {
+    "id": { "type": "string" },
+    "source": { "type": "string" },
+    "path": { "type": "string" },
+    "text": { "type": "string" },
+    "tokens": { "type": "integer" },
+    "embeddingId": { "type": "string" },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "visibility": { "type": "string", "enum": ["public", "private", "internal"] }
+      },
+      "additionalProperties": true
+    },
+    "publishedAt": { "type": "string", "format": "date" }
+  },
+  "additionalProperties": true
+}

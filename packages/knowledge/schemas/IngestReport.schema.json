@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "IngestReport",
+  "type": "object",
+  "required": ["ingestId", "acceptedCount", "rejectedCount"],
+  "properties": {
+    "ingestId": { "type": "string" },
+    "acceptedCount": { "type": "integer" },
+    "rejectedCount": { "type": "integer" },
+    "fileSummaries": { "type": "array", "items": { "type": "object" } },
+    "validationErrors": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true
+}

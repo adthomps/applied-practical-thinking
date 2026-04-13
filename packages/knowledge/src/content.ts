@@ -127,3 +127,46 @@ export interface PublicReviewBundleManifest {
   documents?: PublicReviewBundleDocument[];
   recommendedHandoffs?: PublicReviewBundleHandoff[];
 }
+
+// Knowledge Engine types (ingest/index/query contracts)
+export interface KnowledgeChunk {
+  id: string;
+  source: string;
+  path?: string;
+  text: string;
+  tokens?: number;
+  embeddingId?: string;
+  metadata?: {
+    tags?: string[];
+    visibility?: 'public' | 'private' | 'internal';
+    [key: string]: unknown;
+  };
+  publishedAt: string;
+  [key: string]: unknown;
+}
+
+export interface IngestReport {
+  ingestId: string;
+  acceptedCount: number;
+  rejectedCount: number;
+  fileSummaries?: Array<Record<string, unknown>>;
+  validationErrors?: string[];
+}
+
+export interface QueryCandidate {
+  chunkId: string;
+  score: number;
+  snippet: string;
+  citation?: string;
+}
+
+export interface QueryResponse {
+  queryId: string;
+  candidates: QueryCandidate[];
+  composedResponse: {
+    text?: string;
+    citations?: string[];
+    confidence?: number;
+    [key: string]: unknown;
+  };
+}

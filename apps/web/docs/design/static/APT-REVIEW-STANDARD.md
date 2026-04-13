@@ -99,6 +99,7 @@ Use the design-architecture lens to verify that code and content live in the cor
 - prompts or standards drift into undocumented locations
 
 Reference: `APT-DESIGN-ARCHITECTURE.md`
+Reference (runtime): `APT-KNOWLEDGE-ENGINE.md`
 
 ### 4. Systems And Reference Models
 
@@ -118,6 +119,8 @@ Use the systems lens to verify that the work expresses relationships, not isolat
 - reference-model pages and exploratory pages use the same framing without distinction
 
 Reference: `Systems.tsx`
+
+Reference (support): `APT-SUPPORT-DESIGN.md`
 
 ### 5. Content Strategy
 
@@ -192,6 +195,7 @@ Then provide the smallest relevant set of supporting files:
 
 - `APT-REVIEW-STANDARD.md`
 - one of `APT-DESIGN-THINKING.md`, `APT-DESIGN-SYSTEM.md`, or `APT-DESIGN-ARCHITECTURE.md`
+ - optionally include `APT-SUPPORT-DESIGN.md` or `APT-KNOWLEDGE-ENGINE.md` when the review touches operational response or runtime behavior
 - the target file or route under review
 
 The AI should report:
