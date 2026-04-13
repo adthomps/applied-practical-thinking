@@ -63,6 +63,81 @@ Hard constraints:
 
 ---
 
+## Base Elements
+
+### About Design Tokens
+
+Design tokens are the single source of truth for color, spacing, radius, motion, and elevation. Tokens are semantic (never raw color values) and intended to be consumed as CSS variables or tokenized classes. Tokens map to design intent (e.g., `surface`, `card`, `primary`, `muted`) and should be used by components and layout primitives.
+
+Example tokens:
+
+```css
+/* color (semantic) */
+--background, --foreground, --card, --primary, --accent
+/* spacing */
+--space-1, --space-2, --space-3
+/* radius */
+--radius-sm, --radius-md, --radius-lg
+/* elevation */
+--elevation-0, --elevation-1, --elevation-2
+```
+
+### Elevation
+
+Elevation represents stacking and emphasis through tokenized shadows and subtle surface tints. Use elevation tokens to express layer depth consistently: `elevation-0` (flat) through `elevation-4` (highest emphasis). Prefer tokenized classes over bespoke shadows.
+
+Example:
+
+```css
+.elevation-1 { box-shadow: 0 1px 2px rgba(0,0,0,0.08); }
+.elevation-2 { box-shadow: 0 6px 18px rgba(0,0,0,0.14); }
+.elevation-3 { box-shadow: 0 28px 60px rgba(0,0,0,0.20); }
+```
+
+### Responsive Grid System
+
+The grid is a constrained container plus a 12-column responsive system. Key tokens: `--grid-columns`, `--grid-gutter`, and breakpoint tokens (`bp-sm`, `bp-md`, `bp-lg`). Use container width tokens for page and content rhythm.
+
+Example usage:
+
+```html
+<div class="container">
+  <div class="grid grid-cols-12 gap-grid-gutter">...</div>
+</div>
+```
+
+Example tokens:
+
+```
+--grid-columns: 12;
+--grid-gutter: 1.5rem;
+--container-width-md: 920px;
+```
+
+### Size and Shape
+
+Sizes and radii are tokenized for predictable, reusable geometry. Use size tokens for icons, controls and spacing patterns; use radius tokens for consistent corner treatments across components.
+
+Examples:
+
+```
+--size-icon-sm: 20px;
+--size-icon-md: 28px;
+--radius-sm: 6px;
+--radius-md: 10px;
+```
+
+### Surface
+
+Surfaces are semantic roles mapped to tokens: `surface` (global canvas), `card` (grouping container), `muted` (support panels). Each surface has a paired foreground token. Map surface tokens to component variants (e.g., `AptCard.variant="elevated"` -> `--card` + `--elevation-2`).
+
+Example:
+
+```css
+:root { --surface: 220 15% 95%; --surface-foreground: 220 20% 10%; }
+.card { background: color(var(--card) / 1); color: color(var(--card-foreground) / 1); }
+```
+
 ## Color System
 
 ### Dark Mode (Primary)
