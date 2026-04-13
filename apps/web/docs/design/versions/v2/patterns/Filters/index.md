@@ -19,6 +19,7 @@ Allow users to narrow or refine data sets using clear, discoverable controls.
 - Filter bar or panel
 - Individual filter controls (select, chips, range inputs)
 - Active filter summary and clear controls
+- Inline message area for no-results or restricted-data states
 
 ## Accessibility
 
@@ -39,6 +40,20 @@ See `examples/filters.example.tsx`.
 ## Integration notes
 
 Prefer URL-driven filter state for shareability and back/forward navigation.
+
+## Empty states
+
+When filtering yields no results, show an inline message inside the filtered results region with:
+
+1. concise heading
+2. one-sentence reason
+3. recovery action such as clearing filters
+
+If users do not have permission for a filtered dataset, state that explicitly and provide the next available action.
+
+## Inline messages
+
+Place inline messages directly below the related label or heading. Use text categories and descriptors from the content naming standard for predictable labeling.
 
 ## Variants
 

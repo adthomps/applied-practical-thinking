@@ -28,7 +28,7 @@ Use it when the right move is not obvious yet and the cost of being wrong is mea
 
 ### Design System
 
-Tokens, semantics, component patterns, spacing, responsive behavior, and motion guidance.
+Tokens, semantics, component patterns, spacing, responsive behavior, motion guidance, data visual standards, and inline messaging standards.
 
 Use it when the goal is visual consistency, calm interaction, and a reusable UI language.
 
@@ -115,8 +115,16 @@ Generated outputs:
 
 - [APT Design Thinking](./APT-DESIGN-THINKING.md)
 - [APT Design System](./APT-DESIGN-SYSTEM.md)
+- [APT Content Naming and Messaging](./APT-CONTENT-NAMING-AND-MESSAGING.md)
 - [APT Design Architecture](./APT-DESIGN-ARCHITECTURE.md)
 - [APT Content Strategy](./APT-CONTENT-STRATEGY.md)
 - [APT Systems Reference Models](./APT-DESIGN-SYSTEMS.md)
 - [APT Design Versioning](./APT-DESIGN-VERSIONING.md)
+
+Pattern references (v2):
+- [Inline Messages](./patterns/Inline-Messages/index.md)
+- [Bar Chart](./patterns/Bar-Chart/index.md)
+- [Line Chart](./patterns/Line-Chart/index.md)
+- [Heatmap](./patterns/Heatmap/index.md)
+- [Dumbbell Plot](./patterns/Dumbbell-Plot/index.md)
 

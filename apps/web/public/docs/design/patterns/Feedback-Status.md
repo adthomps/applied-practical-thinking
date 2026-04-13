@@ -16,9 +16,23 @@ Clearly communicate operation results and system state (success, error, warning,
 
 ## Anatomy
 
-- Status container (toast, inline status)
-- Message text
-- Optional actions (retry, dismiss)
+- Title (optional)
+- Message (required)
+- CTA (required when user action is needed)
+- Status container (toast, inline status, banner, or modal)
+
+## Message rules
+
+- Use sentence case and plain language.
+- Keep titles to three to five words and avoid punctuation.
+- Use descriptive purpose language instead of generic words like warning or error as titles.
+- Give concrete next steps in the message body.
+- Use clear verb-first CTA labels such as `Save`, `Remove`, `Create`, `Retry`, or `Dismiss`.
+- Avoid blame language and avoid jargon.
+
+## Voice and tone
+
+Prefer active voice for direct actions. Use passive voice when active phrasing sounds punitive during error explanation.
 
 ## Accessibility
 
@@ -45,6 +59,17 @@ Throttle and de-duplicate messages to avoid overwhelming users. Use persistent U
 - Toast (transient)
 - Inline (contextual)
 - Modal (blocking)
+
+## Status types
+
+- Informational: communicate a state change without blocking flow.
+- Success: confirm completion; include undo only when meaningful.
+- Warning: indicate potential impact and what to check next.
+- Error: explain what failed, consequences, and how to recover.
+
+## Inline error guidance
+
+The `Error:` prefix is allowed when it improves scanability, but it must be used consistently inside the same experience.
 
 ## Tests & QA
 

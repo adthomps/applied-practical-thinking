@@ -153,12 +153,14 @@ Unresolved critical failures block merge unless a documented exception is linked
 - Loading preserves final layout shape.
 - Error state explains next step/retry action.
 - Empty state includes concise context and action where relevant.
+- Inline messages are present when empty states are caused by filtering, searching, missing setup, or permission restrictions.
 
 ### Fail conditions
 
 - Any required state is missing.
 - Failures are silent.
 - Happy-path-only implementation is shipped.
+- No-results or no-permission states render without explanatory inline messages.
 
 ## 10. Content & Copy Expression
 
@@ -167,12 +169,16 @@ Unresolved critical failures block merge unless a documented exception is linked
 - Labels are plain and descriptive.
 - Copy is clear, direct, and low-noise.
 - UI language matches APT tone.
+- Medium-fidelity labels follow descriptor plus text category naming.
+- Alert and inline messaging follows title/message/CTA anatomy when action is needed.
 
 ### Fail conditions
 
 - Marketing/hype language appears.
 - Labels are vague or trendy.
 - Placeholder/filler text remains.
+- CTA labels are unclear or not action-oriented.
+- Message copy omits recovery direction for warning/error states.
 
 ## 11. Accessibility & Readability
 
@@ -182,6 +188,7 @@ Unresolved critical failures block merge unless a documented exception is linked
 - Focus states are visible.
 - Touch targets are mobile-appropriate.
 - Long text/tables/code remain usable on small screens.
+- Charts include non-color cues and accessible value context for key comparisons.
 
 ### Fail conditions
 
