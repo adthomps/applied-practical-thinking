@@ -1,8 +1,8 @@
 {
   "id": "apt-design-system-lint-checklist",
   "title": "APT Design System Lint Checklist",
-  "version": "2.1.0",
-  "updatedAt": "2026-04-05",
+  "version": "2.2.0",
+  "updatedAt": "2026-04-12",
   "purpose": "Validate that a UI build follows the APT design system consistently across structure, styling, behavior, and state handling.",
   "passRule": "A build should not be considered complete until all critical items pass.",
   "mergeGatePolicy": "Unresolved critical failures block merge unless a documented exception is linked in docs/DECISION_LOG.md.",
@@ -136,12 +136,14 @@
         "Loading, empty, error, success (if relevant), and partial-data states are defined.",
         "Loading preserves final layout shape.",
         "Error state explains next step/retry action.",
-        "Empty state includes concise context and action where relevant."
+        "Empty state includes concise context and action where relevant.",
+        "Inline messages are present when empty states are caused by filtering, searching, missing setup, or permission restrictions."
       ],
       "failConditions": [
         "Any required state is missing.",
         "Failures are silent.",
-        "Happy-path-only implementation is shipped."
+        "Happy-path-only implementation is shipped.",
+        "No-results or no-permission states render without explanatory inline messages."
       ]
     },
     {
@@ -150,12 +152,16 @@
       "critical": [
         "Labels are plain and descriptive.",
         "Copy is clear, direct, and low-noise.",
-        "UI language matches APT tone."
+        "UI language matches APT tone.",
+        "Medium-fidelity labels follow descriptor plus text category naming.",
+        "Alert and inline messaging follows title/message/CTA anatomy when action is needed."
       ],
       "failConditions": [
         "Marketing/hype language appears.",
         "Labels are vague or trendy.",
-        "Placeholder/filler text remains."
+        "Placeholder/filler text remains.",
+        "CTA labels are unclear or not action-oriented.",
+        "Message copy omits recovery direction for warning/error states."
       ]
     },
     {
@@ -165,7 +171,8 @@
         "Contrast is readable across surfaces.",
         "Focus states are visible.",
         "Touch targets are mobile-appropriate.",
-        "Long text/tables/code remain usable on small screens."
+        "Long text/tables/code remain usable on small screens.",
+        "Charts include non-color cues and accessible value context for key comparisons."
       ],
       "failConditions": [
         "Focus is invisible.",

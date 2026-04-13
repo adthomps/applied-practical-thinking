@@ -28,8 +28,9 @@ APT Design System is a strict UI contract for calm, structured, production-grade
 12. [Motion Timing Rules](#motion-timing-rules)
 13. [AI / Agent Misuse Prevention](#ai--agent-misuse-prevention)
 14. [Button and Card API Contract](#button-and-card-api-contract)
-15. [Component Inventory](#component-inventory)
-16. [Usage Guidelines](#usage-guidelines)
+15. [Pattern Reference Map](#pattern-reference-map)
+16. [Component Inventory](#component-inventory)
+17. [Usage Guidelines](#usage-guidelines)
 
 ---
 
@@ -357,6 +358,8 @@ Structure:
 4. optional primary CTA
 5. optional secondary help link
 
+Inline messages are required when a component view is empty because of search/filter constraints, missing data setup, or permission limitations.
+
 ### Error State
 
 Structure:
@@ -365,6 +368,22 @@ Structure:
 - plain-language explanation
 - next step or retry action
 - no blame language
+
+### Messaging Anatomy Standard
+
+Messages in badges, banners, dialogs, notification trays, inline status, and tooltips follow:
+
+1. optional title (three to five words)
+2. required message body in plain language
+3. required CTA when user action is needed
+
+CTA labels should use clear verbs (`Save`, `Remove`, `Create`, `Retry`, `Dismiss`) with no trailing punctuation.
+
+### Voice and Tone
+
+- Prefer active voice for direct action.
+- Use passive voice only when active wording sounds punitive in error contexts.
+- Keep message language descriptive and direct; avoid jargon and hype.
 
 ### Success State
 
@@ -427,6 +446,60 @@ AI review output must include:
 - Subcomponents: `AptCardHeader | AptCardTitle | AptCardDescription | AptCardContent | AptCardFooter`
 
 These interfaces are backward-compatible and remain the canonical reusable surface for app routes.
+
+---
+
+## Pattern Reference Map
+
+The following pattern docs are the canonical locations for chart and inline-message guidance in v2:
+
+- Data visuals:
+  - [Bar Chart](./patterns/Bar-Chart/index.md)
+  - [Line Chart](./patterns/Line-Chart/index.md)
+  - [Heatmap](./patterns/Heatmap/index.md)
+  - [Dumbbell Plot](./patterns/Dumbbell-Plot/index.md)
+- Messaging and labeling:
+  - [Inline Messages](./patterns/Inline-Messages/index.md)
+  - [Feedback / Status](./patterns/Feedback-Status/index.md)
+  - [APT Content Naming and Messaging](./APT-CONTENT-NAMING-AND-MESSAGING.md)
+
+These references define required behavior for empty states, inline helper/error messages, and chart readability/accessibility.
+
+### Chart Selection Quick Table
+
+Use this table to choose the correct chart pattern before implementation:
+
+| Use case | Preferred chart | Why | Avoid when |
+|---|---|---|---|
+| Compare values across categories | [Bar Chart](./patterns/Bar-Chart/index.md) | Fast category magnitude comparison | The primary question is trend over time |
+| Show trend over time or ordered sequence | [Line Chart](./patterns/Line-Chart/index.md) | Direction and rate of change are easy to scan | Categories are unrelated or unordered |
+| Show intensity across two dimensions | [Heatmap](./patterns/Heatmap/index.md) | Highlights dense and sparse category pairings | Exact value-by-value reading is the primary task |
+| Compare two related values per category | [Dumbbell Plot](./patterns/Dumbbell-Plot/index.md) | Emphasizes delta between paired points | More than two values per category are needed |
+
+Chart guard rails:
+
+- Always provide an inline empty or restricted-data message when no data can be shown.
+- Do not rely on color only; expose readable labels, legend context, and value cues.
+- Prefer concise titles and clear units for axis or tooltip values.
+- Use semantic chart tokens and avoid ad hoc color values.
+
+### Message Type Chooser
+
+Use this table to select both the message type and delivery pattern:
+
+| Message type | Preferred delivery | Use when | Avoid when |
+|---|---|---|---|
+| Informational | Inline first, Toast second | Sharing non-blocking context near the related element or confirming a low-impact system update | The user must take immediate corrective action |
+| Success | Toast first, Inline second | Confirming completed user actions with optional undo | The confirmation contains critical details that must persist for workflow completion |
+| Warning | Inline first, Modal second | Signaling potential risk or workflow impact while keeping recovery actions visible | A transient toast could be missed and create downstream errors |
+| Error | Inline for field/context errors, Modal for blocking failures | Explaining what failed, impact, and next step to recover | Error details are hidden behind generic copy or no action is provided |
+
+Delivery guard rails:
+
+- Inline is the default for contextual guidance and empty-state explanations.
+- Toast is for transient confirmations and lightweight informational updates.
+- Modal is reserved for blocking conditions, destructive confirmation, or failures that require explicit acknowledgment.
+- Always include clear verb-first actions (`Retry`, `Save`, `Remove`, `Dismiss`) when recovery is possible.
 
 ---
 

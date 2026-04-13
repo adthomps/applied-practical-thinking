@@ -4,7 +4,7 @@
   "kind": "design-docs-manifest",
   "manifestVersion": "2.0.0",
   "semanticVersion": "2.0.0",
-  "updatedAt": "2026-04-05",
+  "updatedAt": "2026-04-12",
   "supportedMajors": [1, 2],
   "currentStableMajor": 2,
   "policy": {
@@ -638,6 +638,120 @@
           "canonicalPath": "/docs/design/v2/patterns/Wizard/index.md",
           "publishedAt": "2026-04-12",
           "changelog": "Scaffolded pattern doc."
+        }
+      ]
+    },
+    {
+      "docId": "content-naming-messaging",
+      "slug": "content-naming-messaging",
+      "title": "APT Content Naming and Messaging",
+      "description": "APT standard for medium-fidelity naming, inline message construction, and alert messaging language.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/APT-CONTENT-NAMING-AND-MESSAGING.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/APT-CONTENT-NAMING-AND-MESSAGING.md",
+          "canonicalPath": "/docs/design/v2/APT-CONTENT-NAMING-AND-MESSAGING.md",
+          "publishedAt": "2026-04-12",
+          "changelog": "Introduce v2 naming and messaging standard for medium-fidelity content and alert language."
+        }
+      ]
+    },
+    {
+      "docId": "pattern-inline-messages",
+      "slug": "patterns/inline-messages",
+      "title": "Inline Messages",
+      "description": "Inline message pattern for helper, empty, warning, and error guidance inside components and forms.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/patterns/Inline-Messages.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/patterns/Inline-Messages/index.md",
+          "canonicalPath": "/docs/design/v2/patterns/Inline-Messages/index.md",
+          "publishedAt": "2026-04-12",
+          "changelog": "Add canonical inline-messages pattern and composition rules."
+        }
+      ]
+    },
+    {
+      "docId": "pattern-bar-chart",
+      "slug": "patterns/bar-chart",
+      "title": "Bar Chart",
+      "description": "Bar chart pattern for comparing values across categories with clear labels and accessible states.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/patterns/Bar-Chart.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/patterns/Bar-Chart/index.md",
+          "canonicalPath": "/docs/design/v2/patterns/Bar-Chart/index.md",
+          "publishedAt": "2026-04-12",
+          "changelog": "Add bar chart guidance for categorical comparison and state handling."
+        }
+      ]
+    },
+    {
+      "docId": "pattern-line-chart",
+      "slug": "patterns/line-chart",
+      "title": "Line Chart",
+      "description": "Line chart pattern for showing how values change over time with readable trends and state handling.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/patterns/Line-Chart.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/patterns/Line-Chart/index.md",
+          "canonicalPath": "/docs/design/v2/patterns/Line-Chart/index.md",
+          "publishedAt": "2026-04-12",
+          "changelog": "Add line chart guidance for trends and time-series behavior."
+        }
+      ]
+    },
+    {
+      "docId": "pattern-heatmap",
+      "slug": "patterns/heatmap",
+      "title": "Heatmap",
+      "description": "Heatmap pattern for category-pair intensity analysis with accessible legends and value communication.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/patterns/Heatmap.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/patterns/Heatmap/index.md",
+          "canonicalPath": "/docs/design/v2/patterns/Heatmap/index.md",
+          "publishedAt": "2026-04-12",
+          "changelog": "Add heatmap guidance for matrix-style intensity data."
+        }
+      ]
+    },
+    {
+      "docId": "pattern-dumbbell-plot",
+      "slug": "patterns/dumbbell-plot",
+      "title": "Dumbbell Plot",
+      "description": "Dumbbell plot pattern for comparing two related values across categories and highlighting deltas.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/patterns/Dumbbell-Plot.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/patterns/Dumbbell-Plot/index.md",
+          "canonicalPath": "/docs/design/v2/patterns/Dumbbell-Plot/index.md",
+          "publishedAt": "2026-04-12",
+          "changelog": "Add dumbbell plot guidance for paired comparison analysis."
         }
       ]
     }

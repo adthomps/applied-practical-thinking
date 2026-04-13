@@ -19,10 +19,19 @@ Create predictable, accessible forms with clear validation, submission handling,
 - Form container
 - Field rows (label, control, help/error)
 - Actions (submit/cancel)
+- Inline message region below each related label/heading when context is needed
 
 ## Accessibility
 
 Use label associations, `aria-describedby` for help/error text, and `role="alert"` for persistent errors as appropriate.
+
+## Inline messages
+
+Use inline helper and error messages directly below the related text category (`Label`, `Heading`, or `Title`). Keep copy concise and action-oriented when recovery is required.
+
+## Content naming
+
+Use descriptor plus text category naming for medium-fidelity labels. Example: `Billing section heading`, `Address label`, `Primary action`.
 
 ## Tokens & Theming
 
