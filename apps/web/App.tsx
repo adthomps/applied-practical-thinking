@@ -43,6 +43,9 @@ const InsightDetail = lazyWithRetry(() => import("./routes/InsightDetail"));
 const PortfolioLabDetail = lazyWithRetry(() => import("./routes/portfolio/LabDetail"));
 const DemoDetail = lazyWithRetry(() => import("./routes/DemoDetail"));
 
+const DesignSupport = lazyWithRetry(() => import("./routes/DesignSupport"));
+const DesignKnowledgeEngine = lazyWithRetry(() => import("./routes/DesignKnowledgeEngine"));
+
 // Legacy/Utility
 const DesignPlayground = lazyWithRetry(() => import("./routes/DesignPlayground"));
 
@@ -138,6 +141,8 @@ const App = () => (
             <Route path="/design/thinking/:framework" element={<PortfolioDesignThinkingFrameworkDetail />} />
             <Route path="/design/architecture" element={<PortfolioDesignArchitecture />} />
             <Route path="/design/architecture/:pattern" element={<PortfolioDesignArchitecturePatternDetail />} />
+            <Route path="/design/support" element={<DesignSupport />} />
+            <Route path="/design/knowledge-engine" element={<DesignKnowledgeEngine />} />
             <Route path="/design/systems" element={<Systems />} />
             <Route path="/design/systems/:id" element={<SystemDetail />} />
             <Route path="/design/content-strategy" element={<PortfolioContentStrategy />} />
