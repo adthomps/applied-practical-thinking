@@ -354,5 +354,44 @@
         }
       ]
     }
+    ,
+    {
+      "docId": "support-design",
+      "slug": "support-design",
+      "title": "APT Support Design",
+      "description": "Operational design guidance: decisions-in-motion, error states, adaptation, and response patterns.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/APT-SUPPORT-DESIGN.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/APT-SUPPORT-DESIGN.md",
+          "canonicalPath": "/docs/design/v2/APT-SUPPORT-DESIGN.md",
+          "publishedAt": "2026-04-12",
+          "changelog": "Add operational response doctrine placeholder."
+        }
+      ]
+    },
+    {
+      "docId": "knowledge-engine",
+      "slug": "knowledge-engine",
+      "title": "APT Knowledge Engine (Runtime)",
+      "description": "Runtime systems reference: API + AI + feedback loops, ingestion, indexing, and runtime contracts.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/APT-KNOWLEDGE-ENGINE.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/APT-KNOWLEDGE-ENGINE.md",
+          "canonicalPath": "/docs/design/v2/APT-KNOWLEDGE-ENGINE.md",
+          "publishedAt": "2026-04-12",
+          "changelog": "Introduce runtime/engine doctrine placeholder."
+        }
+      ]
+    }
   ]
 }
