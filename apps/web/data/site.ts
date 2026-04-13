@@ -100,6 +100,18 @@ export const siteConfig = {
           tagline: "Structure exists to prevent failure, not to enable creativity.",
         },
         {
+          label: "Support Design",
+          path: "/design/support",
+          description: "Operational response patterns, incident runbooks, and recovery playbooks.",
+          tagline: "How we detect, diagnose, and restore service and UX continuity.",
+        },
+        {
+          label: "Knowledge Engine",
+          path: "/design/knowledge-engine",
+          description: "Runtime patterns for ingesting, indexing, and serving knowledge artifacts.",
+          tagline: "Contracts, APIs, and validation for the knowledge layer.",
+        },
+        {
           label: "Systems",
           path: "/design/systems",
           description: "Stable system references that capture architecture, decisions, and reusable models inside the APT doctrine.",
