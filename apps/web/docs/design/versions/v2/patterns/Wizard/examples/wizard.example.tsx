@@ -1,5 +1,5 @@
 import React from 'react';
-import { AptWizard, AptButton } from '@apt/ui';
+import { AptWizard } from '@apt/ui';
 
 export default function WizardExample() {
   return (

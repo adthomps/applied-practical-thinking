@@ -129,6 +129,24 @@ export const siteConfig = {
           description: "A single public handoff for AI reviewers with the review standard and the core doctrine documents in one place.",
           tagline: "One entry point for standards-based review.",
         },
+        {
+          label: "Docs Browser",
+          path: "/design/docs",
+          description: "Manifest-driven browser for doctrine and pattern docs with version-aware rendering.",
+          tagline: "Browse docs from runtime manifest metadata.",
+        },
+        {
+          label: "Patterns",
+          path: "/design/patterns",
+          description: "Curated landing area for manifest-driven pattern docs.",
+          tagline: "Reusable patterns with version-aware docs routing.",
+        },
+        {
+          label: "Forms Pattern",
+          path: "/design/docs/patterns/forms",
+          description: "Open the Forms pattern reference directly from Design navigation.",
+          tagline: "Patterns route, including form architecture and states.",
+        },
       ],
     },
     {

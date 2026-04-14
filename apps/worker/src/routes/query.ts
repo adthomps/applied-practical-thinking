@@ -1,15 +1,16 @@
 import { Hono } from 'hono';
 import { z } from 'zod';
 import { embed, queryVectorDb } from '../ai/vectorClient';
+import type { WorkerBindings } from '../workerTypes';
 
 const querySchema = z.object({
   query: z.string(),
   topK: z.number().int().positive().optional(),
-  filters: z.record(z.any()).optional(),
-  context: z.record(z.any()).optional()
+  filters: z.record(z.string(), z.unknown()).optional(),
+  context: z.record(z.string(), z.unknown()).optional()
 });
 
-export const queryRoute = new Hono().post('/api/query', async (c) => {
+export const queryRoute = new Hono<{ Bindings: WorkerBindings }>().post('/api/query', async (c) => {
   try {
     const body = await c.req.json();
     const parsed = querySchema.safeParse(body);
@@ -19,12 +20,21 @@ export const queryRoute = new Hono().post('/api/query', async (c) => {
 
     const qEmb = await embed(query, c.env);
     const matches = await queryVectorDb(qEmb, topK, c.env); // returns [{id, score, metadata, text}]
-
-    const candidates = matches.map((m: any) => ({ chunkId: m.id, score: m.score, snippet: m.text || '', citation: m.metadata?.path || m.metadata?.source || '' }));
+    const candidates = matches.map((match) => ({
+      chunkId: match.id,
+      score: match.score,
+      snippet: match.text || '',
+      citation:
+        typeof match.metadata?.path === "string"
+          ? match.metadata.path
+          : typeof match.metadata?.source === "string"
+            ? match.metadata.source
+            : "",
+    }));
 
     const composedResponse = {
       text: matches.length > 0 ? `Found ${matches.length} candidate(s). See citations.` : 'No relevant documents found.',
-      citations: matches.map((m: any) => m.id),
+      citations: matches.map((match) => match.id),
       confidence: matches.length > 0 ? matches[0].score : 0
     };
 

@@ -1,10 +1,12 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 import {
   ContentDetailMatch,
   fetchContentDetail,
 } from "@/src/services/contentDetail";
-import { ContentIndexItem, ContentIndexType } from "@/src/services/contentIndex";
+import { ContentIndexType } from "@/src/services/contentIndex";
+import { queryKeys } from "@/hooks/queryKeys";
 
 export function useContentDetail(params: {
   indexTypes: ContentIndexType[];
@@ -12,59 +14,32 @@ export function useContentDetail(params: {
   match?: ContentDetailMatch;
 }) {
   const { indexTypes, idOrSlug, match } = params;
-  const indexTypesKey = useMemo(() => indexTypes.join("|"), [indexTypes]);
+  const resolvedMatch = match || "idOrSlug";
+  const normalizedTypes = useMemo(() => [...indexTypes].sort(), [indexTypes]);
 
-  const [items, setItems] = useState<ContentIndexItem[]>([]);
-  const [item, setItem] = useState<ContentIndexItem | null>(null);
-  const [markdown, setMarkdown] = useState<string>("");
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const query = useQuery({
+    queryKey: queryKeys.contentDetail(normalizedTypes, idOrSlug ?? "", resolvedMatch),
+    queryFn: () =>
+      fetchContentDetail({
+        indexTypes: normalizedTypes,
+        idOrSlug: idOrSlug || "",
+        match: resolvedMatch,
+      }),
+    enabled: Boolean(idOrSlug),
+    staleTime: 5 * 60 * 1000,
+  });
 
-  useEffect(() => {
-    let cancelled = false;
+  const item = query.data?.item ?? null;
+  const error =
+    !idOrSlug
+      ? "Not found"
+      : query.error?.message ?? (!query.isLoading && !item ? "Not found" : null);
 
-    async function run() {
-      if (!idOrSlug) {
-        setLoading(false);
-        setError("Not found");
-        return;
-      }
-
-      setLoading(true);
-      setError(null);
-
-      try {
-        const result = await fetchContentDetail({
-          indexTypes,
-          idOrSlug,
-          match,
-        });
-
-        if (cancelled) return;
-
-        setItems(result.items);
-        setItem(result.item);
-        setMarkdown(result.markdown);
-
-        if (!result.item) {
-          setError("Not found");
-        }
-      } catch (e: any) {
-        if (cancelled) return;
-        setError(e?.message || "Failed to load content");
-      } finally {
-        if (!cancelled) {
-          setLoading(false);
-        }
-      }
-    }
-
-    run();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [indexTypes, indexTypesKey, idOrSlug, match]);
-
-  return { items, item, markdown, loading, error };
+  return {
+    items: query.data?.items ?? [],
+    item,
+    markdown: query.data?.markdown ?? "",
+    loading: idOrSlug ? query.isLoading : false,
+    error,
+  };
 }

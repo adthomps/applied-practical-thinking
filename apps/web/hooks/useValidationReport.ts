@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import type { PublicValidationReport } from "@/src/types/validationReport";
 import { fetchPublicValidationReport } from "@/src/services/contentIndex";
+import { queryKeys } from "@/hooks/queryKeys";
 
 type UseValidationReportState = {
   report: PublicValidationReport | null;
@@ -9,36 +10,15 @@ type UseValidationReportState = {
 };
 
 export function useValidationReport(): UseValidationReportState {
-  const [report, setReport] = useState<PublicValidationReport | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const query = useQuery<PublicValidationReport, Error>({
+    queryKey: queryKeys.validationReportLatest(),
+    queryFn: fetchPublicValidationReport,
+    staleTime: 5 * 60 * 1000,
+  });
 
-  useEffect(() => {
-    let cancelled = false;
-
-    async function load() {
-      setLoading(true);
-      setError(null);
-
-      try {
-        const result = await fetchPublicValidationReport();
-        if (!cancelled) {
-          setReport(result);
-          setLoading(false);
-        }
-      } catch (err: unknown) {
-        if (!cancelled) {
-          setError(err instanceof Error ? err.message : "Failed to load validation report.");
-          setLoading(false);
-        }
-      }
-    }
-
-    void load();
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  return { report, loading, error };
+  return {
+    report: query.data ?? null,
+    loading: query.isLoading,
+    error: query.error?.message ?? null,
+  };
 }

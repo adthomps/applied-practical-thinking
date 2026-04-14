@@ -1,35 +1,25 @@
-
-import { useState, useMemo, useEffect } from "react";
-import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
+import { useMemo, useState } from "react";
 import { InsightCard } from "@/components/apt/InsightCard";
 import { ContentFilters, FilterConfig, SelectedFilters, RuntimeConfigNotice } from "@/components/apt";
 import { getWorkerApiConfigError } from "@/src/services/api";
+import { useBlogsIndexQuery } from "@/hooks/useContentAggregateQueries";
 
 export default function InsightsBlogs() {
-  const [blogs, setBlogs] = useState<ContentIndexItem[] | null>(null);
-  const [error, setError] = useState<string | null>(null);
   const [selected, setSelected] = useState<SelectedFilters>({ topics: [] });
 
-  useEffect(() => {
-    fetchContentIndex("blog")
-      .then((data) => {
-        setBlogs(data.sort((a, b) => (b.publishedAt || "").localeCompare(a.publishedAt || "")));
-      })
-      .catch((e) => {
-        setError(e.message);
-      });
-  }, []);
+  const blogsQuery = useBlogsIndexQuery();
 
-  const loading = blogs === null && !error;
+  const blogs = useMemo(() => blogsQuery.data || [], [blogsQuery.data]);
+  const loading = blogsQuery.isLoading;
 
   const config = useMemo<FilterConfig>(() => {
-    const topics = [...new Set((blogs ?? []).flatMap((b) => b.concepts || []))].sort();
+    const topics = [...new Set(blogs.flatMap((b) => b.concepts || []))].sort();
     return { topics };
   }, [blogs]);
 
   const filteredBlogs = useMemo(() => {
-    if (!selected.topics?.length) return blogs ?? [];
-    return (blogs ?? []).filter((blog) =>
+    if (!selected.topics?.length) return blogs;
+    return blogs.filter((blog) =>
       selected.topics?.some((t) => (blog.concepts || []).includes(t))
     );
   }, [selected.topics, blogs]);
@@ -37,7 +27,7 @@ export default function InsightsBlogs() {
   if (loading) {
     return <div className="container py-12 text-center">Loading articles…</div>;
   }
-  if (error) {
+  if (blogsQuery.isError) {
     const configError = getWorkerApiConfigError();
     return (
       <div className="container py-12">
@@ -48,7 +38,7 @@ export default function InsightsBlogs() {
             expectedValue={configError.expectedProductionValue}
           />
         ) : (
-          <div className="text-center text-destructive">{error}</div>
+          <div className="text-center text-destructive">{blogsQuery.error?.message}</div>
         )}
       </div>
     );
@@ -70,7 +60,7 @@ export default function InsightsBlogs() {
         selected={selected}
         onChange={setSelected}
         resultCount={filteredBlogs.length}
-        totalCount={(blogs ?? []).length}
+        totalCount={blogs.length}
       />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

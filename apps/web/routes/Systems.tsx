@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import { AlertTriangle, CheckCircle2, FileText, Layers3 } from "lucide-react";
-import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
 import { AptButton, AptCard, AptCardContent, AptCardHeader, AptCardTitle, AptTag, DesignDocVersionSwitcher, ReviewBundleCallout, RuntimeConfigNotice, SectionIntro } from "@/components/apt";
 import { SystemCard } from "@/components/apt/SystemCard";
 import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
 import { useDesignDocVersion } from "@/hooks/useDesignDocVersion";
 import { downloadWorkerMarkdown } from "@/src/services/download";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
+import { useSystemsIndexQuery } from "@/hooks/useContentAggregateQueries";
 
 export default function Systems() {
   usePageMetadata({
@@ -15,11 +15,10 @@ export default function Systems() {
     description: "Stable system references that capture reusable models, key decisions, tradeoffs, and related learning material.",
   });
 
-  const [systems, setSystems] = useState<ContentIndexItem[] | null>(null);
-  const [error, setError] = useState<string | null>(null);
   const location = useLocation();
   const isDesignSystemsRoute = location.pathname.startsWith("/design/systems");
   const systemsVersion = useDesignDocVersion("systems");
+  const systemsQuery = useSystemsIndexQuery();
 
   const operatingSignals = [
     {
@@ -65,20 +64,11 @@ export default function Systems() {
     await downloadWorkerMarkdown(systemsVersion.downloadApiPath, `apt-design-systems${majorSuffix}.md`);
   };
 
-  useEffect(() => {
-    fetchContentIndex("systems")
-      .then((items) => {
-        setSystems(items);
-      })
-      .catch((e) => {
-        setError(e.message);
-      });
-  }, []);
-
-  const loading = systems === null && !error;
+  const systems = useMemo(() => systemsQuery.data || [], [systemsQuery.data]);
+  const loading = systemsQuery.isLoading;
 
   if (loading) return <div className="container py-12 text-center">Loading systems…</div>;
-  if (error) {
+  if (systemsQuery.isError) {
     const configError = getWorkerApiConfigError();
     return (
       <div className="container py-12">
@@ -89,7 +79,7 @@ export default function Systems() {
             expectedValue={configError.expectedProductionValue}
           />
         ) : (
-          <div className="text-center text-destructive">{error}</div>
+          <div className="text-center text-destructive">{systemsQuery.error?.message}</div>
         )}
       </div>
     );
@@ -208,7 +198,7 @@ export default function Systems() {
       </section>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {(systems ?? []).map((system) => (
+        {systems.map((system) => (
           <SystemCard key={system.id} system={system} to={`/design/systems/${system.id}`} />
         ))}
       </div>

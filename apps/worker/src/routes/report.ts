@@ -1,6 +1,7 @@
 // POST /api/report - Report missing doc info and create GitHub issue
 import { Hono } from 'hono';
 import { z } from 'zod';
+import type { WorkerBindings } from '../workerTypes';
 
 // Zod schema for input validation
 const reportSchema = z.object({
@@ -16,7 +17,7 @@ const reportSchema = z.object({
   userNote: z.string().max(500).optional()
 });
 
-export const reportRoute = new Hono().post('/api/report', async (c) => {
+export const reportRoute = new Hono<{ Bindings: WorkerBindings }>().post('/api/report', async (c) => {
   // Validate input
   const body = await c.req.json();
   const parsed = reportSchema.safeParse(body);

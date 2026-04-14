@@ -1,9 +1,9 @@
-import { useState, useMemo, useEffect } from "react";
-import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
+import { useMemo, useState } from "react";
 import { InsightCard } from "@/components/apt/InsightCard";
 import { AptButton, ContentFilters, FilterConfig, SelectedFilters, RuntimeConfigNotice } from "@/components/apt";
 import { getWorkerApiConfigError } from "@/src/services/api";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
+import { useGuidesAndReviewsIndexQuery } from "@/hooks/useContentAggregateQueries";
 
 export default function InsightsGuides() {
   usePageMetadata({
@@ -11,32 +11,21 @@ export default function InsightsGuides() {
     description: "Practical guides and design reviews for applied thinking, repeatable workflows, and artifact review.",
   });
 
-  const [guides, setGuides] = useState<ContentIndexItem[] | null>(null);
-  const [error, setError] = useState<string | null>(null);
   const [selected, setSelected] = useState<SelectedFilters>({ topics: [] });
   const [subtype, setSubtype] = useState<"all" | "guide" | "design-review">("all");
 
-  useEffect(() => {
-    Promise.all([fetchContentIndex("guides"), fetchContentIndex("design-reviews")])
-      .then(([guideItems, reviews]) => {
-        setGuides(
-          [...guideItems, ...reviews].sort((a, b) => (b.publishedAt || "").localeCompare(a.publishedAt || ""))
-        );
-      })
-      .catch((e) => {
-        setError(e.message);
-      });
-  }, []);
+  const guidesQuery = useGuidesAndReviewsIndexQuery();
 
-  const loading = guides === null && !error;
+  const guides = useMemo(() => guidesQuery.data || [], [guidesQuery.data]);
+  const loading = guidesQuery.isLoading;
 
   const config = useMemo<FilterConfig>(() => {
-    const topics = [...new Set((guides ?? []).flatMap((b) => b.concepts || []))].sort();
+    const topics = [...new Set(guides.flatMap((b) => b.concepts || []))].sort();
     return { topics };
   }, [guides]);
 
   const filteredGuides = useMemo(() => {
-    return (guides ?? []).filter((guide) => {
+    return guides.filter((guide) => {
       const matchesTopics =
         !selected.topics?.length || selected.topics.some((t) => (guide.concepts || []).includes(t));
       const matchesSubtype = subtype === "all" || guide.type === subtype;
@@ -47,7 +36,7 @@ export default function InsightsGuides() {
   if (loading) {
     return <div className="container py-12 text-center">Loading practice content…</div>;
   }
-  if (error) {
+  if (guidesQuery.isError) {
     const configError = getWorkerApiConfigError();
     return (
       <div className="container py-12">
@@ -58,7 +47,7 @@ export default function InsightsGuides() {
             expectedValue={configError.expectedProductionValue}
           />
         ) : (
-          <div className="text-center text-destructive">{error}</div>
+          <div className="text-center text-destructive">{guidesQuery.error?.message}</div>
         )}
       </div>
     );
@@ -97,7 +86,7 @@ export default function InsightsGuides() {
         selected={selected}
         onChange={setSelected}
         resultCount={filteredGuides.length}
-        totalCount={(guides ?? []).length}
+        totalCount={guides.length}
       />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
