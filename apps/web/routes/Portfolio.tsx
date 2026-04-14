@@ -14,6 +14,8 @@ import {
   ArrowRight,
   FileText,
   Bot,
+  BookOpenText,
+  Shapes,
 } from "lucide-react";
 
 const designNav = siteConfig.nav.find(n => n.path === "/design");
@@ -26,6 +28,9 @@ const sectionIcons: Record<string, ComponentType<{ className?: string }>> = {
   "/design/systems": Layers3,
   "/design/content-strategy": Route,
   "/design/review-bundle": Bot,
+  "/design/docs": BookOpenText,
+  "/design/patterns": Shapes,
+  "/design/docs/patterns/forms": Shapes,
 };
 
 type DesignFilter = "all" | "doctrine" | "reference";

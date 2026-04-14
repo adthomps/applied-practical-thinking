@@ -18,17 +18,19 @@ This guide explains how to add or edit content in all major areas of the APT mon
 - All site-facing pages live in `apps/web/routes/`.
 - To add a new page:
   1. Create a new file/component in `apps/web/routes/`.
-  2. Add the route to the router in `apps/web/src/App.tsx`.
+  2. Add the route to the router in `apps/web/App.tsx`.
   3. Add a navigation item in `apps/web/data/site.ts` if needed.
 - To edit a page, update the relevant file in `apps/web/routes/`.
 
 
-### Manage Start (Home) and About Pages
-- The Start (Home) page is typically `apps/web/routes/index.tsx` or `home.tsx`.
-- The About page is usually `apps/web/routes/about.tsx`.
+### Manage Home, Start, and About Pages
+- The Home page route is `apps/web/routes/Home.tsx`.
+- The Start page route is `apps/web/routes/Start.tsx`.
+- The About page route is `apps/web/routes/About.tsx`.
 - To edit content, update the respective file/component.
 - For structured content (hero, intro, etc.), check `apps/web/data/site.ts` or similar data files.
-- Images and assets for these pages should be placed in `apps/web/public/images/`.
+- Images and assets for authored markdown content should be placed in `apps/web/public/content/<type>/<slug-or-filename>/`.
+- Global shell assets can live directly under `apps/web/public/` (for example `profile.jpg`).
 
 ---
 
@@ -55,12 +57,12 @@ For all content types (articles, podcasts, guides, design reviews, labs, demos):
 | labs         | public/content/labs/lab-abc/screenshot.png                    | ![](./screenshot.png)                        |
 | demos        | public/content/demos/demo-123/demo-video.mp4                  | [video](./demo-video.mp4)                    |
 
-For gallery, design, or architecture images, continue using `apps/web/public/images/<section>/` as appropriate.
+For gallery assets, prefer `apps/web/data/gallery.ts` links (external or hosted) and only add local static files under `apps/web/public/` when needed.
 
 ### Content Authoring Checklist (Keep Things Consistent)
 - Create the markdown file under `apps/web/content/<type>/` with correct frontmatter (`id`, `type`, `title`, `description`, `publishedAt`, etc.).
 - If you want buttons/links in the detail page sidebar, add a `links:` map in frontmatter (keys are flexible; common ones: `demo`, `repo`, `figma`, `website`, `article`, `youtube`, `spotify`, `transcript`).
-- Run the index build when adding/changing content: `pnpm --filter ./apps/web run build-content-index`.
+- Run the index build when adding/changing content: `pnpm --dir apps/web run build-content-index`.
 - Put all local assets for that entry under `apps/web/public/content/<type>/<id-or-slug>/`.
 - In markdown, reference local assets with relative paths (e.g., `![](./diagram.png)`, `[audio](./episode.mp3)`).
 - Keep `contentPath` pointing to the markdown file path under `/content/...` (this is what enables relative asset resolution).
@@ -79,8 +81,8 @@ For gallery, design, or architecture images, continue using `apps/web/public/ima
 - For global changes (e.g., logo, links), update both the component and the relevant data file.
 
 ### Add/Edit Content Registries
-Labs and systems are defined in TypeScript files in `apps/web/data/`:
-  - `labs.ts`, `systems.ts`, etc.
+Systems references are maintained in `apps/web/data/systems.ts`.
+Labs, demos, and learn content are authored as markdown and indexed by script output in `apps/web/data/*-index.json`.
 For articles, podcasts, guides, and design reviews, each entry is a Markdown file with YAML frontmatter in `apps/web/content/{blog,guides,podcasts,design-reviews}/`.
 To add a new item, create a new Markdown file in the appropriate folder with the required frontmatter fields (see below).
 To edit, update the Markdown file directly.
@@ -93,9 +95,8 @@ Portfolio sections are managed as structured data and/or Markdown in `apps/web/d
 
 
 ### Labs
-- All lab entries are in `apps/web/data/labs.ts`.
-- To add a lab, export a new object with fields like `title`, `slug`, `summary`, `image`, `content`, etc.
-- For detailed content, reference a Markdown file in `apps/web/content/labs/`.
+- Lab entries are authored in `apps/web/content/labs/` as markdown with frontmatter.
+- To add a lab, create a markdown file with `id`, `slug`, `title`, `description`, `publishedAt`, and related metadata.
 - Place images, audio, or video for labs in `apps/web/public/content/labs/<slug>/` and reference them in the object or markdown.
 
 ### Design System
@@ -105,25 +106,25 @@ Portfolio sections are managed as structured data and/or Markdown in `apps/web/d
 - To update tokens, edit the relevant files and log changes in `docs/DECISION_LOG.md`.
 
 ### Design Thinking
-- Add or edit content in `apps/web/data/` (e.g., `designThinking.ts` if present) or as Markdown in `apps/web/content/design-thinking/`.
-- Add new Markdown files for guides, principles, or frameworks.
+- Add or edit framework metadata in `apps/web/data/designThinkingFrameworks.tsx`.
+- Add doctrine/source material in `apps/web/docs/design/versions/v*/` when the change is part of governed design docs.
 
 ### Design Architecture
 - Architecture doctrine lives in `apps/web/docs/design/versions/v2/` (e.g., `APT-DESIGN-ARCHITECTURE.md`).
 - Add new governed architecture docs in `versions/v*/` and keep support contracts in `static/`.
-- Update diagrams/images in `apps/web/public/images/architecture/`.
+- Store associated media in `apps/web/public/content/` or `apps/web/public/` and reference those stable paths from docs/pages.
 
 
 ### Live Demos
-- Demo entries are in `apps/web/data/demos.ts` (if present).
-- Add a new demo object with fields like `title`, `slug`, `url`, `description`, `image`, etc.
+- Demo entries are authored in `apps/web/content/demos/` as markdown with frontmatter.
+- Add a new demo markdown file with fields like `title`, `slug`, `description`, links, and media metadata.
 - For embedded demos, add the relevant code/component in `apps/web/routes/` or `apps/web/components/`.
 - Place images, audio, or video for demos in `apps/web/public/content/demos/<slug>/` and reference them in the object or markdown.
 
 
 ### Gallery
-- Gallery items are in `apps/web/data/gallery.ts` (if present) or as Markdown in `apps/web/content/gallery/`.
-- Add new images to `apps/web/public/images/gallery/`.
+- Gallery items are in `apps/web/data/gallery.ts`.
+- Add new local media under `apps/web/public/` only when external hosted assets are not appropriate.
 - Reference images and metadata in the data file.
 
 ---

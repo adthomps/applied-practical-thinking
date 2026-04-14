@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { siteConfig, authorConfig } from "@/data/site";
 import { systems } from "../data/systems";
-import { fetchContentIndex } from "@/src/services/contentIndex";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
+import { useAboutExperimentsCountQuery, useAboutInsightsCountQuery } from "@/hooks/useContentAggregateQueries";
 import { AptCard, AptButton, AptTag } from "@/components/apt";
 import {
   ExternalLink,
@@ -54,25 +54,11 @@ export default function About() {
     imageAlt: `${authorConfig.name} profile photo`,
   });
 
-  const [experimentsCount, setExperimentsCount] = useState(0);
+  const experimentsCountQuery = useAboutExperimentsCountQuery();
+  const insightsCountQuery = useAboutInsightsCountQuery();
 
-  useEffect(() => {
-    fetchContentIndex("labs")
-      .then((items) => setExperimentsCount(items.length))
-      .catch(() => setExperimentsCount(0));
-  }, []);
-
-  const [insightsCount, setInsightsCount] = useState(0);
-  useEffect(() => {
-    Promise.all([
-      fetchContentIndex("blog"),
-      fetchContentIndex("guides"),
-      fetchContentIndex("podcasts"),
-      fetchContentIndex("design-reviews"),
-    ])
-      .then(([blog, guides, podcasts, reviews]) => setInsightsCount(blog.length + guides.length + podcasts.length + reviews.length))
-      .catch(() => setInsightsCount(0));
-  }, []);
+  const experimentsCount = experimentsCountQuery.data || 0;
+  const insightsCount = insightsCountQuery.data || 0;
 
   const projectStats = [
     {

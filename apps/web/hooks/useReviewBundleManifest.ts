@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import type { PublicReviewBundleManifest } from "@apt/knowledge";
 import { fetchDesignReviewBundleManifest } from "@/src/services/contentIndex";
+import { queryKeys } from "@/hooks/queryKeys";
 
 type UseReviewBundleManifestState = {
   manifest: PublicReviewBundleManifest | null;
@@ -9,37 +10,15 @@ type UseReviewBundleManifestState = {
 };
 
 export function useReviewBundleManifest(): UseReviewBundleManifestState {
-  const [manifest, setManifest] = useState<PublicReviewBundleManifest | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const query = useQuery<PublicReviewBundleManifest, Error>({
+    queryKey: queryKeys.designReviewBundleManifest(),
+    queryFn: fetchDesignReviewBundleManifest,
+    staleTime: 5 * 60 * 1000,
+  });
 
-  useEffect(() => {
-    let cancelled = false;
-
-    async function load() {
-      setLoading(true);
-      setError(null);
-
-      try {
-        const result = await fetchDesignReviewBundleManifest();
-        if (!cancelled) {
-          setManifest(result);
-          setLoading(false);
-        }
-      } catch (err: any) {
-        if (!cancelled) {
-          setError(err?.message || "Failed to load review bundle metadata.");
-          setLoading(false);
-        }
-      }
-    }
-
-    void load();
-
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  return { manifest, loading, error };
+  return {
+    manifest: query.data ?? null,
+    loading: query.isLoading,
+    error: query.error?.message ?? null,
+  };
 }

@@ -1,5 +1,6 @@
 import { Hono } from 'hono';
 import { z } from 'zod';
+import type { WorkerBindings } from '../workerTypes';
 
 const feedbackSchema = z.object({
   queryId: z.string(),
@@ -7,7 +8,7 @@ const feedbackSchema = z.object({
   labels: z.array(z.object({ candidateId: z.string(), useful: z.boolean(), note: z.string().optional() }))
 });
 
-export const feedbackRoute = new Hono().post('/api/feedback', async (c) => {
+export const feedbackRoute = new Hono<{ Bindings: WorkerBindings }>().post('/api/feedback', async (c) => {
   try {
     const body = await c.req.json();
     const parsed = feedbackSchema.safeParse(body);
@@ -15,22 +16,11 @@ export const feedbackRoute = new Hono().post('/api/feedback', async (c) => {
 
     const payload = parsed.data;
 
-    // Persist feedback where possible; for Workers, emit to logs for operator ingestion
+    // Persist feedback through logs for downstream operator ingestion.
     try {
-      if (typeof process !== 'undefined' && process?.env?.NODE_ENV !== 'production') {
-        // local Node: append to reports/feedback.json (ensure folder exists)
-        const fs = require('fs');
-        const path = require('path');
-        const reportsDir = path.join(__dirname, '..', '..', '..', 'reports', 'feedback');
-        fs.mkdirSync(reportsDir, { recursive: true });
-        const outPath = path.join(reportsDir, `feedback_${Date.now()}.json`);
-        fs.writeFileSync(outPath, JSON.stringify(payload, null, 2));
-      } else {
-        // Cloud environment: log for operator scraping
-        console.log('[Worker] feedback received', JSON.stringify(payload));
-      }
+      console.log('[Worker] feedback received', JSON.stringify(payload));
     } catch (err) {
-      console.warn('Unable to persist feedback locally:', String(err));
+      console.warn('Unable to log feedback payload:', String(err));
     }
 
     return c.json({ ok: true });

@@ -1,14 +1,14 @@
 {
   "run": {
-    "timestamp": "2026-04-06T04:55:19.604Z",
-    "completedAt": "2026-04-06T04:55:19.631Z",
-    "durationMs": 27,
-    "gitSha": "02e39a4",
+    "timestamp": "2026-04-14T05:57:53.802Z",
+    "completedAt": "2026-04-14T05:57:53.838Z",
+    "durationMs": 36,
+    "gitSha": "4ca3421",
     "branch": "preview",
     "runner": "sanch"
   },
   "mode": "quick",
-  "recommendation": "pass",
+  "recommendation": "pass_with_fixes",
   "sections": {
     "designSystem": {
       "status": "pass",
@@ -45,19 +45,19 @@
       ]
     },
     "docsGovernance": {
-      "status": "pass",
+      "status": "warn",
       "checks": [
         {
           "name": "frontmatter-report",
-          "status": "pass",
-          "severity": "low",
-          "message": "Frontmatter gaps in scoped docs: 0"
+          "status": "warn",
+          "severity": "medium",
+          "message": "Frontmatter gaps in scoped docs: 2"
         }
       ],
       "frontmatter": {
-        "scannedCount": 120,
-        "inScopeCount": 42,
-        "missingCount": 0,
+        "scannedCount": 147,
+        "inScopeCount": 44,
+        "missingCount": 2,
         "waves": [
           {
             "id": "wave1",
@@ -81,9 +81,9 @@
             "id": "wave3",
             "label": "Worker AI docs + .github docs",
             "enforceOn": "2026-06-15",
-            "total": 8,
+            "total": 10,
             "passed": 7,
-            "missing": 0,
+            "missing": 2,
             "exceptions": 1
           }
         ]
@@ -104,10 +104,45 @@
   "severitySummary": {
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 2,
     "low": 0
   },
-  "findings": [],
+  "findings": [
+    {
+      "section": "docsGovernance",
+      "severity": "medium",
+      "message": "Missing frontmatter metadata: apps/worker/src/ai/docs/knowledge-engine-implementation.md",
+      "relativePath": "apps/worker/src/ai/docs/knowledge-engine-implementation.md",
+      "waveId": "wave3",
+      "missingKeys": [
+        "version",
+        "status",
+        "audience",
+        "visibility",
+        "source"
+      ],
+      "missingKeyCount": 5,
+      "charCount": 2577,
+      "lineCount": 73
+    },
+    {
+      "section": "docsGovernance",
+      "severity": "medium",
+      "message": "Missing frontmatter metadata: apps/worker/src/ai/docs/support-design-implementation.md",
+      "relativePath": "apps/worker/src/ai/docs/support-design-implementation.md",
+      "waveId": "wave3",
+      "missingKeys": [
+        "version",
+        "status",
+        "audience",
+        "visibility",
+        "source"
+      ],
+      "missingKeyCount": 5,
+      "charCount": 2985,
+      "lineCount": 76
+    }
+  ],
   "exceptionSummary": [
     {
       "relativePath": "docs/DECISION_LOG.md",
@@ -145,21 +180,83 @@
       "id": "wave3",
       "label": "Worker AI docs + .github docs",
       "enforceOn": "2026-06-15",
-      "total": 8,
+      "total": 10,
       "passed": 7,
-      "missing": 0,
+      "missing": 2,
       "exceptions": 1,
-      "completionPercent": 87.5
+      "completionPercent": 70
     }
   ],
   "triage": {
-    "groupedByWaveAndFolder": {},
-    "topQuickFixes": []
+    "groupedByWaveAndFolder": {
+      "wave3": {
+        "apps/worker/src/ai/docs": [
+          {
+            "relativePath": "apps/worker/src/ai/docs/knowledge-engine-implementation.md",
+            "message": "Missing frontmatter metadata: apps/worker/src/ai/docs/knowledge-engine-implementation.md",
+            "missingKeys": [
+              "version",
+              "status",
+              "audience",
+              "visibility",
+              "source"
+            ],
+            "missingKeyCount": 5,
+            "charCount": 2577,
+            "lineCount": 73
+          },
+          {
+            "relativePath": "apps/worker/src/ai/docs/support-design-implementation.md",
+            "message": "Missing frontmatter metadata: apps/worker/src/ai/docs/support-design-implementation.md",
+            "missingKeys": [
+              "version",
+              "status",
+              "audience",
+              "visibility",
+              "source"
+            ],
+            "missingKeyCount": 5,
+            "charCount": 2985,
+            "lineCount": 76
+          }
+        ]
+      }
+    },
+    "topQuickFixes": [
+      {
+        "relativePath": "apps/worker/src/ai/docs/knowledge-engine-implementation.md",
+        "waveId": "wave3",
+        "missingKeys": [
+          "version",
+          "status",
+          "audience",
+          "visibility",
+          "source"
+        ],
+        "missingKeyCount": 5,
+        "charCount": 2577,
+        "lineCount": 73
+      },
+      {
+        "relativePath": "apps/worker/src/ai/docs/support-design-implementation.md",
+        "waveId": "wave3",
+        "missingKeys": [
+          "version",
+          "status",
+          "audience",
+          "visibility",
+          "source"
+        ],
+        "missingKeyCount": 5,
+        "charCount": 2985,
+        "lineCount": 76
+      }
+    ]
   },
   "checks": {
     "verifyDesignDocAliasSync": "pass",
     "verifyAuditedDoctrineMetadata": "pass",
-    "frontmatterReport": "pass",
+    "frontmatterReport": "warn",
     "tests": "not_run"
   }
 }

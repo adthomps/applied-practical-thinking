@@ -3,6 +3,7 @@ import { Hono } from 'hono';
 import { z } from 'zod';
 import { splitMarkdown } from '../ai/splitMarkdown';
 import { embed, upsertToVectorDb } from '../ai/vectorClient';
+import type { WorkerBindings } from '../workerTypes';
 
 // Accept either a list of repository paths or an explicit documents payload
 const ingestSchema = z.object({
@@ -11,20 +12,25 @@ const ingestSchema = z.object({
     .array(
       z.object({
         path: z.string().optional(),
-        frontmatter: z.record(z.any()).optional(),
+        frontmatter: z.record(z.string(), z.unknown()).optional(),
         content: z.string(),
-        metadata: z.record(z.any()).optional()
+        metadata: z.record(z.string(), z.unknown()).optional()
       })
     )
     .optional(),
   rebuild: z.boolean().optional()
 });
 
-export const ingestRoute = new Hono().post('/api/ingest', async (c) => {
+export const ingestRoute = new Hono<{ Bindings: WorkerBindings }>().post('/api/ingest', async (c) => {
   const auth = c.req.header('Authorization');
   if (!auth || !auth.startsWith('Bearer ')) return c.json({ error: 'Unauthorized' }, 401);
   const token = auth.split(' ')[1];
-  if (token !== process.env.APT_INGEST_TOKEN) return c.json({ error: 'Forbidden' }, 403);
+
+  const configuredToken = c.env.APT_INGEST_TOKEN;
+  if (!configuredToken) {
+    return c.json({ error: 'Worker is missing required APT_INGEST_TOKEN binding' }, 500);
+  }
+  if (token !== configuredToken) return c.json({ error: 'Forbidden' }, 403);
 
   const body = await c.req.json();
   const parsed = ingestSchema.safeParse(body);

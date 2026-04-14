@@ -1,42 +1,32 @@
-import { useState, useMemo, useEffect } from "react";
+import { useMemo, useState } from "react";
 import { InsightCard } from "@/components/apt/InsightCard";
 import { ContentFilters, FilterConfig, SelectedFilters, RuntimeConfigNotice } from "@/components/apt";
-import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
 import { getWorkerApiConfigError } from "@/src/services/api";
+import { usePodcastsIndexQuery } from "@/hooks/useContentAggregateQueries";
 
 export default function InsightsPodcasts() {
-  const [podcasts, setPodcasts] = useState<ContentIndexItem[] | null>(null);
   const [selected, setSelected] = useState<SelectedFilters>({
     topics: [],
   });
+  const podcastsQuery = usePodcastsIndexQuery();
+  const podcasts = useMemo(() => podcastsQuery.data || [], [podcastsQuery.data]);
 
   // Get unique filter options
   const config = useMemo<FilterConfig>(() => {
-    const topics = [...new Set((podcasts ?? []).flatMap((b) => b.concepts || []))].sort();
+    const topics = [...new Set(podcasts.flatMap((b) => b.concepts || []))].sort();
     return { topics };
   }, [podcasts]);
 
   // Filter podcasts
   const filteredPodcasts = useMemo(() => {
-    if (!selected.topics?.length) return podcasts ?? [];
-    return (podcasts ?? []).filter((podcast) =>
+    if (!selected.topics?.length) return podcasts;
+    return podcasts.filter((podcast) =>
       selected.topics?.some((t) => (podcast.concepts || []).includes(t))
     );
   }, [selected.topics, podcasts]);
 
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    fetchContentIndex("podcasts")
-      .then((data) => {
-        setPodcasts(data.sort((a, b) => (b.publishedAt || "").localeCompare(a.publishedAt || "")));
-      })
-      .catch((e) => {
-        setError(e.message);
-      });
-  }, []);
-
-  const loading = podcasts === null && !error;
+  const loading = podcastsQuery.isLoading;
+  const error = podcastsQuery.error?.message || null;
   if (loading) {
     return <div className="container py-12 text-center">Loading podcasts…</div>;
   }

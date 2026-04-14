@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
 import { authorConfig, siteConfig } from "@/data/site";
-import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
+import { ContentIndexItem } from "@/src/services/contentIndex";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
+import { useHomeFeaturedContentQuery } from "@/hooks/useContentAggregateQueries";
 import {
   HeroSection,
   AptCard,
@@ -17,10 +18,6 @@ import {
 import { AssistantChat, ASSISTANT_CHAT_ENABLED } from "@/features/assistant/AssistantChat";
 import { Brain, AppWindow, Network, ArrowRight } from "lucide-react";
 import { getStatusTagDefinition } from "@/lib/tagSemantics";
-
-const HOMEPAGE_FEATURE_LIMIT = 6;
-
-type HomepageFeatureLane = "experiments" | "learn" | "systems";
 
 const pillars = [
   {
@@ -48,50 +45,6 @@ const pillars = [
     docsLink: "/design",
   },
 ];
-
-function getFeatureDate(item: ContentIndexItem) {
-  return new Date(item.date || item.publishedAt || 0).getTime();
-}
-
-function sortByFeatureDate(items: ContentIndexItem[]) {
-  return [...items].sort((a, b) => getFeatureDate(b) - getFeatureDate(a));
-}
-
-function getHomepageFeatureLane(item: ContentIndexItem): HomepageFeatureLane {
-  if (item.indexType === "labs" || item.indexType === "demos") return "experiments";
-  if (item.indexType === "systems") return "systems";
-  return "learn";
-}
-
-function selectHomepageFeatured(items: ContentIndexItem[]) {
-  const featured = sortByFeatureDate(items.filter((item) => item.featured === true));
-  const selected: ContentIndexItem[] = [];
-  const selectedIds = new Set<string>();
-
-  const addItem = (item: ContentIndexItem) => {
-    const key = item.id || item.slug || item.contentPath;
-    if (selectedIds.has(key) || selected.length >= HOMEPAGE_FEATURE_LIMIT) return;
-    selectedIds.add(key);
-    selected.push(item);
-  };
-
-  const laneCaps: Record<HomepageFeatureLane, number> = {
-    experiments: 2,
-    learn: 3,
-    systems: 1,
-  };
-
-  (Object.keys(laneCaps) as HomepageFeatureLane[]).forEach((lane) => {
-    featured
-      .filter((item) => getHomepageFeatureLane(item) === lane)
-      .slice(0, laneCaps[lane])
-      .forEach(addItem);
-  });
-
-  featured.forEach(addItem);
-
-  return selected;
-}
 
 function getHomepageFeaturedLink(item: ContentIndexItem) {
   if (item.indexType === "labs") {
@@ -148,43 +101,13 @@ export default function Home() {
     imageAlt: `${siteConfig.fullName} social preview`,
   });
 
-  // Featured items - curated cross-section of experiments, learn content, and systems
-  const [featuredItems, setFeaturedItems] = useState<ContentIndexItem[]>([]);
-  const [loading, setLoading] = useState(true);
+  const featuredQuery = useHomeFeaturedContentQuery();
 
-  useEffect(() => {
-    let cancelled = false;
-    Promise.all([
-      fetchContentIndex("labs"),
-      fetchContentIndex("blog"),
-      fetchContentIndex("guides"),
-      fetchContentIndex("podcasts"),
-      fetchContentIndex("design-reviews"),
-      fetchContentIndex("demos"),
-      fetchContentIndex("systems"),
-    ]).then(([labs, blog, guides, podcasts, reviews, demos, systems]) => {
-      if (cancelled) return;
-
-      const allContent: ContentIndexItem[] = [
-        ...labs,
-        ...blog,
-        ...guides,
-        ...podcasts,
-        ...reviews,
-        ...demos,
-        ...systems,
-      ];
-
-      setFeaturedItems(selectHomepageFeatured(allContent));
-    }).catch(() => {
-      if (cancelled) return;
-      setFeaturedItems([]);
-    }).finally(() => {
-      if (cancelled) return;
-      setLoading(false);
-    });
-    return () => { cancelled = true; };
-  }, []);
+  const featuredItems = useMemo(
+    () => featuredQuery.data || [],
+    [featuredQuery.data]
+  );
+  const loading = featuredQuery.isLoading;
 
   return (
     <div>

@@ -1,47 +1,79 @@
+import { Hono, type Context } from 'hono';
+import { assistantRuntimeRoute } from './routes/assistantRuntime';
+import { contentGatewayRoute } from './routes/contentGateway';
+import type { WorkerBindings } from './workerTypes';
 
-import { Hono } from 'hono';
-import { chatRoute } from './routes/chat';
-import { publicContentRoute } from './routes/publicContent';
-import { reportRoute } from './routes/report';
-import { ingestRoute } from './routes/ingest';
-import { queryRoute } from './routes/query';
-import { feedbackRoute } from './routes/feedback';
+const app = new Hono<{ Bindings: WorkerBindings }>();
 
-const app = new Hono();
+const LOCAL_DEV_ORIGINS = new Set([
+  'http://127.0.0.1:5173',
+  'http://localhost:5173',
+  'http://127.0.0.1:8080',
+  'http://localhost:8080',
+]);
 
+const KNOWN_PUBLIC_ORIGINS = new Set([
+  'https://applied-practical-thinking.pages.dev',
+  'https://appliedpracticalthinking.com',
+  'https://www.appliedpracticalthinking.com',
+]);
 
-// Log every request method and path
+function normalizeOrigin(value?: string) {
+  if (!value?.trim()) return null;
+
+  try {
+    return new URL(value).origin;
+  } catch {
+    return null;
+  }
+}
+
+function resolveAllowedCorsOrigin(requestOrigin?: string, configuredSiteOrigin?: string) {
+  const normalizedRequestOrigin = normalizeOrigin(requestOrigin);
+  if (!normalizedRequestOrigin) return null;
+
+  const normalizedConfiguredOrigin = normalizeOrigin(configuredSiteOrigin);
+
+  if (LOCAL_DEV_ORIGINS.has(normalizedRequestOrigin)) return normalizedRequestOrigin;
+  if (KNOWN_PUBLIC_ORIGINS.has(normalizedRequestOrigin)) return normalizedRequestOrigin;
+  if (normalizedConfiguredOrigin && normalizedRequestOrigin === normalizedConfiguredOrigin) {
+    return normalizedRequestOrigin;
+  }
+
+  return null;
+}
+
+function applyCorsHeaders(c: Context<{ Bindings: WorkerBindings }>, allowedOrigin: string | null) {
+  c.res.headers.set('Vary', 'Origin');
+  c.res.headers.set('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
+  c.res.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  if (allowedOrigin) {
+    c.res.headers.set('Access-Control-Allow-Origin', allowedOrigin);
+  }
+}
+
+// Log every request method/path and apply CORS only for known origins.
 app.use('*', async (c, next) => {
   // eslint-disable-next-line no-console
   console.log(`[Worker] ${c.req.method} ${c.req.path}`);
+
+  const allowedOrigin = resolveAllowedCorsOrigin(c.req.header('origin'), c.env.PUBLIC_SITE_ORIGIN);
+
+  if (c.req.method === 'OPTIONS') {
+    if (c.req.header('origin') && !allowedOrigin) {
+      return c.json({ error: 'CORS origin not allowed' }, 403);
+    }
+    c.status(204);
+    applyCorsHeaders(c, allowedOrigin);
+    return c.body(null);
+  }
+
   await next();
-  c.res.headers.set('Access-Control-Allow-Origin', '*');
-  c.res.headers.set('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
-  c.res.headers.set('Access-Control-Allow-Headers', 'Content-Type');
+  applyCorsHeaders(c, allowedOrigin);
 });
 
-// Handle preflight OPTIONS requests
-app.options('*', (c) => {
-  c.res.headers.set('Access-Control-Allow-Origin', '*');
-  c.res.headers.set('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
-  c.res.headers.set('Access-Control-Allow-Headers', 'Content-Type');
-  return c.text('');
-});
-
-
-// Debug route to check OPENAI_API_KEY in Worker environment
-app.get('/api/debug/env', (c) => {
-  // eslint-disable-next-line no-console
-  console.log('DEBUG: c.env.OPENAI_API_KEY =', c.env?.OPENAI_API_KEY);
-  return c.json({ OPENAI_API_KEY: c.env?.OPENAI_API_KEY ?? null });
-});
-
-app.route('/', chatRoute); // Mount chatRoute at root so /api/chat works
-app.route('/', publicContentRoute);
-app.route('/', reportRoute); // Mount reportRoute at root so /api/report works
-app.route('/', ingestRoute);
-app.route('/', queryRoute);
-app.route('/', feedbackRoute);
+app.route('/', contentGatewayRoute);
+app.route('/', assistantRuntimeRoute);
 
 app.get('/', (c) => c.text('APT Worker API is running'));
 
@@ -51,20 +83,5 @@ app.get('/api/info', (c) =>
     buttons: ['Design System', 'Design Thinking', 'Design Architecture']
   })
 );
-
-// Simple chat handler for POST /api/chat
-app.post('/api/chat', async (c) => {
-  try {
-    const body = await c.req.json();
-    // Example: echo the payload back
-    return c.json({
-      ok: true,
-      received: body,
-      message: 'Chat endpoint received your request.'
-    });
-  } catch (err) {
-    return c.json({ ok: false, error: 'Invalid JSON or request.' }, 400);
-  }
-});
 
 export default app;

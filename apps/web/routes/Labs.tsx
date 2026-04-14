@@ -1,8 +1,8 @@
 
-import { useState, useMemo, useEffect } from "react";
+import { useMemo, useState } from "react";
 import { LabCard } from "@/components/apt/LabCard";
 import { ContentFilters, FilterConfig, SelectedFilters } from "@/components/apt";
-import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
+import { useLegacyLabsIndexQuery } from "@/hooks/useContentAggregateQueries";
 
 
 export default function Labs() {
@@ -13,14 +13,9 @@ export default function Labs() {
     technologies: [],
     statuses: [],
   });
-  const [labs, setLabs] = useState<ContentIndexItem[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchContentIndex("labs")
-      .then((data) => setLabs(data))
-      .finally(() => setLoading(false));
-  }, []);
+  const labsQuery = useLegacyLabsIndexQuery();
+  const labs = useMemo(() => labsQuery.data || [], [labsQuery.data]);
+  const loading = labsQuery.isLoading;
 
   const config = useMemo<FilterConfig>(() => {
     const types = [...new Set(labs.map((lab) => lab.type))];

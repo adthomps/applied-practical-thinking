@@ -10,10 +10,7 @@ import {
   type PublicDesignDocVersionsResponse,
   type PublicReviewBundleManifest,
 } from "@apt/knowledge";
-
-type PublicContentBindings = {
-  PUBLIC_SITE_ORIGIN?: string;
-};
+import type { WorkerBindings } from "../workerTypes";
 
 const DESIGN_DOCS_MANIFEST_PATH = "/docs/design/APT-DESIGN-DOCS-MANIFEST.json";
 const REVIEW_BUNDLE_MANIFEST_PATH = "/docs/design/APT-AI-REVIEW-BUNDLE.json";
@@ -324,6 +321,12 @@ function stripFrontmatter(markdown: string) {
   return markdown.replace(/^---[\s\S]*?---\s*/, "").trim();
 }
 
+function getErrorMessage(error: unknown, fallback: string) {
+  if (error instanceof Error && error.message) return error.message;
+  if (typeof error === "string" && error.trim()) return error;
+  return fallback;
+}
+
 function normalizeItem(type: ContentIndexType, item: ContentIndexItem): ContentIndexItem {
   const assetDir = item.contentPath.split("/").slice(0, -1).join("/");
   return {
@@ -333,7 +336,7 @@ function normalizeItem(type: ContentIndexType, item: ContentIndexItem): ContentI
   };
 }
 
-export const publicContentRoute = new Hono<{ Bindings: PublicContentBindings }>()
+export const publicContentRoute = new Hono<{ Bindings: WorkerBindings }>()
   .get("/api/content/:type", async (c) => {
     const type = c.req.param("type") as ContentIndexType;
     const requestOrigin = c.req.header("origin");
@@ -349,10 +352,10 @@ export const publicContentRoute = new Hono<{ Bindings: PublicContentBindings }>(
         requestOrigin
       );
       return c.json(items.map((item) => normalizeItem(type, item)));
-    } catch (error: any) {
+    } catch (error: unknown) {
       return c.json(
         {
-          error: error?.message || "Failed to load content index",
+          error: getErrorMessage(error, "Failed to load content index"),
           envVar: "PUBLIC_SITE_ORIGIN",
           expectedProductionValue: "https://applied-practical-thinking.pages.dev",
         },
@@ -396,10 +399,10 @@ export const publicContentRoute = new Hono<{ Bindings: PublicContentBindings }>(
         markdown: stripFrontmatter(rawMarkdown),
       };
       return c.json(response);
-    } catch (error: any) {
+    } catch (error: unknown) {
       return c.json(
         {
-          error: error?.message || "Failed to load content detail",
+          error: getErrorMessage(error, "Failed to load content detail"),
           envVar: "PUBLIC_SITE_ORIGIN",
           expectedProductionValue: "https://applied-practical-thinking.pages.dev",
         },
@@ -435,10 +438,10 @@ export const publicContentRoute = new Hono<{ Bindings: PublicContentBindings }>(
       }
 
       return c.json(toPublicDesignDocVersionsResponse(doc));
-    } catch (error: any) {
+    } catch (error: unknown) {
       return c.json(
         {
-          error: error?.message || "Failed to load design doc versions",
+          error: getErrorMessage(error, "Failed to load design doc versions"),
           envVar: "PUBLIC_SITE_ORIGIN",
           expectedProductionValue: "https://applied-practical-thinking.pages.dev",
         },
@@ -481,10 +484,10 @@ export const publicContentRoute = new Hono<{ Bindings: PublicContentBindings }>(
       const item = toPublicDesignDocItem({ ...doc, latestMajor: major, versions: [version] });
       const response: PublicDesignDocDetailResponse = { item, markdown };
       return c.json(response);
-    } catch (error: any) {
+    } catch (error: unknown) {
       return c.json(
         {
-          error: error?.message || "Failed to load versioned design doc",
+          error: getErrorMessage(error, "Failed to load versioned design doc"),
           envVar: "PUBLIC_SITE_ORIGIN",
           expectedProductionValue: "https://applied-practical-thinking.pages.dev",
         },
@@ -524,10 +527,10 @@ export const publicContentRoute = new Hono<{ Bindings: PublicContentBindings }>(
       );
       const response: PublicDesignDocDetailResponse = { item, markdown };
       return c.json(response);
-    } catch (error: any) {
+    } catch (error: unknown) {
       return c.json(
         {
-          error: error?.message || "Failed to load design doc",
+          error: getErrorMessage(error, "Failed to load design doc"),
           envVar: "PUBLIC_SITE_ORIGIN",
           expectedProductionValue: "https://applied-practical-thinking.pages.dev",
         },
@@ -544,10 +547,10 @@ export const publicContentRoute = new Hono<{ Bindings: PublicContentBindings }>(
         c.req.header("origin")
       );
       return c.json(manifest);
-    } catch (error: any) {
+    } catch (error: unknown) {
       return c.json(
         {
-          error: error?.message || "Failed to load review bundle manifest",
+          error: getErrorMessage(error, "Failed to load review bundle manifest"),
           envVar: "PUBLIC_SITE_ORIGIN",
           expectedProductionValue: "https://applied-practical-thinking.pages.dev",
         },

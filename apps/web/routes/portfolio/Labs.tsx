@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type ComponentType } from "react";
+import { useMemo, useState, type ComponentType } from "react";
 import { Link } from "react-router-dom";
 import { LabCard } from "@/components/apt/LabCard";
 import {
@@ -10,10 +10,10 @@ import {
   SelectedFilters,
   RuntimeConfigNotice,
 } from "@/components/apt";
-import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
 import { getWorkerApiConfigError } from "@/src/services/api";
 import { siteConfig } from "@/data/site";
 import { FlaskConical, Lightbulb, LayoutTemplate, PlayCircle } from "lucide-react";
+import { useExperimentsLabsIndexQuery } from "@/hooks/useContentAggregateQueries";
 
 const experimentsNav = siteConfig.nav.find((item) => item.path === "/experiments");
 const experimentIcons: Record<string, ComponentType<{ className?: string }>> = {
@@ -32,16 +32,10 @@ export default function PortfolioLabs() {
     statuses: [],
   });
 
-  const [labs, setLabs] = useState<ContentIndexItem[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    fetchContentIndex("labs")
-      .then((data) => setLabs(data))
-      .catch((e) => setError(e.message))
-      .finally(() => setLoading(false));
-  }, []);
+  const labsQuery = useExperimentsLabsIndexQuery();
+  const labs = useMemo(() => labsQuery.data || [], [labsQuery.data]);
+  const loading = labsQuery.isLoading;
+  const error = labsQuery.error?.message || null;
 
   // Get unique filter options
   const config = useMemo<FilterConfig>(() => {

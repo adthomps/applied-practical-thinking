@@ -1,41 +1,50 @@
-// Only load dotenv locally (not in Worker)
-if (typeof process !== 'undefined' && process.env) {
-  require('dotenv').config();
-}
-// Script to index markdown docs into Cloudflare Vectorize (or similar)
-// Run this script on deploy or doc update
+import "dotenv/config";
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { embed, upsertToVectorDb } from "./vectorClient";
+import { splitMarkdown } from "./splitMarkdown";
+import type { WorkerBindings } from "../workerTypes";
 
-const fs = require('fs');
-const path = require('path');
-const { embed, upsertToVectorDb } = require('./vectorClient');
-const { splitMarkdown } = require('./splitMarkdown');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const DOCS_DIR = path.join(__dirname, "docs");
 
-const DOCS_DIR = path.join(__dirname, 'docs');
+export async function indexDocs(env?: Partial<WorkerBindings>) {
+  const files = fs.readdirSync(DOCS_DIR).filter((filename) => filename.endsWith(".md"));
 
-// Accept env for VECTORIZE binding (for Worker), or use REST API for local/dev
-async function indexDocs(env?: any) {
-  const files = fs.readdirSync(DOCS_DIR).filter((f: string) => f.endsWith('.md'));
   for (const file of files) {
     const filePath = path.join(DOCS_DIR, file);
-    const content = fs.readFileSync(filePath, 'utf8');
+    const content = fs.readFileSync(filePath, "utf8");
     const chunks = splitMarkdown(content);
+
     for (const chunk of chunks) {
-      const embedding = await embed(chunk.text);
-      await upsertToVectorDb({
-        id: chunk.id,
-        embedding,
-        metadata: { path: file, heading: chunk.heading }
-      }, env);
+      const embedding = await embed(chunk.text, env);
+      await upsertToVectorDb(
+        {
+          id: chunk.id,
+          embedding,
+          metadata: { path: file, heading: chunk.heading },
+        },
+        env
+      );
     }
   }
-  console.log('Docs indexed.');
 }
 
-// CLI entry point for local Node.js usage
-if (require.main === module) {
+if (import.meta.url === new URL(process.argv[1], "file:").href) {
   if (!process.env.OPENAI_API_KEY) {
-    console.error('Set OPENAI_API_KEY in your environment.');
+    console.error("Set OPENAI_API_KEY in your environment.");
     process.exit(1);
   }
-  indexDocs();
+
+  void indexDocs()
+    .then(() => {
+      console.log("Docs indexed.");
+    })
+    .catch((error: unknown) => {
+      console.error("Failed to index docs:", error);
+      process.exit(1);
+    });
 }
+

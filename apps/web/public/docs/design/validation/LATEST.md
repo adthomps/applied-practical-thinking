@@ -1,8 +1,8 @@
 # APT Validation Report (Public)
 
-- Timestamp: 2026-04-06T04:55:19.604Z
-- Duration: 27ms
-- Recommendation: pass
+- Timestamp: 2026-04-14T05:57:53.802Z
+- Duration: 36ms
+- Recommendation: pass_with_fixes
 
 ## Section Outcomes
 
@@ -17,8 +17,8 @@
 - frontmatter-wave2: pass (low) - Wave 2 missing metadata files: 0
 
 ### docsGovernance
-- Status: pass
-- frontmatter-report: pass (low) - Frontmatter gaps in scoped docs: 0
+- Status: warn
+- frontmatter-report: warn (medium) - Frontmatter gaps in scoped docs: 2
 
 ### tests
 - Status: pass
@@ -28,12 +28,13 @@
 
 - critical: 0
 - high: 0
-- medium: 0
+- medium: 2
 - low: 0
 
 ## Findings
 
-- None
+- [medium] docsGovernance: Missing frontmatter metadata: apps/worker/src/ai/docs/knowledge-engine-implementation.md
+- [medium] docsGovernance: Missing frontmatter metadata: apps/worker/src/ai/docs/support-design-implementation.md
 
 ## Exception Summary
 
@@ -44,5 +45,5 @@
 
 - wave1 (Design static + AI prompts): passed=10/10, missing=0, exceptions=0, complete=100%
 - wave2 (Internal operational docs): passed=23/24, missing=0, exceptions=1, complete=95.8%
-- wave3 (Worker AI docs + .github docs): passed=7/8, missing=0, exceptions=1, complete=87.5%
+- wave3 (Worker AI docs + .github docs): passed=7/10, missing=2, exceptions=1, complete=70%
 

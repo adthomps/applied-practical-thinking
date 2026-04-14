@@ -1,6 +1,5 @@
-import { useEffect, useState, type ComponentType } from "react";
+import { useMemo, useState, type ComponentType } from "react";
 import { Book, FileText, Network, Podcast } from "lucide-react";
-import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
 import { InsightCard } from "@/components/apt/InsightCard";
 import {
   AptButton,
@@ -11,6 +10,7 @@ import {
 import { siteConfig } from "@/data/site";
 import { getWorkerApiConfigError } from "@/src/services/api";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
+import { useInsightsIndexQuery } from "@/hooks/useContentAggregateQueries";
 
 
 const areaIcons: Record<string, ComponentType<{ className?: string }>> = {
@@ -28,42 +28,22 @@ export default function Insights() {
   });
 
   const [filter, setFilter] = useState<string | "all">("all");
-  const [insights, setInsights] = useState<ContentIndexItem[] | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const insightsQuery = useInsightsIndexQuery();
 
-  useEffect(() => {
-    Promise.all([
-      fetchContentIndex("blog"),
-      fetchContentIndex("guides"),
-      fetchContentIndex("podcasts"),
-      fetchContentIndex("design-reviews"),
-    ])
-      .then(([blog, guides, podcasts, reviews]) => {
-        setInsights([
-          ...blog,
-          ...guides,
-          ...podcasts,
-          ...reviews,
-        ].sort((a, b) => (b.publishedAt || "").localeCompare(a.publishedAt || "")));
-      })
-      .catch((e) => {
-        setError(e.message);
-      });
-  }, []);
-
-  const loading = insights === null && !error;
+  const insights = useMemo(() => insightsQuery.data || [], [insightsQuery.data]);
+  const loading = insightsQuery.isLoading;
 
   const filteredContent =
     filter === "all"
-      ? (insights ?? [])
-      : (insights ?? []).filter((c) =>
+      ? insights
+      : insights.filter((c) =>
           filter === "practice" ? c.type === "guide" || c.type === "design-review" : c.type === filter
         );
 
   if (loading) {
     return <div className="container py-12 text-center">Loading learning content…</div>;
   }
-  if (error) {
+  if (insightsQuery.isError) {
     const configError = getWorkerApiConfigError();
     return (
       <div className="container py-12">
@@ -74,7 +54,7 @@ export default function Insights() {
             expectedValue={configError.expectedProductionValue}
           />
         ) : (
-          <div className="text-center text-destructive">{error}</div>
+          <div className="text-center text-destructive">{insightsQuery.error?.message}</div>
         )}
       </div>
     );
