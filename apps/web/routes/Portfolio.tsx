@@ -1,7 +1,12 @@
 import { useMemo, useState, type ComponentType } from "react";
 import { Link } from "react-router-dom";
-import { AptButton, AptCard, AptTag, DesignDocVersionSwitcher, LandingSectionCardGrid, SectionIntro } from "@/components/apt";
-import { siteConfig } from "@/data/site";
+import { AptButton, AptCard, AptTag, DesignDocVersionSwitcher, SectionIntro } from "@/components/apt";
+import {
+  designSectionCatalog,
+  mostUsedDesignSectionPaths,
+  type DesignSection,
+  type DesignSectionCategory,
+} from "@/data/designSections";
 import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
 import { useDesignDocVersion } from "@/hooks/useDesignDocVersion";
 import { downloadWorkerMarkdown } from "@/src/services/download";
@@ -16,10 +21,11 @@ import {
   Bot,
   BookOpenText,
   Shapes,
+  LifeBuoy,
+  Database,
 } from "lucide-react";
 
-const designNav = siteConfig.nav.find(n => n.path === "/design");
-const designSections = designNav?.children ?? [];
+const designSections = designSectionCatalog;
 
 const sectionIcons: Record<string, ComponentType<{ className?: string }>> = {
   "/design/system": Palette,
@@ -30,13 +36,16 @@ const sectionIcons: Record<string, ComponentType<{ className?: string }>> = {
   "/design/review-bundle": Bot,
   "/design/docs": BookOpenText,
   "/design/patterns": Shapes,
-  "/design/docs/patterns/forms": Shapes,
+  "/design/support": LifeBuoy,
+  "/design/knowledge-engine": Database,
 };
 
-type DesignFilter = "all" | "doctrine" | "reference";
+type DesignFilter = "all" | DesignSectionCategory;
 
-function getDesignSectionCategory(path: string): DesignFilter {
-  return path === "/design/systems" ? "reference" : "doctrine";
+function getDesignSectionCategoryLabel(category: DesignSectionCategory) {
+  if (category === "core") return "Core";
+  if (category === "runtime") return "Runtime";
+  return "Reference";
 }
 
 export default function Portfolio() {
@@ -51,16 +60,47 @@ export default function Portfolio() {
     await downloadWorkerMarkdown(overviewVersion.downloadApiPath, `apt-design-overview${majorSuffix}.md`);
   };
 
-  const landingCards = (designSections ?? []).map((section) => ({
-    ...section,
-    icon: sectionIcons[section.path] ?? Brain,
-    metaLabel: getDesignSectionCategory(section.path) === "reference" ? "Reference" : "Doctrine",
-  }));
+  const mostUsedSet = useMemo(() => new Set(mostUsedDesignSectionPaths), []);
+  const mostUsedSections = useMemo(
+    () => designSections.filter((section) => mostUsedSet.has(section.path)),
+    [mostUsedSet]
+  );
 
   const filteredSections = useMemo(() => {
     if (filter === "all") return designSections;
-    return designSections.filter((section) => getDesignSectionCategory(section.path) === filter);
+    return designSections.filter((section) => section.category === filter);
   }, [filter]);
+
+  function renderDesignCard(section: DesignSection) {
+    const Icon = sectionIcons[section.path] ?? Brain;
+    const category = getDesignSectionCategoryLabel(section.category);
+
+    return (
+      <Link key={section.path} to={section.path} className="block group">
+        <AptCard variant="interactive" className="h-full">
+          <div className="p-6 space-y-5">
+            <div className="flex items-start justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="h-11 w-11 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                  <Icon className="h-5 w-5 text-primary" />
+                </div>
+                <div>
+                  <AptTag variant="outline" size="sm" className="mb-2">{category}</AptTag>
+                  <h3 className="text-lg font-semibold">{section.label}</h3>
+                </div>
+              </div>
+              <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+            </div>
+
+            <div className="space-y-3">
+              <p className="text-sm text-muted-foreground">{section.description}</p>
+              {section.tagline ? <p className="text-xs text-primary/80 italic">{section.tagline}</p> : null}
+            </div>
+          </div>
+        </AptCard>
+      </Link>
+    );
+  }
 
   return (
     <div className="container py-8 md:py-12 space-y-12">
@@ -106,12 +146,20 @@ export default function Portfolio() {
         </SectionIntro>
       </section>
 
-      <LandingSectionCardGrid items={landingCards} />
+      <section className="space-y-6">
+        <SectionIntro
+          title="Most Used"
+          description="Start here for the most common design paths across doctrine, runtime docs, and reference review."
+        />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {mostUsedSections.map(renderDesignCard)}
+        </div>
+      </section>
 
       <section className="space-y-6">
         <SectionIntro
-          title="Browse all Design areas"
-          description="Move across doctrine and reference layers to see how APT defines problems, expresses systems, and documents the reusable models behind the work."
+          title="All Docs"
+          description="The full design catalog, grouped by Core, Runtime, and Reference to keep scanning predictable as content grows."
         />
 
         <div className="flex flex-wrap gap-2">
@@ -123,11 +171,18 @@ export default function Portfolio() {
             All
           </AptButton>
           <AptButton
-            variant={filter === "doctrine" ? "primary" : "ghost"}
+            variant={filter === "core" ? "primary" : "ghost"}
             size="sm"
-            onClick={() => setFilter("doctrine")}
+            onClick={() => setFilter("core")}
           >
-            Doctrine
+            Core
+          </AptButton>
+          <AptButton
+            variant={filter === "runtime" ? "primary" : "ghost"}
+            size="sm"
+            onClick={() => setFilter("runtime")}
+          >
+            Runtime
           </AptButton>
           <AptButton
             variant={filter === "reference" ? "primary" : "ghost"}
@@ -139,38 +194,7 @@ export default function Portfolio() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {filteredSections.map((section) => {
-            const Icon = sectionIcons[section.path] ?? Brain;
-            const category = getDesignSectionCategory(section.path) === "reference" ? "Reference" : "Doctrine";
-
-            return (
-              <Link key={section.path} to={section.path} className="block group">
-                <AptCard variant="interactive" className="h-full">
-                  <div className="p-6 space-y-5">
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="flex items-center gap-3">
-                        <div className="h-11 w-11 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                          <Icon className="h-5 w-5 text-primary" />
-                        </div>
-                        <div>
-                          <AptTag variant="outline" size="sm" className="mb-2">{category}</AptTag>
-                          <h3 className="text-lg font-semibold">{section.label}</h3>
-                        </div>
-                      </div>
-                      <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
-                    </div>
-
-                    <div className="space-y-3">
-                      <p className="text-sm text-muted-foreground">{section.description}</p>
-                      {"tagline" in section && section.tagline ? (
-                        <p className="text-xs text-primary/80 italic">{section.tagline}</p>
-                      ) : null}
-                    </div>
-                  </div>
-                </AptCard>
-              </Link>
-            );
-          })}
+          {filteredSections.map(renderDesignCard)}
         </div>
       </section>
     </div>
