@@ -1,9 +1,9 @@
 {
   "run": {
-    "timestamp": "2026-04-14T05:57:53.802Z",
-    "completedAt": "2026-04-14T05:57:53.838Z",
-    "durationMs": 36,
-    "gitSha": "4ca3421",
+    "timestamp": "2026-04-15T03:56:13.021Z",
+    "completedAt": "2026-04-15T03:56:13.050Z",
+    "durationMs": 29,
+    "gitSha": "5234a68",
     "branch": "preview",
     "runner": "sanch"
   },
@@ -55,7 +55,7 @@
         }
       ],
       "frontmatter": {
-        "scannedCount": 147,
+        "scannedCount": 149,
         "inScopeCount": 44,
         "missingCount": 2,
         "waves": [

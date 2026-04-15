@@ -1,3 +1,5 @@
+import { designNavSections } from "./designSections";
+
 // Site-level configuration
 export const siteConfig = {
   name: "APT",
@@ -79,75 +81,8 @@ export const siteConfig = {
     {
       label: "Design",
       path: "/design",
-      description: "APT's design doctrine, standards, thinking, and architecture.",
-      children: [
-        {
-          label: "Design Thinking",
-          path: "/design/thinking",
-          description: "Problem framing, assumptions, constraints, and decision-making in practice.",
-          tagline: "How problems are defined before solutions exist.",
-        },
-        {
-          label: "Design System",
-          path: "/design/system",
-          description: "How APT applies design systems—tokens, semantics, components, and constraints.",
-          tagline: "Designing for clarity, consistency, and scale.",
-        },
-        {
-          label: "Design Architecture",
-          path: "/design/architecture",
-          description: "Repo layout, deployment flows, API contracts, and enforcement rules.",
-          tagline: "Structure exists to prevent failure, not to enable creativity.",
-        },
-        {
-          label: "Support Design",
-          path: "/design/support",
-          description: "Operational response patterns, incident runbooks, and recovery playbooks.",
-          tagline: "How we detect, diagnose, and restore service and UX continuity.",
-        },
-        {
-          label: "Knowledge Engine",
-          path: "/design/knowledge-engine",
-          description: "Runtime patterns for ingesting, indexing, and serving knowledge artifacts.",
-          tagline: "Contracts, APIs, and validation for the knowledge layer.",
-        },
-        {
-          label: "Systems",
-          path: "/design/systems",
-          description: "Stable system references that capture architecture, decisions, and reusable models inside the APT doctrine.",
-          tagline: "Reference models governed by the design doctrine.",
-        },
-        {
-          label: "Content Strategy",
-          path: "/design/content-strategy",
-          description: "How APT organizes information so people can understand, navigate, and apply it.",
-          tagline: "Information architecture made visible.",
-        },
-        {
-          label: "AI Review Bundle",
-          path: "/design/review-bundle",
-          description: "A single public handoff for AI reviewers with the review standard and the core doctrine documents in one place.",
-          tagline: "One entry point for standards-based review.",
-        },
-        {
-          label: "Docs Browser",
-          path: "/design/docs",
-          description: "Manifest-driven browser for doctrine and pattern docs with version-aware rendering.",
-          tagline: "Browse docs from runtime manifest metadata.",
-        },
-        {
-          label: "Patterns",
-          path: "/design/patterns",
-          description: "Curated landing area for manifest-driven pattern docs.",
-          tagline: "Reusable patterns with version-aware docs routing.",
-        },
-        {
-          label: "Forms Pattern",
-          path: "/design/docs/patterns/forms",
-          description: "Open the Forms pattern reference directly from Design navigation.",
-          tagline: "Patterns route, including form architecture and states.",
-        },
-      ],
+      description: "APT's design doctrine, references, and runtime documentation surfaces.",
+      children: designNavSections,
     },
     {
       label: "About",
