@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef, useState } from "react";
-import type { FocusEvent, KeyboardEvent } from "react";
+import type { FocusEvent as ReactFocusEvent, KeyboardEvent as ReactKeyboardEvent } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -19,10 +19,19 @@ function isRouteActive(pathname: string, routePath: string) {
   return current === target || current.startsWith(`${target}/`);
 }
 
+function isFocusableElementVisible(element: HTMLElement) {
+  const style = window.getComputedStyle(element);
+  if (style.display === "none" || style.visibility === "hidden") return false;
+  const rect = element.getBoundingClientRect();
+  return rect.width > 0 && rect.height > 0;
+}
+
 function NavDropdown({ item, isLast = false }: { item: NavItem; isLast?: boolean }) {
   const location = useLocation();
   const [open, setOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const suppressHoverRef = useRef(false);
+  const keyboardManagedOpenRef = useRef(false);
   const triggerRef = useRef<HTMLAnchorElement | null>(null);
   const childLinkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -31,47 +40,151 @@ function NavDropdown({ item, isLast = false }: { item: NavItem; isLast?: boolean
   const isActive = isRouteActive(location.pathname, item.path) ||
     item.children?.some((child) => isRouteActive(location.pathname, child.path));
 
-  const closeDropdown = () => {
+  const closeDropdown = (options?: { suppressHover?: boolean }) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    if (options?.suppressHover) {
+      suppressHoverRef.current = true;
+    }
+    keyboardManagedOpenRef.current = false;
     setOpen(false);
   };
 
   const handleMouseEnter = () => {
+    if (suppressHoverRef.current) return;
+    keyboardManagedOpenRef.current = false;
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setOpen(true);
   };
 
   const handleMouseLeave = () => {
-    timeoutRef.current = setTimeout(() => setOpen(false), 150);
+    timeoutRef.current = setTimeout(() => closeDropdown(), 150);
   };
 
   const handleFocusWithin = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    keyboardManagedOpenRef.current = true;
     setOpen(true);
   };
 
-  const handleBlurWithin = (event: FocusEvent<HTMLDivElement>) => {
+  const handleBlurWithin = (event: ReactFocusEvent<HTMLDivElement>) => {
+    const currentTarget = event.currentTarget;
     const nextFocus = event.relatedTarget;
-    if (nextFocus instanceof Node && event.currentTarget.contains(nextFocus)) return;
-    closeDropdown();
+    if (nextFocus instanceof Node && currentTarget.contains(nextFocus)) return;
+
+    // Related target can be null when focus drops to the document/body.
+    if (!nextFocus) {
+      window.requestAnimationFrame(() => {
+        const activeElement = document.activeElement;
+        if (activeElement instanceof Node && currentTarget.contains(activeElement)) return;
+        closeDropdown({ suppressHover: true });
+      });
+      return;
+    }
+
+    closeDropdown({ suppressHover: true });
   };
 
-  const handleDropdownKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+  const handleDropdownKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
     if (event.key !== "Escape") return;
     event.preventDefault();
-    closeDropdown();
+    closeDropdown({ suppressHover: true });
     triggerRef.current?.focus();
   };
 
-  const handleTriggerKeyDown = (event: KeyboardEvent<HTMLAnchorElement>) => {
+  const handleTriggerKeyDown = (event: ReactKeyboardEvent<HTMLAnchorElement>) => {
     if (event.key !== "ArrowDown") return;
     event.preventDefault();
+    keyboardManagedOpenRef.current = true;
     setOpen(true);
     childLinkRefs.current[0]?.focus();
   };
 
+  const handleTriggerBlur = (event: ReactFocusEvent<HTMLAnchorElement>) => {
+    const nextFocus = event.relatedTarget;
+    if (nextFocus instanceof Node) {
+      if (triggerRef.current?.contains(nextFocus)) return;
+      if (dropdownRef.current?.contains(nextFocus)) return;
+    }
+    closeDropdown({ suppressHover: true });
+  };
+
   useEffect(() => {
+    if (!open) return;
+
+    const handleDocumentFocusOrPointer = (event: Event) => {
+      const target = event.target;
+      if (!(target instanceof Node)) return;
+      if (triggerRef.current?.contains(target)) return;
+      if (dropdownRef.current?.contains(target)) return;
+      if (event.type === "focusin") {
+        closeDropdown({ suppressHover: true });
+      } else {
+        closeDropdown();
+      }
+    };
+
+    const handleDocumentFocusOut = (event: Event) => {
+      if (!(event instanceof FocusEvent)) return;
+      const nextFocus = event.relatedTarget;
+      if (nextFocus instanceof Node) {
+        if (triggerRef.current?.contains(nextFocus)) return;
+        if (dropdownRef.current?.contains(nextFocus)) return;
+      }
+
+      window.requestAnimationFrame(() => {
+        const activeElement = document.activeElement;
+        if (activeElement instanceof Node) {
+          if (triggerRef.current?.contains(activeElement)) return;
+          if (dropdownRef.current?.contains(activeElement)) return;
+        }
+        closeDropdown({ suppressHover: true });
+      });
+    };
+
+    const handleWindowBlur = () => {
+      closeDropdown({ suppressHover: true });
+    };
+
+    document.addEventListener("focusin", handleDocumentFocusOrPointer);
+    document.addEventListener("focusout", handleDocumentFocusOut, true);
+    document.addEventListener("pointerdown", handleDocumentFocusOrPointer);
+    window.addEventListener("blur", handleWindowBlur);
+
     return () => {
+      document.removeEventListener("focusin", handleDocumentFocusOrPointer);
+      document.removeEventListener("focusout", handleDocumentFocusOut, true);
+      document.removeEventListener("pointerdown", handleDocumentFocusOrPointer);
+      window.removeEventListener("blur", handleWindowBlur);
+    };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open || !keyboardManagedOpenRef.current) return;
+
+    const blurGuard = window.setInterval(() => {
+      const activeElement = document.activeElement;
+      if (!(activeElement instanceof Node)) return;
+      if (triggerRef.current?.contains(activeElement)) return;
+      if (dropdownRef.current?.contains(activeElement)) return;
+      if (activeElement === document.body) {
+        closeDropdown({ suppressHover: true });
+      }
+    }, 60);
+
+    return () => {
+      window.clearInterval(blurGuard);
+    };
+  }, [open]);
+
+  useEffect(() => {
+    const handlePointerMove = () => {
+      suppressHoverRef.current = false;
+    };
+
+    window.addEventListener("pointermove", handlePointerMove, { passive: true });
+
+    return () => {
+      window.removeEventListener("pointermove", handlePointerMove);
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, []);
@@ -119,6 +232,7 @@ function NavDropdown({ item, isLast = false }: { item: NavItem; isLast?: boolean
         aria-expanded={open}
         aria-controls={menuId}
         onKeyDown={handleTriggerKeyDown}
+        onBlur={handleTriggerBlur}
         className={cn(
           "px-3 py-2 text-sm font-medium rounded-md transition-colors flex items-center gap-1",
           isActive
@@ -199,6 +313,7 @@ function NavDropdown({ item, isLast = false }: { item: NavItem; isLast?: boolean
 function MobileNavItem({ item, onClose }: { item: NavItem; onClose: () => void }) {
   const location = useLocation();
   const [expanded, setExpanded] = useState(false);
+  const submenuId = useId();
   
   const isActive = isRouteActive(location.pathname, item.path) ||
     item.children?.some((child) => isRouteActive(location.pathname, child.path));
@@ -224,6 +339,8 @@ function MobileNavItem({ item, onClose }: { item: NavItem; onClose: () => void }
     <div>
       <button
         onClick={() => setExpanded(!expanded)}
+        aria-expanded={expanded}
+        aria-controls={submenuId}
         className={cn(
           "w-full px-3 py-2 text-sm font-medium rounded-md transition-colors flex items-center justify-between",
           isActive
@@ -239,7 +356,7 @@ function MobileNavItem({ item, onClose }: { item: NavItem; onClose: () => void }
       </button>
       
       {expanded && (
-        <div className="ml-4 mt-1 space-y-1 border-l border-border pl-3">
+        <div id={submenuId} className="ml-4 mt-1 space-y-1 border-l border-border pl-3">
           {item.children.map((child) => (
             <Link
               key={child.path}
@@ -263,6 +380,67 @@ function MobileNavItem({ item, onClose }: { item: NavItem; onClose: () => void }
 
 export function AptNav() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const mobileMenuId = useId();
+  const mobileToggleRef = useRef<HTMLButtonElement | null>(null);
+  const mobileNavRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    const handleMobileKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setMobileOpen(false);
+        mobileToggleRef.current?.focus();
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+
+      const focusableElements: HTMLElement[] = [];
+
+      if (mobileToggleRef.current && isFocusableElementVisible(mobileToggleRef.current)) {
+        focusableElements.push(mobileToggleRef.current);
+      }
+
+      if (mobileNavRef.current) {
+        const menuFocusableElements = mobileNavRef.current.querySelectorAll<HTMLElement>(
+          "a[href], button:not([disabled]), [tabindex]:not([tabindex='-1'])"
+        );
+        menuFocusableElements.forEach((element) => {
+          if (isFocusableElementVisible(element)) {
+            focusableElements.push(element);
+          }
+        });
+      }
+
+      if (focusableElements.length === 0) return;
+
+      const firstFocusable = focusableElements[0];
+      const lastFocusable = focusableElements[focusableElements.length - 1];
+      const activeElement = document.activeElement as HTMLElement | null;
+      const focusIsInsideManagedSet =
+        !!activeElement && focusableElements.includes(activeElement);
+
+      if (event.shiftKey) {
+        if (!focusIsInsideManagedSet || activeElement === firstFocusable) {
+          event.preventDefault();
+          lastFocusable.focus();
+        }
+        return;
+      }
+
+      if (!focusIsInsideManagedSet || activeElement === lastFocusable) {
+        event.preventDefault();
+        firstFocusable.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleMobileKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleMobileKeyDown);
+    };
+  }, [mobileOpen]);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-md">
@@ -294,9 +472,12 @@ export function AptNav() {
 
         {/* Mobile Menu Button */}
         <button
+          ref={mobileToggleRef}
           className="md:hidden p-2 text-muted-foreground hover:text-foreground"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
+          aria-expanded={mobileOpen}
+          aria-controls={mobileMenuId}
         >
           {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -304,7 +485,12 @@ export function AptNav() {
 
       {/* Mobile Nav */}
       {mobileOpen && (
-        <nav className="md:hidden border-t border-border bg-background p-4">
+        <nav
+          id={mobileMenuId}
+          ref={mobileNavRef}
+          className="md:hidden border-t border-border bg-background p-4"
+          aria-label="Mobile navigation"
+        >
           <div className="flex flex-col gap-1">
             {siteConfig.nav.map((item) => (
               <MobileNavItem 

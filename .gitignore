@@ -33,3 +33,18 @@ apps/web/public/data/*-index.json
 apps/web/public/content/**/*.md
 apps/web/public/docs/design/*.md
 apps/web/public/docs/design/*.json
+
+# Local Playwright runtime/session artifacts
+.playwright-cli/
+output/playwright/
+
+# Generated validation report snapshots
+reports/validation/LATEST*
+apps/web/public/docs/design/validation/LATEST*
+apps/web/public/docs/design/validation/*
+
+# Generated report/output artifacts
+reports/**/*
+!reports/**/.gitignore
+output/**/*
+!output/**/.gitignore
