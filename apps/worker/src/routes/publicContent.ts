@@ -1,10 +1,10 @@
 import { Hono } from "hono";
 import {
   contentIndexTypes,
+  type PublicDesignDocDetailResponse,
   type ContentDetailResponse,
   type ContentIndexItem,
   type ContentIndexType,
-  type PublicDesignDocDetailResponse,
   type PublicDesignDocItem,
   type PublicDesignDocVersionItem,
   type PublicDesignDocVersionsResponse,
@@ -327,6 +327,24 @@ function getErrorMessage(error: unknown, fallback: string) {
   return fallback;
 }
 
+function requestWantsMarkdown(acceptHeader?: string, formatQuery?: string) {
+  const normalizedFormat = formatQuery?.trim().toLowerCase();
+  if (normalizedFormat === "markdown" || normalizedFormat === "md") {
+    return true;
+  }
+
+  const normalizedAccept = acceptHeader?.toLowerCase() || "";
+  return normalizedAccept.includes("text/markdown");
+}
+
+function markdownResponse(markdown: string) {
+  return new Response(markdown, {
+    headers: {
+      "content-type": "text/markdown; charset=utf-8",
+    },
+  });
+}
+
 function normalizeItem(type: ContentIndexType, item: ContentIndexItem): ContentIndexItem {
   const assetDir = item.contentPath.split("/").slice(0, -1).join("/");
   return {
@@ -481,6 +499,10 @@ export const publicContentRoute = new Hono<{ Bindings: WorkerBindings }>()
         c.req.header("origin")
       );
 
+      if (requestWantsMarkdown(c.req.header("accept"), c.req.query("format"))) {
+        return markdownResponse(markdown);
+      }
+
       const item = toPublicDesignDocItem({ ...doc, latestMajor: major, versions: [version] });
       const response: PublicDesignDocDetailResponse = { item, markdown };
       return c.json(response);
@@ -525,6 +547,11 @@ export const publicContentRoute = new Hono<{ Bindings: WorkerBindings }>()
         c.env.PUBLIC_SITE_ORIGIN,
         c.req.header("origin")
       );
+
+      if (requestWantsMarkdown(c.req.header("accept"), c.req.query("format"))) {
+        return markdownResponse(markdown);
+      }
+
       const response: PublicDesignDocDetailResponse = { item, markdown };
       return c.json(response);
     } catch (error: unknown) {
