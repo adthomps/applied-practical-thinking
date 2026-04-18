@@ -69,7 +69,7 @@ VITE_API_BASE=https://applied-practical-thinking.apt-account.workers.dev
 
 ### Worker
 
-- Project: `applied-practical-thinking-worker`
+- Project: `applied-practical-thinking`
 - Worker config lives in [apps/worker/wrangler.toml](/c:/Users/sanch/Documents/Github/Applied%20Practical%20Thinking/applied-practical-thinking/apps/worker/wrangler.toml)
 
 Worker runtime config:

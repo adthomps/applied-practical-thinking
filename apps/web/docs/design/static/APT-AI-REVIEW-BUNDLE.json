@@ -306,6 +306,85 @@
         "description": "Public-safe machine-readable validation status for AI review and automation workflows."
       }
     }
+    ,
+    {
+      "id": "execution-model-markdown",
+      "title": "APT Execution Model",
+      "url": "/docs/design/APT-EXECUTION-MODEL.md",
+      "contentType": "text/markdown",
+      "ui": {
+        "cardOrder": 20,
+        "tagLabel": "Doctrine",
+        "tagVariant": "ghost",
+        "icon": "tool",
+        "description": "Execution model: build, CI, and delivery practices."
+      }
+    },
+    {
+      "id": "quality-testing-markdown",
+      "title": "APT Quality & Testing",
+      "url": "/docs/design/APT-QUALITY-TESTING.md",
+      "contentType": "text/markdown",
+      "ui": {
+        "cardOrder": 21,
+        "tagLabel": "Doctrine",
+        "tagVariant": "ghost",
+        "icon": "shield-check",
+        "description": "Validation pipelines, tests, and observability artifacts." 
+      }
+    },
+    {
+      "id": "release-change-markdown",
+      "title": "APT Release & Change Management",
+      "url": "/docs/design/APT-RELEASE-CHANGE-MANAGEMENT.md",
+      "contentType": "text/markdown",
+      "ui": {
+        "cardOrder": 22,
+        "tagLabel": "Doctrine",
+        "tagVariant": "ghost",
+        "icon": "archive",
+        "description": "Release gating, changelogs, and promotion practices." 
+      }
+    },
+    {
+      "id": "operations-support-markdown",
+      "title": "APT Operations & Support",
+      "url": "/docs/design/APT-OPERATIONS-SUPPORT.md",
+      "contentType": "text/markdown",
+      "ui": {
+        "cardOrder": 23,
+        "tagLabel": "Doctrine",
+        "tagVariant": "ghost",
+        "icon": "tool",
+        "description": "Runbooks, observability, and incident response guidance." 
+      }
+    },
+    {
+      "id": "system-standards-markdown",
+      "title": "APT System Standards",
+      "url": "/docs/design/APT-SYSTEM-STANDARDS.md",
+      "contentType": "text/markdown",
+      "ui": {
+        "cardOrder": 24,
+        "tagLabel": "Doctrine",
+        "tagVariant": "ghost",
+        "icon": "settings-2",
+        "description": "Consistency and standardization guidance for tokens and naming." 
+      }
+    },
+    {
+      "id": "ai-agent-framework-markdown",
+      "title": "APT AI & Agent Framework",
+      "url": "/docs/design/APT-AI-AGENT-FRAMEWORK.md",
+      "contentType": "text/markdown",
+      "ui": {
+        "cardOrder": 25,
+        "tagLabel": "AI",
+        "tagVariant": "accent",
+        "icon": "bot",
+        "description": "Agent contracts, prompt templates, and evaluation practices." 
+      }
+    }
   ],
   "documents": [
     {
@@ -542,6 +621,55 @@
         "critical gate checks",
         "tool-driven documentation architecture validation"
       ]
+    }
+    ,
+    {
+      "id": "execution-model",
+      "title": "APT Execution Model",
+      "path": "/docs/design/APT-EXECUTION-MODEL.md",
+      "format": "markdown",
+      "role": "doctrine",
+      "useFor": ["build and delivery guidance", "CI workflows", "task definition"]
+    },
+    {
+      "id": "quality-testing",
+      "title": "APT Quality & Testing",
+      "path": "/docs/design/APT-QUALITY-TESTING.md",
+      "format": "markdown",
+      "role": "doctrine",
+      "useFor": ["validation pipelines", "test artifacts", "observability"]
+    },
+    {
+      "id": "release-change-management",
+      "title": "APT Release & Change Management",
+      "path": "/docs/design/APT-RELEASE-CHANGE-MANAGEMENT.md",
+      "format": "markdown",
+      "role": "doctrine",
+      "useFor": ["release gating", "changelog", "promotion workflows"]
+    },
+    {
+      "id": "operations-support",
+      "title": "APT Operations & Support",
+      "path": "/docs/design/APT-OPERATIONS-SUPPORT.md",
+      "format": "markdown",
+      "role": "doctrine",
+      "useFor": ["runbooks", "incidents", "monitoring"]
+    },
+    {
+      "id": "system-standards",
+      "title": "APT System Standards",
+      "path": "/docs/design/APT-SYSTEM-STANDARDS.md",
+      "format": "markdown",
+      "role": "doctrine",
+      "useFor": ["tokens", "naming conventions", "shared packages"]
+    },
+    {
+      "id": "ai-agent-framework",
+      "title": "APT AI & Agent Framework",
+      "path": "/docs/design/APT-AI-AGENT-FRAMEWORK.md",
+      "format": "markdown",
+      "role": "doctrine",
+      "useFor": ["agent contracts", "prompt templates", "evaluation frameworks"]
     }
   ],
   "recommendedHandoffs": [
