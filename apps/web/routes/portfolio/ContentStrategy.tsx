@@ -14,6 +14,7 @@ import {
 import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
 import { useDesignDocVersion } from "@/hooks/useDesignDocVersion";
 import { downloadWorkerMarkdown } from "@/src/services/download";
+import { getAptPrincipleGroups } from "@/data/aptPrinciples";
 import {
   ArrowRight,
   AlertTriangle,
@@ -51,13 +52,6 @@ const pillars = [
     description: "Stable system references inside Design with architecture, decisions, constraints, and tradeoffs.",
     rationale: "This is the reference layer inside Design. It shows what has become coherent enough to reuse.",
   },
-];
-
-const principles = [
-  "Organize by visitor intent before content format.",
-  "Keep stable references under Design while exploratory proof lives in Experiments.",
-  "Treat demos as supporting proof, not the primary taxonomy.",
-  "Make the reasoning behind the information architecture visible.",
 ];
 
 const visitorPaths = [
@@ -144,6 +138,7 @@ export default function PortfolioContentStrategy() {
     const majorSuffix = contentStrategyVersion.activeMajor ? `-v${contentStrategyVersion.activeMajor}` : "";
     await downloadWorkerMarkdown(contentStrategyVersion.downloadApiPath, `apt-content-strategy${majorSuffix}.md`);
   };
+  const relevantPrincipleGroups = getAptPrincipleGroups(["design", "system", "knowledge", "operations"]);
 
   return (
     <div className="container py-12 md:py-16 space-y-16">
@@ -192,25 +187,34 @@ export default function PortfolioContentStrategy() {
 
       <section>
         <SectionIntro
-          title="Information Architecture (IA) Principles"
-          description="IA stands for information architecture: the naming, grouping, and connection rules that make a site understandable before a visitor learns the internal vocabulary."
+          title="Relevant Principle Groups"
+          description="Content Strategy aligns to the canonical principles framework. These are the groups most directly tied to naming, structure, and long-term clarity."
           className="mb-6"
         />
         <div className="grid gap-4 md:grid-cols-2">
-          {principles.map((principle) => (
-            <AptCard key={principle} variant="default" className="h-full">
-              <AptCardContent className="pt-6">
-                <div className="flex items-start gap-3">
-                  <div className="mt-0.5 rounded-lg bg-primary/10 p-2 text-primary">
-                    <Route className="h-4 w-4" />
-                  </div>
-                  <div className="space-y-2">
-                    <p className="text-sm font-medium text-foreground">{principle}</p>
-                    <p className="text-sm text-muted-foreground">
-                      This principle helps keep APT clear enough that visitors can follow intent, not just labels.
-                    </p>
-                  </div>
+          {relevantPrincipleGroups.map((group) => (
+            <AptCard key={group.id} variant="default" className="h-full">
+              <AptCardHeader>
+                <div className="flex items-center justify-between gap-3">
+                  <AptCardTitle className="text-lg">{group.title}</AptCardTitle>
+                  <AptTag variant="outline" size="sm">{group.framing}</AptTag>
                 </div>
+              </AptCardHeader>
+              <AptCardContent className="space-y-3">
+                <ul className="space-y-1.5 text-sm text-muted-foreground">
+                  {group.principles.slice(0, 3).map((item) => (
+                    <li key={`${group.id}-${item}`} className="flex items-start gap-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <AptButton variant="ghost" size="sm" asChild className="px-0">
+                  <Link to="/design/principles">
+                    Open full framework
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </AptButton>
               </AptCardContent>
             </AptCard>
           ))}
@@ -273,7 +277,7 @@ export default function PortfolioContentStrategy() {
           <div className="grid gap-4 md:grid-cols-2">
             {workingArtifacts.map((artifact) => (
               <div key={artifact} className="flex items-start gap-3 rounded-lg border border-border/60 bg-background/40 p-4">
-                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                 <p className="text-sm text-muted-foreground">{artifact}</p>
               </div>
             ))}

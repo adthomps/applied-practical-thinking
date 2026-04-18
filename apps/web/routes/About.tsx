@@ -74,7 +74,7 @@ export default function About() {
       count: insightsCount,
       icon: Book,
       path: "/learn",
-      color: "text-accent",
+      color: "text-primary",
       description: "Articles, podcasts, and practice material",
     },
     {
@@ -98,7 +98,7 @@ export default function About() {
       label: "LinkedIn",
       icon: Linkedin,
       url: authorConfig.social.linkedin,
-      color: "text-accent",
+      color: "text-primary",
     },
     {
       label: "Flickr",

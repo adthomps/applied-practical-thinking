@@ -3,8 +3,8 @@
   "title": "APT Design Docs Manifest",
   "kind": "design-docs-manifest",
   "manifestVersion": "2.0.0",
-  "semanticVersion": "2.0.0",
-  "updatedAt": "2026-04-12",
+  "semanticVersion": "2.1.0",
+  "updatedAt": "2026-04-18",
   "supportedMajors": [1, 2],
   "currentStableMajor": 2,
   "policy": {
@@ -33,12 +33,12 @@
         },
         {
           "major": 2,
-          "semanticVersion": "2.0.0",
+          "semanticVersion": "2.1.0",
           "status": "candidate",
           "sourcePath": "versions/v2/APT-DESIGN-OVERVIEW.md",
           "canonicalPath": "/docs/design/v2/APT-DESIGN-OVERVIEW.md",
-          "publishedAt": "2026-04-05",
-          "changelog": "v2 kickoff with preserved canonical v1."
+          "publishedAt": "2026-04-18",
+          "changelog": "Canonical principles framework alignment and design-area cross-link updates."
         }
       ]
     },
@@ -61,12 +61,31 @@
         },
         {
           "major": 2,
-          "semanticVersion": "2.0.0",
+          "semanticVersion": "2.1.0",
           "status": "candidate",
           "sourcePath": "versions/v2/APT-DESIGN-THINKING.md",
           "canonicalPath": "/docs/design/v2/APT-DESIGN-THINKING.md",
-          "publishedAt": "2026-04-05",
-          "changelog": "Strict refinement pass: design-to-delivery guard rails and non-happy-path requirements."
+          "publishedAt": "2026-04-18",
+          "changelog": "Aligned with canonical principles framework and removed duplicated full-framework language."
+        }
+      ]
+    },
+    {
+      "docId": "principles-framework",
+      "slug": "principles",
+      "title": "APT Principles Framework",
+      "description": "Canonical APT principle groups and lifecycle map across strategy, delivery, operations, knowledge, and AI augmentation.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/APT-PRINCIPLES-FRAMEWORK.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/APT-PRINCIPLES-FRAMEWORK.md",
+          "canonicalPath": "/docs/design/v2/APT-PRINCIPLES-FRAMEWORK.md",
+          "publishedAt": "2026-04-18",
+          "changelog": "Introduced canonical 10-group principles model and lifecycle map."
         }
       ]
     },

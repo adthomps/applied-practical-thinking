@@ -13,20 +13,16 @@ import {
 } from "@/components/apt";
 import {
   Brain,
-  Target,
-  Scale,
   CheckCircle2,
   ArrowRight,
   AlertTriangle,
-  Compass,
-  Eye,
-  Repeat,
   FileText,
 } from "lucide-react";
 import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
 import { useDesignDocVersion } from "@/hooks/useDesignDocVersion";
 import { downloadWorkerMarkdown } from "@/src/services/download";
 import { designThinkingFrameworks } from "@/data/designThinkingFrameworks";
+import { getAptPrincipleGroups } from "@/data/aptPrinciples";
 
 interface FrameworkCardProps {
   slug: string;
@@ -144,38 +140,7 @@ export default function PortfolioDesignThinking() {
     await downloadWorkerMarkdown("/api/design/docs/architecture", "apt-design-architecture.md");
   };
 
-  const principles = [
-    {
-      icon: <Compass className="h-5 w-5" />,
-      title: "Start with Why",
-      description: "Every decision traces back to purpose. If you can't articulate why, you're not ready to decide how.",
-    },
-    {
-      icon: <Eye className="h-5 w-5" />,
-      title: "Make Thinking Visible",
-      description: "Document reasoning, not just conclusions. Future you (and your team) will thank you.",
-    },
-    {
-      icon: <Scale className="h-5 w-5" />,
-      title: "Embrace Constraints",
-      description: "Limitations aren't obstacles—they're the shape of the solution. Work with them, not against.",
-    },
-    {
-      icon: <Repeat className="h-5 w-5" />,
-      title: "Iterate Intentionally",
-      description: "Every iteration should have a hypothesis. Wandering without learning is just busy work.",
-    },
-    {
-      icon: <CheckCircle2 className="h-5 w-5" />,
-      title: "Decide and Document",
-      description: "Decisions deferred are decisions made. Capture the reasoning so you can revisit, not repeat.",
-    },
-    {
-      icon: <Target className="h-5 w-5" />,
-      title: "Optimize for Learning",
-      description: "The goal isn't to be right the first time. It's to be less wrong faster.",
-    },
-  ];
+  const relevantPrincipleGroups = getAptPrincipleGroups(["thinking", "design", "execution", "quality-testing"]);
 
   const operatingSignals = [
     {
@@ -285,23 +250,34 @@ export default function PortfolioDesignThinking() {
       {/* Principles */}
       <section className="mb-16">
         <SectionIntro
-          title="Core Principles"
-          description="The governing habits behind how APT frames problems before it proposes solutions."
+          title="Relevant Principle Groups"
+          description="Design Thinking is governed by the canonical principles framework. These are the groups most directly applied on this route."
           className="mb-6"
         />
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {principles.map((principle) => (
-            <AptCard key={principle.title} variant="subtle">
+        <div className="grid gap-4 md:grid-cols-2">
+          {relevantPrincipleGroups.map((group) => (
+            <AptCard key={group.id} variant="subtle">
               <AptCardHeader>
-                <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-accent/10 text-accent">
-                    {principle.icon}
-                  </div>
-                  <AptCardTitle className="text-lg">{principle.title}</AptCardTitle>
+                <div className="flex items-center justify-between gap-3">
+                  <AptCardTitle className="text-lg">{group.title}</AptCardTitle>
+                  <AptTag variant="outline" size="sm">{group.framing}</AptTag>
                 </div>
               </AptCardHeader>
-              <AptCardContent>
-                <p className="text-sm text-muted-foreground">{principle.description}</p>
+              <AptCardContent className="space-y-3">
+                <ul className="space-y-1.5 text-sm text-muted-foreground">
+                  {group.principles.slice(0, 3).map((item) => (
+                    <li key={`${group.id}-${item}`} className="flex items-start gap-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <AptButton variant="ghost" size="sm" asChild className="px-0">
+                  <Link to="/design/principles">
+                    Open full framework
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </AptButton>
               </AptCardContent>
             </AptCard>
           ))}
@@ -352,7 +328,7 @@ export default function PortfolioDesignThinking() {
           <div className="grid gap-4 md:grid-cols-2">
             {artifacts.map((artifact) => (
               <div key={artifact} className="flex items-start gap-3 rounded-lg border border-border/60 bg-background/40 p-4">
-                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                 <p className="text-sm text-muted-foreground">{artifact}</p>
               </div>
             ))}

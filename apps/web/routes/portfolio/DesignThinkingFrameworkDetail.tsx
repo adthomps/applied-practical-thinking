@@ -148,7 +148,7 @@ export default function DesignThinkingFrameworkDetail() {
             <ul className="space-y-2">
               {entry.artifacts.map((artifact) => (
                 <li key={artifact} className="flex items-start gap-3 text-sm text-muted-foreground">
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                   <span>{artifact}</span>
                 </li>
               ))}

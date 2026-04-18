@@ -5,8 +5,8 @@
   "type": "module",
   "main": "src/main.tsx",
   "scripts": {
-    "dev": "pnpm run build-content-index && pnpm run copy-content-to-public && vite",
-    "build": "pnpm run build-content-index && pnpm run copy-content-to-public && vite build",
+    "dev": "pnpm run validation-report && pnpm run build-content-index && pnpm run copy-content-to-public && vite",
+    "build": "pnpm run validation-report && pnpm run build-content-index && pnpm run copy-content-to-public && vite build",
     "preview": "vite preview",
     "lint": "eslint . && pnpm run verify-doc-governance",
     "test": "vitest run",
@@ -21,6 +21,7 @@
     "validation-frontmatter-autofix": "node scripts/validation-frontmatter-autofix.cjs",
     "validation-report": "node scripts/validation-report.cjs",
     "validation-report:full": "node scripts/validation-report.cjs --full",
+    "token-drift-check": "node scripts/token-drift-check.cjs",
     "verify-doc-governance": "pnpm run validation-report",
     "build-content-index": "pnpm run generate-content-index && pnpm run copy-content-index"
   },

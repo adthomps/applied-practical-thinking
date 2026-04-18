@@ -2,9 +2,9 @@
 docId: design-thinking
 slug: thinking
 major: 2
-semanticVersion: 2.0.0
+semanticVersion: 2.1.0
 status: candidate
-publishedAt: 2026-04-05
+publishedAt: 2026-04-18
 ---
 # APT Design Thinking Framework
 
@@ -32,12 +32,15 @@ Design thinking at APT is rigorous, documented reasoning that precedes implement
 
 ## Core Principles
 
+Canonical source:
+- `APT-PRINCIPLES-FRAMEWORK.md` (`Thinking`, `Design`, `Execution`, `Quality and Testing`)
+
+Thinking-specific emphasis:
 1. Problems before solutions
-2. Constraints are features
+2. Constraints shape solution boundaries
 3. Decisions decay unless documented
-4. Iterate intentionally
-5. Optimize for learning
-6. Decide and document
+4. Iterate intentionally with explicit hypotheses
+5. Optimize for learning velocity, not just output volume
 
 ---
 
@@ -143,7 +146,7 @@ Use this framework with the enforcement stack:
 
 ## Version
 
-**v2.0.0-candidate** — April 2026
+**v2.1.0-candidate** — April 2026
 
 ---
 

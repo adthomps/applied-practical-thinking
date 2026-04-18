@@ -156,7 +156,7 @@ export default function Systems() {
           <div className="grid gap-4 md:grid-cols-2">
             {artifacts.map((artifact) => (
               <div key={artifact} className="flex items-start gap-3 rounded-lg border border-border/60 bg-background/40 p-4">
-                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                 <p className="text-sm text-muted-foreground">{artifact}</p>
               </div>
             ))}

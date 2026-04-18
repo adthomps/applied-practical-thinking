@@ -80,7 +80,7 @@ function CodeBlock({ code }: { code: string }) {
         size="icon"
         className="absolute top-2 right-2 h-8 w-8 bg-background/80 border border-border"
       >
-        {copied ? <Check className="h-4 w-4 text-accent" /> : <Copy className="h-4 w-4" />}
+        {copied ? <Check className="h-4 w-4 text-primary" /> : <Copy className="h-4 w-4" />}
       </AptButton>
     </div>
   );
@@ -556,7 +556,7 @@ rounded-full → 9999px`} />
                     <ul className="space-y-2 text-sm text-muted-foreground">
                       {breakpoint.rules.map((rule) => (
                         <li key={rule} className="flex items-start gap-2">
-                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                           <span>{rule}</span>
                         </li>
                       ))}

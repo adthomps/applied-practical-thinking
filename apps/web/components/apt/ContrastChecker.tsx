@@ -11,8 +11,8 @@ import { cn } from "@/lib/utils";
 function WCAGBadge({ level, ratio }: { level: WCAGLevel; ratio: number }) {
   const config = {
     AAA: { 
-      bg: "bg-accent/20", 
-      text: "text-accent", 
+      bg: "bg-primary/20", 
+      text: "text-primary", 
       icon: Check,
       label: "AAA"
     },
@@ -117,7 +117,7 @@ export function ContrastChecker() {
         <h4 className="text-sm font-semibold mb-3">WCAG 2.1 Requirements</h4>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-muted-foreground">
           <div className="flex items-start gap-2">
-            <Check className="h-3.5 w-3.5 text-accent mt-0.5 shrink-0" />
+            <Check className="h-3.5 w-3.5 text-primary mt-0.5 shrink-0" />
             <div>
               <span className="font-medium text-foreground">AAA (7:1)</span>
               <p>Enhanced contrast for all text</p>

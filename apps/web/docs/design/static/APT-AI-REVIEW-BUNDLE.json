@@ -1,13 +1,13 @@
 {
   "id": "apt-ai-review-bundle",
   "title": "APT AI Review Bundle",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "docsMajor": 2,
   "docsMajors": [
     1,
     2
   ],
-  "updatedAt": "2026-04-06",
+  "updatedAt": "2026-04-18",
   "compatibility": {
     "externalVisibility": "latest-stable-only",
     "canonicalRoot": "/docs/design/v{major}/",
@@ -26,38 +26,6 @@
   },
   "bundleFiles": [
     {
-      "id": "bundle-manifest-json",
-      "title": "APT AI Review Bundle JSON Manifest",
-      "url": "/docs/design/APT-AI-REVIEW-BUNDLE.json",
-      "contentType": "application/json",
-      "ui": {
-        "cardOrder": 3,
-        "ctaOrder": 3,
-        "ctaLabel": "Download JSON Manifest",
-        "ctaVariant": "ghost",
-        "tagLabel": "Machine Readable",
-        "tagVariant": "outline",
-        "icon": "hard-drive-download",
-        "description": "Machine-readable manifest for tool-driven review workflows, including entry points, document inventory, and handoff sets."
-      }
-    },
-    {
-      "id": "bundle-markdown",
-      "title": "APT AI Review Bundle Markdown",
-      "url": "/docs/design/APT-AI-REVIEW-BUNDLE.md",
-      "contentType": "text/markdown",
-      "ui": {
-        "cardOrder": 2,
-        "ctaOrder": 2,
-        "ctaLabel": "Download Bundle Markdown",
-        "ctaVariant": "outline",
-        "tagLabel": "Bundle",
-        "tagVariant": "secondary",
-        "icon": "file-text",
-        "description": "Compact human-readable handoff that tells external reviewers which doctrine files to pair with the target artifact."
-      }
-    },
-    {
       "id": "review-standard-markdown",
       "title": "APT Review Standard",
       "url": "/docs/design/APT-REVIEW-STANDARD.md",
@@ -74,12 +42,60 @@
       }
     },
     {
+      "id": "bundle-markdown",
+      "title": "APT AI Review Bundle Markdown",
+      "url": "/docs/design/APT-AI-REVIEW-BUNDLE.md",
+      "contentType": "text/markdown",
+      "ui": {
+        "cardOrder": 2,
+        "ctaOrder": 4,
+        "ctaLabel": "Download Bundle Markdown",
+        "ctaVariant": "outline",
+        "tagLabel": "Bundle",
+        "tagVariant": "secondary",
+        "icon": "file-text",
+        "description": "Compact human-readable handoff that tells external reviewers which doctrine files to pair with the target artifact."
+      }
+    },
+    {
+      "id": "bundle-manifest-json",
+      "title": "APT AI Review Bundle JSON Manifest",
+      "url": "/docs/design/APT-AI-REVIEW-BUNDLE.json",
+      "contentType": "application/json",
+      "ui": {
+        "cardOrder": 3,
+        "ctaOrder": 3,
+        "ctaLabel": "Download JSON Manifest",
+        "ctaVariant": "ghost",
+        "tagLabel": "Machine Readable",
+        "tagVariant": "outline",
+        "icon": "hard-drive-download",
+        "description": "Machine-readable manifest for tool-driven review workflows, including entry points, document inventory, and handoff sets."
+      }
+    },
+    {
+      "id": "principles-framework-markdown",
+      "title": "APT Principles Framework",
+      "url": "/docs/design/APT-PRINCIPLES-FRAMEWORK.md",
+      "contentType": "text/markdown",
+      "ui": {
+        "cardOrder": 4,
+        "ctaOrder": 2,
+        "ctaLabel": "Download Principles Framework",
+        "ctaVariant": "outline",
+        "tagLabel": "Start Here",
+        "tagVariant": "accent",
+        "icon": "sparkles",
+        "description": "Canonical APT principles framework with the 10-group model and lifecycle map."
+      }
+    },
+    {
       "id": "design-thinking-markdown",
       "title": "APT Design Thinking",
       "url": "/docs/design/APT-DESIGN-THINKING.md",
       "contentType": "text/markdown",
       "ui": {
-        "cardOrder": 4,
+        "cardOrder": 5,
         "tagLabel": "Doctrine",
         "tagVariant": "ghost",
         "icon": "sparkles",
@@ -92,7 +108,7 @@
       "url": "/docs/design/APT-DESIGN-SYSTEM.md",
       "contentType": "text/markdown",
       "ui": {
-        "cardOrder": 5,
+        "cardOrder": 6,
         "tagLabel": "Doctrine",
         "tagVariant": "ghost",
         "icon": "palette",
@@ -105,7 +121,7 @@
       "url": "/docs/design/APT-TOKENS.md",
       "contentType": "text/markdown",
       "ui": {
-        "cardOrder": 5,
+        "cardOrder": 6,
         "tagLabel": "Doctrine",
         "tagVariant": "ghost",
         "icon": "file-text",
@@ -118,7 +134,7 @@
       "url": "/docs/design/APT-DESIGN-ARCHITECTURE.md",
       "contentType": "text/markdown",
       "ui": {
-        "cardOrder": 6,
+        "cardOrder": 7,
         "tagLabel": "Doctrine",
         "tagVariant": "ghost",
         "icon": "network",
@@ -131,7 +147,7 @@
       "url": "/docs/design/APT-ARCHITECTURE-EXAMPLES.md",
       "contentType": "text/markdown",
       "ui": {
-        "cardOrder": 7,
+        "cardOrder": 8,
         "tagLabel": "Reference",
         "tagVariant": "outline",
         "icon": "file-text",
@@ -144,11 +160,50 @@
       "url": "/docs/design/APT-ARCHITECTURE-REFERENCE.json",
       "contentType": "application/json",
       "ui": {
-        "cardOrder": 8,
+        "cardOrder": 9,
         "tagLabel": "Machine Readable",
         "tagVariant": "outline",
         "icon": "hard-drive-download",
         "description": "Machine-readable architecture rules, critical checks, and fast-fail policy contract."
+      }
+    },
+    {
+      "id": "documentation-architecture-markdown",
+      "title": "APT Documentation Architecture",
+      "url": "/docs/design/APT-ARCHITECTURE-DOC.md",
+      "contentType": "text/markdown",
+      "ui": {
+        "cardOrder": 10,
+        "tagLabel": "Doctrine",
+        "tagVariant": "ghost",
+        "icon": "book-open",
+        "description": "Compatibility shim entrypoint. Canonical documentation architecture doctrine is the section in APT-DESIGN-ARCHITECTURE.md."
+      }
+    },
+    {
+      "id": "documentation-architecture-examples-markdown",
+      "title": "APT Documentation Architecture Examples",
+      "url": "/docs/design/APT-ARCHITECTURE-DOC-EXAMPLES.md",
+      "contentType": "text/markdown",
+      "ui": {
+        "cardOrder": 11,
+        "tagLabel": "Reference",
+        "tagVariant": "outline",
+        "icon": "file-text",
+        "description": "Good/bad documentation architecture examples and fast-fail patterns."
+      }
+    },
+    {
+      "id": "documentation-architecture-reference-json",
+      "title": "APT Documentation Architecture Reference JSON",
+      "url": "/docs/design/APT-ARCHITECTURE-DOC-REFERENCE.json",
+      "contentType": "application/json",
+      "ui": {
+        "cardOrder": 12,
+        "tagLabel": "Machine Readable",
+        "tagVariant": "outline",
+        "icon": "hard-drive-download",
+        "description": "Machine-readable documentation architecture checks for policy and review tooling."
       }
     },
     {
@@ -157,7 +212,7 @@
       "url": "/docs/design/APT-CONTENT-STRATEGY.md",
       "contentType": "text/markdown",
       "ui": {
-        "cardOrder": 12,
+        "cardOrder": 13,
         "tagLabel": "Doctrine",
         "tagVariant": "ghost",
         "icon": "route",
@@ -170,7 +225,7 @@
       "url": "/docs/design/APT-DESIGN-SYSTEMS.md",
       "contentType": "text/markdown",
       "ui": {
-        "cardOrder": 13,
+        "cardOrder": 14,
         "tagLabel": "Reference",
         "tagVariant": "outline",
         "icon": "download",
@@ -183,7 +238,7 @@
       "url": "/docs/design/APT-AI-INSTRUCTIONS-REFERENCE.md",
       "contentType": "text/markdown",
       "ui": {
-        "cardOrder": 14,
+        "cardOrder": 15,
         "tagLabel": "External Rules",
         "tagVariant": "outline",
         "icon": "shield-check",
@@ -196,8 +251,8 @@
       "url": "/docs/design/APT-DESIGN-SYSTEM-LINT-CHECKLIST.md",
       "contentType": "text/markdown",
       "ui": {
-        "cardOrder": 15,
-        "ctaOrder": 4,
+        "cardOrder": 16,
+        "ctaOrder": 5,
         "ctaLabel": "Download Lint Checklist",
         "ctaVariant": "outline",
         "tagLabel": "Checklist",
@@ -212,7 +267,7 @@
       "url": "/docs/design/APT-DESIGN-SYSTEM-LINT-CHECKLIST.json",
       "contentType": "application/json",
       "ui": {
-        "cardOrder": 16,
+        "cardOrder": 17,
         "tagLabel": "Machine Readable",
         "tagVariant": "outline",
         "icon": "hard-drive-download",
@@ -225,8 +280,8 @@
       "url": "/docs/design/validation/LATEST.md",
       "contentType": "text/markdown",
       "ui": {
-        "cardOrder": 17,
-        "ctaOrder": 5,
+        "cardOrder": 18,
+        "ctaOrder": 6,
         "ctaLabel": "Download Validation Markdown",
         "ctaVariant": "outline",
         "tagLabel": "Validation",
@@ -241,53 +296,14 @@
       "url": "/docs/design/validation/LATEST.json",
       "contentType": "application/json",
       "ui": {
-        "cardOrder": 18,
-        "ctaOrder": 6,
+        "cardOrder": 19,
+        "ctaOrder": 7,
         "ctaLabel": "Download Validation JSON",
         "ctaVariant": "outline",
         "tagLabel": "Machine Readable",
         "tagVariant": "outline",
         "icon": "hard-drive-download",
         "description": "Public-safe machine-readable validation status for AI review and automation workflows."
-      }
-    },
-    {
-      "id": "documentation-architecture-markdown",
-      "title": "APT Documentation Architecture",
-      "url": "/docs/design/APT-ARCHITECTURE-DOC.md",
-      "contentType": "text/markdown",
-      "ui": {
-        "cardOrder": 9,
-        "tagLabel": "Doctrine",
-        "tagVariant": "ghost",
-        "icon": "book-open",
-        "description": "Compatibility shim entrypoint. Canonical documentation architecture doctrine is the section in APT-DESIGN-ARCHITECTURE.md."
-      }
-    },
-    {
-      "id": "documentation-architecture-examples-markdown",
-      "title": "APT Documentation Architecture Examples",
-      "url": "/docs/design/APT-ARCHITECTURE-DOC-EXAMPLES.md",
-      "contentType": "text/markdown",
-      "ui": {
-        "cardOrder": 10,
-        "tagLabel": "Reference",
-        "tagVariant": "outline",
-        "icon": "file-text",
-        "description": "Good/bad documentation architecture examples and fast-fail patterns."
-      }
-    },
-    {
-      "id": "documentation-architecture-reference-json",
-      "title": "APT Documentation Architecture Reference JSON",
-      "url": "/docs/design/APT-ARCHITECTURE-DOC-REFERENCE.json",
-      "contentType": "application/json",
-      "ui": {
-        "cardOrder": 11,
-        "tagLabel": "Machine Readable",
-        "tagVariant": "outline",
-        "icon": "hard-drive-download",
-        "description": "Machine-readable documentation architecture checks for policy and review tooling."
       }
     }
   ],
@@ -316,6 +332,18 @@
         "external reviewer handoff",
         "portable standards bundle",
         "quick doctrine orientation"
+      ]
+    },
+    {
+      "id": "principles-framework",
+      "title": "APT Principles Framework",
+      "path": "/docs/design/APT-PRINCIPLES-FRAMEWORK.md",
+      "format": "markdown",
+      "role": "doctrine",
+      "useFor": [
+        "cross-layer principle alignment",
+        "lifecycle mapping",
+        "principle-driven review framing"
       ]
     },
     {
@@ -569,6 +597,7 @@
       "documents": [
         "review-standard",
         "design-thinking",
+        "principles-framework",
         "tokens-guide",
         "content-strategy",
         "design-architecture",
@@ -581,6 +610,22 @@
         "order": 4,
         "targetArtifactLabel": "Target doctrine change"
       }
+    },
+    {
+      "name": "principles-review",
+      "documents": [
+        "review-standard",
+        "principles-framework",
+        "design-thinking",
+        "design-architecture",
+        "validation-status-markdown"
+      ],
+      "requiresTargetArtifact": true,
+      "ui": {
+        "title": "Principles review",
+        "order": 5,
+        "targetArtifactLabel": "Target principle-guided change"
+      }
     }
   ],
   "outputContract": {
@@ -592,6 +637,83 @@
     ],
     "preferRootCause": true,
     "allowPreferenceComments": true
-  }
+  },
+  "starterPacks": [
+    {
+      "id": "route-review",
+      "title": "Route review",
+      "description": "Use for page and route checks where interaction structure and IA clarity matter most.",
+      "order": 1,
+      "documents": [
+        "review-standard",
+        "design-system",
+        "tokens-guide",
+        "content-strategy"
+      ],
+      "requiresTargetArtifact": true,
+      "targetArtifactLabel": "Target route or page"
+    },
+    {
+      "id": "component-review",
+      "title": "Component review",
+      "description": "Use for shared components and composition-level contract compliance.",
+      "order": 2,
+      "documents": [
+        "review-standard",
+        "design-system",
+        "tokens-guide",
+        "design-architecture"
+      ],
+      "requiresTargetArtifact": true,
+      "targetArtifactLabel": "Target component"
+    },
+    {
+      "id": "architecture-review",
+      "title": "Architecture review",
+      "description": "Use for boundaries, service ownership, deploy authority, and architecture guard rails.",
+      "order": 3,
+      "documents": [
+        "review-standard",
+        "design-architecture",
+        "architecture-examples",
+        "architecture-reference-json",
+        "documentation-architecture-reference-json",
+        "validation-status-json"
+      ],
+      "requiresTargetArtifact": true,
+      "targetArtifactLabel": "Target repo area or service boundary"
+    },
+    {
+      "id": "doctrine-review",
+      "title": "Doctrine review",
+      "description": "Use for taxonomy, doctrine updates, and standards-surface changes.",
+      "order": 4,
+      "documents": [
+        "review-standard",
+        "principles-framework",
+        "design-thinking",
+        "tokens-guide",
+        "content-strategy",
+        "design-architecture",
+        "validation-status-markdown"
+      ],
+      "requiresTargetArtifact": true,
+      "targetArtifactLabel": "Target doctrine change"
+    },
+    {
+      "id": "principles-review",
+      "title": "Principles review",
+      "description": "Use for changes explicitly driven by the 10-group principles framework and lifecycle mapping.",
+      "order": 5,
+      "documents": [
+        "review-standard",
+        "principles-framework",
+        "design-thinking",
+        "design-architecture",
+        "validation-status-markdown"
+      ],
+      "requiresTargetArtifact": true,
+      "targetArtifactLabel": "Target principle-guided change"
+    }
+  ]
 }
-

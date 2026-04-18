@@ -36,6 +36,23 @@ Canonical machine-readable artifacts:
 - Motion tokens
 - Container and sizing tokens
 
+## Chart Theme Mapping
+
+Chart color values are theme-scoped and explicitly governed:
+
+- `apt.color.chart` is the canonical dark palette (`--chart-1..--chart-5`).
+- `apt.color.chartLight` is the canonical light palette (`--chart-1..--chart-5` in `:root`).
+
+Current mapping:
+
+| Token | Dark (`chart`) | Light (`chartLight`) |
+|---|---|---|
+| `chart-1` | `hsl(220, 70%, 55%)` | `hsl(220, 70%, 50%)` |
+| `chart-2` | `hsl(165, 45%, 40%)` | `hsl(165, 60%, 40%)` |
+| `chart-3` | `hsl(280, 55%, 55%)` | `hsl(280, 60%, 50%)` |
+| `chart-4` | `hsl(30, 75%, 50%)` | `hsl(30, 80%, 55%)` |
+| `chart-5` | `hsl(340, 65%, 55%)` | `hsl(340, 70%, 50%)` |
+
 ## Guard Rails
 
 - Use semantic tokens only in UI components.

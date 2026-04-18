@@ -13,6 +13,7 @@ import { downloadWorkerMarkdown } from "@/src/services/download";
 import { 
   Palette, 
   Brain, 
+  Target,
   Network,
   Layers3,
   Route,
@@ -30,6 +31,7 @@ const designSections = designSectionCatalog;
 const sectionIcons: Record<string, ComponentType<{ className?: string }>> = {
   "/design/system": Palette,
   "/design/thinking": Brain,
+  "/design/principles": Target,
   "/design/architecture": Network,
   "/design/systems": Layers3,
   "/design/content-strategy": Route,
@@ -144,6 +146,26 @@ export default function Portfolio() {
             </p>
           ) : null}
         </SectionIntro>
+      </section>
+
+      <section>
+        <AptCard variant="feature" padding="large">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div className="space-y-2">
+              <AptTag variant="accent" size="sm">Canonical Framework</AptTag>
+              <h2 className="text-2xl font-semibold tracking-tight">APT Principles Framework</h2>
+              <p className="text-sm text-muted-foreground">
+                Use the dedicated principles surface for the full 10-group model and lifecycle map.
+              </p>
+            </div>
+            <AptButton asChild>
+              <Link to="/design/principles">
+                Open Principles
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </AptButton>
+          </div>
+        </AptCard>
       </section>
 
       <section className="space-y-6">

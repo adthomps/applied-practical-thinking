@@ -36,6 +36,7 @@ const STATIC_VERSIONED_PUBLIC_DESIGN_DOCS = [
   'APT-DESIGN-SYSTEM-LINT-CHECKLIST.json',
 ];
 const AUDITED_DOCTRINE_DOC_IDS = new Set([
+  'principles-framework',
   'design-thinking',
   'design-system',
   'design-architecture',
@@ -242,8 +243,14 @@ function validateDocVersionFrontmatter({ designDocsRoot, doc, version }) {
 
 function assertAuditedDoctrineMetadataContract({ designDocsRoot = DESIGN_DOCS_ROOT } = {}) {
   const manifest = readDesignDocsManifest(designDocsRoot);
+  const manifestDocIds = new Set((manifest.documents || []).map((doc) => String(doc.docId || '').trim()));
+  const missingAuditedDocIds = [...AUDITED_DOCTRINE_DOC_IDS].filter((docId) => !manifestDocIds.has(docId));
   const audited = (manifest.documents || []).filter((doc) => AUDITED_DOCTRINE_DOC_IDS.has(doc.docId));
   const failures = [];
+
+  for (const missingDocId of missingAuditedDocIds) {
+    failures.push(`APT-DESIGN-DOCS-MANIFEST.json: missing required audited docId "${missingDocId}"`);
+  }
 
   for (const doc of audited) {
     const latest = getLatestVersionEntry(doc);
@@ -272,6 +279,34 @@ function assertAuditedDoctrineMetadataContract({ designDocsRoot = DESIGN_DOCS_RO
     }
   }
 
+  const reviewBundleManifestPath = resolveStaticDesignDocPath(designDocsRoot, REVIEW_BUNDLE_MANIFEST);
+  if (!reviewBundleManifestPath || !fs.existsSync(reviewBundleManifestPath)) {
+    failures.push(`${REVIEW_BUNDLE_MANIFEST}: missing file`);
+  } else {
+    try {
+      const reviewBundleManifest = JSON.parse(fs.readFileSync(reviewBundleManifestPath, 'utf8'));
+      validateReviewBundleManifestOrThrow(reviewBundleManifest);
+    } catch (error) {
+      failures.push(`${REVIEW_BUNDLE_MANIFEST}: ${String(error && error.message ? error.message : error)}`);
+    }
+  }
+
+  const designSectionsSourcePath = path.resolve(designDocsRoot, '../../data/designSections.ts');
+  if (!fs.existsSync(designSectionsSourcePath)) {
+    failures.push('apps/web/data/designSections.ts: missing file');
+  } else {
+    const designSectionsSource = fs.readFileSync(designSectionsSourcePath, 'utf8');
+    if (!designSectionsSource.includes('path: "/design/principles"')) {
+      failures.push('apps/web/data/designSections.ts: missing catalog entry for /design/principles');
+    }
+    if (!/mostUsedDesignSectionPaths[\s\S]*"\/design\/principles"/m.test(designSectionsSource)) {
+      failures.push('apps/web/data/designSections.ts: missing /design/principles in mostUsedDesignSectionPaths');
+    }
+    if (!/DESIGN_NAV_PATHS[\s\S]*"\/design\/principles"/m.test(designSectionsSource)) {
+      failures.push('apps/web/data/designSections.ts: missing /design/principles in DESIGN_NAV_PATHS');
+    }
+  }
+
   if (failures.length > 0) {
     throw new Error(`Audited doctrine metadata contract failed:\n${failures.map((failure) => `- ${failure}`).join('\n')}`);
   }
@@ -279,6 +314,11 @@ function assertAuditedDoctrineMetadataContract({ designDocsRoot = DESIGN_DOCS_RO
 
 function collectReviewBundleManifestValidationErrors(manifest) {
   const errors = [];
+  const documentIds = new Set(
+    (Array.isArray(manifest.documents) ? manifest.documents : [])
+      .map((document) => String(document?.id || '').trim())
+      .filter((id) => id.length > 0)
+  );
 
   const bundleFiles = Array.isArray(manifest.bundleFiles) ? manifest.bundleFiles : [];
   for (const file of bundleFiles) {
@@ -333,6 +373,39 @@ function collectReviewBundleManifestValidationErrors(manifest) {
     if (!isNonEmptyString(ui.title)) errors.push(`recommendedHandoffs[${handoffLabel}].ui.title is required`);
     if (handoff.requiresTargetArtifact && !isNonEmptyString(ui.targetArtifactLabel)) {
       errors.push(`recommendedHandoffs[${handoffLabel}].ui.targetArtifactLabel is required when requiresTargetArtifact=true`);
+    }
+    if (!Array.isArray(handoff.documents) || handoff.documents.length === 0) {
+      errors.push(`recommendedHandoffs[${handoffLabel}].documents must be a non-empty array`);
+      continue;
+    }
+    for (const docId of handoff.documents) {
+      if (!documentIds.has(String(docId))) {
+        errors.push(`recommendedHandoffs[${handoffLabel}] references unknown document id "${docId}"`);
+      }
+    }
+  }
+
+  const starterPacks = Array.isArray(manifest.starterPacks) ? manifest.starterPacks : [];
+  for (const starterPack of starterPacks) {
+    const packLabel = isNonEmptyString(starterPack?.id) ? starterPack.id : '(missing-id)';
+    if (!starterPack || typeof starterPack !== 'object') {
+      errors.push(`starterPacks[${packLabel}] must be an object`);
+      continue;
+    }
+
+    if (!isNonEmptyString(starterPack.title)) errors.push(`starterPacks[${packLabel}].title is required`);
+    if (!Number.isInteger(starterPack.order)) errors.push(`starterPacks[${packLabel}].order must be an integer`);
+    if (!Array.isArray(starterPack.documents) || starterPack.documents.length === 0) {
+      errors.push(`starterPacks[${packLabel}].documents must be a non-empty array`);
+      continue;
+    }
+    if (starterPack.requiresTargetArtifact && !isNonEmptyString(starterPack.targetArtifactLabel)) {
+      errors.push(`starterPacks[${packLabel}].targetArtifactLabel is required when requiresTargetArtifact=true`);
+    }
+    for (const docId of starterPack.documents) {
+      if (!documentIds.has(String(docId))) {
+        errors.push(`starterPacks[${packLabel}] references unknown document id "${docId}"`);
+      }
     }
   }
 

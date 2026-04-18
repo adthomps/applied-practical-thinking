@@ -2,9 +2,9 @@
 docId: ai-review-bundle
 slug: review-bundle
 major: 2
-semanticVersion: 2.4.0
+semanticVersion: 2.5.0
 status: candidate
-publishedAt: 2026-04-06
+publishedAt: 2026-04-18
 title: APT AI Review Bundle
 version: v2
 audience: developer
@@ -19,7 +19,7 @@ Start here, then open or download the linked doctrine documents that match the w
 
 Version metadata:
 
-- Bundle version: `2.4.0`
+- Bundle version: `2.5.0`
 - Design docs majors: `1`, `2` (mixed-major rollout)
 - Canonical public root pattern: `/docs/design/v{major}/`
 - Latest-stable alias root: `/docs/design/`
@@ -31,56 +31,58 @@ Version metadata:
 
 1. `APT-REVIEW-STANDARD.md`
    - The umbrella review contract for information architecture, design system usage, design architecture, systems framing, and content strategy.
-2. `APT-DESIGN-THINKING.md`
+2. `APT-PRINCIPLES-FRAMEWORK.md`
+   - Canonical 10-group principles model and lifecycle map.
+3. `APT-DESIGN-THINKING.md`
    - Use when reviewing problem framing, constraints, tradeoffs, and decision quality.
-3. `APT-DESIGN-SYSTEM.md`
+4. `APT-DESIGN-SYSTEM.md`
    - Use when reviewing tokens, shared primitives, component structure, and visual consistency.
-4. `APT-TOKENS.md`
+5. `APT-TOKENS.md`
    - Human-readable token guide covering value/enforcement contract roles and update workflow.
-5. `APT-DESIGN-ARCHITECTURE.md`
+6. `APT-DESIGN-ARCHITECTURE.md`
    - Use when reviewing repo boundaries, deploy surfaces, API ownership, AI prompt ownership, and the canonical Documentation Architecture section.
-6. `APT-ARCHITECTURE-EXAMPLES.md`
+7. `APT-ARCHITECTURE-EXAMPLES.md`
    - Use when validating implementation against good/bad architecture examples and fast-fail boundary checks.
-7. `APT-ARCHITECTURE-REFERENCE.json`
+8. `APT-ARCHITECTURE-REFERENCE.json`
    - Machine-readable architecture rules/checklist for AI or tooling-driven enforcement.
-8. `APT-ARCHITECTURE-DOC.md`
+9. `APT-ARCHITECTURE-DOC.md`
    - Compatibility shim entrypoint; canonical documentation architecture doctrine lives in `APT-DESIGN-ARCHITECTURE.md` (Documentation Architecture section).
-9. `APT-ARCHITECTURE-DOC-EXAMPLES.md`
+10. `APT-ARCHITECTURE-DOC-EXAMPLES.md`
    - Good/bad documentation architecture examples and fast-fail patterns.
-10. `APT-ARCHITECTURE-DOC-REFERENCE.json`
+11. `APT-ARCHITECTURE-DOC-REFERENCE.json`
    - Machine-readable documentation architecture checks for policy and review tooling.
-11. `APT-CONTENT-STRATEGY.md`
+12. `APT-CONTENT-STRATEGY.md`
    - Use when reviewing navigation, section roles, visitor intent, and content placement.
-12. `APT-DESIGN-SYSTEMS.md`
+13. `APT-DESIGN-SYSTEMS.md`
    - Use when reviewing reference models, system framing, and how relationships are made visible.
-13. `APT-AI-INSTRUCTIONS-REFERENCE.md`
+14. `APT-AI-INSTRUCTIONS-REFERENCE.md`
    - External strict AI instruction contract for collaborators and tool-driven handoffs.
-14. `APT-DESIGN-SYSTEM-LINT-CHECKLIST.md`
+15. `APT-DESIGN-SYSTEM-LINT-CHECKLIST.md`
    - Critical pass-gate checklist for validating design-system compliance before merge.
-15. `/docs/design/validation/LATEST.md`
+16. `/docs/design/validation/LATEST.md`
    - Public-safe validation snapshot in human-readable form for review-ready status checks.
-16. `/docs/design/validation/LATEST.json`
+17. `/docs/design/validation/LATEST.json`
    - Public-safe machine-readable validation snapshot for AI/tooling workflows.
 
 ---
 
-## Recommended Handoff By Review Type
+## Starter Packs (Primary)
 
-### Reviewing a Route or Page
+### Route Review
 
 - `APT-REVIEW-STANDARD.md`
 - the target route or page
 - `APT-DESIGN-SYSTEM.md`
 - `APT-CONTENT-STRATEGY.md`
 
-### Reviewing a Shared Component
+### Component Review
 
 - `APT-REVIEW-STANDARD.md`
 - the target component
 - `APT-DESIGN-SYSTEM.md`
 - `APT-DESIGN-ARCHITECTURE.md`
 
-### Reviewing Repo Structure or Service Boundaries
+### Architecture Review
 
 - `APT-REVIEW-STANDARD.md`
 - the target files
@@ -91,14 +93,25 @@ Version metadata:
 - `APT-ARCHITECTURE-DOC-REFERENCE.json`
 - `/docs/design/validation/LATEST.json`
 
-### Reviewing New Design Doctrine or Taxonomy
+### Doctrine Review
 
 - `APT-REVIEW-STANDARD.md`
 - the target doctrine or IA change
 - `APT-DESIGN-THINKING.md`
+- `APT-PRINCIPLES-FRAMEWORK.md`
 - `APT-CONTENT-STRATEGY.md`
 - `APT-DESIGN-ARCHITECTURE.md` (Documentation Architecture section)
 - `/docs/design/validation/LATEST.md`
+
+### Principles Review
+
+- `APT-REVIEW-STANDARD.md`
+- the target principle-guided change
+- `APT-PRINCIPLES-FRAMEWORK.md`
+- `APT-DESIGN-THINKING.md`
+- `APT-DESIGN-ARCHITECTURE.md`
+
+Long-tail artifacts remain available in the full bundle index on `/design/review-bundle`.
 
 ---
 
