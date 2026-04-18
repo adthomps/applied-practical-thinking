@@ -5,8 +5,8 @@
   "type": "module",
   "main": "src/main.tsx",
   "scripts": {
-    "dev": "pnpm run build-content-index && pnpm run copy-content-to-public && vite",
-    "build": "pnpm run build-content-index && pnpm run copy-content-to-public && vite build",
+    "dev": "pnpm run validation-report && pnpm run build-content-index && pnpm run copy-content-to-public && vite",
+    "build": "pnpm run validation-report && pnpm run build-content-index && pnpm run copy-content-to-public && vite build",
     "preview": "vite preview",
     "lint": "eslint . && pnpm run verify-doc-governance",
     "test": "vitest run",
