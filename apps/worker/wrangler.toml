@@ -1,11 +1,11 @@
-name = "applied-practical-thinking-worker"
+name = "applied-practical-thinking"
 main = "src/index.ts"
 account_id = "257b7e468437a1105470c725617d9268"
 workers_dev = true
 compatibility_date = "2026-01-25"
 
-# Set PUBLIC_SITE_ORIGIN in Cloudflare for each environment so the standalone Worker
-# can read the Pages-hosted public content and design docs.
+# Set PUBLIC_SITE_ORIGIN so the standalone Worker can read Pages-hosted
+# public content and design docs.
 
 [[vectorize]]
 binding = "VECTORIZE"
@@ -18,15 +18,4 @@ enabled = false
 invocation_logs = true
 
 [vars]
-# Stable default used unless an environment overrides it. This keeps preview
-# and production from losing PUBLIC_SITE_ORIGIN if one environment is missing
-# its own vars block.
-PUBLIC_SITE_ORIGIN = "https://applied-practical-thinking.pages.dev"
-
-[env.preview]
-[env.preview.vars]
-PUBLIC_SITE_ORIGIN = "https://applied-practical-thinking.pages.dev"
-
-[env.production]
-[env.production.vars]
 PUBLIC_SITE_ORIGIN = "https://applied-practical-thinking.pages.dev"

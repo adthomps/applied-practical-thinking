@@ -49,6 +49,19 @@ const groupIcons: Record<AptPrincipleGroupId, ComponentType<{ className?: string
   "ai-agent": Bot,
 };
 
+const docLinks: Record<AptPrincipleGroupId, string> = {
+  thinking: "/docs/design/APT-DESIGN-THINKING.md",
+  design: "/docs/design/APT-DESIGN-SYSTEM.md",
+  architecture: "/docs/design/APT-DESIGN-ARCHITECTURE.md",
+  system: "/docs/design/APT-SYSTEM-STANDARDS.md",
+  execution: "/docs/design/APT-EXECUTION-MODEL.md",
+  "quality-testing": "/docs/design/APT-QUALITY-TESTING.md",
+  "release-change-management": "/docs/design/APT-RELEASE-CHANGE-MANAGEMENT.md",
+  operations: "/docs/design/APT-OPERATIONS-SUPPORT.md",
+  knowledge: "/docs/design/APT-KNOWLEDGE-ENGINE.md",
+  "ai-agent": "/docs/design/APT-AI-AGENT-FRAMEWORK.md",
+};
+
 const relatedRoutes = [
   { label: "Design", path: "/design", description: "Overview of doctrine surfaces and runtime docs." },
   { label: "Design Thinking", path: "/design/thinking", description: "Layer-specific methods for framing and decision quality." },
@@ -164,6 +177,11 @@ export default function PortfolioPrinciples() {
                         </li>
                       ))}
                     </ul>
+                  </div>
+                  <div className="flex items-center justify-end">
+                    <AptButton variant="ghost" asChild>
+                      <a href={docLinks[group.id]} target="_blank" rel="noreferrer">Open doc</a>
+                    </AptButton>
                   </div>
                 </AptCardContent>
               </AptCard>

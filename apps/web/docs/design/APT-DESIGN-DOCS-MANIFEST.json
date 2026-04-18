@@ -414,6 +414,121 @@
     }
     ,
     {
+      "docId": "execution-model",
+      "slug": "execution",
+      "title": "APT Execution Model",
+      "description": "How APT turns specs into working systems: workflow, CI, and build hygiene.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/APT-EXECUTION-MODEL.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/APT-EXECUTION-MODEL.md",
+          "canonicalPath": "/docs/design/v2/APT-EXECUTION-MODEL.md",
+          "publishedAt": "2026-04-18",
+          "changelog": "Add execution model draft for Build stage."
+        }
+      ]
+    },
+    {
+      "docId": "quality-testing",
+      "slug": "quality-testing",
+      "title": "APT Quality & Testing",
+      "description": "Validation strategy, pipelines, and observable test artifacts.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/APT-QUALITY-TESTING.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/APT-QUALITY-TESTING.md",
+          "canonicalPath": "/docs/design/v2/APT-QUALITY-TESTING.md",
+          "publishedAt": "2026-04-18",
+          "changelog": "Add quality & testing draft."
+        }
+      ]
+    },
+    {
+      "docId": "release-change-management",
+      "slug": "release-change-management",
+      "title": "APT Release & Change Management",
+      "description": "Release gating, changelogs, and promotion practices.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/APT-RELEASE-CHANGE-MANAGEMENT.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/APT-RELEASE-CHANGE-MANAGEMENT.md",
+          "canonicalPath": "/docs/design/v2/APT-RELEASE-CHANGE-MANAGEMENT.md",
+          "publishedAt": "2026-04-18",
+          "changelog": "Add release & change management draft."
+        }
+      ]
+    },
+    {
+      "docId": "operations-support",
+      "slug": "operations-support",
+      "title": "APT Operations & Support",
+      "description": "Runbooks, observability, and incident response best practices.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/APT-OPERATIONS-SUPPORT.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/APT-OPERATIONS-SUPPORT.md",
+          "canonicalPath": "/docs/design/v2/APT-OPERATIONS-SUPPORT.md",
+          "publishedAt": "2026-04-18",
+          "changelog": "Add operations & support draft."
+        }
+      ]
+    },
+    {
+      "docId": "system-standards",
+      "slug": "system-standards",
+      "title": "APT System Standards",
+      "description": "Consistency and standardization guidance: tokens, naming, and shared packages.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/APT-SYSTEM-STANDARDS.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/APT-SYSTEM-STANDARDS.md",
+          "canonicalPath": "/docs/design/v2/APT-SYSTEM-STANDARDS.md",
+          "publishedAt": "2026-04-18",
+          "changelog": "Add system standards draft."
+        }
+      ]
+    },
+    {
+      "docId": "ai-agent-framework",
+      "slug": "ai-agent-framework",
+      "title": "APT AI & Agent Framework",
+      "description": "Agent contracts, prompt standards, and evaluation frameworks.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/APT-AI-AGENT-FRAMEWORK.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/APT-AI-AGENT-FRAMEWORK.md",
+          "canonicalPath": "/docs/design/v2/APT-AI-AGENT-FRAMEWORK.md",
+          "publishedAt": "2026-04-18",
+          "changelog": "Add AI & agent framework draft."
+        }
+      ]
+    }
+    ,
+    {
       "docId": "pattern-address",
       "slug": "patterns/address",
       "title": "Address",

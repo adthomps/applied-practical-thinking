@@ -178,6 +178,7 @@ export const aptLifecycleFlow: readonly AptPrincipleGroupId[] = [
   "release-change-management",
   "operations",
   "knowledge",
+  "ai-agent",
 ] as const;
 
 export const aptAiOverlayGroupId: AptPrincipleGroupId = "ai-agent";
