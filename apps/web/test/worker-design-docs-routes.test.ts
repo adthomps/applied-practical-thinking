@@ -125,6 +125,58 @@ describe("public content design docs version routes", () => {
     expect(body.markdown).toContain("Overview v1");
   });
 
+  it("returns raw markdown when format=markdown is requested", async () => {
+    const manifestResponse = new Response(
+      JSON.stringify({
+        documents: [
+          {
+            docId: "design-overview",
+            slug: "overview",
+            title: "APT Design Overview",
+            latestMajor: 2,
+            aliasPath: "/docs/design/APT-DESIGN-OVERVIEW.md",
+            versions: [
+              {
+                major: 1,
+                semanticVersion: "1.0.0",
+                status: "stable",
+                canonicalPath: "/docs/design/v1/APT-DESIGN-OVERVIEW.md",
+              },
+            ],
+          },
+        ],
+      }),
+      { headers: { "content-type": "application/json" } }
+    );
+
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async (input: string | URL | Request) => {
+        const url = toUrl(input);
+
+        if (url.includes("/docs/design/v1/APT-DESIGN-OVERVIEW.md")) {
+          return new Response("---\ndocId: design-overview\n---\n\n# Overview v1", {
+            headers: { "content-type": "text/markdown" },
+          });
+        }
+
+        return manifestResponse.clone();
+      })
+    );
+
+    const response = await publicContentRoute.request(
+      "http://127.0.0.1:8787/api/design/docs/overview/1?format=markdown",
+      { headers: { origin: "http://127.0.0.1:8080" } },
+      { PUBLIC_SITE_ORIGIN: "http://127.0.0.1:8080" }
+    );
+
+    expect(response.status).toBe(200);
+    expect(response.headers.get("content-type")).toContain("text/markdown");
+    const body = await response.text();
+    expect(body).toContain("# Overview v1");
+    expect(body).not.toContain("\"item\"");
+  });
+
   it("returns 404 when a requested version does not exist", async () => {
     const manifestResponse = new Response(
       JSON.stringify({
