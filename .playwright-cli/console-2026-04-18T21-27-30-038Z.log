@@ -1,0 +1,4 @@
+[    2579ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8787/api/design/docs/overview/versions:0
+[    5959ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8787/api/design/docs/overview/versions:0
+[   10331ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8787/api/design/docs/overview/versions:0
+[   16696ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8787/api/design/docs/overview/versions:0

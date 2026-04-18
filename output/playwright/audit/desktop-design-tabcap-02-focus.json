@@ -1,0 +1,16 @@
+{
+  "step": 2,
+  "tag": "A",
+  "role": null,
+  "href": "/start",
+  "ariaExpanded": null,
+  "ariaControls": null,
+  "text": "Start",
+  "rect": {
+    "x": 908,
+    "y": 10,
+    "w": 54,
+    "h": 36
+  },
+  "url": "/design"
+}

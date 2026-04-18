@@ -60,6 +60,13 @@
         "3": { "value": "hsl(280, 55%, 55%)", "type": "color", "description": "Chart color 3 - Purple" },
         "4": { "value": "hsl(30, 75%, 50%)", "type": "color", "description": "Chart color 4 - Orange" },
         "5": { "value": "hsl(340, 65%, 55%)", "type": "color", "description": "Chart color 5 - Pink" }
+      },
+      "chartLight": {
+        "1": { "value": "hsl(220, 70%, 50%)", "type": "color", "description": "Light chart color 1 - Primary blue" },
+        "2": { "value": "hsl(165, 60%, 40%)", "type": "color", "description": "Light chart color 2 - Teal" },
+        "3": { "value": "hsl(280, 60%, 50%)", "type": "color", "description": "Light chart color 3 - Purple" },
+        "4": { "value": "hsl(30, 80%, 55%)", "type": "color", "description": "Light chart color 4 - Orange" },
+        "5": { "value": "hsl(340, 70%, 50%)", "type": "color", "description": "Light chart color 5 - Pink" }
       }
     },
     "typography": {

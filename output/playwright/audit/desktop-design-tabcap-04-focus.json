@@ -1,0 +1,16 @@
+{
+  "step": 4,
+  "tag": "A",
+  "role": "menuitem",
+  "href": "/learn/articles",
+  "ariaExpanded": null,
+  "ariaControls": null,
+  "text": "ArticlesShort- to medium-form writing on applied ideas and practical systems.",
+  "rect": {
+    "x": 967,
+    "y": 120,
+    "w": 286,
+    "h": 78
+  },
+  "url": "/design"
+}

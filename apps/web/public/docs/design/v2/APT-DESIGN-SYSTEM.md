@@ -183,6 +183,33 @@ Example:
 }
 ```
 
+### Chart Theme Mapping Policy
+
+Chart tokens are explicitly theme-scoped:
+
+- Dark runtime uses the canonical chart palette in `--chart-1..--chart-5`.
+- Light mode uses a light-tuned chart palette for surface contrast while preserving series identity.
+
+```css
+/* Dark chart palette (primary runtime) */
+.dark {
+  --chart-1: 220 70% 55%;
+  --chart-2: 165 45% 40%;
+  --chart-3: 280 55% 55%;
+  --chart-4: 30 75% 50%;
+  --chart-5: 340 65% 55%;
+}
+
+/* Light chart palette (secondary runtime contract) */
+:root {
+  --chart-1: 220 70% 50%;
+  --chart-2: 165 60% 40%;
+  --chart-3: 280 60% 50%;
+  --chart-4: 30 80% 55%;
+  --chart-5: 340 70% 50%;
+}
+```
+
 ---
 
 ## Accent Restrictions

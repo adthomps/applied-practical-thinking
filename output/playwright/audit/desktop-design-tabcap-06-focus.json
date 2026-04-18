@@ -1,0 +1,16 @@
+{
+  "step": 6,
+  "tag": "A",
+  "role": "menuitem",
+  "href": "/learn/practice",
+  "ariaExpanded": null,
+  "ariaControls": null,
+  "text": "PracticeGuides and design reviews that turn ideas into repeatable work.",
+  "rect": {
+    "x": 967,
+    "y": 276,
+    "w": 286,
+    "h": 78
+  },
+  "url": "/design"
+}

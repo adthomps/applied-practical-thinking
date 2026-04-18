@@ -95,7 +95,7 @@ export default function DesignArchitecturePatternDetail() {
                 <ul className="space-y-2">
                   {entry.rules.map((rule) => (
                     <li key={rule} className="flex items-start gap-3 text-sm">
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                       <span>{rule}</span>
                     </li>
                   ))}

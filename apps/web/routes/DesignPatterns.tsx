@@ -77,7 +77,7 @@ export default function DesignPatterns() {
               <AptCard variant="interactive" className="h-full">
                 <AptCardHeader>
                   <div className="flex items-center gap-2 mb-2">
-                    <div className="rounded-lg bg-accent/10 p-2 text-accent">
+                    <div className="rounded-lg bg-primary/10 p-2 text-primary">
                       <Shapes className="h-4 w-4" />
                     </div>
                     <AptTag variant="accent">Pattern</AptTag>

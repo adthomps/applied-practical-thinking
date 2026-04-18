@@ -1,0 +1,316 @@
+- generic [ref=e2]:
+  - region "Notifications (F8)":
+    - list
+  - region "Notifications alt+T"
+  - generic [ref=e4]:
+    - banner [ref=e5]:
+      - generic [ref=e6]:
+        - link "A APT Applied Practical Thinking" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e8]: A
+          - generic [ref=e9]: APT
+          - generic [ref=e10]: Applied Practical Thinking
+        - navigation [ref=e11]:
+          - generic [ref=e12]:
+            - link "Start" [ref=e13] [cursor=pointer]:
+              - /url: /start
+            - generic:
+              - paragraph: New here? Start with the core ideas, examples, and how to navigate APT.
+          - link "Learn" [ref=e15] [cursor=pointer]:
+            - /url: /learn
+            - text: Learn
+            - img [ref=e16]
+          - link "Experiments" [ref=e19] [cursor=pointer]:
+            - /url: /experiments
+            - text: Experiments
+            - img [ref=e20]
+          - link "Design" [ref=e23] [cursor=pointer]:
+            - /url: /design
+            - text: Design
+            - img [ref=e24]
+          - link "About" [ref=e27] [cursor=pointer]:
+            - /url: /about
+            - text: About
+            - img [ref=e28]
+    - main [ref=e30]:
+      - generic [ref=e31]:
+        - generic [ref=e33]:
+          - heading "Design" [level=2] [ref=e34]
+          - paragraph [ref=e35]: "The public operating model for APT: how problems are framed, how the system is expressed, how architecture enforces it, and where stable system references live."
+          - generic [ref=e36]:
+            - generic [ref=e37]:
+              - link "Open AI Review Bundle" [ref=e38] [cursor=pointer]:
+                - /url: /design/review-bundle
+                - img
+                - text: Open AI Review Bundle
+              - button "Download Design Markdown" [ref=e39] [cursor=pointer]:
+                - img
+                - text: Download Design Markdown
+            - paragraph [ref=e40]: Loading version metadata…
+        - generic [ref=e43]:
+          - generic [ref=e44]:
+            - generic [ref=e45]: Canonical Framework
+            - heading "APT Principles Framework" [level=2] [ref=e46]
+            - paragraph [ref=e47]: Use the dedicated principles surface for the full 10-group model and lifecycle map.
+          - link "Open Principles" [ref=e48] [cursor=pointer]:
+            - /url: /design/principles
+            - text: Open Principles
+            - img
+        - generic [ref=e49]:
+          - generic [ref=e50]:
+            - heading "Most Used" [level=2] [ref=e51]
+            - paragraph [ref=e52]: Start here for the most common design paths across doctrine, runtime docs, and reference review.
+          - generic [ref=e53]:
+            - link "Core Design Thinking Problem framing, assumptions, constraints, and decision-making in practice. How problems are defined before solutions exist." [ref=e54] [cursor=pointer]:
+              - /url: /design/thinking
+              - generic [ref=e56]:
+                - generic [ref=e57]:
+                  - generic [ref=e58]:
+                    - img [ref=e60]
+                    - generic [ref=e70]:
+                      - generic [ref=e71]: Core
+                      - heading "Design Thinking" [level=3] [ref=e72]
+                  - img [ref=e73]
+                - generic [ref=e75]:
+                  - paragraph [ref=e76]: Problem framing, assumptions, constraints, and decision-making in practice.
+                  - paragraph [ref=e77]: How problems are defined before solutions exist.
+            - link "Core Principles Canonical APT principles framework across Thinking, Design, Architecture, System, Execution, Quality, Release, Operations, Knowledge, and AI. One model for why, what, how, and operational consistency." [ref=e78] [cursor=pointer]:
+              - /url: /design/principles
+              - generic [ref=e80]:
+                - generic [ref=e81]:
+                  - generic [ref=e82]:
+                    - img [ref=e84]
+                    - generic [ref=e88]:
+                      - generic [ref=e89]: Core
+                      - heading "Principles" [level=3] [ref=e90]
+                  - img [ref=e91]
+                - generic [ref=e93]:
+                  - paragraph [ref=e94]: Canonical APT principles framework across Thinking, Design, Architecture, System, Execution, Quality, Release, Operations, Knowledge, and AI.
+                  - paragraph [ref=e95]: One model for why, what, how, and operational consistency.
+            - 'link "Core Design System How APT applies design systems: tokens, semantics, components, and constraints. Designing for clarity, consistency, and scale." [ref=e96] [cursor=pointer]':
+              - /url: /design/system
+              - generic [ref=e98]:
+                - generic [ref=e99]:
+                  - generic [ref=e100]:
+                    - img [ref=e102]
+                    - generic [ref=e108]:
+                      - generic [ref=e109]: Core
+                      - heading "Design System" [level=3] [ref=e110]
+                  - img [ref=e111]
+                - generic [ref=e113]:
+                  - paragraph [ref=e114]: "How APT applies design systems: tokens, semantics, components, and constraints."
+                  - paragraph [ref=e115]: Designing for clarity, consistency, and scale.
+            - link "Core Design Architecture Repo layout, deployment flows, API contracts, and enforcement rules. Structure exists to prevent failure, not to enable creativity." [ref=e116] [cursor=pointer]:
+              - /url: /design/architecture
+              - generic [ref=e118]:
+                - generic [ref=e119]:
+                  - generic [ref=e120]:
+                    - img [ref=e122]
+                    - generic [ref=e127]:
+                      - generic [ref=e128]: Core
+                      - heading "Design Architecture" [level=3] [ref=e129]
+                  - img [ref=e130]
+                - generic [ref=e132]:
+                  - paragraph [ref=e133]: Repo layout, deployment flows, API contracts, and enforcement rules.
+                  - paragraph [ref=e134]: Structure exists to prevent failure, not to enable creativity.
+            - link "Runtime Docs Browser Manifest-driven browser for doctrine and pattern docs with version-aware rendering. Browse docs from runtime manifest metadata." [ref=e135] [cursor=pointer]:
+              - /url: /design/docs
+              - generic [ref=e137]:
+                - generic [ref=e138]:
+                  - generic [ref=e139]:
+                    - img [ref=e141]
+                    - generic [ref=e143]:
+                      - generic [ref=e144]: Runtime
+                      - heading "Docs Browser" [level=3] [ref=e145]
+                  - img [ref=e146]
+                - generic [ref=e148]:
+                  - paragraph [ref=e149]: Manifest-driven browser for doctrine and pattern docs with version-aware rendering.
+                  - paragraph [ref=e150]: Browse docs from runtime manifest metadata.
+            - link "Reference Systems Stable system references that capture architecture, decisions, and reusable models inside the APT doctrine. Reference models governed by the design doctrine." [ref=e151] [cursor=pointer]:
+              - /url: /design/systems
+              - generic [ref=e153]:
+                - generic [ref=e154]:
+                  - generic [ref=e155]:
+                    - img [ref=e157]
+                    - generic [ref=e161]:
+                      - generic [ref=e162]: Reference
+                      - heading "Systems" [level=3] [ref=e163]
+                  - img [ref=e164]
+                - generic [ref=e166]:
+                  - paragraph [ref=e167]: Stable system references that capture architecture, decisions, and reusable models inside the APT doctrine.
+                  - paragraph [ref=e168]: Reference models governed by the design doctrine.
+            - link "Reference AI Review Bundle A single public handoff for AI reviewers with the review standard and the core doctrine documents in one place. One entry point for standards-based review." [ref=e169] [cursor=pointer]:
+              - /url: /design/review-bundle
+              - generic [ref=e171]:
+                - generic [ref=e172]:
+                  - generic [ref=e173]:
+                    - img [ref=e175]
+                    - generic [ref=e178]:
+                      - generic [ref=e179]: Reference
+                      - heading "AI Review Bundle" [level=3] [ref=e180]
+                  - img [ref=e181]
+                - generic [ref=e183]:
+                  - paragraph [ref=e184]: A single public handoff for AI reviewers with the review standard and the core doctrine documents in one place.
+                  - paragraph [ref=e185]: One entry point for standards-based review.
+        - generic [ref=e186]:
+          - generic [ref=e187]:
+            - heading "All Docs" [level=2] [ref=e188]
+            - paragraph [ref=e189]: The full design catalog, grouped by Core, Runtime, and Reference to keep scanning predictable as content grows.
+          - generic [ref=e190]:
+            - button "All" [ref=e191] [cursor=pointer]
+            - button "Core" [ref=e192] [cursor=pointer]
+            - button "Runtime" [ref=e193] [cursor=pointer]
+            - button "Reference" [ref=e194] [cursor=pointer]
+          - generic [ref=e195]:
+            - link "Core Design Thinking Problem framing, assumptions, constraints, and decision-making in practice. How problems are defined before solutions exist." [ref=e196] [cursor=pointer]:
+              - /url: /design/thinking
+              - generic [ref=e198]:
+                - generic [ref=e199]:
+                  - generic [ref=e200]:
+                    - img [ref=e202]
+                    - generic [ref=e212]:
+                      - generic [ref=e213]: Core
+                      - heading "Design Thinking" [level=3] [ref=e214]
+                  - img [ref=e215]
+                - generic [ref=e217]:
+                  - paragraph [ref=e218]: Problem framing, assumptions, constraints, and decision-making in practice.
+                  - paragraph [ref=e219]: How problems are defined before solutions exist.
+            - link "Core Principles Canonical APT principles framework across Thinking, Design, Architecture, System, Execution, Quality, Release, Operations, Knowledge, and AI. One model for why, what, how, and operational consistency." [ref=e220] [cursor=pointer]:
+              - /url: /design/principles
+              - generic [ref=e222]:
+                - generic [ref=e223]:
+                  - generic [ref=e224]:
+                    - img [ref=e226]
+                    - generic [ref=e230]:
+                      - generic [ref=e231]: Core
+                      - heading "Principles" [level=3] [ref=e232]
+                  - img [ref=e233]
+                - generic [ref=e235]:
+                  - paragraph [ref=e236]: Canonical APT principles framework across Thinking, Design, Architecture, System, Execution, Quality, Release, Operations, Knowledge, and AI.
+                  - paragraph [ref=e237]: One model for why, what, how, and operational consistency.
+            - 'link "Core Design System How APT applies design systems: tokens, semantics, components, and constraints. Designing for clarity, consistency, and scale." [ref=e238] [cursor=pointer]':
+              - /url: /design/system
+              - generic [ref=e240]:
+                - generic [ref=e241]:
+                  - generic [ref=e242]:
+                    - img [ref=e244]
+                    - generic [ref=e250]:
+                      - generic [ref=e251]: Core
+                      - heading "Design System" [level=3] [ref=e252]
+                  - img [ref=e253]
+                - generic [ref=e255]:
+                  - paragraph [ref=e256]: "How APT applies design systems: tokens, semantics, components, and constraints."
+                  - paragraph [ref=e257]: Designing for clarity, consistency, and scale.
+            - link "Core Design Architecture Repo layout, deployment flows, API contracts, and enforcement rules. Structure exists to prevent failure, not to enable creativity." [ref=e258] [cursor=pointer]:
+              - /url: /design/architecture
+              - generic [ref=e260]:
+                - generic [ref=e261]:
+                  - generic [ref=e262]:
+                    - img [ref=e264]
+                    - generic [ref=e269]:
+                      - generic [ref=e270]: Core
+                      - heading "Design Architecture" [level=3] [ref=e271]
+                  - img [ref=e272]
+                - generic [ref=e274]:
+                  - paragraph [ref=e275]: Repo layout, deployment flows, API contracts, and enforcement rules.
+                  - paragraph [ref=e276]: Structure exists to prevent failure, not to enable creativity.
+            - link "Core Content Strategy How APT organizes information so people can understand, navigate, and apply it. Information architecture made visible." [ref=e277] [cursor=pointer]:
+              - /url: /design/content-strategy
+              - generic [ref=e279]:
+                - generic [ref=e280]:
+                  - generic [ref=e281]:
+                    - img [ref=e283]
+                    - generic [ref=e287]:
+                      - generic [ref=e288]: Core
+                      - heading "Content Strategy" [level=3] [ref=e289]
+                  - img [ref=e290]
+                - generic [ref=e292]:
+                  - paragraph [ref=e293]: How APT organizes information so people can understand, navigate, and apply it.
+                  - paragraph [ref=e294]: Information architecture made visible.
+            - link "Runtime Docs Browser Manifest-driven browser for doctrine and pattern docs with version-aware rendering. Browse docs from runtime manifest metadata." [ref=e295] [cursor=pointer]:
+              - /url: /design/docs
+              - generic [ref=e297]:
+                - generic [ref=e298]:
+                  - generic [ref=e299]:
+                    - img [ref=e301]
+                    - generic [ref=e303]:
+                      - generic [ref=e304]: Runtime
+                      - heading "Docs Browser" [level=3] [ref=e305]
+                  - img [ref=e306]
+                - generic [ref=e308]:
+                  - paragraph [ref=e309]: Manifest-driven browser for doctrine and pattern docs with version-aware rendering.
+                  - paragraph [ref=e310]: Browse docs from runtime manifest metadata.
+            - link "Runtime Patterns Curated landing area for manifest-driven pattern docs. Reusable patterns with version-aware docs routing." [ref=e311] [cursor=pointer]:
+              - /url: /design/patterns
+              - generic [ref=e313]:
+                - generic [ref=e314]:
+                  - generic [ref=e315]:
+                    - img [ref=e317]
+                    - generic [ref=e321]:
+                      - generic [ref=e322]: Runtime
+                      - heading "Patterns" [level=3] [ref=e323]
+                  - img [ref=e324]
+                - generic [ref=e326]:
+                  - paragraph [ref=e327]: Curated landing area for manifest-driven pattern docs.
+                  - paragraph [ref=e328]: Reusable patterns with version-aware docs routing.
+            - link "Runtime Support Design Operational response patterns, incident runbooks, and recovery playbooks. How we detect, diagnose, and restore service and UX continuity." [ref=e329] [cursor=pointer]:
+              - /url: /design/support
+              - generic [ref=e331]:
+                - generic [ref=e332]:
+                  - generic [ref=e333]:
+                    - img [ref=e335]
+                    - generic [ref=e342]:
+                      - generic [ref=e343]: Runtime
+                      - heading "Support Design" [level=3] [ref=e344]
+                  - img [ref=e345]
+                - generic [ref=e347]:
+                  - paragraph [ref=e348]: Operational response patterns, incident runbooks, and recovery playbooks.
+                  - paragraph [ref=e349]: How we detect, diagnose, and restore service and UX continuity.
+            - link "Runtime Knowledge Engine Runtime patterns for ingesting, indexing, and serving knowledge artifacts. Contracts, APIs, and validation for the knowledge layer." [ref=e350] [cursor=pointer]:
+              - /url: /design/knowledge-engine
+              - generic [ref=e352]:
+                - generic [ref=e353]:
+                  - generic [ref=e354]:
+                    - img [ref=e356]
+                    - generic [ref=e360]:
+                      - generic [ref=e361]: Runtime
+                      - heading "Knowledge Engine" [level=3] [ref=e362]
+                  - img [ref=e363]
+                - generic [ref=e365]:
+                  - paragraph [ref=e366]: Runtime patterns for ingesting, indexing, and serving knowledge artifacts.
+                  - paragraph [ref=e367]: Contracts, APIs, and validation for the knowledge layer.
+            - link "Reference Systems Stable system references that capture architecture, decisions, and reusable models inside the APT doctrine. Reference models governed by the design doctrine." [ref=e368] [cursor=pointer]:
+              - /url: /design/systems
+              - generic [ref=e370]:
+                - generic [ref=e371]:
+                  - generic [ref=e372]:
+                    - img [ref=e374]
+                    - generic [ref=e378]:
+                      - generic [ref=e379]: Reference
+                      - heading "Systems" [level=3] [ref=e380]
+                  - img [ref=e381]
+                - generic [ref=e383]:
+                  - paragraph [ref=e384]: Stable system references that capture architecture, decisions, and reusable models inside the APT doctrine.
+                  - paragraph [ref=e385]: Reference models governed by the design doctrine.
+            - link "Reference AI Review Bundle A single public handoff for AI reviewers with the review standard and the core doctrine documents in one place. One entry point for standards-based review." [ref=e386] [cursor=pointer]:
+              - /url: /design/review-bundle
+              - generic [ref=e388]:
+                - generic [ref=e389]:
+                  - generic [ref=e390]:
+                    - img [ref=e392]
+                    - generic [ref=e395]:
+                      - generic [ref=e396]: Reference
+                      - heading "AI Review Bundle" [level=3] [ref=e397]
+                  - img [ref=e398]
+                - generic [ref=e400]:
+                  - paragraph [ref=e401]: A single public handoff for AI reviewers with the review standard and the core doctrine documents in one place.
+                  - paragraph [ref=e402]: One entry point for standards-based review.
+    - contentinfo [ref=e403]:
+      - generic [ref=e405]:
+        - paragraph [ref=e406]: APT — Applied Practical Thinking
+        - paragraph [ref=e407]: This is a demonstration, not a production system.
+        - paragraph [ref=e408]: © 2006-2026 Adam Thompson. Applied Practical Thinking. All rights reserved.
+        - separator [ref=e409]
+        - paragraph [ref=e410]:
+          - strong [ref=e411]: "Note on AI:"
+          - text: To explore ideas and accelerate my workflow, I use AI tools like OpenAI, Gemini, and NotebookLM for brainstorming, writing assistance, and generating audio/video content.

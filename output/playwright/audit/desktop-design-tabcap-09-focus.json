@@ -1,0 +1,16 @@
+{
+  "step": 9,
+  "tag": "A",
+  "role": "menuitem",
+  "href": "/experiments",
+  "ariaExpanded": null,
+  "ariaControls": null,
+  "text": "AllThe full index of exploratory work across concepts, mocks, and live demos.",
+  "rect": {
+    "x": 1046,
+    "y": 136,
+    "w": 286,
+    "h": 78
+  },
+  "url": "/design"
+}

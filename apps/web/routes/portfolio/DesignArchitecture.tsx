@@ -1,11 +1,7 @@
 import { Link } from "react-router-dom";
 import {
-  FolderTree,
   Server,
-  Globe,
   GitBranch,
-  Shield,
-  Bot,
   ArrowRight,
   FileText,
   Download,
@@ -31,6 +27,7 @@ import { useDesignDocVersion } from "@/hooks/useDesignDocVersion";
 import { downloadWorkerMarkdown } from "@/src/services/download";
 import { downloadWorkspaceKnowledge } from "@/src/services/workspaceKnowledge";
 import { architecturePatterns } from "@/data/architecturePatterns";
+import { getAptPrincipleGroups } from "@/data/aptPrinciples";
 
 interface ArchitecturePatternProps {
   slug: string;
@@ -67,7 +64,7 @@ function ArchitecturePatternCard({ slug, icon, title, description, rules, when }
               <ul className="space-y-1.5">
                 {rules.slice(0, 3).map((rule, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm">
-                    <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-accent mt-0.5" />
+                    <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-primary mt-0.5" />
                     {rule}
                   </li>
                 ))}
@@ -111,7 +108,7 @@ function BoundaryCard({ title, stack, responsibilities, constraints }: BoundaryC
             <ul className="space-y-1">
               {responsibilities.map((item, i) => (
                 <li key={i} className="text-sm flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                   {item}
                 </li>
               ))}
@@ -192,38 +189,12 @@ export default function PortfolioDesignArchitecture() {
     },
   ];
 
-  const principles = [
-    {
-      icon: <FolderTree className="h-5 w-5" />,
-      title: "Monorepo by Default",
-      description: "Shared code, unified tooling, atomic commits across the entire system.",
-    },
-    {
-      icon: <Globe className="h-5 w-5" />,
-      title: "Static-First, API-Optional",
-      description: "Frontend deploys independently; backend functionality is additive, not required.",
-    },
-    {
-      icon: <Shield className="h-5 w-5" />,
-      title: "Boundaries Over Flexibility",
-      description: "Clear separation prevents accidental coupling. Constraints enable velocity.",
-    },
-    {
-      icon: <FileText className="h-5 w-5" />,
-      title: "Docs as Code",
-      description: "Architecture decisions live in version control, reviewed like any other change.",
-    },
-    {
-      icon: <Bot className="h-5 w-5" />,
-      title: "AI-Aware From Day One",
-      description: "Prompt ownership and routing are first-class architectural concerns.",
-    },
-    {
-      icon: <GitBranch className="h-5 w-5" />,
-      title: "Reproducible Deploys",
-      description: "Every deployment is traceable to a commit. No snowflakes, no manual steps.",
-    },
-  ];
+  const relevantPrincipleGroups = getAptPrincipleGroups([
+    "architecture",
+    "system",
+    "release-change-management",
+    "operations",
+  ]);
 
   const boundaries = [
     {
@@ -357,23 +328,34 @@ export default function PortfolioDesignArchitecture() {
       {/* Principles */}
       <section className="mb-16">
         <SectionIntro
-          title="Core Principles"
-          description="The governing architectural positions that keep the system legible and enforceable."
+          title="Relevant Principle Groups"
+          description="Architecture surfaces use the canonical principles framework. These groups drive boundary, governance, and promotion behavior."
           className="mb-6"
         />
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {principles.map((principle) => (
-            <AptCard key={principle.title} variant="subtle">
+        <div className="grid gap-4 md:grid-cols-2">
+          {relevantPrincipleGroups.map((group) => (
+            <AptCard key={group.id} variant="subtle">
               <AptCardHeader>
-                <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-accent/10 text-accent">
-                    {principle.icon}
-                  </div>
-                  <AptCardTitle className="text-lg">{principle.title}</AptCardTitle>
+                <div className="flex items-center justify-between gap-3">
+                  <AptCardTitle className="text-lg">{group.title}</AptCardTitle>
+                  <AptTag variant="outline" size="sm">{group.framing}</AptTag>
                 </div>
               </AptCardHeader>
-              <AptCardContent>
-                <p className="text-sm text-muted-foreground">{principle.description}</p>
+              <AptCardContent className="space-y-3">
+                <ul className="space-y-1.5 text-sm text-muted-foreground">
+                  {group.principles.slice(0, 3).map((item) => (
+                    <li key={`${group.id}-${item}`} className="flex items-start gap-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <AptButton variant="ghost" size="sm" asChild className="px-0">
+                  <Link to="/design/principles">
+                    Open full framework
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </AptButton>
               </AptCardContent>
             </AptCard>
           ))}
@@ -424,7 +406,7 @@ export default function PortfolioDesignArchitecture() {
           <div className="grid gap-4 md:grid-cols-2">
             {artifacts.map((artifact) => (
               <div key={artifact} className="flex items-start gap-3 rounded-lg border border-border/60 bg-background/40 p-4">
-                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                 <p className="text-sm text-muted-foreground">{artifact}</p>
               </div>
             ))}
@@ -470,8 +452,8 @@ export default function PortfolioDesignArchitecture() {
               <p className="text-sm text-muted-foreground">Staging deploy triggered</p>
             </div>
             <div className="text-center p-4">
-              <div className="mx-auto w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center mb-3">
-                <Cloud className="h-5 w-5 text-accent" />
+              <div className="mx-auto w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-3">
+                <Cloud className="h-5 w-5 text-primary" />
               </div>
               <p className="font-medium mb-1">Release Tag</p>
               <p className="text-sm text-muted-foreground">Production deploy triggered</p>

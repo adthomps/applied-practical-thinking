@@ -20,7 +20,7 @@ export function DecisionBlock({
       <ul className="space-y-2">
         {decisions.map((decision, index) => (
           <li key={index} className="flex items-start gap-2 text-sm">
-            <CheckCircle2 className="h-4 w-4 mt-0.5 text-accent shrink-0" />
+            <CheckCircle2 className="h-4 w-4 mt-0.5 text-primary shrink-0" />
             <span className="text-muted-foreground">{decision}</span>
           </li>
         ))}

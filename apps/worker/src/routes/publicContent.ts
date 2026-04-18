@@ -59,6 +59,12 @@ const publicDesignDocs: PublicDesignDocItem[] = [
     description: "Problem framing, assumptions, constraints, and decision-making in practice.",
   },
   {
+    slug: "principles",
+    title: "APT Principles Framework",
+    path: "APT-PRINCIPLES-FRAMEWORK.md",
+    description: "Canonical APT principles model across Thinking, Design, Architecture, System, Execution, Quality, Release, Operations, Knowledge, and AI.",
+  },
+  {
     slug: "system",
     title: "APT Design System",
     path: "APT-DESIGN-SYSTEM.md",

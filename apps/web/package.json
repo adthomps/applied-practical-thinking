@@ -21,6 +21,7 @@
     "validation-frontmatter-autofix": "node scripts/validation-frontmatter-autofix.cjs",
     "validation-report": "node scripts/validation-report.cjs",
     "validation-report:full": "node scripts/validation-report.cjs --full",
+    "token-drift-check": "node scripts/token-drift-check.cjs",
     "verify-doc-governance": "pnpm run validation-report",
     "build-content-index": "pnpm run generate-content-index && pnpm run copy-content-index"
   },

@@ -2,9 +2,9 @@
 docId: design-overview
 slug: overview
 major: 2
-semanticVersion: 2.0.0
+semanticVersion: 2.1.0
 status: candidate
-publishedAt: 2026-04-05
+publishedAt: 2026-04-18
 ---
 # APT Design Overview
 
@@ -25,6 +25,12 @@ Design exists to make the doctrine behind APT legible. It is not the place for e
 Problem framing, assumption testing, constraint analysis, decision trees, iteration cycles, and systems mapping.
 
 Use it when the right move is not obvious yet and the cost of being wrong is meaningful.
+
+### Principles Framework
+
+Canonical 10-group model for APT operating behavior across Thinking, Design, Architecture, System, Execution, Quality, Release, Operations, Knowledge, and AI augmentation.
+
+Use it when you need the governing cross-layer model before drilling into a specific doctrine route.
 
 ### Design System
 
@@ -114,6 +120,7 @@ Generated outputs:
 ## Related Documents
 
 - [APT Design Thinking](./APT-DESIGN-THINKING.md)
+- [APT Principles Framework](./APT-PRINCIPLES-FRAMEWORK.md)
 - [APT Design System](./APT-DESIGN-SYSTEM.md)
 - [APT Content Naming and Messaging](./APT-CONTENT-NAMING-AND-MESSAGING.md)
 - [APT Design Architecture](./APT-DESIGN-ARCHITECTURE.md)
@@ -127,4 +134,3 @@ Pattern references (v2):
 - [Line Chart](./patterns/Line-Chart/index.md)
 - [Heatmap](./patterns/Heatmap/index.md)
 - [Dumbbell Plot](./patterns/Dumbbell-Plot/index.md)
-

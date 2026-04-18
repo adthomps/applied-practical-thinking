@@ -116,6 +116,16 @@ export interface PublicReviewBundleHandoff {
   };
 }
 
+export interface PublicReviewBundleStarterPack {
+  id: string;
+  title: string;
+  description?: string;
+  order: number;
+  documents: string[];
+  requiresTargetArtifact?: boolean;
+  targetArtifactLabel?: string;
+}
+
 export interface PublicReviewBundleManifest {
   id: string;
   title?: string;
@@ -126,6 +136,7 @@ export interface PublicReviewBundleManifest {
   bundleFiles?: PublicReviewBundleFile[];
   documents?: PublicReviewBundleDocument[];
   recommendedHandoffs?: PublicReviewBundleHandoff[];
+  starterPacks?: PublicReviewBundleStarterPack[];
 }
 
 // Knowledge Engine types (ingest/index/query contracts)
