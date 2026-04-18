@@ -33,6 +33,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
 import { useDesignDocVersion } from "@/hooks/useDesignDocVersion";
 import { downloadWorkerMarkdown } from "@/src/services/download";
+import { downloadWorkspaceKnowledge } from "@/src/services/workspaceKnowledge";
 
 function ColorSwatch({ name, cssVar, className }: { name: string; cssVar: string; className: string }) {
   const [copied, setCopied] = useState(false);
@@ -107,6 +108,9 @@ export default function PortfolioDesignSystem() {
     const majorSuffix = systemVersion.activeMajor ? `-v${systemVersion.activeMajor}` : "";
     await downloadWorkerMarkdown(systemVersion.downloadApiPath, `apt-design-system${majorSuffix}.md`);
   };
+  const handleWorkspaceKnowledgeDownload = () => {
+    downloadWorkspaceKnowledge("design-system");
+  };
   const sections = [
     { id: "philosophy", label: "Philosophy", icon: Sparkles },
     { id: "colors", label: "Colors", icon: Palette },
@@ -139,6 +143,10 @@ export default function PortfolioDesignSystem() {
               <Download className="h-4 w-4" />
               Download Tokens
             </a>
+          </AptButton>
+          <AptButton variant="outline" type="button" onClick={handleWorkspaceKnowledgeDownload}>
+            <Download className="h-4 w-4" />
+            Download Workspace Knowledge
           </AptButton>
           <AptButton variant="outline" asChild>
             <Link to="/design-playground">
@@ -952,6 +960,9 @@ text-xl md:text-2xl
                 disabled={!systemDocUrl}
               >
                 Download System Markdown
+              </AptButton>
+              <AptButton variant="outline" type="button" onClick={handleWorkspaceKnowledgeDownload}>
+                Download Workspace Knowledge
               </AptButton>
               <AptButton asChild>
                 <a href="/docs/design/APT-TOKENS.json" download>

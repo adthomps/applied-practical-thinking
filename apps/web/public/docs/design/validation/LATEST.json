@@ -1,8 +1,8 @@
 {
   "run": {
-    "timestamp": "2026-04-15T03:53:55.301Z",
-    "completedAt": "2026-04-15T03:53:55.332Z",
-    "durationMs": 31,
+    "timestamp": "2026-04-15T03:56:13.021Z",
+    "completedAt": "2026-04-15T03:56:13.050Z",
+    "durationMs": 29,
     "gitSha": "5234a68"
   },
   "mode": "quick",
@@ -53,7 +53,7 @@
         }
       ],
       "frontmatter": {
-        "scannedCount": 148,
+        "scannedCount": 149,
         "inScopeCount": 44,
         "missingCount": 2,
         "waves": [
