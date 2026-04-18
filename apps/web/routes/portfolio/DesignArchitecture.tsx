@@ -29,6 +29,7 @@ import {
 import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
 import { useDesignDocVersion } from "@/hooks/useDesignDocVersion";
 import { downloadWorkerMarkdown } from "@/src/services/download";
+import { downloadWorkspaceKnowledge } from "@/src/services/workspaceKnowledge";
 import { architecturePatterns } from "@/data/architecturePatterns";
 
 interface ArchitecturePatternProps {
@@ -148,6 +149,9 @@ export default function PortfolioDesignArchitecture() {
   const handleArchitectureMarkdownDownload = async () => {
     const majorSuffix = architectureVersion.activeMajor ? `-v${architectureVersion.activeMajor}` : "";
     await downloadWorkerMarkdown(architectureVersion.downloadApiPath, `apt-design-architecture${majorSuffix}.md`);
+  };
+  const handleWorkspaceKnowledgeDownload = () => {
+    downloadWorkspaceKnowledge("design-architecture");
   };
   const patterns = architecturePatterns;
 
@@ -278,6 +282,10 @@ export default function PortfolioDesignArchitecture() {
           <FileText className="h-4 w-4" />
           Download Architecture Markdown
         </AptButton>
+        <AptButton variant="outline" type="button" onClick={handleWorkspaceKnowledgeDownload}>
+          <Download className="h-4 w-4" />
+          Download Workspace Knowledge
+        </AptButton>
         {architectureCanonicalUrl ? (
           <AptButton variant="ghost" asChild>
             <a href={architectureCanonicalUrl} target="_blank" rel="noreferrer">
@@ -319,6 +327,10 @@ export default function PortfolioDesignArchitecture() {
                 <Download className="h-4 w-4" />
                 Download Reference JSON
               </a>
+            </AptButton>
+            <AptButton variant="outline" type="button" onClick={handleWorkspaceKnowledgeDownload}>
+              <Download className="h-4 w-4" />
+              Download Workspace Knowledge
             </AptButton>
             {architectureExamplesCanonicalUrl ? (
               <AptButton variant="ghost" asChild>
