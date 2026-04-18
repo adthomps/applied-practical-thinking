@@ -1,4 +1,5 @@
-import { useState, useRef } from "react";
+import { useEffect, useId, useRef, useState } from "react";
+import type { FocusEvent, KeyboardEvent } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -22,10 +23,18 @@ function NavDropdown({ item, isLast = false }: { item: NavItem; isLast?: boolean
   const location = useLocation();
   const [open, setOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const triggerRef = useRef<HTMLAnchorElement | null>(null);
+  const childLinkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const menuId = useId();
   
   const isActive = isRouteActive(location.pathname, item.path) ||
     item.children?.some((child) => isRouteActive(location.pathname, child.path));
+
+  const closeDropdown = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setOpen(false);
+  };
 
   const handleMouseEnter = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -36,6 +45,37 @@ function NavDropdown({ item, isLast = false }: { item: NavItem; isLast?: boolean
     timeoutRef.current = setTimeout(() => setOpen(false), 150);
   };
 
+  const handleFocusWithin = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setOpen(true);
+  };
+
+  const handleBlurWithin = (event: FocusEvent<HTMLDivElement>) => {
+    const nextFocus = event.relatedTarget;
+    if (nextFocus instanceof Node && event.currentTarget.contains(nextFocus)) return;
+    closeDropdown();
+  };
+
+  const handleDropdownKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key !== "Escape") return;
+    event.preventDefault();
+    closeDropdown();
+    triggerRef.current?.focus();
+  };
+
+  const handleTriggerKeyDown = (event: KeyboardEvent<HTMLAnchorElement>) => {
+    if (event.key !== "ArrowDown") return;
+    event.preventDefault();
+    setOpen(true);
+    childLinkRefs.current[0]?.focus();
+  };
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
+
   if (!item.children) {
     return (
       <div className="relative group">
@@ -44,7 +84,7 @@ function NavDropdown({ item, isLast = false }: { item: NavItem; isLast?: boolean
           className={cn(
             "px-3 py-2 text-sm font-medium rounded-md transition-colors flex items-center gap-1",
             isActive
-              ? "text-foreground bg-accent"
+              ? "text-accent-foreground bg-accent"
               : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
           )}
         >
@@ -68,13 +108,21 @@ function NavDropdown({ item, isLast = false }: { item: NavItem; isLast?: boolean
       className="relative"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onFocus={handleFocusWithin}
+      onBlur={handleBlurWithin}
+      onKeyDown={handleDropdownKeyDown}
     >
       <Link
+        ref={triggerRef}
         to={item.path}
+        aria-haspopup="menu"
+        aria-expanded={open}
+        aria-controls={menuId}
+        onKeyDown={handleTriggerKeyDown}
         className={cn(
           "px-3 py-2 text-sm font-medium rounded-md transition-colors flex items-center gap-1",
           isActive
-            ? "text-foreground bg-accent"
+            ? "text-accent-foreground bg-accent"
             : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
         )}
       >
@@ -87,7 +135,10 @@ function NavDropdown({ item, isLast = false }: { item: NavItem; isLast?: boolean
       
       {/* Dropdown menu */}
       <div 
+        id={menuId}
         ref={dropdownRef}
+        role="menu"
+        aria-label={`${item.label} submenu`}
         className={cn(
           "absolute top-full pt-2 z-[100] transition-all",
           isLast ? "right-0" : "left-0",
@@ -103,12 +154,17 @@ function NavDropdown({ item, isLast = false }: { item: NavItem; isLast?: boolean
           )}
           {/* Children */}
           <div className="py-2 max-h-[calc(100vh-8rem)] overflow-y-auto">
-            {item.children.map((child) => {
+            {item.children.map((child, index) => {
               const isChildActive = isRouteActive(location.pathname, child.path);
               return (
                 <Link
                   key={child.path}
                   to={child.path}
+                  role="menuitem"
+                  ref={(node) => {
+                    childLinkRefs.current[index] = node;
+                  }}
+                  onClick={closeDropdown}
                   className={cn(
                     "block px-4 py-3 transition-colors",
                     isChildActive 
@@ -155,7 +211,7 @@ function MobileNavItem({ item, onClose }: { item: NavItem; onClose: () => void }
         className={cn(
           "block px-3 py-2 text-sm font-medium rounded-md transition-colors",
           location.pathname === item.path
-            ? "text-foreground bg-accent"
+            ? "text-accent-foreground bg-accent"
             : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
         )}
       >
@@ -171,7 +227,7 @@ function MobileNavItem({ item, onClose }: { item: NavItem; onClose: () => void }
         className={cn(
           "w-full px-3 py-2 text-sm font-medium rounded-md transition-colors flex items-center justify-between",
           isActive
-            ? "text-foreground bg-accent"
+            ? "text-accent-foreground bg-accent"
             : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
         )}
       >
@@ -192,7 +248,7 @@ function MobileNavItem({ item, onClose }: { item: NavItem; onClose: () => void }
               className={cn(
                 "block px-3 py-2 text-sm rounded-md transition-colors",
                 isRouteActive(location.pathname, child.path)
-                  ? "text-foreground bg-accent"
+                  ? "text-accent-foreground bg-accent"
                   : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
               )}
             >

@@ -168,6 +168,20 @@ export const aptColorPairs: ColorPair[] = [
     fgClass: "text-accent-foreground",
   },
   {
+    name: "Nav Selected (Dark)",
+    background: "165 45% 40%",
+    foreground: "220 20% 8%",
+    bgClass: "bg-accent",
+    fgClass: "text-accent-foreground",
+  },
+  {
+    name: "Nav Selected (Light)",
+    background: "165 45% 35%",
+    foreground: "0 0% 100%",
+    bgClass: "bg-accent",
+    fgClass: "text-accent-foreground",
+  },
+  {
     name: "Accent on Background",
     background: "220 20% 8%",
     foreground: "165 45% 40%",

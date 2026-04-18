@@ -1,7 +1,7 @@
 # APT Validation Report (Public)
 
-- Timestamp: 2026-04-18T03:01:46.335Z
-- Duration: 33ms
+- Timestamp: 2026-04-18T05:14:12.295Z
+- Duration: 35ms
 - Recommendation: pass_with_fixes
 
 ## Section Outcomes

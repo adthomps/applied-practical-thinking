@@ -39,8 +39,9 @@ Use `container` class for consistent max-width and padding:
 
 ## Navigation
 
-- Flat navigation (no nested dropdowns)
-- Current route indicated with `bg-accent`
+- Flat navigation (no nested dropdowns) - legacy v1 guidance only
+- Canonical runtime navigation now uses nested dropdowns in `AptNav` driven by `siteConfig.nav` children
+- Current route indicated with `bg-accent text-accent-foreground`
 - Mobile: hamburger menu with slide-down panel
 
 ## Footer
@@ -90,4 +91,3 @@ Variants:
 | Feature cards | `grid-cols-1 sm:grid-cols-2 lg:grid-cols-4` |
 | Lab/System cards | `grid-cols-1 md:grid-cols-2` |
 | Content lists | `grid-cols-1 md:grid-cols-2` |
-

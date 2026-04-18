@@ -519,6 +519,12 @@ Delivery guard rails:
 - Use accent as decorative body emphasis.
 - Ship async surfaces without explicit state definitions.
 
+### Navigation Model Note
+
+Canonical site navigation uses a nested dropdown model in `AptNav` with parent and child routes.
+The v1 flat-navigation note is legacy historical guidance and not the current runtime contract.
+Selected nav states use `bg-accent` with `text-accent-foreground` for contrast-safe emphasis.
+
 ---
 
 ## Component Inventory

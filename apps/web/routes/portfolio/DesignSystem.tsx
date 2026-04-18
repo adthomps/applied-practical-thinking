@@ -314,7 +314,7 @@ export default function PortfolioDesignSystem() {
   --background: 220 20% 8%;      /* Deep space blue */
   --foreground: 220 10% 95%;     /* Near-white text */
   --primary: 220 70% 55%;        /* Blue accent */
-  --accent: 165 55% 45%;         /* Teal highlight */
+  --accent: 165 45% 40%;         /* Muted teal highlight */
   --muted: 220 15% 15%;          /* Subdued backgrounds */
   --border: 220 15% 20%;         /* Subtle dividers */
 }`} />
@@ -347,7 +347,7 @@ export default function PortfolioDesignSystem() {
                   <div className="text-left">
                     <div className="h-16 rounded-lg border mb-2 bg-accent" />
                     <p className="text-sm font-medium">Accent</p>
-                    <p className="text-xs text-muted-foreground font-mono">HSL(165, 60%, 40%)</p>
+                    <p className="text-xs text-muted-foreground font-mono">HSL(165, 45%, 35%)</p>
                   </div>
                 </div>
               </div>
