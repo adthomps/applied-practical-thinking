@@ -7,16 +7,32 @@ import { siteConfig, NavItem } from "@/data/site";
 
 function normalizePath(path: string) {
   if (!path) return "/";
-  if (path === "/") return "/";
-  return path.replace(/\/+$/, "");
+  const [withoutQuery] = path.split("?");
+  const [withoutHash] = withoutQuery.split("#");
+  if (!withoutHash || withoutHash === "/") return "/";
+  return withoutHash.replace(/\/+$/, "") || "/";
 }
 
-function isRouteActive(pathname: string, routePath: string) {
-  const current = normalizePath(pathname);
+function normalizeHash(path: string) {
+  if (!path || !path.includes("#")) return "";
+  const [withoutQuery] = path.split("?");
+  const [, hash = ""] = withoutQuery.split("#");
+  return hash ? `#${hash}` : "";
+}
+
+function isRouteActive(currentRoute: string, routePath: string) {
+  const current = normalizePath(currentRoute);
   const target = normalizePath(routePath);
+  const targetHash = normalizeHash(routePath);
+  const currentHash = normalizeHash(currentRoute);
 
   if (target === "/") return current === "/";
-  return current === target || current.startsWith(`${target}/`);
+
+  const pathMatch = current === target || current.startsWith(`${target}/`);
+  if (!pathMatch) return false;
+  if (!targetHash) return true;
+
+  return current === target && currentHash === targetHash;
 }
 
 function isFocusableElementVisible(element: HTMLElement) {
@@ -28,6 +44,7 @@ function isFocusableElementVisible(element: HTMLElement) {
 
 function NavDropdown({ item, isLast = false }: { item: NavItem; isLast?: boolean }) {
   const location = useLocation();
+  const currentRoute = `${location.pathname}${location.hash || ""}`;
   const [open, setOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const suppressHoverRef = useRef(false);
@@ -37,8 +54,8 @@ function NavDropdown({ item, isLast = false }: { item: NavItem; isLast?: boolean
   const dropdownRef = useRef<HTMLDivElement>(null);
   const menuId = useId();
   
-  const isActive = isRouteActive(location.pathname, item.path) ||
-    item.children?.some((child) => isRouteActive(location.pathname, child.path));
+  const isActive = isRouteActive(currentRoute, item.path) ||
+    item.children?.some((child) => isRouteActive(currentRoute, child.path));
 
   const closeDropdown = (options?: { suppressHover?: boolean }) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -269,7 +286,7 @@ function NavDropdown({ item, isLast = false }: { item: NavItem; isLast?: boolean
           {/* Children */}
           <div className="py-2 max-h-[calc(100vh-8rem)] overflow-y-auto">
             {item.children.map((child, index) => {
-              const isChildActive = isRouteActive(location.pathname, child.path);
+              const isChildActive = isRouteActive(currentRoute, child.path);
               return (
                 <Link
                   key={child.path}
@@ -312,11 +329,12 @@ function NavDropdown({ item, isLast = false }: { item: NavItem; isLast?: boolean
 
 function MobileNavItem({ item, onClose }: { item: NavItem; onClose: () => void }) {
   const location = useLocation();
+  const currentRoute = `${location.pathname}${location.hash || ""}`;
   const [expanded, setExpanded] = useState(false);
   const submenuId = useId();
   
-  const isActive = isRouteActive(location.pathname, item.path) ||
-    item.children?.some((child) => isRouteActive(location.pathname, child.path));
+  const isActive = isRouteActive(currentRoute, item.path) ||
+    item.children?.some((child) => isRouteActive(currentRoute, child.path));
 
   if (!item.children) {
     return (
@@ -325,7 +343,7 @@ function MobileNavItem({ item, onClose }: { item: NavItem; onClose: () => void }
         onClick={onClose}
         className={cn(
           "block px-3 py-2 text-sm font-medium rounded-md transition-colors",
-          location.pathname === item.path
+          isRouteActive(currentRoute, item.path)
             ? "text-accent-foreground bg-accent"
             : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
         )}
@@ -362,12 +380,12 @@ function MobileNavItem({ item, onClose }: { item: NavItem; onClose: () => void }
               key={child.path}
               to={child.path}
               onClick={onClose}
-              className={cn(
-                "block px-3 py-2 text-sm rounded-md transition-colors",
-                isRouteActive(location.pathname, child.path)
-                  ? "text-accent-foreground bg-accent"
-                  : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
-              )}
+                className={cn(
+                  "block px-3 py-2 text-sm rounded-md transition-colors",
+                  isRouteActive(currentRoute, child.path)
+                    ? "text-accent-foreground bg-accent"
+                    : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
+                )}
             >
               {child.label}
             </Link>

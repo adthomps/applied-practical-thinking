@@ -12,7 +12,23 @@ Canonical reference for APT's 10 core principle groups and lifecycle map.
 
 ---
 
-## 1) Thinking (Why)
+## Framework Index
+
+1. APT Principles Framework
+2. APT Thinking Principles (Why)
+3. APT Design Principles (What)
+4. APT Architecture Standards (How)
+5. APT System Standards (Consistency)
+6. APT Execution Model (Build)
+7. APT Quality & Testing (Validate)
+8. APT Release & Change Management (Promote)
+9. APT Operations & Support Thinking (Run & Support)
+10. APT Knowledge System (Learn & Scale)
+11. APT AI & Agent Framework (Augmentation Layer)
+
+---
+
+## 1) APT Thinking Principles (Why)
 
 ### Focus
 
@@ -36,9 +52,13 @@ Canonical reference for APT's 10 core principle groups and lifecycle map.
 - User journeys
 - Decision logs
 
+### Practical Example
+
+Before building a new review dashboard, write a problem statement and measurable outcome (for example, reduce review handoff time by 30%).
+
 ---
 
-## 2) Design (What)
+## 2) APT Design Principles (What)
 
 ### Focus
 
@@ -62,9 +82,13 @@ Canonical reference for APT's 10 core principle groups and lifecycle map.
 - Conceptual data models
 - Interaction and state maps
 
+### Practical Example
+
+When defining a new route, specify empty, loading, success, and error states before implementation so behavior is complete from day one.
+
 ---
 
-## 3) Architecture (How)
+## 3) APT Architecture Standards (How)
 
 ### Focus
 
@@ -88,9 +112,13 @@ Canonical reference for APT's 10 core principle groups and lifecycle map.
 - Data flow definitions
 - Service and module boundaries
 
+### Practical Example
+
+For a new feature, define worker API contracts first, then implement frontend consumers against that contract instead of ad-hoc endpoint discovery.
+
 ---
 
-## 4) System (Consistency)
+## 4) APT System Standards (Consistency)
 
 ### Focus
 
@@ -115,9 +143,13 @@ Canonical reference for APT's 10 core principle groups and lifecycle map.
 - Naming conventions
 - Shared packages
 
+### Practical Example
+
+If a new component style is needed, add a shared token/variant contract instead of introducing route-specific color utilities.
+
 ---
 
-## 5) Execution (Build)
+## 5) APT Execution Model (Build)
 
 ### Focus
 
@@ -140,9 +172,13 @@ Canonical reference for APT's 10 core principle groups and lifecycle map.
 - CI workflows
 - Build scripts
 
+### Practical Example
+
+Ship principles changes in small PRs: update data model, then UI surfaces, then docs mirror sync with validation gates between each step.
+
 ---
 
-## 6) Quality and Testing (Validate)
+## 6) APT Quality & Testing (Validate)
 
 ### Focus
 
@@ -164,9 +200,13 @@ Canonical reference for APT's 10 core principle groups and lifecycle map.
 - CI validation pipelines
 - Test artifacts (logs, traces, reports)
 
+### Practical Example
+
+After nav updates, run lint/test/build plus keyboard-flow checks to confirm active states, anchors, and dropdown accessibility still behave correctly.
+
 ---
 
-## 7) Release and Change Management (Promote)
+## 7) APT Release & Change Management (Promote)
 
 ### Focus
 
@@ -190,9 +230,13 @@ Canonical reference for APT's 10 core principle groups and lifecycle map.
 - Version tags
 - Deployment records
 
+### Practical Example
+
+Bundle nav IA updates and principles content updates into one documented release note so stakeholders can trace what changed and why.
+
 ---
 
-## 8) Operations (Run and Support)
+## 8) APT Operations & Support Thinking (Run & Support)
 
 ### Focus
 
@@ -216,9 +260,13 @@ Canonical reference for APT's 10 core principle groups and lifecycle map.
 - Support playbooks
 - Incident workflows
 
+### Practical Example
+
+Add clear failure messaging and traceable logs for docs downloads so support can diagnose whether issues are config, routing, or artifact-related.
+
 ---
 
-## 9) Knowledge (Learn and Scale)
+## 9) APT Knowledge System (Learn & Scale)
 
 ### Focus
 
@@ -242,9 +290,13 @@ Canonical reference for APT's 10 core principle groups and lifecycle map.
 - Training content
 - AI-ingestible markdown
 
+### Practical Example
+
+Keep principles content in one canonical source file and consume it in both route UIs and docs to prevent doctrine drift.
+
 ---
 
-## 10) AI / Agent (Augmentation Layer)
+## 10) APT AI & Agent Framework (Augmentation Layer)
 
 ### Focus
 
@@ -268,6 +320,10 @@ Canonical reference for APT's 10 core principle groups and lifecycle map.
 - Agent workflows
 - Evaluation frameworks
 
+### Practical Example
+
+Use a structured review prompt tied to principle groups so AI feedback maps directly to APT standards instead of generic style advice.
+
 ---
 
 ## How It All Fits Together
@@ -277,10 +333,10 @@ Canonical reference for APT's 10 core principle groups and lifecycle map.
 - Architecture -> How
 - System -> Consistency
 - Execution -> Build
-- Quality and Testing -> Validate
-- Release and Change Management -> Promote
-- Operations -> Run
-- Knowledge -> Learn
+- Quality & Testing -> Validate
+- Release & Change Management -> Promote
+- Operations & Support -> Run & Support
+- Knowledge -> Learn & Scale
 - AI / Agent -> Enhances all
 
 ---
@@ -293,9 +349,9 @@ Canonical reference for APT's 10 core principle groups and lifecycle map.
 - [APT Design Architecture](./APT-DESIGN-ARCHITECTURE.md)
 - [APT Content Strategy](./APT-CONTENT-STRATEGY.md)
 - [APT AI Review Bundle](../static/APT-AI-REVIEW-BUNDLE.md)
- - [APT Execution Model](./APT-EXECUTION-MODEL.md)
- - [APT Quality & Testing](./APT-QUALITY-TESTING.md)
- - [APT Release & Change Management](./APT-RELEASE-CHANGE-MANAGEMENT.md)
- - [APT Operations & Support](./APT-OPERATIONS-SUPPORT.md)
- - [APT System Standards](./APT-SYSTEM-STANDARDS.md)
- - [APT AI & Agent Framework](./APT-AI-AGENT-FRAMEWORK.md)
+- [APT Execution Model](./APT-EXECUTION-MODEL.md)
+- [APT Quality & Testing](./APT-QUALITY-TESTING.md)
+- [APT Release & Change Management](./APT-RELEASE-CHANGE-MANAGEMENT.md)
+- [APT Operations & Support](./APT-OPERATIONS-SUPPORT.md)
+- [APT System Standards](./APT-SYSTEM-STANDARDS.md)
+- [APT AI & Agent Framework](./APT-AI-AGENT-FRAMEWORK.md)
