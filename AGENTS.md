@@ -130,7 +130,10 @@ pnpm dev:worker
   - `PUBLIC_SITE_ORIGIN` belongs in `apps/worker/wrangler.toml` and/or the Worker dashboard config
 - Production values:
   - `VITE_API_BASE=https://applied-practical-thinking.apt-account.workers.dev`
-  - `PUBLIC_SITE_ORIGIN=https://applied-practical-thinking.pages.dev`
+  - `PUBLIC_SITE_ORIGIN=https://appliedpracticalthinking.com`
+  
+  - Additional production configurations may be required based on deployment specifics.
+  - Ensure all environment variables are set correctly in the Cloudflare dashboard.
 - Redeploy order after runtime/config changes:
   1. deploy the Worker
   2. deploy or rebuild Cloudflare Pages

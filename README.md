@@ -116,7 +116,7 @@ For this reason:
 Production values:
 
 - `VITE_API_BASE=https://applied-practical-thinking.apt-account.workers.dev`
-- `PUBLIC_SITE_ORIGIN=https://applied-practical-thinking.pages.dev`
+- `PUBLIC_SITE_ORIGIN=https://appliedpracticalthinking.com`
 
 ## Content and design guardrails
 

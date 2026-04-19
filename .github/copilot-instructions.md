@@ -35,7 +35,7 @@ The external document is strict but intentionally excludes internal-only workflo
 - **Deploy**: Cloudflare Pages builds the frontend from repo updates, and the worker deploys separately. `VITE_API_BASE` belongs to the Cloudflare Pages project config.
 - **Production values**:
   - `VITE_API_BASE=https://applied-practical-thinking.apt-account.workers.dev`
-  - `PUBLIC_SITE_ORIGIN=https://applied-practical-thinking.pages.dev`
+  - `PUBLIC_SITE_ORIGIN=https://appliedpracticalthinking.com`
 
 ## Project Conventions
 
