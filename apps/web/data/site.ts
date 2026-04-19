@@ -1,4 +1,4 @@
-import { designNavSections } from "./designSections";
+import { aptPrinciplesNavSections } from "./aptPrinciples";
 
 // Site-level configuration
 export const siteConfig = {
@@ -79,10 +79,10 @@ export const siteConfig = {
       ],
     },
     {
-      label: "Design",
+      label: "Principles",
       path: "/design",
-      description: "APT's design doctrine, references, and runtime documentation surfaces.",
-      children: designNavSections,
+      description: "APT's principles-first doctrine, standards, references, and runtime documentation surfaces.",
+      children: aptPrinciplesNavSections,
     },
     {
       label: "About",

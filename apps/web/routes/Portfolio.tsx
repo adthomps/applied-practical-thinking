@@ -7,6 +7,7 @@ import {
   type DesignSection,
   type DesignSectionCategory,
 } from "@/data/designSections";
+import { aptPrinciplesFrameworkIndex } from "@/data/aptPrinciples";
 import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
 import { useDesignDocVersion } from "@/hooks/useDesignDocVersion";
 import { downloadWorkerMarkdown } from "@/src/services/download";
@@ -149,21 +150,44 @@ export default function Portfolio() {
       </section>
 
       <section>
+        <SectionIntro
+          title="Principles Framework Index"
+          description="Canonical 11-entry principles listing used across nav and doctrine surfaces."
+          className="mb-6"
+        />
         <AptCard variant="feature" padding="large">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <div className="space-y-2">
-              <AptTag variant="accent" size="sm">Canonical Framework</AptTag>
-              <h2 className="text-2xl font-semibold tracking-tight">APT Principles Framework</h2>
-              <p className="text-sm text-muted-foreground">
-                Use the dedicated principles surface for the full 10-group model and lifecycle map.
-              </p>
+          <div className="space-y-5">
+            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+              <div className="space-y-2">
+                <AptTag variant="accent" size="sm">Canonical Framework</AptTag>
+                <h2 className="text-2xl font-semibold tracking-tight">APT Principles Framework</h2>
+                <p className="text-sm text-muted-foreground">
+                  Use this index to jump directly to the framework or any principle group section.
+                </p>
+              </div>
+              <AptButton asChild>
+                <Link to="/design/principles">
+                  Open Principles
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </AptButton>
             </div>
-            <AptButton asChild>
-              <Link to="/design/principles">
-                Open Principles
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </AptButton>
+            <ol className="grid gap-3 md:grid-cols-2">
+              {aptPrinciplesFrameworkIndex.map((item) => (
+                <li key={item.id}>
+                  <Link
+                    to={item.path}
+                    className="flex items-start justify-between gap-3 rounded-md border border-border/60 bg-background/40 p-3 transition-colors hover:bg-accent/10"
+                  >
+                    <div className="space-y-1">
+                      <p className="text-sm font-medium">{item.label}</p>
+                      <p className="text-xs text-muted-foreground">{item.description}</p>
+                    </div>
+                    <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />
+                  </Link>
+                </li>
+              ))}
+            </ol>
           </div>
         </AptCard>
       </section>
