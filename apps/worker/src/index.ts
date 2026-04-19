@@ -52,8 +52,22 @@ function applyCorsHeaders(c: Context<{ Bindings: WorkerBindings }>, allowedOrigi
   }
 }
 
-// Log every request method/path and apply CORS only for known origins.
+// Host normalization and redirects: redirect known legacy or www hosts to canonical origin.
 app.use('*', async (c, next) => {
+  try {
+    const reqUrl = new URL(c.req.url);
+    const host = reqUrl.hostname;
+    const configuredOrigin = normalizeOrigin(c.env.PUBLIC_SITE_ORIGIN) || 'https://appliedpracticalthinking.com';
+
+    // Redirect `www` and Pages preview host to the canonical configured origin.
+    if (host === 'www.appliedpracticalthinking.com' || host === 'applied-practical-thinking.pages.dev') {
+      const dest = configuredOrigin + reqUrl.pathname + reqUrl.search;
+      return c.redirect(dest, 301);
+    }
+  } catch (e) {
+    // If URL parsing fails, fall through to normal handling.
+  }
+
   // eslint-disable-next-line no-console
   console.log(`[Worker] ${c.req.method} ${c.req.path}`);
 

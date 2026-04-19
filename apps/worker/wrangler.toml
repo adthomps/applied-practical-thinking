@@ -18,4 +18,4 @@ enabled = false
 invocation_logs = true
 
 [vars]
-PUBLIC_SITE_ORIGIN = "https://applied-practical-thinking.pages.dev"
+PUBLIC_SITE_ORIGIN = "https://appliedpracticalthinking.com"
