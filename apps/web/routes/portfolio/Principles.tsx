@@ -130,16 +130,25 @@ export default function PortfolioPrinciples() {
           <ol className="space-y-3">
             {aptPrinciplesFrameworkIndex.map((item) => (
               <li key={item.id}>
-                <Link
-                  to={item.path}
-                  className="flex items-start justify-between gap-3 rounded-md border border-border/60 bg-background/40 p-3 transition-colors hover:bg-accent/10"
-                >
-                  <div className="space-y-1">
-                    <p className="text-sm font-medium text-foreground">{item.label}</p>
-                    <p className="text-xs text-muted-foreground">{item.description}</p>
-                  </div>
-                  <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground" />
-                </Link>
+                <div className="rounded-md border border-border/60 bg-background/40 p-3">
+                  <Link
+                    to={item.path}
+                    className="flex items-start justify-between gap-3 transition-colors hover:text-primary"
+                  >
+                    <div className="space-y-1">
+                      <p className="text-sm font-medium text-foreground">{item.label}</p>
+                      <p className="text-xs text-muted-foreground">{item.description}</p>
+                    </div>
+                    <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground" />
+                  </Link>
+                  {item.frameworkPath ? (
+                    <div className="mt-2">
+                      <Link to={item.frameworkPath} className="text-xs text-muted-foreground hover:text-foreground">
+                        Scan in framework section
+                      </Link>
+                    </div>
+                  ) : null}
+                </div>
               </li>
             ))}
           </ol>
@@ -212,7 +221,10 @@ export default function PortfolioPrinciples() {
                       <p className="text-sm text-muted-foreground">{group.example}</p>
                     </div>
 
-                    <div className="flex items-center justify-end">
+                    <div className="flex items-center justify-end gap-2">
+                      <AptButton variant="outline" asChild>
+                        <Link to={group.detailPath}>Open detail</Link>
+                      </AptButton>
                       <AptButton variant="ghost" asChild>
                         <a href={docLinks[group.id]} target="_blank" rel="noreferrer">Open doc</a>
                       </AptButton>
