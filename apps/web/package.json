@@ -5,8 +5,8 @@
   "type": "module",
   "main": "src/main.tsx",
   "scripts": {
-    "dev": "pnpm run validation-report && pnpm run build-content-index && pnpm run copy-content-to-public && vite",
-    "build": "pnpm run validation-report && pnpm run build-content-index && pnpm run copy-content-to-public && vite build",
+    "dev": "pnpm run generate-apt-principles-public && pnpm run validation-report && pnpm run build-content-index && pnpm run copy-content-to-public && vite",
+    "build": "pnpm run generate-apt-principles-public && pnpm run validation-report && pnpm run build-content-index && pnpm run copy-content-to-public && vite build",
     "preview": "vite preview",
     "lint": "eslint . && pnpm run verify-doc-governance",
     "test": "vitest run",
@@ -14,6 +14,7 @@
     "generate-content-index": "node scripts/generate-content-index.cjs",
     "copy-content-index": "node scripts/copy-index-to-public.cjs",
     "copy-content-to-public": "node scripts/copy-content-to-public.cjs",
+    "generate-apt-principles-public": "node scripts/generate-apt-principles-public.cjs",
     "verify-design-doc-alias-sync": "node scripts/verify-design-doc-alias-sync.cjs",
     "sync-design-doc-aliases": "node scripts/sync-design-doc-aliases.cjs",
     "verify-audited-doctrine-metadata": "node scripts/verify-audited-doctrine-metadata.cjs",

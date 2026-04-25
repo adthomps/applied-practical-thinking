@@ -8,6 +8,7 @@ import {
   FileText,
   FlaskConical,
   Layers3,
+  LockKeyhole,
   Network,
   Settings2,
   ShieldCheck,
@@ -42,25 +43,13 @@ const groupIcons: Record<AptPrincipleGroupId, ComponentType<{ className?: string
   design: Layers3,
   architecture: Network,
   system: Settings2,
+  security: LockKeyhole,
   execution: Wrench,
   "quality-testing": ShieldCheck,
   "release-change-management": Download,
   operations: FlaskConical,
   knowledge: BookOpen,
   "ai-agent": Bot,
-};
-
-const docLinks: Record<AptPrincipleGroupId, string> = {
-  thinking: "/docs/design/APT-DESIGN-THINKING.md",
-  design: "/docs/design/APT-DESIGN-SYSTEM.md",
-  architecture: "/docs/design/APT-DESIGN-ARCHITECTURE.md",
-  system: "/docs/design/APT-SYSTEM-STANDARDS.md",
-  execution: "/docs/design/APT-EXECUTION-MODEL.md",
-  "quality-testing": "/docs/design/APT-QUALITY-TESTING.md",
-  "release-change-management": "/docs/design/APT-RELEASE-CHANGE-MANAGEMENT.md",
-  operations: "/docs/design/APT-OPERATIONS-SUPPORT.md",
-  knowledge: "/docs/design/APT-KNOWLEDGE-ENGINE.md",
-  "ai-agent": "/docs/design/APT-AI-AGENT-FRAMEWORK.md",
 };
 
 const relatedRoutes = [
@@ -225,9 +214,11 @@ export default function PortfolioPrinciples() {
                       <AptButton variant="outline" asChild>
                         <Link to={group.detailPath}>Open detail</Link>
                       </AptButton>
-                      <AptButton variant="ghost" asChild>
-                        <a href={docLinks[group.id]} target="_blank" rel="noreferrer">Open doc</a>
-                      </AptButton>
+                      {group.publicDocPath ? (
+                        <AptButton variant="ghost" asChild>
+                          <a href={group.publicDocPath} target="_blank" rel="noreferrer">Open source doc</a>
+                        </AptButton>
+                      ) : null}
                     </div>
                   </AptCardContent>
                 </AptCard>

@@ -25,7 +25,7 @@ export default function PrincipleDetail() {
   const docSlug = group?.docSlug || "thinking";
   const versionState = useDesignDocVersion(docSlug);
   const docUrl = tryGetWorkerApiUrl(versionState.downloadApiPath);
-  const canonicalUrl = versionState.canonicalPath || null;
+  const canonicalUrl = group?.publicDocPath || versionState.canonicalPath || null;
   const configError = getWorkerApiConfigError();
 
   if (!group) {
@@ -81,7 +81,7 @@ export default function PrincipleDetail() {
             ) : null}
           </div>
           <DesignDocVersionSwitcher versionState={versionState} />
-          {!docUrl && configError ? (
+          {!docUrl && !group.publicDocPath && configError ? (
             <p className="text-sm text-muted-foreground mt-3">
               Configure <code>{configError.envVar}</code> on the Pages project to enable full-doc links.
             </p>

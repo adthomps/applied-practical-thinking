@@ -21,7 +21,7 @@ export const designSectionCatalog: readonly DesignSection[] = [
   {
     label: "Principles",
     path: "/design/principles",
-    description: "Canonical APT principles framework across Thinking, Design, Architecture, System, Execution, Quality, Release, Operations, Knowledge, and AI.",
+    description: "Canonical APT principles framework across Thinking, Design, Architecture, System, Security, Execution, Quality, Release, Operations, Knowledge, and AI.",
     tagline: "One model for why, what, how, and operational consistency.",
     category: "core",
   },

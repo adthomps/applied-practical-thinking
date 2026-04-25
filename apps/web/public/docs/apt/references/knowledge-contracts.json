@@ -1,0 +1,46 @@
+{
+  "title": "APT Knowledge Contracts",
+  "version": "v1",
+  "last_updated": "2026-04-24",
+  "owner": "APT",
+  "status": "draft",
+  "source": "Extracted from applied-practical-thinking knowledge engine material",
+  "schemas": {
+    "KnowledgeChunk": {
+      "required": ["id", "source", "title", "content", "audience", "status"],
+      "properties": {
+        "id": "Stable identifier for retrieval and citation.",
+        "source": "Canonical path or source system.",
+        "title": "Human-readable title.",
+        "content": "Chunk body.",
+        "audience": "human, agent, public, internal, or mixed.",
+        "status": "draft, active, deprecated, or archived.",
+        "tags": "Optional reuse and routing tags."
+      }
+    },
+    "IngestReport": {
+      "required": ["source", "status", "accepted", "rejected", "warnings"],
+      "properties": {
+        "source": "Ingested source path or collection.",
+        "status": "pass, partial, or fail.",
+        "accepted": "Count of accepted chunks.",
+        "rejected": "Count of rejected chunks.",
+        "warnings": "Non-blocking quality issues."
+      }
+    },
+    "QueryResponse": {
+      "required": ["answer", "sources", "confidence"],
+      "properties": {
+        "answer": "Grounded response.",
+        "sources": "Source references used to answer.",
+        "confidence": "low, medium, or high.",
+        "gaps": "Optional missing-context notes."
+      }
+    }
+  },
+  "rules": [
+    "Knowledge retrieval must cite canonical or project-owned sources.",
+    "AI-facing knowledge must preserve source priority and status.",
+    "Feedback should become either a doc update, a decision record, or an explicit non-action."
+  ]
+}

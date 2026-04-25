@@ -1,8 +1,11 @@
+import { getAptPublicDocBySourcePath } from "@/data/generated/aptPrinciplesPublicManifest";
+
 export type AptPrincipleGroupId =
   | "thinking"
   | "design"
   | "architecture"
   | "system"
+  | "security"
   | "execution"
   | "quality-testing"
   | "release-change-management"
@@ -15,6 +18,7 @@ export type AptPrincipleDocSlug =
   | "system"
   | "architecture"
   | "system-standards"
+  | "security"
   | "execution"
   | "quality-testing"
   | "release-change-management"
@@ -37,6 +41,8 @@ export type AptPrincipleGroup = {
   readonly anchor: string;
   readonly detailPath: string;
   readonly docSlug: AptPrincipleDocSlug;
+  readonly sourcePath: string;
+  readonly publicDocPath: string | null;
   readonly detailSummary: string;
   readonly focus: readonly string[];
   readonly principles: readonly string[];
@@ -55,6 +61,8 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
     anchor: "thinking-why",
     detailPath: "/design/principles/thinking",
     docSlug: "thinking",
+    sourcePath: "apt-principles/thinking.md",
+    publicDocPath: getAptPublicDocBySourcePath("apt-principles/thinking.md")?.publicPath ?? null,
     detailSummary:
       "Thinking defines why the work exists by clarifying problem, user context, and measurable outcomes before solutioning.",
     focus: [
@@ -93,6 +101,8 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
     anchor: "design-what",
     detailPath: "/design/principles/design",
     docSlug: "system",
+    sourcePath: "apt-principles/design.md",
+    publicDocPath: getAptPublicDocBySourcePath("apt-principles/design.md")?.publicPath ?? null,
     detailSummary:
       "Design defines what the solution is, how it behaves, and how user interactions stay coherent across states.",
     focus: ["Define what the solution is and how it behaves", "User experience", "Functional behavior", "System interactions (conceptual)"],
@@ -126,6 +136,8 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
     anchor: "architecture-how",
     detailPath: "/design/principles/architecture",
     docSlug: "architecture",
+    sourcePath: "apt-principles/architecture.md",
+    publicDocPath: getAptPublicDocBySourcePath("apt-principles/architecture.md")?.publicPath ?? null,
     detailSummary:
       "Architecture defines technical structure, service boundaries, and API/data contracts so systems scale without coupling drift.",
     focus: ["Define how the system is structured", "Technical structure", "Boundaries and responsibilities", "Data and API design"],
@@ -159,6 +171,8 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
     anchor: "system-consistency",
     detailPath: "/design/principles/system",
     docSlug: "system-standards",
+    sourcePath: "apt-principles/system-standards.md",
+    publicDocPath: getAptPublicDocBySourcePath("apt-principles/system-standards.md")?.publicPath ?? null,
     detailSummary:
       "System standards enforce reusable conventions through shared tokens, contracts, and versioned governance surfaces.",
     focus: ["Enforce standards across everything", "Reusability", "Consistency", "Standardization"],
@@ -184,6 +198,41 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
     },
   },
   {
+    id: "security",
+    title: "Security",
+    shortTitle: "Security",
+    displayLabel: "APT Security & Authentication Standard",
+    framing: "Protect",
+    anchor: "security-protect",
+    detailPath: "/design/principles/security",
+    docSlug: "security",
+    sourcePath: "apt-principles/security.md",
+    publicDocPath: getAptPublicDocBySourcePath("apt-principles/security.md")?.publicPath ?? null,
+    detailSummary:
+      "Security defines trust boundaries, authentication, authorization, sessions, secrets, and abuse controls as part of the system architecture.",
+    focus: ["Protect users, data, and trust boundaries", "Authentication and authorization", "Session, secrets, and abuse controls"],
+    principles: [
+      "Trust is enforced server-side",
+      "Authentication and authorization are separate concerns",
+      "Sensitive actions need stronger controls",
+      "Inputs are validated at system boundaries",
+      "Security failures must be safe, traceable, and supportable",
+    ],
+    outputs: ["Auth/session model", "Authorization matrix", "Threat and abuse notes", "Security review evidence"],
+    example:
+      "For a billing settings flow, enforce server-side authorization, use step-up MFA for payout changes, rate-limit sensitive endpoints, and log audit-relevant actions.",
+    aiPromptExample: {
+      goal: "Review a workflow for trust-boundary and authentication risks.",
+      inputs: [
+        "Changed endpoints or workflows",
+        "Auth/session behavior",
+        "Roles, permissions, and sensitive data touched",
+      ],
+      expectedOutputFormat:
+        "Trust-boundary map, critical findings, required fixes, validation evidence, and residual risk.",
+    },
+  },
+  {
     id: "execution",
     title: "Execution",
     shortTitle: "Execution",
@@ -192,6 +241,8 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
     anchor: "execution-build",
     detailPath: "/design/principles/execution",
     docSlug: "execution",
+    sourcePath: "apt-principles/execution.md",
+    publicDocPath: getAptPublicDocBySourcePath("apt-principles/execution.md")?.publicPath ?? null,
     detailSummary:
       "Execution converts approved specs into shipping systems via incremental delivery, preview-first validation, and automation.",
     focus: ["Turn specs into working systems", "How work gets implemented", "Development workflow"],
@@ -225,6 +276,8 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
     anchor: "quality-testing-validate",
     detailPath: "/design/principles/quality-testing",
     docSlug: "quality-testing",
+    sourcePath: "apt-principles/quality-testing.md",
+    publicDocPath: getAptPublicDocBySourcePath("apt-principles/quality-testing.md")?.publicPath ?? null,
     detailSummary:
       "Quality and Testing protects release safety through layered validation, diagnostics, and deterministic build/test workflows.",
     focus: ["Ensure correctness before anything reaches users", "Prevent defects early", "Validate behavior at multiple levels"],
@@ -258,6 +311,8 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
     anchor: "release-change-management-promote",
     detailPath: "/design/principles/release-change-management",
     docSlug: "release-change-management",
+    sourcePath: "apt-principles/release-change-management.md",
+    publicDocPath: getAptPublicDocBySourcePath("apt-principles/release-change-management.md")?.publicPath ?? null,
     detailSummary:
       "Release and Change Management governs safe promotion, clear traceability, and intentional production change communication.",
     focus: ["Control how changes move to production and are understood", "Safe promotion of changes", "Clear visibility of what changed"],
@@ -292,6 +347,8 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
     anchor: "operations-support-run-support",
     detailPath: "/design/principles/operations",
     docSlug: "operations-support",
+    sourcePath: "apt-principles/operations-support.md",
+    publicDocPath: getAptPublicDocBySourcePath("apt-principles/operations-support.md")?.publicPath ?? null,
     detailSummary:
       "Operations and Support sustains reliability through observability, incident readiness, and support-informed feedback loops.",
     focus: ["Keep the system running and support users effectively", "Stability", "Observability", "Support workflows"],
@@ -325,6 +382,8 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
     anchor: "knowledge-learn-scale",
     detailPath: "/design/principles/knowledge",
     docSlug: "knowledge-engine",
+    sourcePath: "apt-principles/knowledge-system.md",
+    publicDocPath: getAptPublicDocBySourcePath("apt-principles/knowledge-system.md")?.publicPath ?? null,
     detailSummary:
       "Knowledge converts decisions and outcomes into reusable, versioned assets that scale understanding for humans and AI.",
     focus: ["Capture and reuse what is learned", "Documentation", "Knowledge reuse", "Long-term efficiency"],
@@ -358,6 +417,8 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
     anchor: "ai-agent-augmentation-layer",
     detailPath: "/design/principles/ai-agent",
     docSlug: "ai-agent-framework",
+    sourcePath: "apt-principles/ai-agent-framework.md",
+    publicDocPath: getAptPublicDocBySourcePath("apt-principles/ai-agent-framework.md")?.publicPath ?? null,
     detailSummary:
       "AI & Agent framework standardizes prompt governance, agent contracts, and evaluation guardrails across every lifecycle layer.",
     focus: ["Use AI to accelerate, not replace, structured thinking", "AI-assisted development", "Agent workflows", "Prompt standardization"],
@@ -389,6 +450,7 @@ export const aptLifecycleFlow: readonly AptPrincipleGroupId[] = [
   "design",
   "architecture",
   "system",
+  "security",
   "execution",
   "quality-testing",
   "release-change-management",

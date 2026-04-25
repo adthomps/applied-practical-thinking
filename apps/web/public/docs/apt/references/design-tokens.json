@@ -1,0 +1,53 @@
+{
+  "title": "APT Design Tokens Reference",
+  "version": "v1",
+  "last_updated": "2026-04-24",
+  "owner": "APT",
+  "status": "draft",
+  "source": "Extracted from applied-practical-thinking design system material",
+  "tokens": {
+    "color": {
+      "background": "#070b16",
+      "surface": "rgba(255,255,255,0.05)",
+      "surfaceStrong": "rgba(255,255,255,0.08)",
+      "border": "rgba(255,255,255,0.10)",
+      "text": "#eaf2ff",
+      "textMuted": "rgba(234,242,255,0.72)",
+      "accentPrimary": "#8ff2c8",
+      "accentSecondary": "#7dd3fc",
+      "danger": "#fb7185",
+      "warning": "#fbbf24",
+      "success": "#8ff2c8"
+    },
+    "radius": {
+      "sm": "0.85rem",
+      "md": "1.1rem",
+      "lg": "1.35rem"
+    },
+    "motion": {
+      "fast": "140ms",
+      "normal": "220ms",
+      "slow": "360ms",
+      "easing": "cubic-bezier(0.2, 0.8, 0.2, 1)"
+    },
+    "spacing": {
+      "xs": "0.5rem",
+      "sm": "0.75rem",
+      "md": "1rem",
+      "lg": "1.5rem",
+      "xl": "2rem",
+      "section": "4rem"
+    },
+    "typography": {
+      "fontFamily": "system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif",
+      "letterSpacing": "0",
+      "bodyLineHeight": "1.6",
+      "headingLineHeight": "1.15"
+    }
+  },
+  "rules": [
+    "Projects may adapt token values, but must preserve semantic token names.",
+    "One-off colors, shadows, spacing, and motion values require a design decision record.",
+    "Public APT surfaces should prefer the full APT visual system unless a project has its own approved brand layer."
+  ]
+}

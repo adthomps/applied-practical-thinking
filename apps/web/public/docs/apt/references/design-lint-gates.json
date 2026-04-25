@@ -1,0 +1,29 @@
+{
+  "title": "APT Design Lint Gates",
+  "version": "v1",
+  "last_updated": "2026-04-24",
+  "owner": "APT",
+  "status": "draft",
+  "source": "Extracted from applied-practical-thinking design-system lint checklist",
+  "merge_policy": "Critical failures block promotion unless an explicit decision record accepts the risk.",
+  "critical_gates": [
+    "Brand identity is visible and consistent with the project profile.",
+    "Color usage is token-based and accessible.",
+    "Typography scale fits the surface and does not overflow containers.",
+    "Spacing and layout use stable responsive constraints.",
+    "Cards are used only for individual framed objects, not nested page structure.",
+    "Components use shared patterns before inventing new interaction shapes.",
+    "Motion is subtle, short, and non-blocking.",
+    "Loading, empty, success, error, disabled, and permission states are defined where applicable.",
+    "Content is clear, specific, and aligned to APT naming and messaging rules.",
+    "Keyboard, focus, contrast, and reduced-motion expectations are met.",
+    "AI-generated UI does not introduce unsupported styles or hidden behavior."
+  ],
+  "evidence_required": [
+    "Screenshot or preview link",
+    "State inventory",
+    "Token/component notes",
+    "Accessibility check notes",
+    "Decision record for accepted exceptions"
+  ]
+}
