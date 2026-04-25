@@ -2,18 +2,22 @@ import { useMemo, useState } from "react";
 import { InsightCard } from "@/components/apt/InsightCard";
 import { ContentFilters, FilterConfig, SelectedFilters, ContentStateGate } from "@/components/apt";
 import { getWorkerApiConfigError } from "@/src/services/api";
-import { usePodcastsIndexQuery } from "@/hooks/useContentAggregateQueries";
+import { useInsightsFeedQuery } from "@/hooks/useFeedQueries";
+import { toContentIndexItemFromFeed } from "@/src/services/feedAdapters";
 
 export default function InsightsPodcasts() {
   const [selected, setSelected] = useState<SelectedFilters>({
     topics: [],
   });
-  const podcastsQuery = usePodcastsIndexQuery();
-  const podcasts = useMemo(() => podcastsQuery.data || [], [podcastsQuery.data]);
+  const podcastsQuery = useInsightsFeedQuery();
+  const podcasts = useMemo(
+    () => (podcastsQuery.data || []).filter((item) => item.kind === "podcast"),
+    [podcastsQuery.data]
+  );
 
   // Get unique filter options
   const config = useMemo<FilterConfig>(() => {
-    const topics = [...new Set(podcasts.flatMap((b) => b.concepts || []))].sort();
+    const topics = [...new Set(podcasts.flatMap((b) => b.topics || []))].sort();
     return { topics };
   }, [podcasts]);
 
@@ -21,7 +25,7 @@ export default function InsightsPodcasts() {
   const filteredPodcasts = useMemo(() => {
     if (!selected.topics?.length) return podcasts;
     return podcasts.filter((podcast) =>
-      selected.topics?.some((t) => (podcast.concepts || []).includes(t))
+      selected.topics?.some((t) => (podcast.topics || []).includes(t))
     );
   }, [selected.topics, podcasts]);
 
@@ -59,7 +63,11 @@ export default function InsightsPodcasts() {
       >
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {filteredPodcasts.map((podcast) => (
-            <InsightCard key={podcast.id} insight={podcast} to={`/insights/${podcast.id}`} />
+            <InsightCard
+              key={podcast.id}
+              insight={toContentIndexItemFromFeed(podcast)}
+              to={`/insights/${podcast.id}`}
+            />
           ))}
         </div>
       </ContentStateGate>

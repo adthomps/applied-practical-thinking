@@ -1,10 +1,11 @@
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { DemoCard } from "@/components/apt/DemoCard";
 import { ContentFilters, FilterConfig, SelectedFilters, ContentStateGate } from "@/components/apt";
-import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
 import { getWorkerApiConfigError } from "@/src/services/api";
 import { LabsTabs } from "./LabsTabs";
+import { useLabsFeedQuery } from "@/hooks/useFeedQueries";
+import { toContentIndexItemFromFeed } from "@/src/services/feedAdapters";
 
 export default function PortfolioLiveDemos() {
   const [selected, setSelected] = useState<SelectedFilters>({
@@ -14,20 +15,17 @@ export default function PortfolioLiveDemos() {
     technologies: [],
     statuses: [],
   });
-  const [demos, setDemos] = useState<ContentIndexItem[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    fetchContentIndex("demos")
-      .then((data) => setDemos(data))
-      .catch((e) => setError(e.message))
-      .finally(() => setLoading(false));
-  }, []);
+  const demosQuery = useLabsFeedQuery();
+  const loading = demosQuery.isLoading;
+  const error = demosQuery.error?.message || null;
+  const demos = useMemo(
+    () => (demosQuery.data || []).filter((item) => item.kind === "live-demo"),
+    [demosQuery.data]
+  );
 
   const config = useMemo<FilterConfig>(() => {
-    const types = [...new Set(demos.map((d) => d.type))];
-    const topics = [...new Set(demos.flatMap((d) => d.tags || []))].sort();
+    const types = [...new Set(demos.map((d) => d.kind))];
+    const topics = [...new Set(demos.flatMap((d) => d.topics || []))].sort();
     const platforms = [...new Set(demos.flatMap((d) => d.platforms || []))];
     const technologies = [...new Set(demos.flatMap((d) => d.technologies || []))];
     const statuses = [...new Set(demos.map((d) => d.status))];
@@ -36,10 +34,10 @@ export default function PortfolioLiveDemos() {
 
   const filteredDemos = useMemo(() => {
     return demos.filter((demo) => {
-      if (selected.types?.length && !selected.types.includes(demo.type)) {
+      if (selected.types?.length && !selected.types.includes(demo.kind)) {
         return false;
       }
-      if (selected.topics?.length && !(demo.tags || []).some((t: string) => selected.topics?.includes(t))) {
+      if (selected.topics?.length && !(demo.topics || []).some((t: string) => selected.topics?.includes(t))) {
         return false;
       }
       if (selected.platforms?.length && !(demo.platforms || []).some((p: string) => selected.platforms?.includes(p))) {
@@ -58,7 +56,7 @@ export default function PortfolioLiveDemos() {
   const sortedDemos = useMemo(() => {
     const statusOrder: Record<string, number> = { live: 0, "coming-soon": 1, archived: 2 };
     return [...filteredDemos].sort(
-      (a, b) => statusOrder[a.status] - statusOrder[b.status]
+      (a, b) => (statusOrder[a.status] ?? 99) - (statusOrder[b.status] ?? 99)
     );
   }, [filteredDemos]);
 
@@ -94,7 +92,7 @@ export default function PortfolioLiveDemos() {
       >
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {sortedDemos.map((demo) => (
-            <DemoCard key={demo.slug || demo.id} demo={demo} />
+            <DemoCard key={demo.slug || demo.id} demo={toContentIndexItemFromFeed(demo)} />
           ))}
         </div>
       </ContentStateGate>

@@ -2,25 +2,29 @@ import { useMemo, useState } from "react";
 import { InsightCard } from "@/components/apt/InsightCard";
 import { ContentFilters, FilterConfig, SelectedFilters, ContentStateGate } from "@/components/apt";
 import { getWorkerApiConfigError } from "@/src/services/api";
-import { useBlogsIndexQuery } from "@/hooks/useContentAggregateQueries";
+import { useInsightsFeedQuery } from "@/hooks/useFeedQueries";
+import { toContentIndexItemFromFeed } from "@/src/services/feedAdapters";
 
 export default function InsightsBlogs() {
   const [selected, setSelected] = useState<SelectedFilters>({ topics: [] });
 
-  const blogsQuery = useBlogsIndexQuery();
+  const blogsQuery = useInsightsFeedQuery();
 
-  const blogs = useMemo(() => blogsQuery.data || [], [blogsQuery.data]);
+  const blogs = useMemo(
+    () => (blogsQuery.data || []).filter((item) => item.kind === "blog"),
+    [blogsQuery.data]
+  );
   const loading = blogsQuery.isLoading;
 
   const config = useMemo<FilterConfig>(() => {
-    const topics = [...new Set(blogs.flatMap((b) => b.concepts || []))].sort();
+    const topics = [...new Set(blogs.flatMap((b) => b.topics || []))].sort();
     return { topics };
   }, [blogs]);
 
   const filteredBlogs = useMemo(() => {
     if (!selected.topics?.length) return blogs;
     return blogs.filter((blog) =>
-      selected.topics?.some((t) => (blog.concepts || []).includes(t))
+      selected.topics?.some((t) => (blog.topics || []).includes(t))
     );
   }, [selected.topics, blogs]);
 
@@ -54,7 +58,11 @@ export default function InsightsBlogs() {
       >
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {filteredBlogs.map((blog) => (
-            <InsightCard key={blog.id} insight={blog} to={`/insights/${blog.id}`} />
+            <InsightCard
+              key={blog.id}
+              insight={toContentIndexItemFromFeed(blog)}
+              to={`/insights/${blog.id}`}
+            />
           ))}
         </div>
       </ContentStateGate>

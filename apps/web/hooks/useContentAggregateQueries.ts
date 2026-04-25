@@ -1,12 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import type { ContentIndexItem } from "@/src/services/contentIndex";
-import { fetchContentIndex } from "@/src/services/contentIndex";
+import { fetchFeed } from "@/src/services/feed";
+import { toContentIndexItemFromFeed } from "@/src/services/feedAdapters";
 import { queryKeys } from "@/hooks/queryKeys";
 
 const FIVE_MINUTES_MS = 5 * 60 * 1000;
 
 function sortByPublishedAt(items: ContentIndexItem[]) {
   return [...items].sort((a, b) => (b.publishedAt || "").localeCompare(a.publishedAt || ""));
+}
+
+function toSortedContentItemsFromFeed(feedItems: Awaited<ReturnType<typeof fetchFeed>>) {
+  return sortByPublishedAt(feedItems.map(toContentIndexItemFromFeed));
 }
 
 function getFeatureDate(item: ContentIndexItem) {
@@ -56,63 +61,59 @@ export function useHomeFeaturedContentQuery() {
   return useQuery<ContentIndexItem[], Error>({
     queryKey: queryKeys.homeFeaturedContent(),
     queryFn: async () => {
-      const [labs, blog, guides, podcasts, reviews, demos, systems] = await Promise.all([
-        fetchContentIndex("labs"),
-        fetchContentIndex("blog"),
-        fetchContentIndex("guides"),
-        fetchContentIndex("podcasts"),
-        fetchContentIndex("design-reviews"),
-        fetchContentIndex("demos"),
-        fetchContentIndex("systems"),
+      const [labsFeed, proofFeed, insightsFeed] = await Promise.all([
+        fetchFeed("labs"),
+        fetchFeed("proof"),
+        fetchFeed("insights"),
       ]);
-      return selectHomepageFeatured([...labs, ...blog, ...guides, ...podcasts, ...reviews, ...demos, ...systems]);
+      const items = [
+        ...labsFeed.map(toContentIndexItemFromFeed),
+        ...proofFeed.map(toContentIndexItemFromFeed),
+        ...insightsFeed.map(toContentIndexItemFromFeed),
+      ];
+      return selectHomepageFeatured(items);
     },
     staleTime: FIVE_MINUTES_MS,
   });
 }
 
 export function useInsightsIndexQuery() {
+  /** @deprecated Use useInsightsFeedQuery from useFeedQueries.ts */
   return useQuery<ContentIndexItem[], Error>({
     queryKey: queryKeys.insightsIndex(),
-    queryFn: async () => {
-      const [blog, guides, podcasts, reviews] = await Promise.all([
-        fetchContentIndex("blog"),
-        fetchContentIndex("guides"),
-        fetchContentIndex("podcasts"),
-        fetchContentIndex("design-reviews"),
-      ]);
-      return sortByPublishedAt([...blog, ...guides, ...podcasts, ...reviews]);
-    },
+    queryFn: async () => toSortedContentItemsFromFeed(await fetchFeed("insights")),
     staleTime: FIVE_MINUTES_MS,
   });
 }
 
 export function useBlogsIndexQuery() {
+  /** @deprecated Use useInsightsFeedQuery and filter by kind=blog */
   return useQuery<ContentIndexItem[], Error>({
     queryKey: queryKeys.blogsIndex(),
-    queryFn: async () => sortByPublishedAt(await fetchContentIndex("blog")),
+    queryFn: async () =>
+      toSortedContentItemsFromFeed((await fetchFeed("insights")).filter((item) => item.kind === "blog")),
     staleTime: FIVE_MINUTES_MS,
   });
 }
 
 export function usePodcastsIndexQuery() {
+  /** @deprecated Use useInsightsFeedQuery and filter by kind=podcast */
   return useQuery<ContentIndexItem[], Error>({
     queryKey: queryKeys.podcastsIndex(),
-    queryFn: async () => sortByPublishedAt(await fetchContentIndex("podcasts")),
+    queryFn: async () =>
+      toSortedContentItemsFromFeed((await fetchFeed("insights")).filter((item) => item.kind === "podcast")),
     staleTime: FIVE_MINUTES_MS,
   });
 }
 
 export function useGuidesAndReviewsIndexQuery() {
+  /** @deprecated Use useInsightsFeedQuery and filter by kind=guide/case-study */
   return useQuery<ContentIndexItem[], Error>({
     queryKey: queryKeys.guidesAndReviewsIndex(),
-    queryFn: async () => {
-      const [guideItems, reviews] = await Promise.all([
-        fetchContentIndex("guides"),
-        fetchContentIndex("design-reviews"),
-      ]);
-      return sortByPublishedAt([...guideItems, ...reviews]);
-    },
+    queryFn: async () =>
+      toSortedContentItemsFromFeed(
+        (await fetchFeed("insights")).filter((item) => item.kind === "guide" || item.kind === "case-study")
+      ),
     staleTime: FIVE_MINUTES_MS,
   });
 }
@@ -120,21 +121,17 @@ export function useGuidesAndReviewsIndexQuery() {
 export function useExperimentsLabsIndexQuery() {
   return useQuery<ContentIndexItem[], Error>({
     queryKey: queryKeys.experimentsLabsIndex(),
-    queryFn: () => fetchContentIndex("labs"),
+    queryFn: async () =>
+      toSortedContentItemsFromFeed((await fetchFeed("labs")).filter((item) => item.kind !== "live-demo")),
     staleTime: FIVE_MINUTES_MS,
   });
 }
 
 export function useLabsAndDemosIndexQuery() {
+  /** @deprecated Use useLabsFeedQuery from useFeedQueries.ts */
   return useQuery<ContentIndexItem[], Error>({
     queryKey: queryKeys.labsMixedIndex(),
-    queryFn: async () => {
-      const [labs, demos] = await Promise.all([
-        fetchContentIndex("labs"),
-        fetchContentIndex("demos"),
-      ]);
-      return [...labs, ...demos];
-    },
+    queryFn: async () => toSortedContentItemsFromFeed(await fetchFeed("labs")),
     staleTime: FIVE_MINUTES_MS,
   });
 }
@@ -142,7 +139,8 @@ export function useLabsAndDemosIndexQuery() {
 export function useLegacyLabsIndexQuery() {
   return useQuery<ContentIndexItem[], Error>({
     queryKey: queryKeys.labsLegacyIndex(),
-    queryFn: () => fetchContentIndex("labs"),
+    queryFn: async () =>
+      toSortedContentItemsFromFeed((await fetchFeed("labs")).filter((item) => item.kind !== "live-demo")),
     staleTime: FIVE_MINUTES_MS,
   });
 }
@@ -150,7 +148,8 @@ export function useLegacyLabsIndexQuery() {
 export function useSystemsIndexQuery() {
   return useQuery<ContentIndexItem[], Error>({
     queryKey: queryKeys.systemsIndex(),
-    queryFn: () => fetchContentIndex("systems"),
+    queryFn: async () =>
+      toSortedContentItemsFromFeed((await fetchFeed("proof")).filter((item) => item.kind === "system")),
     staleTime: FIVE_MINUTES_MS,
   });
 }
@@ -158,7 +157,7 @@ export function useSystemsIndexQuery() {
 export function useAboutExperimentsCountQuery() {
   return useQuery<number, Error>({
     queryKey: queryKeys.aboutExperimentsCount(),
-    queryFn: async () => (await fetchContentIndex("labs")).length,
+    queryFn: async () => (await fetchFeed("labs")).length,
     staleTime: FIVE_MINUTES_MS,
   });
 }
@@ -166,15 +165,7 @@ export function useAboutExperimentsCountQuery() {
 export function useAboutInsightsCountQuery() {
   return useQuery<number, Error>({
     queryKey: queryKeys.aboutInsightsCount(),
-    queryFn: async () => {
-      const [blog, guides, podcasts, reviews] = await Promise.all([
-        fetchContentIndex("blog"),
-        fetchContentIndex("guides"),
-        fetchContentIndex("podcasts"),
-        fetchContentIndex("design-reviews"),
-      ]);
-      return blog.length + guides.length + podcasts.length + reviews.length;
-    },
+    queryFn: async () => (await fetchFeed("insights")).length,
     staleTime: FIVE_MINUTES_MS,
   });
 }

@@ -7,7 +7,8 @@ import {
 } from "@/components/apt";
 import { getWorkerApiConfigError } from "@/src/services/api";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
-import { useInsightsIndexQuery } from "@/hooks/useContentAggregateQueries";
+import { useInsightsFeedQuery } from "@/hooks/useFeedQueries";
+import { toContentIndexItemFromFeed } from "@/src/services/feedAdapters";
 
 type InsightFilter = "all" | "blog" | "podcast" | "case-study";
 
@@ -19,16 +20,16 @@ export default function Insights() {
   });
 
   const [filter, setFilter] = useState<InsightFilter>("all");
-  const insightsQuery = useInsightsIndexQuery();
+  const insightsQuery = useInsightsFeedQuery();
 
   const insights = useMemo(() => insightsQuery.data || [], [insightsQuery.data]);
   const loading = insightsQuery.isLoading;
 
   const filteredContent = useMemo(() => {
     if (filter === "all") return insights;
-    if (filter === "blog") return insights.filter((item) => item.type === "blog" || item.type === "article");
-    if (filter === "podcast") return insights.filter((item) => item.type === "podcast");
-    return insights.filter((item) => item.type === "guide" || item.type === "design-review");
+    if (filter === "blog") return insights.filter((item) => item.kind === "blog");
+    if (filter === "podcast") return insights.filter((item) => item.kind === "podcast");
+    return insights.filter((item) => item.kind === "guide" || item.kind === "case-study");
   }, [filter, insights]);
 
   const configError = insightsQuery.isError ? getWorkerApiConfigError() : null;
@@ -82,7 +83,7 @@ export default function Insights() {
             {filteredContent.map((insight) => (
               <InsightCard
                 key={insight.id}
-                insight={insight}
+                insight={toContentIndexItemFromFeed(insight)}
                 to={`/insights/${insight.id}`}
                 compact
               />

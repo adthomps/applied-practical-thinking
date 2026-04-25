@@ -109,7 +109,7 @@ pnpm --dir apps/worker dev
 For this reason:
 - `VITE_API_BASE` should exist in the Cloudflare Pages environment for the web project
 - the web app also supports a runtime override via `window.__APT_RUNTIME_CONFIG__.workerApiBase`
-- the official Pages host falls back to the production Worker URL if build-time config is missing
+- worker API base must be explicit in production (no implicit host fallback)
 - `PUBLIC_SITE_ORIGIN` must exist in the Worker runtime environment
 - GitHub Desktop pushes source changes only; Cloudflare Pages is what builds the frontend deploy
 
@@ -117,6 +117,18 @@ Production values:
 
 - `VITE_API_BASE=https://applied-practical-thinking.apt-account.workers.dev`
 - `PUBLIC_SITE_ORIGIN=https://appliedpracticalthinking.com`
+
+### Labs/Proof/Insights data split (worker-first)
+
+- Web (`apps/web`) is the rendering layer: tabs, cards, filters, and detail presentation.
+- Worker (`apps/worker`) is the BFF assembly layer for public feeds and detail payloads.
+- Canonical public feed endpoints:
+  - `/api/feed/labs`
+  - `/api/feed/proof`
+  - `/api/feed/insights`
+  - `/api/feed/:feed/:idOrSlug`
+- Worker composes those feeds from static index assets and returns normalized contracts from `@apt/knowledge` (`PublicFeedItem`, `PublicFeedDetailResponse`).
+- Web should prefer feed hooks/services for Labs/Proof/Insights (`useFeedQueries.ts`) over client-side multi-index composition.
 
 ## APT Principles Sync (Canonical to Public)
 

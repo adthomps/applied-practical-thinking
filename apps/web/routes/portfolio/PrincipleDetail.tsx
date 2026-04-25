@@ -28,12 +28,12 @@ function formatDate(value: string | null | undefined) {
 export default function PrincipleDetail() {
   const { group: groupParam } = useParams<{ group: string }>();
   const group = groupParam ? getAptPrincipleGroupByRouteSegment(groupParam) : null;
+  const docQuery = useAptPublicDocQuery(group?.publicDocPath);
 
   if (!group) {
     return <Navigate to="/design/principles" replace />;
   }
 
-  const docQuery = useAptPublicDocQuery(group.publicDocPath);
   const adjacent = getAptAdjacentPrincipleGroups(group.id);
   const docAssetBasePath = getAptPublicDocAssetBasePath(group.publicDocPath);
 

@@ -1,5 +1,6 @@
 import type { ContentDetailMatch } from "@/src/services/contentDetail";
 import type { ContentIndexType } from "@/src/services/contentIndex";
+import type { PublicFeedType } from "@/src/services/feed";
 
 function normalizeTypes(types: ContentIndexType[]) {
   return [...types].sort().join("|");
@@ -10,6 +11,8 @@ export const queryKeys = {
   contentIndexes: (types: ContentIndexType[]) => ["content-indexes", normalizeTypes(types)] as const,
   contentDetail: (types: ContentIndexType[], idOrSlug: string, match: ContentDetailMatch) =>
     ["content-detail", normalizeTypes(types), idOrSlug, match] as const,
+  feed: (feed: PublicFeedType) => ["feed", feed] as const,
+  feedDetail: (feed: PublicFeedType, idOrSlug: string) => ["feed-detail", feed, idOrSlug] as const,
   designDocsAll: () => ["design-docs", "all"] as const,
   designDocsPatterns: () => ["design-docs", "patterns-only"] as const,
   designDoc: (slug: string, major: number | "latest") => ["design-doc", slug, major] as const,

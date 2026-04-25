@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, CheckCircle2, ExternalLink, AlertTriangle } from "lucide-react";
 import { AptButton, AptCard, AptTag, RuntimeConfigNotice } from "@/components/apt";
-import { useContentDetail } from "@/hooks/useContentDetail";
+import { useFeedDetailQuery } from "@/hooks/useFeedQueries";
 import { systems as systemDefinitions } from "@/data/systems";
 import { getWorkerApiConfigError } from "@/src/services/api";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
@@ -17,11 +17,10 @@ function toLinkRel(href: string) {
 
 export default function SystemDetail() {
   const { id } = useParams();
-  const { item, loading, error } = useContentDetail({
-    indexTypes: ["systems"],
-    idOrSlug: id,
-    match: "id",
-  });
+  const detailQuery = useFeedDetailQuery("proof", id);
+  const item = detailQuery.data?.item?.kind === "system" ? detailQuery.data.item : null;
+  const loading = detailQuery.isLoading;
+  const error = detailQuery.error?.message || (!loading && !item ? "System not found" : null);
 
   const systemDefinition = useMemo(
     () => systemDefinitions.find((entry) => entry.id === item?.id),
@@ -68,7 +67,7 @@ export default function SystemDetail() {
   if (!item) return <div className="container py-12 text-destructive">System not found</div>;
 
   const statusLabel = "Stable";
-  const technologies = item.concepts || systemDefinition?.concepts || [];
+  const technologies = item.topics || systemDefinition?.concepts || [];
   const decisions = systemDefinition?.decisions || [];
   const tradeoffs = systemDefinition?.tradeoffs || [];
   const primaryActionHref = systemDefinition?.links?.demo || "/";

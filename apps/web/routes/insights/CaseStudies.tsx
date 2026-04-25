@@ -3,7 +3,8 @@ import { InsightCard } from "@/components/apt/InsightCard";
 import { AptButton, ContentFilters, FilterConfig, SelectedFilters, ContentStateGate } from "@/components/apt";
 import { getWorkerApiConfigError } from "@/src/services/api";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
-import { useGuidesAndReviewsIndexQuery } from "@/hooks/useContentAggregateQueries";
+import { useInsightsFeedQuery } from "@/hooks/useFeedQueries";
+import { toContentIndexItemFromFeed } from "@/src/services/feedAdapters";
 
 export default function InsightsGuides() {
   usePageMetadata({
@@ -14,21 +15,30 @@ export default function InsightsGuides() {
   const [selected, setSelected] = useState<SelectedFilters>({ topics: [] });
   const [subtype, setSubtype] = useState<"all" | "guide" | "design-review">("all");
 
-  const guidesQuery = useGuidesAndReviewsIndexQuery();
+  const guidesQuery = useInsightsFeedQuery();
 
-  const guides = useMemo(() => guidesQuery.data || [], [guidesQuery.data]);
+  const guides = useMemo(
+    () =>
+      (guidesQuery.data || []).filter(
+        (item) => item.kind === "guide" || item.kind === "case-study"
+      ),
+    [guidesQuery.data]
+  );
   const loading = guidesQuery.isLoading;
 
   const config = useMemo<FilterConfig>(() => {
-    const topics = [...new Set(guides.flatMap((b) => b.concepts || []))].sort();
+    const topics = [...new Set(guides.flatMap((b) => b.topics || []))].sort();
     return { topics };
   }, [guides]);
 
   const filteredGuides = useMemo(() => {
     return guides.filter((guide) => {
       const matchesTopics =
-        !selected.topics?.length || selected.topics.some((t) => (guide.concepts || []).includes(t));
-      const matchesSubtype = subtype === "all" || guide.type === subtype;
+        !selected.topics?.length || selected.topics.some((t) => (guide.topics || []).includes(t));
+      const matchesSubtype =
+        subtype === "all" ||
+        (subtype === "guide" && guide.kind === "guide") ||
+        (subtype === "design-review" && guide.kind === "case-study");
       return matchesTopics && matchesSubtype;
     });
   }, [selected.topics, guides, subtype]);
@@ -82,7 +92,11 @@ export default function InsightsGuides() {
       >
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {filteredGuides.map((guide) => (
-            <InsightCard key={guide.id} insight={guide} to={`/insights/${guide.id}`} />
+            <InsightCard
+              key={guide.id}
+              insight={toContentIndexItemFromFeed(guide)}
+              to={`/insights/${guide.id}`}
+            />
           ))}
         </div>
       </ContentStateGate>

@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { AptCard, AptCardDescription, AptCardTitle, AptTag, ContentStateGate, SectionIntro } from "@/components/apt";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
-import { useContentIndexesQuery } from "@/hooks/useContentIndexQueries";
+import { useProofFeedQuery } from "@/hooks/useFeedQueries";
 import { getWorkerApiConfigError } from "@/src/services/api";
-import { systems as systemDefinitions } from "@/data/systems";
+import type { PublicFeedItem } from "@/src/services/feed";
 
 type ProofTab = "all" | "systems" | "live-demos" | "case-studies";
 
@@ -78,52 +78,26 @@ export default function Systems() {
       "Working systems, live demos, and complete implementations. When a lab is interactive, complete, and demonstrable - it lives here.",
   });
 
-  const proofQuery = useContentIndexesQuery(["systems", "demos", "design-reviews"]);
+  const proofQuery = useProofFeedQuery();
   const loading = proofQuery.isLoading;
 
-  const systems = useMemo(() => proofQuery.data?.systems || [], [proofQuery.data]);
-  const demos = useMemo(() => proofQuery.data?.demos || [], [proofQuery.data]);
-  const caseStudies = useMemo(() => proofQuery.data?.["design-reviews"] || [], [proofQuery.data]);
-
   const items = useMemo<ProofCardItem[]>(() => {
-    const systemItems = systems.map((system) => {
-      const definition = systemDefinitions.find((entry) => entry.id === system.id);
-      return {
-        id: system.id || system.slug || system.title,
-        title: system.title,
-        description: definition?.purpose || system.description || system.excerpt || "Reference system implementation",
-        kind: "system" as const,
-        statusLabel: "Stable",
-        tags:
-          system.concepts?.slice(0, 3) ||
-          definition?.concepts?.slice(0, 3) ||
-          [],
-        href: `/proof/${system.id || system.slug}`,
-      };
-    });
-
-    const demoItems = demos.map((demo) => ({
-      id: demo.id || demo.slug || demo.title,
-      title: demo.title,
-      description: demo.description || "Interactive implementation",
-      kind: "live-demo" as const,
-      statusLabel: "Live",
-      tags: [...(demo.platforms || []), ...(demo.technologies || [])].slice(0, 3),
-      href: `/labs/live-demos/${demo.slug || demo.id}`,
+    const feedItems = proofQuery.data || [];
+    return feedItems.map((item: PublicFeedItem) => ({
+      id: item.id || item.slug || item.title,
+      title: item.title,
+      description: item.description || item.summary || item.excerpt || "Applied implementation artifact",
+      kind:
+        item.kind === "system"
+          ? "system"
+          : item.kind === "live-demo"
+            ? "live-demo"
+            : "case-study",
+      statusLabel: item.status === "live" ? "Live" : "Stable",
+      tags: [...(item.topics || []), ...(item.platforms || []), ...(item.technologies || [])].slice(0, 3),
+      href: item.href,
     }));
-
-    const caseStudyItems = caseStudies.map((review) => ({
-      id: review.id || review.slug || review.title,
-      title: review.title.replace(/^Design Review:\s*/i, ""),
-      description: review.description || "Applied implementation case study",
-      kind: "case-study" as const,
-      statusLabel: "Stable",
-      tags: (review.concepts || []).slice(0, 3),
-      href: `/insights/${review.id || review.slug}`,
-    }));
-
-    return [...systemItems, ...demoItems, ...caseStudyItems];
-  }, [systems, demos, caseStudies]);
+  }, [proofQuery.data]);
 
   const filteredItems = useMemo(() => {
     if (activeTab === "all") return items;

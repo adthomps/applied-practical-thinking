@@ -1,16 +1,22 @@
-import { Hono } from "hono";
+import { Hono, type Context } from "hono";
 import {
   contentIndexTypes,
+  publicFeedTypes,
   type PublicDesignDocDetailResponse,
   type ContentDetailResponse,
   type ContentIndexItem,
   type ContentIndexType,
+  type PublicFeedDetailResponse,
+  type PublicFeedItem,
+  type PublicFeedKind,
+  type PublicFeedType,
   type PublicDesignDocItem,
   type PublicDesignDocVersionItem,
   type PublicDesignDocVersionsResponse,
   type PublicReviewBundleManifest,
 } from "@apt/knowledge";
 import type { WorkerBindings } from "../workerTypes";
+type RouteContext = Context<{ Bindings: WorkerBindings }>;
 
 const DESIGN_DOCS_MANIFEST_PATH = "/docs/design/APT-DESIGN-DOCS-MANIFEST.json";
 const REVIEW_BUNDLE_MANIFEST_PATH = "/docs/design/APT-AI-REVIEW-BUNDLE.json";
@@ -360,6 +366,114 @@ function normalizeItem(type: ContentIndexType, item: ContentIndexItem): ContentI
   };
 }
 
+function withCacheHeaders(c: RouteContext) {
+  c.header("Cache-Control", "public, max-age=60, s-maxage=300, stale-while-revalidate=300");
+  c.header("Vary", "Origin, Accept");
+}
+
+function normalizeFeedItem(
+  sourceIndexType: ContentIndexType,
+  item: ContentIndexItem
+): PublicFeedItem {
+  const normalized = normalizeItem(sourceIndexType, item);
+  const id = String(normalized.id || normalized.slug || normalized.title);
+  const slug = String(normalized.slug || normalized.id || normalized.title);
+  const topics = normalized.tags || normalized.concepts || [];
+  const platforms = normalized.platforms || [];
+  const technologies = normalized.technologies || [];
+
+  let kind: PublicFeedKind = "prototype";
+  if (sourceIndexType === "systems") kind = "system";
+  else if (sourceIndexType === "design-reviews") kind = "case-study";
+  else if (sourceIndexType === "blog") kind = "blog";
+  else if (sourceIndexType === "podcasts") kind = "podcast";
+  else if (sourceIndexType === "guides") kind = "guide";
+  else if (sourceIndexType === "demos") kind = "live-demo";
+  else if (normalized.type === "concept") kind = "concept";
+  else if (normalized.type === "mock") kind = "mock";
+
+  const href =
+    sourceIndexType === "systems"
+      ? `/proof/${id}`
+      : sourceIndexType === "demos"
+        ? `/labs/live-demos/${slug}`
+        : sourceIndexType === "blog" ||
+            sourceIndexType === "podcasts" ||
+            sourceIndexType === "guides" ||
+            sourceIndexType === "design-reviews"
+          ? `/insights/${id}`
+          : `/labs/${id}`;
+
+  return {
+    id,
+    slug,
+    title: normalized.title,
+    description: normalized.description || normalized.summary || normalized.excerpt || "",
+    summary: normalized.summary,
+    kind,
+    type: normalized.type,
+    status: String(normalized.status || "active"),
+    topics,
+    concepts: normalized.concepts,
+    platforms,
+    technologies,
+    publishedAt: normalized.publishedAt,
+    href,
+    contentPath: normalized.contentPath,
+    sourceIndexType,
+    links: normalized.links,
+    excerpt: normalized.excerpt,
+    date: normalized.date,
+    duration: typeof normalized.duration === "string" ? normalized.duration : undefined,
+    problem: typeof normalized.problem === "string" ? normalized.problem : undefined,
+    thumbnail: typeof normalized.thumbnail === "string" ? normalized.thumbnail : undefined,
+    assetBasePath: normalized.assetBasePath,
+  };
+}
+
+async function fetchNormalizedIndex(
+  c: RouteContext,
+  type: ContentIndexType
+) {
+  const items = await fetchStaticJson<ContentIndexItem[]>(
+    c.req.url,
+    `/data/${type}-index.json`,
+    c.env.PUBLIC_SITE_ORIGIN,
+    c.req.header("origin")
+  );
+  return items.map((item) => normalizeFeedItem(type, item));
+}
+
+async function fetchFeedItems(
+  c: RouteContext,
+  feed: PublicFeedType
+) {
+  if (feed === "labs") {
+    const [labs, demos] = await Promise.all([
+      fetchNormalizedIndex(c, "labs"),
+      fetchNormalizedIndex(c, "demos"),
+    ]);
+    return [...labs, ...demos];
+  }
+
+  if (feed === "proof") {
+    const [systems, demos, reviews] = await Promise.all([
+      fetchNormalizedIndex(c, "systems"),
+      fetchNormalizedIndex(c, "demos"),
+      fetchNormalizedIndex(c, "design-reviews"),
+    ]);
+    return [...systems, ...demos, ...reviews];
+  }
+
+  const [blog, podcasts, guides, reviews] = await Promise.all([
+    fetchNormalizedIndex(c, "blog"),
+    fetchNormalizedIndex(c, "podcasts"),
+    fetchNormalizedIndex(c, "guides"),
+    fetchNormalizedIndex(c, "design-reviews"),
+  ]);
+  return [...blog, ...podcasts, ...guides, ...reviews];
+}
+
 export const publicContentRoute = new Hono<{ Bindings: WorkerBindings }>()
   .get("/api/content/:type", async (c) => {
     const type = c.req.param("type") as ContentIndexType;
@@ -427,6 +541,62 @@ export const publicContentRoute = new Hono<{ Bindings: WorkerBindings }>()
       return c.json(
         {
           error: getErrorMessage(error, "Failed to load content detail"),
+          envVar: "PUBLIC_SITE_ORIGIN",
+          expectedProductionValue: "https://applied-practical-thinking.pages.dev",
+        },
+        500
+      );
+    }
+  })
+  .get("/api/feed/:feed", async (c) => {
+    const feed = c.req.param("feed") as PublicFeedType;
+    if (!publicFeedTypes.includes(feed)) {
+      return c.json({ error: `Unsupported feed type: ${feed}` }, 404);
+    }
+
+    try {
+      const items = await fetchFeedItems(c, feed);
+      withCacheHeaders(c);
+      return c.json(items);
+    } catch (error: unknown) {
+      return c.json(
+        {
+          error: getErrorMessage(error, "Failed to load feed"),
+          envVar: "PUBLIC_SITE_ORIGIN",
+          expectedProductionValue: "https://applied-practical-thinking.pages.dev",
+        },
+        500
+      );
+    }
+  })
+  .get("/api/feed/:feed/:idOrSlug", async (c) => {
+    const feed = c.req.param("feed") as PublicFeedType;
+    const idOrSlug = c.req.param("idOrSlug");
+    if (!publicFeedTypes.includes(feed)) {
+      return c.json({ error: `Unsupported feed type: ${feed}` }, 404);
+    }
+
+    try {
+      const items = await fetchFeedItems(c, feed);
+      const item = items.find((entry) => entry.id === idOrSlug || entry.slug === idOrSlug) || null;
+      if (!item?.contentPath) {
+        const response: PublicFeedDetailResponse = { item: null, markdown: "" };
+        return c.json(response, 404);
+      }
+
+      const rawMarkdown = await fetchStaticText(
+        c.req.url,
+        `/content/${item.contentPath}`,
+        c.env.PUBLIC_SITE_ORIGIN,
+        c.req.header("origin")
+      );
+      withCacheHeaders(c);
+      const response: PublicFeedDetailResponse = { item, markdown: stripFrontmatter(rawMarkdown) };
+      return c.json(response);
+    } catch (error: unknown) {
+      return c.json(
+        {
+          error: getErrorMessage(error, "Failed to load feed detail"),
           envVar: "PUBLIC_SITE_ORIGIN",
           expectedProductionValue: "https://applied-practical-thinking.pages.dev",
         },
