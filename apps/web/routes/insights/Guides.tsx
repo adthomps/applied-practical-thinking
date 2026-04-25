@@ -91,7 +91,7 @@ export default function InsightsGuides() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {filteredGuides.map((guide) => (
-          <InsightCard key={guide.id} insight={guide} to={`/learn/${guide.id}`} />
+          <InsightCard key={guide.id} insight={guide} to={`/insights/${guide.id}`} />
         ))}
       </div>
 

@@ -72,9 +72,9 @@ export const principlesSections: readonly PrincipleSection[] = [
       "Canonical-source + curated-summary publishing model",
     ],
     examples: [
-      { label: "Experiments", href: "/experiments", status: "available" },
-      { label: "Live Demos", href: "/experiments/live-demos", status: "available" },
-      { label: "Systems", href: "/learn/systems", status: "available" },
+      { label: "Labs", href: "/labs", status: "available" },
+      { label: "Live Demos", href: "/labs/live-demos", status: "available" },
+      { label: "Proof", href: "/proof", status: "available" },
     ],
     sourceHref: source("apt-principles.md"),
     aiUsage: [
@@ -106,8 +106,8 @@ export const principlesSections: readonly PrincipleSection[] = [
       "Outcome and metric baseline check",
     ],
     examples: [
-      { label: "Practice Guides", href: "/learn/practice", status: "available" },
-      { label: "Systems", href: "/learn/systems", status: "available" },
+      { label: "Practice Guides", href: "/insights/practice", status: "available" },
+      { label: "Proof", href: "/proof", status: "available" },
     ],
     sourceHref: source("thinking.md"),
     aiUsage: [
@@ -136,7 +136,7 @@ export const principlesSections: readonly PrincipleSection[] = [
     examples: [
       { label: "Design System", href: "/design/system", status: "available" },
       { label: "Design Patterns", href: "/design/patterns", status: "available" },
-      { label: "Live Demos", href: "/experiments/live-demos", status: "available" },
+      { label: "Live Demos", href: "/labs/live-demos", status: "available" },
     ],
     sourceHref: source("design.md"),
     aiUsage: [
@@ -164,7 +164,7 @@ export const principlesSections: readonly PrincipleSection[] = [
     patterns: ["Boundary map", "Contract-first API design", "Ownership-by-layer model"],
     examples: [
       { label: "Design Architecture", href: "/design/architecture", status: "available" },
-      { label: "Systems", href: "/learn/systems", status: "available" },
+      { label: "Proof", href: "/proof", status: "available" },
     ],
     sourceHref: source("architecture.md"),
     aiUsage: [
@@ -192,7 +192,7 @@ export const principlesSections: readonly PrincipleSection[] = [
     patterns: ["Tokenized UI", "Naming contract", "Shared package and folder conventions"],
     examples: [
       { label: "Design Docs Browser", href: "/design/docs", status: "available" },
-      { label: "Systems", href: "/learn/systems", status: "available" },
+      { label: "Proof", href: "/proof", status: "available" },
     ],
     sourceHref: source("system-standards.md"),
     aiUsage: [
@@ -219,8 +219,8 @@ export const principlesSections: readonly PrincipleSection[] = [
     ],
     patterns: ["Spec-to-story sequencing", "Preview-to-prod flow", "Incremental PR strategy"],
     examples: [
-      { label: "Experiments", href: "/experiments", status: "available" },
-      { label: "Live Demos", href: "/experiments/live-demos", status: "available" },
+      { label: "Labs", href: "/labs", status: "available" },
+      { label: "Live Demos", href: "/labs/live-demos", status: "available" },
     ],
     sourceHref: source("execution.md"),
     aiUsage: [
@@ -247,8 +247,8 @@ export const principlesSections: readonly PrincipleSection[] = [
     ],
     patterns: ["Validation checklist", "Evidence-driven QA notes", "Journey-first testing"],
     examples: [
-      { label: "Practice Guides", href: "/learn/practice", status: "available" },
-      { label: "Systems", href: "/learn/systems", status: "available" },
+      { label: "Practice Guides", href: "/insights/practice", status: "available" },
+      { label: "Proof", href: "/proof", status: "available" },
     ],
     sourceHref: source("quality-testing.md"),
     aiUsage: [
@@ -275,8 +275,8 @@ export const principlesSections: readonly PrincipleSection[] = [
     ],
     patterns: ["Release notes template", "Promotion checklist", "Rollback-aware deployment notes"],
     examples: [
-      { label: "Live Demos", href: "/experiments/live-demos", status: "available" },
-      { label: "Systems", href: "/learn/systems", status: "available" },
+      { label: "Live Demos", href: "/labs/live-demos", status: "available" },
+      { label: "Proof", href: "/proof", status: "available" },
     ],
     sourceHref: source("release-change-management.md"),
     aiUsage: [
@@ -304,7 +304,7 @@ export const principlesSections: readonly PrincipleSection[] = [
     patterns: ["Runbook starter", "Alert condition map", "Support handoff template"],
     examples: [
       { label: "Support Design", href: "/design/support", status: "available" },
-      { label: "Systems", href: "/learn/systems", status: "available" },
+      { label: "Proof", href: "/proof", status: "available" },
     ],
     sourceHref: source("operations-support.md"),
     aiUsage: [
@@ -332,7 +332,7 @@ export const principlesSections: readonly PrincipleSection[] = [
     patterns: ["Canonical + curated model", "Decision-log reuse", "Knowledge contract metadata"],
     examples: [
       { label: "Design Docs", href: "/design/docs", status: "available" },
-      { label: "Systems", href: "/learn/systems", status: "available" },
+      { label: "Proof", href: "/proof", status: "available" },
     ],
     sourceHref: source("knowledge-system.md"),
     aiUsage: [
@@ -360,7 +360,7 @@ export const principlesSections: readonly PrincipleSection[] = [
     patterns: ["Prompt contract", "AI review bundle", "Agent guardrail checklist"],
     examples: [
       { label: "AI Review Bundle", href: "/design/review-bundle", status: "available" },
-      { label: "Practice Guides", href: "/learn/practice", status: "available" },
+      { label: "Practice Guides", href: "/insights/practice", status: "available" },
     ],
     sourceHref: source("ai-agent-framework.md"),
     aiUsage: [
@@ -387,8 +387,8 @@ export const principlesSections: readonly PrincipleSection[] = [
     ],
     patterns: ["Session model contract", "Authorization matrix", "Sensitive-flow hardening checklist"],
     examples: [
-      { label: "Systems", href: "/learn/systems", status: "available" },
-      { label: "Live Demos", href: "/experiments/live-demos", status: "available" },
+      { label: "Proof", href: "/proof", status: "available" },
+      { label: "Live Demos", href: "/labs/live-demos", status: "available" },
     ],
     sourceHref: source("security.md"),
     aiUsage: [

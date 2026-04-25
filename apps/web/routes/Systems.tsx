@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import { useLocation } from "react-router-dom";
 import { AlertTriangle, CheckCircle2, FileText, Layers3 } from "lucide-react";
 import { AptButton, AptCard, AptCardContent, AptCardHeader, AptCardTitle, AptTag, DesignDocVersionSwitcher, ReviewBundleCallout, RuntimeConfigNotice, SectionIntro } from "@/components/apt";
 import { SystemCard } from "@/components/apt/SystemCard";
@@ -11,12 +10,10 @@ import { useSystemsIndexQuery } from "@/hooks/useContentAggregateQueries";
 
 export default function Systems() {
   usePageMetadata({
-    title: "Reference Models",
+    title: "Proof",
     description: "Stable system references that capture reusable models, key decisions, tradeoffs, and related learning material.",
   });
 
-  const location = useLocation();
-  const isDesignSystemsRoute = location.pathname.startsWith("/design/systems");
   const systemsVersion = useDesignDocVersion("systems");
   const systemsQuery = useSystemsIndexQuery();
 
@@ -115,14 +112,13 @@ export default function Systems() {
             </AptButton>
           ) : null}
         </div>
-        {isDesignSystemsRoute ? <DesignDocVersionSwitcher versionState={systemsVersion} /> : null}
+        <DesignDocVersionSwitcher versionState={systemsVersion} />
       </SectionIntro>
 
       <AptCard variant="subtle" className="mb-8">
         <div className="p-6 text-sm text-muted-foreground">
-          <span className="font-semibold text-foreground">Systems</span> is still the route and nav label, but the purpose is best understood as
-          <span className="font-semibold text-foreground"> reference models</span>: coherent patterns with documented purpose, decisions, and tradeoffs.
-          If you want concepts, mocks, or interactive proof, start in <span className="font-semibold text-foreground">Experiments</span>. If you want the stable model that remains after that work, start here.
+          <span className="font-semibold text-foreground">Proof</span> is the stable implementation layer: reusable reference models with documented purpose, decisions, and tradeoffs.
+          If you want early exploration, start in <span className="font-semibold text-foreground">Labs</span>. If you want complete and demonstrable system patterns, start here.
         </div>
       </AptCard>
 
@@ -199,7 +195,7 @@ export default function Systems() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {systems.map((system) => (
-          <SystemCard key={system.id} system={system} to={`/design/systems/${system.id}`} />
+          <SystemCard key={system.id} system={system} to={`/proof/${system.id}`} />
         ))}
       </div>
 

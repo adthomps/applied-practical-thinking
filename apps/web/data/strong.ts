@@ -26,7 +26,7 @@ export const strongItems: StrongItem[] = [
     ],
     concepts: ["migration", "microservices", "platform"],
     links: {
-      docs: "/learn",
+      docs: "/insights",
     },
   },
   {
@@ -42,7 +42,7 @@ export const strongItems: StrongItem[] = [
     ],
     concepts: ["performance", "database", "scale"],
     links: {
-      docs: "/learn",
+      docs: "/insights",
     },
   },
   {
@@ -58,7 +58,7 @@ export const strongItems: StrongItem[] = [
     ],
     concepts: ["teams", "process", "developer-experience"],
     links: {
-      docs: "/learn",
+      docs: "/insights",
     },
   },
 ];

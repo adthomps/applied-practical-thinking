@@ -46,7 +46,7 @@ export default function ExperimentsConcepts() {
   return (
     <div className="container py-12 md:py-16">
       <div className="max-w-2xl mb-8">
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Experiment Concepts</h1>
+        <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Lab Concepts</h1>
         <p className="text-lg text-muted-foreground">
           Early conceptual builds and prototype directions that give an idea its first coherent form.
         </p>
@@ -82,7 +82,7 @@ export default function ExperimentsConcepts() {
           ))}
         </div>
       ) : (
-        <div className="text-center py-12 text-muted-foreground">No concept experiments match your current filters.</div>
+        <div className="text-center py-12 text-muted-foreground">No concept labs match your current filters.</div>
       )}
     </div>
   );

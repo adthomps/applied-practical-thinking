@@ -30,7 +30,7 @@ export default function PrinciplesHome() {
               </a>
             </AptButton>
             <AptButton variant="ghost" asChild>
-              <Link to="/design">Open Design</Link>
+              <Link to="/labs">Open Labs</Link>
             </AptButton>
           </div>
         </SectionIntro>

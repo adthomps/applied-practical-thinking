@@ -68,7 +68,7 @@ export default function PortfolioLiveDemos() {
           Live Demos
         </h1>
         <p className="text-lg text-muted-foreground">
-          Interactive working demos nested under Experiments. This is the runnable proof layer for concepts, mocks, and prototypes that have become observable enough to click through.
+          Interactive working demos nested under Labs. This is the runnable proof layer for concepts, mocks, and prototypes that have become observable enough to click through.
         </p>
       </div>
 

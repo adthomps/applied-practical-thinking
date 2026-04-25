@@ -16,71 +16,79 @@ import {
   SectionIntro,
 } from "@/components/apt";
 import { AssistantChat, ASSISTANT_CHAT_ENABLED } from "@/features/assistant/AssistantChat";
-import { Brain, AppWindow, Network, ArrowRight } from "lucide-react";
+import { Network, ArrowRight, Scale, FlaskConical, BookOpen } from "lucide-react";
 import { getStatusTagDefinition } from "@/lib/tagSemantics";
 
 const pillars = [
   {
-    icon: Brain,
-    title: "Applied Thinking",
+    icon: Scale,
+    title: "Principles",
     description:
-      "Real problems, practical solutions. No theoretical exercises — everything connects to actual use cases.",
-    demoLink: "/experiments",
-    docsLink: "/learn",
+      "Defines how decisions are made and how systems stay aligned across design, architecture, quality, operations, and AI.",
+    demoLink: "/principles",
+    docsLink: "/principles/framework",
   },
   {
-    icon: AppWindow,
-    title: "Reference Implementations",
+    icon: FlaskConical,
+    title: "Labs",
     description:
-      "Working code that demonstrates patterns in production-ready form, not just simplified examples.",
-    demoLink: "/experiments",
-    docsLink: "/learn",
+      "Experiments, prototypes, UI concepts, and API demos that make ideas tangible before promotion.",
+    demoLink: "/labs",
+    docsLink: "/labs/live-demos",
   },
   {
     icon: Network,
-    title: "Patterns & Decisions",
+    title: "Proof",
     description:
-      "Documented tradeoffs and reasoning behind every major choice. Understanding the why, not just the how.",
-    demoLink: "/design/systems",
-    docsLink: "/design",
+      "Stable systems and complete implementations with clear model boundaries and repeatable operational intent.",
+    demoLink: "/proof",
+    docsLink: "/proof",
+  },
+  {
+    icon: BookOpen,
+    title: "Insights",
+    description:
+      "Breakdowns, learnings, and practical guidance that explain how APT decisions and systems are applied.",
+    demoLink: "/insights",
+    docsLink: "/insights/practice",
   },
 ];
 
 function getHomepageFeaturedLink(item: ContentIndexItem) {
   if (item.indexType === "labs") {
     return {
-      to: `/experiments/${item.slug ?? item.id}`,
+      to: `/labs/${item.slug ?? item.id}`,
       typeLabel: item.type === "mock" ? "Mock" : item.type === "lab" ? "Concept" : "Experiment",
-      laneLabel: "Experiment",
+      laneLabel: "Labs",
     };
   }
 
   if (item.indexType === "demos") {
     return {
-      to: `/experiments/live-demos/${item.slug ?? item.id}`,
+      to: `/labs/live-demos/${item.slug ?? item.id}`,
       typeLabel: "Live Demo",
-      laneLabel: "Experiment",
+      laneLabel: "Labs",
     };
   }
 
   if (item.indexType === "systems" || item.type === "system" || item.platforms) {
     return {
-      to: `/design/systems/${item.id ?? item.slug}`,
+      to: `/proof/${item.id ?? item.slug}`,
       typeLabel: "System",
-      laneLabel: "Design",
+      laneLabel: "Proof",
     };
   }
 
   if (item.indexType === "podcasts" || item.type === "podcast") {
     return {
-      to: `/learn/${item.id ?? item.slug}`,
+      to: `/insights/${item.id ?? item.slug}`,
       typeLabel: "Podcast",
-      laneLabel: "Learn",
+      laneLabel: "Insights",
     };
   }
 
   return {
-    to: `/learn/${item.id ?? item.slug}`,
+    to: `/insights/${item.id ?? item.slug}`,
     typeLabel:
       item.type === "article" || item.type === "blog"
         ? "Article"
@@ -89,7 +97,7 @@ function getHomepageFeaturedLink(item: ContentIndexItem) {
           : item.type === "guide"
             ? "Guide"
             : "Learn",
-    laneLabel: "Learn",
+    laneLabel: "Insights",
   };
 }
 
@@ -117,8 +125,8 @@ export default function Home() {
         tagline={siteConfig.fullName}
         title={siteConfig.tagline}
         description={siteConfig.description}
-        primaryCta={{ label: "Explore Experiments", to: "/experiments" }}
-        secondaryCta={{ label: "Start Learning", to: "/learn" }}
+        primaryCta={{ label: "Explore Labs", to: "/labs" }}
+        secondaryCta={{ label: "Read Insights", to: "/insights" }}
       />
 
       {/* ...existing code... */}
@@ -126,13 +134,13 @@ export default function Home() {
       {/* What You'll Find Here */}
       <section className="container py-12 md:py-16">
         <SectionIntro
-          title="What you'll find here"
-          description="Focused areas for learning, experimentation, and design-governed reference models."
+          title="How APT Works"
+          description="Principles shape decisions, Labs test ideas, Proof captures stable systems, and Insights turn outcomes into reusable learning."
           align="center"
           className="mb-10"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {pillars.map((pillar, index) => (
             <AptCard
               key={pillar.title}
@@ -178,7 +186,7 @@ export default function Home() {
       <section className="container py-12 md:py-16">
         <SectionIntro
           title="Featured"
-          description="A curated set of up to six recent highlights across Experiments, Learn, and Systems."
+          description="A curated set of recent highlights across Labs, Proof, and Insights."
           className="mb-8"
         />
 
@@ -237,18 +245,18 @@ export default function Home() {
 
         <div className="mt-8 flex flex-wrap gap-3">
           <AptButton variant="secondary" asChild>
-            <Link to="/experiments" className="gap-2">
-              All Experiments <ArrowRight className="h-4 w-4" />
+            <Link to="/labs" className="gap-2">
+              All Labs <ArrowRight className="h-4 w-4" />
             </Link>
           </AptButton>
           <AptButton variant="secondary" asChild>
-            <Link to="/design/systems" className="gap-2">
-              Design Systems <ArrowRight className="h-4 w-4" />
+            <Link to="/proof" className="gap-2">
+              All Proof <ArrowRight className="h-4 w-4" />
             </Link>
           </AptButton>
           <AptButton variant="secondary" asChild>
-            <Link to="/learn" className="gap-2">
-              All Learn Content <ArrowRight className="h-4 w-4" />
+            <Link to="/insights" className="gap-2">
+              All Insights <ArrowRight className="h-4 w-4" />
             </Link>
           </AptButton>
         </div>

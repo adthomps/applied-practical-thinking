@@ -32,7 +32,7 @@ export function DemoCard({ demo }: DemoCardProps) {
   const isComingSoon = demo.status === "coming-soon";
   const statusTag = getStatusTagDefinition(demo.status as string | undefined);
 
-  const detailHref = `/experiments/live-demos/${demo.slug || demo.id}`;
+  const detailHref = `/labs/live-demos/${demo.slug || demo.id}`;
   const quickAction = !isComingSoon && (links.demo || links.figma || links.repo)
     ? links.demo
       ? {

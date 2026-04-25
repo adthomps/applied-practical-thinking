@@ -129,12 +129,12 @@ export function ContentDetailPage(props: ContentDetailPageProps) {
     if (isInternalHref(href)) return href;
     const k = key.toLowerCase();
     const id = href.replace(/^\/+/, "");
-    if (k.includes("article")) return `/learn/${id}`;
-    if (k.includes("blog")) return `/learn/${id}`;
-    if (k.includes("podcast")) return `/learn/${id}`;
-    if (k.includes("guide")) return `/learn/${id}`;
-    if (k.includes("review")) return `/learn/${id}`;
-    if (k.includes("system")) return `/design/systems/${id}`;
+    if (k.includes("article")) return `/insights/${id}`;
+    if (k.includes("blog")) return `/insights/${id}`;
+    if (k.includes("podcast")) return `/insights/${id}`;
+    if (k.includes("guide")) return `/insights/${id}`;
+    if (k.includes("review")) return `/insights/${id}`;
+    if (k.includes("system")) return `/proof/${id}`;
     return href;
   };
 

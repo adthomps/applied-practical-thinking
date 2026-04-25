@@ -7,23 +7,45 @@ import {
   RuntimeConfigNotice,
   SectionIntro,
 } from "@/components/apt";
-import { siteConfig } from "@/data/site";
 import { getWorkerApiConfigError } from "@/src/services/api";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
 import { useInsightsIndexQuery } from "@/hooks/useContentAggregateQueries";
 
 
 const areaIcons: Record<string, ComponentType<{ className?: string }>> = {
-  "/learn/articles": FileText,
-  "/learn/podcasts": Podcast,
-  "/learn/practice": Book,
-  "/learn/systems": Network,
+  "/insights/articles": FileText,
+  "/insights/podcasts": Podcast,
+  "/insights/practice": Book,
+  "/proof": Network,
 };
+
+const insightsSections = [
+  {
+    label: "Articles",
+    path: "/insights/articles",
+    description: "Short- to medium-form writing on applied ideas and practical systems.",
+  },
+  {
+    label: "Podcasts",
+    path: "/insights/podcasts",
+    description: "Audio discussions exploring thinking, frameworks, and real-world tradeoffs.",
+  },
+  {
+    label: "Practice",
+    path: "/insights/practice",
+    description: "Guides and design reviews that turn ideas into repeatable work.",
+  },
+  {
+    label: "Proof",
+    path: "/proof",
+    description: "Stable reference systems that capture reusable decisions and structures.",
+  },
+] as const;
 
 
 export default function Insights() {
   usePageMetadata({
-    title: "Learn",
+    title: "Insights",
     description: "Articles, podcasts, practice material, and systems for applied thinking, execution, and review.",
   });
 
@@ -60,19 +82,17 @@ export default function Insights() {
     );
   }
 
-  const learnNav = siteConfig.nav.find((n) => n.path === "/learn");
-  const areaSections = learnNav?.children ?? [];
-  const landingCards = areaSections.map((section) => ({
+  const landingCards = insightsSections.map((section) => ({
     ...section,
     icon: areaIcons[section.path] ?? Book,
-    metaLabel: "Learn",
+    metaLabel: "Insight",
   }));
 
   return (
     <div className="container py-8 md:py-12 space-y-12">
       <section>
         <SectionIntro
-          title="Learn"
+          title="Insights"
           description="Articles, podcasts, practice material, and systems for applied thinking, execution, and review."
           titleClassName="text-3xl md:text-4xl"
           descriptionClassName="text-lg"
@@ -83,7 +103,7 @@ export default function Insights() {
 
       <section className="space-y-6">
         <SectionIntro
-          title="Browse all Learn content"
+          title="Browse all Insights"
           description="Filter across articles, podcasts, guides, and design reviews to move from orientation into repeatable practice."
         />
 
@@ -113,7 +133,7 @@ export default function Insights() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filteredContent.map((insight) => (
-            <InsightCard key={insight.id} insight={insight} to={`/learn/${insight.id}`} />
+            <InsightCard key={insight.id} insight={insight} to={`/insights/${insight.id}`} />
           ))}
         </div>
       </section>

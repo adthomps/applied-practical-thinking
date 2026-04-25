@@ -243,7 +243,7 @@ export default function SystemDetail() {
             <div className="flex flex-wrap gap-2">
               {relatedExperiments.map((entry) => (
                 <AptButton key={entry.id || entry.slug} variant="ghost" size="sm" asChild>
-                  <Link to={`/experiments/${entry.slug || entry.id}`}>{entry.title}</Link>
+                  <Link to={`/labs/${entry.slug || entry.id}`}>{entry.title}</Link>
                 </AptButton>
               ))}
             </div>
@@ -256,7 +256,7 @@ export default function SystemDetail() {
             <div className="flex flex-wrap gap-2">
               {relatedLearn.map((entry) => (
                 <AptButton key={entry.id || entry.slug} variant="ghost" size="sm" asChild>
-                  <Link to={`/learn/${entry.id || entry.slug}`}>{entry.title}</Link>
+                  <Link to={`/insights/${entry.id || entry.slug}`}>{entry.title}</Link>
                 </AptButton>
               ))}
             </div>
@@ -268,8 +268,8 @@ export default function SystemDetail() {
 
   return (
     <ContentDetailPage
-      backHref="/design/systems"
-      backLabel="Back to Systems"
+      backHref="/proof"
+      backLabel="Back to Proof"
       item={item}
       markdown={markdown}
       aboutTitle="Reference Model Summary"

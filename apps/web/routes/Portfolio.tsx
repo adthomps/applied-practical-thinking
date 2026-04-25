@@ -34,7 +34,7 @@ const sectionIcons: Record<string, ComponentType<{ className?: string }>> = {
   "/design/thinking": Brain,
   "/design/principles": Target,
   "/design/architecture": Network,
-  "/design/systems": Layers3,
+  "/proof": Layers3,
   "/design/content-strategy": Route,
   "/design/review-bundle": Bot,
   "/design/docs": BookOpenText,

@@ -22,7 +22,7 @@ export const systems: System[] = [
     concepts: ["vite", "react", "cloudflare"],
     links: {
       demo: "/",
-      docs: "/learn",
+      docs: "/insights",
     },
     productionGuide: {
       overview: "Vite + React SPA deployed on Cloudflare Pages, with optional Hono worker APIs for backend.",
@@ -57,7 +57,7 @@ export const systems: System[] = [
     ],
     concepts: ["security", "auth", "patterns"],
     links: {
-      docs: "/learn",
+      docs: "/insights",
     },
     productionGuide: {
       overview: "Auth flows using JWT, OAuth, and session management. Security-first design.",
@@ -92,7 +92,7 @@ export const systems: System[] = [
     ],
     concepts: ["data", "etl", "observability"],
     links: {
-      docs: "/learn",
+      docs: "/insights",
     },
     productionGuide: {
       overview: "ETL pipeline for batch analytics. Built for reliability and error recovery.",

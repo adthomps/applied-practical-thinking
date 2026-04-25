@@ -15,7 +15,7 @@ export default function PortfolioLabDetail() {
   });
 
   if (!id) {
-    return <Navigate to="/experiments" replace />;
+    return <Navigate to="/labs" replace />;
   }
 
   if (loading) {
@@ -38,7 +38,7 @@ export default function PortfolioLabDetail() {
   }
 
   if (!lab) {
-    return <Navigate to="/experiments" replace />;
+    return <Navigate to="/labs" replace />;
   }
 
   // Use a consistent fallback icon/label for missing images, matching article and guide detail pages.
@@ -62,8 +62,8 @@ export default function PortfolioLabDetail() {
 
   return (
     <ContentDetailPage
-      backHref="/experiments"
-      backLabel="Back to Experiments"
+      backHref="/labs"
+      backLabel="Back to Labs"
       item={lab}
       markdown={markdown}
       aboutTitle="About This Experiment"

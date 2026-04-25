@@ -59,8 +59,8 @@ export default function InsightDetail() {
             type: insight.type === "podcast" ? "website" : "article",
           }
         : {
-            title: "Learn",
-            description: "Loading learning content.",
+            title: "Insights",
+            description: "Loading insights content.",
           }
   );
 
@@ -84,7 +84,7 @@ export default function InsightDetail() {
               The learning resource you're looking for doesn't exist.
             </p>
             <AptButton variant="primary" asChild>
-              <Link to="/learn">Back to Learn</Link>
+              <Link to="/insights">Back to Insights</Link>
             </AptButton>
           </div>
         )}
@@ -143,8 +143,8 @@ export default function InsightDetail() {
 
   return (
     <ContentDetailPage
-      backHref="/learn"
-      backLabel="Back to Learn"
+      backHref="/insights"
+      backLabel="Back to Insights"
       item={insight}
       markdown={markdown}
       aboutTitle="Summary"

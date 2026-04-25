@@ -20,7 +20,7 @@ const typeIcons: Record<string, typeof Lightbulb> = {
 const typeLabels: Record<string, string> = {
   concept: "Concept",
   mock: "Mock",
-  demo: "Concept",
+  demo: "Prototype",
 };
 
 interface LabCardProps {
@@ -35,7 +35,7 @@ export function LabCard({ lab }: LabCardProps) {
   const statusTag = getStatusTagDefinition(lab.status as string | undefined);
 
   const links = lab.links || {};
-  const basePath = "/experiments";
+  const basePath = "/labs";
   const labId = lab.slug || lab.id;
   const quickAction = links.demo || links.lovable
     ? {

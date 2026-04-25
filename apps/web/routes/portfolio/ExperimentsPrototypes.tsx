@@ -1,10 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
 import { LabCard } from "@/components/apt/LabCard";
-import { ContentFilters, FilterConfig, SelectedFilters, RuntimeConfigNotice } from "@/components/apt";
-import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
+import { ContentFilters, type FilterConfig, type SelectedFilters, RuntimeConfigNotice } from "@/components/apt";
+import { fetchContentIndex, type ContentIndexItem } from "@/src/services/contentIndex";
 import { getWorkerApiConfigError } from "@/src/services/api";
 
-export default function ExperimentsMocks() {
+const PROTOTYPE_TYPES = new Set(["prototype", "demo", "lab"]);
+
+export default function ExperimentsPrototypes() {
   const [selected, setSelected] = useState<SelectedFilters>({
     types: [],
     topics: [],
@@ -18,7 +20,7 @@ export default function ExperimentsMocks() {
 
   useEffect(() => {
     fetchContentIndex("labs")
-      .then((data) => setLabs(data.filter((item) => item.type === "mock")))
+      .then((data) => setLabs(data.filter((item) => PROTOTYPE_TYPES.has(item.type as string))))
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
   }, []);
@@ -46,9 +48,9 @@ export default function ExperimentsMocks() {
   return (
     <div className="container py-12 md:py-16">
       <div className="max-w-2xl mb-8">
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Lab Mocks</h1>
+        <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Lab Prototypes</h1>
         <p className="text-lg text-muted-foreground">
-          Framed experience representations that clarify structure, flow, and direction before implementation hardens.
+          Mid-stage implementation artifacts that move ideas from mock structure into runnable behavior.
         </p>
       </div>
 
@@ -82,7 +84,7 @@ export default function ExperimentsMocks() {
           ))}
         </div>
       ) : (
-        <div className="text-center py-12 text-muted-foreground">No mock labs match your current filters.</div>
+        <div className="text-center py-12 text-muted-foreground">No prototype labs match your current filters.</div>
       )}
     </div>
   );

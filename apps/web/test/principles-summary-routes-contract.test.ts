@@ -9,7 +9,7 @@ function readAppSource() {
 }
 
 describe("principles summary routes and nav contract", () => {
-  it("defines canonical /principles routes and keeps design compatibility redirects", () => {
+  it("defines canonical /principles routes", () => {
     const source = readAppSource();
 
     expect(source.includes('path="/principles" element={<PrinciplesHome />}')).toBe(true);
@@ -26,13 +26,25 @@ describe("principles summary routes and nav contract", () => {
     expect(source.includes('path="/principles/ai"')).toBe(true);
     expect(source.includes('path="/principles/security"')).toBe(true);
 
-    expect(source.includes('path="/design/principles" element={<Navigate to="/principles" replace />}')).toBe(true);
-    expect(source.includes('path="/design/principles/:group" element={<LegacyDesignPrinciplesRedirect />}')).toBe(true);
+    expect(source.includes('path="/design/principles" element={<PrinciplesHome />}')).toBe(true);
   });
 
-  it("exposes dual top-level nav entry points for Design and Principles", () => {
+  it("uses the flat top-level IA and hard-cut canonical routes", () => {
     const topLevelPaths = new Set(siteConfig.nav.map((item) => item.path));
-    expect(topLevelPaths.has("/design")).toBe(true);
+
+    expect(topLevelPaths.has("/")).toBe(true);
+    expect(topLevelPaths.has("/labs")).toBe(true);
+    expect(topLevelPaths.has("/proof")).toBe(true);
     expect(topLevelPaths.has("/principles")).toBe(true);
+    expect(topLevelPaths.has("/insights")).toBe(true);
+    expect(topLevelPaths.has("/about")).toBe(true);
+    expect(topLevelPaths.has("/start")).toBe(false);
+    expect(topLevelPaths.has("/learn")).toBe(false);
+    expect(topLevelPaths.has("/experiments")).toBe(false);
+
+    const source = readAppSource();
+    expect(source.includes('path="/learn" element={<Insights />}')).toBe(false);
+    expect(source.includes('path="/experiments" element={<PortfolioLabs />}')).toBe(false);
+    expect(source.includes('path="/design/systems" element={<Systems />}')).toBe(false);
   });
 });

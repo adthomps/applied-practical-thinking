@@ -11,16 +11,37 @@ import {
   RuntimeConfigNotice,
 } from "@/components/apt";
 import { getWorkerApiConfigError } from "@/src/services/api";
-import { siteConfig } from "@/data/site";
 import { FlaskConical, Lightbulb, LayoutTemplate, PlayCircle } from "lucide-react";
 import { useExperimentsLabsIndexQuery } from "@/hooks/useContentAggregateQueries";
 
-const experimentsNav = siteConfig.nav.find((item) => item.path === "/experiments");
+const labsSections = [
+  {
+    label: "All Labs",
+    path: "/labs",
+    description: "The full index of exploratory work across concepts, mocks, prototypes, and live demos.",
+  },
+  {
+    label: "Concepts",
+    path: "/labs/concepts",
+    description: "Early conceptual builds that shape an idea into a coherent direction.",
+  },
+  {
+    label: "Mocks",
+    path: "/labs/mocks",
+    description: "Structured representations that clarify flows and experience framing.",
+  },
+  {
+    label: "Live Demos",
+    path: "/labs/live-demos",
+    description: "Runnable demonstrations that expose implementation behavior.",
+  },
+] as const;
+
 const experimentIcons: Record<string, ComponentType<{ className?: string }>> = {
-  "/experiments": FlaskConical,
-  "/experiments/concepts": Lightbulb,
-  "/experiments/mocks": LayoutTemplate,
-  "/experiments/live-demos": PlayCircle,
+  "/labs": FlaskConical,
+  "/labs/concepts": Lightbulb,
+  "/labs/mocks": LayoutTemplate,
+  "/labs/live-demos": PlayCircle,
 };
 
 export default function PortfolioLabs() {
@@ -69,18 +90,18 @@ export default function PortfolioLabs() {
     });
   }, [selected, labs]);
 
-  const landingCards = (experimentsNav?.children ?? []).map((section) => ({
+  const landingCards = labsSections.map((section) => ({
     ...section,
     icon: experimentIcons[section.path] ?? FlaskConical,
-    metaLabel: "Experiment",
+    metaLabel: "Lab",
   }));
 
   return (
     <div className="container py-8 md:py-12 space-y-12">
       <section>
         <SectionIntro
-          title="Experiments"
-          description="Concepts, mocks, prototypes, and live demonstrations that make ideas tangible before they become stable references."
+          title="Labs"
+          description="Concepts, mocks, prototypes, and live demonstrations that make ideas tangible before they become stable proof."
           titleClassName="text-3xl md:text-4xl"
           descriptionClassName="text-lg"
         />
@@ -90,8 +111,8 @@ export default function PortfolioLabs() {
 
       <section className="space-y-6">
         <SectionIntro
-          title="Browse all Experiments"
-          description="Filter the exploratory work by type, topic, platform, technology, and status to move from broad exploration into specific proof."
+          title="Browse all Labs"
+          description="Filter exploratory work by type, topic, platform, technology, and status to move from discovery into implementation proof."
         />
 
         <ContentFilters
@@ -127,17 +148,17 @@ export default function PortfolioLabs() {
 
             {filteredLabs.length === 0 && (
               <div className="text-center py-12 text-muted-foreground">
-                No experiments match your current filters.
+                No labs match your current filters.
               </div>
             )}
 
             <div className="mt-10 rounded-xl border border-border bg-muted/20 p-6">
               <h2 className="text-lg font-semibold mb-2">Looking for interactive proof?</h2>
               <p className="text-sm text-muted-foreground mb-4">
-                Live Demos sit under Experiments as the runnable proof layer. Start with concepts or mocks for context, then open demos when you want to interact with the work.
+                Live demos sit under Labs as the runnable proof layer. Start with concepts or mocks for context, then open demos when you want interactive behavior.
               </p>
               <AptButton variant="ghost" size="sm" asChild>
-                <Link to="/experiments/live-demos">Browse Live Demos</Link>
+                <Link to="/labs/live-demos">Browse Live Demos</Link>
               </AptButton>
             </div>
           </>

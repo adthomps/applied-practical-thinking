@@ -68,7 +68,7 @@ export default function InsightsPodcasts() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {filteredPodcasts.map((podcast) => (
-          <InsightCard key={podcast.id} insight={podcast} to={`/learn/${podcast.id}`} />
+          <InsightCard key={podcast.id} insight={podcast} to={`/insights/${podcast.id}`} />
         ))}
       </div>
 
