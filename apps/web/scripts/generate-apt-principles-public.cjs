@@ -6,7 +6,6 @@ const path = require("path");
 const WEB_ROOT = path.resolve(__dirname, "..");
 const REPO_ROOT = path.resolve(WEB_ROOT, "../..");
 const WORKSPACE_ROOT = path.resolve(REPO_ROOT, "..");
-const APT_PRINCIPLES_ROOT = path.join(WORKSPACE_ROOT, "apt-principles");
 const PUBLIC_APT_ROOT = path.join(WEB_ROOT, "public", "docs", "apt");
 const GENERATED_DATA_DIR = path.join(WEB_ROOT, "data", "generated");
 const GENERATED_TS_PATH = path.join(GENERATED_DATA_DIR, "aptPrinciplesPublicManifest.ts");
@@ -196,17 +195,51 @@ function getLatestSourceUpdate(manifest) {
   return updates[updates.length - 1] || null;
 }
 
+function resolveAptPrinciplesRoot() {
+  const candidates = [];
+  if (process.env.APT_PRINCIPLES_ROOT) {
+    candidates.push(path.resolve(REPO_ROOT, process.env.APT_PRINCIPLES_ROOT));
+  }
+  candidates.push(path.join(REPO_ROOT, "apt-principles"));
+  candidates.push(path.join(WORKSPACE_ROOT, "apt-principles"));
+
+  for (const candidate of candidates) {
+    if (fs.existsSync(candidate)) return candidate;
+  }
+  return null;
+}
+
 function main() {
-  if (!fs.existsSync(APT_PRINCIPLES_ROOT)) {
-    throw new Error(`Missing canonical apt-principles folder: ${APT_PRINCIPLES_ROOT}`);
+  const aptPrinciplesRoot = resolveAptPrinciplesRoot();
+  if (!aptPrinciplesRoot) {
+    const hasCommittedArtifacts =
+      fs.existsSync(PUBLIC_MANIFEST_PATH) && fs.existsSync(GENERATED_TS_PATH);
+
+    if (hasCommittedArtifacts) {
+      console.warn(
+        [
+          "apt-principles source not found; reusing committed public docs artifacts.",
+          "Set APT_PRINCIPLES_ROOT or include apt-principles alongside this repo to refresh generated docs.",
+        ].join(" ")
+      );
+      return;
+    }
+
+    throw new Error(
+      [
+        "Missing canonical apt-principles source and no committed fallback artifacts.",
+        `Checked: ${path.join(REPO_ROOT, "apt-principles")} and ${path.join(WORKSPACE_ROOT, "apt-principles")}.`,
+        "Set APT_PRINCIPLES_ROOT to a valid path or commit generated APT docs artifacts.",
+      ].join(" ")
+    );
   }
 
   removeDir(PUBLIC_APT_ROOT);
   ensureDir(PUBLIC_APT_ROOT);
 
-  const manifest = walkFiles(APT_PRINCIPLES_ROOT)
+  const manifest = walkFiles(aptPrinciplesRoot)
     .map((fullPath) => {
-      const relativePath = toPosix(path.relative(APT_PRINCIPLES_ROOT, fullPath));
+      const relativePath = toPosix(path.relative(aptPrinciplesRoot, fullPath));
       const kind = inferKind(relativePath);
       const principleArea = inferPrincipleArea(relativePath, kind);
       const metadata = readMetadata(fullPath, relativePath);
@@ -249,7 +282,7 @@ function main() {
   );
 
   writeGeneratedTypeScript(manifest);
-  console.log(`Generated ${manifest.length} APT public docs from ${APT_PRINCIPLES_ROOT}`);
+  console.log(`Generated ${manifest.length} APT public docs from ${aptPrinciplesRoot}`);
   console.log(`Public docs: ${PUBLIC_APT_ROOT}`);
   console.log(`Manifest: ${PUBLIC_MANIFEST_PATH}`);
   console.log(`Route data: ${GENERATED_TS_PATH}`);
