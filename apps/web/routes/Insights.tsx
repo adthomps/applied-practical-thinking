@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { InsightCard } from "@/components/apt/InsightCard";
 import {
   AptButton,
-  RuntimeConfigNotice,
+  ContentStateGate,
   SectionIntro,
 } from "@/components/apt";
 import { getWorkerApiConfigError } from "@/src/services/api";
@@ -15,7 +15,7 @@ export default function Insights() {
   usePageMetadata({
     title: "Insights",
     description:
-      "Blogs, podcasts, and case studies. Each piece connects concepts to working implementations in Labs and Systems.",
+      "Blogs, podcasts, and case studies. Each piece connects concepts to working implementations in Labs and Proof.",
   });
 
   const [filter, setFilter] = useState<InsightFilter>("all");
@@ -38,7 +38,7 @@ export default function Insights() {
       <section>
         <SectionIntro
           title="Insights"
-          description="Blogs, podcasts, and case studies. Each piece connects concepts to working implementations in Labs and Systems."
+          description="Blogs, podcasts, and case studies. Each piece connects concepts to working implementations in Labs and Proof."
           titleClassName="text-3xl md:text-4xl"
           descriptionClassName="text-lg max-w-3xl"
         />
@@ -69,42 +69,26 @@ export default function Insights() {
           ))}
         </div>
 
-        {loading ? (
-          <div className="py-12 text-center text-muted-foreground">Loading insight content…</div>
-        ) : insightsQuery.isError ? (
-          <div className="py-2">
-            {configError ? (
-              <RuntimeConfigNotice
-                message={configError.message}
-                envVar={configError.envVar}
-                expectedValue={configError.expectedProductionValue}
+        <ContentStateGate
+          loading={loading}
+          isError={insightsQuery.isError}
+          errorMessage={insightsQuery.error?.message || "Unable to load insight content."}
+          configError={configError}
+          empty={filteredContent.length === 0}
+          loadingLabel="Loading insight content…"
+          emptyLabel="No insight items match this tab yet."
+        >
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {filteredContent.map((insight) => (
+              <InsightCard
+                key={insight.id}
+                insight={insight}
+                to={`/insights/${insight.id}`}
+                compact
               />
-            ) : (
-              <div className="rounded-lg border border-destructive/40 bg-destructive/5 px-4 py-3 text-sm text-destructive">
-                {insightsQuery.error?.message || "Unable to load insight content."}
-              </div>
-            )}
+            ))}
           </div>
-        ) : (
-          <>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {filteredContent.map((insight) => (
-                <InsightCard
-                  key={insight.id}
-                  insight={insight}
-                  to={`/insights/${insight.id}`}
-                  compact
-                />
-              ))}
-            </div>
-
-            {filteredContent.length === 0 ? (
-              <div className="py-12 text-center text-muted-foreground">
-                No insight items match this tab yet.
-              </div>
-            ) : null}
-          </>
-        )}
+        </ContentStateGate>
       </section>
     </div>
   );

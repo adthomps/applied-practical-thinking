@@ -36,7 +36,7 @@ export const siteConfig = {
     {
       label: "Insights",
       path: "/insights",
-      description: "Articles, podcasts, and practical breakdowns.",
+      description: "Blogs, podcasts, and case studies.",
     },
     {
       label: "About",

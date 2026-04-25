@@ -6,7 +6,7 @@ import {
   type FilterConfig,
   SectionIntro,
   type SelectedFilters,
-  RuntimeConfigNotice,
+  ContentStateGate,
 } from "@/components/apt";
 import { getWorkerApiConfigError } from "@/src/services/api";
 import { useLabsAndDemosIndexQuery } from "@/hooks/useContentAggregateQueries";
@@ -77,22 +77,15 @@ export default function PortfolioLabs() {
           totalCount={items.length}
         />
 
-        {loading ? (
-          <div className="text-center py-12 text-muted-foreground">Loading…</div>
-        ) : error ? (
-          (() => {
-            const configError = getWorkerApiConfigError();
-            return configError ? (
-              <RuntimeConfigNotice
-                message={configError.message}
-                envVar={configError.envVar}
-                expectedValue={configError.expectedProductionValue}
-              />
-            ) : (
-              <div className="text-center py-12 text-destructive">{error}</div>
-            );
-          })()
-        ) : (
+        <ContentStateGate
+          loading={loading}
+          isError={Boolean(error)}
+          errorMessage={error}
+          configError={error ? getWorkerApiConfigError() : null}
+          empty={filteredItems.length === 0}
+          loadingLabel="Loading…"
+          emptyLabel="No labs match your current filters."
+        >
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {filteredItems.map((item) =>
               item.indexType === "demos" ? (
@@ -102,13 +95,7 @@ export default function PortfolioLabs() {
               )
             )}
           </div>
-        )}
-
-        {!loading && !error && filteredItems.length === 0 ? (
-          <div className="text-center py-12 text-muted-foreground">
-            No labs match your current filters.
-          </div>
-        ) : null}
+        </ContentStateGate>
       </section>
     </div>
   );

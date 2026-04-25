@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { AptCard, AptCardDescription, AptCardTitle, AptTag, RuntimeConfigNotice, SectionIntro } from "@/components/apt";
+import { AptCard, AptCardDescription, AptCardTitle, AptTag, ContentStateGate, SectionIntro } from "@/components/apt";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
 import { useContentIndexesQuery } from "@/hooks/useContentIndexQueries";
 import { getWorkerApiConfigError } from "@/src/services/api";
@@ -165,37 +165,21 @@ export default function Systems() {
       </div>
 
       <section className="mt-8">
-        {loading ? (
-          <div className="py-12 text-center text-muted-foreground">Loading proof artifacts…</div>
-        ) : proofQuery.isError ? (
-          <div className="py-2">
-            {configError ? (
-              <RuntimeConfigNotice
-                message={configError.message}
-                envVar={configError.envVar}
-                expectedValue={configError.expectedProductionValue}
-              />
-            ) : (
-              <div className="rounded-lg border border-destructive/40 bg-destructive/5 px-4 py-3 text-sm text-destructive">
-                {proofQuery.error?.message || "Unable to load proof content."}
-              </div>
-            )}
+        <ContentStateGate
+          loading={loading}
+          isError={proofQuery.isError}
+          errorMessage={proofQuery.error?.message || "Unable to load proof content."}
+          configError={configError}
+          empty={filteredItems.length === 0}
+          loadingLabel="Loading proof artifacts…"
+          emptyLabel="No proof items found for this tab."
+        >
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {filteredItems.map((item) => (
+              <ProofCard key={item.id} item={item} />
+            ))}
           </div>
-        ) : (
-          <>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {filteredItems.map((item) => (
-                <ProofCard key={item.id} item={item} />
-              ))}
-            </div>
-
-            {filteredItems.length === 0 ? (
-              <div className="py-12 text-center text-muted-foreground">
-                No proof items found for this tab.
-              </div>
-            ) : null}
-          </>
-        )}
+        </ContentStateGate>
       </section>
     </div>
   );

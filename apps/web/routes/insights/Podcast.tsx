@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { InsightCard } from "@/components/apt/InsightCard";
-import { ContentFilters, FilterConfig, SelectedFilters, RuntimeConfigNotice } from "@/components/apt";
+import { ContentFilters, FilterConfig, SelectedFilters, ContentStateGate } from "@/components/apt";
 import { getWorkerApiConfigError } from "@/src/services/api";
 import { usePodcastsIndexQuery } from "@/hooks/useContentAggregateQueries";
 
@@ -48,37 +48,21 @@ export default function InsightsPodcasts() {
         totalCount={(podcasts ?? []).length}
       />
 
-      {loading ? (
-        <div className="py-12 text-center text-muted-foreground">Loading podcasts…</div>
-      ) : error ? (
-        <div className="py-2">
-          {configError ? (
-            <RuntimeConfigNotice
-              message={configError.message}
-              envVar={configError.envVar}
-              expectedValue={configError.expectedProductionValue}
-            />
-          ) : (
-            <div className="rounded-lg border border-destructive/40 bg-destructive/5 px-4 py-3 text-sm text-destructive">
-              {error}
-            </div>
-          )}
+      <ContentStateGate
+        loading={loading}
+        isError={Boolean(error)}
+        errorMessage={error}
+        configError={configError}
+        empty={filteredPodcasts.length === 0}
+        loadingLabel="Loading podcasts…"
+        emptyLabel="No podcasts match your filters."
+      >
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          {filteredPodcasts.map((podcast) => (
+            <InsightCard key={podcast.id} insight={podcast} to={`/insights/${podcast.id}`} />
+          ))}
         </div>
-      ) : (
-        <>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {filteredPodcasts.map((podcast) => (
-              <InsightCard key={podcast.id} insight={podcast} to={`/insights/${podcast.id}`} />
-            ))}
-          </div>
-
-          {filteredPodcasts.length === 0 ? (
-            <div className="text-center py-12 text-muted-foreground">
-              No podcasts match your filters.
-            </div>
-          ) : null}
-        </>
-      )}
+      </ContentStateGate>
     </div>
   );
 }

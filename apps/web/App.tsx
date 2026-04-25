@@ -14,11 +14,11 @@ const NotFound = lazyWithRetry(() => import("./pages/NotFound"));
 const AssistantPage = lazyWithRetry(() => import("./routes/assistant"));
 const About = lazyWithRetry(() => import("./routes/About"));
 const Insights = lazyWithRetry(() => import("./routes/Insights"));
-const InsightsBlogs = lazyWithRetry(() => import("./routes/insights/Blogs"));
-const InsightsPodcasts = lazyWithRetry(() => import("./routes/insights/Podcasts"));
-const InsightsGuides = lazyWithRetry(() => import("./routes/insights/Guides"));
-const Systems = lazyWithRetry(() => import("./routes/Systems"));
-const SystemDetail = lazyWithRetry(() => import("./routes/SystemDetail"));
+const InsightsBlog = lazyWithRetry(() => import("./routes/insights/Blog"));
+const InsightsPodcast = lazyWithRetry(() => import("./routes/insights/Podcast"));
+const InsightsCaseStudies = lazyWithRetry(() => import("./routes/insights/CaseStudies"));
+const ProofPage = lazyWithRetry(() => import("./routes/Proof"));
+const ProofDetail = lazyWithRetry(() => import("./routes/ProofDetail"));
 const InsightDetail = lazyWithRetry(() => import("./routes/InsightDetail"));
 const PortfolioLabs = lazyWithRetry(() => import("./routes/portfolio/Labs"));
 const PortfolioExperimentsConcepts = lazyWithRetry(() => import("./routes/portfolio/ExperimentsConcepts"));
@@ -86,8 +86,8 @@ const App = () => (
               <Route path="/labs/live-demos/:slug" element={<DemoDetail />} />
               <Route path="/labs/:id" element={<PortfolioLabDetail />} />
 
-              <Route path="/proof" element={<Systems />} />
-              <Route path="/proof/:id" element={<SystemDetail />} />
+              <Route path="/proof" element={<ProofPage />} />
+              <Route path="/proof/:id" element={<ProofDetail />} />
 
               <Route path="/design" element={<Portfolio />} />
               <Route path="/design/system" element={<PortfolioDesignSystem />} />
@@ -121,9 +121,12 @@ const App = () => (
               <Route path="/principles/:section" element={<PrinciplesDetail />} />
 
               <Route path="/insights" element={<Insights />} />
-              <Route path="/insights/articles" element={<InsightsBlogs />} />
-              <Route path="/insights/podcasts" element={<InsightsPodcasts />} />
-              <Route path="/insights/practice" element={<InsightsGuides />} />
+              <Route path="/insights/blog" element={<InsightsBlog />} />
+              <Route path="/insights/podcast" element={<InsightsPodcast />} />
+              <Route path="/insights/case-studies" element={<InsightsCaseStudies />} />
+              <Route path="/insights/articles" element={<InsightsBlog />} />
+              <Route path="/insights/podcasts" element={<InsightsPodcast />} />
+              <Route path="/insights/practice" element={<InsightsCaseStudies />} />
               <Route path="/insights/:id" element={<InsightDetail />} />
 
               <Route path="/about" element={<About />} />
