@@ -132,23 +132,7 @@ export default function Systems() {
     return items.filter((item) => item.kind === "case-study");
   }, [activeTab, items]);
 
-  if (loading) return <div className="container py-12 text-center">Loading systems…</div>;
-  if (proofQuery.isError) {
-    const configError = getWorkerApiConfigError();
-    return (
-      <div className="container py-12">
-        {configError ? (
-          <RuntimeConfigNotice
-            message={configError.message}
-            envVar={configError.envVar}
-            expectedValue={configError.expectedProductionValue}
-          />
-        ) : (
-          <div className="text-center text-destructive">{proofQuery.error?.message}</div>
-        )}
-      </div>
-    );
-  }
+  const configError = proofQuery.isError ? getWorkerApiConfigError() : null;
 
   return (
     <div className="container py-10 md:py-12">
@@ -181,17 +165,37 @@ export default function Systems() {
       </div>
 
       <section className="mt-8">
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {filteredItems.map((item) => (
-            <ProofCard key={item.id} item={item} />
-          ))}
-        </div>
-
-        {filteredItems.length === 0 ? (
-          <div className="py-12 text-center text-muted-foreground">
-            No proof items found for this tab.
+        {loading ? (
+          <div className="py-12 text-center text-muted-foreground">Loading proof artifacts…</div>
+        ) : proofQuery.isError ? (
+          <div className="py-2">
+            {configError ? (
+              <RuntimeConfigNotice
+                message={configError.message}
+                envVar={configError.envVar}
+                expectedValue={configError.expectedProductionValue}
+              />
+            ) : (
+              <div className="rounded-lg border border-destructive/40 bg-destructive/5 px-4 py-3 text-sm text-destructive">
+                {proofQuery.error?.message || "Unable to load proof content."}
+              </div>
+            )}
           </div>
-        ) : null}
+        ) : (
+          <>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {filteredItems.map((item) => (
+                <ProofCard key={item.id} item={item} />
+              ))}
+            </div>
+
+            {filteredItems.length === 0 ? (
+              <div className="py-12 text-center text-muted-foreground">
+                No proof items found for this tab.
+              </div>
+            ) : null}
+          </>
+        )}
       </section>
     </div>
   );
