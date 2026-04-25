@@ -24,25 +24,7 @@ export default function InsightsBlogs() {
     );
   }, [selected.topics, blogs]);
 
-  if (loading) {
-    return <div className="container py-12 text-center">Loading articles…</div>;
-  }
-  if (blogsQuery.isError) {
-    const configError = getWorkerApiConfigError();
-    return (
-      <div className="container py-12">
-        {configError ? (
-          <RuntimeConfigNotice
-            message={configError.message}
-            envVar={configError.envVar}
-            expectedValue={configError.expectedProductionValue}
-          />
-        ) : (
-          <div className="text-center text-destructive">{blogsQuery.error?.message}</div>
-        )}
-      </div>
-    );
-  }
+  const configError = blogsQuery.isError ? getWorkerApiConfigError() : null;
 
   return (
     <div className="container py-12 md:py-16">
@@ -63,16 +45,36 @@ export default function InsightsBlogs() {
         totalCount={blogs.length}
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {filteredBlogs.map((blog) => (
-          <InsightCard key={blog.id} insight={blog} to={`/insights/${blog.id}`} />
-        ))}
-      </div>
-
-      {filteredBlogs.length === 0 && (
-        <div className="text-center py-12 text-muted-foreground">
-          No articles match your filters.
+      {loading ? (
+        <div className="py-12 text-center text-muted-foreground">Loading articles…</div>
+      ) : blogsQuery.isError ? (
+        <div className="py-2">
+          {configError ? (
+            <RuntimeConfigNotice
+              message={configError.message}
+              envVar={configError.envVar}
+              expectedValue={configError.expectedProductionValue}
+            />
+          ) : (
+            <div className="rounded-lg border border-destructive/40 bg-destructive/5 px-4 py-3 text-sm text-destructive">
+              {blogsQuery.error?.message || "Unable to load articles."}
+            </div>
+          )}
         </div>
+      ) : (
+        <>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {filteredBlogs.map((blog) => (
+              <InsightCard key={blog.id} insight={blog} to={`/insights/${blog.id}`} />
+            ))}
+          </div>
+
+          {filteredBlogs.length === 0 ? (
+            <div className="text-center py-12 text-muted-foreground">
+              No articles match your filters.
+            </div>
+          ) : null}
+        </>
       )}
     </div>
   );
