@@ -31,25 +31,7 @@ export default function Insights() {
     return insights.filter((item) => item.type === "guide" || item.type === "design-review");
   }, [filter, insights]);
 
-  if (loading) {
-    return <div className="container py-12 text-center">Loading learning content…</div>;
-  }
-  if (insightsQuery.isError) {
-    const configError = getWorkerApiConfigError();
-    return (
-      <div className="container py-12">
-        {configError ? (
-          <RuntimeConfigNotice
-            message={configError.message}
-            envVar={configError.envVar}
-            expectedValue={configError.expectedProductionValue}
-          />
-        ) : (
-          <div className="text-center text-destructive">{insightsQuery.error?.message}</div>
-        )}
-      </div>
-    );
-  }
+  const configError = insightsQuery.isError ? getWorkerApiConfigError() : null;
 
   return (
     <div className="container py-10 md:py-12 space-y-8">
@@ -87,22 +69,42 @@ export default function Insights() {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {filteredContent.map((insight) => (
-            <InsightCard
-              key={insight.id}
-              insight={insight}
-              to={`/insights/${insight.id}`}
-              compact
-            />
-          ))}
-        </div>
-
-        {filteredContent.length === 0 ? (
-          <div className="py-12 text-center text-muted-foreground">
-            No insight items match this tab yet.
+        {loading ? (
+          <div className="py-12 text-center text-muted-foreground">Loading insight content…</div>
+        ) : insightsQuery.isError ? (
+          <div className="py-2">
+            {configError ? (
+              <RuntimeConfigNotice
+                message={configError.message}
+                envVar={configError.envVar}
+                expectedValue={configError.expectedProductionValue}
+              />
+            ) : (
+              <div className="rounded-lg border border-destructive/40 bg-destructive/5 px-4 py-3 text-sm text-destructive">
+                {insightsQuery.error?.message || "Unable to load insight content."}
+              </div>
+            )}
           </div>
-        ) : null}
+        ) : (
+          <>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {filteredContent.map((insight) => (
+                <InsightCard
+                  key={insight.id}
+                  insight={insight}
+                  to={`/insights/${insight.id}`}
+                  compact
+                />
+              ))}
+            </div>
+
+            {filteredContent.length === 0 ? (
+              <div className="py-12 text-center text-muted-foreground">
+                No insight items match this tab yet.
+              </div>
+            ) : null}
+          </>
+        )}
       </section>
     </div>
   );
