@@ -27,25 +27,7 @@ export default function InsightsPodcasts() {
 
   const loading = podcastsQuery.isLoading;
   const error = podcastsQuery.error?.message || null;
-  if (loading) {
-    return <div className="container py-12 text-center">Loading podcasts…</div>;
-  }
-  if (error) {
-    const configError = getWorkerApiConfigError();
-    return (
-      <div className="container py-12">
-        {configError ? (
-          <RuntimeConfigNotice
-            message={configError.message}
-            envVar={configError.envVar}
-            expectedValue={configError.expectedProductionValue}
-          />
-        ) : (
-          <div className="text-center text-destructive">{error}</div>
-        )}
-      </div>
-    );
-  }
+  const configError = error ? getWorkerApiConfigError() : null;
 
   return (
     <div className="container py-12 md:py-16">
@@ -66,16 +48,36 @@ export default function InsightsPodcasts() {
         totalCount={(podcasts ?? []).length}
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {filteredPodcasts.map((podcast) => (
-          <InsightCard key={podcast.id} insight={podcast} to={`/insights/${podcast.id}`} />
-        ))}
-      </div>
-
-      {filteredPodcasts.length === 0 && (
-        <div className="text-center py-12 text-muted-foreground">
-          No podcasts match your filters.
+      {loading ? (
+        <div className="py-12 text-center text-muted-foreground">Loading podcasts…</div>
+      ) : error ? (
+        <div className="py-2">
+          {configError ? (
+            <RuntimeConfigNotice
+              message={configError.message}
+              envVar={configError.envVar}
+              expectedValue={configError.expectedProductionValue}
+            />
+          ) : (
+            <div className="rounded-lg border border-destructive/40 bg-destructive/5 px-4 py-3 text-sm text-destructive">
+              {error}
+            </div>
+          )}
         </div>
+      ) : (
+        <>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {filteredPodcasts.map((podcast) => (
+              <InsightCard key={podcast.id} insight={podcast} to={`/insights/${podcast.id}`} />
+            ))}
+          </div>
+
+          {filteredPodcasts.length === 0 ? (
+            <div className="text-center py-12 text-muted-foreground">
+              No podcasts match your filters.
+            </div>
+          ) : null}
+        </>
       )}
     </div>
   );
