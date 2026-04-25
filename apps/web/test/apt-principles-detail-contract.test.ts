@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   aptPrincipleGroups,
+  aptPrinciplesFrameworkPublicDocPath,
   aptPrinciplesFrameworkIndex,
   getAptPrincipleGroupByRouteSegment,
 } from "@/data/aptPrinciples";
@@ -15,6 +16,8 @@ describe("apt principles detail contract", () => {
       expect(group.docSlug.length).toBeGreaterThan(0);
       expect(group.sourcePath.startsWith("apt-principles/")).toBe(true);
       expect(group.publicDocPath?.startsWith("/docs/apt/")).toBe(true);
+      expect(group.publicDocMeta?.publicPath).toBe(group.publicDocPath);
+      expect(group.publicDocMeta?.checksum).toMatch(/^[a-f0-9]{64}$/);
       expect(group.detailSummary.length).toBeGreaterThan(0);
       expect(group.aiPromptExample.goal.length).toBeGreaterThan(0);
       expect(group.aiPromptExample.inputs.length).toBeGreaterThan(0);
@@ -44,5 +47,9 @@ describe("apt principles detail contract", () => {
     for (const group of aptPrincipleGroups) {
       expect(generatedSourcePaths.has(group.sourcePath)).toBe(true);
     }
+  });
+
+  it("maps the framework page to canonical apt-principles markdown", () => {
+    expect(aptPrinciplesFrameworkPublicDocPath).toBe("/docs/apt/apt-principles.md");
   });
 });

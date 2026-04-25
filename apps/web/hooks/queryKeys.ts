@@ -14,6 +14,7 @@ export const queryKeys = {
   designDocsPatterns: () => ["design-docs", "patterns-only"] as const,
   designDoc: (slug: string, major: number | "latest") => ["design-doc", slug, major] as const,
   designDocVersions: (slug: string) => ["design-doc-versions", slug] as const,
+  aptPublicDoc: (publicPath: string) => ["apt-public-doc", publicPath] as const,
   designReviewBundleManifest: () => ["design-review-bundle-manifest"] as const,
   validationReportLatest: () => ["validation-report", "latest"] as const,
   homeFeaturedContent: () => ["home", "featured-content"] as const,
@@ -27,4 +28,3 @@ export const queryKeys = {
   aboutExperimentsCount: () => ["about", "experiments-count"] as const,
   aboutInsightsCount: () => ["about", "insights-count"] as const,
 };
-

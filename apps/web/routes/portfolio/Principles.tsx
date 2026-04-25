@@ -23,20 +23,24 @@ import {
   AptCardHeader,
   AptCardTitle,
   AptTag,
-  DesignDocVersionSwitcher,
   SectionIntro,
 } from "@/components/apt";
+import { MarkdownContent } from "@/components/apt/MarkdownContent";
 import {
   aptAiOverlayGroupId,
   aptLifecycleFlow,
   aptPrincipleGroups,
   aptPrincipleGroupsById,
   aptPrinciplesFrameworkIndex,
+  aptPrinciplesFrameworkPublicDocMeta,
+  aptPrinciplesFrameworkPublicDocPath,
   type AptPrincipleGroupId,
 } from "@/data/aptPrinciples";
-import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
-import { useDesignDocVersion } from "@/hooks/useDesignDocVersion";
-import { downloadWorkerMarkdown } from "@/src/services/download";
+import { useAptPublicDocQuery } from "@/hooks/useAptPublicDocQuery";
+import {
+  getAptPublicDocAssetBasePath,
+} from "@/src/services/aptPrinciplesPublicDocs";
+import { downloadPublicMarkdown } from "@/src/services/download";
 
 const groupIcons: Record<AptPrincipleGroupId, ComponentType<{ className?: string }>> = {
   thinking: Target,
@@ -60,15 +64,19 @@ const relatedRoutes = [
   { label: "AI Review Bundle", path: "/design/review-bundle", description: "Portable handoff bundles for human and AI review." },
 ];
 
-export default function PortfolioPrinciples() {
-  const principlesVersion = useDesignDocVersion("principles");
-  const principlesDocUrl = tryGetWorkerApiUrl(principlesVersion.downloadApiPath);
-  const principlesCanonicalUrl = principlesVersion.canonicalPath || null;
-  const configError = getWorkerApiConfigError();
+function formatDate(value: string | null | undefined) {
+  if (!value || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return value || "n/a";
+  const [year, month, day] = value.split("-");
+  return `${month}/${day}/${year}`;
+}
 
-  const handlePrinciplesMarkdownDownload = async () => {
-    const majorSuffix = principlesVersion.activeMajor ? `-v${principlesVersion.activeMajor}` : "";
-    await downloadWorkerMarkdown(principlesVersion.downloadApiPath, `apt-principles-framework${majorSuffix}.md`);
+export default function PortfolioPrinciples() {
+  const frameworkDocQuery = useAptPublicDocQuery(aptPrinciplesFrameworkPublicDocPath);
+  const frameworkAssetBasePath = getAptPublicDocAssetBasePath(aptPrinciplesFrameworkPublicDocPath);
+
+  const handleFrameworkMarkdownDownload = async () => {
+    if (!aptPrinciplesFrameworkPublicDocPath) return;
+    await downloadPublicMarkdown(aptPrinciplesFrameworkPublicDocPath, "apt-principles-framework.md");
   };
 
   return (
@@ -76,37 +84,59 @@ export default function PortfolioPrinciples() {
       <section>
         <SectionIntro
           title="APT Principles Framework"
-          description="The canonical model for how APT moves from intent to operation: Why, What, How, Consistency, Build, Validate, Promote, Run & Support, Learn & Scale, and the AI augmentation layer across all of it."
+          description="Canonical doctrine is rendered directly from generated apt-principles public docs, then paired with operational summaries for implementation."
           titleClassName="text-3xl md:text-4xl"
           descriptionClassName="text-lg"
           eyebrow={<AptTag variant="accent">Principles</AptTag>}
         >
+          <div className="flex flex-wrap items-center gap-2">
+            <AptTag variant="secondary">{aptPrinciplesFrameworkPublicDocMeta?.version || "v1"}</AptTag>
+            <AptTag variant="outline">{aptPrinciplesFrameworkPublicDocMeta?.status || "draft"}</AptTag>
+            <AptTag variant="muted">Updated {formatDate(aptPrinciplesFrameworkPublicDocMeta?.lastUpdated)}</AptTag>
+            {aptPrinciplesFrameworkPublicDocMeta?.checksum ? (
+              <AptTag variant="muted">sha {aptPrinciplesFrameworkPublicDocMeta.checksum.slice(0, 8)}</AptTag>
+            ) : null}
+          </div>
           <div className="flex flex-wrap gap-3">
             <AptButton
               variant="outline"
               onClick={() => {
-                void handlePrinciplesMarkdownDownload();
+                void handleFrameworkMarkdownDownload();
               }}
-              disabled={!principlesDocUrl}
+              disabled={!aptPrinciplesFrameworkPublicDocPath}
             >
               <FileText className="h-4 w-4" />
-              Download Principles Markdown
+              Download Canonical Markdown
             </AptButton>
-            {principlesCanonicalUrl ? (
+            {aptPrinciplesFrameworkPublicDocPath ? (
               <AptButton variant="ghost" asChild>
-                <a href={principlesCanonicalUrl} target="_blank" rel="noreferrer">
+                <a href={aptPrinciplesFrameworkPublicDocPath} target="_blank" rel="noreferrer">
                   Open canonical
                 </a>
               </AptButton>
             ) : null}
           </div>
-          <DesignDocVersionSwitcher versionState={principlesVersion} />
-          {!principlesDocUrl && configError ? (
-            <p className="text-sm text-muted-foreground mt-3">
-              Configure <code>{configError.envVar}</code> on the Pages project to enable full-doc links.
-            </p>
-          ) : null}
         </SectionIntro>
+
+        <AptCard className="mt-6">
+          <div className="p-6 md:p-8">
+            {frameworkDocQuery.isLoading ? (
+              <p className="text-sm text-muted-foreground">Loading canonical framework markdown…</p>
+            ) : frameworkDocQuery.isError ? (
+              <p className="text-sm text-muted-foreground">
+                Canonical framework markdown is unavailable right now. Regenerate and publish `/docs/apt/apt-principles.md` to refresh this page.
+              </p>
+            ) : (
+              <article className="prose-custom">
+                <MarkdownContent
+                  markdown={frameworkDocQuery.data?.markdown || ""}
+                  contentPath="docs/apt/apt-principles.md"
+                  assetBasePath={frameworkAssetBasePath}
+                />
+              </article>
+            )}
+          </div>
+        </AptCard>
       </section>
 
       <section>
@@ -147,7 +177,7 @@ export default function PortfolioPrinciples() {
       <section>
         <SectionIntro
           title="Core Principle Groups"
-          description="Each group has explicit focus, enforcement principles, expected outputs, and one practical scenario."
+          description="Canonical source-linked groups with operational focus, standards, and expected outputs."
           className="mb-6"
         />
 
@@ -167,25 +197,22 @@ export default function PortfolioPrinciples() {
                         <AptCardTitle className="text-lg">{group.displayLabel}</AptCardTitle>
                       </div>
                     </div>
+                    <AptCardDescription>{group.detailSummary}</AptCardDescription>
                   </AptCardHeader>
                   <AptCardContent className="space-y-5 p-0">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <AptTag variant="secondary">{group.publicDocMeta?.version || "v1"}</AptTag>
+                      <AptTag variant="outline">{group.publicDocMeta?.status || "draft"}</AptTag>
+                      <AptTag variant="muted">Updated {formatDate(group.publicDocMeta?.lastUpdated)}</AptTag>
+                      {group.publicDocMeta?.checksum ? (
+                        <AptTag variant="muted">sha {group.publicDocMeta.checksum.slice(0, 8)}</AptTag>
+                      ) : null}
+                    </div>
                     <div>
                       <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-2">Focus</p>
                       <ul className="space-y-1.5 text-sm text-muted-foreground">
                         {group.focus.map((item) => (
                           <li key={`${group.id}-focus-${item}`} className="flex items-start gap-2">
-                            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div>
-                      <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-2">Principles</p>
-                      <ul className="space-y-1.5 text-sm text-muted-foreground">
-                        {group.principles.map((item) => (
-                          <li key={`${group.id}-principle-${item}`} className="flex items-start gap-2">
                             <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
                             <span>{item}</span>
                           </li>
@@ -203,11 +230,6 @@ export default function PortfolioPrinciples() {
                           </li>
                         ))}
                       </ul>
-                    </div>
-
-                    <div className="rounded-md border border-border/60 bg-background/40 p-4">
-                      <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-2">Practical Example</p>
-                      <p className="text-sm text-muted-foreground">{group.example}</p>
                     </div>
 
                     <div className="flex items-center justify-end gap-2">

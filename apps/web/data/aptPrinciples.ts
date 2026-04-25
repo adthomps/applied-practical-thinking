@@ -1,4 +1,7 @@
-import { getAptPublicDocBySourcePath } from "@/data/generated/aptPrinciplesPublicManifest";
+import {
+  getAptPublicDocBySourcePath,
+  type AptPublicDocManifestEntry,
+} from "@/data/generated/aptPrinciplesPublicManifest";
 
 export type AptPrincipleGroupId =
   | "thinking"
@@ -32,6 +35,25 @@ export type AptPrinciplePromptExample = {
   readonly expectedOutputFormat: string;
 };
 
+export type AptPublicDocMeta = Pick<
+  AptPublicDocManifestEntry,
+  "id" | "sourcePath" | "publicPath" | "version" | "status" | "lastUpdated" | "checksum"
+>;
+
+function getAptPublicDocMeta(sourcePath: string): AptPublicDocMeta | null {
+  const doc = getAptPublicDocBySourcePath(sourcePath);
+  if (!doc) return null;
+  return {
+    id: doc.id,
+    sourcePath: doc.sourcePath,
+    publicPath: doc.publicPath,
+    version: doc.version,
+    status: doc.status,
+    lastUpdated: doc.lastUpdated,
+    checksum: doc.checksum,
+  };
+}
+
 export type AptPrincipleGroup = {
   readonly id: AptPrincipleGroupId;
   readonly title: string;
@@ -43,6 +65,7 @@ export type AptPrincipleGroup = {
   readonly docSlug: AptPrincipleDocSlug;
   readonly sourcePath: string;
   readonly publicDocPath: string | null;
+  readonly publicDocMeta: AptPublicDocMeta | null;
   readonly detailSummary: string;
   readonly focus: readonly string[];
   readonly principles: readonly string[];
@@ -63,6 +86,7 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
     docSlug: "thinking",
     sourcePath: "apt-principles/thinking.md",
     publicDocPath: getAptPublicDocBySourcePath("apt-principles/thinking.md")?.publicPath ?? null,
+    publicDocMeta: getAptPublicDocMeta("apt-principles/thinking.md"),
     detailSummary:
       "Thinking defines why the work exists by clarifying problem, user context, and measurable outcomes before solutioning.",
     focus: [
@@ -103,6 +127,7 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
     docSlug: "system",
     sourcePath: "apt-principles/design.md",
     publicDocPath: getAptPublicDocBySourcePath("apt-principles/design.md")?.publicPath ?? null,
+    publicDocMeta: getAptPublicDocMeta("apt-principles/design.md"),
     detailSummary:
       "Design defines what the solution is, how it behaves, and how user interactions stay coherent across states.",
     focus: ["Define what the solution is and how it behaves", "User experience", "Functional behavior", "System interactions (conceptual)"],
@@ -138,6 +163,7 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
     docSlug: "architecture",
     sourcePath: "apt-principles/architecture.md",
     publicDocPath: getAptPublicDocBySourcePath("apt-principles/architecture.md")?.publicPath ?? null,
+    publicDocMeta: getAptPublicDocMeta("apt-principles/architecture.md"),
     detailSummary:
       "Architecture defines technical structure, service boundaries, and API/data contracts so systems scale without coupling drift.",
     focus: ["Define how the system is structured", "Technical structure", "Boundaries and responsibilities", "Data and API design"],
@@ -173,6 +199,7 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
     docSlug: "system-standards",
     sourcePath: "apt-principles/system-standards.md",
     publicDocPath: getAptPublicDocBySourcePath("apt-principles/system-standards.md")?.publicPath ?? null,
+    publicDocMeta: getAptPublicDocMeta("apt-principles/system-standards.md"),
     detailSummary:
       "System standards enforce reusable conventions through shared tokens, contracts, and versioned governance surfaces.",
     focus: ["Enforce standards across everything", "Reusability", "Consistency", "Standardization"],
@@ -208,6 +235,7 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
     docSlug: "security",
     sourcePath: "apt-principles/security.md",
     publicDocPath: getAptPublicDocBySourcePath("apt-principles/security.md")?.publicPath ?? null,
+    publicDocMeta: getAptPublicDocMeta("apt-principles/security.md"),
     detailSummary:
       "Security defines trust boundaries, authentication, authorization, sessions, secrets, and abuse controls as part of the system architecture.",
     focus: ["Protect users, data, and trust boundaries", "Authentication and authorization", "Session, secrets, and abuse controls"],
@@ -243,6 +271,7 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
     docSlug: "execution",
     sourcePath: "apt-principles/execution.md",
     publicDocPath: getAptPublicDocBySourcePath("apt-principles/execution.md")?.publicPath ?? null,
+    publicDocMeta: getAptPublicDocMeta("apt-principles/execution.md"),
     detailSummary:
       "Execution converts approved specs into shipping systems via incremental delivery, preview-first validation, and automation.",
     focus: ["Turn specs into working systems", "How work gets implemented", "Development workflow"],
@@ -278,6 +307,7 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
     docSlug: "quality-testing",
     sourcePath: "apt-principles/quality-testing.md",
     publicDocPath: getAptPublicDocBySourcePath("apt-principles/quality-testing.md")?.publicPath ?? null,
+    publicDocMeta: getAptPublicDocMeta("apt-principles/quality-testing.md"),
     detailSummary:
       "Quality and Testing protects release safety through layered validation, diagnostics, and deterministic build/test workflows.",
     focus: ["Ensure correctness before anything reaches users", "Prevent defects early", "Validate behavior at multiple levels"],
@@ -313,6 +343,7 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
     docSlug: "release-change-management",
     sourcePath: "apt-principles/release-change-management.md",
     publicDocPath: getAptPublicDocBySourcePath("apt-principles/release-change-management.md")?.publicPath ?? null,
+    publicDocMeta: getAptPublicDocMeta("apt-principles/release-change-management.md"),
     detailSummary:
       "Release and Change Management governs safe promotion, clear traceability, and intentional production change communication.",
     focus: ["Control how changes move to production and are understood", "Safe promotion of changes", "Clear visibility of what changed"],
@@ -349,6 +380,7 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
     docSlug: "operations-support",
     sourcePath: "apt-principles/operations-support.md",
     publicDocPath: getAptPublicDocBySourcePath("apt-principles/operations-support.md")?.publicPath ?? null,
+    publicDocMeta: getAptPublicDocMeta("apt-principles/operations-support.md"),
     detailSummary:
       "Operations and Support sustains reliability through observability, incident readiness, and support-informed feedback loops.",
     focus: ["Keep the system running and support users effectively", "Stability", "Observability", "Support workflows"],
@@ -384,6 +416,7 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
     docSlug: "knowledge-engine",
     sourcePath: "apt-principles/knowledge-system.md",
     publicDocPath: getAptPublicDocBySourcePath("apt-principles/knowledge-system.md")?.publicPath ?? null,
+    publicDocMeta: getAptPublicDocMeta("apt-principles/knowledge-system.md"),
     detailSummary:
       "Knowledge converts decisions and outcomes into reusable, versioned assets that scale understanding for humans and AI.",
     focus: ["Capture and reuse what is learned", "Documentation", "Knowledge reuse", "Long-term efficiency"],
@@ -419,6 +452,7 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
     docSlug: "ai-agent-framework",
     sourcePath: "apt-principles/ai-agent-framework.md",
     publicDocPath: getAptPublicDocBySourcePath("apt-principles/ai-agent-framework.md")?.publicPath ?? null,
+    publicDocMeta: getAptPublicDocMeta("apt-principles/ai-agent-framework.md"),
     detailSummary:
       "AI & Agent framework standardizes prompt governance, agent contracts, and evaluation guardrails across every lifecycle layer.",
     focus: ["Use AI to accelerate, not replace, structured thinking", "AI-assisted development", "Agent workflows", "Prompt standardization"],
@@ -467,6 +501,18 @@ export type AptPrinciplesIndexItem = {
   readonly frameworkPath?: string;
   readonly description: string;
 };
+
+export const aptPrinciplesFrameworkSourcePath = "apt-principles/apt-principles.md" as const;
+export const aptPrinciplesFrameworkPublicDocMeta = getAptPublicDocMeta(aptPrinciplesFrameworkSourcePath);
+export const aptPrinciplesFrameworkPublicDocPath = aptPrinciplesFrameworkPublicDocMeta?.publicPath ?? null;
+
+export function getAptPrinciplesFrameworkDocMeta(): AptPublicDocMeta | null {
+  return aptPrinciplesFrameworkPublicDocMeta;
+}
+
+export function getAptPublicDocMetaBySourcePath(sourcePath: string): AptPublicDocMeta | null {
+  return getAptPublicDocMeta(sourcePath);
+}
 
 export const aptPrincipleGroupsById: Record<AptPrincipleGroupId, AptPrincipleGroup> = aptPrincipleGroups.reduce(
   (acc, group) => {
@@ -526,12 +572,27 @@ export const aptPrinciplesNavSections: readonly {
   description: string;
   tagline?: string;
 }[] = [
-  ...aptPrinciplesFrameworkIndex.map((item) => ({
-    label: item.label,
-    path: item.path,
-    description: item.description,
-    tagline: item.id === "framework" ? "Start here for the complete 10-group framework." : undefined,
-  })),
+  {
+    label: "Framework Overview",
+    path: "/design/principles",
+    description: "Canonical APT model with source-backed doctrine and lifecycle map.",
+    tagline: "Start here for the complete framework.",
+  },
+  {
+    label: "Thinking (Why)",
+    path: "/design/principles/thinking",
+    description: "Problem framing and measurable outcome definition before solutioning.",
+  },
+  {
+    label: "Execution (Build)",
+    path: "/design/principles/execution",
+    description: "Spec-to-implementation delivery model with incremental validation.",
+  },
+  {
+    label: "AI & Agent",
+    path: "/design/principles/ai-agent",
+    description: "Prompt governance and agent contract standards across lifecycle layers.",
+  },
   {
     label: "Design System",
     path: "/design/system",
