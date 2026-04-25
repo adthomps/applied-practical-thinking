@@ -1,59 +1,39 @@
-
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ExternalLink, Network } from "lucide-react";
-import { ContentIndexItem } from "@/src/services/contentIndex";
+import { ArrowLeft, CheckCircle2, ExternalLink, AlertTriangle } from "lucide-react";
 import { AptButton, AptCard, AptTag, RuntimeConfigNotice } from "@/components/apt";
-import { ContentDetailPage } from "@/components/apt/ContentDetailPage";
-import { systems as systemDefinitions } from "@/data/systems";
-import { loadAllContentIndexes, resolveRelatedItems } from "@/src/services/relatedContent";
 import { useContentDetail } from "@/hooks/useContentDetail";
+import { systems as systemDefinitions } from "@/data/systems";
 import { getWorkerApiConfigError } from "@/src/services/api";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
-import { getStatusTagDefinition } from "@/lib/tagSemantics";
+
+function toLinkTarget(href: string) {
+  return href.startsWith("http") ? "_blank" : undefined;
+}
+
+function toLinkRel(href: string) {
+  return href.startsWith("http") ? "noopener noreferrer" : undefined;
+}
 
 export default function SystemDetail() {
   const { id } = useParams();
-  const { item, markdown, loading, error } = useContentDetail({
+  const { item, loading, error } = useContentDetail({
     indexTypes: ["systems"],
     idOrSlug: id,
     match: "id",
   });
-  const [relatedItems, setRelatedItems] = useState<ContentIndexItem[]>([]);
 
   const systemDefinition = useMemo(
     () => systemDefinitions.find((entry) => entry.id === item?.id),
     [item?.id]
   );
-  const visibleRelatedItems = useMemo(
-    () => (item?.related?.length ? relatedItems : []),
-    [item?.related, relatedItems]
-  );
-  const relatedExperiments = useMemo(
-    () => visibleRelatedItems.filter((entry) => entry.type === "lab" || entry.type === "mock" || entry.type === "demo"),
-    [visibleRelatedItems]
-  );
-  const relatedLearn = useMemo(
-    () =>
-      visibleRelatedItems.filter(
-        (entry) =>
-          entry.type === "article" ||
-          entry.type === "blog" ||
-          entry.type === "guide" ||
-          entry.type === "podcast" ||
-          entry.type === "design-review"
-      ),
-    [visibleRelatedItems]
-  );
-
   const hasMissingState = !loading && !item;
-  const statusTag = getStatusTagDefinition(systemDefinition?.status ?? item?.status);
 
   usePageMetadata(
     hasMissingState
       ? {
           title: "System not found",
-          description: "The requested system reference could not be found.",
+          description: "The requested proof system could not be found.",
           noIndex: true,
         }
       : item
@@ -63,29 +43,13 @@ export default function SystemDetail() {
             imageAlt: item.title,
           }
         : {
-            title: "Reference Models",
-            description: "Loading reference model details.",
+            title: "Proof",
+            description: "Loading system details.",
           }
   );
 
-  useEffect(() => {
-    if (!item?.related?.length) {
-      return;
-    }
-
-    let cancelled = false;
-    loadAllContentIndexes().then((all) => {
-      if (!cancelled) {
-        setRelatedItems(resolveRelatedItems(item.related || [], all));
-      }
-    });
-
-    return () => {
-      cancelled = true;
-    };
-  }, [item]);
-
   if (loading) return <div className="container py-12">Loading…</div>;
+
   if (error) {
     const configError = getWorkerApiConfigError();
     if (configError) {
@@ -100,186 +64,111 @@ export default function SystemDetail() {
       );
     }
   }
+
   if (!item) return <div className="container py-12 text-destructive">System not found</div>;
 
-  const systemOverview = systemDefinition?.purpose || item.description;
-  const headerMeta = (
-    <div className="flex flex-wrap gap-2">
-      <AptTag variant="primary">Reference Model</AptTag>
-      {systemDefinition?.referenceType ? (
-        <AptTag variant="outline">{systemDefinition.referenceType}</AptTag>
-      ) : null}
-      {statusTag ? (
-        <AptTag variant={statusTag.variant}>{statusTag.label}</AptTag>
-      ) : null}
-    </div>
-  );
+  const statusLabel = "Stable";
+  const technologies = item.concepts || systemDefinition?.concepts || [];
+  const decisions = systemDefinition?.decisions || [];
+  const tradeoffs = systemDefinition?.tradeoffs || [];
+  const primaryActionHref = systemDefinition?.links?.demo || "/";
+  const docsHref = systemDefinition?.links?.docs || "/insights";
 
-  const heroFallback = (
-    <div className="flex h-full w-full items-center justify-center bg-muted/20">
-      <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-        <Network className="h-10 w-10" />
-      </div>
-    </div>
-  );
+  return (
+    <div className="container py-12 md:py-16">
+      <Link
+        to="/proof"
+        className="mb-8 inline-flex items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"
+      >
+        <ArrowLeft className="h-4 w-4" />
+        Back to Proof
+      </Link>
 
-  const mainTop = systemDefinition ? (
-    <div className="grid gap-6 md:grid-cols-2">
-      <AptCard variant="subtle">
-        <div className="p-6">
-          <h2 className="text-sm font-semibold text-primary mb-3 uppercase tracking-wide">Key Decisions</h2>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            {systemDefinition.decisions.map((decision) => (
-              <li key={decision}>{decision}</li>
-            ))}
-          </ul>
-        </div>
-      </AptCard>
-
-      <AptCard variant="subtle">
-        <div className="p-6">
-          <h2 className="text-sm font-semibold text-primary mb-3 uppercase tracking-wide">Tradeoffs</h2>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            {systemDefinition.tradeoffs.map((tradeoff) => (
-              <li key={tradeoff}>{tradeoff}</li>
-            ))}
-          </ul>
-        </div>
-      </AptCard>
-    </div>
-  ) : null;
-
-  const mainBottom = systemDefinition?.productionGuide ? (
-    <div className="grid gap-6 md:grid-cols-2">
-      <AptCard variant="default">
-        <div className="p-6 space-y-4">
-          <div>
-            <h2 className="text-sm font-semibold text-primary mb-2 uppercase tracking-wide">Deployment</h2>
-            <p className="text-sm text-muted-foreground">{systemDefinition.productionGuide.deployment}</p>
-          </div>
-          <div>
-            <h2 className="text-sm font-semibold text-primary mb-2 uppercase tracking-wide">Operations</h2>
-            <p className="text-sm text-muted-foreground">{systemDefinition.productionGuide.operations}</p>
-          </div>
-        </div>
-      </AptCard>
-
-      <AptCard variant="subtle">
-        <div className="p-6 space-y-4">
-          <div>
-            <h2 className="text-sm font-semibold text-primary mb-2 uppercase tracking-wide">Where This Model Applies</h2>
-            {systemDefinition.appliesTo?.length ? (
+      <AptCard className="mx-auto max-w-6xl" padding="none">
+        <div className="space-y-8 p-6 md:p-8">
+          <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+            <div className="space-y-4">
               <div className="flex flex-wrap gap-2">
-                {systemDefinition.appliesTo.map((scope) => (
-                  <AptTag key={scope} variant="default">
-                    {scope}
+                <AptTag variant="primary">System</AptTag>
+                <AptTag variant="secondary">{statusLabel}</AptTag>
+              </div>
+
+              <div>
+                <h1 className="text-3xl font-bold tracking-tight md:text-4xl">{item.title}</h1>
+                <p className="mt-3 text-xl text-primary">
+                  {systemDefinition?.purpose || item.description}
+                </p>
+              </div>
+            </div>
+
+            {technologies.length > 0 ? (
+              <div className="flex flex-wrap gap-2 md:max-w-xs md:justify-end">
+                {technologies.slice(0, 3).map((tech) => (
+                  <AptTag key={tech} variant="muted">
+                    {tech}
                   </AptTag>
                 ))}
               </div>
-            ) : (
-              <p className="text-sm text-muted-foreground">Use where the same pattern or structure can travel beyond a single implementation.</p>
-            )}
+            ) : null}
           </div>
-          {systemDefinition.learningResources?.rationale ? (
+
+          <p className="max-w-4xl text-lg leading-relaxed text-muted-foreground">
+            {systemDefinition?.description || item.description}
+          </p>
+
+          <div className="grid gap-6 lg:grid-cols-2">
             <div>
-              <h2 className="text-sm font-semibold text-primary mb-2 uppercase tracking-wide">Rationale</h2>
-              <p className="text-sm text-muted-foreground">{systemDefinition.learningResources.rationale}</p>
+              <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-foreground">Key Decisions</h2>
+              {decisions.length > 0 ? (
+                <ul className="space-y-3">
+                  {decisions.map((decision) => (
+                    <li key={decision} className="flex items-start gap-2 text-muted-foreground">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                      <span>{decision}</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-muted-foreground">Decision notes will be added as this system evolves.</p>
+              )}
             </div>
-          ) : null}
+
+            <div className="rounded-xl border border-destructive/40 bg-destructive/5 p-4">
+              <h2 className="mb-3 flex items-center gap-2 text-base font-semibold text-foreground">
+                <AlertTriangle className="h-4 w-4 text-destructive" />
+                Tradeoffs
+              </h2>
+              {tradeoffs.length > 0 ? (
+                <ul className="space-y-2 text-muted-foreground">
+                  {tradeoffs.map((tradeoff) => (
+                    <li key={tradeoff}>- {tradeoff}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-muted-foreground">Tradeoff notes will be added as this system matures.</p>
+              )}
+            </div>
+          </div>
+
+          <div className="border-t border-border/60 pt-6">
+            <div className="flex flex-wrap gap-3">
+              <a href={primaryActionHref} target={toLinkTarget(primaryActionHref)} rel={toLinkRel(primaryActionHref)}>
+                <AptButton>
+                  <ExternalLink className="h-4 w-4" />
+                  View System
+                </AptButton>
+              </a>
+
+              <a href={docsHref} target={toLinkTarget(docsHref)} rel={toLinkRel(docsHref)}>
+                <AptButton variant="outline">
+                  <ExternalLink className="h-4 w-4" />
+                  Docs
+                </AptButton>
+              </a>
+            </div>
+          </div>
         </div>
       </AptCard>
     </div>
-  ) : null;
-
-  const actionsOverride = systemDefinition?.links ? (
-    <AptCard>
-      <div className="p-6 space-y-4">
-        {systemDefinition.links.demo ? (
-          <a href={systemDefinition.links.demo} target={systemDefinition.links.demo.startsWith("http") ? "_blank" : undefined} rel={systemDefinition.links.demo.startsWith("http") ? "noopener noreferrer" : undefined} className="block">
-            <AptButton variant="primary" className="w-full">
-              <ExternalLink className="h-4 w-4 mr-2" />
-              Open related surface
-            </AptButton>
-          </a>
-        ) : null}
-        {systemDefinition.links.docs ? (
-          <a href={systemDefinition.links.docs} target={systemDefinition.links.docs.startsWith("http") ? "_blank" : undefined} rel={systemDefinition.links.docs.startsWith("http") ? "noopener noreferrer" : undefined} className="block">
-            <AptButton variant="outline" className="w-full">
-              <ExternalLink className="h-4 w-4 mr-2" />
-              Related docs
-            </AptButton>
-          </a>
-        ) : null}
-        {systemDefinition.links.repo ? (
-          <a href={systemDefinition.links.repo} target="_blank" rel="noopener noreferrer" className="block">
-            <AptButton variant="outline" className="w-full">
-              <ExternalLink className="h-4 w-4 mr-2" />
-              Repository
-            </AptButton>
-          </a>
-        ) : null}
-      </div>
-    </AptCard>
-  ) : undefined;
-
-  const sidebarTop = (
-    <AptCard>
-      <div className="p-6 space-y-4">
-        <div>
-          <h3 className="text-sm font-semibold mb-2">Reference Model Overview</h3>
-          <p className="text-sm text-muted-foreground">{systemOverview}</p>
-        </div>
-
-        {systemDefinition?.referenceType ? (
-          <div className="pt-4 border-t border-border">
-            <h3 className="text-sm font-semibold mb-2">Reference Type</h3>
-            <p className="text-sm text-muted-foreground">{systemDefinition.referenceType}</p>
-          </div>
-        ) : null}
-
-        {relatedExperiments.length > 0 ? (
-          <div className="pt-4 border-t border-border">
-            <h3 className="text-sm font-semibold mb-2">Related Experiments</h3>
-            <div className="flex flex-wrap gap-2">
-              {relatedExperiments.map((entry) => (
-                <AptButton key={entry.id || entry.slug} variant="ghost" size="sm" asChild>
-                  <Link to={`/labs/${entry.slug || entry.id}`}>{entry.title}</Link>
-                </AptButton>
-              ))}
-            </div>
-          </div>
-        ) : null}
-
-        {relatedLearn.length > 0 ? (
-          <div className="pt-4 border-t border-border">
-            <h3 className="text-sm font-semibold mb-2">Related Learn Content</h3>
-            <div className="flex flex-wrap gap-2">
-              {relatedLearn.map((entry) => (
-                <AptButton key={entry.id || entry.slug} variant="ghost" size="sm" asChild>
-                  <Link to={`/insights/${entry.id || entry.slug}`}>{entry.title}</Link>
-                </AptButton>
-              ))}
-            </div>
-          </div>
-        ) : null}
-      </div>
-    </AptCard>
-  );
-
-  return (
-    <ContentDetailPage
-      backHref="/proof"
-      backLabel="Back to Proof"
-      item={item}
-      markdown={markdown}
-      aboutTitle="Reference Model Summary"
-      markdownTitle={item.title}
-      headerMeta={headerMeta}
-      heroFallback={heroFallback}
-      mainTop={mainTop}
-      mainBottom={mainBottom}
-      sidebarTop={sidebarTop}
-      actionsOverride={actionsOverride}
-    />
   );
 }

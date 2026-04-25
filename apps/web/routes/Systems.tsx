@@ -1,71 +1,139 @@
-import { useMemo } from "react";
-import { AlertTriangle, CheckCircle2, FileText, Layers3 } from "lucide-react";
-import { AptButton, AptCard, AptCardContent, AptCardHeader, AptCardTitle, AptTag, DesignDocVersionSwitcher, ReviewBundleCallout, RuntimeConfigNotice, SectionIntro } from "@/components/apt";
-import { SystemCard } from "@/components/apt/SystemCard";
-import { getWorkerApiConfigError, tryGetWorkerApiUrl } from "@/src/services/api";
-import { useDesignDocVersion } from "@/hooks/useDesignDocVersion";
-import { downloadWorkerMarkdown } from "@/src/services/download";
+import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+import { AptCard, AptCardDescription, AptCardTitle, AptTag, RuntimeConfigNotice, SectionIntro } from "@/components/apt";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
-import { useSystemsIndexQuery } from "@/hooks/useContentAggregateQueries";
+import { useContentIndexesQuery } from "@/hooks/useContentIndexQueries";
+import { getWorkerApiConfigError } from "@/src/services/api";
+import { systems as systemDefinitions } from "@/data/systems";
+
+type ProofTab = "all" | "systems" | "live-demos" | "case-studies";
+
+type ProofCardItem = {
+  id: string;
+  title: string;
+  description: string;
+  kind: "system" | "live-demo" | "case-study";
+  statusLabel: string;
+  tags: string[];
+  href: string;
+};
+
+const PROOF_TAB_ITEMS: Array<{ key: ProofTab; label: string }> = [
+  { key: "all", label: "All" },
+  { key: "systems", label: "Systems" },
+  { key: "live-demos", label: "Live Demos" },
+  { key: "case-studies", label: "Case Studies" },
+];
+
+function ProofCard({ item }: { item: ProofCardItem }) {
+  const kindLabel =
+    item.kind === "system"
+      ? "System"
+      : item.kind === "live-demo"
+        ? "Live Demo"
+        : "Case Study";
+
+  return (
+    <AptCard variant="interactive" padding="none" className="h-full">
+      <Link to={item.href} className="flex h-full flex-col p-6 focus:outline-none">
+        <div className="mb-4 flex items-start justify-between gap-3">
+          <AptTag variant="primary" size="sm">
+            {kindLabel}
+          </AptTag>
+          <AptTag variant="secondary" size="sm">
+            {item.statusLabel}
+          </AptTag>
+        </div>
+
+        <AptCardTitle className="text-[1.75rem] leading-tight transition-colors group-hover:text-primary md:text-2xl">
+          {item.title}
+        </AptCardTitle>
+        <AptCardDescription className="mt-2 line-clamp-2 text-base">
+          {item.description}
+        </AptCardDescription>
+
+        <div className="mt-4 flex flex-wrap gap-1.5">
+          {item.tags.slice(0, 3).map((tag) => (
+            <AptTag key={`${item.id}-${tag}`} variant="muted" size="sm">
+              {tag}
+            </AptTag>
+          ))}
+        </div>
+
+        <div className="mt-6 border-t border-border/60 pt-4 text-primary">
+          <ArrowRight className="ml-auto h-4 w-4" />
+        </div>
+      </Link>
+    </AptCard>
+  );
+}
 
 export default function Systems() {
+  const [activeTab, setActiveTab] = useState<ProofTab>("all");
+
   usePageMetadata({
     title: "Proof",
-    description: "Stable system references that capture reusable models, key decisions, tradeoffs, and related learning material.",
+    description:
+      "Working systems, live demos, and complete implementations. When a lab is interactive, complete, and demonstrable - it lives here.",
   });
 
-  const systemsVersion = useDesignDocVersion("systems");
-  const systemsQuery = useSystemsIndexQuery();
+  const proofQuery = useContentIndexesQuery(["systems", "demos", "design-reviews"]);
+  const loading = proofQuery.isLoading;
 
-  const operatingSignals = [
-    {
-      title: "Capture stable models, not passing ideas",
-      description: "A system belongs here when it has enough repeatable structure to be reused, taught, or referenced across projects.",
-    },
-    {
-      title: "Use it when experiments have converged",
-      description: "Experiments prove or explore. Systems document the models and patterns that survived that exploration.",
-    },
-    {
-      title: "Favor reusable logic over project trivia",
-      description: "What belongs here should clarify a pattern, boundary, or operating model that can travel beyond one isolated implementation.",
-    },
-  ];
+  const systems = useMemo(() => proofQuery.data?.systems || [], [proofQuery.data]);
+  const demos = useMemo(() => proofQuery.data?.demos || [], [proofQuery.data]);
+  const caseStudies = useMemo(() => proofQuery.data?.["design-reviews"] || [], [proofQuery.data]);
 
-  const artifacts = [
-    "A stable model with a clear purpose and scope",
-    "Key decisions that shape how the model works",
-    "Tradeoffs that explain what the model optimizes for",
-    "Links back to related experiments and learning content",
-  ];
+  const items = useMemo<ProofCardItem[]>(() => {
+    const systemItems = systems.map((system) => {
+      const definition = systemDefinitions.find((entry) => entry.id === system.id);
+      return {
+        id: system.id || system.slug || system.title,
+        title: system.title,
+        description: definition?.purpose || system.description || system.excerpt || "Reference system implementation",
+        kind: "system" as const,
+        statusLabel: "Stable",
+        tags:
+          system.concepts?.slice(0, 3) ||
+          definition?.concepts?.slice(0, 3) ||
+          [],
+        href: `/proof/${system.id || system.slug}`,
+      };
+    });
 
-  const antiPatterns = [
-    {
-      title: "Archive Everything",
-      description: "Not every finished project or experiment becomes a system. If it is not reusable as a model, it does not belong here.",
-    },
-    {
-      title: "Pattern Without Context",
-      description: "A reusable pattern is incomplete if it does not explain the problem it solves, the boundary it assumes, and the cost it introduces.",
-    },
-    {
-      title: "Reference Drift",
-      description: "A system stops being useful when the public reference no longer matches the actual design, code, or deployment reality.",
-    },
-  ];
-  const systemsDocUrl = tryGetWorkerApiUrl(systemsVersion.downloadApiPath);
-  const systemsCanonicalUrl = systemsVersion.canonicalPath || null;
+    const demoItems = demos.map((demo) => ({
+      id: demo.id || demo.slug || demo.title,
+      title: demo.title,
+      description: demo.description || "Interactive implementation",
+      kind: "live-demo" as const,
+      statusLabel: "Live",
+      tags: [...(demo.platforms || []), ...(demo.technologies || [])].slice(0, 3),
+      href: `/labs/live-demos/${demo.slug || demo.id}`,
+    }));
 
-  const handleSystemsMarkdownDownload = async () => {
-    const majorSuffix = systemsVersion.activeMajor ? `-v${systemsVersion.activeMajor}` : "";
-    await downloadWorkerMarkdown(systemsVersion.downloadApiPath, `apt-design-systems${majorSuffix}.md`);
-  };
+    const caseStudyItems = caseStudies.map((review) => ({
+      id: review.id || review.slug || review.title,
+      title: review.title.replace(/^Design Review:\s*/i, ""),
+      description: review.description || "Applied implementation case study",
+      kind: "case-study" as const,
+      statusLabel: "Stable",
+      tags: (review.concepts || []).slice(0, 3),
+      href: `/insights/${review.id || review.slug}`,
+    }));
 
-  const systems = useMemo(() => systemsQuery.data || [], [systemsQuery.data]);
-  const loading = systemsQuery.isLoading;
+    return [...systemItems, ...demoItems, ...caseStudyItems];
+  }, [systems, demos, caseStudies]);
+
+  const filteredItems = useMemo(() => {
+    if (activeTab === "all") return items;
+    if (activeTab === "systems") return items.filter((item) => item.kind === "system");
+    if (activeTab === "live-demos") return items.filter((item) => item.kind === "live-demo");
+    return items.filter((item) => item.kind === "case-study");
+  }, [activeTab, items]);
 
   if (loading) return <div className="container py-12 text-center">Loading systems…</div>;
-  if (systemsQuery.isError) {
+  if (proofQuery.isError) {
     const configError = getWorkerApiConfigError();
     return (
       <div className="container py-12">
@@ -76,149 +144,55 @@ export default function Systems() {
             expectedValue={configError.expectedProductionValue}
           />
         ) : (
-          <div className="text-center text-destructive">{systemsQuery.error?.message}</div>
+          <div className="text-center text-destructive">{proofQuery.error?.message}</div>
         )}
       </div>
     );
   }
 
   return (
-    <div className="container py-8 md:py-12">
-      <SectionIntro
-        title="Reference Models"
-        description="Inside APT, Systems are the stable reference layer: reusable models, patterns, and decision structures that persist after exploratory work has been clarified."
-        titleClassName="text-3xl md:text-4xl"
-        descriptionClassName="text-lg max-w-2xl"
-        eyebrow={<AptTag variant="accent">Systems</AptTag>}
-        className="mb-8"
-      >
-        <div className="flex flex-wrap gap-3">
-          <AptButton
-            variant="outline"
-            type="button"
-            onClick={() => {
-              void handleSystemsMarkdownDownload();
-            }}
-            disabled={!systemsDocUrl}
-          >
-            <FileText className="h-4 w-4" />
-            Download Systems Markdown
-          </AptButton>
-          {systemsCanonicalUrl ? (
-            <AptButton variant="ghost" asChild>
-              <a href={systemsCanonicalUrl} target="_blank" rel="noreferrer">
-                Open canonical
-              </a>
-            </AptButton>
-          ) : null}
-        </div>
-        <DesignDocVersionSwitcher versionState={systemsVersion} />
-      </SectionIntro>
-
-      <AptCard variant="subtle" className="mb-8">
-        <div className="p-6 text-sm text-muted-foreground">
-          <span className="font-semibold text-foreground">Proof</span> is the stable implementation layer: reusable reference models with documented purpose, decisions, and tradeoffs.
-          If you want early exploration, start in <span className="font-semibold text-foreground">Labs</span>. If you want complete and demonstrable system patterns, start here.
-        </div>
-      </AptCard>
-
-      <section className="mb-12">
+    <div className="container py-10 md:py-12">
+      <section className="space-y-3">
         <SectionIntro
-          title="When to Capture a System"
-          description="A model belongs here when it has matured beyond exploration and can now serve as a reusable reference."
-          className="mb-6"
+          title="Proof"
+          description="Working systems, live demos, and complete implementations. When a lab is interactive, complete, and demonstrable - it lives here."
+          titleClassName="text-3xl md:text-4xl"
+          descriptionClassName="text-lg max-w-3xl"
         />
-        <div className="grid gap-4 md:grid-cols-3">
-          {operatingSignals.map((signal) => (
-            <AptCard key={signal.title} variant="subtle">
-              <AptCardHeader>
-                <AptCardTitle className="text-lg">{signal.title}</AptCardTitle>
-              </AptCardHeader>
-              <AptCardContent>
-                <p className="text-sm text-muted-foreground">{signal.description}</p>
-              </AptCardContent>
-            </AptCard>
+      </section>
+
+      <div className="mt-8 border-b border-border/60">
+        <nav className="flex flex-wrap items-center gap-1" aria-label="Proof tabs">
+          {PROOF_TAB_ITEMS.map((item) => (
+            <button
+              key={item.key}
+              type="button"
+              onClick={() => setActiveTab(item.key)}
+              className={
+                activeTab === item.key
+                  ? "inline-flex items-center border-b-2 border-primary px-3 py-2 text-sm font-medium text-foreground"
+                  : "inline-flex items-center border-b-2 border-transparent px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              }
+            >
+              {item.label}
+            </button>
           ))}
-        </div>
-      </section>
-
-      <section className="mb-12">
-        <SectionIntro
-          title="What a Good System Contains"
-          description="Each entry should be useful as a reusable model, not just a record of something that happened once."
-          className="mb-6"
-        />
-        <AptCard variant="default" padding="large">
-          <div className="grid gap-4 md:grid-cols-2">
-            {artifacts.map((artifact) => (
-              <div key={artifact} className="flex items-start gap-3 rounded-lg border border-border/60 bg-background/40 p-4">
-                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <p className="text-sm text-muted-foreground">{artifact}</p>
-              </div>
-            ))}
-          </div>
-        </AptCard>
-      </section>
-
-      <section className="mb-12">
-        <SectionIntro
-          title="Reference Failure Modes"
-          description="These are the most common ways a system reference becomes less useful than the work it is supposed to clarify."
-          className="mb-6"
-        />
-        <div className="grid gap-4 md:grid-cols-3">
-          {antiPatterns.map((item) => (
-            <AptCard key={item.title} variant="subtle">
-              <AptCardHeader>
-                <div className="flex items-center gap-3">
-                  <div className="rounded-lg bg-primary/10 p-2 text-primary">
-                    <AlertTriangle className="h-4 w-4" />
-                  </div>
-                  <AptCardTitle className="text-lg">{item.title}</AptCardTitle>
-                </div>
-              </AptCardHeader>
-              <AptCardContent>
-                <p className="text-sm text-muted-foreground">{item.description}</p>
-              </AptCardContent>
-            </AptCard>
-          ))}
-        </div>
-      </section>
-
-      <section className="mb-8">
-        <SectionIntro
-          title="Browse Reference Models"
-          description="These models capture reusable structures and patterns inside the APT design doctrine."
-          className="mb-6"
-        />
-      </section>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {systems.map((system) => (
-          <SystemCard key={system.id} system={system} to={`/proof/${system.id}`} />
-        ))}
+        </nav>
       </div>
 
-      <AptCard variant="feature" padding="large" className="mt-12">
-        <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
-          <div className="flex items-center gap-4">
-            <div className="rounded-lg bg-primary/10 p-3 text-primary">
-              <Layers3 className="h-6 w-6" />
-            </div>
-            <div>
-              <AptTag variant="outline" size="sm" className="mb-2">Framing Note</AptTag>
-              <h3 className="text-xl font-semibold mb-1">“Systems” currently means reference models</h3>
-              <p className="text-muted-foreground">
-                If we rename this area later, the clearest candidates are <span className="font-medium text-foreground">Reference Models</span>,
-                <span className="font-medium text-foreground"> Pattern Library</span>, or
-                <span className="font-medium text-foreground"> Operating Models</span>. Right now the page copy carries that meaning without changing the IA.
-              </p>
-            </div>
-          </div>
+      <section className="mt-8">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {filteredItems.map((item) => (
+            <ProofCard key={item.id} item={item} />
+          ))}
         </div>
-      </AptCard>
 
-      <ReviewBundleCallout />
+        {filteredItems.length === 0 ? (
+          <div className="py-12 text-center text-muted-foreground">
+            No proof items found for this tab.
+          </div>
+        ) : null}
+      </section>
     </div>
   );
 }
