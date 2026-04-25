@@ -16,10 +16,33 @@ import {
   SectionIntro,
 } from "@/components/apt";
 import { AssistantChat, ASSISTANT_CHAT_ENABLED } from "@/features/assistant/AssistantChat";
-import { Network, ArrowRight, Scale, FlaskConical, BookOpen } from "lucide-react";
+import { Network, ArrowRight, Scale, FlaskConical, BookOpen, Lightbulb, Hammer, BadgeCheck, Share2 } from "lucide-react";
 import { getStatusTagDefinition } from "@/lib/tagSemantics";
 
-const pillars = [
+const loopSteps = [
+  {
+    icon: Lightbulb,
+    title: "Think",
+    description: "Frame the problem and constraints first.",
+  },
+  {
+    icon: Hammer,
+    title: "Build",
+    description: "Prototype in Labs: small, observable artifacts.",
+  },
+  {
+    icon: BadgeCheck,
+    title: "Prove",
+    description: "Graduate working systems into Proof.",
+  },
+  {
+    icon: Share2,
+    title: "Share",
+    description: "Document what worked and why in Insights.",
+  },
+] as const;
+
+const coreAreas = [
   {
     icon: Scale,
     title: "Principles",
@@ -129,21 +152,19 @@ export default function Home() {
         secondaryCta={{ label: "Read Insights", to: "/insights" }}
       />
 
-      {/* ...existing code... */}
-
-      {/* What You'll Find Here */}
+      {/* How APT works */}
       <section className="container py-12 md:py-16">
         <SectionIntro
           title="How APT Works"
-          description="Principles shape decisions, Labs test ideas, Proof captures stable systems, and Insights turn outcomes into reusable learning."
+          description="Think · Build · Prove · Share — a small loop, repeated."
           align="center"
           className="mb-10"
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-          {pillars.map((pillar, index) => (
+          {loopSteps.map((step, index) => (
             <AptCard
-              key={pillar.title}
+              key={step.title}
               variant="feature"
               padding="large"
               className="apt-slide-up"
@@ -151,21 +172,52 @@ export default function Home() {
             >
               <div className="flex items-start gap-4 mb-4">
                 <div className="p-2.5 rounded-lg bg-primary/10 text-primary">
-                  <pillar.icon className="h-6 w-6" />
+                  <step.icon className="h-6 w-6" />
                 </div>
               </div>
               <AptCardHeader className="p-0">
-                <AptCardTitle className="text-lg">{pillar.title}</AptCardTitle>
+                <AptCardTitle className="text-lg">{step.title}</AptCardTitle>
                 <AptCardDescription className="mt-2 text-sm">
-                  {pillar.description}
+                  {step.description}
+                </AptCardDescription>
+              </AptCardHeader>
+            </AptCard>
+          ))}
+        </div>
+      </section>
+
+      {/* Core areas */}
+      <section className="container py-6 md:py-10">
+        <SectionIntro
+          title="Core areas"
+          description="Principles → Labs → Proof → Insights."
+          align="center"
+          className="mb-10"
+        />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          {coreAreas.map((area, index) => (
+            <AptCard
+              key={area.title}
+              variant="feature"
+              padding="large"
+              className="apt-slide-up"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="flex items-start gap-4 mb-4">
+                <div className="p-2.5 rounded-lg bg-primary/10 text-primary">
+                  <area.icon className="h-6 w-6" />
+                </div>
+              </div>
+              <AptCardHeader className="p-0">
+                <AptCardTitle className="text-lg">{area.title}</AptCardTitle>
+                <AptCardDescription className="mt-2 text-sm">
+                  {area.description}
                 </AptCardDescription>
               </AptCardHeader>
               <AptCardFooter className="border-0 pt-4 mt-auto">
-                <AptButton variant="primary" size="sm" asChild>
-                  <Link to={pillar.demoLink}>Explore</Link>
-                </AptButton>
                 <AptButton variant="ghost" size="sm" asChild>
-                  <Link to={pillar.docsLink}>Read docs</Link>
+                  <Link to={area.demoLink}>Explore</Link>
                 </AptButton>
               </AptCardFooter>
             </AptCard>
@@ -182,10 +234,10 @@ export default function Home() {
       ) : null}
 
 
-      {/* Featured */}
+      {/* Feature cards */}
       <section className="container py-12 md:py-16">
         <SectionIntro
-          title="Featured"
+          title="Feature cards"
           description="A curated set of recent highlights across Labs, Proof, and Insights."
           className="mb-8"
         />
@@ -260,6 +312,25 @@ export default function Home() {
             </Link>
           </AptButton>
         </div>
+      </section>
+
+      <section className="container pb-14 md:pb-20">
+        <AptCard variant="feature" padding="large" className="mx-auto max-w-3xl text-center">
+          <AptCardHeader className="p-0">
+            <AptCardTitle>Not sure where to start?</AptCardTitle>
+            <AptCardDescription className="mt-2">
+              Read the principles for context, or skim the about page for backstory.
+            </AptCardDescription>
+          </AptCardHeader>
+          <AptCardFooter className="border-0 mt-5 justify-center gap-3">
+            <AptButton asChild>
+              <Link to="/principles">Read Principles</Link>
+            </AptButton>
+            <AptButton variant="ghost" asChild>
+              <Link to="/about">About</Link>
+            </AptButton>
+          </AptCardFooter>
+        </AptCard>
       </section>
     </div>
   );
