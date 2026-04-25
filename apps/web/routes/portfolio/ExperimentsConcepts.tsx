@@ -3,6 +3,7 @@ import { LabCard } from "@/components/apt/LabCard";
 import { ContentFilters, FilterConfig, SelectedFilters, RuntimeConfigNotice } from "@/components/apt";
 import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
 import { getWorkerApiConfigError } from "@/src/services/api";
+import { LabsTabs } from "./LabsTabs";
 
 export default function ExperimentsConcepts() {
   const [selected, setSelected] = useState<SelectedFilters>({
@@ -44,13 +45,15 @@ export default function ExperimentsConcepts() {
   }, [labs, selected]);
 
   return (
-    <div className="container py-12 md:py-16">
+    <div className="container py-10 md:py-12 space-y-8">
       <div className="max-w-2xl mb-8">
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Lab Concepts</h1>
         <p className="text-lg text-muted-foreground">
           Early conceptual builds and prototype directions that give an idea its first coherent form.
         </p>
       </div>
+
+      <LabsTabs />
 
       <ContentFilters
         config={config}

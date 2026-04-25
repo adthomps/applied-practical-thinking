@@ -125,6 +125,20 @@ export function useExperimentsLabsIndexQuery() {
   });
 }
 
+export function useLabsAndDemosIndexQuery() {
+  return useQuery<ContentIndexItem[], Error>({
+    queryKey: queryKeys.labsMixedIndex(),
+    queryFn: async () => {
+      const [labs, demos] = await Promise.all([
+        fetchContentIndex("labs"),
+        fetchContentIndex("demos"),
+      ]);
+      return [...labs, ...demos];
+    },
+    staleTime: FIVE_MINUTES_MS,
+  });
+}
+
 export function useLegacyLabsIndexQuery() {
   return useQuery<ContentIndexItem[], Error>({
     queryKey: queryKeys.labsLegacyIndex(),
@@ -164,4 +178,3 @@ export function useAboutInsightsCountQuery() {
     staleTime: FIVE_MINUTES_MS,
   });
 }
-

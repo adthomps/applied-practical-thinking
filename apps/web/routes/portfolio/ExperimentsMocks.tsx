@@ -3,6 +3,7 @@ import { LabCard } from "@/components/apt/LabCard";
 import { ContentFilters, FilterConfig, SelectedFilters, RuntimeConfigNotice } from "@/components/apt";
 import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
 import { getWorkerApiConfigError } from "@/src/services/api";
+import { LabsTabs } from "./LabsTabs";
 
 export default function ExperimentsMocks() {
   const [selected, setSelected] = useState<SelectedFilters>({
@@ -44,13 +45,15 @@ export default function ExperimentsMocks() {
   }, [labs, selected]);
 
   return (
-    <div className="container py-12 md:py-16">
+    <div className="container py-10 md:py-12 space-y-8">
       <div className="max-w-2xl mb-8">
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Lab Mocks</h1>
         <p className="text-lg text-muted-foreground">
           Framed experience representations that clarify structure, flow, and direction before implementation hardens.
         </p>
       </div>
+
+      <LabsTabs />
 
       <ContentFilters
         config={config}

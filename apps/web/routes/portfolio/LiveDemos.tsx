@@ -4,6 +4,7 @@ import { DemoCard } from "@/components/apt/DemoCard";
 import { ContentFilters, FilterConfig, SelectedFilters, RuntimeConfigNotice } from "@/components/apt";
 import { fetchContentIndex, ContentIndexItem } from "@/src/services/contentIndex";
 import { getWorkerApiConfigError } from "@/src/services/api";
+import { LabsTabs } from "./LabsTabs";
 
 export default function PortfolioLiveDemos() {
   const [selected, setSelected] = useState<SelectedFilters>({
@@ -62,7 +63,7 @@ export default function PortfolioLiveDemos() {
   }, [filteredDemos]);
 
   return (
-    <div className="container py-12 md:py-16">
+    <div className="container py-10 md:py-12 space-y-8">
       <div className="max-w-2xl mb-8">
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
           Live Demos
@@ -71,6 +72,8 @@ export default function PortfolioLiveDemos() {
           Interactive working demos nested under Labs. This is the runnable proof layer for concepts, mocks, and prototypes that have become observable enough to click through.
         </p>
       </div>
+
+      <LabsTabs />
 
       <ContentFilters
         config={config}

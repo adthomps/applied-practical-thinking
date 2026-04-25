@@ -23,6 +23,7 @@ export const queryKeys = {
   podcastsIndex: () => ["learn", "podcasts-index"] as const,
   guidesAndReviewsIndex: () => ["learn", "guides-and-reviews"] as const,
   experimentsLabsIndex: () => ["experiments", "labs-index"] as const,
+  labsMixedIndex: () => ["labs", "mixed-index"] as const,
   labsLegacyIndex: () => ["labs", "legacy-index"] as const,
   systemsIndex: () => ["design", "systems-index"] as const,
   aboutExperimentsCount: () => ["about", "experiments-count"] as const,

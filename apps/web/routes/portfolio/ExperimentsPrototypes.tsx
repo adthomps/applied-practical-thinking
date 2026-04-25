@@ -3,6 +3,7 @@ import { LabCard } from "@/components/apt/LabCard";
 import { ContentFilters, type FilterConfig, type SelectedFilters, RuntimeConfigNotice } from "@/components/apt";
 import { fetchContentIndex, type ContentIndexItem } from "@/src/services/contentIndex";
 import { getWorkerApiConfigError } from "@/src/services/api";
+import { LabsTabs } from "./LabsTabs";
 
 const PROTOTYPE_TYPES = new Set(["prototype", "demo", "lab"]);
 
@@ -46,13 +47,15 @@ export default function ExperimentsPrototypes() {
   }, [labs, selected]);
 
   return (
-    <div className="container py-12 md:py-16">
+    <div className="container py-10 md:py-12 space-y-8">
       <div className="max-w-2xl mb-8">
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Lab Prototypes</h1>
         <p className="text-lg text-muted-foreground">
           Mid-stage implementation artifacts that move ideas from mock structure into runnable behavior.
         </p>
       </div>
+
+      <LabsTabs />
 
       <ContentFilters
         config={config}
