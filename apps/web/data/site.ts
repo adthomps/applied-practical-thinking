@@ -1,4 +1,5 @@
-import { aptPrinciplesNavSections } from "./aptPrinciples";
+import { designNavSections } from "./designSections";
+import { principleNavSections } from "@/src/data/principles";
 
 // Site-level configuration
 export const siteConfig = {
@@ -79,10 +80,24 @@ export const siteConfig = {
       ],
     },
     {
-      label: "Principles",
+      label: "Design",
       path: "/design",
-      description: "APT's principles-first doctrine, standards, references, and runtime documentation surfaces.",
-      children: aptPrinciplesNavSections,
+      description: "Design doctrine, architecture, patterns, and public documentation surfaces.",
+      children: [
+        {
+          label: "Principles Summary",
+          path: "/principles",
+          description: "Curated public summary of the APT principles system.",
+          tagline: "Public-facing summary layer linked to canonical source.",
+        },
+        ...designNavSections,
+      ],
+    },
+    {
+      label: "Principles",
+      path: "/principles",
+      description: "APT principles summary pages with direct links to canonical apt-principles sources.",
+      children: principleNavSections,
     },
     {
       label: "About",

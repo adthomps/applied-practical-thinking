@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route, Navigate, useParams } from "react-router-
 import { AptLayout } from "@/components/apt/AptLayout";
 import { resolveWorkerApiBase } from "@/src/services/api";
 import { lazyWithRetry } from "@/lib/lazyWithRetry";
+import { resolvePrincipleSlug } from "@/src/data/principles";
 
 // Pages
 import Home from "./routes/Home";
@@ -32,8 +33,8 @@ const PortfolioExperimentsConcepts = lazyWithRetry(() => import("./routes/portfo
 const PortfolioExperimentsMocks = lazyWithRetry(() => import("./routes/portfolio/ExperimentsMocks"));
 const PortfolioDesignSystem = lazyWithRetry(() => import("./routes/portfolio/DesignSystem"));
 const PortfolioDesignThinking = lazyWithRetry(() => import("./routes/portfolio/DesignThinking"));
-const PortfolioPrinciples = lazyWithRetry(() => import("./routes/portfolio/Principles"));
-const PortfolioPrincipleDetail = lazyWithRetry(() => import("./routes/portfolio/PrincipleDetail"));
+const PrinciplesHome = lazyWithRetry(() => import("./routes/principles/PrinciplesHome"));
+const PrinciplesDetail = lazyWithRetry(() => import("./routes/principles/PrinciplesDetail"));
 const PortfolioDesignThinkingFrameworkDetail = lazyWithRetry(() => import("./routes/portfolio/DesignThinkingFrameworkDetail"));
 const PortfolioDesignArchitecture = lazyWithRetry(() => import("./routes/portfolio/DesignArchitecture"));
 const PortfolioDesignArchitecturePatternDetail = lazyWithRetry(() => import("./routes/portfolio/DesignArchitecturePatternDetail"));
@@ -99,6 +100,12 @@ const LegacySystemRedirect = () => {
   return <Navigate to={id ? `/design/systems/${id}` : "/design/systems"} replace />;
 };
 
+const LegacyDesignPrinciplesRedirect = () => {
+  const { group } = useParams<{ group: string }>();
+  const resolved = resolvePrincipleSlug(group);
+  return <Navigate to={resolved ? `/principles/${resolved}` : "/principles"} replace />;
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -143,8 +150,8 @@ const App = () => (
             <Route path="/design" element={<Portfolio />} />
             <Route path="/design/system" element={<PortfolioDesignSystem />} />
             <Route path="/design/thinking" element={<PortfolioDesignThinking />} />
-            <Route path="/design/principles" element={<PortfolioPrinciples />} />
-            <Route path="/design/principles/:group" element={<PortfolioPrincipleDetail />} />
+            <Route path="/design/principles" element={<Navigate to="/principles" replace />} />
+            <Route path="/design/principles/:group" element={<LegacyDesignPrinciplesRedirect />} />
             <Route path="/design/thinking/:framework" element={<PortfolioDesignThinkingFrameworkDetail />} />
             <Route path="/design/architecture" element={<PortfolioDesignArchitecture />} />
             <Route path="/design/architecture/:pattern" element={<PortfolioDesignArchitecturePatternDetail />} />
@@ -158,6 +165,20 @@ const App = () => (
             <Route path="/design/systems/:id" element={<SystemDetail />} />
             <Route path="/design/content-strategy" element={<PortfolioContentStrategy />} />
             <Route path="/design/review-bundle" element={<PortfolioReviewBundle />} />
+            <Route path="/principles" element={<PrinciplesHome />} />
+            <Route path="/principles/framework" element={<PrinciplesDetail initialSection="framework" />} />
+            <Route path="/principles/thinking" element={<PrinciplesDetail initialSection="thinking" />} />
+            <Route path="/principles/design" element={<PrinciplesDetail initialSection="design" />} />
+            <Route path="/principles/architecture" element={<PrinciplesDetail initialSection="architecture" />} />
+            <Route path="/principles/system" element={<PrinciplesDetail initialSection="system" />} />
+            <Route path="/principles/execution" element={<PrinciplesDetail initialSection="execution" />} />
+            <Route path="/principles/quality" element={<PrinciplesDetail initialSection="quality" />} />
+            <Route path="/principles/release" element={<PrinciplesDetail initialSection="release" />} />
+            <Route path="/principles/operations" element={<PrinciplesDetail initialSection="operations" />} />
+            <Route path="/principles/knowledge" element={<PrinciplesDetail initialSection="knowledge" />} />
+            <Route path="/principles/ai" element={<PrinciplesDetail initialSection="ai" />} />
+            <Route path="/principles/security" element={<PrinciplesDetail initialSection="security" />} />
+            <Route path="/principles/:section" element={<PrinciplesDetail />} />
             
             {/* About */}
             <Route path="/about" element={<About />} />
