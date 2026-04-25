@@ -118,6 +118,46 @@ Production values:
 - `VITE_API_BASE=https://applied-practical-thinking.apt-account.workers.dev`
 - `PUBLIC_SITE_ORIGIN=https://appliedpracticalthinking.com`
 
+## APT Principles Sync (Canonical to Public)
+
+`apt-principles` is the canonical source for the public APT Principles content shown in this site. This repo is the public consumer and deploy target.
+
+Refresh flow after canonical updates:
+
+```sh
+pnpm --dir apps/web run generate-apt-principles-public
+pnpm --dir apps/web run validation-report
+pnpm --dir apps/web run build-content-index
+pnpm --dir apps/web run copy-content-to-public
+```
+
+Commit regenerated artifacts:
+
+- `apps/web/public/docs/apt/**`
+- `apps/web/data/generated/aptPrinciplesPublicManifest.ts`
+
+Optional source override (for non-default local paths):
+
+```sh
+APT_PRINCIPLES_ROOT=../apt-principles pnpm --dir apps/web run generate-apt-principles-public
+```
+
+PowerShell form:
+
+```powershell
+$env:APT_PRINCIPLES_ROOT="../apt-principles"
+pnpm --dir apps/web run generate-apt-principles-public
+```
+
+Deploy note:
+
+- Cloudflare Pages typically builds this repo only. In that context, the generator may log:
+  - `apt-principles source not found; reusing committed public docs artifacts`
+- That warning is expected when committed generated artifacts are present and current.
+- If canonical refresh is required in CI, run builds in an environment where `apt-principles` is checked out (or provide `APT_PRINCIPLES_ROOT`).
+
+Canonical runbook location: `apt-principles/examples/workflows/apt-principles-public-sync-flow.md`.
+
 ## Content and design guardrails
 
 - Source content lives in `apps/web/content/` and authored registries live in `apps/web/data/`

@@ -24,6 +24,7 @@ Use examples when a principle needs a reusable pattern, sample contract, state m
 - `thinking/` - problem framing and decision clarity
 - `ui/` - layout and interaction patterns
 - `workflows/` - spec, preview, release flows
+  - includes canonical-to-public sync runbooks for `apt-principles` consumers
 
 ## Rule
 

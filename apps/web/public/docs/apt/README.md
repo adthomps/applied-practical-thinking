@@ -86,6 +86,27 @@ Projects should document local decisions and exceptions instead of casually fork
 
 Real APT examples include `apt-coach`, `apt-dream-to-reality`, `apt-novel-reviewer`, `apt-payment-rpc-api`, `crt-world`, and future APT projects.
 
+## Public Publish Sync (Applied Practical Thinking)
+
+`applied-practical-thinking` is the public presentation layer and should publish APT principles from this canonical package.
+
+Canonical workflow:
+
+1. Update doctrine/build-kit/reference content in `apt-principles`.
+2. In `applied-practical-thinking`, run:
+   - `pnpm --dir apps/web run generate-apt-principles-public`
+   - `pnpm --dir apps/web run validation-report`
+   - `pnpm --dir apps/web run build-content-index`
+   - `pnpm --dir apps/web run copy-content-to-public`
+3. Commit regenerated public artifacts in `applied-practical-thinking`, including:
+   - `apps/web/public/docs/apt/**`
+   - `apps/web/data/generated/aptPrinciplesPublicManifest.ts`
+4. Deploy from `applied-practical-thinking`.
+
+If the canonical source folder is unavailable in a CI environment, the consumer repo may reuse committed generated artifacts. This is expected in single-repo deploy contexts like Cloudflare Pages. To force refresh from canonical source, provide `APT_PRINCIPLES_ROOT` or check out `apt-principles` alongside the consumer repo.
+
+Reference runbook example: `examples/workflows/apt-principles-public-sync-flow.md`.
+
 ## Validation
 
 Run the local doctrine/build-kit validator before expanding or reorganizing content:

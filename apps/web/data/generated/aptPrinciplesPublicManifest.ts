@@ -345,7 +345,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "5c1ee6d5b929015c6c209743ceb894bcbf12ba180a91afbf635455cbec9a22f8"
+    "checksum": "184f91a4ad20e033d519c061b7c50d514cab2dcdb4b34b557684fc942fefb7ed"
   },
   {
     "id": "examples-security-login-session-flow",
@@ -418,6 +418,18 @@ export const aptPrinciplesPublicManifest = [
     "status": "draft",
     "lastUpdated": "2026-04-24",
     "checksum": "91a713ad2a0a748127373fac83c456cc7da59c8c62380839cb146df9452c0d6e"
+  },
+  {
+    "id": "examples-workflows-apt-principles-public-sync-flow",
+    "title": "APT Principles Public Sync Flow",
+    "kind": "example",
+    "principleArea": "workflows",
+    "sourcePath": "apt-principles/examples/workflows/apt-principles-public-sync-flow.md",
+    "publicPath": "/docs/apt/examples/workflows/apt-principles-public-sync-flow.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-04-25",
+    "checksum": "72c9784658bbec963dc8bc1dddaa45cfae5d5b127e8fd215120ab613abd77ff4"
   },
   {
     "id": "examples-workflows-preview-to-prod-flow",
@@ -633,7 +645,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "a68eef8d136b96d47b2933e2630cad254ca142d64a242f6ff7d3fbafd4ddc84f"
+    "checksum": "785d830da1590566345a994b6d249924ffcca9126e2b96f29bb79c88430f3427"
   },
   {
     "id": "references-ai-review-bundle",
