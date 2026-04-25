@@ -31,7 +31,6 @@ import {
   aptLifecycleFlow,
   aptPrincipleGroups,
   aptPrincipleGroupsById,
-  aptPrinciplesFrameworkIndex,
   aptPrinciplesFrameworkPublicDocMeta,
   aptPrinciplesFrameworkPublicDocPath,
   type AptPrincipleGroupId,
@@ -91,11 +90,7 @@ export default function PortfolioPrinciples() {
         >
           <div className="flex flex-wrap items-center gap-2">
             <AptTag variant="secondary">{aptPrinciplesFrameworkPublicDocMeta?.version || "v1"}</AptTag>
-            <AptTag variant="outline">{aptPrinciplesFrameworkPublicDocMeta?.status || "draft"}</AptTag>
             <AptTag variant="muted">Updated {formatDate(aptPrinciplesFrameworkPublicDocMeta?.lastUpdated)}</AptTag>
-            {aptPrinciplesFrameworkPublicDocMeta?.checksum ? (
-              <AptTag variant="muted">sha {aptPrinciplesFrameworkPublicDocMeta.checksum.slice(0, 8)}</AptTag>
-            ) : null}
           </div>
           <div className="flex flex-wrap gap-3">
             <AptButton
@@ -141,41 +136,6 @@ export default function PortfolioPrinciples() {
 
       <section>
         <SectionIntro
-          title="Framework Index"
-          description="Canonical 11-entry index for scanability and deep-link navigation."
-          className="mb-6"
-        />
-        <AptCard variant="feature" padding="large">
-          <ol className="space-y-3">
-            {aptPrinciplesFrameworkIndex.map((item) => (
-              <li key={item.id}>
-                <div className="rounded-md border border-border/60 bg-background/40 p-3">
-                  <Link
-                    to={item.path}
-                    className="flex items-start justify-between gap-3 transition-colors hover:text-primary"
-                  >
-                    <div className="space-y-1">
-                      <p className="text-sm font-medium text-foreground">{item.label}</p>
-                      <p className="text-xs text-muted-foreground">{item.description}</p>
-                    </div>
-                    <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground" />
-                  </Link>
-                  {item.frameworkPath ? (
-                    <div className="mt-2">
-                      <Link to={item.frameworkPath} className="text-xs text-muted-foreground hover:text-foreground">
-                        Scan in framework section
-                      </Link>
-                    </div>
-                  ) : null}
-                </div>
-              </li>
-            ))}
-          </ol>
-        </AptCard>
-      </section>
-
-      <section>
-        <SectionIntro
           title="Core Principle Groups"
           description="Canonical source-linked groups with operational focus, standards, and expected outputs."
           className="mb-6"
@@ -184,6 +144,8 @@ export default function PortfolioPrinciples() {
         <div className="grid gap-6 md:grid-cols-2">
           {aptPrincipleGroups.map((group) => {
             const Icon = groupIcons[group.id] || Layers3;
+            const focusIntent = group.focus[0] || group.detailSummary;
+            const outputsPreview = group.outputs.slice(0, 2).join(" • ");
             return (
               <section key={group.id} id={group.anchor} className="scroll-mt-24">
                 <AptCard variant="interactive" padding="large">
@@ -202,45 +164,31 @@ export default function PortfolioPrinciples() {
                   <AptCardContent className="space-y-5 p-0">
                     <div className="flex flex-wrap items-center gap-2">
                       <AptTag variant="secondary">{group.publicDocMeta?.version || "v1"}</AptTag>
-                      <AptTag variant="outline">{group.publicDocMeta?.status || "draft"}</AptTag>
                       <AptTag variant="muted">Updated {formatDate(group.publicDocMeta?.lastUpdated)}</AptTag>
-                      {group.publicDocMeta?.checksum ? (
-                        <AptTag variant="muted">sha {group.publicDocMeta.checksum.slice(0, 8)}</AptTag>
-                      ) : null}
                     </div>
-                    <div>
-                      <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-2">Focus</p>
-                      <ul className="space-y-1.5 text-sm text-muted-foreground">
-                        {group.focus.map((item) => (
-                          <li key={`${group.id}-focus-${item}`} className="flex items-start gap-2">
-                            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    <p className="text-sm text-muted-foreground">
+                      <span className="font-medium text-foreground">Focus:</span> {focusIntent}
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      <span className="font-medium text-foreground">Outputs:</span>{" "}
+                      {outputsPreview}
+                      {group.outputs.length > 2 ? ` +${group.outputs.length - 2} more` : ""}
+                    </p>
 
-                    <div>
-                      <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-2">Outputs</p>
-                      <ul className="space-y-1.5 text-sm text-muted-foreground">
-                        {group.outputs.map((item) => (
-                          <li key={`${group.id}-output-${item}`} className="flex items-start gap-2">
-                            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="flex items-center justify-end gap-2">
+                    <div className="flex items-center justify-between gap-2">
+                      {group.publicDocPath ? (
+                        <a
+                          href={group.publicDocPath}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-sm text-muted-foreground hover:text-foreground"
+                        >
+                          View source doc
+                        </a>
+                      ) : <span />}
                       <AptButton variant="outline" asChild>
                         <Link to={group.detailPath}>Open detail</Link>
                       </AptButton>
-                      {group.publicDocPath ? (
-                        <AptButton variant="ghost" asChild>
-                          <a href={group.publicDocPath} target="_blank" rel="noreferrer">Open source doc</a>
-                        </AptButton>
-                      ) : null}
                     </div>
                   </AptCardContent>
                 </AptCard>
@@ -253,36 +201,24 @@ export default function PortfolioPrinciples() {
       <section>
         <SectionIntro
           title="How It All Fits Together"
-          description="Lifecycle progression from strategy to operations, with AI as a cross-layer accelerator."
+          description="Compact lifecycle view from strategy to operations with AI as an overlay."
           className="mb-6"
         />
-        <AptCard variant="feature" padding="large">
-          <AptCardHeader className="p-0">
-            <AptCardTitle className="text-xl">Lifecycle Map</AptCardTitle>
-            <AptCardDescription>
-              {"Thinking -> Design -> Architecture -> System -> Execution -> Quality & Testing -> Release & Change Management -> Operations -> Knowledge"}
-            </AptCardDescription>
-          </AptCardHeader>
-          <AptCardContent className="p-0 mt-6 space-y-4">
-            <div className="flex flex-wrap items-center gap-2">
-              {aptLifecycleFlow.map((id, index) => {
-                const group = aptPrincipleGroupsById[id];
-                return (
-                  <div key={id} className="flex items-center gap-2">
-                    <AptTag variant="secondary">{group.shortTitle}</AptTag>
-                    {index < aptLifecycleFlow.length - 1 ? <ArrowRight className="h-4 w-4 text-muted-foreground" /> : null}
-                  </div>
-                );
-              })}
-            </div>
-            <div className="rounded-lg border border-border/60 bg-background/50 p-4">
-              <p className="text-sm text-muted-foreground">
-                <span className="font-medium text-foreground">{aptPrincipleGroupsById[aptAiOverlayGroupId].displayLabel}</span>
-                {" "}acts as an augmentation layer across every stage: prompts, workflows, execution support, and evaluation.
-              </p>
-            </div>
-          </AptCardContent>
-        </AptCard>
+        <div className="flex flex-wrap items-center gap-2">
+          {aptLifecycleFlow.map((id, index) => {
+            const group = aptPrincipleGroupsById[id];
+            return (
+              <div key={id} className="flex items-center gap-2">
+                <AptTag variant="secondary">{group.shortTitle}</AptTag>
+                {index < aptLifecycleFlow.length - 1 ? <ArrowRight className="h-4 w-4 text-muted-foreground" /> : null}
+              </div>
+            );
+          })}
+        </div>
+        <p className="text-sm text-muted-foreground mt-3">
+          <span className="font-medium text-foreground">{aptPrincipleGroupsById[aptAiOverlayGroupId].displayLabel}</span>{" "}
+          applies across every lifecycle stage.
+        </p>
       </section>
 
       <section>
