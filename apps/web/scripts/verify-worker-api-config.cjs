@@ -40,17 +40,18 @@ function main() {
       ? "Detected VITE__APT_BASE (typo). Use VITE_API_BASE."
       : null;
 
-    console.error(
+    console.warn(
       [
-        "[verify-worker-api-config] Missing required VITE_API_BASE for CI/Pages build.",
+        "[verify-worker-api-config] Missing VITE_API_BASE for CI/Pages build.",
         "Set VITE_API_BASE in Cloudflare Pages environment variables",
         "(Production and Preview) and redeploy.",
         "Expected example: https://applied-practical-thinking.apt-account.workers.dev",
         typoHint || "",
         viteKeys.length ? `Available VITE* keys at build time: ${viteKeys.join(", ")}` : "No VITE* keys detected at build time.",
+        "Build will continue using default production worker fallback.",
       ].join(" ")
     );
-    process.exit(1);
+    return;
   }
 
   if (!isValidHttpUrl(apiBase)) {

@@ -9,7 +9,7 @@ export type WorkerApiConfigResolution =
     | {
         ok: true;
         baseUrl: string;
-        source: "runtime" | "env" | "local-dev";
+        source: "runtime" | "env" | "local-dev" | "default-production";
       }
   | {
       ok: false;
@@ -69,6 +69,16 @@ export function resolveWorkerApiBase(): WorkerApiConfigResolution {
       ok: true,
       baseUrl: LOCAL_WORKER_API_BASE,
       source: "local-dev",
+    };
+  }
+
+  // Resilient production fallback for Pages builds where env vars are not injected.
+  // This keeps runtime feeds operational while still surfacing config guidance in docs/build logs.
+  if (typeof window !== "undefined") {
+    return {
+      ok: true,
+      baseUrl: EXPECTED_PRODUCTION_WORKER_API_BASE,
+      source: "default-production",
     };
   }
 

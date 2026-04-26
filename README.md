@@ -112,7 +112,8 @@ For this reason:
 - worker API base must be explicit in production (no implicit host fallback)
 - `PUBLIC_SITE_ORIGIN` must exist in the Worker runtime environment
 - GitHub Desktop pushes source changes only; Cloudflare Pages is what builds the frontend deploy
-- web CI/Pages builds now run a prebuild guard (`apps/web/scripts/verify-worker-api-config.cjs`) and will fail if `VITE_API_BASE` is missing or invalid
+- web CI/Pages builds run a prebuild guard (`apps/web/scripts/verify-worker-api-config.cjs`) that warns on missing/invalid `VITE_API_BASE`
+- if missing at runtime, the web app falls back to the known production worker base (`https://applied-practical-thinking.apt-account.workers.dev`)
 
 Production values:
 
