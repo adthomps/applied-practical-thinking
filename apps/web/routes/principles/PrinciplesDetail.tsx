@@ -1,5 +1,5 @@
 import { Link, Navigate, useParams } from "react-router-dom";
-import { ArrowLeft, ExternalLink, Github } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink, Github } from "lucide-react";
 import {
   AptButton,
   AptCard,
@@ -66,6 +66,9 @@ export default function PrinciplesDetail(props: PrinciplesDetailProps) {
   const rulesSource = section.sourceAnchors.find((anchor) => anchor.id === "rules")?.href || section.sourceHref;
   const patternsSource = section.sourceAnchors.find((anchor) => anchor.id === "patterns")?.href || section.sourceHref;
   const aiSource = section.sourceAnchors.find((anchor) => anchor.id === "ai")?.href || section.sourceHref;
+  const sectionIndex = principlesSections.findIndex((item) => item.slug === section.slug);
+  const previousSection = sectionIndex > 0 ? principlesSections[sectionIndex - 1] : null;
+  const nextSection = sectionIndex < principlesSections.length - 1 ? principlesSections[sectionIndex + 1] : null;
 
   const getExampleType = (href: string) => {
     if (href.startsWith("/labs")) return "Lab";
@@ -95,6 +98,51 @@ export default function PrinciplesDetail(props: PrinciplesDetailProps) {
             </div>
             <h1 className="text-4xl font-bold tracking-tight md:text-5xl">{section.title}</h1>
             <p className="max-w-4xl text-2xl leading-relaxed text-muted-foreground">{section.summary}</p>
+            <div className="flex flex-wrap gap-2 pt-1">
+              {section.sourceAnchors.map((anchor) => (
+                <a
+                  key={anchor.id}
+                  href={anchor.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 rounded-md border border-border/60 px-2 py-1 text-xs text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                >
+                  {anchor.label}
+                  <ExternalLink className="h-3 w-3" />
+                </a>
+              ))}
+            </div>
+          </section>
+
+          <section>
+            <SectionIntro title="Operational Summary" className="mb-5" />
+            <AptCard variant="default" padding="large">
+              <div className="grid gap-5 md:grid-cols-2">
+                <div className="space-y-2">
+                  <h3 className="text-sm font-semibold uppercase tracking-wide text-foreground">Focus</h3>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    {section.operationalSummary.focus.map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-sm font-semibold uppercase tracking-wide text-foreground">Outputs</h3>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    {section.operationalSummary.outputs.map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <p className="mt-4 text-sm text-foreground">{section.operationalSummary.practicalExample}</p>
+            </AptCard>
           </section>
 
           <section>
@@ -160,6 +208,34 @@ export default function PrinciplesDetail(props: PrinciplesDetailProps) {
           </section>
 
           <section>
+            <SectionIntro title="When To Use" className="mb-4" />
+            <AptCard variant="default" padding="large">
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                {section.whenToUse.map((cue) => (
+                  <li key={cue} className="flex items-start gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                    <span>{cue}</span>
+                  </li>
+                ))}
+              </ul>
+            </AptCard>
+          </section>
+
+          <section>
+            <SectionIntro title="When Not To Use" className="mb-4" />
+            <AptCard variant="default" padding="large">
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                {section.whenNotToUse.map((cue) => (
+                  <li key={cue} className="flex items-start gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-destructive" />
+                    <span>{cue}</span>
+                  </li>
+                ))}
+              </ul>
+            </AptCard>
+          </section>
+
+          <section>
             <SectionIntro title="Patterns" className="mb-4" />
             <div className="grid gap-3 md:grid-cols-2">
               {section.patterns.map((pattern) => (
@@ -196,6 +272,37 @@ export default function PrinciplesDetail(props: PrinciplesDetailProps) {
               </AptCard>
             </section>
           ) : null}
+
+          <section>
+            <SectionIntro title="Prompt Starter" className="mb-4" />
+            <AptCard variant="default" padding="large">
+              <p className="text-sm text-foreground"><span className="font-semibold">Goal:</span> {section.promptStarter.goal}</p>
+              <div className="mt-4 grid gap-4 md:grid-cols-2">
+                <div>
+                  <h3 className="text-sm font-semibold uppercase tracking-wide text-foreground">Inputs</h3>
+                  <ul className="mt-2 space-y-2 text-sm text-muted-foreground">
+                    {section.promptStarter.inputs.map((input) => (
+                      <li key={input} className="flex items-start gap-2">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                        <span>{input}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold uppercase tracking-wide text-foreground">Expected Output Format</h3>
+                  <ul className="mt-2 space-y-2 text-sm text-muted-foreground">
+                    {section.promptStarter.expectedOutputFormat.map((formatItem) => (
+                      <li key={formatItem} className="flex items-start gap-2">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                        <span>{formatItem}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </AptCard>
+          </section>
 
           <section>
             <SectionIntro title="AI Usage" className="mb-5" />
@@ -237,10 +344,34 @@ export default function PrinciplesDetail(props: PrinciplesDetailProps) {
                   size="sm"
                   asChild
                 >
-                  <Link to={`/principles/${item.slug}`}>{item.title}</Link>
+                  <Link className="text-xs" to={`/principles/${item.slug}`}>{item.title}</Link>
                 </AptButton>
               ))}
             </div>
+          </section>
+
+          <section>
+            <SectionIntro title="Adjacent Principles" className="mb-4" />
+            <AptCard variant="default" padding="small">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                {previousSection ? (
+                  <AptButton variant="ghost" size="sm" asChild>
+                    <Link to={`/principles/${previousSection.slug}`}>
+                      <ArrowLeft className="h-4 w-4" />
+                      {previousSection.title}
+                    </Link>
+                  </AptButton>
+                ) : <span className="text-xs text-muted-foreground">Start of sequence</span>}
+                {nextSection ? (
+                  <AptButton variant="ghost" size="sm" asChild>
+                    <Link to={`/principles/${nextSection.slug}`}>
+                      {nextSection.title}
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </AptButton>
+                ) : <span className="text-xs text-muted-foreground">End of sequence</span>}
+              </div>
+            </AptCard>
           </section>
         </main>
 
@@ -271,6 +402,26 @@ export default function PrinciplesDetail(props: PrinciplesDetailProps) {
               )}
             </AptCard>
           </section>
+
+          {section.relatedArtifacts.length > 0 ? (
+            <section>
+              <SectionIntro title="Related Artifacts" className="mb-4" />
+              <AptCard variant="default" padding="small">
+                <div className="space-y-3">
+                  {section.relatedArtifacts.map((artifact) => (
+                    <Link
+                      key={`${artifact.href}-${artifact.label}`}
+                      to={artifact.href}
+                      className="block rounded-md border border-border/60 p-3 transition-colors hover:border-primary/50"
+                    >
+                      <p className="text-sm font-medium text-foreground">{artifact.label}</p>
+                      <p className="mt-1 text-xs text-muted-foreground">{artifact.note}</p>
+                    </Link>
+                  ))}
+                </div>
+              </AptCard>
+            </section>
+          ) : null}
 
           <section>
             <SectionIntro title="Source of Truth" className="mb-4" />

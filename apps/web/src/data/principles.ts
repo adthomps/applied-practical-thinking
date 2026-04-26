@@ -32,6 +32,24 @@ export type PrincipleMoreDetail = {
   readonly antiPatterns: readonly string[];
 };
 
+export type PrincipleOperationalSummary = {
+  readonly focus: readonly string[];
+  readonly outputs: readonly string[];
+  readonly practicalExample: string;
+};
+
+export type PrinciplePromptStarter = {
+  readonly goal: string;
+  readonly inputs: readonly string[];
+  readonly expectedOutputFormat: readonly string[];
+};
+
+export type PrincipleRelatedArtifact = {
+  readonly label: string;
+  readonly href: string;
+  readonly note: string;
+};
+
 export type PrincipleSection = {
   readonly slug: PrincipleSlug;
   readonly title: string;
@@ -45,9 +63,23 @@ export type PrincipleSection = {
   readonly sourceAnchors: readonly PrincipleSourceAnchor[];
   readonly aiUsage: readonly string[];
   readonly moreDetail: PrincipleMoreDetail;
+  readonly operationalSummary: PrincipleOperationalSummary;
+  readonly whenToUse: readonly string[];
+  readonly whenNotToUse: readonly string[];
+  readonly promptStarter: PrinciplePromptStarter;
+  readonly relatedArtifacts: readonly PrincipleRelatedArtifact[];
 };
 
-type PrincipleSectionSeed = Omit<PrincipleSection, "sourceAnchors" | "moreDetail">;
+type PrincipleSectionSeed = Omit<
+  PrincipleSection,
+  | "sourceAnchors"
+  | "moreDetail"
+  | "operationalSummary"
+  | "whenToUse"
+  | "whenNotToUse"
+  | "promptStarter"
+  | "relatedArtifacts"
+>;
 
 export const PRINCIPLES_GITHUB_ROOT = "https://github.com/adthomps/apt-principles/blob/main/apt-principles";
 
@@ -281,6 +313,132 @@ const principleGuidanceBySlug: Record<PrincipleSlug, PrincipleMoreDetail> = {
       "UI-only access controls for protected operations.",
       "Security notes detached from real deployment workflows.",
     ],
+  },
+};
+
+const principleOperationalSummaryBySlug: Record<PrincipleSlug, PrincipleOperationalSummary> = {
+  framework: {
+    focus: ["Lifecycle alignment", "Principle coverage", "Cross-layer governance"],
+    outputs: ["Framework map", "Coverage checkpoints", "Release-ready evidence bundle"],
+    practicalExample: "Use framework mapping to keep Labs, Proof, and Insights changes aligned before release.",
+  },
+  thinking: {
+    focus: ["Problem framing", "Constraint clarity", "Outcome definition"],
+    outputs: ["Decision log entries", "Tradeoff notes", "Outcome hypotheses"],
+    practicalExample: "Before building a new feed route, document context, alternatives, and why one path is chosen.",
+  },
+  design: {
+    focus: ["State-complete interfaces", "Consistency", "Usability under real conditions"],
+    outputs: ["UI state matrix", "Interaction rules", "Component usage guidance"],
+    practicalExample: "Build list/detail pages with loading, empty, and error states before visual polish.",
+  },
+  architecture: {
+    focus: ["Boundaries", "Contracts", "Deployment-safe composition"],
+    outputs: ["Ownership map", "API contracts", "Integration constraints"],
+    practicalExample: "Move feed aggregation into Worker so Web only renders normalized contracts.",
+  },
+  system: {
+    focus: ["Shared vocabulary", "Contract consistency", "Reusable primitives"],
+    outputs: ["Common enums", "Normalized item shape", "Naming conventions"],
+    practicalExample: "Use one status vocabulary across Labs, Proof, and Insights cards.",
+  },
+  execution: {
+    focus: ["Incremental delivery", "Observable progress", "Proof with each step"],
+    outputs: ["Execution checklist", "Validation checkpoints", "Merge-ready slices"],
+    practicalExample: "Ship route shell, then data contract wiring, then UI refinement in separate tested steps.",
+  },
+  quality: {
+    focus: ["Contract integrity", "Regression safety", "Release evidence"],
+    outputs: ["Test results", "Build artifacts", "Runtime verification notes"],
+    practicalExample: "Run route contract tests and build checks before every deploy.",
+  },
+  release: {
+    focus: ["Promotion discipline", "Change visibility", "Rollback clarity"],
+    outputs: ["Release notes", "Risk summary", "Rollback path"],
+    practicalExample: "Deploy Worker contract updates before Web changes that consume them.",
+  },
+  operations: {
+    focus: ["Runtime observability", "Supportability", "Incident learning"],
+    outputs: ["Runbooks", "Triage guidance", "Operational feedback loops"],
+    practicalExample: "Surface configuration errors with clear operator guidance in UI.",
+  },
+  knowledge: {
+    focus: ["Canonical ownership", "Curated presentation", "Reuse at scale"],
+    outputs: ["Source anchors", "Project adoption records", "Knowledge contracts"],
+    practicalExample: "Keep doctrine in apt-principles and serve concise summaries in applied-practical-thinking.",
+  },
+  ai: {
+    focus: ["Prompt contracts", "Agent guardrails", "Human-reviewed output"],
+    outputs: ["Prompt starter formats", "Review checklists", "Agent execution evidence"],
+    practicalExample: "Use structured prompt-output format when reviewing principle-aligned changes.",
+  },
+  security: {
+    focus: ["Trust boundaries", "Auth/authz separation", "Risk-aware operations"],
+    outputs: ["Security checks", "Boundary map", "Mitigation records"],
+    practicalExample: "Validate that public feed endpoints enforce expected access and exposure controls.",
+  },
+};
+
+const principlePromptStarterBySlug: Record<PrincipleSlug, PrinciplePromptStarter> = {
+  framework: {
+    goal: "Evaluate a change against the full APT lifecycle before promotion.",
+    inputs: ["Change summary", "Impacted routes/contracts", "Validation evidence available"],
+    expectedOutputFormat: ["Lifecycle impact map", "Risks and gaps", "Go/no-go recommendation"],
+  },
+  thinking: {
+    goal: "Frame a problem before selecting implementation details.",
+    inputs: ["Problem statement", "Constraints", "Success conditions"],
+    expectedOutputFormat: ["Problem framing", "Alternatives considered", "Chosen direction with rationale"],
+  },
+  design: {
+    goal: "Design a route experience with complete states and consistent interactions.",
+    inputs: ["User flow", "State matrix", "Existing design primitives"],
+    expectedOutputFormat: ["State coverage checklist", "Component plan", "Failure-state handling"],
+  },
+  architecture: {
+    goal: "Define stable boundaries and contracts for a multi-layer change.",
+    inputs: ["Producer/consumer list", "Data contracts", "Deployment sequencing constraints"],
+    expectedOutputFormat: ["Boundary map", "Contract definitions", "Migration steps"],
+  },
+  system: {
+    goal: "Normalize naming and schema across related surfaces.",
+    inputs: ["Current vocabularies", "Conflicting fields", "Target shared model"],
+    expectedOutputFormat: ["Unified schema", "Mapping rules", "Adoption checklist"],
+  },
+  execution: {
+    goal: "Break work into verifiable increments with low integration risk.",
+    inputs: ["Target outcome", "Dependencies", "Acceptance criteria"],
+    expectedOutputFormat: ["Ordered work slices", "Validation per slice", "Rollback-safe merge plan"],
+  },
+  quality: {
+    goal: "Define confidence gates for a proposed change.",
+    inputs: ["Changed areas", "Risk level", "Current test coverage"],
+    expectedOutputFormat: ["Required checks", "Evidence matrix", "Residual risk notes"],
+  },
+  release: {
+    goal: "Prepare promotion notes that are actionable for operators.",
+    inputs: ["Change list", "Known risks", "Rollback plan"],
+    expectedOutputFormat: ["Release summary", "Promotion checklist", "Operator handoff notes"],
+  },
+  operations: {
+    goal: "Improve runtime support posture for user-facing routes.",
+    inputs: ["Runtime dependencies", "Observed failure modes", "Support expectations"],
+    expectedOutputFormat: ["Runbook update", "Alert/diagnostic guidance", "Escalation triggers"],
+  },
+  knowledge: {
+    goal: "Capture reusable knowledge without duplicating doctrine.",
+    inputs: ["Canonical source paths", "Curated summary scope", "Consumer projects"],
+    expectedOutputFormat: ["Update plan", "Reference links", "Adoption guidance"],
+  },
+  ai: {
+    goal: "Produce principle-aligned AI instructions with deterministic outputs.",
+    inputs: ["Task objective", "Constraints", "Expected evidence format"],
+    expectedOutputFormat: ["Prompt contract", "Output schema", "Validation and review checklist"],
+  },
+  security: {
+    goal: "Assess trust and access implications before implementation.",
+    inputs: ["Flows changed", "Boundary assumptions", "Sensitive operations"],
+    expectedOutputFormat: ["Threat checklist", "Control decisions", "Verification requirements"],
   },
 };
 
@@ -674,6 +832,15 @@ export const principlesSections: readonly PrincipleSection[] = principlesSection
   })),
   sourceAnchors: createSourceAnchors(section.sourceHref),
   moreDetail: principleGuidanceBySlug[section.slug],
+  operationalSummary: principleOperationalSummaryBySlug[section.slug],
+  whenToUse: principleGuidanceBySlug[section.slug].decisionCues,
+  whenNotToUse: principleGuidanceBySlug[section.slug].antiPatterns,
+  promptStarter: principlePromptStarterBySlug[section.slug],
+  relatedArtifacts: section.examples.map((example) => ({
+    label: example.label,
+    href: example.href,
+    note: inferExampleRationale(section, example),
+  })),
 }));
 
 const sectionMap = new Map(principlesSections.map((section) => [section.slug, section]));
