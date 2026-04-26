@@ -62,6 +62,10 @@ export default function PrinciplesDetail(props: PrinciplesDetailProps) {
 
   const section = getPrincipleSection(resolvedSlug);
   const codeSnippet = EXAMPLE_CODE_SNIPPETS[section.slug];
+  const summarySource = section.sourceAnchors.find((anchor) => anchor.id === "summary")?.href || section.sourceHref;
+  const rulesSource = section.sourceAnchors.find((anchor) => anchor.id === "rules")?.href || section.sourceHref;
+  const patternsSource = section.sourceAnchors.find((anchor) => anchor.id === "patterns")?.href || section.sourceHref;
+  const aiSource = section.sourceAnchors.find((anchor) => anchor.id === "ai")?.href || section.sourceHref;
 
   const getExampleType = (href: string) => {
     if (href.startsWith("/labs")) return "Lab";
@@ -95,6 +99,27 @@ export default function PrinciplesDetail(props: PrinciplesDetailProps) {
 
           <section>
             <SectionIntro title="Summary" description={section.role} />
+            <div className="mt-3">
+              <a
+                href={summarySource}
+                target="_blank"
+                rel="noreferrer"
+                className="text-sm text-primary hover:underline"
+              >
+                Read canonical summary context
+              </a>
+            </div>
+            <details className="mt-4 rounded-md border border-border/60 bg-muted/20 p-3">
+              <summary className="cursor-pointer text-sm font-medium text-foreground">More detail</summary>
+              <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                {section.moreDetail.decisionCues.map((cue) => (
+                  <li key={cue} className="flex items-start gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                    <span>{cue}</span>
+                  </li>
+                ))}
+              </ul>
+            </details>
           </section>
 
           <section>
@@ -109,6 +134,22 @@ export default function PrinciplesDetail(props: PrinciplesDetailProps) {
                 ))}
               </ul>
             </AptCard>
+            <div className="mt-3">
+              <a href={rulesSource} target="_blank" rel="noreferrer" className="text-sm text-primary hover:underline">
+                Read canonical rules and standards
+              </a>
+            </div>
+            <details className="mt-4 rounded-md border border-border/60 bg-muted/20 p-3">
+              <summary className="cursor-pointer text-sm font-medium text-foreground">More detail</summary>
+              <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                {section.moreDetail.failureModes.map((failureMode) => (
+                  <li key={failureMode} className="flex items-start gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-destructive" />
+                    <span>{failureMode}</span>
+                  </li>
+                ))}
+              </ul>
+            </details>
           </section>
 
           <section>
@@ -127,6 +168,22 @@ export default function PrinciplesDetail(props: PrinciplesDetailProps) {
                 </AptCard>
               ))}
             </div>
+            <div className="mt-3">
+              <a href={patternsSource} target="_blank" rel="noreferrer" className="text-sm text-primary hover:underline">
+                Read canonical patterns and usage
+              </a>
+            </div>
+            <details className="mt-4 rounded-md border border-border/60 bg-muted/20 p-3">
+              <summary className="cursor-pointer text-sm font-medium text-foreground">More detail</summary>
+              <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                {section.moreDetail.implementationHeuristics.map((heuristic) => (
+                  <li key={heuristic} className="flex items-start gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                    <span>{heuristic}</span>
+                  </li>
+                ))}
+              </ul>
+            </details>
           </section>
 
           {codeSnippet ? (
@@ -152,6 +209,22 @@ export default function PrinciplesDetail(props: PrinciplesDetailProps) {
                 ))}
               </ul>
             </AptCard>
+            <div className="mt-3">
+              <a href={aiSource} target="_blank" rel="noreferrer" className="text-sm text-primary hover:underline">
+                Read canonical AI and agent guidance
+              </a>
+            </div>
+            <details className="mt-4 rounded-md border border-border/60 bg-muted/20 p-3">
+              <summary className="cursor-pointer text-sm font-medium text-foreground">More detail</summary>
+              <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                {section.moreDetail.antiPatterns.map((antiPattern) => (
+                  <li key={antiPattern} className="flex items-start gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-500" />
+                    <span>{antiPattern}</span>
+                  </li>
+                ))}
+              </ul>
+            </details>
           </section>
 
           <section>
@@ -187,7 +260,7 @@ export default function PrinciplesDetail(props: PrinciplesDetailProps) {
                         <p className="text-sm font-medium text-foreground">{example.label}</p>
                         <AptTag variant="muted" size="sm">{getExampleType(example.href)}</AptTag>
                       </div>
-                      <p className="text-xs text-muted-foreground">{example.href}</p>
+                      <p className="text-xs text-muted-foreground">{example.rationale}</p>
                     </Link>
                   ))}
                 </div>

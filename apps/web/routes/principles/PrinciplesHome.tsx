@@ -79,9 +79,12 @@ export default function PrinciplesHome() {
                 </AptCardDescription>
 
                 <div className="mt-6 flex-1 border-t border-border/60 pt-4">
-                  <div className="flex items-center justify-between text-sm text-muted-foreground">
-                    <span>{section.keyRules.length} rules · {section.examples.length} examples</span>
-                    <ArrowRight className="h-4 w-4 text-primary" />
+                  <div className="space-y-1.5 text-sm text-muted-foreground">
+                    <div className="flex items-center justify-between">
+                      <span>{section.keyRules.length} rules · {section.examples.length} examples</span>
+                      <ArrowRight className="h-4 w-4 text-primary" />
+                    </div>
+                    <p className="text-xs text-muted-foreground/90">Includes decision cues + mapped examples</p>
                   </div>
                 </div>
               </Link>

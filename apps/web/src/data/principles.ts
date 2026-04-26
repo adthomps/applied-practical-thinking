@@ -16,6 +16,20 @@ export type PrincipleExample = {
   readonly label: string;
   readonly href: string;
   readonly status?: "planned" | "available";
+  readonly rationale?: string;
+};
+
+export type PrincipleSourceAnchor = {
+  readonly id: "summary" | "rules" | "patterns" | "ai";
+  readonly label: string;
+  readonly href: string;
+};
+
+export type PrincipleMoreDetail = {
+  readonly decisionCues: readonly string[];
+  readonly failureModes: readonly string[];
+  readonly implementationHeuristics: readonly string[];
+  readonly antiPatterns: readonly string[];
 };
 
 export type PrincipleSection = {
@@ -28,8 +42,12 @@ export type PrincipleSection = {
   readonly patterns: readonly string[];
   readonly examples: readonly PrincipleExample[];
   readonly sourceHref: string;
+  readonly sourceAnchors: readonly PrincipleSourceAnchor[];
   readonly aiUsage: readonly string[];
+  readonly moreDetail: PrincipleMoreDetail;
 };
+
+type PrincipleSectionSeed = Omit<PrincipleSection, "sourceAnchors" | "moreDetail">;
 
 export const PRINCIPLES_GITHUB_ROOT = "https://github.com/adthomps/apt-principles/blob/main/apt-principles";
 
@@ -47,7 +65,257 @@ export const principlesLifecycle = [
   "Secure",
 ] as const;
 
-export const principlesSections: readonly PrincipleSection[] = [
+const principleGuidanceBySlug: Record<PrincipleSlug, PrincipleMoreDetail> = {
+  framework: {
+    decisionCues: [
+      "Use framework-first planning when work touches more than one APT layer.",
+      "Apply framework review before promotion if change affects public behavior or governance.",
+    ],
+    failureModes: [
+      "Treating principle docs as optional reference instead of operating criteria.",
+      "Shipping changes without mapping impacts across lifecycle stages.",
+    ],
+    implementationHeuristics: [
+      "Start every initiative with lifecycle mapping and expected artifacts.",
+      "Require one validation checkpoint for each impacted principle area.",
+    ],
+    antiPatterns: [
+      "Framework bypass under schedule pressure.",
+      "Publishing doctrine changes without aligned examples/checklists.",
+    ],
+  },
+  thinking: {
+    decisionCues: [
+      "Use when goals feel ambiguous or solution options are diverging.",
+      "Apply before architecture selection to avoid premature implementation bias.",
+    ],
+    failureModes: [
+      "Jumping directly into build tasks without measurable outcomes.",
+      "Capturing assumptions without planned validation signals.",
+    ],
+    implementationHeuristics: [
+      "Write problem + constraint + outcome triplet before coding.",
+      "Record one explicit tradeoff per major decision.",
+    ],
+    antiPatterns: [
+      "Polished demos that do not answer the original problem.",
+      "Unbounded problem framing that never converges to action.",
+    ],
+  },
+  design: {
+    decisionCues: [
+      "Use when a flow introduces new states, decisions, or navigation paths.",
+      "Apply when consistency and readability must be preserved across routes.",
+    ],
+    failureModes: [
+      "Shipping partial state handling (missing empty/error behavior).",
+      "Adding bespoke interaction patterns that ignore shared primitives.",
+    ],
+    implementationHeuristics: [
+      "Design full state matrix before route/component implementation.",
+      "Prefer existing card/filter/navigation patterns before inventing variants.",
+    ],
+    antiPatterns: [
+      "UI density spikes without hierarchy controls.",
+      "Mixing content guidance and implementation details in one surface.",
+    ],
+  },
+  architecture: {
+    decisionCues: [
+      "Use when responsibilities split across web, worker, and shared packages.",
+      "Apply whenever new API contracts are introduced or changed.",
+    ],
+    failureModes: [
+      "Cross-layer coupling that bypasses explicit contracts.",
+      "Route/UI assumptions that are not mirrored in worker contracts.",
+    ],
+    implementationHeuristics: [
+      "Define producer/consumer boundaries before writing route handlers.",
+      "Encode normalization in one layer (worker) and keep UI compositional.",
+    ],
+    antiPatterns: [
+      "Client-side reassembly of fragmented sources for core feeds.",
+      "Architecture choices documented only in PR comments.",
+    ],
+  },
+  system: {
+    decisionCues: [
+      "Use when introducing shared terminology, statuses, or tags.",
+      "Apply when consistency drift appears across routes and cards.",
+    ],
+    failureModes: [
+      "Parallel vocabularies for status/type fields.",
+      "Inconsistent naming between docs, routes, and data contracts.",
+    ],
+    implementationHeuristics: [
+      "Promote shared enums/shape contracts to package-level types.",
+      "Run consistency checks before expanding UI variants.",
+    ],
+    antiPatterns: [
+      "One-off local conventions for public surfaces.",
+      "Copy-pasted metadata schemas across multiple files.",
+    ],
+  },
+  execution: {
+    decisionCues: [
+      "Use when sequencing multi-step work across data, UI, and docs.",
+      "Apply when release confidence depends on incremental validation.",
+    ],
+    failureModes: [
+      "Large refactors without checkpointed verification.",
+      "Skipping preview validation for user-facing route changes.",
+    ],
+    implementationHeuristics: [
+      "Split changes into route-safe vertical slices.",
+      "Attach concrete validation evidence to each merge unit.",
+    ],
+    antiPatterns: [
+      "Single PRs that mix unrelated behavior changes.",
+      "Build-first execution without acceptance criteria.",
+    ],
+  },
+  quality: {
+    decisionCues: [
+      "Use whenever user-critical routes or data contracts change.",
+      "Apply when feed/runtime behavior depends on cross-deploy alignment.",
+    ],
+    failureModes: [
+      "Treating lint/type checks as sufficient release proof.",
+      "Ignoring preview/runtime diagnostics in favor of local pass status.",
+    ],
+    implementationHeuristics: [
+      "Run contract + journey checks for every principle-route update.",
+      "Promote only when quality evidence matches change scope.",
+    ],
+    antiPatterns: [
+      "Manual spot checks with no reproducible evidence.",
+      "Shipping known warnings without ownership or follow-up.",
+    ],
+  },
+  release: {
+    decisionCues: [
+      "Use when releases span separate web and worker deployments.",
+      "Apply when config or env dependencies can break runtime behavior.",
+    ],
+    failureModes: [
+      "Releasing frontend without compatible backend contracts.",
+      "Production promotion without rollback-aware notes.",
+    ],
+    implementationHeuristics: [
+      "Sequence deploys by dependency direction (producer before consumer).",
+      "Include release note fields for risk, evidence, and rollback path.",
+    ],
+    antiPatterns: [
+      "Implicit release assumptions in team chat only.",
+      "Treating preview deploy success as full production readiness.",
+    ],
+  },
+  operations: {
+    decisionCues: [
+      "Use when runtime issues require fast triage and support context.",
+      "Apply when endpoint/config mismatch risk is non-trivial.",
+    ],
+    failureModes: [
+      "Incident response without route-specific diagnostics.",
+      "No explicit support path for user-visible degraded states.",
+    ],
+    implementationHeuristics: [
+      "Expose actionable runtime messages with operator-safe guidance.",
+      "Document environment dependencies alongside route contracts.",
+    ],
+    antiPatterns: [
+      "Ad hoc production fixes without runbook updates.",
+      "Treating operational lessons as transient, not reusable knowledge.",
+    ],
+  },
+  knowledge: {
+    decisionCues: [
+      "Use when balancing canonical doctrine with public summaries.",
+      "Apply when teams risk duplicating guidance across repos.",
+    ],
+    failureModes: [
+      "Drift between canonical docs and public summaries.",
+      "Unclear ownership for updates to shared doctrine surfaces.",
+    ],
+    implementationHeuristics: [
+      "Link outward to canonical docs from each major summary section.",
+      "Keep structured principles data centralized and test-guarded.",
+    ],
+    antiPatterns: [
+      "Copying large doctrine blocks into presentation routes.",
+      "Undocumented changes to public guidance contracts.",
+    ],
+  },
+  ai: {
+    decisionCues: [
+      "Use when AI output influences implementation or governance decisions.",
+      "Apply when prompt quality determines review and execution fidelity.",
+    ],
+    failureModes: [
+      "Unstructured prompts producing non-actionable outputs.",
+      "AI-generated changes promoted without principle-layer checks.",
+    ],
+    implementationHeuristics: [
+      "Use explicit expected-output structures for prompts.",
+      "Require AI outputs to cite assumptions, risks, and validation steps.",
+    ],
+    antiPatterns: [
+      "Treating AI confidence as release evidence.",
+      "Prompt sprawl without reusable contracts.",
+    ],
+  },
+  security: {
+    decisionCues: [
+      "Use when new flows cross trust boundaries or change auth behavior.",
+      "Apply when public route/data access patterns are modified.",
+    ],
+    failureModes: [
+      "Assuming authentication implies authorization.",
+      "Sensitive flows lacking explicit validation and audit points.",
+    ],
+    implementationHeuristics: [
+      "Model trust boundaries before implementing endpoint changes.",
+      "Capture security checks in release and quality evidence.",
+    ],
+    antiPatterns: [
+      "UI-only access controls for protected operations.",
+      "Security notes detached from real deployment workflows.",
+    ],
+  },
+};
+
+function inferExampleRationale(section: PrincipleSectionSeed, example: PrincipleExample) {
+  if (example.rationale?.trim()) return example.rationale;
+
+  if (example.href.startsWith("/labs/live-demos")) {
+    return `Shows ${section.title} in interactive, testable behavior before promotion.`;
+  }
+  if (example.href.startsWith("/labs")) {
+    return `Demonstrates how ${section.title} is applied during exploration and prototyping.`;
+  }
+  if (example.href.startsWith("/proof")) {
+    return `Demonstrates ${section.title} in stable, production-oriented system outcomes.`;
+  }
+  if (example.href.startsWith("/insights")) {
+    return `Provides narrative evidence and decisions connected to ${section.title}.`;
+  }
+  if (example.href.startsWith("/design")) {
+    return `Shows system-level guidance that supports ${section.title} decisions.`;
+  }
+
+  return `Illustrates practical usage of ${section.title} in the public APT surfaces.`;
+}
+
+function createSourceAnchors(sourceHref: string): readonly PrincipleSourceAnchor[] {
+  return [
+    { id: "summary", label: "Read canonical summary context", href: sourceHref },
+    { id: "rules", label: "Read canonical rules and standards", href: sourceHref },
+    { id: "patterns", label: "Read canonical patterns and usage", href: sourceHref },
+    { id: "ai", label: "Read canonical AI and agent guidance", href: sourceHref },
+  ];
+}
+
+const principlesSectionsSeed: readonly PrincipleSectionSeed[] = [
   {
     slug: "framework",
     title: "APT Principles Framework",
@@ -397,6 +665,16 @@ export const principlesSections: readonly PrincipleSection[] = [
     ],
   },
 ] as const;
+
+export const principlesSections: readonly PrincipleSection[] = principlesSectionsSeed.map((section) => ({
+  ...section,
+  examples: section.examples.map((example) => ({
+    ...example,
+    rationale: inferExampleRationale(section, example),
+  })),
+  sourceAnchors: createSourceAnchors(section.sourceHref),
+  moreDetail: principleGuidanceBySlug[section.slug],
+}));
 
 const sectionMap = new Map(principlesSections.map((section) => [section.slug, section]));
 
