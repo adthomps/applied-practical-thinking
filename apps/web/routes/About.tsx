@@ -62,26 +62,26 @@ export default function About() {
 
   const projectStats = [
     {
-      label: "Experiments",
+      label: "Labs",
       count: experimentsCount,
       icon: Play,
-      path: "/experiments",
+      path: "/labs",
       color: "text-primary",
-      description: "Concepts, mocks, and live proof",
+      description: "Concepts, mocks, prototypes, and live demos",
     },
     {
-      label: "Learn",
+      label: "Insights",
       count: insightsCount,
       icon: Book,
-      path: "/learn",
+      path: "/insights",
       color: "text-primary",
       description: "Articles, podcasts, and practice material",
     },
     {
-      label: "Systems",
+      label: "Proof",
       count: systems.length,
       icon: Settings,
-      path: "/design/systems",
+      path: "/proof",
       color: "text-muted-foreground",
       description: "Stable references inside the design doctrine",
     },
@@ -164,7 +164,7 @@ export default function About() {
                 {/* CTA Buttons */}
                 <div className="flex flex-wrap gap-3 justify-center md:justify-start">
                   <AptButton variant="primary" size="lg" asChild>
-                    <Link to="/experiments">View My Work</Link>
+                    <Link to="/labs">View My Work</Link>
                   </AptButton>
                   <AptButton variant="outline" size="lg" asChild>
                     <a href="#principles">

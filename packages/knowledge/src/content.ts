@@ -42,6 +42,51 @@ export interface ContentDetailResponse {
   markdown: string;
 }
 
+export const publicFeedTypes = ["labs", "proof", "insights"] as const;
+export type PublicFeedType = (typeof publicFeedTypes)[number];
+
+export type PublicFeedKind =
+  | "concept"
+  | "mock"
+  | "prototype"
+  | "live-demo"
+  | "system"
+  | "case-study"
+  | "blog"
+  | "podcast"
+  | "guide";
+
+export interface PublicFeedItem {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  summary?: string;
+  kind: PublicFeedKind;
+  type?: string;
+  status: string;
+  topics: string[];
+  concepts?: string[];
+  platforms: string[];
+  technologies: string[];
+  publishedAt?: string;
+  href: string;
+  contentPath: string;
+  sourceIndexType: ContentIndexType;
+  links?: Record<string, string | null | undefined>;
+  excerpt?: string;
+  date?: string;
+  duration?: string;
+  problem?: string;
+  thumbnail?: string;
+  assetBasePath?: string;
+}
+
+export interface PublicFeedDetailResponse {
+  item: PublicFeedItem | null;
+  markdown: string;
+}
+
 export interface PublicDesignDocItem {
   docId?: string;
   slug: string;

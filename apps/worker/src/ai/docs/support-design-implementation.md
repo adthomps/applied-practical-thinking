@@ -1,5 +1,10 @@
 ---
 title: Support Design Implementation
+version: v2
+status: candidate
+audience: developer
+visibility: public
+source: manual
 ---
 
 # Support Design — Implementation Guide

@@ -291,7 +291,7 @@ export default function LabDetail() {
             {relatedInsightItems.map((insight) => {
               const InsightIcon = insightTypeIcons[insight!.type];
               return (
-                <Link key={insight!.id} to={`/learn/${insight!.id}`}>
+                <Link key={insight!.id} to={`/insights/${insight!.id}`}>
                   <AptCard
                     variant="interactive"
                     padding="default"

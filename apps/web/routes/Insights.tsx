@@ -1,93 +1,52 @@
-import { useMemo, useState, type ComponentType } from "react";
-import { Book, FileText, Network, Podcast } from "lucide-react";
+import { useMemo, useState } from "react";
 import { InsightCard } from "@/components/apt/InsightCard";
 import {
   AptButton,
-  LandingSectionCardGrid,
-  RuntimeConfigNotice,
+  ContentStateGate,
   SectionIntro,
 } from "@/components/apt";
-import { siteConfig } from "@/data/site";
 import { getWorkerApiConfigError } from "@/src/services/api";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
-import { useInsightsIndexQuery } from "@/hooks/useContentAggregateQueries";
+import { useInsightsFeedQuery } from "@/hooks/useFeedQueries";
+import { toContentIndexItemFromFeed } from "@/src/services/feedAdapters";
 
-
-const areaIcons: Record<string, ComponentType<{ className?: string }>> = {
-  "/learn/articles": FileText,
-  "/learn/podcasts": Podcast,
-  "/learn/practice": Book,
-  "/learn/systems": Network,
-};
-
+type InsightFilter = "all" | "blog" | "podcast" | "case-study";
 
 export default function Insights() {
   usePageMetadata({
-    title: "Learn",
-    description: "Articles, podcasts, practice material, and systems for applied thinking, execution, and review.",
+    title: "Insights",
+    description:
+      "Blogs, podcasts, and case studies. Each piece connects concepts to working implementations in Labs and Proof.",
   });
 
-  const [filter, setFilter] = useState<string | "all">("all");
-  const insightsQuery = useInsightsIndexQuery();
+  const [filter, setFilter] = useState<InsightFilter>("all");
+  const insightsQuery = useInsightsFeedQuery();
 
   const insights = useMemo(() => insightsQuery.data || [], [insightsQuery.data]);
   const loading = insightsQuery.isLoading;
 
-  const filteredContent =
-    filter === "all"
-      ? insights
-      : insights.filter((c) =>
-          filter === "practice" ? c.type === "guide" || c.type === "design-review" : c.type === filter
-        );
+  const filteredContent = useMemo(() => {
+    if (filter === "all") return insights;
+    if (filter === "blog") return insights.filter((item) => item.kind === "blog");
+    if (filter === "podcast") return insights.filter((item) => item.kind === "podcast");
+    return insights.filter((item) => item.kind === "guide" || item.kind === "case-study");
+  }, [filter, insights]);
 
-  if (loading) {
-    return <div className="container py-12 text-center">Loading learning content…</div>;
-  }
-  if (insightsQuery.isError) {
-    const configError = getWorkerApiConfigError();
-    return (
-      <div className="container py-12">
-        {configError ? (
-          <RuntimeConfigNotice
-            message={configError.message}
-            envVar={configError.envVar}
-            expectedValue={configError.expectedProductionValue}
-          />
-        ) : (
-          <div className="text-center text-destructive">{insightsQuery.error?.message}</div>
-        )}
-      </div>
-    );
-  }
-
-  const learnNav = siteConfig.nav.find((n) => n.path === "/learn");
-  const areaSections = learnNav?.children ?? [];
-  const landingCards = areaSections.map((section) => ({
-    ...section,
-    icon: areaIcons[section.path] ?? Book,
-    metaLabel: "Learn",
-  }));
+  const configError = insightsQuery.isError ? getWorkerApiConfigError() : null;
 
   return (
-    <div className="container py-8 md:py-12 space-y-12">
+    <div className="container py-10 md:py-12 space-y-8">
       <section>
         <SectionIntro
-          title="Learn"
-          description="Articles, podcasts, practice material, and systems for applied thinking, execution, and review."
+          title="Insights"
+          description="Blogs, podcasts, and case studies. Each piece connects concepts to working implementations in Labs and Proof."
           titleClassName="text-3xl md:text-4xl"
-          descriptionClassName="text-lg"
+          descriptionClassName="text-lg max-w-3xl"
         />
       </section>
 
-      <LandingSectionCardGrid items={landingCards} />
-
       <section className="space-y-6">
-        <SectionIntro
-          title="Browse all Learn content"
-          description="Filter across articles, podcasts, guides, and design reviews to move from orientation into repeatable practice."
-        />
-
-        <div className="flex gap-2 mb-8">
+        <div className="flex flex-wrap gap-2 mb-2">
           <AptButton
             variant={filter === "all" ? "primary" : "ghost"}
             size="sm"
@@ -96,26 +55,41 @@ export default function Insights() {
             All
           </AptButton>
           {[
-            { type: "article", label: "Articles" },
-            { type: "podcast", label: "Podcasts" },
-            { type: "practice", label: "Practice" },
+            { type: "blog", label: "Blog" },
+            { type: "podcast", label: "Podcast" },
+            { type: "case-study", label: "Case Study" },
           ].map(({ type, label }) => (
             <AptButton
               key={type}
               variant={filter === type ? "primary" : "ghost"}
               size="sm"
-              onClick={() => setFilter(type)}
+              onClick={() => setFilter(type as InsightFilter)}
             >
               {label}
             </AptButton>
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {filteredContent.map((insight) => (
-            <InsightCard key={insight.id} insight={insight} to={`/learn/${insight.id}`} />
-          ))}
-        </div>
+        <ContentStateGate
+          loading={loading}
+          isError={insightsQuery.isError}
+          errorMessage={insightsQuery.error?.message || "Unable to load insight content."}
+          configError={configError}
+          empty={filteredContent.length === 0}
+          loadingLabel="Loading insight content…"
+          emptyLabel="No insight items match this tab yet."
+        >
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {filteredContent.map((insight) => (
+              <InsightCard
+                key={insight.id}
+                insight={toContentIndexItemFromFeed(insight)}
+                to={`/insights/${insight.id}`}
+                compact
+              />
+            ))}
+          </div>
+        </ContentStateGate>
       </section>
     </div>
   );

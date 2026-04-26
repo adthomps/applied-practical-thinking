@@ -65,3 +65,25 @@ export async function downloadWorkerMarkdown(pathname: string, filename: string)
     filename
   );
 }
+
+export async function downloadPublicMarkdown(pathname: string, filename: string) {
+  const path = pathname.startsWith("/") ? pathname : `/${pathname}`;
+  const response = await fetch(path, {
+    headers: {
+      Accept: "text/markdown, text/plain;q=0.9, */*;q=0.1",
+    },
+  });
+
+  if (!response.ok) {
+    const body = (await response.text()).trim().slice(0, 160);
+    throw new Error(
+      `Public markdown download failed for ${path}: ${response.status} ${response.statusText}${body ? `: ${body}` : ""}`
+    );
+  }
+
+  const markdown = await response.text();
+  triggerBlobDownload(
+    new Blob([markdown], { type: "text/markdown;charset=utf-8" }),
+    filename
+  );
+}

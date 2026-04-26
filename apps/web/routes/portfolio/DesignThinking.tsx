@@ -273,7 +273,7 @@ export default function PortfolioDesignThinking() {
                   ))}
                 </ul>
                 <AptButton variant="ghost" size="sm" asChild className="px-0">
-                  <Link to="/design/principles">
+                  <Link to="/principles">
                     Open full framework
                     <ArrowRight className="h-4 w-4" />
                   </Link>
@@ -344,7 +344,7 @@ export default function PortfolioDesignThinking() {
             description="Real decisions from APT projects, documented for reference."
           />
           <AptButton variant="ghost" asChild>
-            <Link to="/learn/practice">
+            <Link to="/insights/practice">
               All Practice <ArrowRight className="h-4 w-4" />
             </Link>
           </AptButton>

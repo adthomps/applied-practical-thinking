@@ -1,21 +1,22 @@
 
 import { useParams, Navigate } from "react-router-dom";
 import { ContentDetailPage } from "@/components/apt/ContentDetailPage";
-import { useContentDetail } from "@/hooks/useContentDetail";
+import { useFeedDetailQuery } from "@/hooks/useFeedQueries";
 import { FlaskConical, Book, FileText, Play } from "lucide-react";
 import { RuntimeConfigNotice } from "@/components/apt";
 import { getWorkerApiConfigError } from "@/src/services/api";
+import { toContentIndexItemFromFeed } from "@/src/services/feedAdapters";
 
 export default function PortfolioLabDetail() {
   const { id } = useParams<{ id: string }>();
-  const { item: lab, markdown, loading, error } = useContentDetail({
-    indexTypes: ["labs"],
-    idOrSlug: id,
-    match: "idOrSlug",
-  });
+  const detailQuery = useFeedDetailQuery("labs", id);
+  const lab = detailQuery.data?.item || null;
+  const markdown = detailQuery.data?.markdown || "";
+  const loading = detailQuery.isLoading;
+  const error = detailQuery.error?.message || (!loading && !lab ? "Not found" : null);
 
   if (!id) {
-    return <Navigate to="/experiments" replace />;
+    return <Navigate to="/labs" replace />;
   }
 
   if (loading) {
@@ -38,8 +39,10 @@ export default function PortfolioLabDetail() {
   }
 
   if (!lab) {
-    return <Navigate to="/experiments" replace />;
+    return <Navigate to="/labs" replace />;
   }
+
+  const labItem = toContentIndexItemFromFeed(lab);
 
   // Use a consistent fallback icon/label for missing images, matching article and guide detail pages.
   const typeIcons = {
@@ -62,9 +65,9 @@ export default function PortfolioLabDetail() {
 
   return (
     <ContentDetailPage
-      backHref="/experiments"
-      backLabel="Back to Experiments"
-      item={lab}
+      backHref="/labs"
+      backLabel="Back to Labs"
+      item={labItem}
       markdown={markdown}
       aboutTitle="About This Experiment"
       markdownTitle="Notes"

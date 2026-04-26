@@ -16,71 +16,102 @@ import {
   SectionIntro,
 } from "@/components/apt";
 import { AssistantChat, ASSISTANT_CHAT_ENABLED } from "@/features/assistant/AssistantChat";
-import { Brain, AppWindow, Network, ArrowRight } from "lucide-react";
+import { Network, ArrowRight, Scale, FlaskConical, BookOpen, Lightbulb, Hammer, BadgeCheck, Share2 } from "lucide-react";
 import { getStatusTagDefinition } from "@/lib/tagSemantics";
 
-const pillars = [
+const loopSteps = [
   {
-    icon: Brain,
-    title: "Applied Thinking",
-    description:
-      "Real problems, practical solutions. No theoretical exercises — everything connects to actual use cases.",
-    demoLink: "/experiments",
-    docsLink: "/learn",
+    icon: Lightbulb,
+    title: "Think",
+    description: "Frame the problem and constraints first.",
   },
   {
-    icon: AppWindow,
-    title: "Reference Implementations",
+    icon: Hammer,
+    title: "Build",
+    description: "Prototype in Labs: small, observable artifacts.",
+  },
+  {
+    icon: BadgeCheck,
+    title: "Prove",
+    description: "Graduate working systems into Proof.",
+  },
+  {
+    icon: Share2,
+    title: "Share",
+    description: "Document what worked and why in Insights.",
+  },
+] as const;
+
+const coreAreas = [
+  {
+    icon: Scale,
+    title: "Principles",
     description:
-      "Working code that demonstrates patterns in production-ready form, not just simplified examples.",
-    demoLink: "/experiments",
-    docsLink: "/learn",
+      "Defines how decisions are made and how systems stay aligned across design, architecture, quality, operations, and AI.",
+    demoLink: "/principles",
+    docsLink: "/principles/framework",
+  },
+  {
+    icon: FlaskConical,
+    title: "Labs",
+    description:
+      "Experiments, prototypes, UI concepts, and API demos that make ideas tangible before promotion.",
+    demoLink: "/labs",
+    docsLink: "/labs/live-demos",
   },
   {
     icon: Network,
-    title: "Patterns & Decisions",
+    title: "Proof",
     description:
-      "Documented tradeoffs and reasoning behind every major choice. Understanding the why, not just the how.",
-    demoLink: "/design/systems",
-    docsLink: "/design",
+      "Stable systems and complete implementations with clear model boundaries and repeatable operational intent.",
+    demoLink: "/proof",
+    docsLink: "/proof",
+  },
+  {
+    icon: BookOpen,
+    title: "Insights",
+    description:
+      "Breakdowns, learnings, and practical guidance that explain how APT decisions and systems are applied.",
+    demoLink: "/insights",
+    docsLink: "/insights/practice",
   },
 ];
 
 function getHomepageFeaturedLink(item: ContentIndexItem) {
   if (item.indexType === "labs") {
     return {
-      to: `/experiments/${item.slug ?? item.id}`,
+      to: `/labs/${item.slug ?? item.id}`,
       typeLabel: item.type === "mock" ? "Mock" : item.type === "lab" ? "Concept" : "Experiment",
-      laneLabel: "Experiment",
+      laneLabel: "Labs",
     };
   }
 
   if (item.indexType === "demos") {
     return {
-      to: `/experiments/live-demos/${item.slug ?? item.id}`,
+      to: `/labs/live-demos/${item.slug ?? item.id}`,
       typeLabel: "Live Demo",
-      laneLabel: "Experiment",
+      laneLabel: "Labs",
     };
   }
 
   if (item.indexType === "systems" || item.type === "system" || item.platforms) {
     return {
-      to: `/design/systems/${item.id ?? item.slug}`,
+      to: `/proof/${item.id ?? item.slug}`,
       typeLabel: "System",
-      laneLabel: "Design",
+      laneLabel: "Proof",
     };
   }
 
   if (item.indexType === "podcasts" || item.type === "podcast") {
     return {
-      to: `/learn/${item.id ?? item.slug}`,
+      to: `/insights/${item.id ?? item.slug}`,
       typeLabel: "Podcast",
-      laneLabel: "Learn",
+      laneLabel: "Insights",
     };
   }
 
   return {
-    to: `/learn/${item.id ?? item.slug}`,
+    to: `/insights/${item.id ?? item.slug}`,
     typeLabel:
       item.type === "article" || item.type === "blog"
         ? "Article"
@@ -89,7 +120,7 @@ function getHomepageFeaturedLink(item: ContentIndexItem) {
           : item.type === "guide"
             ? "Guide"
             : "Learn",
-    laneLabel: "Learn",
+    laneLabel: "Insights",
   };
 }
 
@@ -117,25 +148,23 @@ export default function Home() {
         tagline={siteConfig.fullName}
         title={siteConfig.tagline}
         description={siteConfig.description}
-        primaryCta={{ label: "Explore Experiments", to: "/experiments" }}
-        secondaryCta={{ label: "Start Learning", to: "/learn" }}
+        primaryCta={{ label: "Explore Labs", to: "/labs" }}
+        secondaryCta={{ label: "Read Insights", to: "/insights" }}
       />
 
-      {/* ...existing code... */}
-
-      {/* What You'll Find Here */}
+      {/* How APT works */}
       <section className="container py-12 md:py-16">
         <SectionIntro
-          title="What you'll find here"
-          description="Focused areas for learning, experimentation, and design-governed reference models."
+          title="How APT Works"
+          description="Think · Build · Prove · Share — a small loop, repeated."
           align="center"
           className="mb-10"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {pillars.map((pillar, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          {loopSteps.map((step, index) => (
             <AptCard
-              key={pillar.title}
+              key={step.title}
               variant="feature"
               padding="large"
               className="apt-slide-up"
@@ -143,21 +172,52 @@ export default function Home() {
             >
               <div className="flex items-start gap-4 mb-4">
                 <div className="p-2.5 rounded-lg bg-primary/10 text-primary">
-                  <pillar.icon className="h-6 w-6" />
+                  <step.icon className="h-6 w-6" />
                 </div>
               </div>
               <AptCardHeader className="p-0">
-                <AptCardTitle className="text-lg">{pillar.title}</AptCardTitle>
+                <AptCardTitle className="text-lg">{step.title}</AptCardTitle>
                 <AptCardDescription className="mt-2 text-sm">
-                  {pillar.description}
+                  {step.description}
+                </AptCardDescription>
+              </AptCardHeader>
+            </AptCard>
+          ))}
+        </div>
+      </section>
+
+      {/* Core areas */}
+      <section className="container py-6 md:py-10">
+        <SectionIntro
+          title="Core areas"
+          description="Principles → Labs → Proof → Insights."
+          align="center"
+          className="mb-10"
+        />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          {coreAreas.map((area, index) => (
+            <AptCard
+              key={area.title}
+              variant="feature"
+              padding="large"
+              className="apt-slide-up"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="flex items-start gap-4 mb-4">
+                <div className="p-2.5 rounded-lg bg-primary/10 text-primary">
+                  <area.icon className="h-6 w-6" />
+                </div>
+              </div>
+              <AptCardHeader className="p-0">
+                <AptCardTitle className="text-lg">{area.title}</AptCardTitle>
+                <AptCardDescription className="mt-2 text-sm">
+                  {area.description}
                 </AptCardDescription>
               </AptCardHeader>
               <AptCardFooter className="border-0 pt-4 mt-auto">
-                <AptButton variant="primary" size="sm" asChild>
-                  <Link to={pillar.demoLink}>Explore</Link>
-                </AptButton>
                 <AptButton variant="ghost" size="sm" asChild>
-                  <Link to={pillar.docsLink}>Read docs</Link>
+                  <Link to={area.demoLink}>Explore</Link>
                 </AptButton>
               </AptCardFooter>
             </AptCard>
@@ -174,11 +234,11 @@ export default function Home() {
       ) : null}
 
 
-      {/* Featured */}
+      {/* Feature cards */}
       <section className="container py-12 md:py-16">
         <SectionIntro
-          title="Featured"
-          description="A curated set of up to six recent highlights across Experiments, Learn, and Systems."
+          title="Feature cards"
+          description="A curated set of recent highlights across Labs, Proof, and Insights."
           className="mb-8"
         />
 
@@ -237,21 +297,40 @@ export default function Home() {
 
         <div className="mt-8 flex flex-wrap gap-3">
           <AptButton variant="secondary" asChild>
-            <Link to="/experiments" className="gap-2">
-              All Experiments <ArrowRight className="h-4 w-4" />
+            <Link to="/labs" className="gap-2">
+              All Labs <ArrowRight className="h-4 w-4" />
             </Link>
           </AptButton>
           <AptButton variant="secondary" asChild>
-            <Link to="/design/systems" className="gap-2">
-              Design Systems <ArrowRight className="h-4 w-4" />
+            <Link to="/proof" className="gap-2">
+              All Proof <ArrowRight className="h-4 w-4" />
             </Link>
           </AptButton>
           <AptButton variant="secondary" asChild>
-            <Link to="/learn" className="gap-2">
-              All Learn Content <ArrowRight className="h-4 w-4" />
+            <Link to="/insights" className="gap-2">
+              All Insights <ArrowRight className="h-4 w-4" />
             </Link>
           </AptButton>
         </div>
+      </section>
+
+      <section className="container pb-14 md:pb-20">
+        <AptCard variant="feature" padding="large" className="mx-auto max-w-3xl text-center">
+          <AptCardHeader className="p-0">
+            <AptCardTitle>Not sure where to start?</AptCardTitle>
+            <AptCardDescription className="mt-2">
+              Read the principles for context, or skim the about page for backstory.
+            </AptCardDescription>
+          </AptCardHeader>
+          <AptCardFooter className="border-0 mt-5 justify-center gap-3">
+            <AptButton asChild>
+              <Link to="/principles">Read Principles</Link>
+            </AptButton>
+            <AptButton variant="ghost" asChild>
+              <Link to="/about">About</Link>
+            </AptButton>
+          </AptCardFooter>
+        </AptCard>
       </section>
     </div>
   );

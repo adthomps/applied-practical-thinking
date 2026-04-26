@@ -21,7 +21,7 @@ export const designSectionCatalog: readonly DesignSection[] = [
   {
     label: "Principles",
     path: "/design/principles",
-    description: "Canonical APT principles framework across Thinking, Design, Architecture, System, Execution, Quality, Release, Operations, Knowledge, and AI.",
+    description: "Canonical APT principles framework across Thinking, Design, Architecture, System, Security, Execution, Quality, Release, Operations, Knowledge, and AI.",
     tagline: "One model for why, what, how, and operational consistency.",
     category: "core",
   },
@@ -75,8 +75,8 @@ export const designSectionCatalog: readonly DesignSection[] = [
     category: "runtime",
   },
   {
-    label: "Systems",
-    path: "/design/systems",
+    label: "Proof",
+    path: "/proof",
     description: "Stable system references that capture architecture, decisions, and reusable models inside the APT doctrine.",
     tagline: "Reference models governed by the design doctrine.",
     category: "reference",
@@ -95,7 +95,7 @@ export const mostUsedDesignSectionPaths = [
   "/design/principles",
   "/design/system",
   "/design/architecture",
-  "/design/systems",
+  "/proof",
   "/design/docs",
   "/design/review-bundle",
 ] as const;
@@ -105,7 +105,7 @@ const DESIGN_NAV_PATHS = new Set([
   "/design/principles",
   "/design/system",
   "/design/architecture",
-  "/design/systems",
+  "/proof",
   "/design/docs",
   "/design/patterns",
   "/design/review-bundle",

@@ -1,18 +1,16 @@
 const LOCAL_WORKER_API_BASE = "http://127.0.0.1:8787";
-const EXPECTED_PRODUCTION_WORKER_API_BASE =
-  "https://applied-practical-thinking.apt-account.workers.dev";
-const OFFICIAL_PAGES_HOST = "applied-practical-thinking.pages.dev";
+const EXPECTED_PRODUCTION_WORKER_API_BASE = "https://applied-practical-thinking.apt-account.workers.dev";
 
 type RuntimeWorkerConfig = {
   workerApiBase?: string;
 };
 
 export type WorkerApiConfigResolution =
-  | {
-      ok: true;
-      baseUrl: string;
-      source: "runtime" | "env" | "local-dev" | "known-pages-host" | "production-default";
-    }
+    | {
+        ok: true;
+        baseUrl: string;
+        source: "runtime" | "env" | "local-dev" | "default-production";
+      }
   | {
       ok: false;
       envVar: "VITE_API_BASE";
@@ -26,10 +24,6 @@ function normalizeBaseUrl(value: string) {
 
 function isLocalHostname(hostname: string) {
   return hostname === "127.0.0.1" || hostname === "localhost";
-}
-
-function isKnownPagesHostname(hostname: string) {
-  return hostname === OFFICIAL_PAGES_HOST || hostname.endsWith(`.${OFFICIAL_PAGES_HOST}`);
 }
 
 function getRuntimeConfiguredWorkerApiBase() {
@@ -78,19 +72,13 @@ export function resolveWorkerApiBase(): WorkerApiConfigResolution {
     };
   }
 
-  if (typeof window !== "undefined" && isKnownPagesHostname(window.location.hostname)) {
-    return {
-      ok: true,
-      baseUrl: EXPECTED_PRODUCTION_WORKER_API_BASE,
-      source: "known-pages-host",
-    };
-  }
-
+  // Resilient production fallback for Pages builds where env vars are not injected.
+  // This keeps runtime feeds operational while still surfacing config guidance in docs/build logs.
   if (typeof window !== "undefined") {
     return {
       ok: true,
       baseUrl: EXPECTED_PRODUCTION_WORKER_API_BASE,
-      source: "production-default",
+      source: "default-production",
     };
   }
 

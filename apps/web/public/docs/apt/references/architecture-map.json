@@ -1,0 +1,40 @@
+{
+  "title": "APT Architecture Map Reference",
+  "version": "v1",
+  "last_updated": "2026-04-24",
+  "owner": "APT",
+  "status": "draft",
+  "source": "Extracted from applied-practical-thinking architecture docs",
+  "zones": {
+    "apps": {
+      "purpose": "Deployable project surfaces such as web apps, workers, APIs, tools, and docs sites.",
+      "rules": [
+        "Apps own runtime composition.",
+        "Apps may depend on shared packages.",
+        "Apps must not become dumping grounds for reusable doctrine or cross-project contracts."
+      ]
+    },
+    "packages": {
+      "purpose": "Reusable code, UI, config, contracts, and utilities shared by one or more apps.",
+      "rules": [
+        "Shared packages must avoid app-specific runtime assumptions.",
+        "Contract packages should be versioned and reviewable.",
+        "UI packages should remain presentational unless explicitly scoped otherwise."
+      ]
+    },
+    "docs": {
+      "purpose": "Project-specific adoption records, decisions, reports, and implementation guidance.",
+      "rules": [
+        "Canonical doctrine belongs in apt-principles.",
+        "Project docs explain local application and exceptions.",
+        "Generated public docs must identify their source."
+      ]
+    }
+  },
+  "forbidden_flows": [
+    "Frontend UI directly owns backend business rules.",
+    "Server routes trust client-side authorization decisions.",
+    "Project docs fork canonical doctrine without a local decision record.",
+    "AI prompts are scattered inline without ownership or review."
+  ]
+}

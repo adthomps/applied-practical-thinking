@@ -1,0 +1,43 @@
+{
+  "title": "APT AI Review Bundle Reference",
+  "version": "v1",
+  "last_updated": "2026-04-24",
+  "owner": "APT",
+  "status": "draft",
+  "source": "Extracted from applied-practical-thinking AI review bundle and review standard",
+  "review_lenses": [
+    "Thinking clarity",
+    "Design system alignment",
+    "Architecture boundaries",
+    "System standards and contracts",
+    "Security and trust boundaries",
+    "Quality, testing, and evidence",
+    "Release and operational readiness",
+    "Knowledge capture and reuse"
+  ],
+  "expected_output": [
+    "Findings ordered by severity",
+    "Evidence with file, path, or artifact references",
+    "Principle or standard violated",
+    "Recommended correction",
+    "Residual risk and required follow-up"
+  ],
+  "severity_levels": {
+    "critical": "Blocks release or merge because it risks security, data, production, public trust, or irreversible drift.",
+    "high": "Should be fixed before promotion because it creates significant user, support, architecture, or validation risk.",
+    "medium": "Should be addressed soon or explicitly accepted because it weakens maintainability or consistency.",
+    "low": "Improvement that does not block the current change."
+  },
+  "minimum_evidence": [
+    "Canonical APT source consulted",
+    "Changed artifact path or reviewed input",
+    "Validation or missing-validation note",
+    "Assumptions and residual risk"
+  ],
+  "guardrails": [
+    "Do not invent doctrine that is not present in apt-principles.",
+    "Do not approve changes without evidence.",
+    "Do not rewrite product direction unless explicitly asked.",
+    "Flag ambiguity instead of silently guessing where risk is high."
+  ]
+}

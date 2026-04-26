@@ -36,12 +36,12 @@ export function RelatedContentList({ related }: { related: string[] }) {
 }
 
 function getContentUrl(item: ContentIndexItem): string {
-  if (item.type === "article" || item.type === "blog") return `/learn/${item.id}`;
-  if (item.type === "design-review") return `/learn/${item.id}`;
-  if (item.type === "guide") return `/learn/${item.id}`;
-  if (item.type === "podcast") return `/learn/${item.id}`;
-  if (item.type === "lab" || item.type === "mock" || item.type === "demo") return `/experiments/${item.slug || item.id}`;
-  if (item.type === "system" || item.contentPath?.startsWith("systems/")) return `/design/systems/${item.id}`;
+  if (item.type === "article" || item.type === "blog") return `/insights/${item.id}`;
+  if (item.type === "design-review") return `/insights/${item.id}`;
+  if (item.type === "guide") return `/insights/${item.id}`;
+  if (item.type === "podcast") return `/insights/${item.id}`;
+  if (item.type === "lab" || item.type === "mock" || item.type === "demo") return `/labs/${item.slug || item.id}`;
+  if (item.type === "system" || item.contentPath?.startsWith("systems/")) return `/proof/${item.id}`;
   // fallback
-  return `/learn/${item.id || item.slug}`;
+  return `/insights/${item.id || item.slug}`;
 }

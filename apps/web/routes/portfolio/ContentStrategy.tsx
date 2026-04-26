@@ -30,13 +30,13 @@ import {
 const pillars = [
   {
     icon: <BookOpen className="h-5 w-5" />,
-    title: "Learn",
+    title: "Insights",
     description: "Articles, podcasts, guides, and worked examples that help people understand and apply the ideas.",
     rationale: "This is the educational surface. It should answer what APT believes and how to use it.",
   },
   {
     icon: <FlaskConical className="h-5 w-5" />,
-    title: "Experiments",
+    title: "Labs",
     description: "Concepts, mocks, prototypes, and live demos that make proof visible before it becomes a stable reference.",
     rationale: "This is the experimentation surface. It should make proof visible without pretending every artifact is complete.",
   },
@@ -57,18 +57,18 @@ const pillars = [
 const visitorPaths = [
   {
     title: "I want to understand the ideas",
-    path: "/learn",
+    path: "/insights",
     summary: "Start with Articles and Podcasts, then move into Guides when you need a practical path.",
   },
   {
     title: "I want reusable patterns",
-    path: "/design/systems",
+    path: "/proof",
     summary: "Use Design > Systems when you need architecture, tradeoffs, and reference-model thinking.",
   },
   {
     title: "I want to see proof-of-work",
-    path: "/experiments",
-    summary: "Use Experiments for concepts and mocks, then Live Demos when you want to interact with the work.",
+    path: "/labs",
+    summary: "Use Labs for concepts and mocks, then Live Demos when you want to interact with the work.",
   },
 ];
 
@@ -90,7 +90,7 @@ const operatingSignals = [
 const workingArtifacts = [
   "A top-level IA that separates learning, experiments, doctrine, and stable references",
   "Section names that communicate visitor intent without requiring insider language",
-  "Cross-links that connect Learn, Experiments, Design, and Systems without collapsing them together",
+  "Cross-links that connect Insights, Labs, Design, and Proof without collapsing them together",
   "A clear authored-source model so public content, doctrine, and internal docs do not drift",
 ];
 
@@ -111,11 +111,11 @@ const antiPatterns = [
 
 const contentLifecycle = [
   {
-    title: "Learn",
+    title: "Insights",
     summary: "Use when the job is explanation, instruction, or helping someone apply an idea.",
   },
   {
-    title: "Experiments",
+    title: "Labs",
     summary: "Use when the job is proof, exploration, or showing work before it becomes stable doctrine or reference.",
   },
   {
@@ -152,9 +152,9 @@ export default function PortfolioContentStrategy() {
         >
           <div className="flex flex-wrap gap-3">
             <AptButton variant="outline" asChild>
-              <Link to="/start">
+              <Link to="/">
                 <Route className="h-4 w-4" />
-                Follow the Start Path
+                Open Home
               </Link>
             </AptButton>
             <AptButton
@@ -210,7 +210,7 @@ export default function PortfolioContentStrategy() {
                   ))}
                 </ul>
                 <AptButton variant="ghost" size="sm" asChild className="px-0">
-                  <Link to="/design/principles">
+                  <Link to="/principles">
                     Open full framework
                     <ArrowRight className="h-4 w-4" />
                   </Link>

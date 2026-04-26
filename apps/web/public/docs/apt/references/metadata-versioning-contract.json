@@ -1,0 +1,31 @@
+{
+  "title": "APT Metadata and Versioning Contract",
+  "version": "v1",
+  "last_updated": "2026-04-24",
+  "owner": "APT",
+  "status": "draft",
+  "source": "Extracted from applied-practical-thinking documentation architecture and versioning material",
+  "required_frontmatter": ["title", "version", "last_updated", "owner", "status"],
+  "recommended_frontmatter": ["audience", "visibility", "source", "applies_to"],
+  "status_values": ["draft", "active", "deprecated", "archived"],
+  "adoption_modes": ["copy", "sync", "apply", "showcase"],
+  "visibility_values": ["public", "internal", "agent", "mixed"],
+  "audience_values": ["builder", "maintainer", "operator", "support", "agent", "public"],
+  "versioning_rules": {
+    "patch": "Small clarification that does not change required behavior.",
+    "minor": "New guidance, example, prompt, checklist, or reference that remains compatible.",
+    "major": "Breaking doctrine, contract, validation, or adoption expectation change."
+  },
+  "rules": [
+    "Canonical doctrine changes require versioned files and validation.",
+    "Project-specific exceptions belong in local adoption docs or decision records.",
+    "Generated public views must point back to their canonical source.",
+    "Deprecated guidance must identify its replacement or archive rationale."
+  ],
+  "required_evidence": [
+    "Changed canonical source path",
+    "Affected related artifacts",
+    "Validation result",
+    "Consumer or public-site sync note when applicable"
+  ]
+}

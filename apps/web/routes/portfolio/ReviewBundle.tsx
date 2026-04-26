@@ -35,7 +35,7 @@ const routeCompanions = [
   },
   {
     title: "Principles",
-    path: "/design/principles",
+    path: "/principles",
     description: "Canonical APT principles framework across all build and operations layers.",
   },
   {

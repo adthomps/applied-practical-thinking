@@ -1,5 +1,3 @@
-import { aptPrinciplesNavSections } from "./aptPrinciples";
-
 // Site-level configuration
 export const siteConfig = {
   name: "APT",
@@ -13,89 +11,37 @@ export const siteConfig = {
   appliedGalleryUrl: "https://appliedpracticalthinking.com/about/visual-gallery",
   appliedGalleryLabel: "Applied Visual Gallery",
   
-  // Primary Navigation with hover descriptions and dropdowns
+  // Primary Navigation
   nav: [
-    { 
-      label: "Start", 
-      path: "/start",
-      description: "New here? Start with the core ideas, examples, and how to navigate APT.",
+    {
+      label: "Home",
+      path: "/",
+      description: "APT overview and system model.",
     },
     {
-      label: "Learn",
-      path: "/learn",
-      description: "Articles, podcasts, practice material, and systems for applied thinking in practice.",
-      children: [
-        {
-          label: "Articles",
-          path: "/learn/articles",
-          description: "Short- to medium-form writing on applied ideas and practical systems.",
-        },
-        {
-          label: "Podcasts",
-          path: "/learn/podcasts",
-          description: "Audio discussions exploring thinking, frameworks, and real-world tradeoffs.",
-        },
-        {
-          label: "Practice",
-          path: "/learn/practice",
-          description: "Guides and design reviews that turn ideas into repeatable work.",
-        },
-        {
-          label: "Systems",
-          path: "/learn/systems",
-          description: "Reference models with decisions, tradeoffs, and production guidance.",
-        },
-      ],
+      label: "Labs",
+      path: "/labs",
+      description: "Experiments, concepts, mocks, prototypes, and live demos.",
     },
     {
-      label: "Experiments",
-      path: "/experiments",
-      description: "Concepts, mocks, and runnable proof that make ideas tangible before they become stable references.",
-      children: [
-        {
-          label: "All",
-          path: "/experiments",
-          description: "The full index of exploratory work across concepts, mocks, and live demos.",
-          tagline: "Exploration made legible.",
-        },
-        {
-          label: "Concepts",
-          path: "/experiments/concepts",
-          description: "Early conceptual builds and prototype directions that give shape to an idea.",
-          tagline: "The first coherent form of an idea.",
-        },
-        {
-          label: "Mocks",
-          path: "/experiments/mocks",
-          description: "Framed representations that clarify flow, layout, and experience before implementation hardens.",
-          tagline: "Structured representations before systems settle.",
-        },
-        {
-          label: "Live Demos",
-          path: "/experiments/live-demos",
-          description: "Real, running demos that make concepts observable and testable.",
-          tagline: "Not products—clickable proof.",
-        },
-      ],
+      label: "Proof",
+      path: "/proof",
+      description: "Stable, complete systems and implementation proof.",
     },
     {
       label: "Principles",
-      path: "/design",
-      description: "APT's principles-first doctrine, standards, references, and runtime documentation surfaces.",
-      children: aptPrinciplesNavSections,
+      path: "/principles",
+      description: "Curated APT principles summaries linked to canonical GitHub sources.",
+    },
+    {
+      label: "Insights",
+      path: "/insights",
+      description: "Blogs, podcasts, and case studies.",
     },
     {
       label: "About",
       path: "/about",
       description: "How I think, what I work on, and why APT exists.",
-      children: [
-        {
-          label: "Visual Gallery",
-          path: "/about/visual-gallery",
-          description: "Photography and drone work framed as visual exploration under constraint.",
-          tagline: "Seeing patterns through composition and limitation.",
-        },
-      ],
     },
   ],
 } as const;

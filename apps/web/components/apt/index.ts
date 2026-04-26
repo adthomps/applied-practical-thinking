@@ -36,6 +36,7 @@ export { ValidationStatusCallout } from "./ValidationStatusCallout";
 
 export { ContentDetailPage } from "./ContentDetailPage";
 export { RuntimeConfigNotice } from "./RuntimeConfigNotice";
+export { ContentStateGate } from "./ContentStateGate";
 
 // Demo components
 export { DemoLayout, DemoSection } from "./demo/DemoLayout";

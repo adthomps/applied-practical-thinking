@@ -109,14 +109,72 @@ pnpm --dir apps/worker dev
 For this reason:
 - `VITE_API_BASE` should exist in the Cloudflare Pages environment for the web project
 - the web app also supports a runtime override via `window.__APT_RUNTIME_CONFIG__.workerApiBase`
-- the official Pages host falls back to the production Worker URL if build-time config is missing
+- worker API base must be explicit in production (no implicit host fallback)
 - `PUBLIC_SITE_ORIGIN` must exist in the Worker runtime environment
 - GitHub Desktop pushes source changes only; Cloudflare Pages is what builds the frontend deploy
+- web CI/Pages builds run a prebuild guard (`apps/web/scripts/verify-worker-api-config.cjs`) that warns on missing/invalid `VITE_API_BASE`
+- if missing at runtime, the web app falls back to the known production worker base (`https://applied-practical-thinking.apt-account.workers.dev`)
 
 Production values:
 
 - `VITE_API_BASE=https://applied-practical-thinking.apt-account.workers.dev`
 - `PUBLIC_SITE_ORIGIN=https://appliedpracticalthinking.com`
+
+Cloudflare setup reminder:
+- Set `VITE_API_BASE` in **Cloudflare Pages > Settings > Environment variables** for both **Production** and **Preview**.
+- Then redeploy the Pages frontend after Worker deployment/config updates.
+
+### Labs/Proof/Insights data split (worker-first)
+
+- Web (`apps/web`) is the rendering layer: tabs, cards, filters, and detail presentation.
+- Worker (`apps/worker`) is the BFF assembly layer for public feeds and detail payloads.
+- Canonical public feed endpoints:
+  - `/api/feed/labs`
+  - `/api/feed/proof`
+  - `/api/feed/insights`
+  - `/api/feed/:feed/:idOrSlug`
+- Worker composes those feeds from static index assets and returns normalized contracts from `@apt/knowledge` (`PublicFeedItem`, `PublicFeedDetailResponse`).
+- Web should prefer feed hooks/services for Labs/Proof/Insights (`useFeedQueries.ts`) over client-side multi-index composition.
+
+## APT Principles Sync (Canonical to Public)
+
+`apt-principles` is the canonical source for the public APT Principles content shown in this site. This repo is the public consumer and deploy target.
+
+Refresh flow after canonical updates:
+
+```sh
+pnpm --dir apps/web run generate-apt-principles-public
+pnpm --dir apps/web run validation-report
+pnpm --dir apps/web run build-content-index
+pnpm --dir apps/web run copy-content-to-public
+```
+
+Commit regenerated artifacts:
+
+- `apps/web/public/docs/apt/**`
+- `apps/web/data/generated/aptPrinciplesPublicManifest.ts`
+
+Optional source override (for non-default local paths):
+
+```sh
+APT_PRINCIPLES_ROOT=../apt-principles pnpm --dir apps/web run generate-apt-principles-public
+```
+
+PowerShell form:
+
+```powershell
+$env:APT_PRINCIPLES_ROOT="../apt-principles"
+pnpm --dir apps/web run generate-apt-principles-public
+```
+
+Deploy note:
+
+- Cloudflare Pages typically builds this repo only. In that context, the generator may log:
+  - `apt-principles source not found; reusing committed public docs artifacts`
+- That warning is expected when committed generated artifacts are present and current.
+- If canonical refresh is required in CI, run builds in an environment where `apt-principles` is checked out (or provide `APT_PRINCIPLES_ROOT`).
+
+Canonical runbook location: `apt-principles/examples/workflows/apt-principles-public-sync-flow.md`.
 
 ## Content and design guardrails
 
