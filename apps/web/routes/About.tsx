@@ -106,12 +106,6 @@ export default function About() {
       url: authorConfig.social.flickr,
       color: "text-foreground",
     },
-    {
-      label: "APT Site",
-      icon: Globe,
-      url: authorConfig.social.portfolio,
-      color: "text-muted-foreground",
-    },
   ];
 
   return (
@@ -154,7 +148,7 @@ export default function About() {
                 </p>
 
                 <p className="text-base md:text-lg text-muted-foreground mb-3">
-                  I work across <AnimatedRole roles={authorConfig.roles} />
+                  I'm a <AnimatedRole roles={authorConfig.roles} />
                 </p>
 
                 <p className="text-muted-foreground max-w-2xl mb-6">
