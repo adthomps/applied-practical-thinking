@@ -18,6 +18,8 @@ const KNOWN_PUBLIC_ORIGINS = new Set([
   'https://www.appliedpracticalthinking.com',
 ]);
 
+const PAGES_PROJECT_HOST = 'applied-practical-thinking.pages.dev';
+
 function normalizeOrigin(value?: string) {
   if (!value?.trim()) return null;
 
@@ -33,9 +35,14 @@ function resolveAllowedCorsOrigin(requestOrigin?: string, configuredSiteOrigin?:
   if (!normalizedRequestOrigin) return null;
 
   const normalizedConfiguredOrigin = normalizeOrigin(configuredSiteOrigin);
+  const requestHostname = new URL(normalizedRequestOrigin).hostname;
 
   if (LOCAL_DEV_ORIGINS.has(normalizedRequestOrigin)) return normalizedRequestOrigin;
   if (KNOWN_PUBLIC_ORIGINS.has(normalizedRequestOrigin)) return normalizedRequestOrigin;
+  // Allow Cloudflare Pages preview/custom deployment hosts for this specific project.
+  if (requestHostname === PAGES_PROJECT_HOST || requestHostname.endsWith(`.${PAGES_PROJECT_HOST}`)) {
+    return normalizedRequestOrigin;
+  }
   if (normalizedConfiguredOrigin && normalizedRequestOrigin === normalizedConfiguredOrigin) {
     return normalizedRequestOrigin;
   }
