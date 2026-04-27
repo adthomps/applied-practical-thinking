@@ -1,7 +1,7 @@
 {
   "title": "APT Design Tokens Reference",
   "version": "v1",
-  "last_updated": "2026-04-24",
+  "last_updated": "2026-04-26",
   "owner": "APT",
   "status": "draft",
   "source": "Extracted from applied-practical-thinking design system material",
@@ -13,11 +13,15 @@
       "border": "rgba(255,255,255,0.10)",
       "text": "#eaf2ff",
       "textMuted": "rgba(234,242,255,0.72)",
-      "accentPrimary": "#8ff2c8",
-      "accentSecondary": "#7dd3fc",
+      "primary": "hsl(220,70%,55%)",
+      "primaryForeground": "hsl(220,20%,8%)",
+      "secondary": "hsl(220,15%,18%)",
+      "secondaryForeground": "hsl(220,10%,90%)",
+      "accent": "hsl(165,45%,40%)",
+      "accentForeground": "hsl(220,20%,8%)",
       "danger": "#fb7185",
       "warning": "#fbbf24",
-      "success": "#8ff2c8"
+      "success": "hsl(165,45%,40%)"
     },
     "radius": {
       "sm": "0.85rem",
@@ -47,6 +51,7 @@
   },
   "rules": [
     "Projects may adapt token values, but must preserve semantic token names.",
+    "Blue is the primary brand/action color; muted teal is the restrained accent for selected, interactive, badge, callout, chart, and success contexts.",
     "One-off colors, shadows, spacing, and motion values require a design decision record.",
     "Public APT surfaces should prefer the full APT visual system unless a project has its own approved brand layer."
   ]

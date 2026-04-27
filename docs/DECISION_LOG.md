@@ -400,3 +400,30 @@ After adopting the design-docs 2-zone model, repo-wide documentation metadata re
 **Consequences:**
 - Positive: consistent roadmap to full metadata compliance with low disruption.
 - Negative: temporary dual state where some scopes are report-only until enforcement dates.
+
+---
+
+### [APT-013] Blue Primary With Muted Teal Accent
+
+**Date:** 2026-04-26
+**Author:** Codex
+**Status:** Accepted
+
+**Context:**
+Canonical APT principles drifted from the web app's accepted design system by describing mint/teal as the primary emphasis and action color. The runtime app already uses blue for brand, primary actions, links, focus rings, and high-frequency emphasis, with muted teal reserved for selected and interactive accent states.
+
+**Decision:**
+Keep blue as the primary brand/action color. Keep muted teal as a restrained accent for active navigation, selected states, hover or focus surfaces, badges and tags, large callouts, chart series, and success states where relevant.
+
+**Rationale:**
+- Blue anchors the calm, technical Applied Practical Thinking identity.
+- Muted teal provides useful contrast without becoming the default CTA color.
+- The hierarchy matches the v2 design system, runtime CSS tokens, shared APT primitives, and current app surfaces.
+
+**Alternatives Considered:**
+1. Make teal the default primary action color - rejected: conflicts with current runtime behavior and would make the interface feel less anchored.
+2. Split brand blue from action teal - rejected for now: adds unnecessary hierarchy complexity without a product need.
+
+**Consequences:**
+- Positive: Canonical doctrine, public generated docs, and runtime token intent align.
+- Negative: Future teal-heavy experiments need an explicit decision if they promote teal beyond accent usage.
