@@ -10,6 +10,8 @@ title: APT Quality & Testing
 
 # APT Quality & Testing (Validate)
 
+Public companion summary for quality and testing behavior in the APT site/design docs. Canonical quality doctrine lives in `apt-principles/quality-testing.md` and is published into this site at `/docs/apt/quality-testing.md`.
+
 ## Focus
 
 - Ensure correctness before release

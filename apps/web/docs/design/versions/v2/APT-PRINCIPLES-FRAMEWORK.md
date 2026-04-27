@@ -8,7 +8,7 @@ publishedAt: 2026-04-18
 ---
 # APT Principles Framework
 
-Canonical reference for APT's 10 core principle groups and lifecycle map.
+Public companion summary for APT's principle groups and lifecycle map. Canonical APT doctrine lives in `apt-principles/apt-principles.md` and is published into this site at `/docs/apt/apt-principles.md`.
 
 ---
 

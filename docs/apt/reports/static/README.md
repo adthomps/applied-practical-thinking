@@ -1,3 +1,12 @@
+---
+title: Static Audit Artifacts
+version: v1
+status: draft
+audience: internal
+visibility: internal
+source: manual
+---
+
 # Static Audit Artifacts
 
 This directory stores machine-readable artifacts produced by local audit runs.

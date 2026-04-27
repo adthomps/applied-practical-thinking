@@ -54,24 +54,17 @@ Do not edit copied markdown or docs under `apps/web/public/` as authored source.
 
 ## Internal repo docs (`docs/`)
 
-- [AI_AGENTS.md](docs/AI_AGENTS.md) - AI agent contract: prompt governance, auth rules, package contracts
-- [AI_PROMPT.md](docs/AI_PROMPT.md) - AI prompt authoring standards
 - [ARCHITECTURE.md](docs/ARCHITECTURE.md) - monorepo structure, data flow, boundaries, source/generated split
-- [ASSISTANT.md](docs/ASSISTANT.md) - APT Design Assistant full spec
-- [BRAND.md](docs/BRAND.md) - brand quick reference
 - [DECISION_LOG.md](docs/DECISION_LOG.md) - design deviation and decision record
 - [DEPLOYMENT.md](docs/DEPLOYMENT.md) - Cloudflare deploy contracts, env vars, redeploy order
 - [DOCUMENTATION_METADATA_ROLLOUT.md](docs/DOCUMENTATION_METADATA_ROLLOUT.md) - phased markdown metadata/frontmatter enforcement plan
-- [EVALS.md](docs/EVALS.md) - AI assistant evaluation prompts and criteria
 - [LEARN_CONTENT_INVENTORY.md](docs/LEARN_CONTENT_INVENTORY.md) - editorial inventory of Learn content
 - [LOCAL_DEV.md](docs/LOCAL_DEV.md) - local development setup and commands
 - [MAINTENANCE.md](docs/MAINTENANCE.md) - how to add/edit content and pages
-- [MIGRATE_TO_DESIGN.md](docs/MIGRATE_TO_DESIGN.md) - component ownership migration history
-- [PATTERNS.md](docs/PATTERNS.md) - engineering patterns: UI, API, shared, integration
 - [PLATFORM_IDS.md](docs/PLATFORM_IDS.md) - Cloudflare bindings documentation
-- [REVIEW_CHECKLIST.md](docs/REVIEW_CHECKLIST.md) - design review checklist
-- [SECURITY.md](docs/SECURITY.md) - security practices and guardrails
-- [TESTING.md](docs/TESTING.md) - testing strategy and commands
+- [docs/apt/](docs/apt/) - local APT adoption, project profile, audits, and validation evidence
+
+Deleted or consolidated docs should not be recreated in `docs/`. Use `apt-principles` for APT-wide doctrine/checklists/prompts, `apps/web/ai/README.md` for local prompt ownership, and retained runbooks for repo-specific operating details.
 
 ## Design doctrine (`apps/web/docs/design/`)
 

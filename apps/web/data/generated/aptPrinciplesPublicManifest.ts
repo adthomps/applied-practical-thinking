@@ -33,7 +33,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "131d443e1d980860325e2340d32783f3b6e6ce5535179e0b874b4aca94c618b5"
+    "checksum": "cb8b0b1f44e58b0274a216abd271b725610fed4bd9fc84358fd79a6c49f0b9a7"
   },
   {
     "id": "apt-principles-framework-audit",
@@ -238,6 +238,18 @@ export const aptPrinciplesPublicManifest = [
     "status": "draft",
     "lastUpdated": "2026-04-24",
     "checksum": "0651031071a16f32b597d450ef188eb4d2d4325c8e4a715b55c4131cbcb55a2f"
+  },
+  {
+    "id": "examples-ai-agent-workspace-knowledge-example",
+    "title": "Workspace Knowledge Example",
+    "kind": "example",
+    "principleArea": "ai-agent",
+    "sourcePath": "apt-principles/examples/ai-agent/workspace-knowledge-example.md",
+    "publicPath": "/docs/apt/examples/ai-agent/workspace-knowledge-example.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-04-26",
+    "checksum": "95f0d27b4c14ed56f4e3b595b10c49c6de15a74e6c8015909f42c7a35668e89f"
   },
   {
     "id": "examples-api-error-response-example",
@@ -624,6 +636,18 @@ export const aptPrinciplesPublicManifest = [
     "checksum": "e3c984d12f16263cb584dad5897d613d7e30bb7891c4295d11c5424c3ce9e8c4"
   },
   {
+    "id": "prompts-workspace-knowledge-prompt",
+    "title": "Workspace Knowledge Prompt",
+    "kind": "prompt",
+    "principleArea": "workspace-knowledge",
+    "sourcePath": "apt-principles/prompts/workspace-knowledge-prompt.md",
+    "publicPath": "/docs/apt/prompts/workspace-knowledge-prompt.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-04-26",
+    "checksum": "109925d3bd2f9edf5c0fe333bcf186d5747765aeeccb903467e42ced499cf476"
+  },
+  {
     "id": "quality-testing",
     "title": "APT Quality & Testing (Validate)",
     "kind": "doctrine",
@@ -645,7 +669,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "785d830da1590566345a994b6d249924ffcca9126e2b96f29bb79c88430f3427"
+    "checksum": "61c93efb45008ce4133b801e4c9dab8e2150f071023f6601e64b48250ab6083d"
   },
   {
     "id": "references-ai-review-bundle",
@@ -744,6 +768,54 @@ export const aptPrinciplesPublicManifest = [
     "checksum": "d353dbc628dbaa0d9a38c11c70a919a454d1644d77cebff78c991645b1e8b22b"
   },
   {
+    "id": "reports-project-profile-validation-sweep-2026-04-27",
+    "title": "project-profile-validation-sweep-2026-04-27.json",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/reports/project-profile-validation-sweep-2026-04-27.json",
+    "publicPath": "/docs/apt/reports/project-profile-validation-sweep-2026-04-27.json",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "13ba9eb64d411d186864d5369dba484b07fe2bcbdbb5496d3fd5dede127aa094"
+  },
+  {
+    "id": "reports-project-profile-validation-sweep-2026-04-27",
+    "title": "Project Profile Validation Sweep 2026-04-27",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/reports/project-profile-validation-sweep-2026-04-27.md",
+    "publicPath": "/docs/apt/reports/project-profile-validation-sweep-2026-04-27.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-04-27",
+    "checksum": "b3da92b4c3bf767fff68d5d95b37f33b2122c0edcc8b3fb4684b834b64e14fd5"
+  },
+  {
+    "id": "reports-README",
+    "title": "APT Validation Reports Directory",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/reports/README.md",
+    "publicPath": "/docs/apt/reports/README.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-04-26",
+    "checksum": "b419c0c09dfe601a2670a897f7f6e0d85fabd3612def8de909a62755242f53bb"
+  },
+  {
+    "id": "reports-VALIDATION-RESULTS-GUIDE",
+    "title": "Validation Results Runbook",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/reports/VALIDATION_RESULTS_GUIDE.md",
+    "publicPath": "/docs/apt/reports/VALIDATION_RESULTS_GUIDE.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-04-26",
+    "checksum": "a9a0a421ed44579c557bda5545f353e69d1bf0125822132e8d93098526c96739"
+  },
+  {
     "id": "security",
     "title": "APT Security & Authentication Standard",
     "kind": "doctrine",
@@ -766,6 +838,18 @@ export const aptPrinciplesPublicManifest = [
     "status": "draft",
     "lastUpdated": "2026-04-24",
     "checksum": "7d0219a8ecc4e30f645fd867620b1cb8491f1ad12ecc94b92337378a3d941bd6"
+  },
+  {
+    "id": "templates-apt-audit-report-template",
+    "title": "{{PROJECT_NAME}} APT Audit Report",
+    "kind": "template",
+    "principleArea": "template",
+    "sourcePath": "apt-principles/templates/apt-audit-report-template.md",
+    "publicPath": "/docs/apt/templates/apt-audit-report-template.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "{{DATE}}",
+    "checksum": "f1e792bd6adb4fb4b901d86ce558db37549538ea7221ba7e3ecc6b3940a5c6e7"
   },
   {
     "id": "templates-checklist-template",

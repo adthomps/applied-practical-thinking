@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-04-26
 owner: APT
 status: draft
+audience: internal
+visibility: internal
+source: manual
 ---
 
 # applied-practical-thinking Project Profile

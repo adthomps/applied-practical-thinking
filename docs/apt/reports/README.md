@@ -1,3 +1,12 @@
+---
+title: APT Reports
+version: v1
+status: draft
+audience: internal
+visibility: internal
+source: manual
+---
+
 # APT Reports
 
 Local APT audit outputs for `applied-practical-thinking`.
