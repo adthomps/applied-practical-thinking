@@ -17,5 +17,15 @@ These prompts are internal operating instructions. Public-facing content and doc
 
 - `apps/web/content/`
 - approved public docs in `apps/web/docs/design/`
+- generated canonical APT principles docs in `apps/web/public/docs/apt/`
 
 When an external AI or working agent needs a pointable standards document, use `apps/web/docs/design/static/APT-REVIEW-STANDARD.md` as the primary handoff.
+
+## Prompt and Agent Ownership
+
+- Prompts are file-based and versioned in `apps/web/ai/prompts/`.
+- Worker agent/runtime logic belongs below `apps/worker/src/ai/` and route handlers should stay thin.
+- Shared request, response, content, and assistant contracts belong in `packages/knowledge`.
+- Agent or prompt paths may not bypass auth, validation, or worker route boundaries.
+- Prompt changes require review when they affect product behavior, safety behavior, or generated content.
+- APT-wide AI-agent doctrine lives in `apt-principles/ai-agent-framework.md` and is published publicly at `/docs/apt/ai-agent-framework.md`.

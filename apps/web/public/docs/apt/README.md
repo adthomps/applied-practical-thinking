@@ -119,6 +119,71 @@ The validator checks active docs and references only and ignores `archive/`. It 
 
 For portable usage in other APT projects, copy `scripts/validate-apt-principles.mjs` and adjust the configuration constants at the top of the script.
 
+## Audit Report Scaffolding
+
+Use the scaffold CLI to create a repo-local APT audit report from the canonical template instead of hand-creating the Markdown shell.
+
+Run from `apt-principles`:
+
+```bash
+npm run scaffold:audit-report -- --project apt-payment-rpc-api --repo-root ../apt-payment-rpc-api
+```
+
+Optional flags:
+
+- `--date YYYY-MM-DD` to control the audit filename and report metadata.
+- `--output <path>` to write to a specific file.
+- `--reviewer <label>` to set the reviewer field.
+- `--review-type <label>` to change the scope label.
+- `--force` to overwrite an existing scaffold target.
+
+Expected reviewer workflow:
+
+1. Run the scaffold command for the target repo.
+2. Review the target repo against canonical APT doctrine, checklists, and references.
+3. Replace the scaffold placeholders with evidence-based findings, rubric scores, remediation actions, and validation outcomes.
+4. Store machine-readable outputs in the target repo under `docs/apt/reports/static/` and reference them from the Markdown report.
+5. Run the target repo validation commands plus `npm run validate` in `apt-principles` before finalizing the audit.
+
+## Project Profile Sweep
+
+Use the workspace sweep CLI to validate every sibling repo that has a root `package.json` and write a JSON summary into each repo's local `docs/apt/reports/static/` directory.
+
+Run from `apt-principles`:
+
+```bash
+npm run sweep:project-profiles
+```
+
+Optional flags:
+
+- `--workspace-root <path>` to override the default sibling-workspace root.
+- `--repos repo-a,repo-b` to limit the sweep to a subset of repos.
+- `--date YYYY-MM-DD` to control the JSON output filename.
+
+Output behavior:
+
+- Repos with `docs/apt/references/project-profile.json` receive `docs/apt/reports/static/project-profile-validation-sweep-YYYY-MM-DD.json`.
+- The JSON includes local repo validation, extracted audit findings/rubric data, and a workspace-level summary.
+- `apt-principles` also receives a master workspace JSON at `reports/project-profile-validation-sweep-YYYY-MM-DD.json` for portfolio-level review.
+- `apt-principles` also receives a compact Markdown dashboard at `reports/project-profile-validation-sweep-YYYY-MM-DD.md` with principle coverage plus findings grouped by severity and APT layer.
+- Repos without a local profile file are included in the workspace summary as `skipped` and do not receive a local output file until they adopt the local APT evidence layer.
+
+## Running Checks And Using Results
+
+Use these documents for execution and interpretation guidance:
+
+- `reports/README.md` for quick commands and output locations.
+- `reports/VALIDATION_RESULTS_GUIDE.md` for full runbook steps, triage direction, and CI usage patterns.
+
+Fast operator entrypoint:
+
+```bash
+npm run run-all-checks
+```
+
+This runs canonical validation, the workspace sweep, and selected sibling repo `lint`, `typecheck`, and `test` commands before printing a compact summary.
+
 ## Documentation Rules
 
 1. Each topic has one canonical file.

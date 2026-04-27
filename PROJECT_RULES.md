@@ -65,5 +65,8 @@ Doc placement rule:
 
 ## Review Requirements
 
-- Design changes: check `docs/REVIEW_CHECKLIST.md`
+- Design changes: check `apps/web/docs/design/static/APT-REVIEW-STANDARD.md` and `apt-principles/checklists/design-review-checklist.md`
+- Security-sensitive changes: check `apt-principles/security.md` and `apt-principles/checklists/security-review-checklist.md`
+- Testing/quality changes: check `apt-principles/quality-testing.md` and `apt-principles/checklists/quality-testing-checklist.md`
+- Prompt or agent changes: check `apps/web/ai/README.md` and `apt-principles/ai-agent-framework.md`
 - Deviations: document in `docs/DECISION_LOG.md`

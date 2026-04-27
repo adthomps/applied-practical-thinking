@@ -117,11 +117,13 @@ Return:
 ## Related Examples
 
 - `examples/ai-agent/agent-prompt-contract-example.md`
+- `examples/ai-agent/workspace-knowledge-example.md`
 
 ## Related Prompts
 
 - `prompts/framework-review-prompt.md`
 - `prompts/apt-one-shot-build-prompt.md`
+- `prompts/workspace-knowledge-prompt.md`
 - `prompts/architecture-review-prompt.md`
 - `prompts/api-review-prompt.md`
 - `prompts/security-review-prompt.md`

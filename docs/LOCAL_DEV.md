@@ -92,6 +92,14 @@ pnpm --filter ./apps/web test
 pnpm --filter ./apps/worker test
 ```
 
+Web validation and canonical APT doctrine checks:
+
+```sh
+pnpm --dir apps/web run validation-report
+cd ../apt-principles
+npm run validate
+```
+
 - Add new tests in the appropriate `test/` or `__tests__/` folder in each app or package
 
 ## Linting & Formatting

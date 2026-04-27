@@ -222,8 +222,11 @@ All Learn content (articles, podcasts, guides, design reviews) is managed as Mar
 - All AI prompt files are in `apps/web/ai/prompts/`.
 - To add a new prompt, create a new file in this folder and version it.
 - To edit a prompt, update the file and increment the version if needed.
-- All agent logic should be in `apps/worker/src/ai/` and reference prompt files.
-- Document all changes in the relevant agent or prompt doc.
+- All agent logic should live below `apps/worker/src/ai/`; worker route handlers should stay thin.
+- Shared request/response/domain contracts belong in `packages/knowledge`.
+- Agent and prompt changes must preserve auth, validation, and route boundaries.
+- Local prompt ownership is documented in `apps/web/ai/README.md`.
+- Canonical APT-wide AI-agent doctrine lives in `apt-principles/ai-agent-framework.md` and is published at `/docs/apt/ai-agent-framework.md`.
 
 ---
 
@@ -239,7 +242,10 @@ All Learn content (articles, podcasts, guides, design reviews) is managed as Mar
 ## 8. Review & Logging
 
 - All changes to design, prompts, or business logic must be reviewed.
-- Log all design deviations in `docs/DECISION_LOG.md`.
+- Design review uses `apps/web/docs/design/static/APT-REVIEW-STANDARD.md` plus the canonical APT design checklist in `apt-principles/checklists/design-review-checklist.md`.
+- Security review uses canonical APT security doctrine and checklist in `apt-principles/security.md` and `apt-principles/checklists/security-review-checklist.md`.
+- Quality review uses canonical APT quality/testing doctrine and checklist in `apt-principles/quality-testing.md` and `apt-principles/checklists/quality-testing-checklist.md`.
+- Log all durable design, architecture, security, release, or operational deviations in `docs/DECISION_LOG.md`.
 - For major changes, update `DOCUMENTATION_INDEX.md` and relevant docs.
 
 ---
@@ -254,6 +260,8 @@ All Learn content (articles, podcasts, guides, design reviews) is managed as Mar
 ## 10. General Tips
 
 - Never commit secrets or credentials.
+- Manage secrets through Cloudflare environment bindings and document binding names in `docs/PLATFORM_IDS.md`.
+- Validate external inputs at worker route boundaries before calling services or AI/runtime dependencies.
 - Keep docs and code in sync.
 - Use only semantic tokens for colors/styles.
-- Follow patterns in `PATTERNS.md` and guardrails in `PROJECT_RULES.md`.
+- Follow local guardrails in `PROJECT_RULES.md` and APT-wide doctrine in `apt-principles`.

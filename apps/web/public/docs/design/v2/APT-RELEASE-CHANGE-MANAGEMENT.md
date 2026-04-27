@@ -10,6 +10,8 @@ title: APT Release & Change Management
 
 # APT Release & Change Management (Promote)
 
+Public companion summary for release behavior in the APT site/design docs. Canonical release doctrine lives in `apt-principles/release-change-management.md` and is published into this site at `/docs/apt/release-change-management.md`.
+
 ## Focus
 
 - Safe promotion of changes

@@ -10,6 +10,8 @@ title: APT Execution Model
 
 # APT Execution Model (Build)
 
+Public companion summary for execution behavior in the APT site/design docs. Canonical execution doctrine lives in `apt-principles/execution.md` and is published into this site at `/docs/apt/execution.md`.
+
 ## Focus
 
 - Turn specs into working systems
