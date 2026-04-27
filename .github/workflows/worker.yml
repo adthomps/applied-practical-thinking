@@ -12,6 +12,11 @@ jobs:
       name: production
     steps:
       - uses: actions/checkout@v3
+      - name: Checkout apt-principles
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository_owner }}/apt-principles
+          path: _apt-principles
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
@@ -22,6 +27,13 @@ jobs:
           node-version: 20
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+      - name: Validate project-profile.json (APT)
+        run: |
+          if [ -f docs/apt/references/project-profile.json ]; then
+            node _apt-principles/scripts/validate-project-profile.mjs --repo-root .
+          else
+            echo "No project-profile.json found, skipping APT validation"
+          fi
       - name: Deploy Worker
         run: |
           cd apps/worker

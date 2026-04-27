@@ -224,8 +224,8 @@ export const aptPrinciplesPublicManifest = [
     "publicPath": "/docs/apt/design.md",
     "version": "v1",
     "status": "draft",
-    "lastUpdated": "2026-04-24",
-    "checksum": "7d7156464ade4b0885d465773414619d5096a5e83e1f658dfffb5201769b7fa2"
+    "lastUpdated": "2026-04-26",
+    "checksum": "7ecaba97ba75736baab874f360a47ebb4fd4aac462bdc08b896a35f9a8bfc9be"
   },
   {
     "id": "examples-ai-agent-agent-prompt-contract-example",
@@ -692,8 +692,8 @@ export const aptPrinciplesPublicManifest = [
     "publicPath": "/docs/apt/references/design-tokens.json",
     "version": "v1",
     "status": "draft",
-    "lastUpdated": "2026-04-24",
-    "checksum": "ecfaeca89e62bee410e61573a8558682c11951f1c8d2bb56d17ee1434c02cfb6"
+    "lastUpdated": "2026-04-26",
+    "checksum": "cd3e385b9a914f7954489eefb8269eed33ced4dbcc3e5763a756e3644207b131"
   },
   {
     "id": "references-knowledge-contracts",

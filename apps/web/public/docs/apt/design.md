@@ -1,7 +1,7 @@
 ---
 title: APT Design Principles (What)
 version: v1
-last_updated: 2026-04-24
+last_updated: 2026-04-26
 owner: APT
 status: draft
 ---
@@ -61,7 +61,8 @@ Predictable interaction patterns reduce cognitive load and implementation drift.
 
 - Dark-first background with deep navy/cosmic tones.
 - Glass surfaces may be used for cards and major panels.
-- Mint accent is reserved for primary emphasis and action.
+- Blue is the primary brand and action color.
+- Muted teal/green is a restrained accent for selected states, interactive highlights, badges, large callouts, and secondary emphasis.
 - System font stack is the default.
 - Motion should be subtle and short.
 
@@ -70,7 +71,8 @@ Reference token values harvested from legacy theme material:
 ```text
 bg: #070b16
 surface: rgba(255,255,255,0.05)
-accent: #8ff2c8
+primary: hsl(220,70%,55%)
+accent: hsl(165,45%,40%)
 text: #eaf2ff
 border: rgba(255,255,255,0.10)
 radius-sm: 0.85rem
@@ -79,6 +81,12 @@ radius-lg: 1.35rem
 motion-fast: 140ms
 motion-normal: 220ms
 ```
+
+## Brand Color Decision
+
+APT uses a mostly blue visual system by design. Blue carries the brand mark, default primary actions, focus rings, links, and high-frequency emphasis because it anchors the calm technical identity of Applied Practical Thinking.
+
+Muted teal/green is intentionally secondary. It should create contrast for active navigation, selected states, hover or focus surfaces, badges and tags, large callouts, chart series, and success state treatment where relevant. It should not become the default CTA color unless a project records an explicit brand decision.
 
 ## Full Design System Standard
 
