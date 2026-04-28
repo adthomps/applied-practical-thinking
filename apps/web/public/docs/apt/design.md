@@ -66,15 +66,15 @@ Predictable interaction patterns reduce cognitive load and implementation drift.
 - System font stack is the default.
 - Motion should be subtle and short.
 
-Reference token values harvested from legacy theme material:
+Canonical token roles from the current APT runtime:
 
 ```text
-bg: #070b16
-surface: rgba(255,255,255,0.05)
-primary: hsl(220,70%,55%)
-accent: hsl(165,45%,40%)
-text: #eaf2ff
-border: rgba(255,255,255,0.10)
+background: --background
+surface: --card
+primary: --primary
+accent: --accent
+text: --foreground
+border: --border
 radius-sm: 0.85rem
 radius-md: 1.1rem
 radius-lg: 1.35rem

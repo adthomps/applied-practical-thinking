@@ -21,7 +21,7 @@ export function GalleryTabs({ activeTab, onTabChange }: GalleryTabsProps) {
               className={cn(
                 "inline-flex items-center gap-2 whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium transition-all duration-200",
                 isActive
-                  ? "border border-border bg-background text-foreground shadow-sm"
+                  ? "border border-border bg-background text-foreground shadow-elevation-1"
                   : "text-muted-foreground hover:bg-background/50 hover:text-foreground"
               )}
             >

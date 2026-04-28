@@ -8,10 +8,10 @@ const aptCardVariants = cva(
     variants: {
       variant: {
         default: "bg-card",
-        elevated: "bg-card shadow-lg",
+        elevated: "bg-card shadow-elevation-3",
         interactive:
-          "bg-card hover:border-primary/50 hover:shadow-lg cursor-pointer",
-        hero: "bg-card/50 backdrop-blur-sm shadow-xl rounded-xl",
+          "bg-card hover:border-primary/50 hover:shadow-elevation-3 cursor-pointer",
+        hero: "bg-card/50 backdrop-blur-sm shadow-elevation-4 rounded-xl",
         subtle: "bg-muted/50 border-transparent",
         feature:
           "bg-card/80 backdrop-blur-sm border-border/50 hover:border-primary/30 hover:bg-card transition-all",

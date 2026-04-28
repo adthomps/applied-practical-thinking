@@ -12,6 +12,7 @@ export const aptTokens = {
     mutedForeground: "text-muted-foreground",
     accent: "bg-accent",
     accentForeground: "text-accent-foreground",
+    overlay: "bg-overlay",
     border: "border-border",
   },
   spacing: {
@@ -38,12 +39,20 @@ export const aptTokens = {
     hoverLift: "apt-hover-lift",
     glowSubtle: "apt-glow-subtle",
   },
+  elevation: {
+    subtle: "shadow-elevation-1",
+    popover: "shadow-elevation-2",
+    elevated: "shadow-elevation-3",
+    hero: "shadow-elevation-4",
+    glowSubtle: "shadow-apt-glow-subtle",
+    glowStrong: "shadow-apt-glow-strong",
+  },
   card: {
     base: "rounded-lg border bg-card text-card-foreground",
-    elevated: "rounded-lg border bg-card text-card-foreground shadow-lg",
+    elevated: "rounded-lg border bg-card text-card-foreground shadow-elevation-3",
     interactive:
-      "rounded-lg border bg-card text-card-foreground transition-all duration-200 hover:border-primary/50 hover:shadow-lg",
-    hero: "rounded-xl border bg-card/50 backdrop-blur-sm text-card-foreground shadow-xl",
+      "rounded-lg border bg-card text-card-foreground transition-all duration-200 hover:border-primary/50 hover:shadow-elevation-3",
+    hero: "rounded-xl border bg-card/50 backdrop-blur-sm text-card-foreground shadow-elevation-4",
   },
   container: {
     prose: "max-w-prose mx-auto",

@@ -136,8 +136,8 @@ A comprehensive design system specification for Applied Practical Thinking. Dark
 <span className="text-muted-foreground">
 
 // ❌ INCORRECT — Never use raw colors
-<div className="bg-gray-900 text-white">
-<div className="bg-[#1a1a2e]">
+<div className="bg-background text-foreground">
+<div className="bg-card text-card-foreground">
 ```
 
 ### Component Boundary Note
@@ -257,22 +257,20 @@ export const typography = {
 ### Standard Shadows
 
 ```css
---shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
---shadow-default: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
---shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
---shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
---shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
---shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+--elevation-1: var(--elevation-1);
+--elevation-2: var(--elevation-2);
+--elevation-3: var(--elevation-3);
+--elevation-4: var(--elevation-4);
 ```
 
 ### APT-Specific Shadows
 
 ```css
 /* Subtle glow effect */
---shadow-apt-glow: 0 0 40px -10px hsl(var(--apt-glow) / 0.2);
+--elevation-glow-subtle: var(--elevation-glow-subtle);
 
 /* Hover lift effect */
---shadow-apt-hover: 0 8px 24px -8px hsl(var(--apt-glow) / 0.15);
+--elevation-hover-lift: var(--elevation-hover-lift);
 ```
 
 ---
@@ -350,11 +348,11 @@ export const typography = {
 
 .apt-hover-lift:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px -8px hsl(var(--apt-glow) / 0.15);
+  box-shadow: var(--elevation-hover-lift);
 }
 
 .apt-glow-subtle {
-  box-shadow: 0 0 40px -10px hsl(var(--apt-glow) / 0.2);
+  box-shadow: var(--elevation-glow-subtle);
 }
 ```
 
@@ -411,7 +409,7 @@ import { AptButton } from "@/components/apt";
 | Variant | Description |
 |---------|-------------|
 | `default` | Standard card with border |
-| `elevated` | With shadow-lg for emphasis |
+| `elevated` | With `shadow-elevation-3` for emphasis |
 | `interactive` | Hover border-primary/50, cursor-pointer |
 | `hero` | 50% opacity bg, backdrop-blur, rounded-xl |
 | `subtle` | Muted/50 bg, transparent border |
@@ -549,7 +547,7 @@ export default function Page() {
 
 ### Don't
 
-- Use raw color values (`bg-gray-900`, `text-white`)
+- Use raw color values instead of semantic tokens
 - Create one-off spacing values
 - Add bounce or spring animations
 - Mix flat and card-based layouts

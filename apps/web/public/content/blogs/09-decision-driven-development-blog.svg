@@ -3,24 +3,24 @@
   <desc id="desc">Editorial thumbnail for Decision-Driven Development.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#111827" />
-      <stop offset="100%" stop-color="#1f2937" />
+      <stop offset="0%" stop-color="#0b1020" />
+      <stop offset="100%" stop-color="#111c33" />
     </linearGradient>
     <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#f59e0b" />
-      <stop offset="100%" stop-color="#facc15" />
+      <stop offset="0%" stop-color="#5f8df7" />
+      <stop offset="100%" stop-color="#38a88f" />
     </linearGradient>
   </defs>
   <rect width="1200" height="630" fill="url(#bg)" />
-  <g opacity="0.22" stroke="#fde68a" fill="none">
+  <g opacity="0.22" stroke="#8fb0ff" fill="none">
     <rect x="782" y="96" width="258" height="352" rx="22" stroke-width="14" />
     <path d="M840 170h144M840 226h144M840 282h144" stroke-width="12" />
     <path d="M830 360l52 52 114-118" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
   </g>
   <rect x="84" y="88" width="214" height="36" rx="18" fill="url(#accent)" />
-  <text x="108" y="112" fill="#1f2937" font-size="18" font-family="Segoe UI, Arial, sans-serif" font-weight="700" letter-spacing="1.8">LEARN ARTICLE</text>
-  <text x="84" y="236" fill="#f9fafb" font-size="66" font-family="Georgia, Times New Roman, serif" font-weight="700">Decision-Driven</text>
-  <text x="84" y="298" fill="#f9fafb" font-size="66" font-family="Georgia, Times New Roman, serif" font-weight="700">Development</text>
-  <text x="84" y="354" fill="#fde68a" font-size="26" font-family="Segoe UI, Arial, sans-serif">Treat decisions as the durable unit of engineering knowledge</text>
-  <text x="84" y="448" fill="#e5e7eb" font-size="24" font-family="Segoe UI, Arial, sans-serif">architecture  /  documentation  /  team clarity</text>
+  <text x="108" y="112" fill="#111c33" font-size="18" font-family="Segoe UI, Arial, sans-serif" font-weight="700" letter-spacing="1.8">LEARN ARTICLE</text>
+  <text x="84" y="236" fill="#eef3ff" font-size="66" font-family="Georgia, Times New Roman, serif" font-weight="700">Decision-Driven</text>
+  <text x="84" y="298" fill="#eef3ff" font-size="66" font-family="Georgia, Times New Roman, serif" font-weight="700">Development</text>
+  <text x="84" y="354" fill="#8fb0ff" font-size="26" font-family="Segoe UI, Arial, sans-serif">Treat decisions as the durable unit of engineering knowledge</text>
+  <text x="84" y="448" fill="#b9c4d6" font-size="24" font-family="Segoe UI, Arial, sans-serif">architecture  /  documentation  /  team clarity</text>
 </svg>

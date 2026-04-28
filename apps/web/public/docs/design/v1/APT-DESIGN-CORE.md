@@ -33,7 +33,7 @@ Foundational design principles and tokens for the APT design system.
 <div className="bg-card border-border">
 
 // ❌ Incorrect - Never use raw colors
-<div className="bg-gray-900 text-white">
+<div className="bg-background text-foreground">
 ```
 
 ## Typography Scale
@@ -76,4 +76,3 @@ Use the `--radius` token:
 - `rounded-lg` - Cards, buttons
 - `rounded-xl` - Hero cards
 - `rounded-md` - Small elements
-

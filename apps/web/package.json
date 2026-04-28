@@ -24,6 +24,7 @@
     "validation-report:full": "node scripts/validation-report.cjs --full",
     "verify-worker-api-config": "node scripts/verify-worker-api-config.cjs",
     "token-drift-check": "node scripts/token-drift-check.cjs",
+    "design-audit": "node scripts/design-audit.cjs",
     "verify-doc-governance": "pnpm run validation-report",
     "build-content-index": "pnpm run generate-content-index && pnpm run copy-content-index"
   },

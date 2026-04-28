@@ -90,9 +90,9 @@ Elevation represents stacking and emphasis through tokenized shadows and subtle 
 Example:
 
 ```css
-.elevation-1 { box-shadow: 0 1px 2px rgba(0,0,0,0.08); }
-.elevation-2 { box-shadow: 0 6px 18px rgba(0,0,0,0.14); }
-.elevation-3 { box-shadow: 0 28px 60px rgba(0,0,0,0.20); }
+.elevation-1 { box-shadow: var(--elevation-1); }
+.elevation-2 { box-shadow: var(--elevation-2); }
+.elevation-3 { box-shadow: var(--elevation-3); }
 ```
 
 ### Responsive Grid System

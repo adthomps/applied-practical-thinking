@@ -8,7 +8,7 @@ import {
 
 describe("apt primitives contract", () => {
   it("keeps AptButton API variants and sizes stable", () => {
-    expect(aptButtonVariants({ variant: "primary", size: "default" })).toContain("bg-primary");
+    expect(aptButtonVariants({ variant: "primary", size: "default" })).toContain("shadow-elevation-1");
     expect(aptButtonVariants({ variant: "accent", size: "sm" })).toContain("bg-accent");
     expect(aptButtonVariants({ variant: "link", size: "lg" })).toContain("hover:underline");
     expect(aptButtonVariants({ variant: "ghost", size: "icon" })).toContain("w-10");
@@ -16,9 +16,9 @@ describe("apt primitives contract", () => {
 
   it("keeps AptCard six-variant surface stable", () => {
     expect(aptCardVariants({ variant: "default" })).toContain("bg-card");
-    expect(aptCardVariants({ variant: "elevated" })).toContain("shadow-lg");
+    expect(aptCardVariants({ variant: "elevated" })).toContain("shadow-elevation-3");
     expect(aptCardVariants({ variant: "interactive" })).toContain("cursor-pointer");
-    expect(aptCardVariants({ variant: "hero" })).toContain("rounded-xl");
+    expect(aptCardVariants({ variant: "hero" })).toContain("shadow-elevation-4");
     expect(aptCardVariants({ variant: "subtle" })).toContain("bg-muted/50");
     expect(aptCardVariants({ variant: "feature" })).toContain("bg-card/80");
   });
@@ -31,4 +31,3 @@ describe("apt primitives contract", () => {
     expect(aptSectionContentVariants({ width: "wide" })).toContain("max-w-6xl");
   });
 });
-

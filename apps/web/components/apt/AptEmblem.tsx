@@ -13,8 +13,8 @@ const emblemVariants = cva(
       },
       glow: {
         none: "",
-        subtle: "shadow-[0_0_20px_hsl(var(--primary)/0.3)]",
-        strong: "shadow-[0_0_40px_hsl(var(--primary)/0.5),0_0_80px_hsl(var(--primary)/0.2)]",
+        subtle: "shadow-apt-glow-subtle",
+        strong: "shadow-apt-glow-strong",
       },
     },
     defaultVariants: {
@@ -45,11 +45,8 @@ export function AptEmblem({
           className={cn(
             "absolute inset-0 rounded-full opacity-60",
             "bg-gradient-to-r from-primary/0 via-primary/40 to-primary/0",
-            "animate-[apt-emblem-spin_4s_linear_infinite]"
+            "animate-[apt-emblem-spin_4s_linear_infinite] blur-md"
           )}
-          style={{
-            filter: "blur(8px)",
-          }}
         />
       )}
       

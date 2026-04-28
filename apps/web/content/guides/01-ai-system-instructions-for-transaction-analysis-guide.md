@@ -112,31 +112,19 @@ Every output should include:
 ```mermaid
 %%{init:{
   "securityLevel":"loose",
-  "flowchart":{"htmlLabels":true,"useMaxWidth":true,"diagramPadding":16,"padding":12,"curve":"linear"},
-  "themeVariables":{
-    "decisionBg":"#22c55e",
-    "decisionBorder":"#16a34a",
-    "escalateBg":"#f59e42",
-    "escalateBorder":"#b45309"
-  }
+  "flowchart":{"htmlLabels":true,"useMaxWidth":true,"diagramPadding":16,"padding":12,"curve":"linear"}
 }}%%
 flowchart TD
   A["Transaction API"] --> B["Schema Validation"]
   B --> SE["Schema Enforcement"]
   SE --> C["AI with Instruction Set"]
   C --> D{"Valid Output?"}
-  D -->|Yes| E["Decision JSON"]:::decision
-  D -->|No| F["Fallback Escalate"]:::escalate
+  D -->|Yes| E["Decision JSON"]
+  D -->|No| F["Fallback Escalate"]
   E --> G["Dashboard & Analyst Oversight"]
   F --> G
   G --> AT["Audit Trail"]
   AT -.-> C
-
-  %% Node styles
-  E:::decision
-  F:::escalate
-  classDef decision fill:#22c55e,stroke:#16a34a,color:#fff;
-  classDef escalate fill:#f59e42,stroke:#b45309,color:#fff;
 
 ```
 
