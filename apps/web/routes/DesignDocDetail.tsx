@@ -26,9 +26,9 @@ export default function DesignDocDetail() {
 
   const docItem = docQuery.data?.item || null;
   const markdown = docQuery.data?.markdown || "";
-  const canonicalPath = versionState.canonicalPath || docItem?.canonicalPath || null;
-  const docAssetBasePath = canonicalPath
-    ? canonicalPath.replace(/[^/]*$/, "")
+  const publishedDocPath = versionState.canonicalPath || docItem?.canonicalPath || null;
+  const docAssetBasePath = publishedDocPath
+    ? publishedDocPath.replace(/[^/]*$/, "")
     : "/docs/design/";
 
   usePageMetadata(
@@ -112,10 +112,10 @@ export default function DesignDocDetail() {
             <Download className="h-4 w-4" />
             Download Markdown
           </AptButton>
-          {canonicalPath ? (
+          {publishedDocPath ? (
             <AptButton variant="ghost" asChild>
-              <a href={canonicalPath} target="_blank" rel="noreferrer">
-                Open canonical
+              <a href={publishedDocPath} target="_blank" rel="noreferrer">
+                Open published doc
               </a>
             </AptButton>
           ) : null}

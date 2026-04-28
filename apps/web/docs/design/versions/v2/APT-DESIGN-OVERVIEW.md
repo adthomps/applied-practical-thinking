@@ -82,12 +82,12 @@ That separation keeps the site legible and prevents everything from collapsing i
 
 ## 2-Zone Quick Reference
 
-Design doctrine source uses a strict 2-zone model:
+The local published mirror/reference surface uses a strict 2-zone model:
 
 - `apps/web/docs/design/versions/v*/`  
-  canonical authored doctrine versions
+  local versioned mirror/reference docs
 - `apps/web/docs/design/static/`  
-  canonical authored support contracts (review bundle, lint checklist, token contracts, AI instructions reference)
+  local support contracts (review bundle, lint checklist, token contracts, AI instructions reference)
 
 Control plane:
 - `apps/web/docs/design/APT-DESIGN-DOCS-MANIFEST.json` maps per-doc majors and publish paths

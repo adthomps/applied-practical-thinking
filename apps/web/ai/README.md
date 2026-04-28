@@ -15,9 +15,12 @@ Reference the appropriate prompt when working on specific areas of the codebase.
 
 These prompts are internal operating instructions. Public-facing content and doctrine should be sourced from:
 
+- `apt-principles` for doctrine and version authority
 - `apps/web/content/`
-- approved public docs in `apps/web/docs/design/`
-- generated canonical APT principles docs in `apps/web/public/docs/apt/`
+- approved published mirror docs in `apps/web/docs/design/`
+- generated public APT principles mirrors in `apps/web/public/docs/apt/`
+
+This repo is the portfolio, visual implementation, guide, and examples surface for APT. It should not be treated as the doctrine or version authority.
 
 When an external AI or working agent needs a pointable standards document, use `apps/web/docs/design/static/APT-REVIEW-STANDARD.md` as the primary handoff.
 

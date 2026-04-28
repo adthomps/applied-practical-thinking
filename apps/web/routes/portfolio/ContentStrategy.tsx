@@ -131,7 +131,7 @@ const contentLifecycle = [
 export default function PortfolioContentStrategy() {
   const contentStrategyVersion = useDesignDocVersion("content-strategy");
   const contentStrategyDocUrl = tryGetWorkerApiUrl(contentStrategyVersion.downloadApiPath);
-  const contentStrategyCanonicalUrl = contentStrategyVersion.canonicalPath || null;
+  const contentStrategyPublishedDocUrl = contentStrategyVersion.canonicalPath || null;
   const configError = getWorkerApiConfigError();
 
   const handleContentStrategyMarkdownDownload = async () => {
@@ -168,10 +168,10 @@ export default function PortfolioContentStrategy() {
               <FileText className="h-4 w-4" />
               Download Content Strategy Markdown
             </AptButton>
-            {contentStrategyCanonicalUrl ? (
+            {contentStrategyPublishedDocUrl ? (
               <AptButton variant="ghost" asChild>
-                <a href={contentStrategyCanonicalUrl} target="_blank" rel="noreferrer">
-                  Open canonical
+                <a href={contentStrategyPublishedDocUrl} target="_blank" rel="noreferrer">
+                  Open published doc
                 </a>
               </AptButton>
             ) : null}

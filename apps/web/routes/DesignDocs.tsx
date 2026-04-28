@@ -56,10 +56,10 @@ export default function DesignDocs() {
       <section>
         <SectionIntro
           title="Design Docs"
-          description="Browse APT doctrine and pattern documents directly from the design docs manifest. Open any doc for version-aware rendering and markdown source access."
+          description="Browse published APT doctrine mirrors and pattern docs from the design docs manifest. Open any doc for version-aware rendering, examples, and markdown access."
           titleClassName="text-3xl md:text-4xl"
           descriptionClassName="text-lg"
-          eyebrow={<AptTag variant="accent">Manifest-Driven</AptTag>}
+          eyebrow={<AptTag variant="accent">Published Mirror</AptTag>}
         >
           <AptButton variant="ghost" asChild>
             <Link to="/design/patterns">

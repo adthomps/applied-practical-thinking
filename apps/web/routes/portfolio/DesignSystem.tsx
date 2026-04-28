@@ -98,9 +98,9 @@ function Section({ id, title, description, children }: { id: string; title: stri
 export default function PortfolioDesignSystem() {
   const systemVersion = useDesignDocVersion("system");
   const systemDocUrl = tryGetWorkerApiUrl(systemVersion.downloadApiPath);
-  const systemCanonicalUrl = systemVersion.canonicalPath || null;
+  const systemPublishedDocUrl = systemVersion.canonicalPath || null;
   const checklistCanonicalMajor = systemVersion.activeMajor || systemVersion.latestMajor;
-  const checklistCanonicalUrl = checklistCanonicalMajor
+  const checklistPublishedDocUrl = checklistCanonicalMajor
     ? `/docs/design/v${checklistCanonicalMajor}/APT-DESIGN-SYSTEM-LINT-CHECKLIST.md`
     : null;
   const configError = getWorkerApiConfigError();
@@ -127,7 +127,7 @@ export default function PortfolioDesignSystem() {
       {/* Hero */}
       <SectionIntro
         title="APT Design System"
-        description="A dark-first, card-based design system built for clarity, consistency, and calm. Tokens, semantics, components, and constraints, all documented for portability."
+        description="A dark-first, card-based design system built for clarity, consistency, and calm. This route is the portfolio's visual implementation guide for tokens, semantics, components, and constraints."
         titleClassName="text-3xl md:text-4xl"
         descriptionClassName="text-lg"
         eyebrow={
@@ -154,10 +154,10 @@ export default function PortfolioDesignSystem() {
               <ArrowRight className="h-4 w-4" />
             </Link>
           </AptButton>
-          {systemCanonicalUrl ? (
+          {systemPublishedDocUrl ? (
             <AptButton variant="outline" asChild>
-              <a href={systemCanonicalUrl} target="_blank" rel="noreferrer">
-                Open Canonical
+              <a href={systemPublishedDocUrl} target="_blank" rel="noreferrer">
+                Open Published Doc
               </a>
             </AptButton>
           ) : null}
@@ -175,7 +175,7 @@ export default function PortfolioDesignSystem() {
           <AptCardHeader>
             <AptCardTitle className="text-xl">Design System Lint Checklist</AptCardTitle>
             <AptCardDescription>
-              Critical gate checklist for design-system compliance. This is the canonical action surface for lint review and artifact downloads.
+              Critical gate checklist for design-system compliance. This is the published action surface for lint review and artifact downloads in the portfolio repo.
             </AptCardDescription>
           </AptCardHeader>
           <AptCardContent className="flex flex-wrap gap-3">
@@ -195,10 +195,10 @@ export default function PortfolioDesignSystem() {
                 Download Checklist JSON
               </a>
             </AptButton>
-            {checklistCanonicalUrl ? (
+            {checklistPublishedDocUrl ? (
               <AptButton variant="outline" asChild>
-                <a href={checklistCanonicalUrl} target="_blank" rel="noreferrer">
-                  Open Canonical Version
+                <a href={checklistPublishedDocUrl} target="_blank" rel="noreferrer">
+                  Open Published Version
                 </a>
               </AptButton>
             ) : null}

@@ -83,7 +83,7 @@ export default function PortfolioPrinciples() {
       <section>
         <SectionIntro
           title="APT Principles Framework"
-          description="Canonical doctrine is rendered directly from generated apt-principles public docs, then paired with operational summaries for implementation."
+          description="The published doctrine mirror is rendered from generated apt-principles public docs, then paired with operational summaries for implementation in the portfolio site."
           titleClassName="text-3xl md:text-4xl"
           descriptionClassName="text-lg"
           eyebrow={<AptTag variant="accent">Principles</AptTag>}
@@ -101,12 +101,12 @@ export default function PortfolioPrinciples() {
               disabled={!aptPrinciplesFrameworkPublicDocPath}
             >
               <FileText className="h-4 w-4" />
-              Download Canonical Markdown
+              Download Published Markdown
             </AptButton>
             {aptPrinciplesFrameworkPublicDocPath ? (
               <AptButton variant="ghost" asChild>
                 <a href={aptPrinciplesFrameworkPublicDocPath} target="_blank" rel="noreferrer">
-                  Open canonical
+                  Open published doc
                 </a>
               </AptButton>
             ) : null}
@@ -116,10 +116,10 @@ export default function PortfolioPrinciples() {
         <AptCard className="mt-6">
           <div className="p-6 md:p-8">
             {frameworkDocQuery.isLoading ? (
-              <p className="text-sm text-muted-foreground">Loading canonical framework markdown…</p>
+              <p className="text-sm text-muted-foreground">Loading published framework markdown…</p>
             ) : frameworkDocQuery.isError ? (
               <p className="text-sm text-muted-foreground">
-                Canonical framework markdown is unavailable right now. Regenerate and publish `/docs/apt/apt-principles.md` to refresh this page.
+                Published framework markdown is unavailable right now. Regenerate and publish `/docs/apt/apt-principles.md` to refresh this page.
               </p>
             ) : (
               <article className="prose-custom">

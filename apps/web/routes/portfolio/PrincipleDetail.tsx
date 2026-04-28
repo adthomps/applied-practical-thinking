@@ -79,7 +79,7 @@ export default function PrincipleDetail() {
             {group.publicDocPath ? (
               <AptButton variant="ghost" asChild>
                 <a href={group.publicDocPath} target="_blank" rel="noreferrer">
-                  Open canonical
+                  Open published doc
                 </a>
               </AptButton>
             ) : null}
@@ -89,17 +89,17 @@ export default function PrincipleDetail() {
 
       <section>
         <SectionIntro
-          title="Canonical Doctrine"
-          description="Primary principle content rendered from generated apt-principles public docs."
+          title="Published Doctrine Mirror"
+          description="Primary principle content rendered from generated apt-principles public docs. Doctrine authority remains upstream in apt-principles."
           className="mb-5"
         />
         <AptCard>
           <div className="p-6 md:p-8">
             {docQuery.isLoading ? (
-              <p className="text-sm text-muted-foreground">Loading canonical principle markdown…</p>
+              <p className="text-sm text-muted-foreground">Loading published principle markdown…</p>
             ) : docQuery.isError ? (
               <p className="text-sm text-muted-foreground">
-                Canonical markdown is unavailable for this principle right now. Regenerate and publish its `/docs/apt/*.md` artifact to restore source rendering.
+                Published markdown is unavailable for this principle right now. Regenerate and publish its `/docs/apt/*.md` artifact to restore source rendering.
               </p>
             ) : (
               <article className="prose-custom">

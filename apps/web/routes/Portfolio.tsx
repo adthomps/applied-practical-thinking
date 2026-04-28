@@ -55,7 +55,7 @@ export default function Portfolio() {
   const [filter, setFilter] = useState<DesignFilter>("all");
   const overviewVersion = useDesignDocVersion("overview");
   const overviewDocUrl = tryGetWorkerApiUrl(overviewVersion.downloadApiPath);
-  const overviewCanonicalUrl = overviewVersion.canonicalPath || null;
+  const overviewPublishedDocUrl = overviewVersion.canonicalPath || null;
   const configError = getWorkerApiConfigError();
 
   const handleOverviewMarkdownDownload = async () => {
@@ -110,7 +110,7 @@ export default function Portfolio() {
       <section>
         <SectionIntro
           title="Design"
-          description="The public operating model for APT: how problems are framed, how the system is expressed, how architecture enforces it, and where stable system references live."
+          description="The APT portfolio's public implementation guide: how problems are framed, how the system is expressed visually, how architecture enforces it, and where stable published references live."
           titleClassName="text-3xl md:text-4xl"
           descriptionClassName="text-lg"
         >
@@ -132,10 +132,10 @@ export default function Portfolio() {
               <FileText className="h-4 w-4" />
               Download Design Markdown
             </AptButton>
-            {overviewCanonicalUrl ? (
+            {overviewPublishedDocUrl ? (
               <AptButton variant="ghost" asChild>
-                <a href={overviewCanonicalUrl} target="_blank" rel="noreferrer">
-                  Open canonical
+                <a href={overviewPublishedDocUrl} target="_blank" rel="noreferrer">
+                  Open published doc
                 </a>
               </AptButton>
             ) : null}
@@ -152,14 +152,14 @@ export default function Portfolio() {
       <section>
         <SectionIntro
           title="Principles Framework Index"
-          description="Canonical 11-entry principles listing used across nav and doctrine surfaces."
+          description="Published 11-entry principles listing mirrored into the portfolio for navigation and guide surfaces."
           className="mb-6"
         />
         <AptCard variant="feature" padding="large">
           <div className="space-y-5">
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
               <div className="space-y-2">
-                <AptTag variant="accent" size="sm">Canonical Framework</AptTag>
+                <AptTag variant="accent" size="sm">Published Framework</AptTag>
                 <h2 className="text-2xl font-semibold tracking-tight">APT Principles Framework</h2>
                 <p className="text-sm text-muted-foreground">
                   Use this index to jump directly to the framework or any principle group section.
