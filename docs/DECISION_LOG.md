@@ -427,3 +427,34 @@ Keep blue as the primary brand/action color. Keep muted teal as a restrained acc
 **Consequences:**
 - Positive: Canonical doctrine, public generated docs, and runtime token intent align.
 - Negative: Future teal-heavy experiments need an explicit decision if they promote teal beyond accent usage.
+
+---
+
+### [APT-014] Tokenized Overlay And Elevation Reconciliation
+
+**Date:** 2026-04-28
+**Author:** Codex
+**Status:** Accepted
+
+**Context:**
+The runtime app, shared primitives, generated public docs, and APT principles exports had small but recurring design drift: raw overlay colors, legacy Tailwind shadow utilities, stale `--color-*` CSS references, and exported SVG media using unrelated editorial palettes.
+
+**Decision:**
+- Add semantic overlay and elevation tokens to the runtime CSS, Tailwind contract, static token JSON, and drift check.
+- Use `shadow-elevation-*`, `shadow-apt-glow-*`, and `bg-overlay` in app UI and shared primitives.
+- Add a design audit script that blocks raw component color utilities, raw component color literals, undefined stale `--color-*` variables, old shadow utilities, and raw overlay/shadow styles outside token-definition files.
+- Normalize public SVG media to the accepted APT blue-primary and muted-teal-accent palette.
+- Treat exported SVG media as the only approved place for literal color values in this pass because standalone SVG assets cannot reliably consume runtime CSS tokens.
+
+**Rationale:**
+- Keeps app implementation, doctrine, generated public docs, and review automation aligned.
+- Makes overlay/elevation intent explicit instead of depending on generic shadcn defaults or arbitrary shadows.
+- Preserves media portability while still moving exported assets into the APT palette.
+
+**Alternatives Considered:**
+1. Keep generic `shadow-*` and `bg-black/80` utilities - rejected: they are not semantic and drift from APT doctrine.
+2. Force runtime CSS variables into exported SVGs - rejected: brittle for standalone image rendering and social/media contexts.
+
+**Consequences:**
+- Positive: stronger design governance, cleaner token language, and automated drift detection.
+- Negative: future media exports must be manually checked against the APT palette or generated from an asset pipeline that encodes it.

@@ -60,7 +60,7 @@ const RuntimeDebugBanner = () => {
     : `Worker API missing: ${resolved.envVar}`;
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 rounded-md border border-border bg-card/95 px-3 py-2 text-xs text-muted-foreground shadow-lg backdrop-blur">
+    <div className="fixed bottom-4 right-4 z-50 rounded-md border border-border bg-card/95 px-3 py-2 text-xs text-muted-foreground shadow-elevation-3 backdrop-blur">
       {label}
     </div>
   );

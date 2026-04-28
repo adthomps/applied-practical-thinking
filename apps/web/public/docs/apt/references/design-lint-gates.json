@@ -1,7 +1,7 @@
 {
   "title": "APT Design Lint Gates",
   "version": "v1",
-  "last_updated": "2026-04-24",
+  "last_updated": "2026-04-28",
   "owner": "APT",
   "status": "draft",
   "source": "Extracted from applied-practical-thinking design-system lint checklist",
@@ -9,6 +9,11 @@
   "critical_gates": [
     "Brand identity is visible and consistent with the project profile.",
     "Color usage is token-based and accessible.",
+    "Navigation, action, status, selection, focus, hover, and disabled states use the semantic color roles from design-tokens.json.",
+    "Primary calls to action, links, focus rings, and high-frequency action emphasis use the blue primary/action role.",
+    "Muted teal is limited to active navigation, selected states, hover or focus surface accents, badges, callouts, charts, and success treatment.",
+    "Raw color values, teal-as-default-CTA treatment, missing focus color, or ambiguous active navigation are critical failures unless a decision record accepts the exception.",
+    "Danger, warning, and success colors are used for semantic feedback only, not decoration.",
     "Typography scale fits the surface and does not overflow containers.",
     "Spacing and layout use stable responsive constraints.",
     "Cards are used only for individual framed objects, not nested page structure.",
@@ -22,8 +27,8 @@
   "evidence_required": [
     "Screenshot or preview link",
     "State inventory",
-    "Token/component notes",
-    "Accessibility check notes",
+    "Token/component notes covering navigation, actions, status, selection, focus, hover, and disabled color roles",
+    "Accessibility and contrast notes for primary, secondary, disabled, danger, warning, and success states",
     "Decision record for accepted exceptions"
   ]
 }

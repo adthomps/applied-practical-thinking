@@ -52,6 +52,7 @@ export default {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
+        overlay: "hsl(var(--overlay))",
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
@@ -75,6 +76,15 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      boxShadow: {
+        "elevation-1": "var(--elevation-1)",
+        "elevation-2": "var(--elevation-2)",
+        "elevation-3": "var(--elevation-3)",
+        "elevation-4": "var(--elevation-4)",
+        "apt-glow-subtle": "var(--elevation-glow-subtle)",
+        "apt-glow-strong": "var(--elevation-glow-strong)",
+        "apt-hover-lift": "var(--elevation-hover-lift)",
       },
       keyframes: {
         "accordion-down": {

@@ -930,11 +930,11 @@ text-xl md:text-2xl
 
 .apt-hover-lift:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px -8px hsl(var(--apt-glow) / 0.15);
+  box-shadow: var(--elevation-hover-lift);
 }
 
 .apt-glow-subtle {
-  box-shadow: 0 0 40px -10px hsl(var(--apt-glow) / 0.2);
+  box-shadow: var(--elevation-glow-subtle);
 }`} />
           </div>
         </Section>

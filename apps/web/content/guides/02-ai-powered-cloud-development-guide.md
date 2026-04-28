@@ -175,7 +175,6 @@ Open a Pull Request on GitHub:
 ```mermaid
 %%{init:{
   "theme":"base",
-  "themeVariables":{"primaryTextColor":"#E6EDF3","fontSize":"16px"},
   "sequence":{"rightAngles":true,"showSequenceNumbers":true,"useMaxWidth":true}
 }}%%
 sequenceDiagram

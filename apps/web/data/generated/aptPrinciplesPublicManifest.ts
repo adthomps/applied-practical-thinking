@@ -116,8 +116,8 @@ export const aptPrinciplesPublicManifest = [
     "publicPath": "/docs/apt/checklists/design-review-checklist.md",
     "version": "v1",
     "status": "draft",
-    "lastUpdated": "2026-04-24",
-    "checksum": "3b4f37d675c0d6bf1974c6862defaf5c89baa9e1f19a1fd7406be7a1fd943f93"
+    "lastUpdated": "2026-04-28",
+    "checksum": "1973ff949859a28607d2384aa6ca4449f6c928982331b73f21c73f8f1a8c4d4f"
   },
   {
     "id": "checklists-execution-readiness-checklist",
@@ -224,8 +224,8 @@ export const aptPrinciplesPublicManifest = [
     "publicPath": "/docs/apt/design.md",
     "version": "v1",
     "status": "draft",
-    "lastUpdated": "2026-04-26",
-    "checksum": "7ecaba97ba75736baab874f360a47ebb4fd4aac462bdc08b896a35f9a8bfc9be"
+    "lastUpdated": "2026-04-28",
+    "checksum": "4dd5942cc4a09808da001681188cfa46da3fa8d59ea5bbe17bc41566b1d5e014"
   },
   {
     "id": "examples-ai-agent-agent-prompt-contract-example",
@@ -248,8 +248,8 @@ export const aptPrinciplesPublicManifest = [
     "publicPath": "/docs/apt/examples/ai-agent/workspace-knowledge-example.md",
     "version": "v1",
     "status": "draft",
-    "lastUpdated": "2026-04-26",
-    "checksum": "95f0d27b4c14ed56f4e3b595b10c49c6de15a74e6c8015909f42c7a35668e89f"
+    "lastUpdated": "2026-04-28",
+    "checksum": "b009bc086c5d7eae6f77123b241a80471a8fda472d183a4d3c3682cb3fceff91"
   },
   {
     "id": "examples-api-error-response-example",
@@ -548,8 +548,8 @@ export const aptPrinciplesPublicManifest = [
     "publicPath": "/docs/apt/prompts/design-review-prompt.md",
     "version": "v1",
     "status": "draft",
-    "lastUpdated": "2026-04-24",
-    "checksum": "365da94f03883b16d9e3e73902e4f1212529ae038da1f4631128e4d0c16a8792"
+    "lastUpdated": "2026-04-28",
+    "checksum": "9adb89c64fc3933ea057eba15b764367f36ac2c8fc7cf878d939901db3c16e59"
   },
   {
     "id": "prompts-framework-review-prompt",
@@ -644,8 +644,8 @@ export const aptPrinciplesPublicManifest = [
     "publicPath": "/docs/apt/prompts/workspace-knowledge-prompt.md",
     "version": "v1",
     "status": "draft",
-    "lastUpdated": "2026-04-26",
-    "checksum": "109925d3bd2f9edf5c0fe333bcf186d5747765aeeccb903467e42ced499cf476"
+    "lastUpdated": "2026-04-28",
+    "checksum": "06704d153c0a56d63c3c5f5d36e140acb2c5ef2439de2a839fc85cbad9260fa2"
   },
   {
     "id": "quality-testing",
@@ -704,8 +704,8 @@ export const aptPrinciplesPublicManifest = [
     "publicPath": "/docs/apt/references/design-lint-gates.json",
     "version": "v1",
     "status": "draft",
-    "lastUpdated": "2026-04-24",
-    "checksum": "d77b9d8785508637b4859882b6ec3aa7330d43556630388cfb55eb4760cafda9"
+    "lastUpdated": "2026-04-28",
+    "checksum": "028987647cc1bf8990d0cd7f004a125b7fd60637274b9928793dff008b97f601"
   },
   {
     "id": "references-design-tokens",
@@ -716,8 +716,8 @@ export const aptPrinciplesPublicManifest = [
     "publicPath": "/docs/apt/references/design-tokens.json",
     "version": "v1",
     "status": "draft",
-    "lastUpdated": "2026-04-26",
-    "checksum": "cd3e385b9a914f7954489eefb8269eed33ced4dbcc3e5763a756e3644207b131"
+    "lastUpdated": "2026-04-28",
+    "checksum": "477c48ce4647ff61b5a0e2e2f181b260e97aebf293736ed96b0fbadc2ad24512"
   },
   {
     "id": "references-knowledge-contracts",

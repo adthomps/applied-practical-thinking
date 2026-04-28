@@ -186,7 +186,6 @@ Here’s a high-level view of the AI-powered development cycle:
 ```mermaid
 %%{init:{
   "theme":"base",
-  "themeVariables":{"primaryTextColor":"#E6EDF3","fontSize":"16px"},
   "sequence":{"rightAngles":true,"showSequenceNumbers":true,"useMaxWidth":true}
 }}%%
 sequenceDiagram

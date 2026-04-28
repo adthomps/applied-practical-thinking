@@ -30,7 +30,7 @@ export function HeroCard({
   return (
     <div
       className={cn(
-        "relative rounded-xl border bg-card/50 backdrop-blur-sm p-8 md:p-12 shadow-xl overflow-hidden",
+        "relative rounded-xl border bg-card/50 backdrop-blur-sm p-8 md:p-12 shadow-elevation-4 overflow-hidden",
         "apt-slide-up",
         className
       )}

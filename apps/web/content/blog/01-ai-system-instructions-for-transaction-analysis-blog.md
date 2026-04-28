@@ -105,41 +105,25 @@ return the action "Escalate".
 ```mermaid
 %%{init:{
   "securityLevel":"loose",
-  "flowchart":{"htmlLabels":true,"useMaxWidth":true,"diagramPadding":16,"padding":12,"curve":"linear"},
-  "themeVariables":{
-    "approveBg":"#22c55e",
-    "approveBorder":"#16a34a",
-    "declineBg":"#ef4444",
-    "declineBorder":"#b91c1c",
-    "escalateBg":"#f59e42",
-    "escalateBorder":"#b45309"
-  }
+  "flowchart":{"htmlLabels":true,"useMaxWidth":true,"diagramPadding":16,"padding":12,"curve":"linear"}
 }%%
 flowchart TD
-  DS["Data Sources<br/><span style='font-size:12px;color:#FFFFFF;'>(transaction, risk signals, history)</span>"] --> A["Transaction API"]
-  A --> B["Pre-Processing Layer<br/><span style='font-size:12px;color:#FFFFFF;'>(data mapping, normalization)</span>"]
-  B --> C["Instruction Set<br/><span style='font-size:12px;color:#FFFFFF;'>(role, schema, decision boundaries)</span>"]
+  DS["Data Sources<br/>(transaction, risk signals, history)"] --> A["Transaction API"]
+  A --> B["Pre-Processing Layer<br/>(data mapping, normalization)"]
+  B --> C["Instruction Set<br/>(role, schema, decision boundaries)"]
   C --> SE["Schema Enforcement"]
-  SE --> D["AI Engine<br/><span style='font-size:12px;color:#FFFFFF;'>(LLM or specialized model)</span>"]
+  SE --> D["AI Engine<br/>(LLM or specialized model)"]
   D --> DECISION{"Decision"}
-  DECISION -->|"Approve"| E1["Structured Output (JSON)<br/><span style='font-size:12px;color:#FFFFFF;'>(Approve)</span>"]:::approve
-  DECISION -->|"Decline"| E2["Structured Output (JSON)<br/><span style='font-size:12px;color:#FFFFFF;'>(Decline)</span>"]:::decline
-  DECISION -->|"Escalate"| MR["Manual Review"]:::escalate
-  MR --> E3["Structured Output (JSON)<br/><span style='font-size:12px;color:#FFFFFF;'>(Escalate)"]:::escalate
+  DECISION -->|"Approve"| E1["Structured Output (JSON)<br/>(Approve)"]
+  DECISION -->|"Decline"| E2["Structured Output (JSON)<br/>(Decline)"]
+  DECISION -->|"Escalate"| MR["Manual Review"]
+  MR --> E3["Structured Output (JSON)<br/>(Escalate)"]
   E1 --> CC["Compliance/Validation Check"]
   E2 --> CC
   E3 --> CC
   CC --> F["Fraud Review Dashboard / Workflow Queue"]
   F --> MON["Monitoring & Audit"]
   MON -.-> C
-
-  %% Node styles
-  E1:::approve
-  E2:::decline
-  E3:::escalate
-  classDef approve fill:#22c55e,stroke:#16a34a,color:#fff;
-  classDef decline fill:#ef4444,stroke:#b91c1c,color:#fff;
-  classDef escalate fill:#f59e42,stroke:#b45309,color:#fff;
 
 ```
 

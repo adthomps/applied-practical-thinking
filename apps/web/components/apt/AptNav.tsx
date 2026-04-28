@@ -223,7 +223,7 @@ function NavDropdown({ item, isLast = false }: { item: NavItem; isLast?: boolean
         {/* Hover tooltip for description */}
         {item.description && (
           <div className={cn(
-            "absolute top-full mt-2 w-64 max-w-[calc(100vw-2rem)] p-3 bg-popover border border-border rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-[100]",
+            "absolute top-full mt-2 w-64 max-w-[calc(100vw-2rem)] p-3 bg-popover border border-border rounded-lg shadow-elevation-4 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-[100]",
             isLast ? "right-0" : "left-1/2 -translate-x-1/2"
           )}>
             <p className="text-xs text-muted-foreground">{item.description}</p>
@@ -276,7 +276,7 @@ function NavDropdown({ item, isLast = false }: { item: NavItem; isLast?: boolean
           open ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
         )}
       >
-        <div className="w-72 max-w-[calc(100vw-2rem)] bg-popover border border-border rounded-lg shadow-xl overflow-hidden">
+        <div className="w-72 max-w-[calc(100vw-2rem)] bg-popover border border-border rounded-lg shadow-elevation-4 overflow-hidden">
           {/* Parent description */}
           {item.description && (
             <div className="px-4 py-3 border-b border-border bg-muted/30">
@@ -468,7 +468,7 @@ export function AptNav() {
           className="flex items-center gap-3 font-bold text-lg tracking-tight"
         >
           {/* Small emblem */}
-          <div className="h-7 w-7 rounded-full border border-primary/60 flex items-center justify-center text-primary text-sm font-bold shadow-[0_0_12px_hsl(var(--primary)/0.3)]">
+          <div className="h-7 w-7 rounded-full border border-primary/60 flex items-center justify-center text-primary text-sm font-bold shadow-apt-glow-subtle">
             A
           </div>
           <span className="text-foreground">APT</span>

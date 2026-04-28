@@ -1,7 +1,7 @@
 ---
 title: APT Design Principles (What)
 version: v1
-last_updated: 2026-04-26
+last_updated: 2026-04-28
 owner: APT
 status: draft
 ---
@@ -61,20 +61,20 @@ Predictable interaction patterns reduce cognitive load and implementation drift.
 
 - Dark-first background with deep navy/cosmic tones.
 - Glass surfaces may be used for cards and major panels.
-- Blue is the primary brand and action color.
-- Muted teal/green is a restrained accent for selected states, interactive highlights, badges, large callouts, and secondary emphasis.
+- Blue is the primary brand and action color for primary calls to action, links, focus rings, and high-frequency emphasis.
+- Muted teal/green is a restrained accent for active navigation, selected states, hover or focus surface accents, badges, large callouts, chart accents, and success treatment.
 - System font stack is the default.
 - Motion should be subtle and short.
 
-Reference token values harvested from legacy theme material:
+Canonical token roles from the current APT runtime:
 
 ```text
-bg: #070b16
-surface: rgba(255,255,255,0.05)
-primary: hsl(220,70%,55%)
-accent: hsl(165,45%,40%)
-text: #eaf2ff
-border: rgba(255,255,255,0.10)
+background: --background
+surface: --card
+primary: --primary
+accent: --accent
+text: --foreground
+border: --border
 radius-sm: 0.85rem
 radius-md: 1.1rem
 radius-lg: 1.35rem
@@ -84,15 +84,26 @@ motion-normal: 220ms
 
 ## Brand Color Decision
 
-APT uses a mostly blue visual system by design. Blue carries the brand mark, default primary actions, focus rings, links, and high-frequency emphasis because it anchors the calm technical identity of Applied Practical Thinking.
+APT uses a mostly blue visual system by design. Blue carries the brand mark, default primary calls to action, focus rings, links, and high-frequency emphasis because it anchors the calm technical identity of Applied Practical Thinking.
 
-Muted teal/green is intentionally secondary. It should create contrast for active navigation, selected states, hover or focus surfaces, badges and tags, large callouts, chart series, and success state treatment where relevant. It should not become the default CTA color unless a project records an explicit brand decision.
+Muted teal/green is intentionally secondary. It should create contrast for active navigation, selected states, hover or focus surface accents, badges and tags, large callouts, chart accents, and success treatment where relevant. It should not become the default CTA color unless a project records an explicit brand decision.
+
+## Color Roles and Interaction Rules
+
+Color choices must start from semantic role, not visual preference.
+
+- Blue is for brand identity, primary calls to action, links, focus rings, and high-frequency action emphasis.
+- Muted teal is for active navigation, selected states, hover or focus surface accents, badges and tags, large callouts, chart accents, and success treatment.
+- Neutral surfaces are for default navigation, secondary buttons, inactive tabs, cards, panels, dividers, and disabled surfaces.
+- Danger, warning, and success colors are semantic feedback colors. Do not use them as general decoration or to create arbitrary variety.
+- Disabled treatment should reduce contrast and interaction affordance without hiding the control or changing its meaning.
+- Raw colors require a design decision record. Implementation should use the semantic aliases in `references/design-tokens.json` even when an alias maps to an existing base token value.
 
 ## Full Design System Standard
 
 The APT design system covers:
 
-- semantic color tokens for background, surfaces, borders, text, accent, success, warning, and danger
+- semantic color tokens for background, surfaces, borders, text, navigation, action, focus, selection, disabled, accent, success, warning, and danger
 - system typography with clear hierarchy and `0` letter spacing
 - stable spacing and responsive constraints for boards, grids, toolbars, cards, and repeated items
 - restrained surfaces with no nested cards or decorative page-section cards

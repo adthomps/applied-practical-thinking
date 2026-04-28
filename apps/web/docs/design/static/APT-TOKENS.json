@@ -17,6 +17,7 @@
         "muted-foreground": { "value": "hsl(220, 10%, 55%)", "type": "color", "description": "Secondary/subdued text" },
         "accent": { "value": "hsl(165, 45%, 40%)", "type": "color", "description": "Muted teal highlight - calmer, professional" },
         "accent-foreground": { "value": "hsl(220, 20%, 8%)", "type": "color", "description": "Text on accent - dark for contrast" },
+        "overlay": { "value": "hsl(220, 20%, 4% / 0.82)", "type": "color", "description": "Modal and sheet overlay scrim" },
         "destructive": { "value": "hsl(0, 65%, 45%)", "type": "color", "description": "Error/danger color" },
         "destructive-foreground": { "value": "hsl(0, 0%, 100%)", "type": "color", "description": "Text on destructive" },
         "border": { "value": "hsl(220, 15%, 20%)", "type": "color", "description": "Border and divider color" },
@@ -43,6 +44,7 @@
         "muted-foreground": { "value": "hsl(220, 10%, 40%)", "type": "color", "description": "Light muted text" },
         "accent": { "value": "hsl(165, 45%, 35%)", "type": "color", "description": "Light mode muted teal" },
         "accent-foreground": { "value": "hsl(0, 0%, 100%)", "type": "color", "description": "Light accent text - white for contrast" },
+        "overlay": { "value": "hsl(220, 20%, 8% / 0.78)", "type": "color", "description": "Modal and sheet overlay scrim" },
         "destructive": { "value": "hsl(0, 70%, 50%)", "type": "color", "description": "Light destructive" },
         "destructive-foreground": { "value": "hsl(0, 0%, 100%)", "type": "color", "description": "Light destructive text" },
         "border": { "value": "hsl(220, 15%, 85%)", "type": "color", "description": "Light border" },
@@ -190,14 +192,17 @@
       "4": { "value": "4px", "type": "borderWidth" }
     },
     "shadow": {
-      "sm": { "value": "0 1px 2px 0 rgb(0 0 0 / 0.05)", "type": "boxShadow" },
-      "default": { "value": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)", "type": "boxShadow" },
-      "md": { "value": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)", "type": "boxShadow" },
-      "lg": { "value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)", "type": "boxShadow" },
-      "xl": { "value": "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)", "type": "boxShadow" },
-      "2xl": { "value": "0 25px 50px -12px rgb(0 0 0 / 0.25)", "type": "boxShadow" },
-      "apt-glow": { "value": "0 0 40px -10px hsl(220, 70%, 55% / 0.2)", "type": "boxShadow", "description": "APT glow effect" },
-      "apt-hover-lift": { "value": "0 8px 24px -8px hsl(220, 70%, 55% / 0.15)", "type": "boxShadow", "description": "Hover lift shadow" }
+      "elevation-1-light": { "value": "0 1px 2px 0 hsl(220 20% 8% / 0.08)", "type": "boxShadow" },
+      "elevation-2-light": { "value": "0 6px 18px -6px hsl(220 20% 8% / 0.18)", "type": "boxShadow" },
+      "elevation-3-light": { "value": "0 12px 32px -10px hsl(220 20% 8% / 0.26)", "type": "boxShadow" },
+      "elevation-4-light": { "value": "0 24px 60px -18px hsl(220 20% 8% / 0.36)", "type": "boxShadow" },
+      "elevation-1-dark": { "value": "0 1px 2px 0 hsl(220 20% 4% / 0.32)", "type": "boxShadow" },
+      "elevation-2-dark": { "value": "0 6px 18px -6px hsl(220 20% 4% / 0.42)", "type": "boxShadow" },
+      "elevation-3-dark": { "value": "0 12px 32px -10px hsl(220 20% 4% / 0.52)", "type": "boxShadow" },
+      "elevation-4-dark": { "value": "0 24px 60px -18px hsl(220 20% 4% / 0.62)", "type": "boxShadow" },
+      "apt-glow-subtle": { "value": "0 0 40px -10px hsl(var(--apt-glow) / 0.2)", "type": "boxShadow", "description": "APT glow effect" },
+      "apt-glow-strong": { "value": "0 0 40px hsl(var(--apt-glow) / 0.28), 0 0 80px hsl(var(--apt-glow) / 0.14)", "type": "boxShadow", "description": "Strong APT glow effect" },
+      "apt-hover-lift": { "value": "0 8px 24px -8px hsl(var(--apt-glow) / 0.15)", "type": "boxShadow", "description": "Hover lift shadow" }
     },
     "animation": {
       "duration": {
@@ -245,7 +250,7 @@
           "description": "Interactive card hover"
         },
         "glow-subtle": {
-          "boxShadow": "{shadow.apt-glow}",
+          "boxShadow": "{shadow.apt-glow-subtle}",
           "description": "Subtle glow emphasis"
         },
         "emblem-spin": {
@@ -284,8 +289,8 @@
           "primary": {
             "background": { "value": "{color.dark.primary}", "type": "color" },
             "foreground": { "value": "{color.dark.primary-foreground}", "type": "color" },
-            "shadow": { "value": "{shadow.sm}", "type": "boxShadow" },
-            "hoverShadow": { "value": "{shadow.md}", "type": "boxShadow" }
+            "shadow": { "value": "{shadow.elevation-1-dark}", "type": "boxShadow" },
+            "hoverShadow": { "value": "{shadow.elevation-2-dark}", "type": "boxShadow" }
           },
           "secondary": {
             "background": { "value": "{color.dark.secondary}", "type": "color" },
@@ -320,19 +325,19 @@
           "elevated": {
             "background": { "value": "{color.dark.card}", "type": "color" },
             "border": { "value": "{color.dark.border}", "type": "color" },
-            "shadow": { "value": "{shadow.lg}", "type": "boxShadow" }
+            "shadow": { "value": "{shadow.elevation-3-dark}", "type": "boxShadow" }
           },
           "interactive": {
             "background": { "value": "{color.dark.card}", "type": "color" },
             "border": { "value": "{color.dark.border}", "type": "color" },
             "hoverBorder": { "value": "hsl(220, 70%, 55% / 0.5)", "type": "color" },
-            "hoverShadow": { "value": "{shadow.lg}", "type": "boxShadow" }
+            "hoverShadow": { "value": "{shadow.elevation-3-dark}", "type": "boxShadow" }
           },
           "hero": {
             "background": { "value": "hsl(220, 18%, 12% / 0.5)", "type": "color" },
             "backdropBlur": { "value": "blur(8px)", "type": "blur" },
             "borderRadius": { "value": "{borderRadius.xl}", "type": "borderRadius" },
-            "shadow": { "value": "{shadow.xl}", "type": "boxShadow" }
+            "shadow": { "value": "{shadow.elevation-4-dark}", "type": "boxShadow" }
           },
           "subtle": {
             "background": { "value": "hsl(220, 15%, 15% / 0.5)", "type": "color" },

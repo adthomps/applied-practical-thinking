@@ -1,7 +1,7 @@
 ---
 title: Workspace Knowledge Example
 version: v1
-last_updated: 2026-04-26
+last_updated: 2026-04-28
 owner: APT
 status: draft
 ---
@@ -46,8 +46,10 @@ Default behavior:
 Design:
 - Use token-based styling only.
 - Keep the experience dark-first unless a project decision says otherwise.
-- Use blue as the primary brand/action color.
-- Use muted teal only as a restrained accent for active navigation, selected states, hover/focus surfaces, badges, callouts, charts, and success states.
+- Use blue for brand identity, primary calls to action, links, focus rings, and high-frequency action emphasis.
+- Use muted teal only for active navigation, selected states, hover/focus surface accents, badges, callouts, charts, and success treatment.
+- Use neutral surfaces for default navigation, secondary actions, inactive tabs, cards, panels, and disabled surfaces.
+- Use danger, warning, and success colors only for semantic feedback, not decoration.
 - Include loading, empty, success, error, disabled, permission, offline, and degraded states when relevant.
 - Keep copy concise, precise, and non-marketing.
 
@@ -77,6 +79,7 @@ A short workspace block is easier to paste into tools, but it cannot contain eve
 - Omitting the canonical repository link.
 - Letting generated UI introduce raw colors or unsupported styling.
 - Treating teal as the default CTA color instead of a restrained accent.
+- Using danger, warning, or success colors as decoration instead of semantic feedback.
 - Asking the tool to build without naming states, validation, or project boundaries.
 - Mixing project-specific stack rules into canonical APT doctrine.
 

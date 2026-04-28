@@ -19,11 +19,11 @@ function normalizeCssToken(value) {
 function normalizeHslToken(value) {
   const match = String(value || '')
     .trim()
-    .match(/^hsl\(\s*([0-9.]+)\s*,\s*([0-9.]+)%\s*,\s*([0-9.]+)%\s*\)$/i);
+    .match(/^hsl\(\s*([0-9.]+)\s*,?\s+([0-9.]+)%\s*,?\s+([0-9.]+)%(?:\s*\/\s*([0-9.]+))?\s*\)$/i);
   if (!match) {
     return null;
   }
-  return `${match[1]} ${match[2]}% ${match[3]}%`;
+  return `${match[1]} ${match[2]}% ${match[3]}%${match[4] ? ` / ${match[4]}` : ''}`;
 }
 
 function getCssBlock(content, selector) {
@@ -70,6 +70,7 @@ function buildComparisons(tokens) {
     'muted-foreground',
     'accent',
     'accent-foreground',
+    'overlay',
     'destructive',
     'destructive-foreground',
     'border',
@@ -101,6 +102,38 @@ function buildComparisons(tokens) {
     comparisons.push({
       cssVar: `--chart-${i}`,
       expected: normalizeHslToken(getTokenValue(tokens, ['apt', 'color', 'chart', String(i)])),
+      theme: 'dark',
+    });
+  }
+
+  for (let i = 1; i <= 4; i += 1) {
+    comparisons.push({
+      cssVar: `--elevation-${i}`,
+      expected: normalizeCssToken(getTokenValue(tokens, ['apt', 'shadow', `elevation-${i}-light`])),
+      theme: 'light',
+    });
+    comparisons.push({
+      cssVar: `--elevation-${i}`,
+      expected: normalizeCssToken(getTokenValue(tokens, ['apt', 'shadow', `elevation-${i}-dark`])),
+      theme: 'dark',
+    });
+  }
+
+  for (const key of ['apt-glow-subtle', 'apt-glow-strong', 'apt-hover-lift']) {
+    const cssVarByToken = {
+      'apt-glow-subtle': '--elevation-glow-subtle',
+      'apt-glow-strong': '--elevation-glow-strong',
+      'apt-hover-lift': '--elevation-hover-lift',
+    };
+    const cssVar = cssVarByToken[key];
+    comparisons.push({
+      cssVar,
+      expected: normalizeCssToken(getTokenValue(tokens, ['apt', 'shadow', key])),
+      theme: 'light',
+    });
+    comparisons.push({
+      cssVar,
+      expected: normalizeCssToken(getTokenValue(tokens, ['apt', 'shadow', key])),
       theme: 'dark',
     });
   }
@@ -156,7 +189,7 @@ function main() {
     process.exit(1);
   }
 
-  console.log('Token drift check passed: index.css matches APT-TOKENS.json for light/dark semantic and chart tokens.');
+  console.log('Token drift check passed: index.css matches APT-TOKENS.json for light/dark semantic, overlay, chart, and elevation tokens.');
 }
 
 main();
