@@ -491,7 +491,7 @@ export function AptNav() {
         {/* Mobile Menu Button */}
         <button
           ref={mobileToggleRef}
-          className="md:hidden p-2 text-muted-foreground hover:text-foreground"
+          className="md:hidden p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-accent/50"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
           aria-expanded={mobileOpen}
