@@ -34,7 +34,7 @@ It is the authoritative doctrine for both system architecture and documentation 
 ### Source-of-Truth Boundaries
 
 **MUST**
-- Treat authored doctrine in `apps/web/docs/design/` as source-of-truth for current public design guidance.
+- Treat `apt-principles` as doctrine and version authority; treat `apps/web/docs/design/` as the local mirror/reference surface used to publish compatible design docs from this repo.
 - Treat `public/docs/design` as generated output only.
 - Record major architecture deviations in `docs/DECISION_LOG.md`.
 
@@ -53,12 +53,12 @@ This section is the canonical documentation architecture doctrine.
 ### Current State (Today)
 
 - Internal docs canonical: `docs/`
-- External-first design/public doctrine canonical: `apps/web/docs/design/`
+- External-first design/public mirror surface: `apps/web/docs/design/`
 - Generated runtime output: `apps/web/public/docs/*`
 
 ### Design Doctrine File Structure (2-Zone Source Model)
 
-Source model under `apps/web/docs/design/`:
+Local mirror/reference model under `apps/web/docs/design/`:
 
 ```text
 apps/web/docs/design/
@@ -70,9 +70,9 @@ apps/web/docs/design/
 ```
 
 Rules:
-- `versions/*` is the canonical authored doctrine source.
-- `static/*` is the canonical authored support-contract source.
-- `APT-DESIGN-DOCS-MANIFEST.json` maps per-doc latest majors and canonical paths.
+- `versions/*` stores local versioned mirror/reference docs used for published compatibility in this repo.
+- `static/*` stores local support contracts for review, lint, tokens, and publishing.
+- `APT-DESIGN-DOCS-MANIFEST.json` maps per-doc latest majors and published paths for runtime consumers.
 - Source alias files are not stored at `apps/web/docs/design` root.
 - Latest aliases are generated only during publish into `apps/web/public/docs/design/*`.
 

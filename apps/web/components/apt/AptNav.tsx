@@ -220,7 +220,7 @@ function NavDropdown({ item, isLast = false }: { item: NavItem; isLast?: boolean
         >
           {item.label}
         </Link>
-        {/* Hover tooltip for description */
+        {/* Hover tooltip for description */}
         {item.description && (
           <div className={cn(
             "absolute top-full mt-2 w-64 max-w-[calc(100vw-2rem)] p-3 bg-popover border border-border rounded-lg shadow-elevation-4 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-[100]",
