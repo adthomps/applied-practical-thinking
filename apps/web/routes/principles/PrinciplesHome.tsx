@@ -31,14 +31,14 @@ export default function PrinciplesHome() {
       <section>
         <SectionIntro
           title="Principles"
-          description="Defines how decisions are made and systems are structured. Twelve groups covering thinking, design, architecture, execution, and operations."
+          description="APT's twelve principle groups across thinking, design, architecture, execution, and operations. This page is the portfolio guide and published mirror surface; doctrine authority remains in apt-principles."
           titleClassName="text-3xl md:text-4xl"
           descriptionClassName="text-lg max-w-3xl"
         >
           <div className="flex flex-wrap gap-3">
             <AptButton variant="outline" asChild>
               <a href="https://github.com/adthomps/apt-principles" target="_blank" rel="noreferrer">
-                Open Principles in GitHub Repo
+                Open Doctrine Repo
                 <ExternalLink className="h-4 w-4" />
               </a>
             </AptButton>

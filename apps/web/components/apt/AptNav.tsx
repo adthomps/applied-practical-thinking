@@ -212,10 +212,10 @@ function NavDropdown({ item, isLast = false }: { item: NavItem; isLast?: boolean
         <Link
           to={item.path}
           className={cn(
-            "px-3 py-2 text-sm font-medium rounded-md transition-colors flex items-center gap-1",
+            "px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 flex items-center gap-1",
             isActive
-              ? "text-accent-foreground bg-accent"
-              : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
+              ? "bg-primary/10 text-primary font-semibold"
+              : "text-muted-foreground hover:text-foreground hover:bg-accent/30"
           )}
         >
           {item.label}
@@ -251,10 +251,10 @@ function NavDropdown({ item, isLast = false }: { item: NavItem; isLast?: boolean
         onKeyDown={handleTriggerKeyDown}
         onBlur={handleTriggerBlur}
         className={cn(
-          "px-3 py-2 text-sm font-medium rounded-md transition-colors flex items-center gap-1",
+          "px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 flex items-center gap-1",
           isActive
-            ? "text-accent-foreground bg-accent"
-            : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
+            ? "bg-primary/10 text-primary font-semibold"
+            : "text-muted-foreground hover:text-foreground hover:bg-accent/30"
         )}
       >
         {item.label}
@@ -297,22 +297,22 @@ function NavDropdown({ item, isLast = false }: { item: NavItem; isLast?: boolean
                   }}
                   onClick={closeDropdown}
                   className={cn(
-                    "block px-4 py-3 transition-colors",
+                    "block px-4 py-3 transition-all duration-200",
                     isChildActive 
-                      ? "bg-accent text-accent-foreground" 
+                      ? "bg-primary/10" 
                       : "hover:bg-accent/20"
                   )}
                 >
                   <div className={cn(
                     "text-sm font-medium",
-                    isChildActive ? "text-accent-foreground" : "text-foreground"
+                    isChildActive ? "text-primary" : "text-foreground"
                   )}>
                     {child.label}
                   </div>
                   {child.description && (
                     <p className={cn(
                       "text-xs mt-0.5 line-clamp-2",
-                      isChildActive ? "text-accent-foreground/80" : "text-muted-foreground"
+                      isChildActive ? "text-primary/70" : "text-muted-foreground"
                     )}>
                       {child.description}
                     </p>
@@ -342,10 +342,10 @@ function MobileNavItem({ item, onClose }: { item: NavItem; onClose: () => void }
         to={item.path}
         onClick={onClose}
         className={cn(
-          "block px-3 py-2 text-sm font-medium rounded-md transition-colors",
+          "block px-3 py-2 text-sm font-medium rounded-md transition-all duration-200",
           isRouteActive(currentRoute, item.path)
-            ? "text-accent-foreground bg-accent"
-            : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
+            ? "bg-primary/10 text-primary font-semibold"
+            : "text-muted-foreground hover:text-foreground hover:bg-accent/30"
         )}
       >
         {item.label}
@@ -360,10 +360,10 @@ function MobileNavItem({ item, onClose }: { item: NavItem; onClose: () => void }
         aria-expanded={expanded}
         aria-controls={submenuId}
         className={cn(
-          "w-full px-3 py-2 text-sm font-medium rounded-md transition-colors flex items-center justify-between",
+          "w-full px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 flex items-center justify-between",
           isActive
-            ? "text-accent-foreground bg-accent"
-            : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
+            ? "bg-primary/10 text-primary font-semibold"
+            : "text-muted-foreground hover:text-foreground hover:bg-accent/30"
         )}
       >
         {item.label}
@@ -381,10 +381,10 @@ function MobileNavItem({ item, onClose }: { item: NavItem; onClose: () => void }
               to={child.path}
               onClick={onClose}
                 className={cn(
-                  "block px-3 py-2 text-sm rounded-md transition-colors",
+                  "block px-3 py-2 text-sm rounded-md transition-all duration-200",
                   isRouteActive(currentRoute, child.path)
-                    ? "text-accent-foreground bg-accent"
-                    : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
+                    ? "bg-primary/10 text-primary font-semibold"
+                    : "text-muted-foreground hover:text-foreground hover:bg-accent/30"
                 )}
             >
               {child.label}
@@ -491,7 +491,7 @@ export function AptNav() {
         {/* Mobile Menu Button */}
         <button
           ref={mobileToggleRef}
-          className="md:hidden p-2 text-muted-foreground hover:text-foreground"
+          className="md:hidden p-2 rounded-md text-muted-foreground transition-all duration-200 hover:text-foreground hover:bg-accent/30"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
           aria-expanded={mobileOpen}

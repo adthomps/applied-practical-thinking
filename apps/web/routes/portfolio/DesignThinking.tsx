@@ -127,7 +127,7 @@ export default function PortfolioDesignThinking() {
   const thinkingVersion = useDesignDocVersion("thinking");
   const thinkingDocUrl = tryGetWorkerApiUrl(thinkingVersion.downloadApiPath);
   const architectureDocUrl = tryGetWorkerApiUrl("/api/design/docs/architecture");
-  const thinkingCanonicalUrl = thinkingVersion.canonicalPath || null;
+  const thinkingPublishedDocUrl = thinkingVersion.canonicalPath || null;
   const configError = getWorkerApiConfigError();
   const frameworks = designThinkingFrameworks;
 
@@ -231,10 +231,10 @@ export default function PortfolioDesignThinking() {
               <ArrowRight className="h-4 w-4" />
             </Link>
           </AptButton>
-          {thinkingCanonicalUrl ? (
+          {thinkingPublishedDocUrl ? (
             <AptButton variant="ghost" asChild>
-              <a href={thinkingCanonicalUrl} target="_blank" rel="noreferrer">
-                Open canonical
+              <a href={thinkingPublishedDocUrl} target="_blank" rel="noreferrer">
+                Open published doc
               </a>
             </AptButton>
           ) : null}

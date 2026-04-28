@@ -44,8 +44,9 @@ export default function DesignPlayground() {
           Design Playground
         </h1>
         <p className="text-muted-foreground max-w-2xl">
-          Component catalog and design test surface for APT. Use this page to
-          review and validate design consistency.
+          Component catalog, example surface, and visual validation area for the
+          APT portfolio implementation. Use this page to review examples and
+          verify design consistency against the doctrine.
         </p>
       </div>
 

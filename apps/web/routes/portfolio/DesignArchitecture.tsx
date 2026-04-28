@@ -134,13 +134,13 @@ function BoundaryCard({ title, stack, responsibilities, constraints }: BoundaryC
 export default function PortfolioDesignArchitecture() {
   const architectureVersion = useDesignDocVersion("architecture");
   const architectureDocUrl = tryGetWorkerApiUrl(architectureVersion.downloadApiPath);
-  const architectureCanonicalUrl = architectureVersion.canonicalPath || null;
-  const architectureCanonicalMajor = architectureVersion.activeMajor || architectureVersion.latestMajor;
-  const architectureExamplesCanonicalUrl = architectureCanonicalMajor
-    ? `/docs/design/v${architectureCanonicalMajor}/APT-ARCHITECTURE-EXAMPLES.md`
+  const architecturePublishedDocUrl = architectureVersion.canonicalPath || null;
+  const architecturePublishedMajor = architectureVersion.activeMajor || architectureVersion.latestMajor;
+  const architectureExamplesPublishedDocUrl = architecturePublishedMajor
+    ? `/docs/design/v${architecturePublishedMajor}/APT-ARCHITECTURE-EXAMPLES.md`
     : null;
-  const architectureReferenceCanonicalUrl = architectureCanonicalMajor
-    ? `/docs/design/v${architectureCanonicalMajor}/APT-ARCHITECTURE-REFERENCE.json`
+  const architectureReferencePublishedDocUrl = architecturePublishedMajor
+    ? `/docs/design/v${architecturePublishedMajor}/APT-ARCHITECTURE-REFERENCE.json`
     : null;
   const configError = getWorkerApiConfigError();
   const handleArchitectureMarkdownDownload = async () => {
@@ -257,10 +257,10 @@ export default function PortfolioDesignArchitecture() {
           <Download className="h-4 w-4" />
           Download Workspace Knowledge
         </AptButton>
-        {architectureCanonicalUrl ? (
+        {architecturePublishedDocUrl ? (
           <AptButton variant="ghost" asChild>
-            <a href={architectureCanonicalUrl} target="_blank" rel="noreferrer">
-              Open canonical
+            <a href={architecturePublishedDocUrl} target="_blank" rel="noreferrer">
+              Open published doc
             </a>
           </AptButton>
         ) : null}
@@ -303,17 +303,17 @@ export default function PortfolioDesignArchitecture() {
               <Download className="h-4 w-4" />
               Download Workspace Knowledge
             </AptButton>
-            {architectureExamplesCanonicalUrl ? (
+            {architectureExamplesPublishedDocUrl ? (
               <AptButton variant="ghost" asChild>
-                <a href={architectureExamplesCanonicalUrl} target="_blank" rel="noreferrer">
-                  Open Examples Canonical
+                <a href={architectureExamplesPublishedDocUrl} target="_blank" rel="noreferrer">
+                  Open Published Examples
                 </a>
               </AptButton>
             ) : null}
-            {architectureReferenceCanonicalUrl ? (
+            {architectureReferencePublishedDocUrl ? (
               <AptButton variant="ghost" asChild>
-                <a href={architectureReferenceCanonicalUrl} target="_blank" rel="noreferrer">
-                  Open Reference Canonical
+                <a href={architectureReferencePublishedDocUrl} target="_blank" rel="noreferrer">
+                  Open Published Reference
                 </a>
               </AptButton>
             ) : null}

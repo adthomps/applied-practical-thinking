@@ -173,7 +173,7 @@ APT work is not ready when any of the following are true:
 - the UI bypasses existing APT primitives without a documented reason
 - architecture boundaries are crossed for convenience
 - generated/public copies are treated as the source of truth
-- manifest-governed doctrine aliases do not match latest canonical version sources
+- manifest-governed published aliases do not match the latest local published version sources
 - required audited doctrine frontmatter metadata is missing
 - copy introduces more ambiguity than orientation
 - the work makes artifacts visible but leaves the reasoning invisible
