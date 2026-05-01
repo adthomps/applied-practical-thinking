@@ -21,7 +21,7 @@ Run it before a UI change is merged or before a public page becomes a showcase e
 - [ ] Interaction patterns reuse existing APT patterns.
 - [ ] Visual styling uses tokens and approved components.
 - [ ] Primary actions, links, focus rings, and high-frequency action emphasis use the blue primary/action role.
-- [ ] Active navigation, selected states, hover or focus surface accents, badges, callouts, charts, and success treatment use the muted teal accent role.
+- [ ] Active navigation, hover, and focus states use primary or neutral selected-surface roles; the restricted accent is limited to explicit support semantics such as badges, callouts, charts, and success treatment.
 - [ ] Default navigation, secondary actions, inactive tabs, cards, panels, and disabled surfaces use neutral surface roles.
 - [ ] Danger, warning, and success colors are reserved for semantic feedback.
 - [ ] Hover, focus, active, selected, and disabled states are visually distinct and token-based.

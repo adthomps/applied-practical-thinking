@@ -11,7 +11,7 @@
     "Color usage is token-based and accessible.",
     "Navigation, action, status, selection, focus, hover, and disabled states use the semantic color roles from design-tokens.json.",
     "Primary calls to action, links, focus rings, and high-frequency action emphasis use the blue primary/action role.",
-    "Muted teal is limited to active navigation, selected states, hover or focus surface accents, badges, callouts, charts, and success treatment.",
+    "The restricted accent is not the default hover, focus, CTA, or active navigation color; use it only for explicit support semantics such as badges, callouts, charts, and success treatment.",
     "Raw color values, teal-as-default-CTA treatment, missing focus color, or ambiguous active navigation are critical failures unless a decision record accepts the exception.",
     "Danger, warning, and success colors are used for semantic feedback only, not decoration.",
     "Typography scale fits the surface and does not overflow containers.",

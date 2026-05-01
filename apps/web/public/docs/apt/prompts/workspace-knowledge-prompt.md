@@ -42,7 +42,7 @@ Design rules:
 - Use APT visual tokens and shared components instead of raw colors, spacing, radius, shadows, or motion.
 - Keep the experience dark-first unless the project has an approved brand exception.
 - Use blue for brand identity, primary calls to action, links, focus rings, and high-frequency action emphasis.
-- Use muted teal only for active navigation, selected states, hover or focus surface accents, badges, large callouts, chart accents, and success treatment.
+- Use the restricted accent only for explicit support semantics such as section identity, selected support states, badges, large callouts, chart accents, and success treatment.
 - Use neutral surface roles for default navigation, secondary actions, inactive tabs, cards, panels, and disabled surfaces.
 - Use danger, warning, and success colors only for semantic feedback, not decoration.
 - Keep UI calm, structured, accessible, and non-marketing. Define loading, empty, success, error, disabled, permission, offline, and degraded states where applicable.

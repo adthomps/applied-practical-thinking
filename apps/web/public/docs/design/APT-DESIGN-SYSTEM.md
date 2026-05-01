@@ -60,7 +60,7 @@ Hard constraints:
 - No new radius values outside tokenized radius scale.
 - No ad hoc shadow styles outside shared tokenized shadow patterns.
 - No inline styles unless required for dynamic measurement/runtime geometry.
-- No `text-accent` below `text-lg` unless the element is clearly interactive.
+- No `text-accent` below `text-lg`; prefer primary or foreground tokens for interactive emphasis.
 
 ---
 
@@ -214,15 +214,17 @@ Chart tokens are explicitly theme-scoped:
 
 ## Accent Restrictions
 
-Accent is allowed for:
+Accent is allowed only for restricted support contexts:
 
-- interactive elements
-- selected states
-- badges/tags
-- large callouts
+- selected support states that need a secondary semantic color
+- badges/tags where the category is explicitly a section or area identity
+- large callouts where primary blue would create incorrect action hierarchy
+- chart/support semantics where a second series color is required
 
 Accent is not allowed for:
 
+- default hover/focus states
+- primary CTAs or generic buttons
 - body text
 - captions
 - dense metadata
@@ -466,6 +468,7 @@ AI review output must include:
 
 - Variants: `primary | secondary | outline | ghost | accent | link`
 - Sizes: `sm | default | lg | icon`
+- Display examples should use `primary`, `secondary`, `outline`, `ghost`, and `link`; `accent` is retained for backward compatibility and restricted cases only.
 
 `AptCard` contract:
 
@@ -550,7 +553,7 @@ Delivery guard rails:
 
 Canonical site navigation uses a nested dropdown model in `AptNav` with parent and child routes.
 The v1 flat-navigation note is legacy historical guidance and not the current runtime contract.
-Selected nav states use `bg-accent` with `text-accent-foreground` for contrast-safe emphasis.
+Selected nav states use primary or secondary-based emphasis (`bg-primary/10 text-primary` or `bg-secondary text-foreground`) for contrast-safe emphasis.
 
 ---
 

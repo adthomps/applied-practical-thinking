@@ -90,14 +90,14 @@ export function ContrastChecker() {
       {/* Summary */}
       <div className="flex flex-wrap gap-4">
         <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-card border border-border">
-          <div className="h-3 w-3 rounded-full bg-accent" />
+          <div className="h-3 w-3 rounded-full bg-primary" />
           <span className="text-sm">
             <span className="font-semibold">{aaaCount}</span>
             <span className="text-muted-foreground"> AAA (7:1+)</span>
           </span>
         </div>
         <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-card border border-border">
-          <div className="h-3 w-3 rounded-full bg-primary" />
+          <div className="h-3 w-3 rounded-full bg-primary/60" />
           <span className="text-sm">
             <span className="font-semibold">{passingCount}</span>
             <span className="text-muted-foreground"> AA+ (4.5:1+)</span>

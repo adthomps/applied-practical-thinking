@@ -70,7 +70,7 @@ Evidence required:
 - Do not suggest a new visual language.
 - Do not accept raw color values, teal-as-default-CTA treatment, missing focus color, or ambiguous active navigation without a decision record.
 - Verify that blue carries primary actions, links, focus rings, and high-frequency action emphasis.
-- Verify that muted teal is restrained to active navigation, selected states, hover or focus surface accents, badges, callouts, charts, and success treatment.
+- Verify that active navigation, hover, and focus states use primary or neutral selected-surface roles, and that the restricted accent is limited to explicit support semantics such as badges, callouts, charts, and success treatment.
 - Verify that danger, warning, and success colors are semantic feedback only.
 - Do not treat decoration as a substitute for hierarchy.
 - Do not ignore accessibility states.

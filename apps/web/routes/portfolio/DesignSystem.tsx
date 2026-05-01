@@ -276,7 +276,7 @@ export default function PortfolioDesignSystem() {
         <Section
           id="colors"
           title="Color System"
-          description="HSL-based semantic color tokens for both dark and light modes."
+        description="HSL-based semantic color tokens for both dark and light modes. Primary blue drives action and state emphasis; accent remains a restricted support token."
         >
           <Tabs defaultValue="dark" className="w-full">
             <TabsList className="mb-6">
@@ -293,14 +293,14 @@ export default function PortfolioDesignSystem() {
                   <ColorSwatch name="Card" cssVar="--card" className="bg-card" />
                   <ColorSwatch name="Muted" cssVar="--muted" className="bg-muted" />
                   <ColorSwatch name="Primary" cssVar="--primary" className="bg-primary" />
-                  <ColorSwatch name="Accent" cssVar="--accent" className="bg-accent" />
+                  <ColorSwatch name="Secondary" cssVar="--secondary" className="bg-secondary" />
                 </div>
               </div>
               
               <div>
                 <h3 className="text-lg font-semibold mb-4">Supporting Colors</h3>
                 <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
-                  <ColorSwatch name="Secondary" cssVar="--secondary" className="bg-secondary" />
+                  <ColorSwatch name="Restricted Accent" cssVar="--accent" className="bg-accent" />
                   <ColorSwatch name="Border" cssVar="--border" className="bg-border" />
                   <ColorSwatch name="Ring" cssVar="--ring" className="bg-ring" />
                   <ColorSwatch name="Destructive" cssVar="--destructive" className="bg-destructive" />
@@ -314,7 +314,7 @@ export default function PortfolioDesignSystem() {
   --background: 220 20% 8%;      /* Deep space blue */
   --foreground: 220 10% 95%;     /* Near-white text */
   --primary: 220 70% 55%;        /* Blue accent */
-  --accent: 165 45% 40%;         /* Muted teal highlight */
+  --accent: 165 45% 40%;         /* Restricted support accent */
   --muted: 220 15% 15%;          /* Subdued backgrounds */
   --border: 220 15% 20%;         /* Subtle dividers */
 }`} />
@@ -345,9 +345,9 @@ export default function PortfolioDesignSystem() {
                     <p className="text-xs text-muted-foreground font-mono">HSL(220, 70%, 50%)</p>
                   </div>
                   <div className="text-left">
-                    <div className="h-16 rounded-lg border mb-2 bg-accent" />
-                    <p className="text-sm font-medium">Accent</p>
-                    <p className="text-xs text-muted-foreground font-mono">HSL(165, 45%, 35%)</p>
+                    <div className="h-16 rounded-lg border mb-2 bg-secondary" />
+                    <p className="text-sm font-medium">Secondary</p>
+                    <p className="text-xs text-muted-foreground font-mono">HSL(220, 15%, 90%)</p>
                   </div>
                 </div>
               </div>

@@ -15,7 +15,7 @@
         "secondary-foreground": { "value": "hsl(220, 10%, 90%)", "type": "color", "description": "Text on secondary" },
         "muted": { "value": "hsl(220, 15%, 15%)", "type": "color", "description": "Subdued backgrounds" },
         "muted-foreground": { "value": "hsl(220, 10%, 55%)", "type": "color", "description": "Secondary/subdued text" },
-        "accent": { "value": "hsl(165, 45%, 40%)", "type": "color", "description": "Muted teal highlight - calmer, professional" },
+        "accent": { "value": "hsl(165, 45%, 40%)", "type": "color", "description": "Restricted support accent" },
         "accent-foreground": { "value": "hsl(220, 20%, 8%)", "type": "color", "description": "Text on accent - dark for contrast" },
         "overlay": { "value": "hsl(220, 20%, 4% / 0.82)", "type": "color", "description": "Modal and sheet overlay scrim" },
         "destructive": { "value": "hsl(0, 65%, 45%)", "type": "color", "description": "Error/danger color" },
@@ -42,7 +42,7 @@
         "secondary-foreground": { "value": "hsl(220, 20%, 10%)", "type": "color", "description": "Light secondary text" },
         "muted": { "value": "hsl(220, 15%, 92%)", "type": "color", "description": "Light muted" },
         "muted-foreground": { "value": "hsl(220, 10%, 40%)", "type": "color", "description": "Light muted text" },
-        "accent": { "value": "hsl(165, 45%, 35%)", "type": "color", "description": "Light mode muted teal" },
+        "accent": { "value": "hsl(165, 45%, 35%)", "type": "color", "description": "Light mode restricted support accent" },
         "accent-foreground": { "value": "hsl(0, 0%, 100%)", "type": "color", "description": "Light accent text - white for contrast" },
         "overlay": { "value": "hsl(220, 20%, 8% / 0.78)", "type": "color", "description": "Modal and sheet overlay scrim" },
         "destructive": { "value": "hsl(0, 70%, 50%)", "type": "color", "description": "Light destructive" },
@@ -58,14 +58,14 @@
       },
       "chart": {
         "1": { "value": "hsl(220, 70%, 55%)", "type": "color", "description": "Chart color 1 - Primary blue" },
-        "2": { "value": "hsl(165, 45%, 40%)", "type": "color", "description": "Chart color 2 - Muted Teal" },
+        "2": { "value": "hsl(165, 45%, 40%)", "type": "color", "description": "Chart color 2 - restricted support accent" },
         "3": { "value": "hsl(280, 55%, 55%)", "type": "color", "description": "Chart color 3 - Purple" },
         "4": { "value": "hsl(30, 75%, 50%)", "type": "color", "description": "Chart color 4 - Orange" },
         "5": { "value": "hsl(340, 65%, 55%)", "type": "color", "description": "Chart color 5 - Pink" }
       },
       "chartLight": {
         "1": { "value": "hsl(220, 70%, 50%)", "type": "color", "description": "Light chart color 1 - Primary blue" },
-        "2": { "value": "hsl(165, 60%, 40%)", "type": "color", "description": "Light chart color 2 - Teal" },
+        "2": { "value": "hsl(165, 45%, 40%)", "type": "color", "description": "Light chart color 2 - restricted support accent" },
         "3": { "value": "hsl(280, 60%, 50%)", "type": "color", "description": "Light chart color 3 - Purple" },
         "4": { "value": "hsl(30, 80%, 55%)", "type": "color", "description": "Light chart color 4 - Orange" },
         "5": { "value": "hsl(340, 70%, 50%)", "type": "color", "description": "Light chart color 5 - Pink" }

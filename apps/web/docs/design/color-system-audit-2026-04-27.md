@@ -15,7 +15,7 @@ This audit checks the `applied-practical-thinking` web app color system against 
 ## Canonical Standard
 
 - Blue is the primary brand/action color.
-- Muted teal/green is the restrained accent and favorable/success color family.
+- The restricted accent is secondary and limited to explicit support semantics such as section identity, selected support states, charts, and success treatment.
 - UI surfaces should use semantic tokens such as `primary`, `accent`, `background`, `foreground`, `muted`, `border`, `ring`, and chart tokens.
 - Raw Tailwind color utilities such as `blue-*`, `green-*`, `emerald-*`, `violet-*`, and `gray-*` should not appear in active app UI unless they are example content, generated public docs, or explicitly documented exceptions.
 
@@ -45,4 +45,4 @@ This audit checks the `applied-practical-thinking` web app color system against 
 
 ## Conclusion
 
-`applied-practical-thinking` is aligned with the current APT color doctrine for active UI. Blue remains the primary/action color, muted teal remains the restrained accent, and no low-risk app code color corrections were required in this pass.
+`applied-practical-thinking` is aligned with the current APT color doctrine for active UI. Blue remains the primary/action color, the restricted accent remains secondary for support semantics, and no low-risk app code color corrections were required in this pass.

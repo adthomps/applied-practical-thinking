@@ -115,7 +115,6 @@ export default function DesignPlayground() {
               <AptButton variant="outline">Outline</AptButton>
               <AptButton variant="ghost">Ghost</AptButton>
               <AptButton variant="link">Link</AptButton>
-              <AptButton variant="accent">Accent</AptButton>
             </div>
           </DemoSection>
 
@@ -240,7 +239,7 @@ export default function DesignPlayground() {
           <DemoSection title="All Variants">
             <div className="flex flex-wrap gap-2">
               <AptTag variant="default">Default</AptTag>
-              <AptTag variant="accent">Accent</AptTag>
+              <AptTag variant="primary">Primary</AptTag>
               <AptTag variant="muted">Muted</AptTag>
             </div>
           </DemoSection>

@@ -41,7 +41,7 @@ Use `container` class for consistent max-width and padding:
 
 - Flat navigation (no nested dropdowns) - legacy v1 guidance only
 - Canonical runtime navigation now uses nested dropdowns in `AptNav` driven by `siteConfig.nav` children
-- Current route indicated with `bg-accent text-accent-foreground`
+- Current route indicated with primary or secondary-based emphasis (`bg-primary/10 text-primary` or `bg-secondary text-foreground`)
 - Mobile: hamburger menu with slide-down panel
 
 ## Footer

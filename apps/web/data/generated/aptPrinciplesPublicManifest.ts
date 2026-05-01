@@ -117,7 +117,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-28",
-    "checksum": "1973ff949859a28607d2384aa6ca4449f6c928982331b73f21c73f8f1a8c4d4f"
+    "checksum": "24f13b2a01fb88bef14c5a79dde777efb44bc644e01b29aa01b6b0133fa594d8"
   },
   {
     "id": "checklists-execution-readiness-checklist",
@@ -225,7 +225,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-28",
-    "checksum": "33f71ab3d7beaa4793dd2155cc5b98a3c3d6825318ef12c8a3cf0fb70e137b36"
+    "checksum": "f36f8c59813ca53a5ea22f16dcb6b21a897005b66c37339edca5898c44d8d479"
   },
   {
     "id": "examples-ai-agent-agent-prompt-contract-example",
@@ -249,7 +249,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-28",
-    "checksum": "b009bc086c5d7eae6f77123b241a80471a8fda472d183a4d3c3682cb3fceff91"
+    "checksum": "a67ac5a6b2e2f3361a5ffc2d9ef432ca3dbf5e4caa561dd49c962523ba6745ac"
   },
   {
     "id": "examples-api-error-response-example",
@@ -561,7 +561,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-28",
-    "checksum": "9adb89c64fc3933ea057eba15b764367f36ac2c8fc7cf878d939901db3c16e59"
+    "checksum": "4974f774fe6d4c5d72f446c222f33160521459182572af17ce387ec13a4c9a43"
   },
   {
     "id": "prompts-framework-review-prompt",
@@ -657,7 +657,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-28",
-    "checksum": "06704d153c0a56d63c3c5f5d36e140acb2c5ef2439de2a839fc85cbad9260fa2"
+    "checksum": "ba3e01e849332d96233640bf6ad850fc600d83f3cb08fd0afd8e1902b2823273"
   },
   {
     "id": "quality-testing",
@@ -717,7 +717,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-28",
-    "checksum": "028987647cc1bf8990d0cd7f004a125b7fd60637274b9928793dff008b97f601"
+    "checksum": "a791e83e7c6b88c89d266723992ad289ae6f32f98223413e30f3951abcf3d43f"
   },
   {
     "id": "references-design-tokens",
@@ -729,7 +729,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-28",
-    "checksum": "477c48ce4647ff61b5a0e2e2f181b260e97aebf293736ed96b0fbadc2ad24512"
+    "checksum": "78a258ec5d09ed9b6f30aa16aff7314df8294283adad861da01d4e729cadab8a"
   },
   {
     "id": "references-knowledge-contracts",
