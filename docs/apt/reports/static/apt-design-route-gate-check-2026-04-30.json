@@ -1,0 +1,113 @@
+{
+  "report": {
+    "id": "apt-design-route-gate-check-2026-04-30",
+    "project": "applied-practical-thinking",
+    "batch": "B",
+    "date": "2026-04-30",
+    "status": "in-progress"
+  },
+  "scope": {
+    "routes": [
+      "apps/web/routes/DesignPlayground.tsx",
+      "apps/web/routes/DesignDocs.tsx",
+      "apps/web/routes/DesignPatterns.tsx",
+      "apps/web/routes/DesignKnowledgeEngine.tsx",
+      "apps/web/routes/portfolio/DesignSystem.tsx"
+    ],
+    "supporting": [
+      "apps/web/lib/contrast.ts"
+    ]
+  },
+  "gates": [
+    {
+      "id": "G-001",
+      "name": "Primary/action color uses blue role",
+      "status": "partial",
+      "evidence": [
+        "apps/web/routes/DesignDocs.tsx",
+        "apps/web/routes/DesignPatterns.tsx",
+        "apps/web/routes/portfolio/DesignSystem.tsx"
+      ],
+      "notes": "Primary usage is present; screenshot-backed evidence still pending."
+    },
+    {
+      "id": "G-002",
+      "name": "Restricted accent is not default CTA/hover/focus/active nav",
+      "status": "partial",
+      "evidence": [
+        "apps/web/lib/contrast.ts",
+        "apps/web/routes/portfolio/DesignSystem.tsx"
+      ],
+      "notes": "Contrast examples corrected; full route interaction inventory still pending."
+    },
+    {
+      "id": "G-003",
+      "name": "Navigation and selection states use primary or neutral roles",
+      "status": "partial",
+      "evidence": [
+        "apps/web/lib/contrast.ts"
+      ],
+      "notes": "Sample semantics aligned; route-level state proof still needed."
+    },
+    {
+      "id": "G-004",
+      "name": "Complete UI states are defined",
+      "status": "partial",
+      "evidence": [
+        "apps/web/routes/DesignDocs.tsx",
+        "apps/web/routes/DesignPatterns.tsx"
+      ],
+      "notes": "Loading/error handled in these routes; full inventory pending for all design surfaces."
+    },
+    {
+      "id": "G-005",
+      "name": "Token-based color usage",
+      "status": "pass",
+      "evidence": [
+        "apps/web/scripts/design-audit.cjs",
+        "apps/web/scripts/token-drift-check.cjs"
+      ]
+    },
+    {
+      "id": "G-006",
+      "name": "Accessibility/focus consistency",
+      "status": "partial",
+      "evidence": [
+        "apt-principles/references/design-lint-gates.json"
+      ],
+      "notes": "No blocker found in source read; formal keyboard/focus evidence pending."
+    }
+  ],
+  "changesApplied": [
+    {
+      "file": "apps/web/lib/contrast.ts",
+      "summary": [
+        "Renamed Accent Button to Accent Support Badge",
+        "Replaced accent nav selected samples with primary and neutral selected treatments"
+      ]
+    }
+  ],
+  "validation": [
+    {
+      "command": "pnpm --dir apps/web run design-audit",
+      "result": "pass"
+    },
+    {
+      "command": "pnpm --dir apps/web run token-drift-check",
+      "result": "pass"
+    },
+    {
+      "command": "pnpm --dir apps/web run lint",
+      "result": "pass"
+    },
+    {
+      "command": "pnpm --dir apps/web run validation-report",
+      "result": "pass"
+    }
+  ],
+  "next": [
+    "Add full per-route state inventory evidence",
+    "Add desktop/mobile screenshot evidence for design routes",
+    "Refresh generated public design artifacts and verify semantic consistency"
+  ]
+}

@@ -159,27 +159,27 @@ export const aptColorPairs: ColorPair[] = [
     bgClass: "bg-primary",
     fgClass: "text-primary-foreground",
   },
-  // Accent combinations
+  // Restricted accent support combinations
   {
-    name: "Accent Button",
+    name: "Accent Support Badge",
     background: "165 45% 40%",
     foreground: "220 20% 8%",
     bgClass: "bg-accent",
     fgClass: "text-accent-foreground",
   },
   {
-    name: "Nav Selected (Dark)",
-    background: "165 45% 40%",
+    name: "Nav Active Primary (Dark)",
+    background: "220 70% 55%",
     foreground: "220 20% 8%",
-    bgClass: "bg-accent",
-    fgClass: "text-accent-foreground",
+    bgClass: "bg-primary",
+    fgClass: "text-primary-foreground",
   },
   {
-    name: "Nav Selected (Light)",
-    background: "165 45% 35%",
-    foreground: "0 0% 100%",
-    bgClass: "bg-accent",
-    fgClass: "text-accent-foreground",
+    name: "Nav Selected Neutral",
+    background: "220 15% 18%",
+    foreground: "220 10% 90%",
+    bgClass: "bg-secondary",
+    fgClass: "text-secondary-foreground",
   },
   {
     name: "Accent on Background",

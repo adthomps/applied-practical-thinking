@@ -46,6 +46,14 @@ Do not edit copied markdown or docs under `apps/web/public/` as authored source.
 - [PROJECT_RULES.md](PROJECT_RULES.md) - guardrails and source-vs-generated rules
 - [QUICK_REFERENCE.md](QUICK_REFERENCE.md) - short operational cheatsheet
 
+## Root APT artifact surfaces
+
+- [examples/README.md](examples/README.md) - canonical-link proxy for APT-wide examples
+- [prompts/README.md](prompts/README.md) - canonical-link proxy for APT-wide prompts
+- [checklists/README.md](checklists/README.md) - canonical-link proxy for APT-wide checklists
+- [templates/README.md](templates/README.md) - canonical-link proxy for APT-wide templates
+- [references/README.md](references/README.md) - canonical-link proxy for APT-wide references
+
 ## Root-adjacent repo metadata
 
 - [.github/CODEOWNERS](.github/CODEOWNERS) - active ownership rules

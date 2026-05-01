@@ -1,0 +1,231 @@
+{
+  "report": {
+    "id": "apt-principles-conformance-matrix-2026-04-30",
+    "project": "applied-practical-thinking",
+    "date": "2026-04-30",
+    "status": "partial",
+    "strictness": "strict-with-exception-log",
+    "scope": "full-apt-principles-conformance"
+  },
+  "summary": {
+    "blocking": 0,
+    "major": 5,
+    "minor": 3
+  },
+  "layers": [
+    {
+      "name": "thinking",
+      "score": "pass",
+      "batch": "B",
+      "evidence": [
+        "README.md"
+      ]
+    },
+    {
+      "name": "design",
+      "score": "partial",
+      "batch": "B",
+      "evidence": [
+        "apps/web/routes/DesignPlayground.tsx",
+        "apps/web/routes/DesignPatterns.tsx",
+        "apps/web/scripts/design-audit.cjs",
+        "apps/web/scripts/token-drift-check.cjs"
+      ]
+    },
+    {
+      "name": "architecture",
+      "score": "partial",
+      "batch": "C",
+      "evidence": [
+        "PROJECT_RULES.md",
+        "docs/ARCHITECTURE.md"
+      ]
+    },
+    {
+      "name": "system-standards",
+      "score": "partial",
+      "batch": "D",
+      "evidence": [
+        "apps/web/scripts/validation-report.cjs",
+        "apps/web/package.json",
+        "scripts/verify-apt-root-surfaces.cjs",
+        "package.json"
+      ]
+    },
+    {
+      "name": "security",
+      "score": "partial",
+      "batch": "D",
+      "evidence": [
+        "PROJECT_RULES.md"
+      ]
+    },
+    {
+      "name": "execution",
+      "score": "partial",
+      "batch": "A",
+      "evidence": [
+        "docs/apt/reports/apt-principles-conformance-matrix-2026-04-30.md"
+      ]
+    },
+    {
+      "name": "quality",
+      "score": "pass",
+      "batch": "D",
+      "evidence": [
+        "apps/web/scripts/validation-report.cjs",
+        "apps/web/scripts/design-audit.cjs"
+      ]
+    },
+    {
+      "name": "release",
+      "score": "partial",
+      "batch": "D",
+      "evidence": [
+        "apps/web/scripts/generate-apt-principles-public.cjs",
+        "README.md",
+        ".github/workflows/worker.yml"
+      ]
+    },
+    {
+      "name": "operations",
+      "score": "partial",
+      "batch": "C",
+      "evidence": [
+        "docs/MAINTENANCE.md",
+        "docs/DEPLOYMENT.md"
+      ]
+    },
+    {
+      "name": "knowledge",
+      "score": "partial",
+      "batch": "C",
+      "evidence": [
+        "examples/README.md",
+        "prompts/README.md",
+        "checklists/README.md",
+        "templates/README.md",
+        "references/README.md"
+      ]
+    },
+    {
+      "name": "ai",
+      "score": "partial",
+      "batch": "C",
+      "evidence": [
+        "apps/web/ai/README.md",
+        "apps/worker/src/routes"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "F-001",
+      "severity": "major",
+      "layer": "knowledge",
+      "title": "Root build-kit surfaces need CI enforcement",
+      "evidence": [
+        "examples/README.md",
+        "prompts/README.md",
+        "checklists/README.md",
+        "templates/README.md",
+        "references/README.md",
+        "scripts/verify-apt-root-surfaces.cjs"
+      ],
+      "action": "Wire root verification script into CI required checks.",
+      "status": "in-progress",
+      "progress": "Root proxy surfaces and local verification script are present; CI wiring is pending."
+    },
+    {
+      "id": "F-002",
+      "severity": "resolved",
+      "layer": "knowledge",
+      "title": "Stale docs cleanup completed",
+      "evidence": [
+        "docs/"
+      ],
+      "action": "Keep docs root constrained to active repo-specific operating docs.",
+      "status": "resolved"
+    },
+    {
+      "id": "F-003",
+      "severity": "major",
+      "layer": "system-standards",
+      "title": "CI conformance coverage is not yet complete across all paths",
+      "evidence": [
+        ".github/workflows/worker.yml",
+        "apps/web/package.json",
+        "package.json",
+        "README.md"
+      ],
+      "action": "Add equivalent required conformance checks for pull-request workflows, not only deploy path.",
+      "status": "in-progress",
+      "progress": "Conformance gate is now wired into worker deploy workflow."
+    },
+    {
+      "id": "F-004",
+      "severity": "major",
+      "layer": "ai",
+      "title": "AI adoption evidence is scattered",
+      "evidence": [
+        "apps/web/ai/README.md",
+        "apps/worker/src/routes",
+        "docs/apt/project-profile.md"
+      ],
+      "action": "Create docs/apt/ai-adoption.md as consolidated evidence and ownership record."
+    },
+    {
+      "id": "F-005",
+      "severity": "major",
+      "layer": "design",
+      "title": "Design routes/examples not yet fully validated gate-by-gate",
+      "evidence": [
+        "apps/web/routes/DesignPlayground.tsx",
+        "apps/web/routes/DesignDocs.tsx",
+        "apps/web/routes/portfolio/DesignSystem.tsx",
+        "apps/web/lib/contrast.ts"
+      ],
+      "action": "Run per-route conformance checks against design-lint-gates and record evidence.",
+      "status": "in-progress",
+      "progress": "Accent-as-default examples corrected in contrast samples; remaining gate evidence mapping pending."
+    },
+    {
+      "id": "F-006",
+      "severity": "minor",
+      "layer": "system-standards",
+      "title": "Doctrine mapping verification is not automated",
+      "evidence": [
+        "PROJECT_RULES.md"
+      ],
+      "action": "Add a script/CI check that validates doctrine mapping references and fails on missing links.",
+      "status": "not-started"
+    }
+  ],
+  "batches": [
+    {
+      "id": "A",
+      "title": "Baseline matrix and ledger",
+      "status": "in-progress",
+      "deliverables": [
+        "docs/apt/reports/apt-principles-conformance-matrix-2026-04-30.md",
+        "docs/apt/reports/static/apt-principles-conformance-matrix-2026-04-30.json"
+      ]
+    },
+    {
+      "id": "B",
+      "title": "UI design-system and examples alignment",
+      "status": "in-progress"
+    },
+    {
+      "id": "C",
+      "title": "Artifact structure and governance docs",
+      "status": "in-progress"
+    },
+    {
+      "id": "D",
+      "title": "CI enforcement and exception log",
+      "status": "in-progress"
+    }
+  ],
+  "exceptions": []
+}
