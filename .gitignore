@@ -48,3 +48,6 @@ reports/**/*
 !reports/**/.gitignore
 output/**/*
 !output/**/.gitignore
+
+# Captured audit screenshots
+docs/apt/reports/static/screenshots/**/*

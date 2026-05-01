@@ -178,16 +178,18 @@
       "id": "F-005",
       "severity": "major",
       "layer": "design",
-      "title": "Design routes/examples not yet fully validated gate-by-gate",
+      "title": "Design route interaction-state automation is incomplete",
       "evidence": [
         "apps/web/routes/DesignPlayground.tsx",
         "apps/web/routes/DesignDocs.tsx",
         "apps/web/routes/portfolio/DesignSystem.tsx",
-        "apps/web/lib/contrast.ts"
+        "apps/web/lib/contrast.ts",
+        "docs/apt/reports/apt-design-route-gate-check-2026-04-30.md",
+        "docs/apt/reports/static/screenshots/design-routes-2026-04-30"
       ],
-      "action": "Run per-route conformance checks against design-lint-gates and record evidence.",
+      "action": "Add automated interaction probes for focus/hover/active checks and attach results to route gate artifact.",
       "status": "in-progress",
-      "progress": "Accent-as-default examples corrected in contrast samples; remaining gate evidence mapping pending."
+      "progress": "Per-route state inventory and screenshot-backed evidence added; interaction-state automation remains pending."
     },
     {
       "id": "F-006",

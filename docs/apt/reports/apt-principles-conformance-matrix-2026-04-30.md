@@ -58,6 +58,10 @@ It links canonical requirements to repo-local evidence and remediation batches.
 - Batch D started.
 - Wired conformance validation into CI deploy path in `.github/workflows/worker.yml` via:
 	- `Validate APT conformance gates` step running `pnpm run validate:apt-conformance`
+- Batch B evidence closure progressed:
+	- Added per-route state inventory for design routes in `docs/apt/reports/apt-design-route-gate-check-2026-04-30.md`.
+	- Added screenshot-backed route proof under `docs/apt/reports/static/screenshots/design-routes-2026-04-30/`.
+	- Updated machine-readable route gate artifact with state inventory and screenshot evidence mapping.
 
 ## Canonical Inputs Used
 
@@ -97,7 +101,7 @@ Scores: Pass, Partial, Gap, Not Applicable.
 | Resolved | Knowledge / Architecture | Stale docs marked for deletion no longer remain in docs root. | docs/ listing, docs/apt/reports/docs-folder-cleanup-audit-2026-04-27.md | Keep docs root constrained to active repo-specific operating docs. |
 | Major | System Standards / Release | Doctrine drift and generated artifact checks are now enforced in worker deploy CI, but not yet guaranteed on all PR paths. | .github/workflows/worker.yml, package.json, apps/web package scripts | Add equivalent required checks for pull-request validation workflows. |
 | Major | AI | AI adoption evidence is scattered across prompts, worker routes, and docs. | apps/web/ai/README.md, apps/worker/src/routes, docs/apt/project-profile.md | Create docs/apt/ai-adoption.md with scope, ownership, guardrails, and validation evidence. |
-| Major | Design | Design routes and examples are present and baseline semantic-state corrections are in progress; gate-by-gate evidence remains incomplete. | apps/web/routes/DesignPlayground.tsx, apps/web/routes/portfolio/DesignSystem.tsx, apps/web/lib/contrast.ts | Continue route/example-level gate check and record per-page evidence in the static ledger. |
+| Major | Design | Design routes now include state inventory and screenshot-backed proof, but interaction-state automation (focus/hover traversal) is still incomplete. | apps/web/routes/DesignPlayground.tsx, apps/web/routes/portfolio/DesignSystem.tsx, apps/web/lib/contrast.ts, docs/apt/reports/apt-design-route-gate-check-2026-04-30.md, docs/apt/reports/static/screenshots/design-routes-2026-04-30/ | Add automated interaction-state probes and complete remaining gate assertions. |
 | Major | Architecture | Target documentation architecture migration path exists but remains incomplete. | PROJECT_RULES.md, docs/ARCHITECTURE.md | Add explicit migration milestones and acceptance checks in docs/apt/reports. |
 | Minor | System Standards | Project rules now include layer mapping, but automated verification of mapping coverage is not yet in CI. | PROJECT_RULES.md | Add a verification script that fails when doctrine mapping references are missing/invalid. |
 | Minor | Quality | Metadata rollout completion state is not fully captured in one pass/fail report. | docs/DOCUMENTATION_METADATA_ROLLOUT.md | Add metadata coverage report output and gate on completion threshold. |
