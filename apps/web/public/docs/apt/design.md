@@ -106,6 +106,7 @@ The APT design system covers:
 - semantic color tokens for background, surfaces, borders, text, navigation, action, focus, selection, disabled, accent, success, warning, and danger
 - system typography with clear hierarchy and `0` letter spacing
 - stable spacing and responsive constraints for boards, grids, toolbars, cards, and repeated items
+- global footer shells that use the compact APT footer template for product/site navigation and legal metadata
 - restrained surfaces with no nested cards or decorative page-section cards
 - action components that use shared button, icon, menu, tab, toggle, slider, and input patterns
 - complete state design for loading, empty, success, error, disabled, permission, offline, and degraded states
@@ -113,6 +114,22 @@ The APT design system covers:
 - accessibility expectations for contrast, focus, keyboard use, reduced motion, and readable text wrapping
 
 Token and lint contracts live in `references/design-tokens.json` and `references/design-lint-gates.json`.
+
+## Footer Template Pattern
+
+APT product and doctrine sites should use the compact footer pattern proven in `apt-dream-to-reality` unless a project records a brand-layer exception.
+
+The footer contract is:
+
+- outer shell: top border using `border-border/60`, subtle `bg-card/55`, and optional backdrop blur
+- inner width: standard container with `px-4 py-8 md:py-10`
+- primary layout: `grid grid-cols-1 gap-8 md:grid-cols-4`
+- brand block: first column group spans two desktop columns and includes a small APT emblem, product/site name, Applied Practical Thinking label, and one concise description
+- link groups: two short columns with `text-sm` headings, `space-y-2` links, muted default text, and foreground hover state
+- divider: one horizontal border at `my-6`
+- metadata row: stacked on mobile and horizontal on desktop, using `text-sm` legal text and optional `text-xs` build, license, disclaimer, or AI-use note
+
+Keep the footer compact. It should confirm identity, expose the most useful routes, and close the page without becoming a second sitemap or marketing section.
 
 ## Required Artifacts
 
@@ -164,6 +181,7 @@ Return:
 
 - `examples/ui/dashboard-layout-pattern.md`
 - `examples/ui/navigation-layout-pattern.md`
+- `examples/ui/footer-layout-pattern.md`
 
 ## Related Prompts
 
