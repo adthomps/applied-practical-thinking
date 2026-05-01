@@ -132,7 +132,7 @@ export default function PortfolioDesignSystem() {
         descriptionClassName="text-lg"
         eyebrow={
           <div className="flex items-center gap-3">
-            <AptTag variant="accent">Design System</AptTag>
+            <AptTag variant="primary">Design System</AptTag>
           </div>
         }
         className="mb-12"
@@ -664,7 +664,6 @@ text-xl md:text-2xl
                       <AptButton variant="secondary">Secondary</AptButton>
                       <AptButton variant="outline">Outline</AptButton>
                       <AptButton variant="ghost">Ghost</AptButton>
-                      <AptButton variant="accent">Accent</AptButton>
                       <AptButton variant="link">Link</AptButton>
                     </div>
                   </div>
@@ -692,7 +691,6 @@ text-xl md:text-2xl
 <AptButton variant="secondary">Secondary</AptButton>
 <AptButton variant="outline">Outline</AptButton>
 <AptButton variant="ghost">Ghost</AptButton>
-<AptButton variant="accent">Accent</AptButton>
 <AptButton variant="link">Link</AptButton>
 
 // Sizes
@@ -761,7 +759,7 @@ text-xl md:text-2xl
                   </AptCardContent>
                 </AptCard>
                 
-                <AptCard variant="hero" className="bg-gradient-to-br from-primary/10 to-accent/10">
+                <AptCard variant="hero" className="bg-gradient-to-br from-primary/10 to-secondary/40">
                   <AptCardHeader>
                     <AptCardTitle>Hero Card</AptCardTitle>
                     <AptCardDescription>Glassmorphism effect</AptCardDescription>
@@ -802,7 +800,6 @@ text-xl md:text-2xl
                     <p className="text-sm text-muted-foreground mb-3">Variants</p>
                     <div className="flex flex-wrap gap-2">
                       <AptTag variant="default">Default</AptTag>
-                      <AptTag variant="accent">Accent</AptTag>
                       <AptTag variant="primary">Primary</AptTag>
                       <AptTag variant="muted">Muted</AptTag>
                       <AptTag variant="secondary">Secondary</AptTag>
@@ -821,7 +818,6 @@ text-xl md:text-2xl
               </AptCard>
               <CodeBlock code={`import { AptTag } from "@/components/apt";
 
-<AptTag variant="accent">Featured</AptTag>
 <AptTag variant="primary">New</AptTag>
 <AptTag variant="outline" size="sm">Beta</AptTag>`} />
             </div>

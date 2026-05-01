@@ -326,7 +326,7 @@ export default function PrinciplesDetail(props: PrinciplesDetailProps) {
               <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
                 {section.moreDetail.antiPatterns.map((antiPattern) => (
                   <li key={antiPattern} className="flex items-start gap-2">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                     <span>{antiPattern}</span>
                   </li>
                 ))}
