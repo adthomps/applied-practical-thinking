@@ -225,7 +225,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-28",
-    "checksum": "4dd5942cc4a09808da001681188cfa46da3fa8d59ea5bbe17bc41566b1d5e014"
+    "checksum": "33f71ab3d7beaa4793dd2155cc5b98a3c3d6825318ef12c8a3cf0fb70e137b36"
   },
   {
     "id": "examples-ai-agent-agent-prompt-contract-example",
@@ -418,6 +418,18 @@ export const aptPrinciplesPublicManifest = [
     "status": "draft",
     "lastUpdated": "2026-04-24",
     "checksum": "bb1337d08f785a1606427ef0c3c586d1324a115021633554171fb9594b644111"
+  },
+  {
+    "id": "examples-ui-footer-layout-pattern",
+    "title": "Footer Layout Pattern",
+    "kind": "example",
+    "principleArea": "ui",
+    "sourcePath": "apt-principles/examples/ui/footer-layout-pattern.md",
+    "publicPath": "/docs/apt/examples/ui/footer-layout-pattern.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-04-30",
+    "checksum": "f2ab0adbb8bc982f0208777a3b03a3813fb0e96c79fa6d33306a3abb08650e5f"
   },
   {
     "id": "examples-ui-navigation-layout-pattern",

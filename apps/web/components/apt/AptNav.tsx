@@ -1,9 +1,22 @@
 import { useEffect, useId, useRef, useState } from "react";
 import type { FocusEvent as ReactFocusEvent, KeyboardEvent as ReactKeyboardEvent } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, ExternalLink, Github } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { siteConfig, NavItem } from "@/data/site";
+import { authorConfig, siteConfig, NavItem } from "@/data/site";
+
+const utilityLinks = [
+  {
+    label: "Gallery",
+    href: siteConfig.appliedGalleryUrl,
+    icon: ExternalLink,
+  },
+  {
+    label: "GitHub",
+    href: authorConfig.social.github,
+    icon: Github,
+  },
+] as const;
 
 function normalizePath(path: string) {
   if (!path) return "/";
@@ -461,24 +474,25 @@ export function AptNav() {
   }, [mobileOpen]);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-md">
-      <div className="container flex h-14 items-center justify-between">
+    <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
+      <div className="container flex h-16 items-center gap-4">
         <Link
           to="/"
-          className="flex items-center gap-3 font-bold text-lg tracking-tight"
+          className="flex min-w-0 shrink-0 items-center gap-3 font-bold tracking-tight transition-opacity duration-200 hover:opacity-90"
         >
-          {/* Small emblem */}
-          <div className="h-7 w-7 rounded-full border border-primary/60 flex items-center justify-center text-primary text-sm font-bold shadow-apt-glow-subtle">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-primary/60 bg-background/80 text-sm font-bold text-primary shadow-apt-glow-subtle">
             A
           </div>
-          <span className="text-foreground">APT</span>
-          <span className="hidden sm:inline text-muted-foreground font-normal text-sm">
-            Applied Practical Thinking
-          </span>
+          <div className="min-w-0">
+            <p className="text-sm font-semibold leading-tight text-foreground">{siteConfig.name}</p>
+            <p className="hidden text-xs font-normal uppercase tracking-widest text-muted-foreground sm:block">
+              {siteConfig.fullName}
+            </p>
+          </div>
         </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden flex-1 items-center justify-center md:flex">
+          <div className="flex items-center gap-1 rounded-lg border border-border/60 bg-muted/25 p-1">
           {siteConfig.nav.map((item, index) => (
             <NavDropdown 
               key={item.path} 
@@ -486,12 +500,30 @@ export function AptNav() {
               isLast={index >= siteConfig.nav.length - 2}
             />
           ))}
+          </div>
         </nav>
 
-        {/* Mobile Menu Button */}
+        <div className="ml-auto hidden items-center gap-2 md:flex">
+          {utilityLinks.map((link) => {
+            const Icon = link.icon;
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-9 items-center gap-2 rounded-md border border-border/60 px-3 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:bg-secondary hover:text-foreground"
+              >
+                <Icon className="h-4 w-4" />
+                <span className="hidden lg:inline">{link.label}</span>
+              </a>
+            );
+          })}
+        </div>
+
         <button
           ref={mobileToggleRef}
-          className="md:hidden p-2 rounded-md text-muted-foreground transition-all duration-200 hover:text-foreground hover:bg-accent/30"
+          className="ml-auto rounded-md p-2 text-muted-foreground transition-all duration-200 hover:bg-accent/30 hover:text-foreground md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
           aria-expanded={mobileOpen}
@@ -501,7 +533,6 @@ export function AptNav() {
         </button>
       </div>
 
-      {/* Mobile Nav */}
       {mobileOpen && (
         <nav
           id={mobileMenuId}
@@ -517,6 +548,27 @@ export function AptNav() {
                 onClose={() => setMobileOpen(false)} 
               />
             ))}
+            <div className="mt-4 border-t border-border pt-4">
+              <p className="mb-2 px-3 text-xs font-medium uppercase tracking-widest text-muted-foreground">
+                Resources
+              </p>
+              {utilityLinks.map((link) => {
+                const Icon = link.icon;
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:bg-accent/30 hover:text-foreground"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    <Icon className="h-4 w-4" />
+                    {link.label}
+                  </a>
+                );
+              })}
+            </div>
           </div>
         </nav>
       )}

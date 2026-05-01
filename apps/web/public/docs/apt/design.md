@@ -106,6 +106,8 @@ The APT design system covers:
 - semantic color tokens for background, surfaces, borders, text, navigation, action, focus, selection, disabled, accent, success, warning, and danger
 - system typography with clear hierarchy and `0` letter spacing
 - stable spacing and responsive constraints for boards, grids, toolbars, cards, and repeated items
+- global header shells that use the APT hybrid top-navigation template for brand identity, route-aware navigation, and optional utility actions
+- global footer shells that use the compact APT footer template for product/site navigation and legal metadata
 - restrained surfaces with no nested cards or decorative page-section cards
 - action components that use shared button, icon, menu, tab, toggle, slider, and input patterns
 - complete state design for loading, empty, success, error, disabled, permission, offline, and degraded states
@@ -113,6 +115,39 @@ The APT design system covers:
 - accessibility expectations for contrast, focus, keyboard use, reduced motion, and readable text wrapping
 
 Token and lint contracts live in `references/design-tokens.json` and `references/design-lint-gates.json`.
+
+## Header Template Pattern
+
+APT product, doctrine, and tool surfaces should use a hybrid top-navigation pattern that combines Applied's route-aware accessibility behavior with APT Coach's practical app shell.
+
+The header contract is:
+
+- outer shell: sticky top header with subtle bottom border, `bg-background/80` or `bg-card/80`, and backdrop blur
+- inner width: standard container or project max width with a stable `h-14` to `h-16` rhythm
+- brand block: small APT/product emblem, product/site name, and optional Applied Practical Thinking label
+- desktop navigation: route-aware links in a compact segmented or pill treatment, with active state using primary or neutral selected surface roles
+- grouped navigation: use dropdowns or grouped sections for operational clusters such as training, docs, workflow, or admin tools
+- utility area: optional theme, account/avatar, help, profile, settings, or external resource actions, visually separated from primary navigation
+- mobile navigation: drawer, sheet, or stacked panel with the same link set, active route state, Escape handling where available, and no hidden-only routes
+- metadata/context: compact desktop tools may show runtime, model, project, or environment context on the right side instead of account controls
+
+Keep the header dense but calm. It should orient the user and expose the next likely action without becoming a hero section or duplicating page content.
+
+## Footer Template Pattern
+
+APT product and doctrine sites should use the compact footer pattern proven in `apt-dream-to-reality` unless a project records a brand-layer exception.
+
+The footer contract is:
+
+- outer shell: top border using `border-border/60`, subtle `bg-card/55`, and optional backdrop blur
+- inner width: standard container with `px-4 py-8 md:py-10`
+- primary layout: `grid grid-cols-1 gap-8 md:grid-cols-4`
+- brand block: first column group spans two desktop columns and includes a small APT emblem, product/site name, Applied Practical Thinking label, and one concise description
+- link groups: two short columns with `text-sm` headings, `space-y-2` links, muted default text, and foreground hover state
+- divider: one horizontal border at `my-6`
+- metadata row: stacked on mobile and horizontal on desktop, using `text-sm` legal text and optional `text-xs` build, license, disclaimer, or AI-use note
+
+Keep the footer compact. It should confirm identity, expose the most useful routes, and close the page without becoming a second sitemap or marketing section.
 
 ## Required Artifacts
 
@@ -164,6 +199,7 @@ Return:
 
 - `examples/ui/dashboard-layout-pattern.md`
 - `examples/ui/navigation-layout-pattern.md`
+- `examples/ui/footer-layout-pattern.md`
 
 ## Related Prompts
 
