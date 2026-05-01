@@ -71,7 +71,7 @@
     "Base tokens remain valid for compatibility, but UI implementation should prefer semantic interaction aliases such as link, focusRing, navActive, actionPrimary, selected, and disabledText.",
     "Semantic aliases may map to existing base values; consumers should keep the role name even when the visual value is shared.",
     "Blue is the primary brand/action color for primary calls to action, links, focus rings, and high-frequency action emphasis.",
-    "Muted teal is the restrained accent for active navigation, selected states, hover or focus surface accents, badges, callouts, charts, and success contexts.",
+    "The restricted accent is secondary and limited to explicit support semantics such as section identity, selected support states, badges, callouts, charts, and success contexts.",
     "Neutral surface tokens are the default for secondary buttons, inactive navigation, tabs, cards, panels, and disabled surfaces.",
     "Danger, warning, and success tokens are semantic feedback colors, not general decoration.",
     "One-off colors, shadows, spacing, and motion values require a design decision record.",

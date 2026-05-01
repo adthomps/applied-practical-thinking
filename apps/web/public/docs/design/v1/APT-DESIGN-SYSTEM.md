@@ -76,7 +76,7 @@ A comprehensive design system specification for Applied Practical Thinking. Dark
   --muted: 220 15% 15%;            /* Subdued backgrounds */
   --muted-foreground: 220 10% 55%; /* Secondary text */
   
-  --accent: 165 45% 40%;           /* Muted teal highlight - calmer, professional */
+  --accent: 165 45% 40%;           /* Restricted support accent */
   --accent-foreground: 220 20% 8%; /* Dark text for contrast on teal */
   
   --destructive: 0 65% 45%;
@@ -107,7 +107,7 @@ A comprehensive design system specification for Applied Practical Thinking. Dark
   --muted: 220 15% 92%;
   --muted-foreground: 220 10% 40%;
   
-  --accent: 165 45% 35%;           /* Muted teal for light mode */
+  --accent: 165 45% 35%;           /* Restricted support accent for light mode */
   --accent-foreground: 0 0% 100%; /* White text for contrast */
   
   --border: 220 15% 85%;
@@ -378,7 +378,7 @@ export const typography = {
 | `secondary` | Secondary actions | Muted bg, border |
 | `outline` | Tertiary | Transparent bg, border |
 | `ghost` | Minimal | No bg until hover |
-| `accent` | Highlight | Teal bg |
+| `accent` | Restricted support highlight | Primary-tinted restrained surface |
 | `link` | Text-only | Underline on hover |
 
 **Sizes:**
@@ -439,7 +439,7 @@ import { AptButton } from "@/components/apt";
 | Variant | Styles |
 |---------|--------|
 | `default` | bg-secondary text-secondary-foreground |
-| `accent` | bg-accent/20 text-accent |
+| `accent` | restricted support state only |
 | `primary` | bg-primary/20 text-primary |
 | `muted` | bg-muted text-muted-foreground |
 | `secondary` | bg-secondary/80 text-secondary-foreground |
@@ -515,7 +515,7 @@ export default function Page() {
     <div className="container py-12 md:py-16">
       {/* Hero */}
       <div className="max-w-3xl mb-12">
-        <AptTag variant="accent">Section</AptTag>
+        <AptTag variant="primary">Section</AptTag>
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
           Page Title
         </h1>

@@ -177,7 +177,7 @@ export default function Portfolio() {
                 <li key={item.id}>
                   <Link
                     to={item.path}
-                    className="flex items-start justify-between gap-3 rounded-md border border-border/60 bg-background/40 p-3 transition-colors hover:bg-accent/10"
+                    className="flex items-start justify-between gap-3 rounded-md border border-border/60 bg-background/40 p-3 transition-colors hover:bg-secondary/70"
                   >
                     <div className="space-y-1">
                       <p className="text-sm font-medium">{item.label}</p>

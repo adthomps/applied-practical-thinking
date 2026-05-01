@@ -114,7 +114,7 @@ export default function About() {
       <div className="relative mb-12">
         <AptCard variant="feature" padding="none" className="overflow-hidden">
           {/* Background gradient */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/8 via-transparent to-accent/8" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/8 via-transparent to-secondary/30" />
 
           <div className="relative p-7 md:p-10">
             <div className="flex flex-col md:flex-row items-center md:items-start gap-8">

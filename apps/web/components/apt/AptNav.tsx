@@ -228,7 +228,7 @@ function NavDropdown({ item, isLast = false }: { item: NavItem; isLast?: boolean
             "px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 flex items-center gap-1",
             isActive
               ? "bg-primary/10 text-primary font-semibold"
-              : "text-muted-foreground hover:text-foreground hover:bg-accent/30"
+              : "text-muted-foreground hover:text-foreground hover:bg-secondary"
           )}
         >
           {item.label}
@@ -267,7 +267,7 @@ function NavDropdown({ item, isLast = false }: { item: NavItem; isLast?: boolean
           "px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 flex items-center gap-1",
           isActive
             ? "bg-primary/10 text-primary font-semibold"
-            : "text-muted-foreground hover:text-foreground hover:bg-accent/30"
+            : "text-muted-foreground hover:text-foreground hover:bg-secondary"
         )}
       >
         {item.label}
@@ -313,7 +313,7 @@ function NavDropdown({ item, isLast = false }: { item: NavItem; isLast?: boolean
                     "block px-4 py-3 transition-all duration-200",
                     isChildActive 
                       ? "bg-primary/10" 
-                      : "hover:bg-accent/20"
+                      : "hover:bg-secondary/70"
                   )}
                 >
                   <div className={cn(
@@ -358,7 +358,7 @@ function MobileNavItem({ item, onClose }: { item: NavItem; onClose: () => void }
           "block px-3 py-2 text-sm font-medium rounded-md transition-all duration-200",
           isRouteActive(currentRoute, item.path)
             ? "bg-primary/10 text-primary font-semibold"
-            : "text-muted-foreground hover:text-foreground hover:bg-accent/30"
+            : "text-muted-foreground hover:text-foreground hover:bg-secondary"
         )}
       >
         {item.label}
@@ -376,7 +376,7 @@ function MobileNavItem({ item, onClose }: { item: NavItem; onClose: () => void }
           "w-full px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 flex items-center justify-between",
           isActive
             ? "bg-primary/10 text-primary font-semibold"
-            : "text-muted-foreground hover:text-foreground hover:bg-accent/30"
+            : "text-muted-foreground hover:text-foreground hover:bg-secondary"
         )}
       >
         {item.label}
@@ -397,7 +397,7 @@ function MobileNavItem({ item, onClose }: { item: NavItem; onClose: () => void }
                   "block px-3 py-2 text-sm rounded-md transition-all duration-200",
                   isRouteActive(currentRoute, child.path)
                     ? "bg-primary/10 text-primary font-semibold"
-                    : "text-muted-foreground hover:text-foreground hover:bg-accent/30"
+                    : "text-muted-foreground hover:text-foreground hover:bg-secondary"
                 )}
             >
               {child.label}
@@ -523,7 +523,7 @@ export function AptNav() {
 
         <button
           ref={mobileToggleRef}
-          className="ml-auto rounded-md p-2 text-muted-foreground transition-all duration-200 hover:bg-accent/30 hover:text-foreground md:hidden"
+          className="ml-auto rounded-md p-2 text-muted-foreground transition-all duration-200 hover:bg-secondary hover:text-foreground md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
           aria-expanded={mobileOpen}
@@ -560,7 +560,7 @@ export function AptNav() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:bg-accent/30 hover:text-foreground"
+                    className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:bg-secondary hover:text-foreground"
                     onClick={() => setMobileOpen(false)}
                   >
                     <Icon className="h-4 w-4" />

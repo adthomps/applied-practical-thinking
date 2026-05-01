@@ -35,7 +35,7 @@ export function HeroCard({
         className
       )}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/30 pointer-events-none" />
 
       <div className="relative z-10 max-w-2xl">
         <div className="mb-6">

@@ -62,7 +62,7 @@ Predictable interaction patterns reduce cognitive load and implementation drift.
 - Dark-first background with deep navy/cosmic tones.
 - Glass surfaces may be used for cards and major panels.
 - Blue is the primary brand and action color for primary calls to action, links, focus rings, and high-frequency emphasis.
-- Muted teal/green is a restrained accent for active navigation, selected states, hover or focus surface accents, badges, large callouts, chart accents, and success treatment.
+- The restricted accent is secondary and reserved for support semantics such as section identity, large callouts, charts, and success treatment.
 - System font stack is the default.
 - Motion should be subtle and short.
 
@@ -86,14 +86,14 @@ motion-normal: 220ms
 
 APT uses a mostly blue visual system by design. Blue carries the brand mark, default primary calls to action, focus rings, links, and high-frequency emphasis because it anchors the calm technical identity of Applied Practical Thinking.
 
-Muted teal/green is intentionally secondary. It should create contrast for active navigation, selected states, hover or focus surface accents, badges and tags, large callouts, chart accents, and success treatment where relevant. It should not become the default CTA color unless a project records an explicit brand decision.
+The restricted accent is intentionally secondary. It may create contrast for explicit section identity, selected support states, badges and tags, large callouts, chart accents, and success treatment where relevant. It should not become the default CTA, hover, focus, or active navigation color unless a project records an explicit brand decision.
 
 ## Color Roles and Interaction Rules
 
 Color choices must start from semantic role, not visual preference.
 
 - Blue is for brand identity, primary calls to action, links, focus rings, and high-frequency action emphasis.
-- Muted teal is for active navigation, selected states, hover or focus surface accents, badges and tags, large callouts, chart accents, and success treatment.
+- The restricted accent is for explicit section identity, selected support states, badges and tags, large callouts, chart accents, and success treatment.
 - Neutral surfaces are for default navigation, secondary buttons, inactive tabs, cards, panels, dividers, and disabled surfaces.
 - Danger, warning, and success colors are semantic feedback colors. Do not use them as general decoration or to create arbitrary variety.
 - Disabled treatment should reduce contrast and interaction affordance without hiding the control or changing its meaning.
