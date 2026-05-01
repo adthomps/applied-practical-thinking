@@ -225,7 +225,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-28",
-    "checksum": "ef86cc63f1b215b7a3097fc0ca08e5511ea328a40d8debe0c56be084f022e4c7"
+    "checksum": "33f71ab3d7beaa4793dd2155cc5b98a3c3d6825318ef12c8a3cf0fb70e137b36"
   },
   {
     "id": "examples-ai-agent-agent-prompt-contract-example",
