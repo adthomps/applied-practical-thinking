@@ -161,10 +161,10 @@ export default function About() {
                     <Link to="/labs">View My Work</Link>
                   </AptButton>
                   <AptButton variant="outline" size="lg" asChild>
-                    <a href="#principles">
+                    <Link to="/principles">
                       <User className="h-4 w-4 mr-2" />
                       View Principles
-                    </a>
+                    </Link>
                   </AptButton>
                 </div>
               </div>
