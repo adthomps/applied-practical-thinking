@@ -34,6 +34,8 @@ jobs:
           else
             echo "No project-profile.json found, skipping APT validation"
           fi
+      - name: Validate APT conformance gates
+        run: pnpm run validate:apt-conformance
       - name: Deploy Worker
         run: |
           cd apps/worker

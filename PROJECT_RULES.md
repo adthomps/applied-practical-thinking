@@ -57,6 +57,24 @@ Doc placement rule:
 - Target-state public docs app location is `apps/docs` (planned, not yet active in this pass)
 - OpenAPI is the target-state source of truth for API reference contracts (generation flow planned, not yet active)
 
+APT root artifact proxy rule:
+- Root `examples/`, `prompts/`, `checklists/`, `templates/`, and `references/` are canonical-link surfaces.
+- Keep APT-wide doctrine artifacts in the sibling `apt-principles` repo; avoid duplicating canonical assets here.
+- Repo-specific evidence and generated audit outputs belong under `docs/apt/reports/` and `docs/apt/reports/static/`.
+
+APT doctrine mapping for reviews:
+- Thinking: `apt-principles/thinking.md`, `apt-principles/apt-principles.md`
+- Design: `apt-principles/design.md`, `apt-principles/checklists/design-review-checklist.md`, `apps/web/docs/design/static/APT-REVIEW-STANDARD.md`
+- Architecture: `apt-principles/architecture.md`, `docs/ARCHITECTURE.md`
+- System Standards: `apt-principles/system-standards.md`, `docs/apt/reports/`
+- Security: `apt-principles/security.md`, `apt-principles/checklists/security-review-checklist.md`
+- Execution: `apt-principles/execution.md`, `docs/apt/project-profile.md`
+- Quality: `apt-principles/quality-testing.md`, `apt-principles/checklists/quality-testing-checklist.md`
+- Release/Change: `apt-principles/release-change-management.md`, `docs/DEPLOYMENT.md`
+- Operations: `apt-principles/operations-support.md`, `docs/MAINTENANCE.md`
+- Knowledge: `apt-principles/knowledge-system.md`, root artifact proxy surfaces
+- AI: `apt-principles/ai-agent-framework.md`, `apps/web/ai/README.md`
+
 ## Testing and Local Development
 
 - Web: `pnpm --dir apps/web dev`

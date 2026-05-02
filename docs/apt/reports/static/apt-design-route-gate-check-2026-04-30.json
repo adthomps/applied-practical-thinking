@@ -1,0 +1,230 @@
+{
+  "report": {
+    "id": "apt-design-route-gate-check-2026-04-30",
+    "project": "applied-practical-thinking",
+    "batch": "B",
+    "date": "2026-04-30",
+    "status": "in-progress"
+  },
+  "scope": {
+    "routes": [
+      "apps/web/routes/DesignPlayground.tsx",
+      "apps/web/routes/DesignDocs.tsx",
+      "apps/web/routes/DesignPatterns.tsx",
+      "apps/web/routes/DesignKnowledgeEngine.tsx",
+      "apps/web/routes/portfolio/DesignSystem.tsx"
+    ],
+    "supporting": [
+      "apps/web/lib/contrast.ts",
+      "apps/web/routes/DesignDocDetail.tsx"
+    ]
+  },
+  "screenshots": {
+    "directory": "docs/apt/reports/static/screenshots/design-routes-2026-04-30",
+    "viewports": {
+      "desktop": 1440,
+      "mobile": 390
+    },
+    "files": [
+      "design-system-desktop.png",
+      "design-system-mobile.png",
+      "design-playground-desktop.png",
+      "design-playground-mobile.png",
+      "design-docs-desktop.png",
+      "design-docs-mobile.png",
+      "design-docs-error-desktop.png",
+      "design-patterns-desktop.png",
+      "design-patterns-mobile.png",
+      "design-patterns-error-desktop.png",
+      "design-knowledge-engine-desktop.png",
+      "design-knowledge-engine-mobile.png",
+      "design-knowledge-engine-error-desktop.png"
+    ],
+    "runtimeNote": "Worker API was unavailable in this capture run, providing explicit loading/error state evidence for manifest-driven routes."
+  },
+  "gates": [
+    {
+      "id": "G-001",
+      "name": "Primary/action color uses blue role",
+      "status": "partial",
+      "evidence": [
+        "apps/web/routes/DesignDocs.tsx",
+        "apps/web/routes/DesignPatterns.tsx",
+        "apps/web/routes/portfolio/DesignSystem.tsx",
+        "docs/apt/reports/static/screenshots/design-routes-2026-04-30/design-system-desktop.png"
+      ],
+      "notes": "Primary usage is present and screenshot-backed; interactive state probes remain pending."
+    },
+    {
+      "id": "G-002",
+      "name": "Restricted accent is not default CTA/hover/focus/active nav",
+      "status": "partial",
+      "evidence": [
+        "apps/web/lib/contrast.ts",
+        "apps/web/routes/portfolio/DesignSystem.tsx",
+        "docs/apt/reports/static/screenshots/design-routes-2026-04-30/design-docs-desktop.png"
+      ],
+      "notes": "Contrast examples corrected and screenshots captured; interaction-state assertions remain pending."
+    },
+    {
+      "id": "G-003",
+      "name": "Navigation and selection states use primary or neutral roles",
+      "status": "partial",
+      "evidence": [
+        "apps/web/lib/contrast.ts",
+        "docs/apt/reports/static/screenshots/design-routes-2026-04-30/design-system-desktop.png"
+      ],
+      "notes": "Sample semantics aligned and route screenshots captured; keyboard/focus traversal evidence still needed."
+    },
+    {
+      "id": "G-004",
+      "name": "Complete UI states are defined",
+      "status": "pass",
+      "evidence": [
+        "apps/web/routes/DesignPlayground.tsx",
+        "apps/web/routes/DesignDocs.tsx",
+        "apps/web/routes/DesignPatterns.tsx",
+        "apps/web/routes/DesignDocDetail.tsx",
+        "docs/apt/reports/static/screenshots/design-routes-2026-04-30/design-docs-error-desktop.png",
+        "docs/apt/reports/static/screenshots/design-routes-2026-04-30/design-patterns-error-desktop.png",
+        "docs/apt/reports/static/screenshots/design-routes-2026-04-30/design-knowledge-engine-error-desktop.png",
+        "docs/apt/reports/static/screenshots/design-routes-2026-04-30/design-playground-desktop.png",
+        "docs/apt/reports/static/screenshots/design-routes-2026-04-30/design-system-desktop.png"
+      ],
+      "notes": "Per-route inventory complete with loading/error/success and degraded handling evidence."
+    },
+    {
+      "id": "G-005",
+      "name": "Token-based color usage",
+      "status": "pass",
+      "evidence": [
+        "apps/web/scripts/design-audit.cjs",
+        "apps/web/scripts/token-drift-check.cjs"
+      ]
+    },
+    {
+      "id": "G-006",
+      "name": "Accessibility/focus consistency",
+      "status": "partial",
+      "evidence": [
+        "apt-principles/references/design-lint-gates.json"
+      ],
+      "notes": "No blocker found in source read; formal keyboard/focus evidence pending."
+    }
+  ],
+  "changesApplied": [
+    {
+      "file": "apps/web/lib/contrast.ts",
+      "summary": [
+        "Renamed Accent Button to Accent Support Badge",
+        "Replaced accent nav selected samples with primary and neutral selected treatments"
+      ]
+    },
+    {
+      "file": "docs/apt/reports/static/screenshots/design-routes-2026-04-30",
+      "summary": [
+        "Captured desktop/mobile screenshots for all design routes in scope",
+        "Captured explicit error-state screenshots for docs, patterns, and knowledge-engine doc detail"
+      ]
+    },
+    {
+      "file": "docs/apt/reports/apt-design-route-gate-check-2026-04-30.md",
+      "summary": [
+        "Added per-route state inventory table",
+        "Added screenshot evidence mapping for each route"
+      ]
+    }
+  ],
+  "routeStateInventory": [
+    {
+      "route": "/design/system",
+      "component": "apps/web/routes/portfolio/DesignSystem.tsx",
+      "loading": "not-applicable",
+      "error": "runtime-config-guidance",
+      "emptyOrDegraded": "not-applicable",
+      "disabled": "not-explicit",
+      "success": "static-sections-render",
+      "screenshots": [
+        "design-system-desktop.png",
+        "design-system-mobile.png"
+      ]
+    },
+    {
+      "route": "/design-playground",
+      "component": "apps/web/routes/DesignPlayground.tsx",
+      "loading": "no-explicit-spinner",
+      "error": "fetch-catch-degrades-to-empty-list",
+      "emptyOrDegraded": "labs-list-can-be-empty",
+      "disabled": "demonstrated-via-disabled-buttons",
+      "success": "demo-sections-render",
+      "screenshots": [
+        "design-playground-desktop.png",
+        "design-playground-mobile.png"
+      ]
+    },
+    {
+      "route": "/design/docs",
+      "component": "apps/web/routes/DesignDocs.tsx",
+      "loading": "explicit-loading-screen",
+      "error": "runtime-config-notice-or-destructive-text",
+      "emptyOrDegraded": "grids-can-render-with-zero-cards",
+      "disabled": "not-explicit",
+      "success": "doc-and-pattern-cards-render",
+      "screenshots": [
+        "design-docs-desktop.png",
+        "design-docs-mobile.png",
+        "design-docs-error-desktop.png"
+      ]
+    },
+    {
+      "route": "/design/patterns",
+      "component": "apps/web/routes/DesignPatterns.tsx",
+      "loading": "explicit-loading-screen",
+      "error": "runtime-config-notice-or-destructive-text",
+      "emptyOrDegraded": "pattern-grid-can-render-with-zero-cards",
+      "disabled": "not-explicit",
+      "success": "pattern-cards-render",
+      "screenshots": [
+        "design-patterns-desktop.png",
+        "design-patterns-mobile.png",
+        "design-patterns-error-desktop.png"
+      ]
+    },
+    {
+      "route": "/design/knowledge-engine",
+      "component": "apps/web/routes/DesignKnowledgeEngine.tsx -> apps/web/routes/DesignDocDetail.tsx",
+      "loading": "redirect-then-explicit-doc-loading",
+      "error": "runtime-config-notice-or-destructive-text",
+      "emptyOrDegraded": "missing-doc-redirects-to-design-docs",
+      "disabled": "not-explicit",
+      "success": "doc-detail-renders-markdown-article",
+      "screenshots": [
+        "design-knowledge-engine-desktop.png",
+        "design-knowledge-engine-mobile.png",
+        "design-knowledge-engine-error-desktop.png"
+      ]
+    }
+  ],
+  "validation": [
+    {
+      "command": "pnpm --dir apps/web run design-audit",
+      "result": "pass"
+    },
+    {
+      "command": "pnpm --dir apps/web run token-drift-check",
+      "result": "pass"
+    },
+    {
+      "command": "pnpm --dir apps/web run lint",
+      "result": "pass"
+    },
+    {
+      "command": "pnpm --dir apps/web run validation-report",
+      "result": "pass"
+    }
+  ],
+  "next": [
+    "Add automated interaction probes for keyboard focus traversal and hover/active assertions",
+    "Refresh generated public design artifacts and verify semantic consistency"
+  ]
+}

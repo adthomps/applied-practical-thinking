@@ -13,6 +13,8 @@
     "lint:web": "pnpm --dir apps/web lint",
     "validation-report:web": "pnpm --dir apps/web run validation-report",
     "validation-report:web:full": "pnpm --dir apps/web run validation-report:full",
+    "verify:apt-root-surfaces": "node scripts/verify-apt-root-surfaces.cjs",
+    "validate:apt-conformance": "pnpm run verify:apt-root-surfaces && pnpm run validation-report:web",
     "validation-frontmatter-autofix:web": "pnpm --dir apps/web run validation-frontmatter-autofix",
     "docs:frontmatter-report": "pnpm --dir apps/web run frontmatter-report",
     "dev:worker": "pnpm --dir apps/worker dev",
