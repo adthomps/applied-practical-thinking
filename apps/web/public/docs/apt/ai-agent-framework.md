@@ -1,7 +1,7 @@
 ---
 title: APT AI & Agent Framework (Augmentation Layer)
 version: v1
-last_updated: 2026-04-24
+last_updated: 2026-05-01
 owner: APT
 status: draft
 ---
@@ -77,6 +77,8 @@ Every durable agent prompt should define:
 - validation requirements
 - escalation conditions
 
+Health, fitness, biometric, finance, legal, safety, and other high-stakes or high-confidence-risk domains require stricter contracts. Prompts in those areas must name the data boundary, identify whether guidance is informational or professional advice, define referral/escalation conditions, and preserve a deterministic fallback when AI refinement fails.
+
 ## Review Bundle Standard
 
 AI review should use a repeatable bundle of lenses: thinking clarity, design-system alignment, architecture boundaries, system standards, security, quality/testing, release readiness, operations, and knowledge capture.
@@ -86,6 +88,8 @@ Review output should prioritize findings by severity, cite evidence, name the vi
 ## Good Example
 
 An architecture review prompt points to `architecture.md`, `system-standards.md`, and `security.md`, asks for findings by severity, and requires file/path evidence instead of generic advice.
+
+A health coaching prompt for APT Coach states that it may use only request-scoped, validated training and approved health-context inputs; it refines deterministic recommendations into non-medical coaching language; it refers users to qualified professionals for clinical concerns; and it never claims hidden data access.
 
 ## Bad Example
 
@@ -117,6 +121,7 @@ Return:
 ## Related Examples
 
 - `examples/ai-agent/agent-prompt-contract-example.md`
+- `examples/ai-agent/health-coaching-prompt-boundary-example.md`
 - `examples/ai-agent/workspace-knowledge-example.md`
 
 ## Related Prompts

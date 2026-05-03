@@ -24,6 +24,7 @@ export function toContentIndexItemFromFeed(item: PublicFeedItem): ContentIndexIt
     thumbnail: item.thumbnail,
     assetBasePath: item.assetBasePath,
     indexType: item.sourceIndexType,
+    featured: item.featured,
   };
 }
 

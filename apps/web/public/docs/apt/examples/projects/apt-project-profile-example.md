@@ -1,7 +1,7 @@
 ---
 title: APT Project Profile Example
 version: v1
-last_updated: 2026-04-24
+last_updated: 2026-05-01
 owner: APT
 status: draft
 ---
@@ -58,6 +58,18 @@ showcase:
 ```
 
 The same structure can describe `apt-dream-to-reality`, `apt-novel-reviewer`, `apt-payment-rpc-api`, `crt-world`, and future APT projects with project-specific evidence.
+
+## APT Coach Adoption Example
+
+APT Coach should use Apply mode when it references this package as external doctrine and keeps local evidence in `docs/apt/`.
+
+Minimum local artifacts:
+
+- `docs/apt/adoption.md` for active principle coverage, validation commands, and exceptions.
+- `docs/apt/project-profile.md` for audience, maturity, showcase readiness, and principles demonstrated.
+- `docs/apt/runbook-security.md` for app-specific trust boundaries, integrations, secrets, AI fallback behavior, and deferred risks.
+
+Profile language should describe APT Coach as a structured coaching system that uses logged training and approved health context. It should not describe the product as medical, diagnostic, or as having hidden access to data outside validated app inputs.
 
 ## Tradeoffs
 

@@ -1,7 +1,7 @@
 ---
 title: APT Operations & Support Thinking (Run & Support)
 version: v1
-last_updated: 2026-04-24
+last_updated: 2026-05-01
 owner: APT
 status: draft
 ---
@@ -53,6 +53,7 @@ Errors should be actionable without leaking sensitive implementation detail.
 - Define fallback behavior for critical degraded states.
 - Keep runbooks close to the system or canonical docs.
 - Treat support findings as input to quality, release, and knowledge docs.
+- Preserve the canonical `operations-support` source path when a product route or navigation group shortens the label to Operations.
 
 ## Required Artifacts
 

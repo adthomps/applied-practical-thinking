@@ -1,7 +1,7 @@
 ---
 title: APT Knowledge System (Learn & Scale)
 version: v1
-last_updated: 2026-04-24
+last_updated: 2026-05-01
 owner: APT
 status: draft
 ---
@@ -53,6 +53,9 @@ Duplicate guidance creates drift unless there is a sync or validation process.
 - Update related examples, prompts, and checklists when doctrine changes.
 - Record decisions that alter architecture, security, release, or AI behavior.
 - Keep AI-ingestible docs concise, structured, and source-aware.
+- Preserve canonical source paths when public sites use shorter route labels or legacy aliases.
+
+Canonical doctrine uses `knowledge-system` for this layer. Public routes may use shorter labels such as Knowledge, but aliases such as `knowledge-engine` should point back to `knowledge-system.md` rather than becoming a second doctrine source.
 
 ## Required Artifacts
 

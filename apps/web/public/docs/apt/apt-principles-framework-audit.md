@@ -1,7 +1,7 @@
 ---
 title: APT Principles Framework Audit
 version: v1
-last_updated: 2026-04-24
+last_updated: 2026-05-01
 owner: APT
 status: draft
 ---
@@ -127,15 +127,15 @@ Recommended direction:
 
 Some names differ across files and routes:
 
-- Knowledge doc slug appears as `knowledge-system` in `apt-principles` but `knowledge-engine` in `aptPrinciples.ts`.
-- Operations appears as `operations-support` in docs but `operations` in route/group IDs.
-- Security is present in `apt-principles.md` but not represented as an `aptPrincipleGroups` lifecycle item in the app data.
+- Knowledge doc slug is canonical as `knowledge-system`; public routes may use Knowledge or legacy aliases only when they point back to `knowledge-system.md`.
+- Operations doc slug is canonical as `operations-support`; route/group IDs may shorten this to Operations if generated views preserve the source path.
+- Security is a formal lifecycle layer and should remain represented in both canonical doctrine and public principle data.
 
 Recommended direction:
 
 - Keep user-facing labels descriptive.
 - Keep file slugs stable and explicit.
-- Add security either as a cross-cutting standard outside the lifecycle or as a formal twelfth framework area.
+- Preserve source-path metadata in generated public views so route aliases do not become competing doctrine sources.
 
 ### 4. Required artifacts per principle
 
@@ -166,7 +166,7 @@ The example stubs have been replaced with real starter examples across API, arch
 ### Phase 1: Canonical framework cleanup
 
 1. Expand `apt-principles.md` into the official framework overview.
-2. Decide whether Security is a twelfth principle area or a cross-cutting standard.
+2. Keep Security as a formal lifecycle area while also reviewing it as a cross-cutting concern.
 3. Normalize doc slugs and labels across `apt-principles` and `applied-practical-thinking`.
 4. Add a lifecycle map showing:
    - Why: Thinking

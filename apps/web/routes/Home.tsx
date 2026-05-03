@@ -94,7 +94,7 @@ function getHomepageFeaturedLink(item: ContentIndexItem) {
     };
   }
 
-  if (item.indexType === "systems" || item.type === "system" || item.platforms) {
+  if (item.indexType === "systems" || item.type === "system") {
     return {
       to: `/proof/${item.id ?? item.slug}`,
       typeLabel: "System",
@@ -139,6 +139,7 @@ export default function Home() {
     [featuredQuery.data]
   );
   const loading = featuredQuery.isLoading;
+  const showFeaturedFallback = !loading && featuredItems.length === 0;
 
   return (
     <div>
@@ -237,7 +238,7 @@ export default function Home() {
       {/* Feature cards */}
       <section className="container py-12 md:py-16">
         <SectionIntro
-          title="Feature cards"
+          title="Featured work"
           description="A curated set of recent highlights across Labs, Proof, and Insights."
           className="mb-8"
         />
@@ -253,6 +254,20 @@ export default function Home() {
               </AptCardHeader>
             </AptCard>
           )}
+          {showFeaturedFallback ? (
+            <AptCard variant="subtle" padding="default" className="md:col-span-2 lg:col-span-3">
+              <AptCardHeader className="p-0">
+                <AptCardTitle>
+                  {featuredQuery.isError ? "Featured work is temporarily unavailable" : "Featured work is being curated"}
+                </AptCardTitle>
+                <AptCardDescription className="mt-1">
+                  {featuredQuery.isError
+                    ? "The latest highlights could not be loaded from the content feed. The section will populate once the feed is reachable."
+                    : "No featured items are marked yet. Browse the full lanes while the home highlights are selected."}
+                </AptCardDescription>
+              </AptCardHeader>
+            </AptCard>
+          ) : null}
           {featuredItems.map((item) => {
             const { to, typeLabel, laneLabel } = getHomepageFeaturedLink(item);
             const statusTag = getStatusTagDefinition(item.status as string | undefined);
