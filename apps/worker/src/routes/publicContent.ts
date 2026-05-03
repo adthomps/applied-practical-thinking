@@ -421,6 +421,7 @@ function normalizeFeedItem(
     href,
     contentPath: normalized.contentPath,
     sourceIndexType,
+    featured: normalized.featured,
     links: normalized.links,
     excerpt: normalized.excerpt,
     date: normalized.date,

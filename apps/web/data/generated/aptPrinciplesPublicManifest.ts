@@ -32,8 +32,8 @@ export const aptPrinciplesPublicManifest = [
     "publicPath": "/docs/apt/ai-agent-framework.md",
     "version": "v1",
     "status": "draft",
-    "lastUpdated": "2026-04-24",
-    "checksum": "cb8b0b1f44e58b0274a216abd271b725610fed4bd9fc84358fd79a6c49f0b9a7"
+    "lastUpdated": "2026-05-01",
+    "checksum": "412d03dbfc7672333978929f535630484cd3a8434167d759875c4e1b770edaf8"
   },
   {
     "id": "apt-principles-framework-audit",
@@ -44,8 +44,8 @@ export const aptPrinciplesPublicManifest = [
     "publicPath": "/docs/apt/apt-principles-framework-audit.md",
     "version": "v1",
     "status": "draft",
-    "lastUpdated": "2026-04-24",
-    "checksum": "dbcc3a0aecfcad9f90d26fce19b2c053bfc467d55642626e9ea41988285f66d8"
+    "lastUpdated": "2026-05-01",
+    "checksum": "250c97813f4003b7dbd6b27a6a002e9771fda1ba187bf7cae043385132a0f309"
   },
   {
     "id": "apt-principles",
@@ -56,8 +56,8 @@ export const aptPrinciplesPublicManifest = [
     "publicPath": "/docs/apt/apt-principles.md",
     "version": "v1",
     "status": "draft",
-    "lastUpdated": "2026-04-24",
-    "checksum": "630a340bff3d0083e1a569b24780995fbce62a141fbe8d0a1ee1845a1f35f24b"
+    "lastUpdated": "2026-05-01",
+    "checksum": "ceabc746a79976c14cce3598584f91f84f50bdeb910ed4f336cb7c875d1d581d"
   },
   {
     "id": "architecture",
@@ -240,6 +240,18 @@ export const aptPrinciplesPublicManifest = [
     "checksum": "0651031071a16f32b597d450ef188eb4d2d4325c8e4a715b55c4131cbcb55a2f"
   },
   {
+    "id": "examples-ai-agent-health-coaching-prompt-boundary-example",
+    "title": "Health Coaching Prompt Boundary Example",
+    "kind": "example",
+    "principleArea": "ai-agent",
+    "sourcePath": "apt-principles/examples/ai-agent/health-coaching-prompt-boundary-example.md",
+    "publicPath": "/docs/apt/examples/ai-agent/health-coaching-prompt-boundary-example.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-05-01",
+    "checksum": "8527856bd240eb7d68ebf2325a4a0550b6cbd44ed999492c1283dea2ec955336"
+  },
+  {
     "id": "examples-ai-agent-workspace-knowledge-example",
     "title": "Workspace Knowledge Example",
     "kind": "example",
@@ -332,8 +344,8 @@ export const aptPrinciplesPublicManifest = [
     "publicPath": "/docs/apt/examples/projects/apt-project-profile-example.md",
     "version": "v1",
     "status": "draft",
-    "lastUpdated": "2026-04-24",
-    "checksum": "8c490195c79f9496b02dad919af7d863f9bc48f3909fe661fb1e32b43b7dfa2b"
+    "lastUpdated": "2026-05-01",
+    "checksum": "17666fe4624e4ea79dfaf6d8151a1b1bb6b34213fbb6da99dd813036a99d3cb4"
   },
   {
     "id": "examples-quality-validation-plan-example",
@@ -500,8 +512,8 @@ export const aptPrinciplesPublicManifest = [
     "publicPath": "/docs/apt/knowledge-system.md",
     "version": "v1",
     "status": "draft",
-    "lastUpdated": "2026-04-24",
-    "checksum": "e45384f3d75f9bd46ee5c07ef8deaf24ca7667f8573fb4a1ed0b4acac1995e98"
+    "lastUpdated": "2026-05-01",
+    "checksum": "119c3d21d049241c21fb82760f9478493968b48d1045c66f827b86a208deb75b"
   },
   {
     "id": "operations-support",
@@ -512,8 +524,8 @@ export const aptPrinciplesPublicManifest = [
     "publicPath": "/docs/apt/operations-support.md",
     "version": "v1",
     "status": "draft",
-    "lastUpdated": "2026-04-24",
-    "checksum": "01624cfd3930f9b8aafad1d4691c9e6e557ddc5a05f24e04197aba607b1cc1ad"
+    "lastUpdated": "2026-05-01",
+    "checksum": "a31f7272083f6f8353b6915b89288e47f5e071ec3e42259482d42869dfb50187"
   },
   {
     "id": "prompts-api-review-prompt",

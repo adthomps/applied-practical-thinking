@@ -1,7 +1,7 @@
 ---
 title: APT Principles Framework
 version: v1
-last_updated: 2026-04-24
+last_updated: 2026-05-01
 owner: APT
 status: draft
 ---
@@ -45,6 +45,10 @@ APT creates a repeatable system for moving from concept to execution without los
 | Knowledge System | How do we learn and scale understanding? | `knowledge-system.md` |
 | AI & Agent Framework | How does AI augment the work? | `ai-agent-framework.md` |
 | Security & Authentication | How do we protect trust boundaries? | `security.md` |
+
+Security is a formal lifecycle layer. It may be reviewed alongside architecture and operations, but it is not optional or merely a final checklist.
+
+Canonical file slugs use explicit doctrine names such as `operations-support` and `knowledge-system`. Public sites and route groups may use shorter labels such as Operations or Knowledge, but generated views should preserve the canonical source path so those aliases do not become competing doctrine names.
 
 ## Core Operating Rules
 

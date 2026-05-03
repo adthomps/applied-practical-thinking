@@ -73,6 +73,7 @@ export interface PublicFeedItem {
   href: string;
   contentPath: string;
   sourceIndexType: ContentIndexType;
+  featured?: boolean;
   links?: Record<string, string | null | undefined>;
   excerpt?: string;
   date?: string;
