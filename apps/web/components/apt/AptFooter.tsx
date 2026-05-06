@@ -17,6 +17,9 @@ const footerResourceLinks = [
   { label: "LinkedIn", href: authorConfig.social.linkedin, external: true },
 ] as const;
 
+const footerFocusRingClass =
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card";
+
 export function AptFooter() {
   const currentYear = new Date().getFullYear();
   const joinedYearMatch = authorConfig.joinedDate.match(/\d{4}/);
@@ -30,8 +33,8 @@ export function AptFooter() {
           <div>
             <Link
               to="/"
-              aria-label="Home — Applied Practical Thinking"
-              className="inline-flex items-center gap-3 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card"
+              aria-label="Return to homepage"
+              className={`inline-flex items-center gap-3 rounded-md ${footerFocusRingClass}`}
             >
               <AptEmblem size="sm" glow="none" animated={false} className="h-8 w-8" />
               <div className="space-y-0.5">
@@ -53,7 +56,7 @@ export function AptFooter() {
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="rounded-sm transition-colors duration-200 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card"
+                    className={`rounded-sm transition-colors duration-200 hover:text-foreground ${footerFocusRingClass}`}
                   >
                     {link.label}
                   </Link>
@@ -73,7 +76,7 @@ export function AptFooter() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="rounded-sm transition-colors duration-200 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card"
+                    className={`rounded-sm transition-colors duration-200 hover:text-foreground ${footerFocusRingClass}`}
                   >
                     {link.label}
                   </a>
