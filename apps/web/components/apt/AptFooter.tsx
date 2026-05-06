@@ -34,7 +34,7 @@ export function AptFooter() {
             <Link
               to="/"
               aria-label="Return to homepage"
-              className={`inline-flex items-center gap-3 rounded-md ${footerFocusRingClass}`}
+              className={"inline-flex items-center gap-3 rounded-md " + footerFocusRingClass}
             >
               <AptEmblem size="sm" glow="none" animated={false} className="h-8 w-8" />
               <div className="space-y-0.5">
@@ -56,7 +56,7 @@ export function AptFooter() {
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className={`rounded-sm transition-colors duration-200 hover:text-foreground ${footerFocusRingClass}`}
+                    className={"rounded-sm transition-colors duration-200 hover:text-foreground " + footerFocusRingClass}
                   >
                     {link.label}
                   </Link>
@@ -76,7 +76,7 @@ export function AptFooter() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`rounded-sm transition-colors duration-200 hover:text-foreground ${footerFocusRingClass}`}
+                    className={"rounded-sm transition-colors duration-200 hover:text-foreground " + footerFocusRingClass}
                   >
                     {link.label}
                   </a>
