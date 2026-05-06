@@ -28,6 +28,9 @@ export function AptFooter() {
       <div className="container px-4 py-10 md:py-12">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
           <section aria-labelledby="footer-brand">
+            <h2 id="footer-brand" className="sr-only">
+              Brand
+            </h2>
             <Link
               to="/"
               className="inline-flex items-center gap-3 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card"
@@ -35,7 +38,7 @@ export function AptFooter() {
               <AptEmblem size="sm" glow="none" animated={false} className="h-8 w-8" />
               <div className="space-y-0.5">
                 <p className="text-xs uppercase tracking-widest text-muted-foreground">{siteConfig.footerEyebrow}</p>
-                <p id="footer-brand" className="text-sm font-semibold tracking-tight text-foreground">
+                <p className="text-sm font-semibold tracking-tight text-foreground">
                   {siteConfig.name}
                 </p>
               </div>
