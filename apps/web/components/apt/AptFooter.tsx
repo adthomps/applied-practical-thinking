@@ -29,7 +29,7 @@ export function AptFooter() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
           <section aria-labelledby="footer-brand">
             <h2 id="footer-brand" className="sr-only">
-              Brand
+              Brand information
             </h2>
             <Link
               to="/"
