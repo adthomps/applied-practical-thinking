@@ -27,10 +27,7 @@ export function AptFooter() {
     <footer className="border-t border-border/60 bg-card text-card-foreground">
       <div className="container px-4 py-10 md:py-12">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
-          <section aria-labelledby="footer-brand">
-            <h2 id="footer-brand" className="sr-only">
-              About Applied Practical Thinking
-            </h2>
+          <section aria-label="About Applied Practical Thinking">
             <Link
               to="/"
               className="inline-flex items-center gap-3 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card"
@@ -47,9 +44,9 @@ export function AptFooter() {
           </section>
 
           <nav aria-labelledby="footer-navigation">
-            <h2 id="footer-navigation" className="mb-3 text-sm font-semibold text-foreground">
+            <h3 id="footer-navigation" className="mb-3 text-sm font-semibold text-foreground">
               Navigation
-            </h2>
+            </h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               {footerNavigationLinks.map((link) => (
                 <li key={link.href}>
@@ -65,9 +62,9 @@ export function AptFooter() {
           </nav>
 
           <nav aria-labelledby="footer-resources">
-            <h2 id="footer-resources" className="mb-3 text-sm font-semibold text-foreground">
+            <h3 id="footer-resources" className="mb-3 text-sm font-semibold text-foreground">
               Resources
-            </h2>
+            </h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               {footerResourceLinks.map((link) => (
                 <li key={link.href}>
