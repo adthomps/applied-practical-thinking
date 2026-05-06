@@ -27,7 +27,7 @@ export function AptFooter() {
     <footer className="border-t border-border/60 bg-card text-card-foreground">
       <div className="container px-4 py-10 md:py-12">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
-          <section aria-label="About Applied Practical Thinking">
+          <div>
             <Link
               to="/"
               className="inline-flex items-center gap-3 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card"
@@ -41,7 +41,7 @@ export function AptFooter() {
               </div>
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">{siteConfig.footerDescription}</p>
-          </section>
+          </div>
 
           <nav aria-labelledby="footer-navigation">
             <h3 id="footer-navigation" className="mb-3 text-sm font-semibold text-foreground">
@@ -83,7 +83,7 @@ export function AptFooter() {
         </div>
 
         <div className="mt-8 border-t border-border/60 pt-6">
-          <div className="grid grid-cols-1 gap-3 text-sm text-muted-foreground md:grid-cols-2 lg:grid-cols-3">
+          <div className="flex flex-col gap-3 text-sm text-muted-foreground lg:flex-row lg:items-start lg:justify-between">
             <p>
               © {yearLabel} {authorConfig.name}. {siteConfig.fullName}. All rights reserved.
             </p>
