@@ -34,7 +34,7 @@ export function AptFooter() {
             >
               <AptEmblem size="sm" glow="none" animated={false} className="h-8 w-8" />
               <div className="space-y-0.5">
-                <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">{siteConfig.footerEyebrow}</p>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground">{siteConfig.footerEyebrow}</p>
                 <p id="footer-brand" className="text-sm font-semibold tracking-tight text-foreground">
                   {siteConfig.name}
                 </p>
