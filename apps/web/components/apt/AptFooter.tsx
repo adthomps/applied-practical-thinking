@@ -34,16 +34,13 @@ export function AptFooter() {
             >
               <AptEmblem size="sm" glow="none" animated={false} className="h-8 w-8" />
               <div className="space-y-0.5">
-                <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">Applied Practical Thinking</p>
+                <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">{siteConfig.footerEyebrow}</p>
                 <p id="footer-brand" className="text-sm font-semibold tracking-tight text-foreground">
                   {siteConfig.name}
                 </p>
               </div>
             </Link>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
-              Operational portfolio and reference space for practical systems, product decisions, and implementation
-              patterns.
-            </p>
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">{siteConfig.footerDescription}</p>
           </section>
 
           <nav aria-labelledby="footer-navigation">
@@ -91,7 +88,7 @@ export function AptFooter() {
               © {yearLabel} {authorConfig.name}. {siteConfig.fullName}. All rights reserved.
             </p>
             <p className="text-xs md:text-sm">{siteConfig.disclaimer}</p>
-            <p className="text-xs leading-relaxed md:text-sm lg:text-right">System note: Built as a practical, evolving operational reference.</p>
+            <p className="text-xs leading-relaxed md:text-sm lg:text-right">{siteConfig.footerSystemNote}</p>
           </div>
         </div>
       </div>

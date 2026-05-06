@@ -6,7 +6,11 @@ export const siteConfig = {
     "A personal portfolio and demonstration brand focused on turning real-world product, platform, and engineering problems into working systems, reference implementations, and reusable patterns.",
   tagline: "Systems over screens. Decisions over demos.",
   disclaimer: "This is a demonstration, not a production system.",
-  
+  footerEyebrow: "Applied Practical Thinking",
+  footerDescription:
+    "Operational portfolio and reference space for practical systems, product decisions, and implementation patterns.",
+  footerSystemNote: "System note: Built as a practical, evolving operational reference.",
+
   // External links
   appliedGalleryUrl: "https://appliedpracticalthinking.com/about/visual-gallery",
   appliedGalleryLabel: "Applied Visual Gallery",
