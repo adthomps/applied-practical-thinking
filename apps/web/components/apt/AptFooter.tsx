@@ -24,12 +24,12 @@ export function AptFooter() {
   const yearLabel = startYear < currentYear ? `${startYear}-${currentYear}` : `${currentYear}`;
 
   return (
-    <footer className="border-t border-border/60 bg-card">
+    <footer className="border-t border-border/60 bg-card text-card-foreground">
       <div className="container px-4 py-10 md:py-12">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
           <section aria-labelledby="footer-brand">
             <h2 id="footer-brand" className="sr-only">
-              Brand information
+              About Applied Practical Thinking
             </h2>
             <Link
               to="/"
