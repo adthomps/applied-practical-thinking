@@ -30,6 +30,7 @@ export function AptFooter() {
           <div>
             <Link
               to="/"
+              aria-label="Home — Applied Practical Thinking"
               className="inline-flex items-center gap-3 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card"
             >
               <AptEmblem size="sm" glow="none" animated={false} className="h-8 w-8" />
