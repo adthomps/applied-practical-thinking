@@ -26,6 +26,13 @@ export const siteConfig = {
       label: "Labs",
       path: "/labs",
       description: "Experiments, concepts, mocks, prototypes, and live demos.",
+      children: [
+        { label: "All Labs", path: "/labs", description: "Full labs index across all types." },
+        { label: "Concepts", path: "/labs/concepts", description: "Conceptual explorations and early-stage ideas." },
+        { label: "Mocks", path: "/labs/mocks", description: "UI and interaction mocks." },
+        { label: "Prototypes", path: "/labs/prototypes", description: "Working prototypes ready for feedback." },
+        { label: "Live Demos", path: "/labs/live-demos", description: "Runnable API and UI demonstrations." },
+      ],
     },
     {
       label: "Proof",
@@ -41,6 +48,12 @@ export const siteConfig = {
       label: "Insights",
       path: "/insights",
       description: "Blogs, podcasts, and case studies.",
+      children: [
+        { label: "All Insights", path: "/insights", description: "Full insights index." },
+        { label: "Blog", path: "/insights/blog", description: "Articles and long-form writing." },
+        { label: "Podcast", path: "/insights/podcast", description: "Podcast episodes and notes." },
+        { label: "Case Studies", path: "/insights/case-studies", description: "Detailed case study breakdowns." },
+      ],
     },
     {
       label: "About",

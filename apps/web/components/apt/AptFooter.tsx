@@ -7,6 +7,7 @@ const footerNavigationLinks = [
   { label: "Labs", href: "/labs" },
   { label: "Proof", href: "/proof" },
   { label: "Principles", href: "/principles" },
+  { label: "Design", href: "/design" },
   { label: "Insights", href: "/insights" },
   { label: "About", href: "/about" },
 ] as const;

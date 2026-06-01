@@ -4,10 +4,17 @@ This directory contains role-specific prompts for AI agents.
 
 ## Available Prompts
 
+**Role prompts** (operating instructions for a session):
 - [repo-maintainer.md](prompts/repo-maintainer.md) - General repository maintenance
 - [design-maintainer.md](prompts/design-maintainer.md) - Design system changes
 - [api-maintainer.md](prompts/api-maintainer.md) - API/Worker development
 - [reviewer.md](prompts/reviewer.md) - Review existing work and new builds against APT standards
+
+**Domain review prompts** (use when reviewing a specific area):
+- [design-review.md](prompts/design-review.md) - Design system, token, and state review against APT Design Principles
+- [architecture-review.md](prompts/architecture-review.md) - Boundary, contract, and deployment review against APT Architecture Standards
+
+For the full APT review prompt set covering framework, security, testing, release, operations, and knowledge, see `apt-principles/prompts/`.
 
 ## Usage
 

@@ -97,6 +97,21 @@ export const principlesLifecycle = [
   "Secure",
 ] as const;
 
+export const PRINCIPLE_PHASE_LABELS: Record<PrincipleSlug, string> = {
+  framework: "Overview",
+  thinking: "Why",
+  design: "What",
+  architecture: "How",
+  system: "Consistency",
+  execution: "Build",
+  quality: "Validate",
+  release: "Promote",
+  operations: "Run",
+  knowledge: "Learn",
+  ai: "Augment",
+  security: "Secure",
+};
+
 const principleGuidanceBySlug: Record<PrincipleSlug, PrincipleMoreDetail> = {
   framework: {
     decisionCues: [
