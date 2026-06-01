@@ -9,6 +9,7 @@ const footerSections = [
       { label: "Labs", href: "/labs" },
       { label: "Proof", href: "/proof" },
       { label: "Principles", href: "/principles" },
+      { label: "Design", href: "/design" },
     ],
   },
   {

@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AptLayout } from "@/components/apt/AptLayout";
 import { resolveWorkerApiBase } from "@/src/services/api";
 import { lazyWithRetry } from "@/lib/lazyWithRetry";
@@ -103,7 +103,7 @@ const App = () => (
               <Route path="/design/docs/*" element={<DesignDocDetail />} />
               <Route path="/design/content-strategy" element={<PortfolioContentStrategy />} />
               <Route path="/design/review-bundle" element={<PortfolioReviewBundle />} />
-              <Route path="/design/principles" element={<PrinciplesHome />} />
+              <Route path="/design/principles" element={<Navigate to="/principles" replace />} />
 
               <Route path="/principles" element={<PrinciplesHome />} />
               <Route path="/principles/framework" element={<PrinciplesDetail initialSection="framework" />} />

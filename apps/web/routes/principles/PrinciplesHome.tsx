@@ -8,22 +8,7 @@ import {
   AptTag,
   SectionIntro,
 } from "@/components/apt";
-import { principlesLifecycle, principlesSections } from "@/src/data/principles";
-
-const PRINCIPLE_PHASE_LABELS: Record<string, string> = {
-  framework: "Overview",
-  thinking: "Why",
-  design: "What",
-  architecture: "How",
-  system: "Consistency",
-  execution: "Build",
-  quality: "Validate",
-  release: "Promote",
-  operations: "Run",
-  knowledge: "Learn",
-  ai: "Augment",
-  security: "Secure",
-};
+import { PRINCIPLE_PHASE_LABELS, principlesLifecycle, principlesSections } from "@/src/data/principles";
 
 export default function PrinciplesHome() {
   return (

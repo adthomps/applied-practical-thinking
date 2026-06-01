@@ -8,25 +8,11 @@ import {
 } from "@/components/apt";
 import {
   getPrincipleSection,
+  PRINCIPLE_PHASE_LABELS,
   principlesSections,
   resolvePrincipleSlug,
   type PrincipleSlug,
 } from "@/src/data/principles";
-
-const PRINCIPLE_PHASE_LABELS: Record<string, string> = {
-  framework: "Overview",
-  thinking: "Why",
-  design: "What",
-  architecture: "How",
-  system: "Consistency",
-  execution: "Build",
-  quality: "Validate",
-  release: "Promote",
-  operations: "Run",
-  knowledge: "Learn",
-  ai: "Augment",
-  security: "Secure",
-};
 
 const EXAMPLE_CODE_SNIPPETS: Partial<Record<PrincipleSlug, string>> = {
   thinking: `interface Decision {
