@@ -26,7 +26,7 @@ describe("principles summary routes and nav contract", () => {
     expect(source.includes('path="/principles/ai"')).toBe(true);
     expect(source.includes('path="/principles/security"')).toBe(true);
 
-    expect(source.includes('path="/design/principles" element={<PrinciplesHome />}')).toBe(true);
+    expect(source.includes('path="/design/principles" element={<Navigate to="/principles" replace />}')).toBe(true);
   });
 
   it("uses the flat top-level IA and hard-cut canonical routes", () => {

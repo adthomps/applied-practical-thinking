@@ -547,8 +547,8 @@ const principlesSectionsSeed: readonly PrincipleSectionSeed[] = [
       "Outcome and metric baseline check",
     ],
     examples: [
-      { label: "Practice Guides", href: "/insights/practice", status: "available" },
-      { label: "Proof", href: "/proof", status: "available" },
+      { label: "Practice Guides", href: "/insights/practice", status: "available", rationale: "Captures applied thinking approaches and decision patterns from real APT work." },
+      { label: "Design Thinking", href: "/design/thinking", status: "available", rationale: "Shows thinking frameworks applied to design problems and system-level decisions." },
     ],
     sourceHref: source("thinking.md"),
     aiUsage: [
@@ -772,8 +772,8 @@ const principlesSectionsSeed: readonly PrincipleSectionSeed[] = [
     ],
     patterns: ["Canonical + curated model", "Decision-log reuse", "Knowledge contract metadata"],
     examples: [
-      { label: "Design Docs", href: "/design/docs", status: "available" },
-      { label: "Proof", href: "/proof", status: "available" },
+      { label: "Knowledge Engine", href: "/design/knowledge-engine", status: "available", rationale: "Shows APT knowledge architecture — canonical source, curated summary, and consumer surfaces." },
+      { label: "Design Docs", href: "/design/docs", status: "available", rationale: "Demonstrates structured, versioned documentation organized for human and AI reuse." },
     ],
     sourceHref: source("knowledge-system.md"),
     aiUsage: [
@@ -839,6 +839,58 @@ const principlesSectionsSeed: readonly PrincipleSectionSeed[] = [
   },
 ] as const;
 
+const principleRelatedArtifactsBySlug: Record<PrincipleSlug, readonly PrincipleRelatedArtifact[]> = {
+  framework: [
+    { label: "All Principles", href: "/principles", note: "Navigate all 12 principle groups in lifecycle order." },
+    { label: "Design System", href: "/design/system", note: "System-level standards applied throughout the APT site." },
+  ],
+  thinking: [
+    { label: "Design Thinking Frameworks", href: "/design/thinking", note: "Thinking frameworks applied to design and system problems." },
+    { label: "Design Architecture", href: "/design/architecture", note: "Architecture decisions grounded in explicit thinking and tradeoffs." },
+  ],
+  design: [
+    { label: "Design Thinking", href: "/design/thinking", note: "Design thinking frameworks and approaches." },
+    { label: "Design Patterns", href: "/design/patterns", note: "Reusable interaction and layout patterns." },
+    { label: "Design System", href: "/design/system", note: "Token, component, and state contract standards." },
+  ],
+  architecture: [
+    { label: "Design Architecture", href: "/design/architecture", note: "APT architecture patterns and boundary documentation." },
+    { label: "Design Docs", href: "/design/docs", note: "Architecture reference docs organized by version." },
+  ],
+  system: [
+    { label: "Design System", href: "/design/system", note: "Canonical token and component consistency standards." },
+    { label: "Design Docs Browser", href: "/design/docs", note: "Structured design documentation aligned to system standards." },
+  ],
+  execution: [
+    { label: "Labs", href: "/labs", note: "Execution artifacts from real build and experiment cycles." },
+    { label: "Proof", href: "/proof", note: "Completed executions with observable, validated outcomes." },
+  ],
+  quality: [
+    { label: "Support Design", href: "/design/support", note: "Support documentation and quality assurance patterns." },
+    { label: "AI Review Bundle", href: "/design/review-bundle", note: "Structured review standards and quality evidence templates." },
+  ],
+  release: [
+    { label: "Proof", href: "/proof", note: "Released systems with traceable promotion history." },
+    { label: "Insights", href: "/insights", note: "Post-release learnings and case documentation." },
+  ],
+  operations: [
+    { label: "Support Design", href: "/design/support", note: "Operational support documentation and runbook patterns." },
+    { label: "Knowledge Engine", href: "/design/knowledge-engine", note: "How APT captures operational lessons and feeds them back into standards." },
+  ],
+  knowledge: [
+    { label: "Knowledge Engine", href: "/design/knowledge-engine", note: "APT knowledge architecture — canonical source, curated summary, consumer surfaces." },
+    { label: "Design Docs Browser", href: "/design/docs", note: "Versioned, structured documentation as a knowledge reuse model." },
+  ],
+  ai: [
+    { label: "AI Review Bundle", href: "/design/review-bundle", note: "Reusable AI review standards and prompt contract templates." },
+    { label: "Design Docs", href: "/design/docs", note: "AI-agent-aware documentation organized for structured consumption." },
+  ],
+  security: [
+    { label: "Proof", href: "/proof", note: "Production systems demonstrating security-reviewed implementation." },
+    { label: "Support Design", href: "/design/support", note: "Support patterns for security-sensitive flows and incident handling." },
+  ],
+};
+
 export const principlesSections: readonly PrincipleSection[] = principlesSectionsSeed.map((section) => ({
   ...section,
   examples: section.examples.map((example) => ({
@@ -851,11 +903,7 @@ export const principlesSections: readonly PrincipleSection[] = principlesSection
   whenToUse: principleGuidanceBySlug[section.slug].decisionCues,
   whenNotToUse: principleGuidanceBySlug[section.slug].antiPatterns,
   promptStarter: principlePromptStarterBySlug[section.slug],
-  relatedArtifacts: section.examples.map((example) => ({
-    label: example.label,
-    href: example.href,
-    note: inferExampleRationale(section, example),
-  })),
+  relatedArtifacts: principleRelatedArtifactsBySlug[section.slug],
 }));
 
 const sectionMap = new Map(principlesSections.map((section) => [section.slug, section]));
@@ -868,9 +916,16 @@ export const principleNavSections = [
   { label: "Overview", path: "/principles", description: "Public summary of the APT principles system." },
   { label: "Framework", path: "/principles/framework", description: "Lifecycle model and framework-level rules." },
   { label: "Thinking", path: "/principles/thinking", description: "Problem framing and outcome definition." },
+  { label: "Design", path: "/principles/design", description: "State-complete UX and design system standards." },
+  { label: "Architecture", path: "/principles/architecture", description: "Boundary and contract design." },
+  { label: "System", path: "/principles/system", description: "Consistency and shared standards." },
   { label: "Execution", path: "/principles/execution", description: "Spec-to-build delivery model." },
   { label: "Quality", path: "/principles/quality", description: "Validation and quality gates." },
+  { label: "Release", path: "/principles/release", description: "Safe promotion and change communication." },
+  { label: "Operations", path: "/principles/operations", description: "Observability and runtime support." },
+  { label: "Knowledge", path: "/principles/knowledge", description: "Canonical documentation and reuse." },
   { label: "AI", path: "/principles/ai", description: "AI and agent augmentation standards." },
+  { label: "Security", path: "/principles/security", description: "Trust boundaries and access controls." },
 ] as const;
 
 const legacySlugMap: Record<string, PrincipleSlug> = {

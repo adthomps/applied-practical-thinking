@@ -43,6 +43,15 @@ export const siteConfig = {
       label: "Principles",
       path: "/principles",
       description: "Curated APT principles summaries linked to canonical GitHub sources.",
+      children: [
+        { label: "All Principles", path: "/principles", description: "The full APT principles lifecycle overview." },
+        { label: "Thinking", path: "/principles/thinking", description: "Problem framing and outcome definition." },
+        { label: "Design", path: "/principles/design", description: "State-complete UX and design system standards." },
+        { label: "Architecture", path: "/principles/architecture", description: "Boundary and contract design." },
+        { label: "Execution", path: "/principles/execution", description: "Spec-to-build delivery model." },
+        { label: "AI", path: "/principles/ai", description: "AI and agent augmentation standards." },
+        { label: "Security", path: "/principles/security", description: "Trust boundaries and access controls." },
+      ],
     },
     {
       label: "Insights",
