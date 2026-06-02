@@ -104,6 +104,7 @@ const App = () => (
               <Route path="/design/content-strategy" element={<PortfolioContentStrategy />} />
               <Route path="/design/review-bundle" element={<PortfolioReviewBundle />} />
               <Route path="/design/principles" element={<Navigate to="/principles" replace />} />
+              <Route path="/design/principles/*" element={<Navigate to="/principles" replace />} />
 
               <Route path="/principles" element={<PrinciplesHome />} />
               <Route path="/principles/framework" element={<PrinciplesDetail initialSection="framework" />} />

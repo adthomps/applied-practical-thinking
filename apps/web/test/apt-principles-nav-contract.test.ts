@@ -4,7 +4,7 @@ import { aptPrincipleGroups, aptPrinciplesNavSections } from "@/data/aptPrincipl
 describe("apt principles nav contract", () => {
   it("keeps top-level principles nav progressive rather than listing all groups", () => {
     const topLevelGroupLinks = aptPrinciplesNavSections.filter((item) =>
-      item.path.startsWith("/design/principles/")
+      item.path.startsWith("/principles/")
     );
 
     expect(topLevelGroupLinks.length).toBeGreaterThan(0);
@@ -14,7 +14,7 @@ describe("apt principles nav contract", () => {
   it("includes framework entry and related surfaces in top-level principles nav", () => {
     const paths = new Set(aptPrinciplesNavSections.map((item) => item.path));
 
-    expect(paths.has("/design/principles")).toBe(true);
+    expect(paths.has("/principles")).toBe(true);
     expect(paths.has("/design/system")).toBe(true);
     expect(paths.has("/design/docs")).toBe(true);
   });
