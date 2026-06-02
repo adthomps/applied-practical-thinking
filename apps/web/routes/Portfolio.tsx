@@ -166,7 +166,7 @@ export default function Portfolio() {
                 </p>
               </div>
               <AptButton asChild>
-                <Link to="/design/principles">
+                <Link to="/principles">
                   Open Principles
                   <ArrowRight className="h-4 w-4" />
                 </Link>

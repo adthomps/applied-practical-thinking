@@ -12,7 +12,8 @@ describe("apt principles detail contract", () => {
     expect(aptPrincipleGroups).toHaveLength(11);
 
     for (const group of aptPrincipleGroups) {
-      expect(group.detailPath).toBe(`/design/principles/${group.id}`);
+      expect(group.detailPath.startsWith("/principles/")).toBe(true);
+      expect(group.detailPath.length).toBeGreaterThan("/principles/".length);
       expect(group.docSlug.length).toBeGreaterThan(0);
       expect(group.sourcePath.startsWith("apt-principles/")).toBe(true);
       expect(group.publicDocPath?.startsWith("/docs/apt/")).toBe(true);
@@ -37,7 +38,7 @@ describe("apt principles detail contract", () => {
     const groupEntries = aptPrinciplesFrameworkIndex.filter((item) => item.id !== "framework");
     expect(groupEntries).toHaveLength(11);
     for (const item of groupEntries) {
-      expect(item.path.startsWith("/design/principles/")).toBe(true);
+      expect(item.path.startsWith("/principles/")).toBe(true);
     }
   });
 

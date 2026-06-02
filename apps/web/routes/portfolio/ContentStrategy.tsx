@@ -210,8 +210,8 @@ export default function PortfolioContentStrategy() {
                   ))}
                 </ul>
                 <AptButton variant="ghost" size="sm" asChild className="px-0">
-                  <Link to="/principles">
-                    Open full framework
+                  <Link to={group.detailPath}>
+                    Read {group.shortTitle} principle
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                 </AptButton>
