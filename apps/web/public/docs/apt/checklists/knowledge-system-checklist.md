@@ -23,6 +23,8 @@ It protects the source-of-truth model for both humans and AI agents. Run it when
 - [ ] Duplicated guidance is removed or intentionally cross-referenced.
 - [ ] Historical/reference content is not treated as active doctrine.
 - [ ] AI-ingestible docs are structured with stable headings.
+- [ ] Ingest, query, feedback, provenance, retention, and confidence expectations are named when knowledge is used by AI or retrieval.
+- [ ] Incidents, support findings, failed validation, or release outcomes become a durable artifact or explicit non-action.
 
 ## Failure Conditions
 
@@ -30,6 +32,7 @@ It protects the source-of-truth model for both humans and AI agents. Run it when
 - A new artifact has no owner, status, or version.
 - Historical content is referenced as active guidance.
 - AI agents must infer which source is canonical.
+- Support or incident learning is closed without a linked artifact or accepted non-action.
 
 ## Evidence Required
 
@@ -39,6 +42,8 @@ It protects the source-of-truth model for both humans and AI agents. Run it when
 - Validation result.
 - Public-site or downstream-project consumers affected by the change.
 - Decision record when source-of-truth ownership changes.
+- Ingest/query/feedback and retention notes for retrieval or assistant systems.
+- Incident-to-knowledge evidence when operational findings drive a change.
 
 ## Pass Standard
 
@@ -48,4 +53,5 @@ The change has one canonical home, related artifacts point to it, copied or gene
 
 - `../knowledge-system.md`
 - `../examples/knowledge/canonical-doc-update-example.md`
+- `../examples/knowledge/incident-to-knowledge-example.md`
 - `../prompts/knowledge-review-prompt.md`

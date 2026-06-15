@@ -53,6 +53,9 @@ Duplicate guidance creates drift unless there is a sync or validation process.
 - Update related examples, prompts, and checklists when doctrine changes.
 - Record decisions that alter architecture, security, release, or AI behavior.
 - Keep AI-ingestible docs concise, structured, and source-aware.
+- Knowledge ingest, query, and feedback systems must preserve provenance, status, confidence, and retention expectations.
+- Support feedback, incidents, failed validation, and release outcomes should become doc updates, tests, runbooks, examples, or explicit non-actions.
+- Sensitive or regulated knowledge should define audience, visibility, redaction, retention, and escalation rules before ingestion.
 - Preserve canonical source paths when public sites use shorter route labels or legacy aliases.
 
 Canonical doctrine uses `knowledge-system` for this layer. Public routes may use shorter labels such as Knowledge, but aliases such as `knowledge-engine` should point back to `knowledge-system.md` rather than becoming a second doctrine source.
@@ -64,6 +67,8 @@ Canonical doctrine uses `knowledge-system` for this layer. Public routes may use
 - Related checklists or prompts
 - Decision log entry for durable changes
 - Historical-source note when replacing older guidance
+- Ingest, query, feedback, and retention notes when knowledge is used by a retrieval or assistant system
+- Incident or release learning note when operations produce reusable guidance
 
 ## Knowledge Artifact Types
 
@@ -86,7 +91,19 @@ When APT knowledge is used by a search, retrieval, assistant, or public document
 - `IngestReport` for ingestion and indexing outcomes
 - `QueryResponse` for grounded responses with sources and confidence
 
+Knowledge graphs such as Graphify are a governed discovery layer for cross-document and cross-repo relationships. Use them to find drift, weak evidence links, and surprising relationships, but preserve canonical truth in source docs, code, schemas, decisions, project profiles, and validation reports. For the APT workspace, `reports/GRAPHIFY_RUNBOOK.md` defines the operator workflow and output policy.
+
 Project profiles are also knowledge artifacts. They bridge real implementation, portfolio storytelling, and reusable learning for projects such as `apt-coach`, `apt-dream-to-reality`, `apt-novel-reviewer`, `apt-payment-rpc-api`, `crt-world`, and future APT projects.
+
+Feedback should have a closed loop:
+
+```text
+support finding or incident
+-> triage as doc gap, test gap, UX gap, runbook gap, or accepted non-action
+-> update canonical or project-owned artifact
+-> record validation or review evidence
+-> link the learning from the next release or project profile update
+```
 
 ## Good Example
 
@@ -121,6 +138,7 @@ Return:
 ## Related Examples
 
 - `examples/knowledge/canonical-doc-update-example.md`
+- `examples/knowledge/incident-to-knowledge-example.md`
 
 ## Related Prompts
 

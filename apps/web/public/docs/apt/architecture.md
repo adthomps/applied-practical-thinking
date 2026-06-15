@@ -156,6 +156,17 @@ Required artifacts:
 - review ownership expectations
 - CODEOWNERS or equivalent ownership map when needed
 
+### Command and validation ownership
+
+Use when a repo has more than one deployable surface, runtime, or package.
+
+Required artifacts:
+
+- command matrix naming lint, typecheck, test, build, preview, deploy, and smoke commands
+- owner or team for each deployable surface and shared package
+- required checks for protected branches or release promotion
+- documented fallback when a command is intentionally unavailable
+
 ## Change Containment
 
 - Low risk: UI copy, content, localized styling, docs.
@@ -163,6 +174,8 @@ Required artifacts:
 - High risk: repo structure, build pipeline, deployment model, security model.
 
 High-risk changes require a written decision record and staged rollout.
+
+Architecture reviews should name the ownership model for each changed boundary. A boundary without an owner becomes an operations problem later.
 
 ## Required Artifacts
 
@@ -172,6 +185,8 @@ High-risk changes require a written decision record and staged rollout.
 - Deployment model
 - Failure and rollback notes
 - Architecture review checklist
+- Ownership and command matrix for multi-surface repos
+- Decision record for high-risk boundary, deployment, or ownership changes
 
 ## Good Example
 
@@ -196,6 +211,7 @@ A React component calls an external API directly, transforms business data inlin
 
 - `examples/architecture/monorepo-layout-example.md`
 - `examples/architecture/cloudflare-pages-workers-example.md`
+- `examples/architecture/pattern-ownership-command-matrix-example.md`
 
 ## Related Prompts
 

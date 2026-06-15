@@ -1,0 +1,119 @@
+{
+  "title": "APT Agent Standards Distribution Contract",
+  "version": "v1",
+  "last_updated": "2026-06-14",
+  "owner": "APT",
+  "status": "draft",
+  "source": "Governance contract between apt-principles and apt-agent-standards",
+  "repositories": {
+    "apt-principles": {
+      "role": "canonical doctrine and build-kit source",
+      "owns": [
+        "APT doctrine",
+        "AI and agent framework",
+        "review checklists",
+        "prompts and examples",
+        "reference contracts",
+        "project adoption rules",
+        "doctrine validation"
+      ],
+      "must_not_own": [
+        "cross-project installer behavior",
+        "target-repo managed-file manifests",
+        "tool-native file distribution",
+        "profile detection logic"
+      ]
+    },
+    "apt-agent-standards": {
+      "role": "agent standards installer and cross-tool distribution system",
+      "owns": [
+        "installer and sync scripts",
+        "profile manifests",
+        "profile detection",
+        "source-to-target AI tool path mapping",
+        ".agent-standards.json target manifests",
+        "Claude, Codex, and GitHub Copilot distribution surfaces",
+        "cross-tool parity checks"
+      ],
+      "must_reference": [
+        "apt-principles/ai-agent-framework.md",
+        "apt-principles/checklists/ai-agent-review-checklist.md",
+        "apt-principles/prompts/apt-one-shot-build-prompt.md",
+        "apt-principles/references/ai-review-bundle.json"
+      ]
+    }
+  },
+  "target_manifest": {
+    "path": ".agent-standards.json",
+    "required_fields": [
+      "source",
+      "version",
+      "profiles",
+      "installedAt",
+      "managedFiles",
+      "managedFileSources",
+      "localContext"
+    ],
+      "rules": [
+        "managedFiles records target-repo files controlled by apt-agent-standards",
+        "managedFileSources records source files used to update target-native files",
+        "localContext points to target-owned project context and must be preserved during sync",
+        "first-run installs create missing managed files and a local context starter without overwriting existing files unless force is explicit",
+        "update runs use sync and update only managed files unless an operator explicitly forces recreation"
+      ]
+  },
+  "profile_model": {
+    "path": "profiles/*.json",
+    "rules": [
+      "apt-core is always included",
+      "profiles are composable capabilities, not repo types",
+      "profiles may extend other profiles",
+      "profile files list source files to install or sync",
+      "profile additions must preserve deterministic dry-run behavior"
+    ]
+  },
+  "tool_surfaces": {
+    "source_paths": [
+      "standards/",
+      "claude/agents/",
+      "codex/skills/",
+      "github-copilot/instructions/",
+      "github-copilot/prompts/"
+    ],
+    "target_paths": [
+      "AGENTS.md",
+      ".claude/CLAUDE.md",
+      ".claude/agents/",
+      ".codex/skills/",
+      ".github/copilot-instructions.md",
+      ".github/instructions/",
+      ".github/prompts/"
+    ],
+    "rules": [
+      "source folders stay reviewable in apt-agent-standards",
+      "installer maps source folders into tool-native target paths",
+      "tool-native target files should not become the canonical doctrine source",
+      "high-value workflows should maintain cross-tool parity where practical"
+    ]
+  },
+  "validation": {
+    "apt-principles": [
+      "npm run validate"
+    ],
+    "apt-agent-standards": [
+      "node scripts/detect-profiles.mjs --target <repo> --json",
+      "node scripts/install-agent-standards.mjs --target <repo> --profiles <profiles> --dry-run",
+      "node scripts/sync-agent-standards.mjs --target <repo> --dry-run",
+      "node scripts/check-ai-tool-parity.mjs"
+    ]
+  },
+  "governance_rules": [
+    "Do not merge apt-agent-standards installer, profile, or path-mapping behavior into apt-principles.",
+    "Update apt-principles first when doctrine, review criteria, or APT lifecycle rules change.",
+    "Update apt-agent-standards when installed agent files, profile composition, or tool-specific distribution behavior must change.",
+    "Use dry-run install and sync before applying standards to a real target repository.",
+    "Preserve target-owned docs/project-context.md during sync.",
+    "Use curated profile selections when auto-detection signals are advisory or noisy.",
+    "Reusable doctrine improvements discovered through apt-agent-standards should flow back into apt-principles."
+  ]
+}

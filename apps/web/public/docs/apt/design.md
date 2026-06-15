@@ -63,7 +63,8 @@ Predictable interaction patterns reduce cognitive load and implementation drift.
 - Glass surfaces may be used for cards and major panels.
 - Blue is the primary brand and action color for primary calls to action, links, focus rings, and high-frequency emphasis.
 - The restricted accent is secondary and reserved for support semantics such as section identity, large callouts, charts, and success treatment.
-- System font stack is the default.
+- Inter is the primary UI and prose typeface where the project can load it; the system font stack is the compatibility fallback.
+- IBM Plex Mono is the technical companion for code, CLI, token values, file trees, prompts, and API examples.
 - Motion should be subtle and short.
 
 Canonical token roles from the current APT runtime:
@@ -81,6 +82,19 @@ radius-lg: 1.35rem
 motion-fast: 140ms
 motion-normal: 220ms
 ```
+
+## Content Voice and Naming
+
+APT copy is precise, technical, and non-marketing. It should read like an experienced builder documenting decisions, not a campaign trying to create urgency.
+
+- Use calm declarative sentences, clear imperatives, and honest constraints.
+- Use impersonal instructional voice in doctrine and product UI; reserve first person for personal biography or author context.
+- Use short stable navigation labels such as Home, Labs, Proof, Principles, Insights, and About where those surfaces exist.
+- Use sentence case for most headings and body copy. Short uppercase labels may be used for eyebrows when the style is already established.
+- Avoid hype, exclamation, decorative emoji in chrome, and vague claims that cannot be backed by artifacts or evidence.
+- Treat disclaimers, AI-use notes, demo status, and evolving-reference notes as first-class content in footers, detail pages, and supporting metadata.
+
+Recurring APT tagline structure may use short paired clauses such as "Systems over screens. Decisions over demos." Treat these as compact identity signals, not filler copy.
 
 ## Brand Color Decision
 
@@ -104,7 +118,7 @@ Color choices must start from semantic role, not visual preference.
 The APT design system covers:
 
 - semantic color tokens for background, surfaces, borders, text, navigation, action, focus, selection, disabled, accent, success, warning, and danger
-- system typography with clear hierarchy and `0` letter spacing
+- Inter-first typography with clear hierarchy, `0` body letter spacing, and IBM Plex Mono for technical material
 - stable spacing and responsive constraints for boards, grids, toolbars, cards, and repeated items
 - global header shells that use the APT hybrid top-navigation template for brand identity, route-aware navigation, and optional utility actions
 - global footer shells that use the compact APT footer template for product/site navigation and legal metadata
@@ -115,6 +129,56 @@ The APT design system covers:
 - accessibility expectations for contrast, focus, keyboard use, reduced motion, and readable text wrapping
 
 Token and lint contracts live in `references/design-tokens.json` and `references/design-lint-gates.json`.
+
+## Brand, Background, and Iconography
+
+APT's visual signature is a dark-first cosmic surface with restrained glass, blue action emphasis, and a small set of reusable identity elements.
+
+- The cosmic background may use a deep navy base, subtle radial primary/accent glows, and quiet starfield layers. It should support hierarchy, not compete with content.
+- Avoid photographic hero backgrounds for canonical APT doctrine/product surfaces unless the page is explicitly about a real person, place, product, or object that must be inspected.
+- The AptEmblem is the preferred brand mark: a circular A badge with primary-blue border/glow treatment. Use it in headers, footers, auth shells, docs chrome, and hero identity moments.
+- Use Lucide-style outline icons for interface controls and card leading icons. Icons should inherit semantic text color and remain secondary to labels and state.
+- Do not use emoji in product chrome, navigation, headings, buttons, or status controls. If emoji appears in markdown content tables, it should be content evidence, not UI decoration.
+- Glow is a signature treatment for the emblem and selected hero/data moments. It should not become a generic decoration on every card.
+
+## Interaction Primitives
+
+APT interfaces should compose from shared primitives before inventing new interaction shapes.
+
+Required primitive families include:
+
+- navigation: top navigation, sidebar navigation, tabs, breadcrumbs, pagination, and stepper/wizard progress
+- controls: buttons, icon buttons, switches, checkboxes, radios, sliders, segmented controls, quantity steppers, search fields, chips, and file actions
+- disclosure: accordion, tooltip, popover, dropdown menu, select, modal, and sheet/dialog patterns
+- feedback: inline alerts, banners, toasts, badges, status dots, progress, spinner, skeleton, avatar, rating, and success/error confirmation
+- technical content: inline code, keyboard shortcuts, syntax-aware code blocks, copy actions, and language/file labels
+
+Primitive states must cover default, hover, focus-visible, active/selected, disabled, loading, invalid, destructive, and reduced-motion variants where applicable.
+
+## Data Visualization
+
+Charts are part of the design system, not decorative art.
+
+- Single-series charts use primary blue as the lead color.
+- Multi-series charts use the chart ramp in order: blue, teal, purple, orange, and pink.
+- Teal may highlight one series or insight when it carries real support, success, or chart-accent meaning.
+- Red, amber, and success colors appear in charts only when they represent actual status or risk.
+- Charts should live inside stable dark surfaces with muted axis labels, clear titles, and concise interpretation notes.
+- Dense dashboards should use neutral status pills with small semantic dots rather than flooding tables with colored badges.
+
+## Surface Patterns
+
+APT product surfaces reuse a small set of recognizable patterns:
+
+- Portfolio and product pages use the cosmic brand shell, clear identity, restrained hero composition, proof-oriented cards, and concise calls to action.
+- Insights/content pages use filterable cards, honest metadata, readable summaries, and editorial cover imagery only where it serves content browsing.
+- Dashboard/admin surfaces use a scan-first shell with sidebar or topbar navigation, KPI tiles, charts, tables, filters, and stable operational state treatment.
+- Docs/principles browsers use a three-column pattern when space allows: document tree, article body, and on-this-page navigation.
+- Account flows use focused auth cards, clear validation, password visibility, consent/terms handling, settings tabs, unsaved-change warnings, and explicit destructive sections.
+- Transactional email uses table-based layout, inline styles, flattened token colors, a preheader, one primary call to action, and preference/unsubscribe or compliance links where applicable.
+- Pattern libraries should include modal/dialog variants, onboarding checklist states, empty states, and full-page 403/404/500 errors.
+
+The vendored design reference kit in `examples/ui/design-reference-kit/` is evidence for these patterns. It is not a competing doctrine source.
 
 ## Header Template Pattern
 
@@ -157,6 +221,10 @@ Keep the footer compact. It should confirm identity, expose the most useful rout
 - Acceptance criteria
 - Design review checklist
 - Token/component notes for any new pattern
+- Primitive inventory for new controls, feedback, disclosure, and navigation behavior
+- Content voice notes for public, docs, account, email, and product surfaces
+- Chart semantics when data visualization is introduced
+- Email-client constraints when transactional email is introduced
 
 ## Good Example
 

@@ -1,0 +1,200 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "ui_kits/account/**",
+              "ui_kits/dashboard/**",
+              "ui_kits/docs/**",
+              "ui_kits/insights/**",
+              "ui_kits/patterns/**",
+              "ui_kits/portfolio/**",
+              "ui_kits/primitives/**",
+              "ui_kits/product/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Inter|IBM Plex Mono))/i]",
+        "message": "Font not provided by the design system. Available: Inter, IBM Plex Mono."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {},
+    "tokens": [
+      "--accent",
+      "--accent-foreground",
+      "--apt-border-subtle",
+      "--apt-glow",
+      "--apt-surface",
+      "--apt-surface-elevated",
+      "--apt-text-secondary",
+      "--background",
+      "--border",
+      "--card",
+      "--card-foreground",
+      "--chart-1",
+      "--chart-2",
+      "--chart-3",
+      "--chart-4",
+      "--chart-5",
+      "--destructive",
+      "--destructive-foreground",
+      "--ease-apt",
+      "--elevation-1",
+      "--elevation-2",
+      "--elevation-3",
+      "--elevation-4",
+      "--elevation-glow-strong",
+      "--elevation-glow-subtle",
+      "--elevation-hover-lift",
+      "--font-mono",
+      "--font-sans",
+      "--font-serif",
+      "--foreground",
+      "--input",
+      "--leading-body",
+      "--leading-heading",
+      "--letter-spacing",
+      "--motion-fast",
+      "--motion-normal",
+      "--motion-slow",
+      "--muted",
+      "--muted-foreground",
+      "--overlay",
+      "--popover",
+      "--popover-foreground",
+      "--primary",
+      "--primary-foreground",
+      "--radius",
+      "--radius-lg",
+      "--radius-md",
+      "--radius-pill",
+      "--radius-sm",
+      "--radius-soft-lg",
+      "--radius-soft-md",
+      "--radius-soft-sm",
+      "--ring",
+      "--secondary",
+      "--secondary-foreground",
+      "--space-lg",
+      "--space-md",
+      "--space-section",
+      "--space-sm",
+      "--space-xl",
+      "--space-xs",
+      "--success",
+      "--success-foreground",
+      "--warning",
+      "--warning-foreground"
+    ],
+    "tokenKinds": {
+      "--background": "color",
+      "--foreground": "color",
+      "--card": "color",
+      "--card-foreground": "color",
+      "--popover": "color",
+      "--popover-foreground": "color",
+      "--primary": "color",
+      "--primary-foreground": "color",
+      "--secondary": "color",
+      "--secondary-foreground": "color",
+      "--muted": "color",
+      "--muted-foreground": "color",
+      "--accent": "color",
+      "--accent-foreground": "color",
+      "--destructive": "color",
+      "--destructive-foreground": "color",
+      "--warning": "color",
+      "--warning-foreground": "color",
+      "--success": "color",
+      "--success-foreground": "color",
+      "--border": "color",
+      "--input": "color",
+      "--ring": "color",
+      "--overlay": "color",
+      "--chart-1": "color",
+      "--chart-2": "color",
+      "--chart-3": "color",
+      "--chart-4": "color",
+      "--chart-5": "color",
+      "--apt-glow": "color",
+      "--apt-surface": "color",
+      "--apt-surface-elevated": "color",
+      "--apt-text-secondary": "color",
+      "--apt-border-subtle": "color",
+      "--radius": "radius",
+      "--radius-sm": "radius",
+      "--radius-md": "radius",
+      "--radius-lg": "radius",
+      "--radius-soft-sm": "radius",
+      "--radius-soft-md": "radius",
+      "--radius-soft-lg": "radius",
+      "--radius-pill": "radius",
+      "--elevation-1": "shadow",
+      "--elevation-2": "shadow",
+      "--elevation-3": "shadow",
+      "--elevation-4": "shadow",
+      "--elevation-glow-subtle": "shadow",
+      "--elevation-glow-strong": "shadow",
+      "--elevation-hover-lift": "shadow",
+      "--motion-fast": "other",
+      "--motion-normal": "other",
+      "--motion-slow": "other",
+      "--ease-apt": "other",
+      "--space-xs": "spacing",
+      "--space-sm": "spacing",
+      "--space-md": "spacing",
+      "--space-lg": "spacing",
+      "--space-xl": "spacing",
+      "--space-section": "spacing",
+      "--font-sans": "font",
+      "--font-mono": "font",
+      "--font-serif": "font",
+      "--letter-spacing": "other",
+      "--leading-body": "other",
+      "--leading-heading": "other"
+    },
+    "fontFamilies": [
+      "IBM Plex Mono",
+      "Inter"
+    ]
+  }
+}

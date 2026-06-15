@@ -51,8 +51,11 @@ Errors should be actionable without leaking sensitive implementation detail.
 - Add correlation IDs to service boundaries where practical.
 - Log operationally meaningful events, not noisy internal trivia.
 - Define fallback behavior for critical degraded states.
+- AI, knowledge, ingest, query, payment, auth, and external-integration flows should define conservative degraded behavior before release.
+- Runbooks should name owner, symptoms, first-response steps, escalation criteria, rollback or containment path, and user-facing messaging.
 - Keep runbooks close to the system or canonical docs.
 - Treat support findings as input to quality, release, and knowledge docs.
+- Repeated incidents should produce at least one durable artifact: doc update, test, alert adjustment, UX fix, or decision record.
 - Preserve the canonical `operations-support` source path when a product route or navigation group shortens the label to Operations.
 
 ## Required Artifacts
@@ -63,14 +66,19 @@ Errors should be actionable without leaking sensitive implementation detail.
 - Escalation path
 - Known failure modes
 - Support-facing explanation of user-visible errors
+- Degraded-mode and fallback behavior for critical workflows
+- Incident-to-learning follow-up path
 
 ## Minimum Telemetry Shape
 
 ```json
 {
   "event": "support.event",
+  "category": "ingest|query|fallback|auth|deploy|support",
   "feature": "docs.search",
   "status": "success|failure|degraded",
+  "userId": "optional",
+  "sessionId": "optional",
   "correlationId": "req_123",
   "message": "short actionable context",
   "timestamp": "2026-04-24T12:00:00Z"
@@ -110,6 +118,7 @@ Return:
 ## Related Examples
 
 - `examples/workflows/preview-to-prod-flow.md`
+- `examples/workflows/operational-runbook-example.md`
 
 ## Related Prompts
 

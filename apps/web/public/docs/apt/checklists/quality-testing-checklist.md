@@ -18,11 +18,13 @@ Apply it to code, docs, references, examples, prompts, and project adoption chan
 
 - [ ] Risk level is understood.
 - [ ] Fast checks are identified first.
+- [ ] Validation matrix maps risk, layer, command or review method, expected evidence, and fallback.
 - [ ] Boundary or contract tests are included when contracts change.
 - [ ] Critical user journeys are covered by appropriate validation.
 - [ ] Preview or visual checks are planned for user-facing changes.
 - [ ] Failure diagnostics are usable.
 - [ ] Residual coverage gaps are documented.
+- [ ] Failed checks are triaged as blocking, deferred with accepted risk, or unrelated pre-existing failures.
 
 ## Failure Conditions
 
@@ -30,10 +32,12 @@ Apply it to code, docs, references, examples, prompts, and project adoption chan
 - Contract behavior changes without boundary validation.
 - Critical journey validation is missing.
 - Failures would be difficult to diagnose from available logs or artifacts.
+- Failed checks are reported without disposition or owner.
 
 ## Evidence Required
 
 - Ordered validation plan.
+- Validation matrix or command matrix.
 - Test or check results.
 - Preview evidence when applicable.
 - Known gaps and residual risk.
@@ -48,4 +52,5 @@ A reviewer can see what was tested, what was not tested, why the selected checks
 
 - `../quality-testing.md`
 - `../examples/quality/validation-plan-example.md`
+- `../examples/quality/validation-matrix-example.md`
 - `../prompts/testing-review-prompt.md`

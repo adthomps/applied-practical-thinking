@@ -51,6 +51,9 @@ Build, test, validation, docs sync, and deployment checks should be repeatable.
 - Do not start with code when the problem, design, and boundary are unclear.
 - Break work into increments that can be reviewed independently.
 - Keep PRs scoped to a coherent change.
+- Each increment should name its input artifact, output artifact, validation evidence, and stop condition.
+- Cross-layer work should be sequenced so contracts and docs are updated before dependent implementation where practical.
+- If an increment discovers a missing decision, stop and update the thinking or architecture artifact before continuing.
 - Update docs, examples, or prompts when behavior changes.
 - AI-generated work must follow the same repo structure, tests, and review gates as human work.
 
@@ -61,6 +64,7 @@ Build, test, validation, docs sync, and deployment checks should be repeatable.
 - Acceptance criteria
 - Validation evidence
 - Release note or changelog entry when user-facing behavior changes
+- Increment plan with owner, dependencies, stop condition, and validation command
 
 ## Good Example
 
@@ -101,6 +105,7 @@ Return:
 ## Related Examples
 
 - `examples/workflows/spec-to-story-flow.md`
+- `examples/workflows/delivery-increment-plan-example.md`
 - `examples/workflows/preview-to-prod-flow.md`
 
 ## Related Prompts

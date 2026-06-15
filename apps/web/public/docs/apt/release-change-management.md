@@ -52,6 +52,8 @@ Support needs known issues, rollback notes, and user-facing behavior changes.
 - Group related changes into meaningful releases.
 - Record rollback or recovery steps before production promotion.
 - Include support notes for user-visible or operationally risky changes.
+- Release records should name source artifact, changed behavior, validation evidence, deployment target, rollback path, support impact, and known residual risk.
+- Preview and production environments should be distinguishable in release notes and deployment records.
 - Do not rely on dashboard-only manual deploy steps unless documented.
 - Versioned doctrine, copied references, and generated public views must identify source and status.
 
@@ -62,6 +64,8 @@ Support needs known issues, rollback notes, and user-facing behavior changes.
 - Deployment record
 - Rollback plan
 - Support handoff notes
+- Known issue and residual risk notes
+- Source and version reference for doctrine, generated docs, or copied assets
 
 ## Good Example
 
@@ -102,6 +106,7 @@ Return:
 ## Related Examples
 
 - `examples/workflows/preview-to-prod-flow.md`
+- `examples/workflows/release-record-example.md`
 
 ## Related Prompts
 

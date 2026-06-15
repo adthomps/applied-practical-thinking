@@ -37,9 +37,10 @@ Review for:
 2. Frontend/backend/package boundary safety
 3. API and data contract clarity
 4. Shared package leakage
-5. Deployment and preview fit
-6. Failure, rollback, and observability readiness
-7. AI prompt/handler ownership if applicable
+5. Ownership and command matrix for deployable surfaces and shared packages
+6. Deployment and preview fit
+7. Failure, rollback, and observability readiness
+8. AI prompt/handler ownership if applicable
 
 Return:
 - Findings by severity
@@ -60,6 +61,7 @@ System/change:
 Boundary map:
 Findings by severity:
 Required artifacts:
+Ownership/command matrix:
 Smallest safe correction:
 Validation/release impact:
 ```
@@ -73,9 +75,10 @@ Validation/release impact:
 
 ## Review Evidence
 
-The response should cite affected apps/packages, contracts, deploy targets, ownership, rollback path, and reference maps.
+The response should cite affected apps/packages, contracts, deploy targets, ownership, command matrix, rollback path, and reference maps.
 
 ## Related Documents
 
 - `../architecture.md`
 - `../examples/architecture/monorepo-layout-example.md`
+- `../examples/architecture/pattern-ownership-command-matrix-example.md`

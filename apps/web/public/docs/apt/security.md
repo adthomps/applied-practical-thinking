@@ -75,6 +75,8 @@ Avoid storing sensitive tokens in `localStorage` for browser apps.
 - Enforce authorization on the server side.
 - Use least privilege for roles, tokens, service accounts, and bindings.
 - Sensitive actions should produce audit-relevant events.
+- Sensitive workflows should name whether step-up verification, MFA, explicit confirmation, or dual approval is required.
+- Authorization reviews should include subject, action, resource, condition, enforcement point, and audit event.
 
 ### Input and Abuse Protection
 
@@ -82,6 +84,8 @@ Avoid storing sensitive tokens in `localStorage` for browser apps.
 - Rate limit login, signup, password reset, account recovery, and AI-costly endpoints.
 - Use bot or abuse protection for sensitive unauthenticated endpoints.
 - Return safe errors that do not leak implementation detail.
+- External integrations and webhooks should document replay, signature, idempotency, and retry behavior where applicable.
+- Health, biometric, financial, identity, payment, and other high-impact data flows must define source authority, retention, redaction, and support escalation rules.
 
 ### Secrets and Configuration
 
@@ -98,6 +102,9 @@ Avoid storing sensitive tokens in `localStorage` for browser apps.
 - Secrets/configuration notes
 - Abuse/rate-limit notes
 - Security review checklist
+- Trust-boundary and authorization matrix
+- Threat or abuse review for sensitive workflows
+- Escalation criteria for high-impact data, AI, auth, payment, or integration changes
 
 ## Good Example
 
@@ -134,6 +141,7 @@ Return:
 - `examples/security/login-session-flow.md`
 - `examples/security/magic-link-flow.md`
 - `examples/security/mfa-extension.md`
+- `examples/security/threat-auth-review-example.md`
 
 ## Related Prompts
 

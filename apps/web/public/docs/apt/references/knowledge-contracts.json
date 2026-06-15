@@ -15,7 +15,11 @@
         "content": "Chunk body.",
         "audience": "human, agent, public, internal, or mixed.",
         "status": "draft, active, deprecated, or archived.",
-        "tags": "Optional reuse and routing tags."
+        "tags": "Optional reuse and routing tags.",
+        "visibility": "public, internal, agent, or mixed.",
+        "confidence": "low, medium, or high when generated or retrieved.",
+        "retention": "Optional retention or deletion expectation.",
+        "redaction": "Optional sensitive-data handling note."
       }
     },
     "IngestReport": {
@@ -34,13 +38,26 @@
         "answer": "Grounded response.",
         "sources": "Source references used to answer.",
         "confidence": "low, medium, or high.",
-        "gaps": "Optional missing-context notes."
+        "gaps": "Optional missing-context notes.",
+        "fallback": "Optional deterministic fallback when retrieval or provider behavior is degraded."
+      }
+    },
+    "FeedbackRecord": {
+      "required": ["source", "finding", "disposition", "owner"],
+      "properties": {
+        "source": "Incident, support ticket, release, validation run, or user feedback source.",
+        "finding": "Reusable learning or gap.",
+        "disposition": "doc_update, test_update, runbook_update, ux_fix, decision_record, or non_action.",
+        "owner": "Person or team responsible for closure.",
+        "evidence": "Validation or review evidence for the disposition."
       }
     }
   },
   "rules": [
     "Knowledge retrieval must cite canonical or project-owned sources.",
     "AI-facing knowledge must preserve source priority and status.",
-    "Feedback should become either a doc update, a decision record, or an explicit non-action."
+    "Feedback should become either a doc update, a test update, a runbook update, a UX fix, a decision record, or an explicit non-action.",
+    "Sensitive knowledge must define visibility, redaction, retention, and escalation before ingestion.",
+    "Incident and support learning should link back to validation or release evidence when available."
   ]
 }

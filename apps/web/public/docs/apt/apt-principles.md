@@ -88,6 +88,23 @@ Every meaningful change needs evidence: tests, builds, preview checks, review no
 
 Decisions, examples, prompts, and support findings should become reusable knowledge instead of hidden memory.
 
+## Outcome Evidence Model
+
+Outcomes are the framework-level proof that APT work is worth doing. Outcomes do not need a separate root doctrine file; they are governed here and enforced through `thinking.md`, `execution.md`, `quality-testing.md`, `release-change-management.md`, and `knowledge-system.md`.
+
+Every meaningful change should name:
+
+- the problem or opportunity
+- the audience or operator affected
+- the baseline condition
+- the target success signal
+- the evidence that will prove movement
+- the operational, support, or learning impact
+
+Outcome evidence can be quantitative, such as reduced handoff time, fewer support cases, faster validation, or lower error rate. It can also be observable when measurement is not yet instrumented, such as a documented decision, completed runbook, preview evidence, or repeatable validation command.
+
+Do not treat "implemented" as an outcome. Implementation is an activity. The outcome is the change in user, operator, system, or knowledge state that the work produces.
+
 ## Required Documentation Model
 
 APT is maintained in five active layers:
@@ -99,6 +116,24 @@ APT is maintained in five active layers:
 5. References
 
 Templates are provided for creating new items in each layer.
+
+## Whole-System Evidence Loop
+
+APT work is complete when the lifecycle has a traceable evidence loop:
+
+1. Thinking names the outcome, audience, constraints, assumptions, and tradeoffs.
+2. Design defines complete behavior and states.
+3. Architecture assigns responsibilities, ownership, and contracts.
+4. System standards define reusable conventions and boundary rules.
+5. Security identifies trust boundaries, sensitive data, abuse controls, and escalation criteria.
+6. Execution breaks work into small validated increments.
+7. Quality records the validation matrix and residual risk.
+8. Release captures what changed, why, validation, rollback, and support notes.
+9. Operations records runbook, telemetry, first response, and escalation paths.
+10. Knowledge converts decisions, incidents, and outcomes into reusable artifacts.
+11. AI participates only through bounded prompts, named sources, evaluation criteria, and review evidence.
+
+If a change skips one layer, the release or decision record should explain why that layer is not applicable.
 
 ## Project Adoption Model
 

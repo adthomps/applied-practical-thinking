@@ -19,6 +19,7 @@ It is especially useful when work crosses multiple layers, such as UI plus API, 
 - [ ] Approved intent and scope are clear.
 - [ ] Affected layers and ownership boundaries are known.
 - [ ] Work is split into small reviewable increments.
+- [ ] Each increment names input artifact, output artifact, validation evidence, and stop condition.
 - [ ] Acceptance criteria are testable.
 - [ ] Validation steps are known before work starts.
 - [ ] Documentation or build-kit updates are identified.
@@ -28,6 +29,7 @@ It is especially useful when work crosses multiple layers, such as UI plus API, 
 
 - Implementation scope combines unrelated changes.
 - No validation checkpoint exists.
+- Increment boundaries or stop conditions are missing.
 - The agent or engineer must infer architecture boundaries.
 - User-facing behavior changes with no release note expectation.
 
@@ -35,6 +37,7 @@ It is especially useful when work crosses multiple layers, such as UI plus API, 
 
 - Spec, issue, or implementation brief.
 - Increment list.
+- Input/output, validation, owner, dependency, and stop-condition notes for each increment.
 - Acceptance criteria.
 - Validation plan.
 - Ownership and affected-layer notes.
@@ -48,4 +51,5 @@ The implementer should know what to change, what not to change, what evidence to
 
 - `../execution.md`
 - `../examples/workflows/spec-to-story-flow.md`
+- `../examples/workflows/delivery-increment-plan-example.md`
 - `../prompts/apt-one-shot-build-prompt.md`

@@ -29,6 +29,7 @@ Use:
 - knowledge-system.md
 - checklists/knowledge-system-checklist.md
 - examples/knowledge/canonical-doc-update-example.md
+- examples/knowledge/incident-to-knowledge-example.md
 
 Review for:
 1. Canonical source clarity
@@ -37,13 +38,16 @@ Review for:
 4. Related artifact links
 5. Duplication or drift risk
 6. Historical/reference handling
-7. AI readability
+7. Ingest, query, feedback, provenance, retention, and confidence expectations when used by AI or retrieval
+8. Incident, support, validation, or release learning converted into a durable artifact or explicit non-action
+9. AI readability
 
 Return:
 - Knowledge quality verdict
 - Drift risks
 - Missing links or metadata
 - Recommended canonical placement
+- Incident-learning or feedback-loop gaps
 - Consumer impact for public-site or downstream-project sync
 ```
 
@@ -56,10 +60,11 @@ The output should state where the knowledge belongs and what must be updated to 
 - Do not duplicate rules across multiple docs.
 - Do not treat historical material as active doctrine.
 - Do not leave AI agents guessing which source to trust.
+- Do not close support or incident learning without a durable artifact or accepted non-action.
 
 ## Review Evidence
 
-The response should include the canonical path, affected related artifacts, replaced source if any, validation command, and whether generated or copied consumers need refresh.
+The response should include the canonical path, affected related artifacts, replaced source if any, ingest/retrieval implications, validation command, and whether generated or copied consumers need refresh.
 
 ## Related Documents
 

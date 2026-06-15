@@ -40,17 +40,17 @@ Read the relevant canonical docs:
 - ai-agent-framework.md
 
 Review the change for:
-1. Thinking: problem, audience, success criteria, tradeoffs
+1. Thinking: problem, audience, baseline, target outcome, decision log, tradeoffs
 2. Design: complete states, UX clarity, interaction consistency
-3. Architecture: boundaries, ownership, contracts, deployment fit
+3. Architecture: boundaries, ownership, command matrix, contracts, deployment fit
 4. System: naming, response shapes, config, shared package rules
 5. Security: auth, authorization, validation, secrets, abuse controls
-6. Execution: increment size, scope, implementation traceability
-7. Quality: tests, validation evidence, diagnostics
-8. Release: preview, changelog, rollback, support handoff
-9. Operations: observability, runbooks, incident readiness
-10. Knowledge: canonical docs, examples, prompts, drift risk
-11. AI: prompt/tool boundaries, review gates, human approval points
+6. Execution: increment size, stop conditions, scope, implementation traceability
+7. Quality: validation matrix, failed-check disposition, diagnostics
+8. Release: release record, preview, changelog, rollback, support handoff
+9. Operations: observability, degraded fallback, runbooks, incident readiness
+10. Knowledge: canonical docs, examples, prompts, incident learning, drift risk
+11. AI: prompt/tool boundaries, evaluation cases, fallback behavior, human approval points
 
 Return:
 - Findings first, ordered by severity
@@ -69,8 +69,10 @@ Findings should be specific, evidence-based, and mapped to APT layers.
 - Do not give generic advice.
 - Do not invent standards outside the canonical docs.
 - If evidence is missing, call it out as missing rather than assuming.
+- Treat "implemented" as activity evidence, not outcome evidence.
 
 ## Related Documents
 
 - `../apt-principles.md`
 - `../checklists/release-readiness-checklist.md`
+- `../reports/apt-whole-system-completion-gap-matrix.md`

@@ -24,6 +24,378 @@ export type AptPublicDocManifestEntry = {
 
 export const aptPrinciplesPublicManifest = [
   {
+    "id": "github-agents-api-architect-agent",
+    "title": "api-architect.agent.md",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/.github/agents/api-architect.agent.md",
+    "publicPath": "/docs/apt/.github/agents/api-architect.agent.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "89b81c8479261fcfb337f8ae2e08eab11fe02ccb6d66649d4ef25fdaf647b1e1"
+  },
+  {
+    "id": "github-agents-apt-auditor-readonly-agent",
+    "title": "apt-auditor-readonly.agent.md",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/.github/agents/apt-auditor-readonly.agent.md",
+    "publicPath": "/docs/apt/.github/agents/apt-auditor-readonly.agent.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "666520ae88773b41eec5ea9428d0a029eeb8829a04e8fee8c025eb79be715c18"
+  },
+  {
+    "id": "github-agents-apt-principles-maintainer-agent",
+    "title": "apt-principles-maintainer.agent.md",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/.github/agents/apt-principles-maintainer.agent.md",
+    "publicPath": "/docs/apt/.github/agents/apt-principles-maintainer.agent.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "362e170a5c6733d1d8cd8ad995503e3dff103484fe211c21292fbb8eced28f1f"
+  },
+  {
+    "id": "github-agents-checklist-synchronizer-agent",
+    "title": "checklist-synchronizer.agent.md",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/.github/agents/checklist-synchronizer.agent.md",
+    "publicPath": "/docs/apt/.github/agents/checklist-synchronizer.agent.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "6abf2c9bf5861ff34ab5674aa7861f57d7a044cb7dde70d4ad7c67c7c8db4d25"
+  },
+  {
+    "id": "github-agents-docs-maintainer-agent",
+    "title": "docs-maintainer.agent.md",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/.github/agents/docs-maintainer.agent.md",
+    "publicPath": "/docs/apt/.github/agents/docs-maintainer.agent.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "7b9ec899d3a5e0bcdd63e9fa3692069f0026bdc8d13ef0403c91345671f4b50c"
+  },
+  {
+    "id": "github-agents-frontend-implementer-agent",
+    "title": "frontend-implementer.agent.md",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/.github/agents/frontend-implementer.agent.md",
+    "publicPath": "/docs/apt/.github/agents/frontend-implementer.agent.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "3c55d51434e201415689fe26ea3a7decfc67b51247617371bca3e804f65d8b51"
+  },
+  {
+    "id": "github-agents-prompt-curator-agent",
+    "title": "prompt-curator.agent.md",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/.github/agents/prompt-curator.agent.md",
+    "publicPath": "/docs/apt/.github/agents/prompt-curator.agent.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "97f4d74db7920d112130c232ca1629205b63111e3926bfbb7aa5c44ada9b6f38"
+  },
+  {
+    "id": "github-agents-security-reviewer-agent",
+    "title": "security-reviewer.agent.md",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/.github/agents/security-reviewer.agent.md",
+    "publicPath": "/docs/apt/.github/agents/security-reviewer.agent.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "3123e6d96a994482effd148c3ebb479c2df522634e0e1e1eda3cb98e9d9aa7ff"
+  },
+  {
+    "id": "github-agents-test-engineer-agent",
+    "title": "test-engineer.agent.md",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/.github/agents/test-engineer.agent.md",
+    "publicPath": "/docs/apt/.github/agents/test-engineer.agent.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "20a42f2e31117bc555b403c1e269bfe8c9cc63e37fc97ebe80f73fd7c296ee39"
+  },
+  {
+    "id": "github-copilot-instructions",
+    "title": "copilot-instructions.md",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/.github/copilot-instructions.md",
+    "publicPath": "/docs/apt/.github/copilot-instructions.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "738a282718a46a857a28232d72999740213ee1b0824ca92a6c54cf1c5cd57602"
+  },
+  {
+    "id": "github-instructions-checklists-only-instructions",
+    "title": "checklists-only.instructions.md",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/.github/instructions/checklists-only.instructions.md",
+    "publicPath": "/docs/apt/.github/instructions/checklists-only.instructions.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "72050b112f7fc5512e9295c8da69b650b48d995856dcb39389609049ebf68874"
+  },
+  {
+    "id": "github-instructions-doctrine-root-instructions",
+    "title": "doctrine-root.instructions.md",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/.github/instructions/doctrine-root.instructions.md",
+    "publicPath": "/docs/apt/.github/instructions/doctrine-root.instructions.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "eee8fe2f3eab0c91086f1938707d4e6a867086da51b2cfd04f78debc8082244c"
+  },
+  {
+    "id": "github-prompts-add-feature-prompt",
+    "title": "add-feature.prompt.md",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/.github/prompts/add-feature.prompt.md",
+    "publicPath": "/docs/apt/.github/prompts/add-feature.prompt.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "2accec31741a22824713806dc38f07297b4b41301dbbfee611e13216d038bd80"
+  },
+  {
+    "id": "github-prompts-create-docs-prompt",
+    "title": "create-docs.prompt.md",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/.github/prompts/create-docs.prompt.md",
+    "publicPath": "/docs/apt/.github/prompts/create-docs.prompt.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "4b92e3134a8e757c1bbf0bd90d7c363ab7791956f981629934504091e2cc2d0b"
+  },
+  {
+    "id": "github-prompts-generate-api-prompt",
+    "title": "generate-api.prompt.md",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/.github/prompts/generate-api.prompt.md",
+    "publicPath": "/docs/apt/.github/prompts/generate-api.prompt.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "e5b438c504bddb82e8dd36642e45e49e69c05ed16abf0b62c819db98973a3130"
+  },
+  {
+    "id": "github-prompts-review-repo-prompt",
+    "title": "review-repo.prompt.md",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/.github/prompts/review-repo.prompt.md",
+    "publicPath": "/docs/apt/.github/prompts/review-repo.prompt.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "f17b65f6e5dbc5ef623383d5717537222925300dba099fa8ede829a307ae4dcb"
+  },
+  {
+    "id": "github-prompts-standard-repo-audit-prompt",
+    "title": "standard-repo-audit.prompt.md",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/.github/prompts/standard-repo-audit.prompt.md",
+    "publicPath": "/docs/apt/.github/prompts/standard-repo-audit.prompt.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "4095a3a6ab6e6e429dbcedf776cadf5a6d2d583c05c5fcb98df8f41f47aa304a"
+  },
+  {
+    "id": "github-skills-ai-assistant-feature-builder-SKILL",
+    "title": "SKILL.md",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/.github/skills/ai-assistant-feature-builder/SKILL.md",
+    "publicPath": "/docs/apt/.github/skills/ai-assistant-feature-builder/SKILL.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "eb888f3419190f01858fc023f94e256dabfef19ed35f48ad1910e9324e6ec781"
+  },
+  {
+    "id": "github-skills-api-first-openapi-designer-SKILL",
+    "title": "SKILL.md",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/.github/skills/api-first-openapi-designer/SKILL.md",
+    "publicPath": "/docs/apt/.github/skills/api-first-openapi-designer/SKILL.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "bdba5d964ed18c239b85b93f623ccc6b92e99daf60730f2d57ac17b119dc3ddd"
+  },
+  {
+    "id": "github-skills-apt-repo-architect-SKILL",
+    "title": "SKILL.md",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/.github/skills/apt-repo-architect/SKILL.md",
+    "publicPath": "/docs/apt/.github/skills/apt-repo-architect/SKILL.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "f582743515ca9de571d28b9254d72035de1844ba9a6998fc2185689191077033"
+  },
+  {
+    "id": "github-skills-cloudflare-hono-worker-builder-SKILL",
+    "title": "SKILL.md",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/.github/skills/cloudflare-hono-worker-builder/SKILL.md",
+    "publicPath": "/docs/apt/.github/skills/cloudflare-hono-worker-builder/SKILL.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "7ba2aac5b562b3ad81b5b252f49832aacd70de9be614362b268e8af3d75f38ea"
+  },
+  {
+    "id": "github-skills-docs-kb-maintainer-SKILL",
+    "title": "SKILL.md",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/.github/skills/docs-kb-maintainer/SKILL.md",
+    "publicPath": "/docs/apt/.github/skills/docs-kb-maintainer/SKILL.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "bc6e94d5c9b335d188e26a5ae7cbf62200f54560a50c099c1d6682dd7a896fd8"
+  },
+  {
+    "id": "github-skills-graphql-adapter-reviewer-SKILL",
+    "title": "SKILL.md",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/.github/skills/graphql-adapter-reviewer/SKILL.md",
+    "publicPath": "/docs/apt/.github/skills/graphql-adapter-reviewer/SKILL.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "8c62eab36a93192c6329116a54d372d8df9d46ea8a8ab6b6f3dab54c251713e6"
+  },
+  {
+    "id": "github-skills-health-data-ingestion-designer-SKILL",
+    "title": "SKILL.md",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/.github/skills/health-data-ingestion-designer/SKILL.md",
+    "publicPath": "/docs/apt/.github/skills/health-data-ingestion-designer/SKILL.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "b97ed6dd6d8d5e2a09044188ed0aebda81b6d22bd31aa522c115bcf8517da7f6"
+  },
+  {
+    "id": "github-skills-payments-integration-architect-SKILL",
+    "title": "SKILL.md",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/.github/skills/payments-integration-architect/SKILL.md",
+    "publicPath": "/docs/apt/.github/skills/payments-integration-architect/SKILL.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "fe9615705c57287f14e610fe27148cb9a9603aeb839322987257ddfd46474aed"
+  },
+  {
+    "id": "github-skills-principle-change-sync-SKILL",
+    "title": "SKILL.md",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/.github/skills/principle-change-sync/SKILL.md",
+    "publicPath": "/docs/apt/.github/skills/principle-change-sync/SKILL.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "77a3b4f11cd8698d4416a3e108b86b368448315c6abefae5230bb9e02b400c77"
+  },
+  {
+    "id": "github-skills-react-typescript-ui-builder-SKILL",
+    "title": "SKILL.md",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/.github/skills/react-typescript-ui-builder/SKILL.md",
+    "publicPath": "/docs/apt/.github/skills/react-typescript-ui-builder/SKILL.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "6da654cedfd54aebdf7c91099cfa810649adbd9e9a5f82b834cb3877821e4af1"
+  },
+  {
+    "id": "github-skills-security-auth-reviewer-SKILL",
+    "title": "SKILL.md",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/.github/skills/security-auth-reviewer/SKILL.md",
+    "publicPath": "/docs/apt/.github/skills/security-auth-reviewer/SKILL.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "df811f9e59ff07e31c098f75a5fb0b2247af9673bb7852bea2bce7cd110d3e0a"
+  },
+  {
+    "id": "github-skills-testing-validation-runner-SKILL",
+    "title": "SKILL.md",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/.github/skills/testing-validation-runner/SKILL.md",
+    "publicPath": "/docs/apt/.github/skills/testing-validation-runner/SKILL.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "c755126b674edc472a571bca303369a2581110ca9b4c4efd4e88a735e42f7abd"
+  },
+  {
+    "id": "github-skills-webhook-event-designer-SKILL",
+    "title": "SKILL.md",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/.github/skills/webhook-event-designer/SKILL.md",
+    "publicPath": "/docs/apt/.github/skills/webhook-event-designer/SKILL.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "2fdb43cfbc69ccbf17936fd80891c6c7f7bf99d3c6546c86853c30a470cf5b1d"
+  },
+  {
+    "id": "AGENTS",
+    "title": "APT Agent Working Rules",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/AGENTS.md",
+    "publicPath": "/docs/apt/AGENTS.md",
+    "version": "v1",
+    "status": "stable",
+    "lastUpdated": "2026-05-31",
+    "checksum": "84b1f92c53e3d16cf1ea50c69e883ef0fbac0890e91e43f655dffaf77c9c6ecb"
+  },
+  {
     "id": "ai-agent-framework",
     "title": "APT AI & Agent Framework (Augmentation Layer)",
     "kind": "doctrine",
@@ -33,19 +405,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-05-01",
-    "checksum": "412d03dbfc7672333978929f535630484cd3a8434167d759875c4e1b770edaf8"
-  },
-  {
-    "id": "apt-principles-framework-audit",
-    "title": "APT Principles Framework Audit",
-    "kind": "audit",
-    "principleArea": "general",
-    "sourcePath": "apt-principles/apt-principles-framework-audit.md",
-    "publicPath": "/docs/apt/apt-principles-framework-audit.md",
-    "version": "v1",
-    "status": "draft",
-    "lastUpdated": "2026-05-01",
-    "checksum": "250c97813f4003b7dbd6b27a6a002e9771fda1ba187bf7cae043385132a0f309"
+    "checksum": "f3bb4f80719ae4ed939475e59cfcb3e4571b91315dcb1ac03e5db32b7b99429d"
   },
   {
     "id": "apt-principles",
@@ -57,7 +417,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-05-01",
-    "checksum": "ceabc746a79976c14cce3598584f91f84f50bdeb910ed4f336cb7c875d1d581d"
+    "checksum": "e2e51b8db74024860cf13fbc6bdb715bf508f202e24af60c5f83e353fda54361"
   },
   {
     "id": "architecture",
@@ -69,7 +429,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "15d5a5d9c82aa970c6ef98426e68f4778c7cd2cd0d64dffd2b3663a44567911c"
+    "checksum": "f73f89315c0c49a071b8eff6abe3346168e1379ae6f84dd74b1e3f851b923364"
   },
   {
     "id": "checklists-ai-agent-review-checklist",
@@ -81,7 +441,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "0782e439a84a50892a94c615a2dcb9df8875b1c046ddda510917e0c727e1f583"
+    "checksum": "af9d843d1f1416d84250b5cff263e5799598ca2baae0dc54577086806649afb4"
   },
   {
     "id": "checklists-api-standards-checklist",
@@ -105,7 +465,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "79108b30f6b512be2ca74dfc8c85450bdf5b79186f39fdccd9fca519e630c7b4"
+    "checksum": "0efedf2d65510b8a3640daeaa2950e1b22fcdfe9a7f4af9ed26c57359e706754"
   },
   {
     "id": "checklists-design-review-checklist",
@@ -117,7 +477,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-28",
-    "checksum": "24f13b2a01fb88bef14c5a79dde777efb44bc644e01b29aa01b6b0133fa594d8"
+    "checksum": "a7cbf7563613e3769e8a9a3b50e0aca7ae07a2830e14ce2a8d5e77c2a87f466d"
   },
   {
     "id": "checklists-execution-readiness-checklist",
@@ -129,7 +489,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "0c5e7b73e5ecc1de2ee62cc9fd00fde6db95e5d53f587efb2725b9e2a19ddc2a"
+    "checksum": "30678a1f2dac5589ae20ac5fd1c3baa8a1b73c611e8cda0eb8bf68df286f72c0"
   },
   {
     "id": "checklists-knowledge-system-checklist",
@@ -141,7 +501,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "d9b5ea12c444e6b7071615dac7d5bdf47d45c605b0775712b4641bf03cb4e2cd"
+    "checksum": "496a4b57f85a526c449fa449114ff5c39dda5e48df292d27894ab5b0702d6790"
   },
   {
     "id": "checklists-operations-support-checklist",
@@ -153,7 +513,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "cdbf9c7239c0bc8cc88b649951b46f169ce601722731fb723c070289d1dbc32a"
+    "checksum": "a646b919cc60ebc3f205b8144e0e83c763b856cc115d2a2c913f1a55457d6773"
   },
   {
     "id": "checklists-project-adoption-checklist",
@@ -165,7 +525,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "876c90589458117ad26fbe2285fa7119fb3f997533acf84393c9c2a8d0e6dc10"
+    "checksum": "a20837c0228ab8f5ae0b8350fecdab8954b22ef4c8f3ef2ede5a6396a98e01a3"
   },
   {
     "id": "checklists-quality-testing-checklist",
@@ -177,7 +537,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "595dd1987f747559ee3a1fe1d83d9758d48c9af67211a67d5b120e6a8ff661ec"
+    "checksum": "cc53ff19d3a166c636c2804e5b45bb896ded2ddca0c033b49c7a2fbf9f2a4ddd"
   },
   {
     "id": "checklists-release-readiness-checklist",
@@ -189,7 +549,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "3c27b60c40c94b42f762ad6dbbe01948d345e29e57b0e4820bb33eeda611558d"
+    "checksum": "228b121ec90725507639c06773c3f7b8d42ec2740d8088cb291dd5a17dd1930b"
   },
   {
     "id": "checklists-security-review-checklist",
@@ -201,7 +561,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "37790c396f7f62065a1c339e57ddf6ee4acac56afabdea6e5f584e3698bda2af"
+    "checksum": "0812da47080e999bd39fceec72662ee9029bbfddd5183dbe884112e942fb3bf3"
   },
   {
     "id": "checklists-thinking-review-checklist",
@@ -213,7 +573,19 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "35487c0373df450543df25f0d8b7321e968ebbf081be3cb59d2e503d6aecb1cb"
+    "checksum": "181b4cd961cf0706dbebeaa05101196f80a589fbe96fe4e8584164019419f180"
+  },
+  {
+    "id": "CONTRIBUTING",
+    "title": "Contributing to APT Principles",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/CONTRIBUTING.md",
+    "publicPath": "/docs/apt/CONTRIBUTING.md",
+    "version": "v1",
+    "status": "stable",
+    "lastUpdated": "2026-05-31",
+    "checksum": "895496cafab303ae17a0d5b6474bf98bda9ba459b6ee000110c5f413430273b9"
   },
   {
     "id": "design",
@@ -225,7 +597,67 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-28",
-    "checksum": "f36f8c59813ca53a5ea22f16dcb6b21a897005b66c37339edca5898c44d8d479"
+    "checksum": "25bd89b8cea4ae6cf6e39656c2c948e8bc4b86f8a4b6ca8635af50e371fe178b"
+  },
+  {
+    "id": "docs-diagrams-apt-lifecycle",
+    "title": "APT Lifecycle Diagram",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/docs/diagrams/apt-lifecycle.md",
+    "publicPath": "/docs/apt/docs/diagrams/apt-lifecycle.md",
+    "version": "v1",
+    "status": "stable",
+    "lastUpdated": "2026-05-31",
+    "checksum": "feedc0c40e91cda71485837c16d9ef1be26d93d34f777ab6b94bc72bb4be5a9f"
+  },
+  {
+    "id": "docs-diagrams-documentation-layers",
+    "title": "APT Documentation Layers Diagram",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/docs/diagrams/documentation-layers.md",
+    "publicPath": "/docs/apt/docs/diagrams/documentation-layers.md",
+    "version": "v1",
+    "status": "stable",
+    "lastUpdated": "2026-05-31",
+    "checksum": "153244fa465dc8ae4c22c920cfa1096a1a5cc3b8e78edc784602a3a02b914ae5"
+  },
+  {
+    "id": "docs-diagrams-file-relationships",
+    "title": "File Relationships Diagram",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/docs/diagrams/file-relationships.md",
+    "publicPath": "/docs/apt/docs/diagrams/file-relationships.md",
+    "version": "v1",
+    "status": "stable",
+    "lastUpdated": "2026-05-31",
+    "checksum": "a2fe140d1323c7cd582e7c97957bce47e26f4b6efa5f150858c4cb1c3c3b7a99"
+  },
+  {
+    "id": "docs-diagrams-reference-architecture",
+    "title": "APT Reference Architecture Diagram",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/docs/diagrams/reference-architecture.md",
+    "publicPath": "/docs/apt/docs/diagrams/reference-architecture.md",
+    "version": "v1",
+    "status": "stable",
+    "lastUpdated": "2026-05-31",
+    "checksum": "237770e5f736d884ff4c6ae9e0f96ee23c993af9358893517ac4189274ab0855"
+  },
+  {
+    "id": "docs-diagrams-repository-structure",
+    "title": "Repository Structure Diagram",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/docs/diagrams/repository-structure.md",
+    "publicPath": "/docs/apt/docs/diagrams/repository-structure.md",
+    "version": "v1",
+    "status": "stable",
+    "lastUpdated": "2026-05-31",
+    "checksum": "294a040461abdcb9aaf15c4d429a7306f72de92bcabeca5d499a32eb7289e19c"
   },
   {
     "id": "examples-ai-agent-agent-prompt-contract-example",
@@ -238,6 +670,18 @@ export const aptPrinciplesPublicManifest = [
     "status": "draft",
     "lastUpdated": "2026-04-24",
     "checksum": "0651031071a16f32b597d450ef188eb4d2d4325c8e4a715b55c4131cbcb55a2f"
+  },
+  {
+    "id": "examples-ai-agent-ai-evaluation-case-example",
+    "title": "AI Evaluation Case Example",
+    "kind": "example",
+    "principleArea": "ai-agent",
+    "sourcePath": "apt-principles/examples/ai-agent/ai-evaluation-case-example.md",
+    "publicPath": "/docs/apt/examples/ai-agent/ai-evaluation-case-example.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-06-13",
+    "checksum": "1cf35ef26213fafc91fee789c28f7c30aec34605b6e4dc4c1db50fec29262101"
   },
   {
     "id": "examples-ai-agent-health-coaching-prompt-boundary-example",
@@ -324,6 +768,18 @@ export const aptPrinciplesPublicManifest = [
     "checksum": "3f0945b4e29bd6a5fe6fe0efba25b06c17f43952ebfa5b4161d8d8728cfe7f6e"
   },
   {
+    "id": "examples-architecture-pattern-ownership-command-matrix-example",
+    "title": "Pattern Ownership Command Matrix Example",
+    "kind": "example",
+    "principleArea": "architecture",
+    "sourcePath": "apt-principles/examples/architecture/pattern-ownership-command-matrix-example.md",
+    "publicPath": "/docs/apt/examples/architecture/pattern-ownership-command-matrix-example.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-06-13",
+    "checksum": "f1e88b22b591056f625be526734b37c142115dcea2446fdd31bcd8dc49119030"
+  },
+  {
     "id": "examples-knowledge-canonical-doc-update-example",
     "title": "Canonical Doc Update Example",
     "kind": "example",
@@ -336,6 +792,18 @@ export const aptPrinciplesPublicManifest = [
     "checksum": "78290ecd0c8b25217fce0ae28164eb1f9de62b829c34e88a595a7fdb390a1c1a"
   },
   {
+    "id": "examples-knowledge-incident-to-knowledge-example",
+    "title": "Incident to Knowledge Example",
+    "kind": "example",
+    "principleArea": "knowledge",
+    "sourcePath": "apt-principles/examples/knowledge/incident-to-knowledge-example.md",
+    "publicPath": "/docs/apt/examples/knowledge/incident-to-knowledge-example.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-06-13",
+    "checksum": "122ce16b7fececeef8b4b66fd646d0cd4a7cab19ffe6315631d49ef2e6b45160"
+  },
+  {
     "id": "examples-projects-apt-project-profile-example",
     "title": "APT Project Profile Example",
     "kind": "example",
@@ -346,6 +814,18 @@ export const aptPrinciplesPublicManifest = [
     "status": "draft",
     "lastUpdated": "2026-05-01",
     "checksum": "17666fe4624e4ea79dfaf6d8151a1b1bb6b34213fbb6da99dd813036a99d3cb4"
+  },
+  {
+    "id": "examples-quality-validation-matrix-example",
+    "title": "Validation Matrix Example",
+    "kind": "example",
+    "principleArea": "quality",
+    "sourcePath": "apt-principles/examples/quality/validation-matrix-example.md",
+    "publicPath": "/docs/apt/examples/quality/validation-matrix-example.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-06-13",
+    "checksum": "ba14e3b0893ec565fa31e45b81e531c0f9dc90809e6e82adc5042dc4862f57be"
   },
   {
     "id": "examples-quality-validation-plan-example",
@@ -368,8 +848,8 @@ export const aptPrinciplesPublicManifest = [
     "publicPath": "/docs/apt/examples/README.md",
     "version": "v1",
     "status": "draft",
-    "lastUpdated": "2026-04-24",
-    "checksum": "184f91a4ad20e033d519c061b7c50d514cab2dcdb4b34b557684fc942fefb7ed"
+    "lastUpdated": "2026-05-31",
+    "checksum": "aa72897dfcbf9697ef8f7bf63b3369620ae652e737be8e845702fb39734f3a0e"
   },
   {
     "id": "examples-security-login-session-flow",
@@ -408,6 +888,30 @@ export const aptPrinciplesPublicManifest = [
     "checksum": "0631aa3ede50ed9d902cec31082b9e80c9acb448abf41cace49f1e71b95c5410"
   },
   {
+    "id": "examples-security-threat-auth-review-example",
+    "title": "Threat Auth Review Example",
+    "kind": "example",
+    "principleArea": "security",
+    "sourcePath": "apt-principles/examples/security/threat-auth-review-example.md",
+    "publicPath": "/docs/apt/examples/security/threat-auth-review-example.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-06-13",
+    "checksum": "4c833fa62d61c2da6fff26d99b99056a96e41974398391cdac173d63fb1ef237"
+  },
+  {
+    "id": "examples-thinking-decision-log-outcome-example",
+    "title": "Decision Log Outcome Example",
+    "kind": "example",
+    "principleArea": "thinking",
+    "sourcePath": "apt-principles/examples/thinking/decision-log-outcome-example.md",
+    "publicPath": "/docs/apt/examples/thinking/decision-log-outcome-example.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-06-13",
+    "checksum": "7fadc5da0bf40546efbe20831878b49de583ace37b306af54e11ebfa76ba122f"
+  },
+  {
     "id": "examples-thinking-problem-framing-example",
     "title": "Problem Framing Example",
     "kind": "example",
@@ -420,6 +924,42 @@ export const aptPrinciplesPublicManifest = [
     "checksum": "b04147ba133091f1280679260dc5e6c242d5e95662dee171d6fdaf2d988558c1"
   },
   {
+    "id": "examples-ui-account-auth-settings-pattern",
+    "title": "Account Auth Settings Pattern",
+    "kind": "example",
+    "principleArea": "ui",
+    "sourcePath": "apt-principles/examples/ui/account-auth-settings-pattern.md",
+    "publicPath": "/docs/apt/examples/ui/account-auth-settings-pattern.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-06-13",
+    "checksum": "3327922e194ba4ccc0a70c8f1741e41f996b1052d53748a01acb2f65393d4369"
+  },
+  {
+    "id": "examples-ui-chart-data-visualization-pattern",
+    "title": "Chart Data Visualization Pattern",
+    "kind": "example",
+    "principleArea": "ui",
+    "sourcePath": "apt-principles/examples/ui/chart-data-visualization-pattern.md",
+    "publicPath": "/docs/apt/examples/ui/chart-data-visualization-pattern.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-06-13",
+    "checksum": "f2256977345f368b776335b5452ea0b2361dd828885aec06c509a08dd08bec89"
+  },
+  {
+    "id": "examples-ui-content-insights-card-pattern",
+    "title": "Content Insights Card Pattern",
+    "kind": "example",
+    "principleArea": "ui",
+    "sourcePath": "apt-principles/examples/ui/content-insights-card-pattern.md",
+    "publicPath": "/docs/apt/examples/ui/content-insights-card-pattern.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-06-13",
+    "checksum": "0f80fccc0db152e567aacb39a965a0cbaab0bc54e494d3dbd84dc2d3b1627538"
+  },
+  {
     "id": "examples-ui-dashboard-layout-pattern",
     "title": "Dashboard Layout Pattern",
     "kind": "example",
@@ -430,6 +970,174 @@ export const aptPrinciplesPublicManifest = [
     "status": "draft",
     "lastUpdated": "2026-04-24",
     "checksum": "bb1337d08f785a1606427ef0c3c586d1324a115021633554171fb9594b644111"
+  },
+  {
+    "id": "examples-ui-design-reference-kit",
+    "title": "Design Reference Kit",
+    "kind": "example",
+    "principleArea": "ui",
+    "sourcePath": "apt-principles/examples/ui/design-reference-kit.md",
+    "publicPath": "/docs/apt/examples/ui/design-reference-kit.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-06-13",
+    "checksum": "040e73ea5720484224618b841b5a90a14a87d5ed9907f49f77abab70b4743dc2"
+  },
+  {
+    "id": "examples-ui-design-reference-kit-adherence-oxlintrc",
+    "title": "_adherence.oxlintrc.json",
+    "kind": "example",
+    "principleArea": "ui",
+    "sourcePath": "apt-principles/examples/ui/design-reference-kit/_adherence.oxlintrc.json",
+    "publicPath": "/docs/apt/examples/ui/design-reference-kit/_adherence.oxlintrc.json",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "83c593b2b9452c43343b1b9130d3a62ae7ab16be1674fb2d7c7c63994afaf6bb"
+  },
+  {
+    "id": "examples-ui-design-reference-kit-ds-manifest",
+    "title": "_ds_manifest.json",
+    "kind": "example",
+    "principleArea": "ui",
+    "sourcePath": "apt-principles/examples/ui/design-reference-kit/_ds_manifest.json",
+    "publicPath": "/docs/apt/examples/ui/design-reference-kit/_ds_manifest.json",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "48a829f6b36595f20c4774051250826899b970ee1f31480c8aece942e2446206"
+  },
+  {
+    "id": "examples-ui-design-reference-kit-ui-kits-account-README",
+    "title": "Account UI Kit Reference",
+    "kind": "example",
+    "principleArea": "ui",
+    "sourcePath": "apt-principles/examples/ui/design-reference-kit/ui_kits/account/README.md",
+    "publicPath": "/docs/apt/examples/ui/design-reference-kit/ui_kits/account/README.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-06-13",
+    "checksum": "ccdd656c2446140f7077d6a3bdc9fcb25ef3d8d1d7ba11a31f547a37cea7004f"
+  },
+  {
+    "id": "examples-ui-design-reference-kit-ui-kits-dashboard-README",
+    "title": "Dashboard UI Kit Reference",
+    "kind": "example",
+    "principleArea": "ui",
+    "sourcePath": "apt-principles/examples/ui/design-reference-kit/ui_kits/dashboard/README.md",
+    "publicPath": "/docs/apt/examples/ui/design-reference-kit/ui_kits/dashboard/README.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-06-13",
+    "checksum": "267e3754dfd55d4a454f3a655fe23b04bb728b8febd3b84f981561579061fa87"
+  },
+  {
+    "id": "examples-ui-design-reference-kit-ui-kits-docs-README",
+    "title": "Docs UI Kit Reference",
+    "kind": "example",
+    "principleArea": "ui",
+    "sourcePath": "apt-principles/examples/ui/design-reference-kit/ui_kits/docs/README.md",
+    "publicPath": "/docs/apt/examples/ui/design-reference-kit/ui_kits/docs/README.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-06-13",
+    "checksum": "2057ddf2ed0d171c0023bbac20e8c231204f50193f1983f7baa83f6fe1c374f7"
+  },
+  {
+    "id": "examples-ui-design-reference-kit-ui-kits-email-README",
+    "title": "Email UI Kit Reference",
+    "kind": "example",
+    "principleArea": "ui",
+    "sourcePath": "apt-principles/examples/ui/design-reference-kit/ui_kits/email/README.md",
+    "publicPath": "/docs/apt/examples/ui/design-reference-kit/ui_kits/email/README.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-06-13",
+    "checksum": "2938100d0b786658471d8ae04b47f526643c670c892c195321504fa23b30251f"
+  },
+  {
+    "id": "examples-ui-design-reference-kit-ui-kits-insights-README",
+    "title": "Insights UI Kit Reference",
+    "kind": "example",
+    "principleArea": "ui",
+    "sourcePath": "apt-principles/examples/ui/design-reference-kit/ui_kits/insights/README.md",
+    "publicPath": "/docs/apt/examples/ui/design-reference-kit/ui_kits/insights/README.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-06-13",
+    "checksum": "db9d6b8cd6c250b55a8c44a6b3e2a08ec0661a2c6cfd1eeb6eac53d5f1ba5e07"
+  },
+  {
+    "id": "examples-ui-design-reference-kit-ui-kits-patterns-README",
+    "title": "Interaction Patterns UI Kit Reference",
+    "kind": "example",
+    "principleArea": "ui",
+    "sourcePath": "apt-principles/examples/ui/design-reference-kit/ui_kits/patterns/README.md",
+    "publicPath": "/docs/apt/examples/ui/design-reference-kit/ui_kits/patterns/README.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-06-13",
+    "checksum": "a4f5cab4f65146431558cb3daed45f03779886fee64711a0f7b62a354a90f44d"
+  },
+  {
+    "id": "examples-ui-design-reference-kit-ui-kits-portfolio-README",
+    "title": "Portfolio UI Kit Reference",
+    "kind": "example",
+    "principleArea": "ui",
+    "sourcePath": "apt-principles/examples/ui/design-reference-kit/ui_kits/portfolio/README.md",
+    "publicPath": "/docs/apt/examples/ui/design-reference-kit/ui_kits/portfolio/README.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-06-13",
+    "checksum": "c06268ba6f086363c048970bb1f7d7fc2769befc136b05608dc3e4e5f6f122fd"
+  },
+  {
+    "id": "examples-ui-design-reference-kit-ui-kits-product-README",
+    "title": "Product UI Kit Reference",
+    "kind": "example",
+    "principleArea": "ui",
+    "sourcePath": "apt-principles/examples/ui/design-reference-kit/ui_kits/product/README.md",
+    "publicPath": "/docs/apt/examples/ui/design-reference-kit/ui_kits/product/README.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-06-13",
+    "checksum": "5941bdaeb9057636a81e5292937daf09a23ef58e9ec5542bd4d0377e2fcc2063"
+  },
+  {
+    "id": "examples-ui-design-system-primitives-pattern",
+    "title": "Design System Primitives Pattern",
+    "kind": "example",
+    "principleArea": "ui",
+    "sourcePath": "apt-principles/examples/ui/design-system-primitives-pattern.md",
+    "publicPath": "/docs/apt/examples/ui/design-system-primitives-pattern.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-06-13",
+    "checksum": "d66ebc78085cd989d51e59c8fd97bccfbe5a89421257f093b0c6f1181624122c"
+  },
+  {
+    "id": "examples-ui-docs-principles-browser-pattern",
+    "title": "Docs Principles Browser Pattern",
+    "kind": "example",
+    "principleArea": "ui",
+    "sourcePath": "apt-principles/examples/ui/docs-principles-browser-pattern.md",
+    "publicPath": "/docs/apt/examples/ui/docs-principles-browser-pattern.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-06-13",
+    "checksum": "993ef379a9126a40deb1116fa2bd2dad875e50e2e72a36c2dfefdaa58b2e2c54"
+  },
+  {
+    "id": "examples-ui-feedback-alert-toast-pattern",
+    "title": "Feedback Alert Toast Pattern",
+    "kind": "example",
+    "principleArea": "ui",
+    "sourcePath": "apt-principles/examples/ui/feedback-alert-toast-pattern.md",
+    "publicPath": "/docs/apt/examples/ui/feedback-alert-toast-pattern.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-06-13",
+    "checksum": "fbf447febb0154b884652c63777e47fc98d7b5fed4ad4420602354cc2a153df0"
   },
   {
     "id": "examples-ui-footer-layout-pattern",
@@ -456,6 +1164,30 @@ export const aptPrinciplesPublicManifest = [
     "checksum": "91a713ad2a0a748127373fac83c456cc7da59c8c62380839cb146df9452c0d6e"
   },
   {
+    "id": "examples-ui-product-portfolio-surface-pattern",
+    "title": "Product Portfolio Surface Pattern",
+    "kind": "example",
+    "principleArea": "ui",
+    "sourcePath": "apt-principles/examples/ui/product-portfolio-surface-pattern.md",
+    "publicPath": "/docs/apt/examples/ui/product-portfolio-surface-pattern.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-06-13",
+    "checksum": "5fee716d03482a9d6b747a35c6a73dd461e3d475f109851c1c6e076bea0b3733"
+  },
+  {
+    "id": "examples-ui-transactional-email-pattern",
+    "title": "Transactional Email Pattern",
+    "kind": "example",
+    "principleArea": "ui",
+    "sourcePath": "apt-principles/examples/ui/transactional-email-pattern.md",
+    "publicPath": "/docs/apt/examples/ui/transactional-email-pattern.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-06-13",
+    "checksum": "75bf3286a0bcca73d3e5e5f29a900e035925a8419c160cde714b162c57941284"
+  },
+  {
     "id": "examples-workflows-apt-principles-public-sync-flow",
     "title": "APT Principles Public Sync Flow",
     "kind": "example",
@@ -468,6 +1200,30 @@ export const aptPrinciplesPublicManifest = [
     "checksum": "72c9784658bbec963dc8bc1dddaa45cfae5d5b127e8fd215120ab613abd77ff4"
   },
   {
+    "id": "examples-workflows-delivery-increment-plan-example",
+    "title": "Delivery Increment Plan Example",
+    "kind": "example",
+    "principleArea": "workflows",
+    "sourcePath": "apt-principles/examples/workflows/delivery-increment-plan-example.md",
+    "publicPath": "/docs/apt/examples/workflows/delivery-increment-plan-example.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-06-13",
+    "checksum": "f30ad686cec060db945c187549e3ce8f20ed92ea18ccfc2b4946a38d4a1aec5b"
+  },
+  {
+    "id": "examples-workflows-operational-runbook-example",
+    "title": "Operational Runbook Example",
+    "kind": "example",
+    "principleArea": "workflows",
+    "sourcePath": "apt-principles/examples/workflows/operational-runbook-example.md",
+    "publicPath": "/docs/apt/examples/workflows/operational-runbook-example.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-06-13",
+    "checksum": "9e32c01709af76cbf12db906072f36d7a3b080fee6e2bd457d2ce98aae36e02e"
+  },
+  {
     "id": "examples-workflows-preview-to-prod-flow",
     "title": "Preview to Prod Flow",
     "kind": "example",
@@ -478,6 +1234,18 @@ export const aptPrinciplesPublicManifest = [
     "status": "draft",
     "lastUpdated": "2026-04-24",
     "checksum": "1a791e7199f861feb1306c319e9195ed82d0ba9da1fb97a77b13ea8b24519430"
+  },
+  {
+    "id": "examples-workflows-release-record-example",
+    "title": "Release Record Example",
+    "kind": "example",
+    "principleArea": "workflows",
+    "sourcePath": "apt-principles/examples/workflows/release-record-example.md",
+    "publicPath": "/docs/apt/examples/workflows/release-record-example.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-06-13",
+    "checksum": "23283618d83a07169487e2cab5c0d90760a5e6ceae3b6cb1815c4e91c5fdc116"
   },
   {
     "id": "examples-workflows-spec-to-story-flow",
@@ -501,7 +1269,91 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "bb417b29c74799b321c7d7c791c0d02148ef8eba30b72d0775a8ad1fbd5ea439"
+    "checksum": "cae307dc088ba9259bed14b98265be4a9e59d577da41b9615f63c040418359ee"
+  },
+  {
+    "id": "governance-architecture-review",
+    "title": "APT Architecture Review Process",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/governance/architecture-review.md",
+    "publicPath": "/docs/apt/governance/architecture-review.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-05-31",
+    "checksum": "bc990eed56f4e04214d38e126c9f338e37f148ce9745355b1bbaa05d0303b9f9"
+  },
+  {
+    "id": "governance-design-review",
+    "title": "APT Design Review Process",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/governance/design-review.md",
+    "publicPath": "/docs/apt/governance/design-review.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-05-31",
+    "checksum": "3966e29668f658919c4990111cb5febd763f4d109aa2bb8984d3a827c8a41eff"
+  },
+  {
+    "id": "governance-maturity-model",
+    "title": "APT Repository Maturity Model",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/governance/maturity-model.md",
+    "publicPath": "/docs/apt/governance/maturity-model.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-05-31",
+    "checksum": "8849ba7814bc990b3d6449dba7bd9dbba48525dac08a301adb37d783644867ac"
+  },
+  {
+    "id": "governance-README",
+    "title": "APT Governance Index",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/governance/README.md",
+    "publicPath": "/docs/apt/governance/README.md",
+    "version": "v1",
+    "status": "stable",
+    "lastUpdated": "2026-05-31",
+    "checksum": "d77643476206bd41bf2d1d5920c9c5f0c8e2099e2687bbe6760635126c209529"
+  },
+  {
+    "id": "governance-repository-review",
+    "title": "APT Repository Review Process",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/governance/repository-review.md",
+    "publicPath": "/docs/apt/governance/repository-review.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-05-31",
+    "checksum": "16eb536443f3ec6efa2109a31ec2ea356d0ed5bdb08fd8e934ab206062de14f8"
+  },
+  {
+    "id": "governance-scorecard",
+    "title": "APT Repository Scorecard",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/governance/scorecard.md",
+    "publicPath": "/docs/apt/governance/scorecard.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-05-31",
+    "checksum": "1a1eb36231a422c5d1b7804189bc195eecfcf576efe9f717eb01af3d873961f8"
+  },
+  {
+    "id": "governance-service-readiness-review",
+    "title": "APT Service Readiness Review",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/governance/service-readiness-review.md",
+    "publicPath": "/docs/apt/governance/service-readiness-review.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-05-31",
+    "checksum": "436870435fa77fe0ec7238a1d4f7b0294d634c1c5db5065095a27dce4cf7a22c"
   },
   {
     "id": "knowledge-system",
@@ -513,7 +1365,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-05-01",
-    "checksum": "119c3d21d049241c21fb82760f9478493968b48d1045c66f827b86a208deb75b"
+    "checksum": "b242f0d20da7010d04ac273b9a83187f747d2bdda610efe4a71c8eeebd1683e7"
   },
   {
     "id": "operations-support",
@@ -525,7 +1377,127 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-05-01",
-    "checksum": "a31f7272083f6f8353b6915b89288e47f5e071ec3e42259482d42869dfb50187"
+    "checksum": "bfbabf72b57bc892db707d8790167a4e15ddeb1d3131c789cc9349f1536b54e4"
+  },
+  {
+    "id": "principles-ai",
+    "title": "AI & Agents Principle",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/principles/ai.md",
+    "publicPath": "/docs/apt/principles/ai.md",
+    "version": "v1",
+    "status": "stable",
+    "lastUpdated": "2026-05-31",
+    "checksum": "dbe8b374379203b9be4393b417ed1f04d9587024f8f2e080c94845c0892aa084"
+  },
+  {
+    "id": "principles-architecture",
+    "title": "Architecture Principle",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/principles/architecture.md",
+    "publicPath": "/docs/apt/principles/architecture.md",
+    "version": "v1",
+    "status": "stable",
+    "lastUpdated": "2026-05-31",
+    "checksum": "87c95311d78f3e788a63cd6eef8389d48014de8121a3c967a67046364ea24169"
+  },
+  {
+    "id": "principles-delivery",
+    "title": "Delivery Principle",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/principles/delivery.md",
+    "publicPath": "/docs/apt/principles/delivery.md",
+    "version": "v1",
+    "status": "stable",
+    "lastUpdated": "2026-05-31",
+    "checksum": "1cec4918ac8598ee73e8111cba8b81b7e97f8d598e56e84dd430f98bbf59fb4c"
+  },
+  {
+    "id": "principles-design",
+    "title": "Design Principle",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/principles/design.md",
+    "publicPath": "/docs/apt/principles/design.md",
+    "version": "v1",
+    "status": "stable",
+    "lastUpdated": "2026-05-31",
+    "checksum": "58b8a44b8067519a054ef2b692a394d607f780ee0e4617cb60268f302b9e0f81"
+  },
+  {
+    "id": "principles-learning",
+    "title": "Learning Principle",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/principles/learning.md",
+    "publicPath": "/docs/apt/principles/learning.md",
+    "version": "v1",
+    "status": "stable",
+    "lastUpdated": "2026-05-31",
+    "checksum": "b1d63f9fe3f1cbf4daa2efb23984159f60363dfd0c6fb635d9cf01f090d86da1"
+  },
+  {
+    "id": "principles-operations",
+    "title": "Operations Principle",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/principles/operations.md",
+    "publicPath": "/docs/apt/principles/operations.md",
+    "version": "v1",
+    "status": "stable",
+    "lastUpdated": "2026-05-31",
+    "checksum": "2b9b826a4f88126f8409211e00cfe0ebe8e916293b7e7352f92258a9b3ec800a"
+  },
+  {
+    "id": "principles-outcomes",
+    "title": "Outcomes Principle",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/principles/outcomes.md",
+    "publicPath": "/docs/apt/principles/outcomes.md",
+    "version": "v1",
+    "status": "stable",
+    "lastUpdated": "2026-05-31",
+    "checksum": "95964d6ab084e52cd98b1e3b6a0cd8dc2f30c72cbc3ff09124272f9add4963cd"
+  },
+  {
+    "id": "principles-README",
+    "title": "APT Principles Index",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/principles/README.md",
+    "publicPath": "/docs/apt/principles/README.md",
+    "version": "v1",
+    "status": "stable",
+    "lastUpdated": "2026-05-31",
+    "checksum": "2bba1551d8de438d7281814f1787b9488bd28ff98b0ace18bc4b245c67dac7c6"
+  },
+  {
+    "id": "principles-security",
+    "title": "Security Principle",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/principles/security.md",
+    "publicPath": "/docs/apt/principles/security.md",
+    "version": "v1",
+    "status": "stable",
+    "lastUpdated": "2026-05-31",
+    "checksum": "b9973eb714e966b8bbb5614f550956f867d887462e42769d06432dc7ba1afb08"
+  },
+  {
+    "id": "principles-thinking",
+    "title": "Thinking Principle",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/principles/thinking.md",
+    "publicPath": "/docs/apt/principles/thinking.md",
+    "version": "v1",
+    "status": "stable",
+    "lastUpdated": "2026-05-31",
+    "checksum": "68f797dde975bdc0f0f86131ec30a33d0b7650ae37ed009841318c9e8f5a478a"
   },
   {
     "id": "prompts-api-review-prompt",
@@ -549,7 +1521,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "5aed394613b39a0db5940d6006f1368b59d45a334c8bbf3b6aabd24bf56709bd"
+    "checksum": "2b22426e82a2dba9a7ecf747d9211b1bd6b4247c87560aecfe4e2f3e97f70178"
   },
   {
     "id": "prompts-architecture-review-prompt",
@@ -561,7 +1533,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "d13ff514b6fb1b6a7833b480720631d7378726bcc0b154589c41b335152233b4"
+    "checksum": "4d2b4c396ec30e0d0f963abc7586d8a876bc7c75086de734188eb1e803855c50"
   },
   {
     "id": "prompts-design-review-prompt",
@@ -573,7 +1545,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-28",
-    "checksum": "4974f774fe6d4c5d72f446c222f33160521459182572af17ce387ec13a4c9a43"
+    "checksum": "dc94a9cbf160c7c5128cfebc4f3aa5245f8e28ceabd49d8360dae96af7955ec8"
   },
   {
     "id": "prompts-framework-review-prompt",
@@ -585,7 +1557,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "366f6cc2ceedcfa5d4647bf7d470de90fc2e849b4149e3b5cb1ea39f4216112c"
+    "checksum": "6a2485fae1462f20a94b887a71a7d7c2da675d831fd5170477c33f5b1256c5f3"
   },
   {
     "id": "prompts-knowledge-review-prompt",
@@ -597,7 +1569,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "43a2109515416924e68938c1ba9fe16c14e0efb2d6a1a147da870eb0954293e2"
+    "checksum": "992ece1ee39bd98bf4e4d6b8cf6cca0f671910cc5cbd24ce9f6be40a6d26ba93"
   },
   {
     "id": "prompts-operations-review-prompt",
@@ -609,7 +1581,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "4f23e5d5ee21d654e643280815d77be22ea821b21e16b28c657a41941b2747a7"
+    "checksum": "42b354c9300061a66a7c8dbdbdae06ffc9dfb98bd37a9dc8a388a82a276e3735"
   },
   {
     "id": "prompts-project-adoption-prompt",
@@ -621,7 +1593,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "d5b538f2d5fa36aa53b7058251c8f909144361ebf818d31d5bd85fc50b045d8a"
+    "checksum": "55f179a873fddeab905fc9b6d329046870f1bd7cf76737af3cd77dccac7ddc13"
   },
   {
     "id": "prompts-release-review-prompt",
@@ -633,7 +1605,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "32a05ed44679614124c2f7ba916ee12f24a0425d00be2d09bbb44b03dc99cd89"
+    "checksum": "9b21534e7761aea8aa3c86c2478349735fb906cabb04f1fa18a04aab3e0a1e33"
   },
   {
     "id": "prompts-security-review-prompt",
@@ -645,7 +1617,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "600ebe0edd6d2c3c1d0bb5b417607f411061b60736be091cd4c364fc36775618"
+    "checksum": "8efac5bce1aaf304a12bcbff6def73a34fb4b932912d9fe4d88eb88f0914b1f2"
   },
   {
     "id": "prompts-testing-review-prompt",
@@ -657,7 +1629,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "e3c984d12f16263cb584dad5897d613d7e30bb7891c4295d11c5424c3ce9e8c4"
+    "checksum": "43b17294ff180a3a01e15f89619b92efa7322e23092d7df178770ffa4c74ed85"
   },
   {
     "id": "prompts-workspace-knowledge-prompt",
@@ -681,7 +1653,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "a9135d599d4907eecb6016d28a501b8eec4fa47620c4ccc00228682d518d53c9"
+    "checksum": "2f24a5da816527839ec1ddb0a75d544cf9c52b159cca24b5227e4c01f7b1e6ce"
   },
   {
     "id": "README",
@@ -692,8 +1664,20 @@ export const aptPrinciplesPublicManifest = [
     "publicPath": "/docs/apt/README.md",
     "version": "v1",
     "status": "draft",
-    "lastUpdated": "2026-04-24",
-    "checksum": "61c93efb45008ce4133b801e4c9dab8e2150f071023f6601e64b48250ab6083d"
+    "lastUpdated": "2026-05-31",
+    "checksum": "3b97308e0054eaf4e81ce9e618fbc11c2d74872ae668fc3d5fa8958f4bb01a66"
+  },
+  {
+    "id": "references-agent-standards-contract",
+    "title": "APT Agent Standards Distribution Contract",
+    "kind": "reference",
+    "principleArea": "agent-standards-contract",
+    "sourcePath": "apt-principles/references/agent-standards-contract.json",
+    "publicPath": "/docs/apt/references/agent-standards-contract.json",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-06-14",
+    "checksum": "ca20f1d944baae897b37e62a6b9a0e84707fe5763bc8f24845b3925d9d7603fd"
   },
   {
     "id": "references-ai-review-bundle",
@@ -705,7 +1689,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "56cf42841c95603ecf58c64d032f19919c40e023434626c5bd5b4ab694b94d30"
+    "checksum": "1cfde17896cb87b4996c1b9db35c1c7488a42ddbc82cb21faf2db910f79afb6e"
   },
   {
     "id": "references-architecture-map",
@@ -717,7 +1701,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "546506d027479d0bcf0467faa3fca963752b906a32f9e6b4c791294d1e6ad318"
+    "checksum": "6c65908e834128a2af9c09a408ff8119a07fc4b94e14657bde001df14b91cdb9"
   },
   {
     "id": "references-design-lint-gates",
@@ -728,8 +1712,8 @@ export const aptPrinciplesPublicManifest = [
     "publicPath": "/docs/apt/references/design-lint-gates.json",
     "version": "v1",
     "status": "draft",
-    "lastUpdated": "2026-04-28",
-    "checksum": "a791e83e7c6b88c89d266723992ad289ae6f32f98223413e30f3951abcf3d43f"
+    "lastUpdated": "2026-06-13",
+    "checksum": "6cb5f0a572548318f6117c84a063ba5b9476f6b0d5d9e3220518c8ebf0d55e30"
   },
   {
     "id": "references-design-tokens",
@@ -740,8 +1724,8 @@ export const aptPrinciplesPublicManifest = [
     "publicPath": "/docs/apt/references/design-tokens.json",
     "version": "v1",
     "status": "draft",
-    "lastUpdated": "2026-04-28",
-    "checksum": "78a258ec5d09ed9b6f30aa16aff7314df8294283adad861da01d4e729cadab8a"
+    "lastUpdated": "2026-06-13",
+    "checksum": "879993a514cbc7b5a31c99f016356aeea4912a3d856209c2c2b721a9dce0a81d"
   },
   {
     "id": "references-knowledge-contracts",
@@ -753,7 +1737,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "e5f4c03fb26c39caf88b239cc34a1c13a273c015b90942cf7c770c195cf460db"
+    "checksum": "9cc5524dfc5c37805ba518a27c012b8c7e95a761a14662fd8e5136d5b4e71b61"
   },
   {
     "id": "references-metadata-versioning-contract",
@@ -765,7 +1749,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "bd76eab18ca36c7587c21f12d37b8b2c13063be5a5f1ad206ed85b834a9dcf0d"
+    "checksum": "ef5ba96ffae610447098de43c659f4765b094d56cccf126a21c330eecb7ebb5a"
   },
   {
     "id": "references-project-profile-schema",
@@ -777,7 +1761,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "da1e1c39c7a6d779031b61c61400557c531d3eca5be5e0147e353ca838e9c8eb"
+    "checksum": "2eded24db6e4d163c344cb288d54eec3ca4e3a0454be7afd0bfa00990552d894"
   },
   {
     "id": "release-change-management",
@@ -789,31 +1773,175 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "d353dbc628dbaa0d9a38c11c70a919a454d1644d77cebff78c991645b1e8b22b"
+    "checksum": "69d2864dd24f5b1fe3779ad552ac73e14fd4652107312ecc1925a325bffc0413"
   },
   {
-    "id": "reports-project-profile-validation-sweep-2026-04-27",
-    "title": "project-profile-validation-sweep-2026-04-27.json",
+    "id": "reports-apt-principles-framework-audit",
+    "title": "APT Principles Framework Audit",
     "kind": "support",
     "principleArea": "general",
-    "sourcePath": "apt-principles/reports/project-profile-validation-sweep-2026-04-27.json",
-    "publicPath": "/docs/apt/reports/project-profile-validation-sweep-2026-04-27.json",
+    "sourcePath": "apt-principles/reports/apt-principles-framework-audit.md",
+    "publicPath": "/docs/apt/reports/apt-principles-framework-audit.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-05-31",
+    "checksum": "e0a0f24d5093af0f62cdab6f7a64398c1c0a6c50cbe5bfdf77d86db961f7392a"
+  },
+  {
+    "id": "reports-apt-whole-system-completion-gap-matrix",
+    "title": "APT Whole-System Completion Gap Matrix",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/reports/apt-whole-system-completion-gap-matrix.md",
+    "publicPath": "/docs/apt/reports/apt-whole-system-completion-gap-matrix.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-06-13",
+    "checksum": "f084ced0e80f48299ad965de5befc7a43b926f8cedc04175ed5e06b6464b25fc"
+  },
+  {
+    "id": "reports-GRAPHIFY-RUNBOOK",
+    "title": "APT Graphify Runbook",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/reports/GRAPHIFY_RUNBOOK.md",
+    "publicPath": "/docs/apt/reports/GRAPHIFY_RUNBOOK.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-05-22",
+    "checksum": "50c883eb584427f8f5fdf56d32395e7b910b5a285d89ffe0932e7a7df2691bbe"
+  },
+  {
+    "id": "reports-graphify-apt-gap-analysis-2026-05-22",
+    "title": "Graphify APT Gap Analysis 2026-05-22",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/reports/graphify-apt-gap-analysis-2026-05-22.md",
+    "publicPath": "/docs/apt/reports/graphify-apt-gap-analysis-2026-05-22.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-05-22",
+    "checksum": "d18591ac2ef14944f6556322a479bba4674986e854c69373db2d15e5da5a5981"
+  },
+  {
+    "id": "reports-graphify-apt-gap-analysis-2026-05-23",
+    "title": "Graphify APT Gap Analysis 2026-05-23",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/reports/graphify-apt-gap-analysis-2026-05-23.md",
+    "publicPath": "/docs/apt/reports/graphify-apt-gap-analysis-2026-05-23.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-05-23",
+    "checksum": "3cd0d38077a43d25d6d481a1c6a0dc561ca220b6468a5ed75601b328b9bf8bfb"
+  },
+  {
+    "id": "reports-graphify-apt-gap-analysis-2026-05-24",
+    "title": "Graphify APT Gap Analysis 2026-05-24",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/reports/graphify-apt-gap-analysis-2026-05-24.md",
+    "publicPath": "/docs/apt/reports/graphify-apt-gap-analysis-2026-05-24.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-05-24",
+    "checksum": "50b9ff7f4a402e3ba6d3fed35a80dc1de8a9075300aee61ac8f0634a0b48f7fe"
+  },
+  {
+    "id": "reports-project-profile-validation-sweep-2026-05-24",
+    "title": "project-profile-validation-sweep-2026-05-24.json",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/reports/project-profile-validation-sweep-2026-05-24.json",
+    "publicPath": "/docs/apt/reports/project-profile-validation-sweep-2026-05-24.json",
     "version": "v1",
     "status": "draft",
     "lastUpdated": null,
-    "checksum": "13ba9eb64d411d186864d5369dba484b07fe2bcbdbb5496d3fd5dede127aa094"
+    "checksum": "de2bf720a621425e70eb59815e70468d422f56c95753821a18fde49511d98066"
   },
   {
-    "id": "reports-project-profile-validation-sweep-2026-04-27",
-    "title": "Project Profile Validation Sweep 2026-04-27",
+    "id": "reports-project-profile-validation-sweep-2026-05-24",
+    "title": "Project Profile Validation Sweep 2026-05-24",
     "kind": "support",
     "principleArea": "general",
-    "sourcePath": "apt-principles/reports/project-profile-validation-sweep-2026-04-27.md",
-    "publicPath": "/docs/apt/reports/project-profile-validation-sweep-2026-04-27.md",
+    "sourcePath": "apt-principles/reports/project-profile-validation-sweep-2026-05-24.md",
+    "publicPath": "/docs/apt/reports/project-profile-validation-sweep-2026-05-24.md",
     "version": "v1",
     "status": "draft",
-    "lastUpdated": "2026-04-27",
-    "checksum": "b3da92b4c3bf767fff68d5d95b37f33b2122c0edcc8b3fb4684b834b64e14fd5"
+    "lastUpdated": "2026-05-24",
+    "checksum": "31ab3169e1062b1975d959a9ab9f3301a9a98141d5a4e4b495f71bb44b2531fd"
+  },
+  {
+    "id": "reports-project-profile-validation-sweep-2026-05-31",
+    "title": "project-profile-validation-sweep-2026-05-31.json",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/reports/project-profile-validation-sweep-2026-05-31.json",
+    "publicPath": "/docs/apt/reports/project-profile-validation-sweep-2026-05-31.json",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "25809a29b3b42dd968da5f73455c08db92a71a9455a8dc259d292fce7d293982"
+  },
+  {
+    "id": "reports-project-profile-validation-sweep-2026-05-31",
+    "title": "Project Profile Validation Sweep 2026-05-31",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/reports/project-profile-validation-sweep-2026-05-31.md",
+    "publicPath": "/docs/apt/reports/project-profile-validation-sweep-2026-05-31.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-05-31",
+    "checksum": "6e4cf2a31f26b9d39c449469f285083d56981792c120c1faa53aba02d3c6adcd"
+  },
+  {
+    "id": "reports-project-profile-validation-sweep-2026-06-01",
+    "title": "project-profile-validation-sweep-2026-06-01.json",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/reports/project-profile-validation-sweep-2026-06-01.json",
+    "publicPath": "/docs/apt/reports/project-profile-validation-sweep-2026-06-01.json",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "bd94801595f7ee34b43a5fc45efa70ca72c0576d47d4280568755ad4ea6a8a58"
+  },
+  {
+    "id": "reports-project-profile-validation-sweep-2026-06-01",
+    "title": "Project Profile Validation Sweep 2026-06-01",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/reports/project-profile-validation-sweep-2026-06-01.md",
+    "publicPath": "/docs/apt/reports/project-profile-validation-sweep-2026-06-01.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-06-01",
+    "checksum": "6c51f5fadb992638ccf30b2bd01a9a23efd84e41fac2dcd83a7d3913837b4ead"
+  },
+  {
+    "id": "reports-project-profile-validation-sweep-2026-06-13",
+    "title": "project-profile-validation-sweep-2026-06-13.json",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/reports/project-profile-validation-sweep-2026-06-13.json",
+    "publicPath": "/docs/apt/reports/project-profile-validation-sweep-2026-06-13.json",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": null,
+    "checksum": "9a6352dd28bb276732fceb3325549a9513cf34e69c91f48448414c836341ccd7"
+  },
+  {
+    "id": "reports-project-profile-validation-sweep-2026-06-13",
+    "title": "Project Profile Validation Sweep 2026-06-13",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/reports/project-profile-validation-sweep-2026-06-13.md",
+    "publicPath": "/docs/apt/reports/project-profile-validation-sweep-2026-06-13.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "2026-06-13",
+    "checksum": "98ac9336cac8057bb5f08bc00809c06a1f31ee161d528d697341407b072fbcbe"
   },
   {
     "id": "reports-README",
@@ -825,7 +1953,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-26",
-    "checksum": "b419c0c09dfe601a2670a897f7f6e0d85fabd3612def8de909a62755242f53bb"
+    "checksum": "cb1f173dbddce240cc11bc4847e62d35497a01af589b70f6d33bc4daad1cada2"
   },
   {
     "id": "reports-VALIDATION-RESULTS-GUIDE",
@@ -849,7 +1977,91 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "55c2f317275b8ddd322966ec86b3b37a23f66e3410f843c6c4d225399379fe23"
+    "checksum": "a3150bae6dd32c460f12229ad73f8ac7fd111dd630974a74454d1e17a89b0e6c"
+  },
+  {
+    "id": "standards-api-api-standards",
+    "title": "APT API Standards",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/standards/api/api-standards.md",
+    "publicPath": "/docs/apt/standards/api/api-standards.md",
+    "version": "v1",
+    "status": "stable",
+    "lastUpdated": "2026-05-31",
+    "checksum": "dad29bbf55ef8e36ccf094c7351ee5fe219085bc8c8aa696908c4bae1dd98c43"
+  },
+  {
+    "id": "standards-coding-coding-standards",
+    "title": "APT Coding Standards",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/standards/coding/coding-standards.md",
+    "publicPath": "/docs/apt/standards/coding/coding-standards.md",
+    "version": "v1",
+    "status": "stable",
+    "lastUpdated": "2026-05-31",
+    "checksum": "a148035251f5fa17e2eecda45972eb89ff1ebe655f308a9a6b8718eec13cd96c"
+  },
+  {
+    "id": "standards-data-data-standards",
+    "title": "APT Data Standards",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/standards/data/data-standards.md",
+    "publicPath": "/docs/apt/standards/data/data-standards.md",
+    "version": "v1",
+    "status": "stable",
+    "lastUpdated": "2026-05-31",
+    "checksum": "168c34ad7486cb5477f0b020d2ada99ddc14dcb1a0825dcf85ffbe29ea1491bd"
+  },
+  {
+    "id": "standards-documentation-documentation-standards",
+    "title": "APT Documentation Standards",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/standards/documentation/documentation-standards.md",
+    "publicPath": "/docs/apt/standards/documentation/documentation-standards.md",
+    "version": "v1",
+    "status": "stable",
+    "lastUpdated": "2026-05-31",
+    "checksum": "63f5ffc698aab561fac76e1ef795c4fda6f33dde7c3d23c90c93a5633f87a36a"
+  },
+  {
+    "id": "standards-observability-observability-standards",
+    "title": "APT Observability Standards",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/standards/observability/observability-standards.md",
+    "publicPath": "/docs/apt/standards/observability/observability-standards.md",
+    "version": "v1",
+    "status": "stable",
+    "lastUpdated": "2026-05-31",
+    "checksum": "59b38971b741a8f4b70b71a80f1cd7e0fae9bfc04c908fadc0ddce443a571349"
+  },
+  {
+    "id": "standards-README",
+    "title": "APT Standards Index",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/standards/README.md",
+    "publicPath": "/docs/apt/standards/README.md",
+    "version": "v1",
+    "status": "stable",
+    "lastUpdated": "2026-05-31",
+    "checksum": "ef89dec90ba002f8cc34f1fd1383aaf7b95c4a819d938c1bf0116fc51e1e4e58"
+  },
+  {
+    "id": "standards-testing-testing-standards",
+    "title": "APT Testing Standards",
+    "kind": "support",
+    "principleArea": "general",
+    "sourcePath": "apt-principles/standards/testing/testing-standards.md",
+    "publicPath": "/docs/apt/standards/testing/testing-standards.md",
+    "version": "v1",
+    "status": "stable",
+    "lastUpdated": "2026-05-31",
+    "checksum": "f6a3741d97e80cedf6d2976a1ba1501161813c68f24d7a666bd45cc1d37fb017"
   },
   {
     "id": "system-standards",
@@ -861,7 +2073,31 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "7d0219a8ecc4e30f645fd867620b1cb8491f1ad12ecc94b92337378a3d941bd6"
+    "checksum": "1a98b6b5378d8e9764c18fb230db381155c2eaaeafea14a0ea65ed68ba1f8428"
+  },
+  {
+    "id": "templates-ADR-TEMPLATE",
+    "title": "ADR-NNN - {{TITLE}}",
+    "kind": "template",
+    "principleArea": "template",
+    "sourcePath": "apt-principles/templates/ADR-TEMPLATE.md",
+    "publicPath": "/docs/apt/templates/ADR-TEMPLATE.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "{{DATE}}",
+    "checksum": "111f20be038d5f6ea47eb4a65edb1945d199b5ae9ecf0dcd313b09b38f41c5a8"
+  },
+  {
+    "id": "templates-AGENTS",
+    "title": "AGENTS.md",
+    "kind": "template",
+    "principleArea": "template",
+    "sourcePath": "apt-principles/templates/AGENTS.md",
+    "publicPath": "/docs/apt/templates/AGENTS.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "{{DATE}}",
+    "checksum": "a040bfe6c04fa18c1c5f57687350ca9f0a5d36f114087bdf520dbe426b6ef98e"
   },
   {
     "id": "templates-apt-audit-report-template",
@@ -876,6 +2112,18 @@ export const aptPrinciplesPublicManifest = [
     "checksum": "f1e792bd6adb4fb4b901d86ce558db37549538ea7221ba7e3ecc6b3940a5c6e7"
   },
   {
+    "id": "templates-ARCHITECTURE",
+    "title": "ARCHITECTURE.md",
+    "kind": "template",
+    "principleArea": "template",
+    "sourcePath": "apt-principles/templates/ARCHITECTURE.md",
+    "publicPath": "/docs/apt/templates/ARCHITECTURE.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "{{DATE}}",
+    "checksum": "82a9f75486b5f9006355e19159d8a21544e1f576bafd813143b7ddfd58dbc713"
+  },
+  {
     "id": "templates-checklist-template",
     "title": "{{TITLE}}",
     "kind": "template",
@@ -885,7 +2133,43 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "{{DATE}}",
-    "checksum": "fd3433f11fe5cdf445ffa030c5639aa4e417c1115ae398599833ce76bb094ab6"
+    "checksum": "1b7a8ed947c25378c5cc60c92e0c743e7d56be32abbe68d16f16f0bc59806723"
+  },
+  {
+    "id": "templates-CONTRIBUTING",
+    "title": "Contributing",
+    "kind": "template",
+    "principleArea": "template",
+    "sourcePath": "apt-principles/templates/CONTRIBUTING.md",
+    "publicPath": "/docs/apt/templates/CONTRIBUTING.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "{{DATE}}",
+    "checksum": "ae728e454424db3dd0a41ba45d388b3bdfae79fc417c448174c37e5a4c6a2b51"
+  },
+  {
+    "id": "templates-copilot-instructions",
+    "title": "Copilot Instructions",
+    "kind": "template",
+    "principleArea": "template",
+    "sourcePath": "apt-principles/templates/copilot-instructions.md",
+    "publicPath": "/docs/apt/templates/copilot-instructions.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "{{DATE}}",
+    "checksum": "bacd8b57fc45b2c2ef67140e9985128a7974cab934156d251f0f93bd057f681e"
+  },
+  {
+    "id": "templates-DESIGN",
+    "title": "DESIGN.md",
+    "kind": "template",
+    "principleArea": "template",
+    "sourcePath": "apt-principles/templates/DESIGN.md",
+    "publicPath": "/docs/apt/templates/DESIGN.md",
+    "version": "v1",
+    "status": "draft",
+    "lastUpdated": "{{DATE}}",
+    "checksum": "fff9f54f40d2cd9dc212113bf456fc8875e4f7250d13990a446eb138a21b3dcb"
   },
   {
     "id": "templates-example-template",
@@ -936,6 +2220,18 @@ export const aptPrinciplesPublicManifest = [
     "checksum": "fd893afbf1dbe40c9ef5ff5c4ff208ee7a0276e1448cf389adf74a955b148f4d"
   },
   {
+    "id": "templates-README",
+    "title": "Templates Index",
+    "kind": "template",
+    "principleArea": "template",
+    "sourcePath": "apt-principles/templates/README.md",
+    "publicPath": "/docs/apt/templates/README.md",
+    "version": "v1",
+    "status": "stable",
+    "lastUpdated": "2026-05-31",
+    "checksum": "83a2c42dbfbacb40834b97b765b9139df7f2e27bc4778a72752539a25e33418d"
+  },
+  {
     "id": "thinking",
     "title": "APT Thinking Principles (Why)",
     "kind": "doctrine",
@@ -945,7 +2241,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "draft",
     "lastUpdated": "2026-04-24",
-    "checksum": "43490648c8c8c335af08f18a6a51d79f836300f6d7c93b30d2048a4ca33f136b"
+    "checksum": "e4fc545511a49ee7312344c3ce3f24e91b7a4f9322ef7cae26dd2cf9ba94ad88"
   }
 ] as const satisfies readonly AptPublicDocManifestEntry[];
 

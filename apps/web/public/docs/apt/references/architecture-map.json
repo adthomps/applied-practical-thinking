@@ -29,12 +29,43 @@
         "Project docs explain local application and exceptions.",
         "Generated public docs must identify their source."
       ]
+    },
+    "ci_cd": {
+      "purpose": "Repeatable validation, preview, deployment, and rollback behavior owned by version control.",
+      "rules": [
+        "PRs should expose required checks before merge.",
+        "Preview and production deployment targets should be distinguishable.",
+        "Manual deployment steps require documentation and rollback notes.",
+        "Command matrices should name lint, typecheck, test, build, preview, deploy, and smoke commands where applicable."
+      ]
+    },
+    "ai": {
+      "purpose": "Versioned prompts, AI routes, evaluation cases, and fallback behavior.",
+      "rules": [
+        "Prompts are governed artifacts, not hidden inline strings.",
+        "AI routes must not bypass auth, validation, release, or security gates.",
+        "Provider failure, missing context, low confidence, and high-risk input require deterministic fallback or escalation."
+      ]
     }
   },
+  "ownership_matrix_fields": [
+    "surface_or_package",
+    "owner",
+    "boundary",
+    "allowed_dependencies",
+    "forbidden_dependencies",
+    "commands",
+    "required_checks",
+    "deploy_target",
+    "rollback",
+    "escalation"
+  ],
   "forbidden_flows": [
     "Frontend UI directly owns backend business rules.",
     "Server routes trust client-side authorization decisions.",
     "Project docs fork canonical doctrine without a local decision record.",
-    "AI prompts are scattered inline without ownership or review."
+    "AI prompts are scattered inline without ownership or review.",
+    "Deployable surfaces have no named owner or validation command matrix.",
+    "Production deployment depends on undocumented dashboard-only steps."
   ]
 }
