@@ -37,7 +37,9 @@ Review for:
 4. Preview or visual validation
 5. Critical journey E2E checks
 6. Diagnostics: logs, traces, screenshots, reports
-7. Missing evidence and residual risk
+7. Validation matrix by risk, layer, command, evidence, and fallback
+8. Failed-check disposition: blocking, deferred with accepted risk, or unrelated pre-existing
+9. Missing evidence and residual risk
 
 Return:
 - Ordered validation plan
@@ -57,6 +59,7 @@ Use this shape:
 Risk:
 Fast checks:
 Boundary checks:
+Validation matrix:
 Preview/manual checks:
 Evidence to capture:
 Failure response:
@@ -69,12 +72,14 @@ Residual gaps:
 - Do not accept "works locally" as release evidence.
 - Call out missing diagnostics when failures would be hard to debug.
 - Do not skip security, data, or contract validation because the UI change looks small.
+- Do not report failed checks without disposition and owner.
 
 ## Review Evidence
 
-The response should name commands, artifacts, screenshots, logs, reports, or manual review notes that prove the validation happened.
+The response should name commands, artifacts, screenshots, logs, reports, failed-check disposition, or manual review notes that prove the validation happened.
 
 ## Related Documents
 
 - `../quality-testing.md`
 - `../release-change-management.md`
+- `../examples/quality/validation-matrix-example.md`

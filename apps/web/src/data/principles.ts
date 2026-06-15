@@ -50,6 +50,29 @@ export type PrincipleRelatedArtifact = {
   readonly note: string;
 };
 
+export type ProjectPrincipleEvidence = {
+  readonly slug: PrincipleSlug;
+  readonly summary: string;
+  readonly evidence: readonly string[];
+};
+
+export type AptProjectProfile = {
+  readonly project: string;
+  readonly purpose: string;
+  readonly adoptionMode: "copy" | "sync" | "apply" | "showcase";
+  readonly maturity: "draft" | "active" | "stable" | "archived";
+  readonly architecturePattern: string;
+  readonly aiAgentUsage: string;
+  readonly securityModel: string;
+  readonly learningValue: string;
+  readonly audience: readonly string[];
+  readonly principlesDemonstrated: readonly PrincipleSlug[];
+  readonly reusableArtifacts: readonly string[];
+  readonly showcaseSummary: string;
+  readonly sourcePath: string;
+  readonly sourceHref: string;
+};
+
 export type PrincipleSection = {
   readonly slug: PrincipleSlug;
   readonly title: string;
@@ -111,6 +134,68 @@ export const PRINCIPLE_PHASE_LABELS: Record<PrincipleSlug, string> = {
   ai: "Augment",
   security: "Secure",
 };
+
+export const aptProjectProfile: AptProjectProfile = {
+  project: "applied-practical-thinking",
+  purpose:
+    "Public platform repo for Applied Practical Thinking doctrine, content publishing, and worker-backed API surfaces.",
+  adoptionMode: "apply",
+  maturity: "active",
+  architecturePattern:
+    "Vite/React web app plus Cloudflare Worker API with shared packages for UI, config, and knowledge contracts.",
+  aiAgentUsage: "Worker-side AI/content routes with prompt files and explicit route boundaries.",
+  securityModel: "Worker boundary with environment-specific API base and documented production origin contracts.",
+  learningValue: "Demonstrates doctrine-to-product publishing with generated public artifacts and validation gates.",
+  audience: ["builders", "architects", "product teams", "public APT learners"],
+  principlesDemonstrated: ["thinking", "design", "architecture", "system", "knowledge", "ai"],
+  reusableArtifacts: [
+    "apps/web/scripts/generate-apt-principles-public.cjs",
+    "apps/web/scripts/validation-report.cjs",
+    "apps/worker/src/routes",
+    "packages/knowledge/src/content.ts",
+  ],
+  showcaseSummary:
+    "Public-facing APT platform that demonstrates doctrine publishing, design governance, and worker-backed content delivery.",
+  sourcePath: "docs/apt/project-profile.md",
+  sourceHref: "https://github.com/adthomps/applied-practical-thinking/blob/main/docs/apt/project-profile.md",
+};
+
+export const projectPrincipleEvidence: readonly ProjectPrincipleEvidence[] = [
+  {
+    slug: "thinking",
+    summary: "Problem framing is visible in the content model before implementation surfaces are promoted.",
+    evidence: ["Project profile", "decision log", "labs-to-proof progression"],
+  },
+  {
+    slug: "design",
+    summary: "Public routes use shared APT primitives, semantic tokens, and state-aware page composition.",
+    evidence: ["Design system route", "design playground", "shared component contract"],
+  },
+  {
+    slug: "architecture",
+    summary: "The repo separates web routes, worker APIs, shared UI, config, and knowledge contracts.",
+    evidence: ["apps/web", "apps/worker", "packages/ui", "packages/knowledge"],
+  },
+  {
+    slug: "system",
+    summary: "Tokens, generated manifests, and shared packages keep public surfaces aligned across the monorepo.",
+    evidence: ["APT tokens", "generated docs manifest", "shared package contracts"],
+  },
+  {
+    slug: "knowledge",
+    summary: "Canonical doctrine is mirrored into public docs while local project records explain adoption and showcase use.",
+    evidence: ["public docs mirror", "docs/apt/adoption.md", "docs/apt/project-profile.md"],
+  },
+  {
+    slug: "ai",
+    summary: "AI usage is bounded by prompt files, review bundles, and worker-side route boundaries.",
+    evidence: ["apps/web/ai/prompts", "AI review bundle", "worker AI routes"],
+  },
+] as const;
+
+export const projectPrincipleEvidenceBySlug = new Map(
+  projectPrincipleEvidence.map((item) => [item.slug, item])
+);
 
 const principleGuidanceBySlug: Record<PrincipleSlug, PrincipleMoreDetail> = {
   framework: {

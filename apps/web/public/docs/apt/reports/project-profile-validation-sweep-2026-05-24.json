@@ -1,52 +1,53 @@
 {
-  "generated_at": "2026-04-27T04:53:04.587Z",
-  "audit_date": "2026-04-27",
+  "generated_at": "2026-05-24T15:04:57.947Z",
+  "audit_date": "2026-05-24",
   "source": "apt-principles/scripts/sweep-project-profiles.mjs",
   "scope": "workspace-master-summary",
   "workspace_summary": {
     "workspace_root": "C:/Users/sanch/Documents/Github/Applied Practical Thinking",
-    "repos_scanned": 6,
+    "repos_scanned": 8,
     "passed": [
       "applied-practical-thinking",
-      "apt-coach",
       "apt-dream-to-reality",
       "apt-novel-reviewer",
       "apt-payment-rpc-api",
       "crt-world"
     ],
     "failed": [],
-    "skipped": [],
+    "skipped": [
+      "apt-anet-accept-suite-toolbox",
+      "apt-anet-hosted-toolbox",
+      "apt-coach"
+    ],
     "findings_by_severity": {
       "Blocking": 0,
-      "Major": 6,
-      "Minor": 14,
+      "Major": 4,
+      "Minor": 10,
       "Other": 0
     },
     "findings_by_layer": {
-      "Design": 3,
-      "Knowledge": 3,
-      "Design / Quality": 2,
+      "Design": 2,
+      "Knowledge": 2,
       "Quality": 2,
-      "Security / Operations": 2,
-      "AI": 1,
       "AI / Knowledge": 1,
       "Architecture": 1,
       "Architecture / AI": 1,
+      "Design / Quality": 1,
       "Operations": 1,
       "Release / Knowledge": 1,
-      "System Standards": 1,
-      "System Standards / Release": 1
+      "Security / Operations": 1,
+      "System Standards": 1
     },
     "rubric_summary_by_layer": {
       "AI": {
         "pass": 1,
-        "partial": 3,
+        "partial": 2,
         "gap": 0,
         "not_applicable": 1,
         "other": 0
       },
       "Architecture": {
-        "pass": 5,
+        "pass": 4,
         "partial": 0,
         "gap": 0,
         "not_applicable": 0,
@@ -54,20 +55,20 @@
       },
       "Design": {
         "pass": 0,
-        "partial": 5,
+        "partial": 4,
         "gap": 0,
         "not_applicable": 0,
         "other": 0
       },
       "Execution": {
-        "pass": 5,
+        "pass": 4,
         "partial": 0,
         "gap": 0,
         "not_applicable": 0,
         "other": 0
       },
       "Knowledge": {
-        "pass": 3,
+        "pass": 2,
         "partial": 2,
         "gap": 0,
         "not_applicable": 0,
@@ -75,41 +76,41 @@
       },
       "Operations": {
         "pass": 0,
-        "partial": 5,
+        "partial": 4,
         "gap": 0,
         "not_applicable": 0,
         "other": 0
       },
       "Quality": {
         "pass": 1,
-        "partial": 4,
+        "partial": 3,
         "gap": 0,
         "not_applicable": 0,
         "other": 0
       },
       "Release": {
         "pass": 0,
-        "partial": 5,
+        "partial": 4,
         "gap": 0,
         "not_applicable": 0,
         "other": 0
       },
       "Security": {
         "pass": 1,
-        "partial": 4,
+        "partial": 3,
         "gap": 0,
         "not_applicable": 0,
         "other": 0
       },
       "System Standards": {
         "pass": 3,
-        "partial": 2,
+        "partial": 1,
         "gap": 0,
         "not_applicable": 0,
         "other": 0
       },
       "Thinking": {
-        "pass": 5,
+        "pass": 4,
         "partial": 0,
         "gap": 0,
         "not_applicable": 0,
@@ -130,18 +131,6 @@
         "action": "Add a short AI adoption note covering prompt ownership, worker route boundaries, and human-review expectations."
       },
       {
-        "repo": "apt-coach",
-        "action": "Keep docs/apt/adoption.md and docs/apt/project-profile.md updated as constraints, maturity, and security posture evolve."
-      },
-      {
-        "repo": "apt-coach",
-        "action": "Split dev/prod D1 databases when a production-safe replacement binding is available; until then, follow the temporary risk acceptance in docs/DECISION_LOG.md."
-      },
-      {
-        "repo": "apt-coach",
-        "action": "Resolve duplicate migration prefix 0013 in a migration-safe pass that first confirms which migrations are already applied remotely."
-      },
-      {
         "repo": "apt-dream-to-reality",
         "action": "Create docs/apt/adoption.md with adoption mode apply + showcase, canonical source, validation commands, and local exceptions."
       },
@@ -156,6 +145,18 @@
       {
         "repo": "apt-novel-reviewer",
         "action": "Add a short desktop release/operations note for packaging, native dependency support, and Ollama runtime prerequisites."
+      },
+      {
+        "repo": "apt-novel-reviewer",
+        "action": "Add a small smoke or integration test layer for desktop UI and packaging-critical flows."
+      },
+      {
+        "repo": "apt-novel-reviewer",
+        "action": "Refresh the local audit once CI has real hosted runs and release packaging is documented."
+      },
+      {
+        "repo": "apt-payment-rpc-api",
+        "action": "Create or update the local adoption/profile evidence layer."
       }
     ],
     "results": [
@@ -254,108 +255,49 @@
         "errors": []
       },
       {
+        "repo": "apt-anet-accept-suite-toolbox",
+        "repo_root": "C:/Users/sanch/Documents/Github/Applied Practical Thinking/apt-anet-accept-suite-toolbox",
+        "profile_path": "C:/Users/sanch/Documents/Github/Applied Practical Thinking/apt-anet-accept-suite-toolbox/docs/apt/references/project-profile.json",
+        "report_dir": "C:/Users/sanch/Documents/Github/Applied Practical Thinking/apt-anet-accept-suite-toolbox/docs/apt/reports/static",
+        "audit_report_path": null,
+        "findings": [],
+        "top_findings": [],
+        "rubric_scores": [],
+        "top_actions": [],
+        "status": "skipped",
+        "errors": [
+          "project-profile.json not found"
+        ]
+      },
+      {
+        "repo": "apt-anet-hosted-toolbox",
+        "repo_root": "C:/Users/sanch/Documents/Github/Applied Practical Thinking/apt-anet-hosted-toolbox",
+        "profile_path": "C:/Users/sanch/Documents/Github/Applied Practical Thinking/apt-anet-hosted-toolbox/docs/apt/references/project-profile.json",
+        "report_dir": "C:/Users/sanch/Documents/Github/Applied Practical Thinking/apt-anet-hosted-toolbox/docs/apt/reports/static",
+        "audit_report_path": null,
+        "findings": [],
+        "top_findings": [],
+        "rubric_scores": [],
+        "top_actions": [],
+        "status": "skipped",
+        "errors": [
+          "project-profile.json not found"
+        ]
+      },
+      {
         "repo": "apt-coach",
         "repo_root": "C:/Users/sanch/Documents/Github/Applied Practical Thinking/apt-coach",
         "profile_path": "C:/Users/sanch/Documents/Github/Applied Practical Thinking/apt-coach/docs/apt/references/project-profile.json",
         "report_dir": "C:/Users/sanch/Documents/Github/Applied Practical Thinking/apt-coach/docs/apt/reports/static",
-        "audit_report_path": "C:/Users/sanch/Documents/Github/Applied Practical Thinking/apt-coach/docs/apt/reports/apt-principles-audit-2026-04-26.md",
-        "findings": [
-          {
-            "severity": "Major",
-            "layer": "Security / Operations",
-            "finding": "D1 dev and production currently point to the same physical database. The README correctly warns that migrations and writes are production-impacting, but this remains the largest operational risk."
-          },
-          {
-            "severity": "Minor",
-            "layer": "Knowledge",
-            "finding": "Local APT adoption/profile layer is present, linked to canonical doctrine, and validated in CI."
-          },
-          {
-            "severity": "Minor",
-            "layer": "Design / Quality",
-            "finding": "Full objective design audit now passes with zero contract findings. Manual-review-only areas still require qualitative evidence before Design and Quality can move to Pass."
-          },
-          {
-            "severity": "Minor",
-            "layer": "Design",
-            "finding": "Main dashboard and daily-system surfaces are dense but task-oriented, using shared design-system components and compact state patterns. No small safe design-gap fix was obvious without a product decision."
-          },
-          {
-            "severity": "Minor",
-            "layer": "AI",
-            "finding": "Adaptive coaching prompt registry exists and the prompt contract has been expanded, but the prompt remains draft until health-adjacent review and API tests confirm production readiness."
-          },
-          {
-            "severity": "Major",
-            "layer": "System Standards / Release",
-            "finding": "Migration prefix validation currently fails because two migration files use numeric prefix 0013. This predates the docs-only audit follow-up but blocks a clean release gate."
-          }
-        ],
-        "top_findings": [
-          {
-            "severity": "Major",
-            "layer": "Security / Operations",
-            "finding": "D1 dev and production currently point to the same physical database. The README correctly warns that migrations and writes are production-impacting, but this remains the largest operational risk."
-          },
-          {
-            "severity": "Minor",
-            "layer": "Knowledge",
-            "finding": "Local APT adoption/profile layer is present, linked to canonical doctrine, and validated in CI."
-          }
-        ],
-        "rubric_scores": [
-          {
-            "layer": "Thinking",
-            "score": "Pass"
-          },
-          {
-            "layer": "Design",
-            "score": "Partial"
-          },
-          {
-            "layer": "Architecture",
-            "score": "Pass"
-          },
-          {
-            "layer": "System Standards",
-            "score": "Partial"
-          },
-          {
-            "layer": "Security",
-            "score": "Partial"
-          },
-          {
-            "layer": "Execution",
-            "score": "Pass"
-          },
-          {
-            "layer": "Quality",
-            "score": "Partial"
-          },
-          {
-            "layer": "Release",
-            "score": "Partial"
-          },
-          {
-            "layer": "Operations",
-            "score": "Partial"
-          },
-          {
-            "layer": "Knowledge",
-            "score": "Pass"
-          },
-          {
-            "layer": "AI",
-            "score": "Partial"
-          }
-        ],
-        "top_actions": [
-          "Keep docs/apt/adoption.md and docs/apt/project-profile.md updated as constraints, maturity, and security posture evolve.",
-          "Split dev/prod D1 databases when a production-safe replacement binding is available; until then, follow the temporary risk acceptance in docs/DECISION_LOG.md.",
-          "Resolve duplicate migration prefix 0013 in a migration-safe pass that first confirms which migrations are already applied remotely."
-        ],
-        "status": "passed",
-        "errors": []
+        "audit_report_path": null,
+        "findings": [],
+        "top_findings": [],
+        "rubric_scores": [],
+        "top_actions": [],
+        "status": "skipped",
+        "errors": [
+          "project-profile.json not found"
+        ]
       },
       {
         "repo": "apt-dream-to-reality",

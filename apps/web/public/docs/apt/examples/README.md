@@ -1,7 +1,7 @@
 ---
 title: APT Examples
 version: v1
-last_updated: 2026-04-24
+last_updated: 2026-05-31
 owner: APT
 status: draft
 ---
@@ -14,17 +14,25 @@ Use examples when a principle needs a reusable pattern, sample contract, state m
 
 ## Categories
 
+### Active
+
+- `ai-agent/` - prompt contracts, agent boundaries, and evaluation cases
 - `api/` - API contracts, errors, pagination
-- `architecture/` - repo and deployment structure
-- `ai-agent/` - prompt contracts and agent boundaries
-- `knowledge/` - canonical documentation and drift-control patterns
-- `quality/` - validation plans and evidence patterns
+- `architecture/` - repo structure, deployment structure, ownership, and command matrices
+- `knowledge/` - canonical documentation, drift-control, and incident-learning patterns
 - `projects/` - real APT project profiles and showcase patterns
-- `security/` - auth, sessions, MFA
-- `thinking/` - problem framing and decision clarity
+- `quality/` - validation plans, validation matrices, and evidence patterns
+- `security/` - auth, sessions, MFA, trust boundaries, and threat review
+- `thinking/` - problem framing, outcome evidence, and decision clarity
 - `ui/` - layout and interaction patterns
-- `workflows/` - spec, preview, release flows
-  - includes canonical-to-public sync runbooks for `apt-principles` consumers
+- `workflows/` - spec, delivery increment, preview, release, and operations flows
+
+### Planned (placeholder directories, no content yet)
+
+- `api-service/` - planned: full-stack API service pattern (Hono + D1 + auth + observability)
+- `cloudflare-hono/` - planned: Cloudflare Worker + Hono route with typed request/response
+- `monorepo/` - planned: pnpm monorepo layout with apps/ and packages/ structure
+- `react-vite/` - planned: React + Vite page with dark-first visual language and complete state coverage
 
 ## Rule
 

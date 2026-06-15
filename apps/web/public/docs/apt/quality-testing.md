@@ -50,6 +50,8 @@ Logs, traces, screenshots, artifacts, and error messages should help someone act
 
 - Every change needs an appropriate validation plan.
 - Shared contracts require tests at the boundary.
+- Validation plans should be expressed as a matrix of risk, layer, command or review method, expected evidence, and fallback.
+- Failed checks must name whether they are blocking, deferred with risk acceptance, or unrelated pre-existing failures.
 - Security-sensitive changes require security review.
 - User-facing changes require preview or visual validation where possible.
 - Failing checks must be fixed or explicitly accepted with documented risk.
@@ -63,6 +65,8 @@ Logs, traces, screenshots, artifacts, and error messages should help someone act
 - Failure criteria
 - Preview evidence for user-facing changes
 - Known risk notes if coverage is intentionally limited
+- Command matrix or validation matrix for multi-package and multi-surface repos
+- Failed-check triage notes with owner and disposition
 
 ## Good Example
 
@@ -104,6 +108,7 @@ Return:
 ## Related Examples
 
 - `examples/quality/validation-plan-example.md`
+- `examples/quality/validation-matrix-example.md`
 
 ## Related Prompts
 

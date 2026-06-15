@@ -37,9 +37,10 @@ Review for:
 2. Validation evidence
 3. Preview readiness
 4. User-facing and operational impact
-5. Rollback path
-6. Support handoff
-7. Known risks
+5. Release record: source, outcome, changed behavior, deployment target
+6. Rollback path
+7. Support handoff
+8. Known risks and failed-check disposition
 
 Return:
 - Release readiness verdict
@@ -60,6 +61,7 @@ Verdict:
 Blockers:
 Required before promotion:
 Release notes:
+Release record:
 Rollback:
 Support handoff:
 Residual risk:
@@ -71,12 +73,14 @@ Residual risk:
 - Do not hide known risks.
 - Do not omit support impact for user-facing changes.
 - Do not treat a passing build as complete release evidence when preview, security, or support checks apply.
+- Do not leave preview and production targets ambiguous.
 
 ## Review Evidence
 
-The response should cite the validation result, preview evidence, release note source, rollback path, and owner for unresolved risks.
+The response should cite the validation result, preview evidence, release note source, release record, rollback path, and owner for unresolved risks.
 
 ## Related Documents
 
 - `../release-change-management.md`
 - `../checklists/release-readiness-checklist.md`
+- `../examples/workflows/release-record-example.md`

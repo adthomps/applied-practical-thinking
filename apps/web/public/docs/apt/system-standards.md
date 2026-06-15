@@ -152,6 +152,11 @@ A route named `/getInvoices` accepts unknown input, returns mixed response forma
 ## Related Checklists
 
 - `checklists/api-standards-checklist.md`
+- `checklists/architecture-review-checklist.md`
+- `checklists/security-review-checklist.md`
+- `checklists/operations-support-checklist.md`
+- `checklists/knowledge-system-checklist.md`
+- `checklists/project-adoption-checklist.md`
 
 ## Related Examples
 

@@ -20,9 +20,11 @@ Run it for production systems, public docs, AI flows, payment or auth workflows,
 - [ ] User-facing errors are safe and actionable.
 - [ ] Correlation or trace context exists where practical.
 - [ ] Alerts or monitoring signals are identified.
+- [ ] Degraded-mode and fallback behavior are defined for critical workflows.
 - [ ] First-response steps are clear.
 - [ ] Escalation path is defined.
 - [ ] Support feedback has a path back into docs, tests, or product work.
+- [ ] Incident follow-up creates a durable artifact or explicit non-action.
 
 ## Failure Conditions
 
@@ -30,6 +32,7 @@ Run it for production systems, public docs, AI flows, payment or auth workflows,
 - Errors leak internal details or hide all useful context.
 - No runbook or first-response path exists for a critical workflow.
 - Incident learning is not captured anywhere durable.
+- Critical fallback behavior is invented during the incident.
 
 ## Evidence Required
 
@@ -37,8 +40,10 @@ Run it for production systems, public docs, AI flows, payment or auth workflows,
 - Telemetry/logging notes.
 - Escalation path.
 - Known failure modes.
+- Degraded-mode and fallback behavior.
 - User-facing recovery or contact guidance where appropriate.
 - Evidence that repeated support findings have a path back into docs, tests, or product work.
+- Incident-to-learning follow-up notes.
 
 ## Pass Standard
 
@@ -48,4 +53,5 @@ Support can identify the affected feature, understand normal versus degraded beh
 
 - `../operations-support.md`
 - `../examples/workflows/preview-to-prod-flow.md`
+- `../examples/workflows/operational-runbook-example.md`
 - `../prompts/operations-review-prompt.md`

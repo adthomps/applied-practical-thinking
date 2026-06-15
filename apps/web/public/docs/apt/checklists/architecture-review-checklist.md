@@ -21,6 +21,8 @@ Run it before large implementation starts and again before merge if boundaries c
 - [ ] API/data contracts are explicit.
 - [ ] Shared packages do not import app-specific code.
 - [ ] Deployment model matches system boundaries.
+- [ ] Owner is named for each changed deployable surface, shared package, and boundary.
+- [ ] Command matrix identifies required lint, typecheck, test, build, preview, deploy, and smoke commands where applicable.
 - [ ] Failure, rollback, and observability paths are described.
 - [ ] AI prompts or handlers are versioned and auditable when AI is involved.
 - [ ] Risk level is identified as low, medium, or high.
@@ -32,6 +34,7 @@ Run it before large implementation starts and again before merge if boundaries c
 - Shared packages depend on app-specific modules.
 - Deployment requires undocumented manual steps.
 - No owner exists for a changed boundary.
+- Required checks or deploy commands are assumed but not documented.
 
 ## Evidence Required
 
@@ -39,6 +42,7 @@ Run it before large implementation starts and again before merge if boundaries c
 - API/data contract sketch.
 - Validation and deployment notes.
 - Import or dependency notes for shared packages.
+- Ownership and command matrix for multi-surface repos.
 - Decision record for high-risk structure changes.
 
 ## Pass Standard
@@ -52,3 +56,4 @@ Every responsibility has a home, every boundary has a contract, and every deploy
 - `../ai-agent-framework.md`
 - `../examples/architecture/monorepo-layout-example.md`
 - `../examples/architecture/cloudflare-pages-workers-example.md`
+- `../examples/architecture/pattern-ownership-command-matrix-example.md`

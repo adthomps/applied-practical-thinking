@@ -38,6 +38,10 @@ Use this checklist when applying `apt-principles` to a current or future APT pro
 - Latest validation report or command output.
 - Links to canonical `apt-principles` sources used by the project.
 
+## Pass Standard
+
+Adoption is acceptable when the project can show doctrine source alignment, explicit local exceptions, current validation evidence, and a profile that accurately represents maturity and public status.
+
 ## Related Documents
 
 - `../apt-principles.md`

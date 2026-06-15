@@ -50,8 +50,14 @@ AI can help reason, draft, refactor, test, and document. It should not silently 
 
 - Prompts that govern repeated work belong in `prompts/`.
 - Project-specific AI instructions should name commands, paths, boundaries, and validation expectations.
+- `apt-principles` owns canonical AI doctrine, review criteria, prompts, examples, and reference contracts.
+- `apt-agent-standards` owns cross-project installation, profile manifests, `.agent-standards.json`, tool-native file distribution, and sync behavior.
+- Installed tool-native files such as `AGENTS.md`, `.claude/`, `.codex/`, and `.github/` should not become competing doctrine sources.
 - AI must not bypass authentication, authorization, validation, or release gates.
 - AI routes and prompts in applications should be explicit, versioned, and reviewable.
+- AI workflows should define deterministic fallback behavior for provider failure, missing context, low confidence, or policy-sensitive input.
+- Reusable prompts should include evaluation cases or dry-run examples that prove the output can be reviewed.
+- High-stakes domains such as health, finance, legal, safety, security, payments, and identity require explicit escalation, refusal, or referral rules.
 - Agents must report assumptions, changed files, validation, and residual risk.
 - Human approval is required for destructive actions, secrets, production deploys, and security-sensitive changes.
 
@@ -63,6 +69,8 @@ AI can help reason, draft, refactor, test, and document. It should not silently 
 - Expected output format
 - Validation criteria
 - Review or approval requirements
+- Evaluation cases or dry-run outputs for reusable prompts
+- Fallback and escalation behavior for low-confidence, unavailable, or high-risk AI paths
 
 ## Agent Contract
 
@@ -84,6 +92,27 @@ Health, fitness, biometric, finance, legal, safety, and other high-stakes or hig
 AI review should use a repeatable bundle of lenses: thinking clarity, design-system alignment, architecture boundaries, system standards, security, quality/testing, release readiness, operations, and knowledge capture.
 
 Review output should prioritize findings by severity, cite evidence, name the violated standard, recommend correction, and call out residual risk. The portable reference is `references/ai-review-bundle.json`.
+
+AI evaluation cases should cover at least:
+
+- normal successful output
+- missing or ambiguous source context
+- forbidden action or out-of-scope request
+- security-sensitive or destructive action
+- provider failure or degraded fallback
+- domain-specific escalation when applicable
+
+## Agent Standards Distribution
+
+APT agent standards are distributed through `apt-agent-standards`, not by merging installer behavior into this repository.
+
+Use this ownership split:
+
+- `apt-principles`: doctrine, review rules, canonical prompts, examples, references, and validation expectations
+- `apt-agent-standards`: installer scripts, profile detection, profile manifests, path mapping, `.agent-standards.json`, dry-run install/sync, and cross-tool parity checks
+- target repositories: local `docs/project-context.md`, local decisions, and any intentional deviations from managed installed files
+
+When doctrine changes here, update or review `apt-agent-standards` only if installed agent files, profiles, or tool-specific prompts must change. When installed standards reveal a reusable doctrine gap, bring the improvement back to `apt-principles`.
 
 ## Good Example
 
@@ -121,6 +150,7 @@ Return:
 ## Related Examples
 
 - `examples/ai-agent/agent-prompt-contract-example.md`
+- `examples/ai-agent/ai-evaluation-case-example.md`
 - `examples/ai-agent/health-coaching-prompt-boundary-example.md`
 - `examples/ai-agent/workspace-knowledge-example.md`
 
@@ -137,6 +167,7 @@ Return:
 ## Related References
 
 - `references/ai-review-bundle.json`
+- `references/agent-standards-contract.json`
 
 ## Related Documents
 

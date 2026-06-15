@@ -9,7 +9,9 @@ import {
 import {
   getPrincipleSection,
   PRINCIPLE_PHASE_LABELS,
+  aptProjectProfile,
   principlesSections,
+  projectPrincipleEvidenceBySlug,
   resolvePrincipleSlug,
   type PrincipleSlug,
 } from "@/src/data/principles";
@@ -47,6 +49,7 @@ export default function PrinciplesDetail(props: PrinciplesDetailProps) {
   }
 
   const section = getPrincipleSection(resolvedSlug);
+  const projectEvidence = projectPrincipleEvidenceBySlug.get(section.slug);
   const codeSnippet = EXAMPLE_CODE_SNIPPETS[section.slug];
   const summarySource = section.sourceAnchors.find((anchor) => anchor.id === "summary")?.href || section.sourceHref;
   const rulesSource = section.sourceAnchors.find((anchor) => anchor.id === "rules")?.href || section.sourceHref;
@@ -130,6 +133,45 @@ export default function PrinciplesDetail(props: PrinciplesDetailProps) {
               <p className="mt-4 text-sm text-foreground">{section.operationalSummary.practicalExample}</p>
             </AptCard>
           </section>
+
+          {projectEvidence ? (
+            <section>
+              <SectionIntro
+                title="Demonstrated In This Repo"
+                description="Project-specific evidence from the local APT adoption profile."
+                className="mb-5"
+              />
+              <AptCard variant="subtle" padding="large">
+                <div className="flex flex-wrap gap-2">
+                  <AptTag variant="primary">{aptProjectProfile.project}</AptTag>
+                  <AptTag variant="muted">{aptProjectProfile.adoptionMode}</AptTag>
+                  <AptTag variant="muted">{aptProjectProfile.maturity}</AptTag>
+                </div>
+                <p className="mt-4 text-base leading-relaxed text-foreground">{projectEvidence.summary}</p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {projectEvidence.evidence.map((item) => (
+                    <AptTag key={item} variant="secondary" size="sm">
+                      {item}
+                    </AptTag>
+                  ))}
+                </div>
+                <div className="mt-5 flex flex-wrap gap-3">
+                  <AptButton variant="outline" size="sm" asChild>
+                    <a href={aptProjectProfile.sourceHref} target="_blank" rel="noreferrer">
+                      Open project profile
+                      <ExternalLink className="h-4 w-4" />
+                    </a>
+                  </AptButton>
+                  <AptButton variant="ghost" size="sm" asChild>
+                    <Link to="/principles">
+                      Back to project map
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </AptButton>
+                </div>
+              </AptCard>
+            </section>
+          ) : null}
 
           <section>
             <SectionIntro title="Summary" description={section.role} />
@@ -412,18 +454,29 @@ export default function PrinciplesDetail(props: PrinciplesDetailProps) {
           <section>
             <SectionIntro title="Source of Truth" className="mb-4" />
             <AptCard variant="default" padding="small">
-              <a
-                href={section.sourceHref}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center justify-between gap-3 rounded-md border border-border/60 px-3 py-2 text-sm transition-colors hover:border-primary/50"
-              >
-                <span className="inline-flex items-center gap-2 text-foreground">
-                  <Github className="h-4 w-4" />
-                  apt-principles
-                </span>
-                <ExternalLink className="h-4 w-4 text-muted-foreground" />
-              </a>
+              <div className="space-y-2">
+                <a
+                  href={section.sourceHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center justify-between gap-3 rounded-md border border-border/60 px-3 py-2 text-sm transition-colors hover:border-primary/50"
+                >
+                  <span className="inline-flex items-center gap-2 text-foreground">
+                    <Github className="h-4 w-4" />
+                    apt-principles
+                  </span>
+                  <ExternalLink className="h-4 w-4 text-muted-foreground" />
+                </a>
+                <a
+                  href={aptProjectProfile.sourceHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center justify-between gap-3 rounded-md border border-border/60 px-3 py-2 text-sm transition-colors hover:border-primary/50"
+                >
+                  <span className="text-foreground">local project profile</span>
+                  <ExternalLink className="h-4 w-4 text-muted-foreground" />
+                </a>
+              </div>
             </AptCard>
           </section>
         </aside>

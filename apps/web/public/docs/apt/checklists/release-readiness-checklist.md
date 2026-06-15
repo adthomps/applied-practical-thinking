@@ -21,6 +21,7 @@ It applies to code releases, docs releases, reference contract updates, project 
 - [ ] Preview validation is complete for user-facing changes.
 - [ ] Security review is complete for auth, data, secrets, or sensitive endpoint changes.
 - [ ] Release notes describe user-facing and operational impact.
+- [ ] Release record names source artifact, changed behavior, deployment target, and residual risk.
 - [ ] Rollback or recovery path is known.
 - [ ] Support notes are included when behavior changes.
 - [ ] Known risks are documented.
@@ -32,12 +33,14 @@ It applies to code releases, docs releases, reference contract updates, project 
 - Release mixes unrelated changes without explanation.
 - Support cannot understand what changed.
 - Manual deploy steps are required but undocumented.
+- Preview and production behavior or targets are ambiguous.
 
 ## Evidence Required
 
 - Validation summary.
 - Preview URL or review notes when applicable.
 - Release notes and rollback notes.
+- Release record with source, outcome, changed behavior, deployment target, support impact, and known risks.
 - Version or source reference for changed doctrine or references.
 - Known-risk note for anything intentionally deferred.
 
@@ -51,3 +54,4 @@ The release is ready when someone outside the implementation work can answer wha
 - `../quality-testing.md`
 - `../operations-support.md`
 - `../examples/workflows/preview-to-prod-flow.md`
+- `../examples/workflows/release-record-example.md`

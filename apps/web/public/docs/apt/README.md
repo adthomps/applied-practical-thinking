@@ -1,7 +1,7 @@
 ---
 title: APT Docs Index
 version: v1
-last_updated: 2026-04-24
+last_updated: 2026-05-31
 owner: APT
 status: draft
 ---
@@ -17,6 +17,8 @@ APT docs are maintained in three active layers:
 3. **References** - portable machine-readable contracts that projects and public sites can consume.
 
 `apt-principles` owns the canonical APT source of truth. `applied-practical-thinking` owns the public APT portfolio, demo, learning, and showcase experience. The public APT Principles view should pull from this folder instead of maintaining a separate doctrine copy.
+
+`apt-agent-standards` is a separate installer and distribution system for applying APT-aligned AI agent standards across projects. It owns profile detection, install/sync scripts, `.agent-standards.json` manifests, and tool-native Claude, Codex, and GitHub Copilot file layouts. It should reference this repository for canonical doctrine instead of becoming a competing source of APT principles.
 
 Historical source/reference material has been saved outside this active package. Do not use external historical files as canonical guidance unless an active doc explicitly points to them.
 
@@ -36,8 +38,6 @@ Root Markdown files are intentional. They are the canonical human-readable APT d
 - `operations-support.md` - how systems are run and supported
 - `knowledge-system.md` - how learning is captured and reused
 - `ai-agent-framework.md` - how AI and agents participate safely
-- `apt-principles-framework-audit.md` - active consolidation audit and framework history
-
 ## Build Kit
 
 - `checklists/` - review and release gates
@@ -46,18 +46,94 @@ Root Markdown files are intentional. They are the canonical human-readable APT d
 - `templates/` - starting structures for new docs, examples, checklists, and prompts
 - `references/` - JSON contracts for tokens, review bundles, architecture maps, knowledge schemas, metadata/versioning, and project profiles
 
+## AI Configuration
+
+This repo owns APT AI doctrine, review criteria, prompts, examples, and reference contracts. It does not own the cross-repo installation of Claude, Codex, or GitHub Copilot files.
+
+### Agent Standards Distribution
+
+`apt-principles` and `apt-agent-standards` have distinct responsibilities:
+
+| Repository | Responsibility |
+|------------|----------------|
+| `apt-principles` | Canonical APT doctrine, checklists, prompts, examples, references, project adoption rules, and validation expectations |
+| `apt-agent-standards` | Cross-project installer, profile manifests, source-to-target AI tool path mapping, `.agent-standards.json`, dry-run install/sync, and tool parity checks |
+
+Do not merge installer, profile, or path-mapping behavior into `apt-principles`. Reusable doctrine improvements discovered through installed agent standards should come back here as doctrine/build-kit/reference updates. Distribution changes should stay in `apt-agent-standards`.
+
+Portable contract: `references/agent-standards-contract.json`.
+
+### `.github/` - GitHub Copilot (active for this repo when present)
+
+The `.github/` directory contains the **active AI configuration for apt-principles** itself:
+
+| Path | Purpose |
+|------|---------|
+| `.github/copilot-instructions.md` | Workspace rules for GitHub Copilot |
+| `.github/agents/` | 9 scoped agents for APT doctrine maintenance (auditor, principles maintainer, checklist synchronizer, prompt curator, docs maintainer, security reviewer, API architect, frontend implementer, test engineer) |
+| `.github/skills/` | 13 reusable task modules (API design, Cloudflare, docs, testing, payments, webhooks, and more) |
+| `.github/prompts/` | 5 guided workflow prompts (review-repo, generate-api, add-feature, create-docs, standard-repo-audit) |
+| `.github/instructions/` | 2 file-scoped editing rules (doctrine-root, checklists-only) |
+
+**For AI agents working IN this repo:** Start with `.github/copilot-instructions.md` and `AGENTS.md` before doing any work. Use the scoped agents in `.github/agents/` for their named domains — do not conflate doctrine maintenance agents with product implementation agents.
+
+### Cross-tool distribution
+
+Claude, Codex, and GitHub Copilot target files for downstream repositories are distributed by the sibling `apt-agent-standards` repository. Use that package for `.claude/`, `.codex/`, `.github/`, `AGENTS.md`, `.agent-standards.json`, profile detection, dry-run install, and sync behavior.
+
+Run its checks from `apt-agent-standards`:
+
+```bash
+node scripts/check-ai-tool-parity.mjs
+node scripts/audit-workspace-agent-standards.mjs --workspace-root .. --include-detection
+```
+
+Use `references/agent-standards-contract.json` as the contract between this doctrine repo and the installer/distribution repo.
+
+### AI readiness validation
+
+To check whether a project has the required AI configuration files:
+
+All commands below must be run **from `apt-principles`** — the script lives here and is not copied to downstream repos.
+
+```bash
+# Validate this repo (should score 4/4)
+npm run validate:ai
+
+# Validate a downstream project (run from apt-principles, target with --repo-root)
+node scripts/validate-ai-readiness.mjs --repo-root ../apt-coach
+
+# Scaffold GitHub-oriented readiness files from templates into a downstream project
+node scripts/validate-ai-readiness.mjs --repo-root ../apt-coach --fix
+```
+
+If you are already inside a downstream repo and want to run the check from there:
+
+```bash
+# From inside apt-coach (or any sibling repo):
+node ..\apt-principles\scripts\validate-ai-readiness.mjs --repo-root .
+node ..\apt-principles\scripts\validate-ai-readiness.mjs --repo-root . --fix
+```
+
+See `scripts/README.md` for the full score table and flag reference.
+
 ## Folder Contract
 
 The active structure is deliberate:
 
-- `apt-principles/*.md` - canonical doctrine and the active framework audit.
-- `checklists/` - gates for review, release, adoption, quality, and operational readiness.
-- `examples/` - applied patterns and real project profile examples.
-- `prompts/` - reusable AI, agent, and operator prompts.
-- `references/` - machine-readable contracts for projects and public-site consumers.
-- `scripts/` - portable validation tooling.
-- `templates/` - authoring templates for new APT artifacts.
-- `package.json` - local script entrypoint that makes this folder self-validating.
+- `apt-principles/*.md` — canonical doctrine files.
+- `checklists/` — gates for review, release, adoption, quality, and operational readiness.
+- `examples/` — applied patterns and real project profile examples.
+- `prompts/` — reusable AI, agent, and operator prompts.
+- `references/` — machine-readable contracts for projects and public-site consumers.
+- `scripts/` — portable validation tooling.
+- `templates/` — authoring templates for new APT artifacts.
+- `governance/` — maturity model, scorecard, and review processes.
+- `standards/` — domain-specific standards (API, coding, data, documentation, observability, testing).
+- `principles/` — quick-reference cards per APT lifecycle layer.
+- `docs/` — diagrams and supplementary documentation.
+- `.github/` — active AI configuration for this repo when present.
+- `package.json` — local script entrypoint that makes this folder self-validating.
 
 New top-level Markdown files should only be added when they become canonical framework areas or active framework governance records. Otherwise, add content to the appropriate build-kit folder.
 
@@ -118,6 +194,20 @@ npm --prefix apt-principles run validate
 The validator checks active docs and references only and ignores `archive/`. It fails on structural drift, missing frontmatter, missing required sections, invalid JSON references, and broken active local links. It warns on shallow content, unfinished-work markers, empty headings, and missing related-artifact signals.
 
 For portable usage in other APT projects, copy `scripts/validate-apt-principles.mjs` and adjust the configuration constants at the top of the script.
+
+**AI readiness validation** checks whether AI configuration files are present, structured, and complete:
+
+```bash
+npm run validate:ai
+```
+
+Scores the repo 0–4 (None → Minimal → Configured → Active → Optimizing). Run with `--fix` against a downstream project to scaffold GitHub-oriented files from apt-principles templates. Use `apt-agent-standards` for Claude, Codex, Copilot distribution, `.agent-standards.json`, and `docs/project-context.md`.
+
+**Agent standards contract check** verifies that the doctrine/distribution ownership contract is present and points operators to the `apt-agent-standards` parity checks:
+
+```bash
+npm run sync:check
+```
 
 ## Audit Report Scaffolding
 

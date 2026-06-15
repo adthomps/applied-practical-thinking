@@ -6,6 +6,7 @@
   "status": "draft",
   "source": "Extracted from applied-practical-thinking AI review bundle and review standard",
   "review_lenses": [
+    "Outcome evidence and baseline/target signal",
     "Thinking clarity",
     "Design system alignment",
     "Architecture boundaries",
@@ -22,6 +23,14 @@
     "Recommended correction",
     "Residual risk and required follow-up"
   ],
+  "evaluation_case_types": [
+    "normal_success",
+    "missing_or_ambiguous_context",
+    "forbidden_or_out_of_scope_action",
+    "security_sensitive_or_destructive_action",
+    "provider_failure_or_degraded_fallback",
+    "domain_specific_escalation"
+  ],
   "severity_levels": {
     "critical": "Blocks release or merge because it risks security, data, production, public trust, or irreversible drift.",
     "high": "Should be fixed before promotion because it creates significant user, support, architecture, or validation risk.",
@@ -32,12 +41,15 @@
     "Canonical APT source consulted",
     "Changed artifact path or reviewed input",
     "Validation or missing-validation note",
+    "Outcome baseline and target signal when the change claims impact",
+    "Evaluation case or dry-run note for reusable AI prompts and routes",
     "Assumptions and residual risk"
   ],
   "guardrails": [
     "Do not invent doctrine that is not present in apt-principles.",
     "Do not approve changes without evidence.",
     "Do not rewrite product direction unless explicitly asked.",
-    "Flag ambiguity instead of silently guessing where risk is high."
+    "Flag ambiguity instead of silently guessing where risk is high.",
+    "Require fallback, refusal, referral, or escalation behavior for high-risk AI paths."
   ]
 }

@@ -19,22 +19,27 @@ Use it for new ideas, feature requests, project pitches, ambiguous bugs that imp
 - [ ] Problem statement names the real user pain or opportunity.
 - [ ] Audience, user, or operator context is explicit.
 - [ ] Success criteria are measurable or observable.
+- [ ] Baseline condition and target success signal are named.
 - [ ] Constraints are named before solutioning.
 - [ ] Key assumptions are visible.
 - [ ] Tradeoffs are documented.
+- [ ] Durable or risk-accepting decisions have owner, rationale, risk, mitigation, and revisit date.
 - [ ] The smallest useful next step is defined.
 
 ## Failure Conditions
 
 - The request starts with a solution and never states the problem.
 - Success is described only as "done" or "implemented".
+- No baseline or target evidence exists for the claimed outcome.
 - Constraints are deferred until build time.
 - Important assumptions are hidden in conversation instead of captured.
+- Accepted risk has no owner, mitigation, or revisit path.
 
 ## Evidence Required
 
 - Problem statement.
 - Success criteria.
+- Baseline and target outcome evidence.
 - Constraint and tradeoff notes.
 - Decision log entry for durable choices.
 - Named owner or decision maker.
@@ -48,4 +53,5 @@ The work is ready to move forward when a reviewer can explain the problem, audie
 
 - `../thinking.md`
 - `../examples/thinking/problem-framing-example.md`
+- `../examples/thinking/decision-log-outcome-example.md`
 - `../prompts/framework-review-prompt.md`

@@ -37,13 +37,34 @@
         "type": "string"
       }
     },
+    "outcome_evidence": {
+      "type": "string"
+    },
     "architecture_pattern": {
+      "type": "string"
+    },
+    "command_matrix": {
+      "type": "string"
+    },
+    "validation_evidence": {
+      "type": "string"
+    },
+    "release_model": {
+      "type": "string"
+    },
+    "operations_model": {
       "type": "string"
     },
     "ai_agent_usage": {
       "type": "string"
     },
+    "ai_evaluation": {
+      "type": "string"
+    },
     "security_model": {
+      "type": "string"
+    },
+    "security_escalation": {
       "type": "string"
     },
     "learning_value": {

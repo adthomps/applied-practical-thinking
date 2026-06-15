@@ -35,9 +35,10 @@ Review for:
 2. User-safe error behavior
 3. Correlation and traceability
 4. Monitoring or alert signals
-5. First-response steps
-6. Escalation path
-7. Feedback loop into docs, tests, or product work
+5. Degraded-mode and fallback behavior
+6. First-response steps
+7. Escalation path
+8. Incident-to-learning feedback loop into docs, tests, runbooks, or product work
 
 Return:
 - Operational readiness verdict
@@ -57,6 +58,7 @@ Use this shape:
 Feature/service:
 Known failure modes:
 Signals/logs:
+Fallback/degraded behavior:
 First response:
 Escalation:
 User-facing guidance:
@@ -69,12 +71,14 @@ Feedback loop:
 - Do not treat logging noise as observability.
 - Do not omit ownership or escalation.
 - Do not release a critical workflow without a support-safe explanation for common failures.
+- Do not close incident learning without a durable artifact or explicit non-action.
 
 ## Review Evidence
 
-The response should cite runbook path, alert or log signal, correlation ID strategy, first responder, escalation owner, and knowledge follow-up.
+The response should cite runbook path, alert or log signal, correlation ID strategy, fallback behavior, first responder, escalation owner, and knowledge follow-up.
 
 ## Related Documents
 
 - `../operations-support.md`
 - `../checklists/operations-support-checklist.md`
+- `../examples/workflows/operational-runbook-example.md`

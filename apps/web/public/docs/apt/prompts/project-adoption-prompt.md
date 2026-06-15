@@ -33,14 +33,16 @@ Project context:
 - APT principle areas used:
 - Validation commands:
 - Public showcase intent:
+- Installed agent standards or desired profiles:
 
 Return:
 1. Recommended adoption mode: copy, sync, apply, or showcase.
 2. Required local docs and where they should live.
 3. Project-specific decisions or exceptions that need records.
-4. Missing checklists, prompts, examples, or references.
-5. Project profile draft for public or internal reuse.
-6. Validation and evidence required before promotion.
+4. Agent standards recommendation: use apt-agent-standards profiles, local project context, or no managed install.
+5. Missing checklists, prompts, examples, or references.
+6. Project profile draft for public or internal reuse.
+7. Validation and evidence required before promotion.
 ```
 
 ## Expected Output
@@ -55,6 +57,8 @@ Return:
 ## Guardrails
 
 - Do not rewrite canonical APT doctrine inside the project.
+- Do not merge apt-agent-standards installer behavior into apt-principles or target project doctrine.
+- Do not treat installed `AGENTS.md`, `.claude/`, `.codex/`, or `.github/` files as canonical doctrine when they should point back to apt-principles.
 - Do not claim production maturity without evidence.
 - Do not invent missing architecture, security, or AI usage.
 - Keep local exceptions separate from reusable APT improvements.
@@ -62,6 +66,8 @@ Return:
 ## Related Documents
 
 - `../apt-principles.md`
+- `../ai-agent-framework.md`
 - `../checklists/project-adoption-checklist.md`
 - `../templates/project-adoption-template.md`
 - `../examples/projects/apt-project-profile-example.md`
+- `../references/agent-standards-contract.json`

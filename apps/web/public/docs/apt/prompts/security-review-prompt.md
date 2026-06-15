@@ -34,12 +34,15 @@ Use:
 Review for:
 1. Authentication method and session handling
 2. Server-side authorization
-3. Boundary validation
-4. Secrets and environment safety
-5. Sensitive endpoint rate limits or abuse controls
-6. Safe error handling
-7. Audit or traceability needs
-8. Required tests or mitigations
+3. Trust-boundary and authorization matrix
+4. Boundary validation
+5. Secrets and environment safety
+6. Sensitive endpoint rate limits or abuse controls
+7. External integration replay, signature, idempotency, and retry behavior
+8. High-impact data authority, retention, redaction, and escalation
+9. Safe error handling
+10. Audit or traceability needs
+11. Required tests or mitigations
 
 Return:
 - Critical findings
@@ -57,6 +60,7 @@ Use this shape:
 
 ```text
 Trust boundary:
+Authorization matrix:
 Critical blockers:
 High/medium/low findings:
 Required fixes:
@@ -70,12 +74,14 @@ Residual risk:
 - Do not expose secrets or raw internal errors.
 - Do not invent custom crypto or token schemes.
 - Do not assume provider defaults satisfy project-specific authorization, session, or abuse requirements.
+- Do not allow high-impact AI, health, financial, payment, identity, or integration flows without escalation criteria.
 
 ## Review Evidence
 
-The response should cite changed endpoints, session behavior, role checks, validation points, secret/config handling, and abuse controls.
+The response should cite changed endpoints, session behavior, role checks, trust-boundary matrix, validation points, secret/config handling, integration controls, data authority, and abuse controls.
 
 ## Related Documents
 
 - `../security.md`
 - `../examples/security/login-session-flow.md`
+- `../examples/security/threat-auth-review-example.md`

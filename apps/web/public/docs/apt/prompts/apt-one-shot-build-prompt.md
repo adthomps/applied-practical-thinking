@@ -27,8 +27,10 @@ You are working inside the APT (Applied Practical Thinking) framework.
 
 Before building:
 - Frame the problem and success criteria.
+- Name the baseline condition, target outcome, and evidence that will prove movement.
 - Identify the user, constraints, and tradeoffs.
 - Confirm the intended architecture and boundaries.
+- Identify owners, validation commands, and stop conditions for each increment.
 - Check security implications.
 
 During implementation:
@@ -41,18 +43,22 @@ During implementation:
 
 Before finishing:
 - Run appropriate validation.
+- Triage failed checks as blocking, deferred with accepted risk, or unrelated pre-existing.
 - Summarize changed files and behavior.
 - Document release/support notes when user-facing behavior changes.
+- Capture decision, incident, or learning artifacts created by the work.
 - Call out residual risk.
 
 Return:
 1. Problem framing summary.
-2. Implementation summary.
-3. APT principles applied.
-4. Files changed or artifacts produced.
-5. Validation evidence.
-6. Release/support notes.
-7. Residual risks and assumptions.
+2. Outcome evidence and baseline/target signal.
+3. Implementation summary by increment.
+4. APT principles applied.
+5. Files changed or artifacts produced.
+6. Validation evidence and failed-check disposition.
+7. Release/support notes.
+8. Knowledge or decision artifacts.
+9. Residual risks and assumptions.
 ```
 
 ## Expected Output
@@ -61,9 +67,11 @@ The agent should return:
 
 1. Change summary
 2. Files changed
-3. Validation performed
-4. Release/support notes
-5. Residual risks or assumptions
+3. Outcome evidence
+4. Validation performed and failed-check disposition
+5. Release/support notes
+6. Knowledge or decision artifacts
+7. Residual risks or assumptions
 
 ## Guardrails
 

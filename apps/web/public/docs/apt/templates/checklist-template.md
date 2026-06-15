@@ -46,6 +46,10 @@ Name the artifacts that prove the checklist passed.
 - Decision records for exceptions.
 - Owner sign-off or approval notes for high-risk changes.
 
+## Pass Standard
+
+A checklist passes only when required checks are satisfied, failure conditions are absent or explicitly accepted with a decision record, and required evidence is present and reviewable.
+
 ## Related Documents
 
 - `../apt-principles.md`

@@ -50,8 +50,11 @@ Define what success looks like before build work begins.
 
 - Do not create an implementation plan until the problem statement is clear.
 - Do not treat a requested feature as the root problem without checking user context.
+- Define the baseline condition before naming the target outcome.
+- Separate user, operator, support, and system outcomes when they differ.
 - Record assumptions that affect scope, architecture, security, or release safety.
 - Prefer small decision records over long undocumented debate.
+- Decision records should include owner, rationale, risk, mitigation, and revisit or expiry date when the decision accepts risk.
 - If the problem is unclear, produce a framing brief before producing code.
 
 ## Required Artifacts
@@ -62,6 +65,8 @@ Define what success looks like before build work begins.
 - Constraint map
 - Tradeoff notes
 - Decision log entry for durable choices
+- Baseline and target outcome evidence
+- Out-of-scope notes for tempting but deferred work
 
 ## Good Example
 
@@ -105,10 +110,14 @@ Return:
 - `apt-principles.md`
 - `design.md`
 - `execution.md`
-- `checklists/thinking-review-checklist.md`
 - `examples/thinking/problem-framing-example.md`
+- `examples/thinking/decision-log-outcome-example.md`
 - `prompts/framework-review-prompt.md`
 - `prompts/apt-one-shot-build-prompt.md`
+
+## Related Checklists
+
+- `checklists/thinking-review-checklist.md`
 
 ## Summary
 
