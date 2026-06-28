@@ -8,7 +8,7 @@ publishedAt: 2026-04-18
 ---
 # APT Principles Framework
 
-Public companion summary for APT's principle groups and lifecycle map. Canonical APT doctrine lives in `apt-principles/apt-principles.md` and is published into this site at `/docs/apt/apt-principles.md`.
+Public companion summary for APT's principle groups and lifecycle map. Canonical APT doctrine lives in `apt-principles-agents/principles/framework.md` and is published into this site at `/docs/apt/apt-principles-agents.md`.
 
 ---
 

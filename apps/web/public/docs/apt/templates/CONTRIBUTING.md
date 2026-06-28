@@ -4,6 +4,9 @@ version: v1
 last_updated: {{DATE}}
 owner: {{OWNER}}
 status: draft
+kind: "template"
+domain: "CONTRIBUTING"
+source_paths: ["apt-principles/templates/CONTRIBUTING.md"]
 ---
 
 # Contributing
@@ -92,7 +95,7 @@ All PRs are reviewed against APT principles. Reviewers check:
 
 ## What Not to Change
 
-- Do not edit root canonical doctrine files (`apt-principles.md`, `thinking.md`, `design.md`, etc.) without understanding their downstream impact on checklists, prompts, examples, and references.
+- Do not edit root canonical doctrine files (`apt-principles-agents.md`, `thinking.md`, `design.md`, etc.) without understanding their downstream impact on checklists, prompts, examples, and references.
 - Do not move files without updating all internal references and the validator.
 - Do not add new AI agent instructions outside `AGENTS.md`, `.github/instructions/`, or `.github/agents/`.
 

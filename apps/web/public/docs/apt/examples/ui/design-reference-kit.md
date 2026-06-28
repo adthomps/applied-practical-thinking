@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-06-13
 owner: APT
 status: draft
+kind: "example"
+domain: "ui"
+source_paths: ["apt-principles/examples/ui/design-reference-kit.md"]
 ---
 
 # Design Reference Kit

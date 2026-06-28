@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-05-31
 owner: APT
 status: stable
+kind: "guide"
+domain: "documentation"
+source_paths: ["apt-principles/docs/diagrams/apt-lifecycle.md"]
 ---
 
 # APT Lifecycle Diagram
@@ -88,6 +91,6 @@ When making any significant change, traverse the layers in order:
 
 ## Related Docs
 
-- `apt-principles.md` — full lifecycle map with canonical doc table
+- `apt-principles-agents.md` — full lifecycle map with canonical doc table
 - `principles/` — concise principle cards per layer
 - `docs/diagrams/file-relationships.md` — how artifacts connect across layers

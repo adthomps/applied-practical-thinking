@@ -13,13 +13,13 @@ source: manual
 
 ## Purpose
 
-`applied-practical-thinking` is the public-facing APT platform repo. It consumes canonical doctrine from `apt-principles` and publishes website content, Worker APIs, and generated public APT materials.
+`applied-practical-thinking` is the public-facing APT platform repo. It consumes canonical doctrine from `apt-principles-agents` and publishes website content, Worker APIs, and generated public APT materials.
 
 ## Adoption Mode
 
 Primary mode: `apply + showcase`
 
-- Canonical doctrine remains in `apt-principles`.
+- Canonical doctrine remains in `apt-principles-agents`.
 - This repo stores only project-specific implementation evidence and audit outputs.
 - Generated public artifacts are treated as outputs, not authored doctrine.
 
@@ -58,7 +58,7 @@ pnpm --dir apps/web lint
 Canonical doctrine validation:
 
 ```powershell
-cd ../apt-principles
+cd ../apt-principles-agents
 npm run validate
 ```
 
@@ -67,6 +67,6 @@ npm run validate
 - `README.md`
 - `PROJECT_RULES.md`
 - `docs/DECISION_LOG.md`
-- `docs/apt/reports/apt-principles-audit-2026-04-26.md`
-- `../apt-principles/checklists/project-adoption-checklist.md`
-- `../apt-principles/references/project-profile.schema.json`
+- `docs/apt/reports/apt-principles-agents-audit-2026-04-26.md`
+- `../apt-principles-agents/checklists/project-adoption-checklist.md`
+- `../apt-principles-agents/references/project-profile.schema.json`

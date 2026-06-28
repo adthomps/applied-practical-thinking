@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-04-24
 owner: APT
 status: draft
+kind: "example"
+domain: "api"
+source_paths: ["apt-principles/examples/api/rest-api-example.md"]
 ---
 
 # REST API Example

@@ -4,7 +4,7 @@ version: v1
 status: draft
 audience: internal
 visibility: internal
-source: apt-principles/prompts/design-review-prompt.md
+source: apt-principles-agents/prompts/design-review-prompt.md
 ---
 
 # Design Review Prompt
@@ -28,8 +28,8 @@ Use:
 - apps/web/docs/design/static/APT-REVIEW-STANDARD.md
 - apps/web/docs/design/versions/v2/APT-DESIGN-SYSTEM.md
 - apps/web/docs/design/static/APT-DESIGN-SYSTEM-LINT-CHECKLIST.md
-- apt-principles/design.md (canonical doctrine)
-- apt-principles/checklists/design-review-checklist.md
+- apt-principles-agents/principles/design/README.md (canonical doctrine)
+- apt-principles-agents/checklists/design-review-checklist.md
 
 Review for:
 1. User goal clarity — is the intent of the page/feature immediately clear?
@@ -86,5 +86,5 @@ Local (project-specific, primary):
 - `docs/DECISION_LOG.md`
 
 Canonical (doctrine authority):
-- `apt-principles/design.md`
-- `apt-principles/checklists/design-review-checklist.md`
+- `apt-principles-agents/principles/design/README.md`
+- `apt-principles-agents/checklists/design-review-checklist.md`

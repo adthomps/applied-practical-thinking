@@ -72,7 +72,7 @@ Do not edit copied markdown or docs under `apps/web/public/` as authored source.
 - [PLATFORM_IDS.md](docs/PLATFORM_IDS.md) - Cloudflare bindings documentation
 - [docs/apt/](docs/apt/) - local APT adoption, project profile, audits, and validation evidence
 
-Deleted or consolidated docs should not be recreated in `docs/`. Use `apt-principles` for APT-wide doctrine/checklists/prompts, `apps/web/ai/README.md` for local prompt ownership, and retained runbooks for repo-specific operating details.
+Deleted or consolidated docs should not be recreated in `docs/`. Use `apt-principles-agents` for APT-wide doctrine/checklists/prompts, `apps/web/ai/README.md` for local prompt ownership, and retained runbooks for repo-specific operating details.
 
 ## Design doctrine (`apps/web/docs/design/`)
 

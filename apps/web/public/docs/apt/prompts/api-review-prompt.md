@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-04-24
 owner: APT
 status: draft
+kind: "prompt"
+domain: "api-review-prompt"
+source_paths: ["apt-principles/prompts/api-review-prompt.md"]
 ---
 
 # API Review Prompt

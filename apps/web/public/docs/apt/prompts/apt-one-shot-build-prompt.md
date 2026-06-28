@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-04-24
 owner: APT
 status: draft
+kind: "prompt"
+domain: "apt-one-shot-build-prompt"
+source_paths: ["apt-principles/prompts/apt-one-shot-build-prompt.md"]
 ---
 
 # APT One-Shot Build Prompt
@@ -86,6 +89,6 @@ The final response should include commands run, checks skipped with rationale, a
 
 ## Related Documents
 
-- `../apt-principles.md`
+- `../apt-principles-agents.md`
 - `../ai-agent-framework.md`
 - `framework-review-prompt.md`

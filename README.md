@@ -138,12 +138,12 @@ Cloudflare setup reminder:
 
 ## APT Principles Sync (Canonical to Public)
 
-`apt-principles` is the canonical source for the public APT Principles content shown in this site. This repo is the public consumer and deploy target.
+`apt-principles-agents` is the canonical source for the public APT Principles content shown in this site. This repo is the public consumer and deploy target.
 
 Refresh flow after canonical updates:
 
 ```sh
-pnpm --dir apps/web run generate-apt-principles-public
+pnpm --dir apps/web run generate-apt-principles-agents-public
 pnpm --dir apps/web run validation-report
 pnpm --dir apps/web run build-content-index
 pnpm --dir apps/web run copy-content-to-public
@@ -157,24 +157,24 @@ Commit regenerated artifacts:
 Optional source override (for non-default local paths):
 
 ```sh
-APT_PRINCIPLES_ROOT=../apt-principles pnpm --dir apps/web run generate-apt-principles-public
+APT_PRINCIPLES_AGENTS_ROOT=../apt-principles-agents pnpm --dir apps/web run generate-apt-principles-agents-public
 ```
 
 PowerShell form:
 
 ```powershell
-$env:APT_PRINCIPLES_ROOT="../apt-principles"
-pnpm --dir apps/web run generate-apt-principles-public
+$env:APT_PRINCIPLES_AGENTS_ROOT="../apt-principles-agents"
+pnpm --dir apps/web run generate-apt-principles-agents-public
 ```
 
 Deploy note:
 
 - Cloudflare Pages typically builds this repo only. In that context, the generator may log:
-  - `apt-principles source not found; reusing committed public docs artifacts`
+  - `apt-principles-agents source not found; reusing committed public docs artifacts`
 - That warning is expected when committed generated artifacts are present and current.
-- If canonical refresh is required in CI, run builds in an environment where `apt-principles` is checked out (or provide `APT_PRINCIPLES_ROOT`).
+- If canonical refresh is required in CI, run builds in an environment where `apt-principles-agents` is checked out (or provide `APT_PRINCIPLES_AGENTS_ROOT`).
 
-Canonical runbook location: `apt-principles/examples/workflows/apt-principles-public-sync-flow.md`.
+Canonical runbook location: `apt-principles-agents/examples/workflows/apt-principles-agents-public-sync-flow.md`.
 
 ## Content and design guardrails
 

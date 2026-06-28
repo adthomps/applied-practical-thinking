@@ -75,7 +75,7 @@ export default function PortfolioPrinciples() {
 
   const handleFrameworkMarkdownDownload = async () => {
     if (!aptPrinciplesFrameworkPublicDocPath) return;
-    await downloadPublicMarkdown(aptPrinciplesFrameworkPublicDocPath, "apt-principles-framework.md");
+    await downloadPublicMarkdown(aptPrinciplesFrameworkPublicDocPath, "apt-principles-agents-framework.md");
   };
 
   return (
@@ -83,7 +83,7 @@ export default function PortfolioPrinciples() {
       <section>
         <SectionIntro
           title="APT Principles Framework"
-          description="The published doctrine mirror is rendered from generated apt-principles public docs, then paired with operational summaries for implementation in the portfolio site."
+          description="Canonical doctrine is rendered directly from generated apt-principles-agents public docs, then paired with operational summaries for implementation in the portfolio site."
           titleClassName="text-3xl md:text-4xl"
           descriptionClassName="text-lg"
           eyebrow={<AptTag variant="accent">Principles</AptTag>}
@@ -119,13 +119,13 @@ export default function PortfolioPrinciples() {
               <p className="text-sm text-muted-foreground">Loading published framework markdown…</p>
             ) : frameworkDocQuery.isError ? (
               <p className="text-sm text-muted-foreground">
-                Published framework markdown is unavailable right now. Regenerate and publish `/docs/apt/apt-principles.md` to refresh this page.
+                Published framework markdown is unavailable right now. Regenerate and publish `/docs/apt/principles/framework.md` to refresh this page.
               </p>
             ) : (
               <article className="prose-custom">
                 <MarkdownContent
                   markdown={frameworkDocQuery.data?.markdown || ""}
-                  contentPath="docs/apt/apt-principles.md"
+                  contentPath="docs/apt/principles/framework.md"
                   assetBasePath={frameworkAssetBasePath}
                 />
               </article>

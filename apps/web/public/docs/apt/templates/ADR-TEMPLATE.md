@@ -4,6 +4,9 @@ version: v1
 last_updated: {{DATE}}
 owner: {{OWNER}}
 status: draft
+kind: "template"
+domain: "ADR-TEMPLATE"
+source_paths: ["apt-principles/templates/ADR-TEMPLATE.md"]
 ---
 
 # ADR-NNN: [Short Title]

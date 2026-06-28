@@ -59,21 +59,21 @@ Doc placement rule:
 
 APT root artifact proxy rule:
 - Root `examples/`, `prompts/`, `checklists/`, `templates/`, and `references/` are canonical-link surfaces.
-- Keep APT-wide doctrine artifacts in the sibling `apt-principles` repo; avoid duplicating canonical assets here.
+- Keep APT-wide doctrine artifacts in the sibling `apt-principles-agents` repo; avoid duplicating canonical assets here.
 - Repo-specific evidence and generated audit outputs belong under `docs/apt/reports/` and `docs/apt/reports/static/`.
 
 APT doctrine mapping for reviews:
-- Thinking: `apt-principles/thinking.md`, `apt-principles/apt-principles.md`
-- Design: `apt-principles/design.md`, `apt-principles/checklists/design-review-checklist.md`, `apps/web/docs/design/static/APT-REVIEW-STANDARD.md`
-- Architecture: `apt-principles/architecture.md`, `docs/ARCHITECTURE.md`
-- System Standards: `apt-principles/system-standards.md`, `docs/apt/reports/`
-- Security: `apt-principles/security.md`, `apt-principles/checklists/security-review-checklist.md`
-- Execution: `apt-principles/execution.md`, `docs/apt/project-profile.md`
-- Quality: `apt-principles/quality-testing.md`, `apt-principles/checklists/quality-testing-checklist.md`
-- Release/Change: `apt-principles/release-change-management.md`, `docs/DEPLOYMENT.md`
-- Operations: `apt-principles/operations-support.md`, `docs/MAINTENANCE.md`
-- Knowledge: `apt-principles/knowledge-system.md`, root artifact proxy surfaces
-- AI: `apt-principles/ai-agent-framework.md`, `apps/web/ai/README.md`
+- Thinking: `apt-principles-agents/principles/thinking/README.md`, `apt-principles-agents/principles/framework.md`
+- Design: `apt-principles-agents/principles/design/README.md`, `apt-principles-agents/checklists/design-review-checklist.md`, `apps/web/docs/design/static/APT-REVIEW-STANDARD.md`
+- Architecture: `apt-principles-agents/principles/architecture/README.md`, `docs/ARCHITECTURE.md`
+- System Standards: `apt-principles-agents/principles/system-standards/README.md`, `docs/apt/reports/`
+- Security: `apt-principles-agents/principles/security-risk/README.md`, `apt-principles-agents/checklists/security-review-checklist.md`
+- Execution: `apt-principles-agents/principles/execution/delivery-increments.md`, `docs/apt/project-profile.md`
+- Quality: `apt-principles-agents/principles/execution/quality-and-testing.md`, `apt-principles-agents/checklists/quality-testing-checklist.md`
+- Release/Change: `apt-principles-agents/principles/execution/release-and-change-management.md`, `docs/DEPLOYMENT.md`
+- Operations: `apt-principles-agents/principles/execution/operations-and-support.md`, `docs/MAINTENANCE.md`
+- Knowledge: `apt-principles-agents/principles/execution/knowledge-and-learning.md`, root artifact proxy surfaces
+- AI: `apt-principles-agents/principles/ai/README.md`, `apps/web/ai/README.md`
 
 ## Testing and Local Development
 
@@ -83,8 +83,8 @@ APT doctrine mapping for reviews:
 
 ## Review Requirements
 
-- Design changes: check `apps/web/docs/design/static/APT-REVIEW-STANDARD.md` and `apt-principles/checklists/design-review-checklist.md`
-- Security-sensitive changes: check `apt-principles/security.md` and `apt-principles/checklists/security-review-checklist.md`
-- Testing/quality changes: check `apt-principles/quality-testing.md` and `apt-principles/checklists/quality-testing-checklist.md`
-- Prompt or agent changes: check `apps/web/ai/README.md` and `apt-principles/ai-agent-framework.md`
+- Design changes: check `apps/web/docs/design/static/APT-REVIEW-STANDARD.md` and `apt-principles-agents/checklists/design-review-checklist.md`
+- Security-sensitive changes: check `apt-principles-agents/principles/security-risk/README.md` and `apt-principles-agents/checklists/security-review-checklist.md`
+- Testing/quality changes: check `apt-principles-agents/principles/execution/quality-and-testing.md` and `apt-principles-agents/checklists/quality-testing-checklist.md`
+- Prompt or agent changes: check `apps/web/ai/README.md` and `apt-principles-agents/principles/ai/README.md`
 - Deviations: document in `docs/DECISION_LOG.md`

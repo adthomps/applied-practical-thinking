@@ -10,7 +10,7 @@ title: APT System Standards
 
 # APT System Standards (Consistency)
 
-Public companion summary for system standards in the APT site/design docs. Canonical system standards doctrine lives in `apt-principles/system-standards.md` and is published into this site at `/docs/apt/system-standards.md`.
+Public companion summary for system standards in the APT site/design docs. Canonical system standards doctrine lives in `apt-principles-agents/principles/system-standards/README.md` and is published into this site at `/docs/apt/system-standards.md`.
 
 ## Focus
 

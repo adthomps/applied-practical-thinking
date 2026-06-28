@@ -9,16 +9,16 @@ source: manual
 
 # Prompts
 
-Canonical APT prompts live in the sibling apt-principles repository.
+Canonical APT prompts live in the sibling apt-principles-agents repository.
 
 Canonical source:
 
-- ../apt-principles/prompts/
+- ../apt-principles-agents/prompts/
 
 Commonly used canonical prompts:
 
-- ../apt-principles/prompts/design-review-prompt.md
-- ../apt-principles/prompts/workspace-knowledge-prompt.md
+- ../apt-principles-agents/prompts/design-review-prompt.md
+- ../apt-principles-agents/prompts/workspace-knowledge-prompt.md
 
 Repo-specific prompt ownership:
 
@@ -27,5 +27,5 @@ Repo-specific prompt ownership:
 
 Policy:
 
-- Keep doctrine-level prompts in apt-principles.
+- Keep doctrine-level prompts in apt-principles-agents.
 - Keep app/runtime prompts in apps/web/ai/prompts.

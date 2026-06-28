@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-04-24
 owner: APT
 status: draft
+kind: "example"
+domain: "workflows"
+source_paths: ["apt-principles/examples/workflows/preview-to-prod-flow.md"]
 ---
 
 # Preview to Prod Flow
@@ -54,7 +57,7 @@ Evidence bundle:
 
 ```text
 Validation:
-- npm --prefix apt-principles run validate
+- npm --prefix apt-principles-agents run validate
 - preview smoke test
 - affected links checked
 

@@ -4,6 +4,9 @@ version: v1
 last_updated: {{DATE}}
 owner: APT
 status: draft
+kind: "template"
+domain: "checklist-template"
+source_paths: ["apt-principles/templates/checklist-template.md"]
 ---
 
 # {{TITLE}}
@@ -52,6 +55,6 @@ A checklist passes only when required checks are satisfied, failure conditions a
 
 ## Related Documents
 
-- `../apt-principles.md`
+- `../apt-principles-agents.md`
 - `../templates/example-template.md`
 - `../templates/prompt-template.md`

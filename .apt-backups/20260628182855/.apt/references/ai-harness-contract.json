@@ -1,0 +1,138 @@
+{
+  "title": "APT AI Harness Contract",
+  "version": "v1",
+  "last_updated": "2026-06-21",
+  "owner": "APT",
+  "status": "draft",
+  "source": "ai-agent-framework.md and standards/ai/",
+  "harness_lifecycle": [
+    "discover",
+    "classify",
+    "validate",
+    "remediate",
+    "verify",
+    "approve"
+  ],
+  "stage_outputs": {
+    "discover": [
+      "source_map",
+      "repo_state",
+      "relevant_files",
+      "known_unknowns"
+    ],
+    "classify": [
+      "apt_layer",
+      "risk_level",
+      "data_sensitivity",
+      "model_capability_need",
+      "approval_requirement"
+    ],
+    "validate": [
+      "baseline_check",
+      "reproduction_or_feasibility_evidence",
+      "failure_or_gap_summary"
+    ],
+    "remediate": [
+      "bounded_change_summary",
+      "changed_artifacts",
+      "scope_confirmation"
+    ],
+    "verify": [
+      "checks_run",
+      "check_results",
+      "residual_risk"
+    ],
+    "approve": [
+      "approval_owner",
+      "approval_status",
+      "blocked_or_accepted_risk"
+    ]
+  },
+  "routing_inputs": [
+    "task_type",
+    "required_capability",
+    "risk_level",
+    "data_sensitivity",
+    "context_size",
+    "latency_need",
+    "cost_budget",
+    "locality_preference",
+    "approval_requirement"
+  ],
+  "task_packet_required_fields": [
+    "goal",
+    "success_criteria",
+    "target_repository_or_files",
+    "selected_standards",
+    "selected_agent_or_skill",
+    "selected_context_packs",
+    "model_capability_tier",
+    "token_budget",
+    "approval_gates",
+    "validation_commands",
+    "expected_artifacts",
+    "residual_risk"
+  ],
+  "implementation_crosswalk_fields": [
+    "agent_layer",
+    "implementation_artifact",
+    "apt_principles_standard",
+    "validation_evidence",
+    "owning_repository",
+    "boundary_notes"
+  ],
+  "validation_evidence_types": [
+    "standards_link",
+    "task_packet",
+    "dry_run_output",
+    "scan_report",
+    "repair_plan",
+    "sync_report",
+    "routing_validation",
+    "local_model_check",
+    "human_approval_record",
+    "target_repo_validation"
+  ],
+  "ownership_boundaries": {
+    "apt-principles": [
+      "canonical doctrine",
+      "standards",
+      "review checklists",
+      "prompts",
+      "examples",
+      "reference contracts"
+    ],
+    "apt-agent-standards": [
+      "installer behavior",
+      "profile detection",
+      "profile manifests",
+      "tool-native file distribution",
+      ".agent-standards.json",
+      "dry-run install and sync"
+    ],
+    "target_repository": [
+      "local project context",
+      "local decisions",
+      "local exceptions",
+      "validation results"
+    ],
+    "apt-agent": [
+      "implementation of harness orchestration",
+      "model routing policy engine",
+      "lifecycle scanner",
+      "context-pack loader",
+      "verification runner",
+      "approval gate",
+      "install, scan, repair, and sync orchestration"
+    ]
+  },
+  "approval_required_for": [
+    "destructive actions",
+    "secrets",
+    "production deploys",
+    "security-sensitive changes",
+    "identity and payment changes",
+    "high-stakes health, legal, finance, safety, or policy decisions",
+    "risk acceptance"
+  ]
+}

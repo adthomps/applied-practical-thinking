@@ -10,7 +10,7 @@ title: APT AI & Agent Framework
 
 # APT AI & Agent Framework (Augmentation Layer)
 
-Public companion summary for AI and agent behavior in the APT site/design docs. Canonical AI agent doctrine lives in `apt-principles/ai-agent-framework.md` and is published into this site at `/docs/apt/ai-agent-framework.md`.
+Public companion summary for AI and agent behavior in the APT site/design docs. Canonical AI agent doctrine lives in `apt-principles-agents/principles/ai/README.md` and is published into this site at `/docs/apt/ai-agent-framework.md`.
 
 ## Focus
 

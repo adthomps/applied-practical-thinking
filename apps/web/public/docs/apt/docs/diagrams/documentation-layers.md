@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-05-31
 owner: APT
 status: stable
+kind: "guide"
+domain: "documentation"
+source_paths: ["apt-principles/docs/diagrams/documentation-layers.md"]
 ---
 
 # APT Documentation Layers Diagram
@@ -18,7 +21,7 @@ APT documentation is organized into three layers. Each layer serves a different 
 │                                                                     │
 │  What APT requires. Updated rarely. Changed by deliberate decision. │
 │                                                                     │
-│  apt-principles.md     thinking.md          design.md              │
+│  apt-principles-agents.md     thinking.md          design.md              │
 │  architecture.md       system-standards.md  security.md            │
 │  execution.md          quality-testing.md   release-change-        │
 │  operations-support.md knowledge-system.md  management.md          │
@@ -109,7 +112,7 @@ Failing to cascade creates drift. The `.github/skills/principle-change-sync/SKIL
 
 ```
 ┌──────────────────────────────┐   ┌──────────────────────────────┐
-│  apt-principles (this repo)  │   │  applied-practical-thinking   │
+│  apt-principles-agents (this repo)  │   │  applied-practical-thinking   │
 │                              │   │  (public website)             │
 │  • Full doctrine             │   │  • Public-facing principles   │
 │  • Build kit                 │   │  • Portfolio showcase         │
@@ -117,14 +120,14 @@ Failing to cascade creates drift. The `.github/skills/principle-change-sync/SKIL
 │  • Machine-readable refs     │   │                               │
 │                              │   │  Sync via:                    │
 │  SOURCE OF TRUTH             │   │  examples/workflows/          │
-└──────────────────────────────┘   │  apt-principles-public-       │
+└──────────────────────────────┘   │  apt-principles-agents-public-       │
                                    │  sync-flow.md                 │
                                    └──────────────────────────────┘
 
    Downstream project repos
    ┌────────────────────────┐
    │  apt-coach             │
-   │  apt-dream-to-reality  │  All adopt from apt-principles
+   │  apt-dream-to-reality  │  All adopt from apt-principles-agents
    │  apt-novel-reviewer    │  via: copy / sync / apply / showcase
    │  crt-world             │
    └────────────────────────┘
@@ -133,6 +136,6 @@ Failing to cascade creates drift. The `.github/skills/principle-change-sync/SKIL
 ## Related Docs
 
 - `README.md` — folder contract for every directory
-- `apt-principles.md` — required documentation model (five artifact types)
+- `apt-principles-agents.md` — required documentation model (five artifact types)
 - `knowledge-system.md` — how knowledge artifacts are kept current
 - `docs/diagrams/file-relationships.md` — artifact chain per principle

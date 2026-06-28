@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-05-31
 owner: APT
 status: stable
+kind: "guide"
+domain: "documentation"
+source_paths: ["apt-principles/docs/diagrams/reference-architecture.md"]
 ---
 
 # APT Reference Architecture Diagram

@@ -30,7 +30,7 @@ This policy applies to local published mirror artifacts and compatibility metada
 
 ## Versioning Model
 
-`apt-principles` owns doctrine meaning and version authority. This repo keeps only the metadata needed to publish and serve compatible mirror artifacts.
+`apt-principles-agents` owns doctrine meaning and version authority. This repo keeps only the metadata needed to publish and serve compatible mirror artifacts.
 
 Local mirror artifacts retain semantic versions so runtime consumers can resolve the right published file:
 
@@ -70,7 +70,7 @@ Local authored mirror/reference source:
 
 Upstream doctrine/version authority:
 
-- `apt-principles`
+- `apt-principles-agents`
 
 Public runtime output:
 
@@ -85,7 +85,7 @@ Generated public output is not source of truth.
 
 When a local published mirror artifact changes:
 
-1. Confirm whether the upstream change already exists in `apt-principles` or whether the change is only local compatibility metadata.
+1. Confirm whether the upstream change already exists in `apt-principles-agents` or whether the change is only local compatibility metadata.
 2. Determine if the local mirror metadata change is major, minor, or patch.
 3. Update design docs manifest and AI review bundle metadata only as needed for published compatibility.
 4. Rebuild public docs and verify alias compatibility.
@@ -133,7 +133,7 @@ Initial baseline release for this policy:
 
 To release a new major:
 
-1. Update or import the upstream doctrine version from `apt-principles`.
+1. Update or import the upstream doctrine version from `apt-principles-agents`.
 2. Update major/version metadata in `APT-DESIGN-DOCS-MANIFEST.json` and `APT-AI-REVIEW-BUNDLE.json` only for local published compatibility.
 3. Publish mirror docs to `apps/web/public/docs/design/v{nextMajor}/` via the build script.
 4. Move alias targets in `apps/web/public/docs/design/` to `{nextMajor}`.

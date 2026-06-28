@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-04-24
 owner: APT
 status: draft
+kind: "example"
+domain: "security"
+source_paths: ["apt-principles/examples/security/login-session-flow.md"]
 ---
 
 # Login Session Flow

@@ -52,4 +52,4 @@ showcase:
 
 - `adoption.md`
 - `references/project-profile.json`
-- `reports/apt-principles-audit-2026-04-26.md`
+- `reports/apt-principles-agents-audit-2026-04-26.md`

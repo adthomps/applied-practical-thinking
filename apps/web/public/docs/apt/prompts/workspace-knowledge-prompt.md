@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-04-28
 owner: APT
 status: draft
+kind: "prompt"
+domain: "workspace-knowledge-prompt"
+source_paths: ["apt-principles/prompts/workspace-knowledge-prompt.md"]
 ---
 
 # Workspace Knowledge Prompt
@@ -29,7 +32,7 @@ Use this prompt when a tool offers shared workspace rules or project-wide instru
 Workspace Knowledge: Applied Practical Thinking (APT)
 
 Canonical source:
-- APT principles repository: https://github.com/adthomps/apt-principles
+- APT principles repository: https://github.com/adthomps/apt-principles-agents
 - Use APT doctrine as the source of truth for thinking, design, architecture, system standards, security, execution, quality, release, operations, knowledge, and AI behavior.
 
 Core behavior:
@@ -94,7 +97,7 @@ Workspace knowledge is ready when a maintainer can trace each durable rule to a 
 
 ## Related Documents
 
-- `../apt-principles.md`
+- `../apt-principles-agents.md`
 - `../thinking.md`
 - `../design.md`
 - `../architecture.md`

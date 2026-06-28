@@ -1,0 +1,63 @@
+{
+  "title": "APT Knowledge Contracts",
+  "version": "v1",
+  "last_updated": "2026-04-24",
+  "owner": "APT",
+  "status": "draft",
+  "source": "Extracted from applied-practical-thinking knowledge engine material",
+  "schemas": {
+    "KnowledgeChunk": {
+      "required": ["id", "source", "title", "content", "audience", "status"],
+      "properties": {
+        "id": "Stable identifier for retrieval and citation.",
+        "source": "Canonical path or source system.",
+        "title": "Human-readable title.",
+        "content": "Chunk body.",
+        "audience": "human, agent, public, internal, or mixed.",
+        "status": "draft, active, deprecated, or archived.",
+        "tags": "Optional reuse and routing tags.",
+        "visibility": "public, internal, agent, or mixed.",
+        "confidence": "low, medium, or high when generated or retrieved.",
+        "retention": "Optional retention or deletion expectation.",
+        "redaction": "Optional sensitive-data handling note."
+      }
+    },
+    "IngestReport": {
+      "required": ["source", "status", "accepted", "rejected", "warnings"],
+      "properties": {
+        "source": "Ingested source path or collection.",
+        "status": "pass, partial, or fail.",
+        "accepted": "Count of accepted chunks.",
+        "rejected": "Count of rejected chunks.",
+        "warnings": "Non-blocking quality issues."
+      }
+    },
+    "QueryResponse": {
+      "required": ["answer", "sources", "confidence"],
+      "properties": {
+        "answer": "Grounded response.",
+        "sources": "Source references used to answer.",
+        "confidence": "low, medium, or high.",
+        "gaps": "Optional missing-context notes.",
+        "fallback": "Optional deterministic fallback when retrieval or provider behavior is degraded."
+      }
+    },
+    "FeedbackRecord": {
+      "required": ["source", "finding", "disposition", "owner"],
+      "properties": {
+        "source": "Incident, support ticket, release, validation run, or user feedback source.",
+        "finding": "Reusable learning or gap.",
+        "disposition": "doc_update, test_update, runbook_update, ux_fix, decision_record, or non_action.",
+        "owner": "Person or team responsible for closure.",
+        "evidence": "Validation or review evidence for the disposition."
+      }
+    }
+  },
+  "rules": [
+    "Knowledge retrieval must cite canonical or project-owned sources.",
+    "AI-facing knowledge must preserve source priority and status.",
+    "Feedback should become either a doc update, a test update, a runbook update, a UX fix, a decision record, or an explicit non-action.",
+    "Sensitive knowledge must define visibility, redaction, retention, and escalation before ingestion.",
+    "Incident and support learning should link back to validation or release evidence when available."
+  ]
+}

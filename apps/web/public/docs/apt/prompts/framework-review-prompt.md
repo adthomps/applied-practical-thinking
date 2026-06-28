@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-04-24
 owner: APT
 status: draft
+kind: "prompt"
+domain: "framework-review-prompt"
+source_paths: ["apt-principles/prompts/framework-review-prompt.md"]
 ---
 
 # APT Framework Review Prompt
@@ -26,7 +29,7 @@ Review a proposed change across the full APT lifecycle.
 You are reviewing a change using the APT Principles Framework.
 
 Read the relevant canonical docs:
-- apt-principles.md
+- apt-principles-agents.md
 - thinking.md
 - design.md
 - architecture.md
@@ -73,6 +76,6 @@ Findings should be specific, evidence-based, and mapped to APT layers.
 
 ## Related Documents
 
-- `../apt-principles.md`
+- `../apt-principles-agents.md`
 - `../checklists/release-readiness-checklist.md`
 - `../reports/apt-whole-system-completion-gap-matrix.md`

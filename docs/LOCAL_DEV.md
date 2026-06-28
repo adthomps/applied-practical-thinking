@@ -96,7 +96,7 @@ Web validation and canonical APT doctrine checks:
 
 ```sh
 pnpm --dir apps/web run validation-report
-cd ../apt-principles
+cd ../apt-principles-agents
 npm run validate
 ```
 

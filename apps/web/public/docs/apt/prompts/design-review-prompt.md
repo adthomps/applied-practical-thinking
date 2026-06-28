@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-04-28
 owner: APT
 status: draft
+kind: "prompt"
+domain: "design-review-prompt"
+source_paths: ["apt-principles/prompts/design-review-prompt.md"]
 ---
 
 # Design Review Prompt

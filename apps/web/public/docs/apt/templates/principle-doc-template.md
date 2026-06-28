@@ -4,6 +4,9 @@ version: v1
 last_updated: {{DATE}}
 owner: APT
 status: draft
+kind: "template"
+domain: "principle-doc-template"
+source_paths: ["apt-principles/templates/principle-doc-template.md"]
 ---
 
 # {{TITLE}}

@@ -4,6 +4,9 @@ version: v1
 last_updated: {{DATE}}
 owner: APT
 status: draft
+kind: "template"
+domain: "example-template"
+source_paths: ["apt-principles/templates/example-template.md"]
 ---
 
 # {{TITLE}}
@@ -71,6 +74,6 @@ Name the cost of the pattern. A good example explains when the pattern is useful
 
 ## Related Documents
 
-- `../apt-principles.md`
+- `../apt-principles-agents.md`
 - `../templates/checklist-template.md`
 - `../templates/prompt-template.md`

@@ -34,7 +34,7 @@ It is the authoritative doctrine for both system architecture and documentation 
 ### Source-of-Truth Boundaries
 
 **MUST**
-- Treat `apt-principles` as doctrine and version authority; treat `apps/web/docs/design/` as the local mirror/reference surface used to publish compatible design docs from this repo.
+- Treat `apt-principles-agents` as doctrine and version authority; treat `apps/web/docs/design/` as the local mirror/reference surface used to publish compatible design docs from this repo.
 - Treat `public/docs/design` as generated output only.
 - Record major architecture deviations in `docs/DECISION_LOG.md`.
 

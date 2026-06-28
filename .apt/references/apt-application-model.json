@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "APT Application Model",
+  "version": "v1",
+  "last_updated": "2026-06-22",
+  "owner": "APT",
+  "description": "Maps common repository types to applicable APT context packs, required checks, suggested examples, and mandatory or recommended artifacts.",
+  "repoTypes": [
+    {
+      "id": "react-vite-ui-app",
+      "label": "React/Vite UI app",
+      "applicablePacks": ["apt-core-pack", "apt-ui-pack", "apt-docs-pack"],
+      "requiredChecks": ["design-review-checklist", "quality-testing-checklist", "repo-alignment-checklist"],
+      "suggestedExamples": ["intent-based-ui-navigation", "navigation-layout-pattern", "dashboard-layout-pattern"],
+      "mandatoryArtifacts": ["source-linked README or docs", "design review evidence", "validation command evidence"],
+      "recommendedArtifacts": ["public showcase notes", "context-pack summary", "browser screenshot evidence"]
+    },
+    {
+      "id": "cloudflare-worker-hono-api",
+      "label": "Cloudflare Worker / Hono API",
+      "applicablePacks": ["apt-core-pack", "apt-cloudflare-pack", "apt-api-pack", "apt-security-pack"],
+      "requiredChecks": ["architecture-review-checklist", "api-standards-checklist", "security-review-checklist", "operations-support-checklist"],
+      "suggestedExamples": ["cloudflare-worker-hono-structure", "cloudflare-pages-workers-example", "api-route-design"],
+      "mandatoryArtifacts": ["route contract evidence", "binding inventory", "security boundary review", "validation command evidence"],
+      "recommendedArtifacts": ["runbook excerpt", "architecture diagram", "release rollback notes"]
+    },
+    {
+      "id": "documentation-site",
+      "label": "Documentation site",
+      "applicablePacks": ["apt-core-pack", "apt-docs-pack", "apt-ui-pack"],
+      "requiredChecks": ["documentation-checklist", "knowledge-system-checklist", "release-readiness-checklist"],
+      "suggestedExamples": ["documentation-structure", "docs-principles-browser-pattern", "canonical-doc-update-example"],
+      "mandatoryArtifacts": ["canonical source links", "status and owner metadata", "link or validation evidence"],
+      "recommendedArtifacts": ["context-pack summary", "public publish notes", "project profile"]
+    },
+    {
+      "id": "payment-api-gateway",
+      "label": "Payment/API gateway",
+      "applicablePacks": ["apt-core-pack", "apt-api-pack", "apt-security-pack", "apt-cloudflare-pack"],
+      "requiredChecks": ["api-standards-checklist", "security-review-checklist", "quality-testing-checklist", "release-readiness-checklist"],
+      "suggestedExamples": ["api-route-design", "security-review-expectations", "error-response-example"],
+      "mandatoryArtifacts": ["exact source review", "auth and authorization evidence", "idempotency or replay decision", "test evidence", "rollback notes"],
+      "recommendedArtifacts": ["consumer migration notes", "operational runbook", "threat review example"]
+    },
+    {
+      "id": "agent-instructions-repository",
+      "label": "Agent/instructions repository",
+      "applicablePacks": ["apt-core-pack", "apt-agent-pack", "apt-docs-pack", "apt-security-pack"],
+      "requiredChecks": ["ai-agent-review-checklist", "repo-alignment-checklist", "documentation-checklist"],
+      "suggestedExamples": ["agent-instruction-structure", "agent-prompt-contract-example", "token-efficient-context-pack-example"],
+      "mandatoryArtifacts": ["source-of-truth hierarchy", "allowed tools and boundaries", "validation expectations", "approval points"],
+      "recommendedArtifacts": ["model routing decision", "context-pack registry", "agent readiness report"]
+    },
+    {
+      "id": "mixed-full-stack-app",
+      "label": "Mixed full-stack app",
+      "applicablePacks": ["apt-core-pack", "apt-ui-pack", "apt-api-pack", "apt-security-pack", "apt-docs-pack"],
+      "requiredChecks": ["repo-alignment-checklist", "design-review-checklist", "api-standards-checklist", "security-review-checklist", "quality-testing-checklist"],
+      "suggestedExamples": ["intent-based-ui-navigation", "api-route-design", "security-review-expectations"],
+      "mandatoryArtifacts": ["principle coverage map", "UI and API validation evidence", "security boundary review", "release notes"],
+      "recommendedArtifacts": ["project profile", "architecture map", "context-pack summary"]
+    },
+    {
+      "id": "prototype-lovable-generated-app",
+      "label": "Prototype or Lovable-generated app",
+      "applicablePacks": ["apt-core-pack", "apt-ui-pack", "apt-docs-pack"],
+      "requiredChecks": ["repo-alignment-checklist", "design-review-checklist", "documentation-checklist"],
+      "suggestedExamples": ["intent-based-ui-navigation", "documentation-structure", "product-portfolio-surface-pattern"],
+      "mandatoryArtifacts": ["prototype status disclosure", "known limitations", "validation evidence for any public claim"],
+      "recommendedArtifacts": ["hardening plan", "showcase readiness notes", "source-pack summary"]
+    }
+  ]
+}

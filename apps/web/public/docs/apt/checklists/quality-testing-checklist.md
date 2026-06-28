@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-04-24
 owner: APT
 status: draft
+kind: "checklist"
+domain: "quality-testing-checklist"
+source_paths: ["apt-principles/checklists/quality-testing-checklist.md"]
 ---
 
 # Quality & Testing Checklist

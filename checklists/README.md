@@ -9,18 +9,18 @@ source: manual
 
 # Checklists
 
-Canonical APT checklists are maintained in the sibling apt-principles repository.
+Canonical APT checklists are maintained in the sibling apt-principles-agents repository.
 
 Canonical source:
 
-- ../apt-principles/checklists/
+- ../apt-principles-agents/checklists/
 
 Key checklists:
 
-- ../apt-principles/checklists/design-review-checklist.md
-- ../apt-principles/checklists/security-review-checklist.md
-- ../apt-principles/checklists/quality-testing-checklist.md
-- ../apt-principles/checklists/project-adoption-checklist.md
+- ../apt-principles-agents/checklists/design-review-checklist.md
+- ../apt-principles-agents/checklists/security-review-checklist.md
+- ../apt-principles-agents/checklists/quality-testing-checklist.md
+- ../apt-principles-agents/checklists/project-adoption-checklist.md
 
 Policy:
 

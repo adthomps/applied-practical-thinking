@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-04-30
 owner: APT
 status: draft
+kind: "example"
+domain: "ui"
+source_paths: ["apt-principles/examples/ui/footer-layout-pattern.md"]
 ---
 
 # Footer Layout Pattern

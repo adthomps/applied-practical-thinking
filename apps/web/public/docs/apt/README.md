@@ -1,305 +1,73 @@
 ---
-title: APT Docs Index
-version: v1
-last_updated: 2026-05-31
+title: APT Principles + Agents
+kind: repository
+status: active
 owner: APT
-status: draft
+last_updated: 2026-06-27
+source: APT consolidation
+domain: "repository"
+source_paths: ["apt-principles-agents/README.md"]
 ---
 
-# APT Principles
+# APT Principles + Agents
 
-This directory is the canonical doctrine and build kit for APT (Applied Practical Thinking).
+**apt-principles-agents** is the canonical operating system for APT thinking, design, architecture, and execution. It consolidates the doctrine from **apt-principles-agents** with the reusable agent workflows from **apt-principles-agents** while keeping principles distinct from procedures and platform adapters.
 
-APT docs are maintained in three active layers:
+## Four Pillars
 
-1. **Doctrine** - the principles, standards, and operating model.
-2. **Build kit** - checklists, examples, prompts, and templates that help humans and AI agents apply the doctrine.
-3. **References** - portable machine-readable contracts that projects and public sites can consume.
+1. **Thinking** frames the real problem, assumptions, outcomes, and tradeoffs.
+2. **Design** aligns intent, audiences, journeys, roles, permissions, UI, and API.
+3. **Architecture** defines boundaries, contracts, data, integration, modernization, deployment, and failure handling.
+4. **Execution** turns decisions into validated increments, releases, operations, support, and learning.
 
-`apt-principles` owns the canonical APT source of truth. `applied-practical-thinking` owns the public APT portfolio, demo, learning, and showcase experience. The public APT Principles view should pull from this folder instead of maintaining a separate doctrine copy.
+## Use It As A Human
 
-`apt-agent-standards` is a separate installer and distribution system for applying APT-aligned AI agent standards across projects. It owns profile detection, install/sync scripts, `.agent-standards.json` manifests, and tool-native Claude, Codex, and GitHub Copilot file layouts. It should reference this repository for canonical doctrine instead of becoming a competing source of APT principles.
+Start in [principles](principles/README.md), choose a [template](./templates/README.md), use a [skill](skills/README.md) for the workflow, and ask the relevant [agent perspective](agents/README.md) to review the result. Product-facing work should use a [Product Hub](product-hubs/README.md).
 
-Historical source/reference material has been saved outside this active package. Do not use external historical files as canonical guidance unless an active doc explicitly points to them.
+## Use It With AI Tools
 
-## Canonical Doctrine
+- **Codex:** read **AGENTS.md** and **CODEX.md**; install selected skills under **.codex/skills/**.
+- **GitHub Copilot:** use **.github/copilot-instructions.md**, **.github/skills/**, and **.github/prompts/** mappings described in [the adapter](platforms/github-copilot/README.md).
+- **Claude:** read **AGENTS.md** and **CLAUDE.md**; expose selected skills under **.claude/skills/**.
+- **Gemini:** read **AGENTS.md** and **GEMINI.md**; map workflows into **.gemini/commands/**.
+- **Local models:** use them for low-risk classification, triage, summarization, and routing; escalate complex architecture, payment, security, and major-refactor work.
 
-Root Markdown files are intentional. They are the canonical human-readable APT doctrine layer, kept at the top level so humans, agents, downstream projects, and public-site importers can find the framework quickly.
+## Install Selected Assets
 
-- `apt-principles.md` - full framework and lifecycle map
-- `thinking.md` - why the work exists
-- `design.md` - what the solution communicates and how it behaves
-- `architecture.md` - how the system is structured
-- `system-standards.md` - consistency rules and shared contracts
-- `security.md` - authentication, authorization, trust, and abuse controls
-- `execution.md` - how work moves from spec to build
-- `quality-testing.md` - how work is validated
-- `release-change-management.md` - how work is promoted safely
-- `operations-support.md` - how systems are run and supported
-- `knowledge-system.md` - how learning is captured and reused
-- `ai-agent-framework.md` - how AI and agents participate safely
-## Build Kit
+Choose a manifest such as **core**, **payments**, **api-modernization**, **documentation**, **product-hub**, **game-development**, or **full**, then run:
 
-- `checklists/` - review and release gates
-- `examples/` - concrete examples of APT patterns in use
-- `prompts/` - reusable AI prompts aligned to APT doctrine
-- `templates/` - starting structures for new docs, examples, checklists, and prompts
-- `references/` - JSON contracts for tokens, review bundles, architecture maps, knowledge schemas, metadata/versioning, and project profiles
-
-## AI Configuration
-
-This repo owns APT AI doctrine, review criteria, prompts, examples, and reference contracts. It does not own the cross-repo installation of Claude, Codex, or GitHub Copilot files.
-
-### Agent Standards Distribution
-
-`apt-principles` and `apt-agent-standards` have distinct responsibilities:
-
-| Repository | Responsibility |
-|------------|----------------|
-| `apt-principles` | Canonical APT doctrine, checklists, prompts, examples, references, project adoption rules, and validation expectations |
-| `apt-agent-standards` | Cross-project installer, profile manifests, source-to-target AI tool path mapping, `.agent-standards.json`, dry-run install/sync, and tool parity checks |
-
-Do not merge installer, profile, or path-mapping behavior into `apt-principles`. Reusable doctrine improvements discovered through installed agent standards should come back here as doctrine/build-kit/reference updates. Distribution changes should stay in `apt-agent-standards`.
-
-Portable contract: `references/agent-standards-contract.json`.
-
-### `.github/` - GitHub Copilot (active for this repo when present)
-
-The `.github/` directory contains the **active AI configuration for apt-principles** itself:
-
-| Path | Purpose |
-|------|---------|
-| `.github/copilot-instructions.md` | Workspace rules for GitHub Copilot |
-| `.github/agents/` | 9 scoped agents for APT doctrine maintenance (auditor, principles maintainer, checklist synchronizer, prompt curator, docs maintainer, security reviewer, API architect, frontend implementer, test engineer) |
-| `.github/skills/` | 13 reusable task modules (API design, Cloudflare, docs, testing, payments, webhooks, and more) |
-| `.github/prompts/` | 5 guided workflow prompts (review-repo, generate-api, add-feature, create-docs, standard-repo-audit) |
-| `.github/instructions/` | 2 file-scoped editing rules (doctrine-root, checklists-only) |
-
-**For AI agents working IN this repo:** Start with `.github/copilot-instructions.md` and `AGENTS.md` before doing any work. Use the scoped agents in `.github/agents/` for their named domains — do not conflate doctrine maintenance agents with product implementation agents.
-
-### Cross-tool distribution
-
-Claude, Codex, and GitHub Copilot target files for downstream repositories are distributed by the sibling `apt-agent-standards` repository. Use that package for `.claude/`, `.codex/`, `.github/`, `AGENTS.md`, `.agent-standards.json`, profile detection, dry-run install, and sync behavior.
-
-Run its checks from `apt-agent-standards`:
+```powershell
+./installers/install-skills.ps1 -Target ../my-project -Manifest core -DryRun
+```
 
 ```bash
-node scripts/check-ai-tool-parity.mjs
-node scripts/audit-workspace-agent-standards.mjs --workspace-root .. --include-detection
+./installers/install-skills.sh --target ../my-project --manifest core --dry-run
 ```
 
-Use `references/agent-standards-contract.json` as the contract between this doctrine repo and the installer/distribution repo.
+See [distribution setup](docs/operations/setup.md), [routine operations](docs/operations/operating.md), and the [workspace rollout gate](docs/operations/workspace-rollout.md).
 
-### AI readiness validation
+Existing files are skipped by default. The force option creates timestamped backups before replacement.
 
-To check whether a project has the required AI configuration files:
+## Product Hubs And Audience Layers
 
-All commands below must be run **from `apt-principles`** — the script lives here and is not copied to downstream repos.
+A Product Hub is the canonical product-facing package for business/merchant, bank/acquirer/partner, integrator/developer, support/operations, product/internal, and AI-agent audiences. Each layer shares one verified product truth but answers the questions and operational needs of its audience.
 
-```bash
-# Validate this repo (should score 4/4)
-npm run validate:ai
+## Domain Coverage
 
-# Validate a downstream project (run from apt-principles, target with --repo-root)
-node scripts/validate-ai-readiness.mjs --repo-root ../apt-coach
+The repository includes API design and modernization; payments and ecommerce; service readiness; security and risk; cautious stablecoin/crypto readiness; documentation; product planning; beginner-friendly game development and interactive experiences; model routing; and compatibility bridge patterns for SOAP, XML, NVP, legacy JSON, provider-specific APIs, checkout forms, and callback-to-webhook migrations.
 
-# Scaffold GitHub-oriented readiness files from templates into a downstream project
-node scripts/validate-ai-readiness.mjs --repo-root ../apt-coach --fix
-```
+## Game Development And Interactive Experiences
 
-If you are already inside a downstream repo and want to run the check from there:
+The [game-development domain](principles/game-development/README.md) helps beginners learn and build small games through APT Thinking, Design, Architecture, and AI-assisted Execution. It emphasizes one understandable idea, a protected core loop, a playable prototype, evidence-based stack choice, incremental playtesting, and aggressive scope control.
 
-```bash
-# From inside apt-coach (or any sibling repo):
-node ..\apt-principles\scripts\validate-ai-readiness.mjs --repo-root .
-node ..\apt-principles\scripts\validate-ai-readiness.mjs --repo-root . --fix
-```
+## Reviews
 
-See `scripts/README.md` for the full score table and flag reference.
+Use micro-group review for focused cross-functional decisions and swarm review for broad, high-risk work. Every reviewer returns perspective, concerns, recommended changes, risks, questions, and approval status. Always include a beginner reviewer for onboarding, APIs, guides, UI journeys, migrations, troubleshooting, and Product Hubs.
 
-## Folder Contract
+## Contribute
 
-The active structure is deliberate:
+Put durable decision guidance in **principles/**, procedures in **skills/**, accountable perspectives in **agents/**, reusable inputs in **templates/** or **prompts/**, and concrete demonstrations in **examples/**. Add cross-links, provenance, tests, and audience impact; run **npm run check**.
 
-- `apt-principles/*.md` — canonical doctrine files.
-- `checklists/` — gates for review, release, adoption, quality, and operational readiness.
-- `examples/` — applied patterns and real project profile examples.
-- `prompts/` — reusable AI, agent, and operator prompts.
-- `references/` — machine-readable contracts for projects and public-site consumers.
-- `scripts/` — portable validation tooling.
-- `templates/` — authoring templates for new APT artifacts.
-- `governance/` — maturity model, scorecard, and review processes.
-- `standards/` — domain-specific standards (API, coding, data, documentation, observability, testing).
-- `principles/` — quick-reference cards per APT lifecycle layer.
-- `docs/` — diagrams and supplementary documentation.
-- `.github/` — active AI configuration for this repo when present.
-- `package.json` — local script entrypoint that makes this folder self-validating.
+## Provenance
 
-New top-level Markdown files should only be added when they become canonical framework areas or active framework governance records. Otherwise, add content to the appropriate build-kit folder.
-
-## Project Adoption
-
-Current and future APT projects can apply these principles in four supported modes:
-
-- Copy: vendor selected docs, prompts, examples, checklists, templates, and references.
-- Sync: periodically refresh local APT assets from this canonical folder.
-- Apply: reference this folder as external doctrine while keeping project-specific implementation docs local.
-- Showcase: publish a project profile that `applied-practical-thinking` can use for portfolio and case-study pages.
-
-Recommended downstream structure:
-
-```text
-docs/apt/
-  README.md
-  adoption.md
-  project-profile.md
-  decisions/
-  reports/
-  references/
-```
-
-Projects should document local decisions and exceptions instead of casually forking doctrine. Reusable improvements should come back to `apt-principles`.
-
-Real APT examples include `apt-coach`, `apt-dream-to-reality`, `apt-novel-reviewer`, `apt-payment-rpc-api`, `crt-world`, and future APT projects.
-
-## Public Publish Sync (Applied Practical Thinking)
-
-`applied-practical-thinking` is the public presentation layer and should publish APT principles from this canonical package.
-
-Canonical workflow:
-
-1. Update doctrine/build-kit/reference content in `apt-principles`.
-2. In `applied-practical-thinking`, run:
-   - `pnpm --dir apps/web run generate-apt-principles-public`
-   - `pnpm --dir apps/web run validation-report`
-   - `pnpm --dir apps/web run build-content-index`
-   - `pnpm --dir apps/web run copy-content-to-public`
-3. Commit regenerated public artifacts in `applied-practical-thinking`, including:
-   - `apps/web/public/docs/apt/**`
-   - `apps/web/data/generated/aptPrinciplesPublicManifest.ts`
-4. Deploy from `applied-practical-thinking`.
-
-If the canonical source folder is unavailable in a CI environment, the consumer repo may reuse committed generated artifacts. This is expected in single-repo deploy contexts like Cloudflare Pages. To force refresh from canonical source, provide `APT_PRINCIPLES_ROOT` or check out `apt-principles` alongside the consumer repo.
-
-Reference runbook example: `examples/workflows/apt-principles-public-sync-flow.md`.
-
-## Validation
-
-Run the local doctrine/build-kit validator before expanding or reorganizing content:
-
-```bash
-npm --prefix apt-principles run validate
-```
-
-The validator checks active docs and references only and ignores `archive/`. It fails on structural drift, missing frontmatter, missing required sections, invalid JSON references, and broken active local links. It warns on shallow content, unfinished-work markers, empty headings, and missing related-artifact signals.
-
-For portable usage in other APT projects, copy `scripts/validate-apt-principles.mjs` and adjust the configuration constants at the top of the script.
-
-**AI readiness validation** checks whether AI configuration files are present, structured, and complete:
-
-```bash
-npm run validate:ai
-```
-
-Scores the repo 0–4 (None → Minimal → Configured → Active → Optimizing). Run with `--fix` against a downstream project to scaffold GitHub-oriented files from apt-principles templates. Use `apt-agent-standards` for Claude, Codex, Copilot distribution, `.agent-standards.json`, and `docs/project-context.md`.
-
-**Agent standards contract check** verifies that the doctrine/distribution ownership contract is present and points operators to the `apt-agent-standards` parity checks:
-
-```bash
-npm run sync:check
-```
-
-## Audit Report Scaffolding
-
-Use the scaffold CLI to create a repo-local APT audit report from the canonical template instead of hand-creating the Markdown shell.
-
-Run from `apt-principles`:
-
-```bash
-npm run scaffold:audit-report -- --project apt-payment-rpc-api --repo-root ../apt-payment-rpc-api
-```
-
-Optional flags:
-
-- `--date YYYY-MM-DD` to control the audit filename and report metadata.
-- `--output <path>` to write to a specific file.
-- `--reviewer <label>` to set the reviewer field.
-- `--review-type <label>` to change the scope label.
-- `--force` to overwrite an existing scaffold target.
-
-Expected reviewer workflow:
-
-1. Run the scaffold command for the target repo.
-2. Review the target repo against canonical APT doctrine, checklists, and references.
-3. Replace the scaffold placeholders with evidence-based findings, rubric scores, remediation actions, and validation outcomes.
-4. Store machine-readable outputs in the target repo under `docs/apt/reports/static/` and reference them from the Markdown report.
-5. Run the target repo validation commands plus `npm run validate` in `apt-principles` before finalizing the audit.
-
-## Project Profile Sweep
-
-Use the workspace sweep CLI to validate every sibling repo that has a root `package.json` and write a JSON summary into each repo's local `docs/apt/reports/static/` directory.
-
-Run from `apt-principles`:
-
-```bash
-npm run sweep:project-profiles
-```
-
-Optional flags:
-
-- `--workspace-root <path>` to override the default sibling-workspace root.
-- `--repos repo-a,repo-b` to limit the sweep to a subset of repos.
-- `--date YYYY-MM-DD` to control the JSON output filename.
-
-Output behavior:
-
-- Repos with `docs/apt/references/project-profile.json` receive `docs/apt/reports/static/project-profile-validation-sweep-YYYY-MM-DD.json`.
-- The JSON includes local repo validation, extracted audit findings/rubric data, and a workspace-level summary.
-- `apt-principles` also receives a master workspace JSON at `reports/project-profile-validation-sweep-YYYY-MM-DD.json` for portfolio-level review.
-- `apt-principles` also receives a compact Markdown dashboard at `reports/project-profile-validation-sweep-YYYY-MM-DD.md` with principle coverage plus findings grouped by severity and APT layer.
-- Repos without a local profile file are included in the workspace summary as `skipped` and do not receive a local output file until they adopt the local APT evidence layer.
-
-## Running Checks And Using Results
-
-Use these documents for execution and interpretation guidance:
-
-- `reports/README.md` for quick commands and output locations.
-- `reports/VALIDATION_RESULTS_GUIDE.md` for full runbook steps, triage direction, and CI usage patterns.
-
-Fast operator entrypoint:
-
-```bash
-npm run run-all-checks
-```
-
-This runs canonical validation, the workspace sweep, and selected sibling repo `lint`, `typecheck`, and `test` commands before printing a compact summary.
-
-## Documentation Rules
-
-1. Each topic has one canonical file.
-2. Cross-reference other docs; do not redefine their rules.
-3. Keep core docs principle-driven and artifact-oriented.
-4. Put detailed reference cases in `examples/`.
-5. Put validation gates in `checklists/`.
-6. Put reusable AI instructions in `prompts/`.
-7. Put portable machine-readable contracts in `references/`.
-8. Keep `package.json` at the root so validation remains portable.
-9. Keep historical exports outside the active package unless they are intentionally reintroduced as canonical or reference material.
-
-## What Good Looks Like
-
-A good APT doc:
-
-- has clear scope
-- defines standards and required artifacts
-- explains when to use and when not to use
-- includes tradeoffs and failure modes
-- links to related examples, checklists, and prompts
-
-## Historical Material Policy
-
-Older one-shots, generated guides, Lovable themes, Copilot prompts, and source references were useful during consolidation, but they are no longer part of the active package.
-
-Historical material may be harvested again later, but active guidance must live in the canonical doctrine files, build-kit folders, or references folder.
-
-`apt-principles-framework-audit.md` stays top-level while the framework is still being consolidated. When the framework stabilizes, it may move to a future `reports/` pattern or external historical export with a validator update.
+See [migration from the old repositories](docs/migration-from-old-repos.md) and [source provenance](docs/archive/source-provenance/README.md).

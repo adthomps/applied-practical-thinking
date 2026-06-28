@@ -226,7 +226,7 @@ All Learn content (articles, podcasts, guides, design reviews) is managed as Mar
 - Shared request/response/domain contracts belong in `packages/knowledge`.
 - Agent and prompt changes must preserve auth, validation, and route boundaries.
 - Local prompt ownership is documented in `apps/web/ai/README.md`.
-- Canonical APT-wide AI-agent doctrine lives in `apt-principles/ai-agent-framework.md` and is published at `/docs/apt/ai-agent-framework.md`.
+- Canonical APT-wide AI-agent doctrine lives in `apt-principles-agents/principles/ai/README.md` and is published at `/docs/apt/ai-agent-framework.md`.
 
 ---
 
@@ -242,9 +242,9 @@ All Learn content (articles, podcasts, guides, design reviews) is managed as Mar
 ## 8. Review & Logging
 
 - All changes to design, prompts, or business logic must be reviewed.
-- Design review uses `apps/web/docs/design/static/APT-REVIEW-STANDARD.md` plus the canonical APT design checklist in `apt-principles/checklists/design-review-checklist.md`.
-- Security review uses canonical APT security doctrine and checklist in `apt-principles/security.md` and `apt-principles/checklists/security-review-checklist.md`.
-- Quality review uses canonical APT quality/testing doctrine and checklist in `apt-principles/quality-testing.md` and `apt-principles/checklists/quality-testing-checklist.md`.
+- Design review uses `apps/web/docs/design/static/APT-REVIEW-STANDARD.md` plus the canonical APT design checklist in `apt-principles-agents/checklists/design-review-checklist.md`.
+- Security review uses canonical APT security doctrine and checklist in `apt-principles-agents/principles/security-risk/README.md` and `apt-principles-agents/checklists/security-review-checklist.md`.
+- Quality review uses canonical APT quality/testing doctrine and checklist in `apt-principles-agents/principles/execution/quality-and-testing.md` and `apt-principles-agents/checklists/quality-testing-checklist.md`.
 - Log all durable design, architecture, security, release, or operational deviations in `docs/DECISION_LOG.md`.
 - For major changes, update `DOCUMENTATION_INDEX.md` and relevant docs.
 
@@ -264,4 +264,4 @@ All Learn content (articles, podcasts, guides, design reviews) is managed as Mar
 - Validate external inputs at worker route boundaries before calling services or AI/runtime dependencies.
 - Keep docs and code in sync.
 - Use only semantic tokens for colors/styles.
-- Follow local guardrails in `PROJECT_RULES.md` and APT-wide doctrine in `apt-principles`.
+- Follow local guardrails in `PROJECT_RULES.md` and APT-wide doctrine in `apt-principles-agents`.

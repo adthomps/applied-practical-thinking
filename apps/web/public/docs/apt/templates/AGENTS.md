@@ -4,6 +4,9 @@ version: v1
 last_updated: {{DATE}}
 owner: {{OWNER}}
 status: draft
+kind: "template"
+domain: "AGENTS"
+source_paths: ["apt-principles/templates/AGENTS.md"]
 ---
 
 # AGENTS.md

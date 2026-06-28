@@ -2,7 +2,7 @@
 
 Refer to:
 - /AGENTS.md
-- /apt-principles/AGENTS.md (doctrine working rules)
+- /apt-principles-agents/AGENTS.md (doctrine working rules)
 
 These files define project standards and must be followed.
 
@@ -10,7 +10,7 @@ These files define project standards and must be followed.
 
 This is the public **Applied Practical Thinking (APT) portfolio and showcase site** — a pnpm monorepo with a Vite + React frontend and a Cloudflare Worker API/AI backend.
 
-It is a **consumer** of `apt-principles` doctrine, not the doctrine authority itself.
+It is a **consumer** of `apt-principles-agents` doctrine, not the doctrine authority itself.
 
 ## Package manager
 
@@ -48,7 +48,7 @@ pnpm --filter apt-web verify-worker-api-config  # API config guard
 5. Shared logic belongs in `packages/`; UI cannot import worker internals.
 6. Run `pnpm build` after any structural change to verify no regressions.
 7. Log design deviations in `docs/DECISION_LOG.md`.
-8. APT doctrine lives in `apt-principles/` (canonical) and is mirrored at `apps/web/public/docs/apt/` (generated). Do not edit the generated mirror.
+8. APT doctrine lives in `apt-principles-agents/` (canonical) and is mirrored at `apps/web/public/docs/apt/` (generated). Do not edit the generated mirror.
 
 ## Active agents for this repo
 
@@ -86,6 +86,6 @@ For design system work, read in this order:
 4. `apps/web/docs/design/static/APT-DESIGN-SYSTEM-LINT-CHECKLIST.md`
 
 For APT framework doctrine, read:
-- `apt-principles/apt-principles.md`
-- `apt-principles/ai-agent-framework.md`
+- `apt-principles-agents/principles/framework.md`
+- `apt-principles-agents/principles/ai/README.md`
 - The relevant domain doc: `thinking.md`, `design.md`, `architecture.md`, etc.

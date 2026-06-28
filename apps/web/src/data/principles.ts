@@ -104,7 +104,7 @@ type PrincipleSectionSeed = Omit<
   | "relatedArtifacts"
 >;
 
-export const PRINCIPLES_GITHUB_ROOT = "https://github.com/adthomps/apt-principles/blob/main/apt-principles";
+export const PRINCIPLES_GITHUB_ROOT = "https://github.com/adthomps/apt-principles-agents/blob/main";
 
 const source = (relativePath: string) => `${PRINCIPLES_GITHUB_ROOT}/${relativePath}`;
 
@@ -149,7 +149,7 @@ export const aptProjectProfile: AptProjectProfile = {
   audience: ["builders", "architects", "product teams", "public APT learners"],
   principlesDemonstrated: ["thinking", "design", "architecture", "system", "knowledge", "ai"],
   reusableArtifacts: [
-    "apps/web/scripts/generate-apt-principles-public.cjs",
+    "apps/web/scripts/generate-apt-principles-agents-public.cjs",
     "apps/web/scripts/validation-report.cjs",
     "apps/worker/src/routes",
     "packages/knowledge/src/content.ts",
@@ -465,7 +465,7 @@ const principleOperationalSummaryBySlug: Record<PrincipleSlug, PrincipleOperatio
   knowledge: {
     focus: ["Canonical ownership", "Curated presentation", "Reuse at scale"],
     outputs: ["Source anchors", "Project adoption records", "Knowledge contracts"],
-    practicalExample: "Keep doctrine in apt-principles and serve concise summaries in applied-practical-thinking.",
+    practicalExample: "Keep doctrine in apt-principles-agents and serve concise summaries in applied-practical-thinking.",
   },
   ai: {
     focus: ["Prompt contracts", "Agent guardrails", "Human-reviewed output"],
@@ -602,7 +602,7 @@ const principlesSectionsSeed: readonly PrincipleSectionSeed[] = [
       { label: "Live Demos", href: "/labs/live-demos", status: "available" },
       { label: "Proof", href: "/proof", status: "available" },
     ],
-    sourceHref: source("apt-principles.md"),
+    sourceHref: source("apt-principles-agents.md"),
     aiUsage: [
       "Maps AI prompts to principle layers so outputs stay structured.",
       "Uses framework language for coding-agent tasks and review outputs.",
@@ -851,7 +851,7 @@ const principlesSectionsSeed: readonly PrincipleSectionSeed[] = [
       "Promote reusable learnings back into standards.",
     ],
     howUsed: [
-      "Aligns apt-principles and applied-practical-thinking documentation flows.",
+      "Aligns apt-principles-agents and applied-practical-thinking documentation flows.",
       "Supports public summary pages linked to canonical GitHub sources.",
       "Improves onboarding and cross-project continuity.",
     ],

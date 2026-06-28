@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-06-13
 owner: APT
 status: draft
+kind: "example"
+domain: "security"
+source_paths: ["apt-principles/examples/security/threat-auth-review-example.md"]
 ---
 
 # Threat Auth Review Example

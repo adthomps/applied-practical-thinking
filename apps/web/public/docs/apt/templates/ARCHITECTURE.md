@@ -4,6 +4,9 @@ version: v1
 last_updated: {{DATE}}
 owner: {{OWNER}}
 status: draft
+kind: "template"
+domain: "ARCHITECTURE"
+source_paths: ["apt-principles/templates/ARCHITECTURE.md"]
 ---
 
 # ARCHITECTURE.md
@@ -252,7 +255,7 @@ Use findings to guide future improvements.
 
 # Downstream Project Repository Template
 
-Use this layout when starting a new project that adopts APT. Product and application repos should follow this structure — it differs intentionally from `apt-principles` itself, which is a doctrine repo, not a product repo.
+Use this layout when starting a new project that adopts APT. Product and application repos should follow this structure — it differs intentionally from `apt-principles-agents` itself, which is a doctrine repo, not a product repo.
 
 ```text
 .
@@ -273,13 +276,13 @@ Use this layout when starting a new project that adopts APT. Product and applica
 ├─ .github/
 │  ├─ copilot-instructions.md         # Workspace rules for GitHub Copilot
 │  ├─ agents/
-│  │  ├─ apt-auditor-readonly.agent.md   # Copy from apt-principles templates/
+│  │  ├─ apt-auditor-readonly.agent.md   # Copy from apt-principles-agents templates/
 │  │  ├─ api-architect.agent.md          # Adapt scope to this project's API layer
 │  │  ├─ frontend-implementer.agent.md   # Adapt scope to this project's UI layer
 │  │  ├─ test-engineer.agent.md          # Adapt scope to this project's test strategy
 │  │  ├─ docs-maintainer.agent.md        # Adapt scope to this project's docs/
 │  │  └─ security-reviewer.agent.md      # Adapt scope to this project's auth model
-│  ├─ skills/                            # Copy relevant skills from apt-principles
+│  ├─ skills/                            # Copy relevant skills from apt-principles-agents
 │  │  ├─ apt-repo-architect/SKILL.md
 │  │  ├─ cloudflare-hono-worker-builder/SKILL.md   # If using Cloudflare + Hono
 │  │  ├─ api-first-openapi-designer/SKILL.md
@@ -287,19 +290,19 @@ Use this layout when starting a new project that adopts APT. Product and applica
 │  │  ├─ testing-validation-runner/SKILL.md
 │  │  └─ docs-kb-maintainer/SKILL.md
 │  └─ prompts/
-│     ├─ review-repo.prompt.md            # Copy from apt-principles .github/prompts/
+│     ├─ review-repo.prompt.md            # Copy from apt-principles-agents .github/prompts/
 │     ├─ generate-api.prompt.md           # Copy and adapt for this project's API
 │     ├─ add-feature.prompt.md            # Copy and adapt for this project's stack
-│     └─ create-docs.prompt.md            # Copy from apt-principles .github/prompts/
+│     └─ create-docs.prompt.md            # Copy from apt-principles-agents .github/prompts/
 └─ scripts/
    ├─ validate-repo.mjs                # Structure and frontmatter checks
    ├─ check-docs.mjs                   # Broken link and coverage checks
    └─ smoke-test.mjs                   # Basic end-to-end readiness check
 ```
 
-## Key differences from `apt-principles`
+## Key differences from `apt-principles-agents`
 
-| `apt-principles` (doctrine repo) | Downstream project repo |
+| `apt-principles-agents` (doctrine repo) | Downstream project repo |
 |-----------------------------------|------------------------|
 | Canonical principle files at root | Principle files live in `docs/` |
 | `checklists/`, `prompts/`, `references/` as first-class dirs | Checklists and prompts copied/adapted into `.github/` |
@@ -312,6 +315,6 @@ Use this layout when starting a new project that adopts APT. Product and applica
 See [checklists/project-adoption-checklist.md](../checklists/project-adoption-checklist.md) for gate criteria per mode.
 
 - **Copy**: vendor selected APT assets into the project at project setup; update manually on APT version bumps.
-- **Sync**: periodically refresh `.github/agents/`, `.github/prompts/`, and skills from `apt-principles`.
-- **Apply**: reference `apt-principles` as external canonical source; keep local docs linked but not copied.
+- **Sync**: periodically refresh `.github/agents/`, `.github/prompts/`, and skills from `apt-principles-agents`.
+- **Apply**: reference `apt-principles-agents` as external canonical source; keep local docs linked but not copied.
 - **Showcase**: publish a `docs/apt/adoption.md` with maturity evidence for public portfolio.

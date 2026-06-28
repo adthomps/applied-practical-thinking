@@ -1,0 +1,96 @@
+{
+  "title": "APT Project Profile Schema",
+  "version": "v1",
+  "last_updated": "2026-04-24",
+  "owner": "APT",
+  "status": "draft",
+  "type": "object",
+  "required": [
+    "project",
+    "purpose",
+    "audience",
+    "adoption_mode",
+    "principles_demonstrated",
+    "maturity",
+    "showcase"
+  ],
+  "properties": {
+    "project": {
+      "type": "string"
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "audience": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "adoption_mode": {
+      "type": "string",
+      "enum": ["copy", "sync", "apply", "showcase"]
+    },
+    "principles_demonstrated": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "outcome_evidence": {
+      "type": "string"
+    },
+    "architecture_pattern": {
+      "type": "string"
+    },
+    "command_matrix": {
+      "type": "string"
+    },
+    "validation_evidence": {
+      "type": "string"
+    },
+    "release_model": {
+      "type": "string"
+    },
+    "operations_model": {
+      "type": "string"
+    },
+    "ai_agent_usage": {
+      "type": "string"
+    },
+    "ai_evaluation": {
+      "type": "string"
+    },
+    "security_model": {
+      "type": "string"
+    },
+    "security_escalation": {
+      "type": "string"
+    },
+    "learning_value": {
+      "type": "string"
+    },
+    "reusable_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "maturity": {
+      "type": "string",
+      "enum": ["concept", "prototype", "active", "production", "archived"]
+    },
+    "showcase": {
+      "type": "object",
+      "required": ["include", "summary"],
+      "properties": {
+        "include": {
+          "type": "boolean"
+        },
+        "summary": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

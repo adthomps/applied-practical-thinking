@@ -14,7 +14,7 @@ This directory contains role-specific prompts for AI agents.
 - [design-review.md](prompts/design-review.md) - Design system, token, and state review against APT Design Principles
 - [architecture-review.md](prompts/architecture-review.md) - Boundary, contract, and deployment review against APT Architecture Standards
 
-For the full APT review prompt set covering framework, security, testing, release, operations, and knowledge, see `apt-principles/prompts/`.
+For the full APT review prompt set covering framework, security, testing, release, operations, and knowledge, see `apt-principles-agents/prompts/`.
 
 ## Usage
 
@@ -22,7 +22,7 @@ Reference the appropriate prompt when working on specific areas of the codebase.
 
 These prompts are internal operating instructions. Public-facing content and doctrine should be sourced from:
 
-- `apt-principles` for doctrine and version authority
+- `apt-principles-agents` for doctrine and version authority
 - `apps/web/content/`
 - approved published mirror docs in `apps/web/docs/design/`
 - generated public APT principles mirrors in `apps/web/public/docs/apt/`
@@ -38,4 +38,4 @@ When an external AI or working agent needs a pointable standards document, use `
 - Shared request, response, content, and assistant contracts belong in `packages/knowledge`.
 - Agent or prompt paths may not bypass auth, validation, or worker route boundaries.
 - Prompt changes require review when they affect product behavior, safety behavior, or generated content.
-- APT-wide AI-agent doctrine lives in `apt-principles/ai-agent-framework.md` and is published publicly at `/docs/apt/ai-agent-framework.md`.
+- APT-wide AI-agent doctrine lives in `apt-principles-agents/principles/ai/README.md` and is published publicly at `/docs/apt/ai-agent-framework.md`.

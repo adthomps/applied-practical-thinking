@@ -15,7 +15,7 @@ describe("apt principles detail contract", () => {
       expect(group.detailPath.startsWith("/principles/")).toBe(true);
       expect(group.detailPath.length).toBeGreaterThan("/principles/".length);
       expect(group.docSlug.length).toBeGreaterThan(0);
-      expect(group.sourcePath.startsWith("apt-principles/")).toBe(true);
+      expect(group.sourcePath.startsWith("apt-principles-agents/")).toBe(true);
       expect(group.publicDocPath?.startsWith("/docs/apt/")).toBe(true);
       expect(group.publicDocMeta?.publicPath).toBe(group.publicDocPath);
       expect(group.publicDocMeta?.checksum).toMatch(/^[a-f0-9]{64}$/);
@@ -42,7 +42,7 @@ describe("apt principles detail contract", () => {
     }
   });
 
-  it("backs every public principle group with generated canonical apt-principles docs", () => {
+  it("backs every public principle group with generated canonical apt-principles-agents docs", () => {
     const generatedSourcePaths = new Set(aptPrinciplesPublicManifest.map((item) => item.sourcePath));
 
     for (const group of aptPrincipleGroups) {
@@ -50,7 +50,7 @@ describe("apt principles detail contract", () => {
     }
   });
 
-  it("maps the framework page to canonical apt-principles markdown", () => {
-    expect(aptPrinciplesFrameworkPublicDocPath).toBe("/docs/apt/apt-principles.md");
+  it("maps the framework page to canonical apt-principles-agents markdown", () => {
+    expect(aptPrinciplesFrameworkPublicDocPath).toBe("/docs/apt/principles/framework.md");
   });
 });

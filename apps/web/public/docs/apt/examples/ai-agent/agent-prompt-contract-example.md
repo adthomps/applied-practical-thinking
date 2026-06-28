@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-04-24
 owner: APT
 status: draft
+kind: "example"
+domain: "ai-agent"
+source_paths: ["apt-principles/examples/ai-agent/agent-prompt-contract-example.md"]
 ---
 
 # Agent Prompt Contract Example
@@ -32,7 +35,7 @@ Role:
 APT framework reviewer.
 
 Sources:
-apt-principles.md, architecture.md, system-standards.md, security.md.
+apt-principles-agents.md, architecture.md, system-standards.md, security.md.
 
 Allowed:
 Read files, identify findings, suggest fixes.

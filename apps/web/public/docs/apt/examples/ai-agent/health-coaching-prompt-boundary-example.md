@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-05-01
 owner: APT
 status: draft
+kind: "example"
+domain: "ai-agent"
+source_paths: ["apt-principles/examples/ai-agent/health-coaching-prompt-boundary-example.md"]
 ---
 
 # Health Coaching Prompt Boundary Example

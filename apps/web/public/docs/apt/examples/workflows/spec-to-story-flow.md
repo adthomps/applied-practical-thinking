@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-04-24
 owner: APT
 status: draft
+kind: "example"
+domain: "workflows"
+source_paths: ["apt-principles/examples/workflows/spec-to-story-flow.md"]
 ---
 
 # Spec to Story Flow
