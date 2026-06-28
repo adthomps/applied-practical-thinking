@@ -1490,6 +1490,18 @@ export const aptPrinciplesPublicManifest = [
     "checksum": "49027841bbe3e254d267f47aacb01c85f8e49f17b53e773ef27e18db12f9ccc6"
   },
   {
+    "id": "docs-archive-readiness-report",
+    "title": "Archive readiness report",
+    "kind": "report",
+    "domain": "governance",
+    "sourcePath": "apt-principles-agents/docs/archive-readiness-report.md",
+    "publicPath": "/docs/apt/docs/archive-readiness-report.md",
+    "version": "1.0.0",
+    "status": "active",
+    "lastUpdated": "2026-06-28",
+    "checksum": "17586bf28cb0efcd02371e2dcbc6f2628384720e3923f314ef5f2595d11993df"
+  },
+  {
     "id": "docs-audience-layered-documentation",
     "title": "Audience Layered Documentation",
     "kind": "guide",
