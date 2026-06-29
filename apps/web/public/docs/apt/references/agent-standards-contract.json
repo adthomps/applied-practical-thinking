@@ -1,160 +1,74 @@
 {
-  "title": "APT Agent Standards Distribution Contract",
-  "version": "v1",
-  "last_updated": "2026-06-14",
+  "title": "APT Principles and Agents Distribution Contract",
+  "version": "1.0.0",
+  "last_updated": "2026-06-28",
   "owner": "APT",
-  "status": "draft",
-  "source": "Governance contract between apt-principles-agents and apt-principles-agents",
-  "repositories": {
-    "apt-principles-agents": {
-      "role": "canonical doctrine and build-kit source",
-      "owns": [
-        "APT doctrine",
-        "AI and agent framework",
-        "agent harness standards",
-        "model routing standards",
-        "token efficiency standards",
-        "verification standards",
-        "repository lifecycle standards",
-        "review checklists",
-        "prompts and examples",
-        "reference contracts",
-        "project adoption rules",
-        "doctrine validation"
-      ],
-      "must_not_own": [
-        "cross-project installer behavior",
-        "target-repo managed-file manifests",
-        "tool-native file distribution",
-        "profile detection logic"
-      ]
-    },
-    "apt-principles-agents": {
-      "role": "agent harness implementation, standards installer, and cross-tool distribution system",
-      "owns": [
-        "agent harness implementation",
-        "agent, skill, and prompt catalogs",
-        "routing docs and model registry",
-        "context packs",
-        "verification and lifecycle reports",
-        "installer and sync scripts",
-        "scan and repair scripts",
-        "profile manifests",
-        "profile detection",
-        "source-to-target AI tool path mapping",
-        ".apt/installation.json target manifests",
-        ".apt/installation.json target manifests",
-        "Claude, Codex, and GitHub Copilot distribution surfaces",
-        "cross-tool parity checks"
-      ],
-      "must_reference": [
-        "apt-principles-agents/ai-agent-framework.md",
-        "apt-principles-agents/standards/ai/agent-harness-standard.md",
-        "apt-principles-agents/standards/ai/model-routing-standard.md",
-        "apt-principles-agents/standards/ai/repository-lifecycle-standard.md",
-        "apt-principles-agents/checklists/ai-agent-review-checklist.md",
-        "apt-principles-agents/prompts/apt-one-shot-build-prompt.md",
-        "apt-principles-agents/references/ai-review-bundle.json",
-        "apt-principles-agents/references/ai-harness-contract.json"
-      ]
-    }
+  "status": "active",
+  "canonicalRepository": "apt-principles-agents",
+  "ownership": {
+    "canonical": [
+      "principles",
+      "standards",
+      "checklists",
+      "governance",
+      "references",
+      "context-packs",
+      "skills",
+      "agents",
+      "templates",
+      "prompts",
+      "examples",
+      "product-hubs",
+      "manifests",
+      "platform-adapters",
+      "distribution-tooling"
+    ],
+    "targetOwned": [
+      "product context",
+      "architecture decisions",
+      "commands and integrations",
+      "local exceptions",
+      "docs/project-context.md"
+    ]
   },
-  "target_manifest": {
+  "manifestContract": {
+    "directory": "manifests",
+    "requiredFields": ["name", "description", "principles", "standards", "checklists", "context", "skills", "agents", "templates", "prompts", "platforms"],
+    "optionalFields": ["extends"],
+    "rules": [
+      "Paths are repository-relative and cannot escape the canonical repository.",
+      "Directories expand recursively in deterministic lexical order.",
+      "Extensions are acyclic and duplicate entries are invalid."
+    ]
+  },
+  "installationContract": {
     "path": ".apt/installation.json",
-    "required_fields": [
-      "source",
-      "version",
-      "profiles",
-      "installedAt",
-      "managedFiles",
-      "managedFileSources",
-      "localContext"
-    ],
-      "rules": [
-        "managedFiles records target-repo files controlled by apt-principles-agents",
-        "managedFileSources records source files used to update target-native files",
-        "localContext points to target-owned project context and must be preserved during sync",
-        "first-run installs create missing managed files and a local context starter without overwriting existing files unless force is explicit",
-        "update runs use sync and update only managed files unless an operator explicitly forces recreation"
-      ]
-  },
-  "profile_model": {
-    "path": "profiles/*.json",
+    "schema": "references/installation.schema.json",
     "rules": [
-      "apt-core is always included",
-      "profiles are composable capabilities, not repo types",
-      "profiles may extend other profiles",
-      "profile files list source files to install or sync",
-      "profile additions must preserve deterministic dry-run behavior"
+      "The target owns and commits the installation record.",
+      "Managed files record canonical source, target path, artifact kind, and installed SHA-256.",
+      "Sync preserves local drift unless force is explicit.",
+      "Forced replacement writes a local timestamped backup before overwrite.",
+      "Applied operations refresh source version, commit, hashes, and last operation."
     ]
   },
-  "tool_surfaces": {
-    "source_paths": [
-      "standards/",
-      "claude/agents/",
-      "codex/skills/",
-      "github-copilot/instructions/",
-      "github-copilot/prompts/"
-    ],
-    "target_paths": [
-      "AGENTS.md",
-      ".claude/CLAUDE.md",
-      ".claude/agents/",
-      ".codex/skills/",
-      ".github/copilot-instructions.md",
-      ".github/instructions/",
-      ".github/prompts/"
-    ],
-    "rules": [
-      "source folders stay reviewable in apt-principles-agents",
-      "installer maps source folders into tool-native target paths",
-      "tool-native target files should not become the canonical doctrine source",
-      "high-value workflows should maintain cross-tool parity where practical"
-    ]
+  "platformTargets": {
+    "codex": ".codex/skills",
+    "claude": ".claude/skills",
+    "copilotSkills": ".github/skills",
+    "copilotPrompts": ".github/prompts",
+    "gemini": ".gemini/commands"
   },
-  "harness_surfaces": {
-    "source_paths": [
-      "agents/",
-      "routing/",
-      "context/",
-      "docs/HARNESS-ARCHITECTURE.md",
-      "docs/AGENT-CATALOG.md",
-      "docs/SKILL-CATALOG.md",
-      "docs/PROMPT-CATALOG.md",
-      "agent-repo.manifest.json",
-      "scripts/install-agent-repo.mjs",
-      "scripts/scan-agent-install.mjs",
-      "scripts/repair-agent-install.mjs",
-      "scripts/sync-agent-repo.mjs",
-      "scripts/validate-model-routing.mjs",
-      "scripts/check-local-models.mjs"
-    ],
-    "rules": [
-      "harness implementation stays in apt-principles-agents",
-      "harness docs and scripts reference apt-principles-agents standards instead of redefining them",
-      "model registry entries are implementation configuration, not doctrine",
-      "lifecycle reports are implementation evidence, not canonical standards"
-    ]
-  },
-  "validation": {
-    "apt-principles-agents": [
-      "npm run validate"
-    ],
-    "apt-principles-agents": [
-      "node scripts/detect-profiles.mjs --target <repo> --json",
-      "node scripts/apt-assets.mjs install --target <repo> --profiles <profiles> --dry-run",
-      "node scripts/apt-assets.mjs sync --target <repo> --dry-run",
-      "node scripts/check-ai-tool-parity.mjs"
-    ]
-  },
-  "governance_rules": [
-    "Do not merge apt-principles-agents installer, profile, or path-mapping behavior into apt-principles-agents.",
-    "Do not merge apt-principles-agents harness agents, routing registries, context packs, lifecycle scripts, or runtime reports into apt-principles-agents.",
-    "Update apt-principles-agents first when doctrine, review criteria, or APT lifecycle rules change.",
-    "Update apt-principles-agents when harness implementation, installed agent files, profile composition, lifecycle tooling, or tool-specific distribution behavior must change.",
-    "Use dry-run install and sync before applying standards to a real target repository.",
-    "Preserve target-owned docs/project-context.md during sync.",
-    "Use curated profile selections when auto-detection signals are advisory or noisy.",
-    "Reusable doctrine improvements discovered through apt-principles-agents should flow back into apt-principles-agents."
+  "retiredInterfaces": [
+    ".agent-standards.json",
+    ".agent-repo",
+    "profiles/*.json",
+    "install-agent-standards.mjs",
+    "sync-agent-standards.mjs",
+    "legacy lifecycle installers"
+  ],
+  "validation": [
+    "npm run check",
+    "node scripts/apt-assets.mjs audit-workspace --workspace-root .. --check"
   ]
 }

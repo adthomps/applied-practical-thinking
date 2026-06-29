@@ -5,7 +5,7 @@ status: active
 owner: APT
 last_updated: 2026-06-27
 source: APT game-development enhancement
-domain: "repository"
+domain: "product-hubs"
 source_paths: ["apt-principles-agents/product-hubs/product-hub-template/game-extension.md"]
 ---
 

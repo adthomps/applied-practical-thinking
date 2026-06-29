@@ -5,47 +5,28 @@ status: active
 owner: APT
 last_updated: 2026-06-27
 source: APT source templates
-domain: "repository"
+domain: "payments"
 source_paths: ["apt-principles-agents/product-hubs/examples/generic-payment-product/demos/demo-plan.md"]
 ---
 
 # Demo Plan
 
-## Purpose And Decision
+## Goal
 
-- Owner:
-- Date:
-- Status:
-- Intended outcome:
-- Audiences:
-- Decision or deliverable:
+Demonstrate the same ExamplePay truth to business, developer, partner, support, and risk audiences without implying production readiness.
 
-## Current State And Evidence
+## Script
 
-- Verified facts:
-- Source references:
-- Constraints and dependencies:
-- Assumptions requiring validation:
+Create a sandbox authorization with an idempotency key; repeat it to prove one effect; capture it; receive and verify a duplicate webhook; locate it using the request and processor references; match a settlement fixture; then show a decline and an unknown-timeout recovery.
 
-## Proposed Approach
+## Evidence
 
-Describe how the work will publish one canonical truth through audience-specific layers, executable examples, diagrams, troubleshooting, and implementation blueprints.
+Record request/response fixtures, state transitions, signature verification, duplicate suppression, operations lookup, reconciliation result, and rollback control. Use only synthetic tokens and amounts.
 
-## Required Detail
+## Failure Branches
 
-Capture audience map, canonical source, business and partner guides, developer contract, support runbook, AI examples, diagrams, demos, and freshness owner.
+Show idempotency payload conflict, invalid capture state, bad webhook signature, delayed settlement, and customer-safe decline messaging.
 
-## Risks And Alternatives
+## Exit Criteria
 
-- Alternatives considered:
-- Tradeoffs:
-- Security/compliance considerations:
-- Migration and support impact:
-- Open questions:
-
-## Validation And Approval
-
-- Acceptance criteria:
-- Tests or review evidence:
-- Rollout and rollback:
-- Approval owner and status:
+Each audience can state its next action, no live credential or claim appears, and every result maps to an acceptance test or open question.

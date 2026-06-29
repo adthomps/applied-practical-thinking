@@ -5,13 +5,13 @@ status: active
 owner: APT
 last_updated: 2026-06-27
 source: APT consolidation
-domain: "repository"
+domain: "governance"
 source_paths: ["apt-principles-agents/README.md"]
 ---
 
 # APT Principles + Agents
 
-**apt-principles-agents** is the canonical operating system for APT thinking, design, architecture, and execution. It consolidates the doctrine from **apt-principles-agents** with the reusable agent workflows from **apt-principles-agents** while keeping principles distinct from procedures and platform adapters.
+**apt-principles-agents** is the canonical operating system for APT thinking, design, architecture, and execution. It consolidates source-backed APT doctrine with reusable agent workflows while keeping principles distinct from procedures and platform adapters.
 
 ## Four Pillars
 

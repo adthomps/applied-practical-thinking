@@ -5,30 +5,18 @@ status: active
 owner: APT
 last_updated: 2026-06-27
 source: APT consolidation
-domain: "repository"
+domain: "payments"
 source_paths: ["apt-principles-agents/product-hubs/examples/generic-payment-product/troubleshooting-guide.md"]
 ---
 
 # Troubleshooting Guide
 
-## Audience And Intent
+| Symptom | Verify | Safe action | Escalate when |
+| --- | --- | --- | --- |
+| Customer saw a timeout | Request ID, payment lookup, idempotency record | Retrieve state or retry same key | State remains unknown |
+| Payment declined | Canonical reason family and configuration | Customer-safe retry guidance | Processor mapping looks wrong |
+| Capture rejected | Current state, amount, permission | Correct request or void if valid | State conflicts with processor |
+| Webhook missing | Event store, signature failures, delivery backlog | Replay stored event | Backlog or authenticity failure persists |
+| Settlement mismatch | Payment, capture, fees, settlement reference | Open reconciliation exception | Financial totals do not balance |
 
-State who uses this artifact, what outcome they need, and what they should do next.
-
-## Canonical Product Facts
-
-- Product capability and exclusions:
-- Verified source:
-- Setup, roles, and permissions:
-- Lifecycle and operational behavior:
-
-## Guidance
-
-Cover business value, partner enablement, developer integration, support identifiers, product decisions, and AI-safe examples as applicable. Link rather than duplicate shared facts.
-
-## Risks, Questions, And Readiness
-
-- Known limitations and assumptions:
-- Security, compliance, payment, or migration review:
-- Troubleshooting and escalation:
-- Launch evidence and approval:
+Record evidence, actions, owner, and customer communication for every material incident.

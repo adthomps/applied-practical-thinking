@@ -44,4 +44,4 @@ Name routes around stable resources. Keep request schemas, response schemas, sta
 
 ## Related Packs
 
-Use `apt-core/api-standards.md`, `checklists/api-checklist.md`, and the `api-review` profile.
+Use `.apt/standards/installable-summaries/api-standards.md`, `.apt/checklists/distribution/api-checklist.md`, and the `api-review` manifest.

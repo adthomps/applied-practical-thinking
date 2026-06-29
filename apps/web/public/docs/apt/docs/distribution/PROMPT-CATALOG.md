@@ -1,58 +1,90 @@
 ---
 title: "Prompt Catalog"
-kind: "guide"
+kind: "catalog"
 domain: "documentation"
 status: "active"
 owner: "APT"
 last_updated: "2026-06-28"
-source_paths: ["apt-agent-standards/docs/PROMPT-CATALOG.md"]
+source_paths: ["apt-principles-agents/prompts/"]
 ---
 
 # Prompt Catalog
 
-## Tool-Neutral Standards Prompts
+Generated from active repository artifacts by `scripts/generate-catalogs.mjs`. Do not hand-edit catalog rows.
 
-These prompts live in `prompts/` and are meant for agents or operators working from this standards repo. They are not GitHub Copilot prompt files and are not installed into `.github/prompts/` by current profiles.
-
-- `prompts/repo-alignment-review.md`
-- `prompts/apply-apt-principles-agents.md`
-- `prompts/generate-context-pack.md`
-- `prompts/update-agent-standards.md`
-
-## Canonical Same-Name Skill Prompts
-
-These prompts mirror Codex skills so GitHub Copilot Chat can follow the same workflow:
-
-- `ai-output-review.prompt.md`
-- `api-review.prompt.md`
-- `apt-readiness-audit.prompt.md`
-- `apt-review.prompt.md`
-- `cloudflare-modernization.prompt.md`
-- `cloudflare-react-hono.prompt.md`
-- `docs-sync.prompt.md`
-- `documentation-normalization.prompt.md`
-- `knowledge-graph-review.prompt.md`
-- `lovable-to-apt.prompt.md`
-- `lovable-to-cloudflare.prompt.md`
-- `refactor-safety.prompt.md`
-- `repo-standardization.prompt.md`
-- `test-generator.prompt.md`
-- `ux-review.prompt.md`
-
-## Alias And Utility Prompts
-
-The following prompts are intentionally retained as user-friendly aliases or generic review helpers:
-
-- `generate-tests.prompt.md`
-- `repo-standardize.prompt.md`
-- `review-api.prompt.md`
-- `review-diff.prompt.md`
-- `update-docs.prompt.md`
-
-## Consolidation Policy
-
-- Keep same-name skill prompts canonical for parity checks.
-- Keep alias prompts short and direct; point new detailed behavior to the canonical prompt when possible.
-- Keep `prompts/` tool-neutral and `github-copilot/prompts/` Copilot-native.
-- Do not duplicate long doctrine from `apt-principles-agents`.
-- Prefer source-backed instructions and file references over examples that may drift.
+| Artifact | Path | Purpose |
+| --- | --- | --- |
+| [Agent Harness Review Prompt](../../prompts/agent-harness-review-prompt.md) | `prompts/agent-harness-review-prompt.md` | Review an AI-assisted workflow, prompt, or agent system against the APT harness lifecycle. Use this before a reusable agent workflow is adopted, before a high-risk agent task is de |
+| [API Review Prompt](../../prompts/api-review-prompt.md) | `prompts/api-review-prompt.md` | Review API changes against APT system, architecture, security, and quality standards. |
+| [Apply APT Principles Prompt](../../prompts/apply-apt-principles.md) | `prompts/apply-apt-principles.md` | Use this prompt when a project has chosen specific APT standards to apply and needs a patch plan before edits. It helps an agent move from repo alignment findings to bounded change |
+| [APT Agent Conformance Review Prompt](../../prompts/apt-agent-conformance-review-prompt.md) | `prompts/apt-agent-conformance-review-prompt.md` | Review an APT Agent or `apt-principles-agents` implementation against canonical APT Principles without copying implementation catalogs into `apt-principles-agents`. Use this when h |
+| [APT One-Shot Build Prompt](../../prompts/apt-one-shot-build-prompt.md) | `prompts/apt-one-shot-build-prompt.md` | Provide a reusable prompt for building a feature or small project while staying inside APT doctrine. |
+| [Architecture Review Prompt](../../prompts/architecture-review-prompt.md) | `prompts/architecture-review-prompt.md` | Review structure, boundaries, deployment fit, and ownership before implementation or release. |
+| [API Audit](../../prompts/audits/api-audit.md) | `prompts/audits/api-audit.md` | Use this prompt to turn approved intent and architecture into small coherent increments with validation, release, support, and learning loops. |
+| [Payment API Audit](../../prompts/audits/payment-api-audit.md) | `prompts/audits/payment-api-audit.md` | Use this prompt to turn approved intent and architecture into small coherent increments with validation, release, support, and learning loops. |
+| [Product Hub Audit](../../prompts/audits/product-hub-audit.md) | `prompts/audits/product-hub-audit.md` | Use this prompt to turn approved intent and architecture into small coherent increments with validation, release, support, and learning loops. |
+| [Repo Audit](../../prompts/audits/repo-audit.md) | `prompts/audits/repo-audit.md` | Use this prompt to turn approved intent and architecture into small coherent increments with validation, release, support, and learning loops. |
+| [Design Review Prompt](../../prompts/design-review-prompt.md) | `prompts/design-review-prompt.md` | Review user-facing behavior, interaction states, visual consistency, and accessibility against APT Design Principles. |
+| [Apply APT Principles Prompt](../../prompts/distribution/apply-apt-principles.md) | `prompts/distribution/apply-apt-principles.md` | Apply specific APT standards to a target repo. |
+| [Generate Context Pack Prompt](../../prompts/distribution/generate-context-pack.md) | `prompts/distribution/generate-context-pack.md` | Create a compact context pack from APT principles, standards, examples, and checklists. |
+| [Repo Alignment Review Prompt](../../prompts/distribution/repo-alignment-review.md) | `prompts/distribution/repo-alignment-review.md` | Review a target repo for APT alignment. |
+| [Update Agent Standards Prompt](../../prompts/distribution/update-agent-standards.md) | `prompts/distribution/update-agent-standards.md` | Update agent instructions, skills, prompts, profiles, or repo operating rules. |
+| [APT Framework Review Prompt](../../prompts/framework-review-prompt.md) | `prompts/framework-review-prompt.md` | Review a proposed change across the full APT lifecycle. |
+| [Analyze Playtest Feedback](../../prompts/game-development/analyze-playtest-feedback.md) | `prompts/game-development/analyze-playtest-feedback.md` | Convert observations into small testable decisions. |
+| [Choose Game Engine](../../prompts/game-development/choose-game-engine.md) | `prompts/game-development/choose-game-engine.md` | Select a stack from project constraints. |
+| [Create AI-Assisted Game Plan](../../prompts/game-development/create-ai-assisted-game-plan.md) | `prompts/game-development/create-ai-assisted-game-plan.md` | Coordinate bounded AI help on a game prototype. |
+| [Create Game Concept](../../prompts/game-development/create-game-concept.md) | `prompts/game-development/create-game-concept.md` | Turn a beginner’s idea into a testable small game. |
+| [Create Game Development Learning Plan](../../prompts/game-development/create-game-dev-learning-plan.md) | `prompts/game-development/create-game-dev-learning-plan.md` | Learn concepts through a tiny finished project. |
+| [Create Game Loop](../../prompts/game-development/create-game-loop.md) | `prompts/game-development/create-game-loop.md` | Define the repeated action-feedback-choice cycle. |
+| [Create Game Playtest Plan](../../prompts/game-development/create-playtest-plan.md) | `prompts/game-development/create-playtest-plan.md` | Design a focused, ethical observation session. |
+| [Create Game Prototype Plan](../../prompts/game-development/create-prototype-plan.md) | `prompts/game-development/create-prototype-plan.md` | Plan a bounded playable experiment. |
+| [Design Game Level](../../prompts/game-development/design-level.md) | `prompts/game-development/design-level.md` | Plan one small level or encounter. |
+| [Game Micro-Group Review](../../prompts/game-development/game-micro-group-review.md) | `prompts/game-development/game-micro-group-review.md` | Review a game decision across beginner, player, design, engineering, UI/UX, scope, and testing perspectives. |
+| [Reduce Game Scope](../../prompts/game-development/reduce-game-scope.md) | `prompts/game-development/reduce-game-scope.md` | Cut a proposal to a credible playable prototype. |
+| [Review Game Architecture](../../prompts/game-development/review-game-architecture.md) | `prompts/game-development/review-game-architecture.md` | Review project structure against the next playable changes. |
+| [Generate APT Context Pack Prompt](../../prompts/generate-context-pack.md) | `prompts/generate-context-pack.md` | Use this prompt to create or refresh a compact context pack from APT principles, standards, examples, prompts, checklists, and references. It supports token-efficient discovery and |
+| [Knowledge Review Prompt](../../prompts/knowledge-review-prompt.md) | `prompts/knowledge-review-prompt.md` | Review documentation, examples, prompts, and templates for canonical source clarity and reuse. |
+| [Deprecation Plan](../../prompts/migration/deprecation-plan.md) | `prompts/migration/deprecation-plan.md` | Use this prompt to inventory legacy behavior before designing a facade, adapter, bridge, parity plan, dual run, deprecation path, and rollback. |
+| [Dual Run Migration](../../prompts/migration/dual-run-migration.md) | `prompts/migration/dual-run-migration.md` | Use this prompt to inventory legacy behavior before designing a facade, adapter, bridge, parity plan, dual run, deprecation path, and rollback. |
+| [Migration Guide](../../prompts/migration/migration-guide.md) | `prompts/migration/migration-guide.md` | Use this prompt to inventory legacy behavior before designing a facade, adapter, bridge, parity plan, dual run, deprecation path, and rollback. |
+| [Parity Matrix](../../prompts/migration/parity-matrix.md) | `prompts/migration/parity-matrix.md` | Use this prompt to inventory legacy behavior before designing a facade, adapter, bridge, parity plan, dual run, deprecation path, and rollback. |
+| [Model Routing Review Prompt](../../prompts/model-routing-review-prompt.md) | `prompts/model-routing-review-prompt.md` | Review an AI workflow's model routing policy for capability sufficiency, local-first execution, cost awareness, data sensitivity, fallback behavior, and human escalation. Use this  |
+| [API Modernization Plan](../../prompts/modernization/api-modernization-plan.md) | `prompts/modernization/api-modernization-plan.md` | Use this prompt to inventory legacy behavior before designing a facade, adapter, bridge, parity plan, dual run, deprecation path, and rollback. |
+| [Bridge Architecture Review](../../prompts/modernization/bridge-architecture-review.md) | `prompts/modernization/bridge-architecture-review.md` | Use this prompt to inventory legacy behavior before designing a facade, adapter, bridge, parity plan, dual run, deprecation path, and rollback. |
+| [NVP To Rest Plan](../../prompts/modernization/nvp-to-rest-plan.md) | `prompts/modernization/nvp-to-rest-plan.md` | Use this prompt to inventory legacy behavior before designing a facade, adapter, bridge, parity plan, dual run, deprecation path, and rollback. |
+| [SOAP To Rest Plan](../../prompts/modernization/soap-to-rest-plan.md) | `prompts/modernization/soap-to-rest-plan.md` | Use this prompt to inventory legacy behavior before designing a facade, adapter, bridge, parity plan, dual run, deprecation path, and rollback. |
+| [XML To Rest Plan](../../prompts/modernization/xml-to-rest-plan.md) | `prompts/modernization/xml-to-rest-plan.md` | Use this prompt to inventory legacy behavior before designing a facade, adapter, bridge, parity plan, dual run, deprecation path, and rollback. |
+| [Operations Review Prompt](../../prompts/operations-review-prompt.md) | `prompts/operations-review-prompt.md` | Review operational readiness, supportability, observability, and incident response for a system or feature. |
+| [API Design Plan](../../prompts/planning/api-design-plan.md) | `prompts/planning/api-design-plan.md` | Use this prompt to turn approved intent and architecture into small coherent increments with validation, release, support, and learning loops. |
+| [Implementation Blueprint Plan](../../prompts/planning/implementation-blueprint-plan.md) | `prompts/planning/implementation-blueprint-plan.md` | Use this prompt to turn approved intent and architecture into small coherent increments with validation, release, support, and learning loops. |
+| [Payment Product Plan](../../prompts/planning/payment-product-plan.md) | `prompts/planning/payment-product-plan.md` | Use this prompt to turn approved intent and architecture into small coherent increments with validation, release, support, and learning loops. |
+| [Product Plan](../../prompts/planning/product-plan.md) | `prompts/planning/product-plan.md` | Use this prompt to turn approved intent and architecture into small coherent increments with validation, release, support, and learning loops. |
+| [Create AI Examples](../../prompts/product-hubs/create-ai-examples.md) | `prompts/product-hubs/create-ai-examples.md` | Use this prompt to turn approved intent and architecture into small coherent increments with validation, release, support, and learning loops. |
+| [Create Demo Plan](../../prompts/product-hubs/create-demo-plan.md) | `prompts/product-hubs/create-demo-plan.md` | Use this prompt to turn approved intent and architecture into small coherent increments with validation, release, support, and learning loops. |
+| [Create Product Hub](../../prompts/product-hubs/create-product-hub.md) | `prompts/product-hubs/create-product-hub.md` | Use this prompt to turn approved intent and architecture into small coherent increments with validation, release, support, and learning loops. |
+| [Review Product Hub](../../prompts/product-hubs/review-product-hub.md) | `prompts/product-hubs/review-product-hub.md` | Use this prompt to turn approved intent and architecture into small coherent increments with validation, release, support, and learning loops. |
+| [APT Project Adoption Prompt](../../prompts/project-adoption-prompt.md) | `prompts/project-adoption-prompt.md` | Use this prompt to apply `apt-principles-agents` to a real project without casually forking doctrine. The output should identify adoption mode, local docs, project-specific decisio |
+| [Release Review Prompt](../../prompts/release-review-prompt.md) | `prompts/release-review-prompt.md` | Review whether a change is ready to move from preview or review into production. |
+| [APT Repo Alignment Review Prompt](../../prompts/repo-alignment-review.md) | `prompts/repo-alignment-review.md` | Use this prompt to scan another repository, determine its repo type, select applicable APT context packs, and produce a gap report. It supports project adoption, AI readiness, publ |
+| [Repository Lifecycle Review Prompt](../../prompts/repository-lifecycle-review-prompt.md) | `prompts/repository-lifecycle-review-prompt.md` | Review a repository's APT standards lifecycle posture across installation, scanning, drift detection, repair, synchronization, upgrades, and verification. Use this for repo audits, |
+| [API Design Review](../../prompts/reviews/api-design-review.md) | `prompts/reviews/api-design-review.md` | Use this prompt to turn approved intent and architecture into small coherent increments with validation, release, support, and learning loops. |
+| [Docs Review](../../prompts/reviews/docs-review.md) | `prompts/reviews/docs-review.md` | Use this prompt to turn approved intent and architecture into small coherent increments with validation, release, support, and learning loops. |
+| [Payment Review](../../prompts/reviews/payment-review.md) | `prompts/reviews/payment-review.md` | Use this prompt to turn approved intent and architecture into small coherent increments with validation, release, support, and learning loops. |
+| [Security Risk Review](../../prompts/reviews/security-risk-review.md) | `prompts/reviews/security-risk-review.md` | Use this prompt to turn approved intent and architecture into small coherent increments with validation, release, support, and learning loops. |
+| [UI API Alignment Review](../../prompts/reviews/ui-api-alignment-review.md) | `prompts/reviews/ui-api-alignment-review.md` | Use this prompt to turn approved intent and architecture into small coherent increments with validation, release, support, and learning loops. |
+| [Security Review Prompt](../../prompts/security-review-prompt.md) | `prompts/security-review-prompt.md` | Review authentication, authorization, session handling, secrets, validation, and abuse controls. |
+| [Beginner User Review](../../prompts/swarm-reviews/beginner-user-review.md) | `prompts/swarm-reviews/beginner-user-review.md` | Use this prompt to turn approved intent and architecture into small coherent increments with validation, release, support, and learning loops. |
+| [Decision Review](../../prompts/swarm-reviews/decision-review.md) | `prompts/swarm-reviews/decision-review.md` | Use this prompt to turn approved intent and architecture into small coherent increments with validation, release, support, and learning loops. |
+| [Design Rationalization](../../prompts/swarm-reviews/design-rationalization.md) | `prompts/swarm-reviews/design-rationalization.md` | Use this prompt to turn approved intent and architecture into small coherent increments with validation, release, support, and learning loops. |
+| [Expert Panel Review](../../prompts/swarm-reviews/expert-panel-review.md) | `prompts/swarm-reviews/expert-panel-review.md` | Use this prompt to turn approved intent and architecture into small coherent increments with validation, release, support, and learning loops. |
+| [Micro Group Review](../../prompts/swarm-reviews/micro-group-review.md) | `prompts/swarm-reviews/micro-group-review.md` | Use this prompt to turn approved intent and architecture into small coherent increments with validation, release, support, and learning loops. |
+| [Red Team Review](../../prompts/swarm-reviews/red-team-review.md) | `prompts/swarm-reviews/red-team-review.md` | Use this prompt to turn approved intent and architecture into small coherent increments with validation, release, support, and learning loops. |
+| [Troubleshooting Swarm](../../prompts/swarm-reviews/troubleshooting-swarm.md) | `prompts/swarm-reviews/troubleshooting-swarm.md` | Use this prompt to turn approved intent and architecture into small coherent increments with validation, release, support, and learning loops. |
+| [Testing Review Prompt](../../prompts/testing-review-prompt.md) | `prompts/testing-review-prompt.md` | Create or review validation plans for APT changes. |
+| [API Error](../../prompts/troubleshooting/api-error.md) | `prompts/troubleshooting/api-error.md` | Use this prompt to turn approved intent and architecture into small coherent increments with validation, release, support, and learning loops. |
+| [Customer Confusion](../../prompts/troubleshooting/customer-confusion.md) | `prompts/troubleshooting/customer-confusion.md` | Use this prompt to turn approved intent and architecture into small coherent increments with validation, release, support, and learning loops. |
+| [Payment Decline](../../prompts/troubleshooting/payment-decline.md) | `prompts/troubleshooting/payment-decline.md` | Use this prompt to turn approved intent and architecture into small coherent increments with validation, release, support, and learning loops. |
+| [Settlement Funding Issue](../../prompts/troubleshooting/settlement-funding-issue.md) | `prompts/troubleshooting/settlement-funding-issue.md` | Use this prompt to turn approved intent and architecture into small coherent increments with validation, release, support, and learning loops. |
+| [Webhook Issue](../../prompts/troubleshooting/webhook-issue.md) | `prompts/troubleshooting/webhook-issue.md` | Use this prompt to turn approved intent and architecture into small coherent increments with validation, release, support, and learning loops. |
+| [Update APT Agent Standards Prompt](../../prompts/update-agent-standards.md) | `prompts/update-agent-standards.md` | Use this prompt to update agent instructions, skills, prompts, and repo operating rules while preserving the ownership split between `apt-principles-agents` and `apt-principles-age |
+| [Workspace Knowledge Prompt](../../prompts/workspace-knowledge-prompt.md) | `prompts/workspace-knowledge-prompt.md` | Provide copy-paste-ready workspace knowledge for AI-assisted product tools such as Lovable, Figma Make, code assistants, and design generators. Use this prompt when a tool offers s |

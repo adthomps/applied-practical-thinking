@@ -24,7 +24,7 @@ Do not use for non-Cloudflare runtime decisions.
 ## Required Reading
 Read:
 
-- `apt-core/cloudflare-standards.md`.
+- `.apt/standards/installable-summaries/cloudflare-standards.md`.
 - `docs/project-context.md` when present.
 - `wrangler.toml` or nested Worker config.
 - Root and app package scripts.

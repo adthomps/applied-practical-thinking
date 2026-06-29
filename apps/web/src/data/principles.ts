@@ -104,9 +104,9 @@ type PrincipleSectionSeed = Omit<
   | "relatedArtifacts"
 >;
 
-export const PRINCIPLES_GITHUB_ROOT = "https://github.com/adthomps/apt-principles-agents/blob/main";
+export const PRINCIPLES_PUBLIC_ROOT = "/docs/apt";
 
-const source = (relativePath: string) => `${PRINCIPLES_GITHUB_ROOT}/${relativePath}`;
+const source = (relativePath: string) => `${PRINCIPLES_PUBLIC_ROOT}/${relativePath}`;
 
 export const principlesLifecycle = [
   "Think",

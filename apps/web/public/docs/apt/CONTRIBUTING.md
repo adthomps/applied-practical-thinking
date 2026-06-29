@@ -5,7 +5,7 @@ last_updated: 2026-05-31
 owner: APT
 status: stable
 kind: "repository"
-domain: "repository"
+domain: "governance"
 source_paths: ["apt-principles/CONTRIBUTING.md"]
 ---
 

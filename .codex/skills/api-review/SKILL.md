@@ -24,7 +24,7 @@ Do not use for purely visual frontend changes.
 ## Required Reading
 Read:
 
-- `apt-core/api-standards.md`.
+- `.apt/standards/installable-summaries/api-standards.md`.
 - `docs/project-context.md` when present.
 - Route handlers, middleware, schemas, validators, and error helpers.
 - API docs, OpenAPI files, examples, and SDK-facing code.

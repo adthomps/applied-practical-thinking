@@ -5,30 +5,24 @@ status: active
 owner: APT
 last_updated: 2026-06-27
 source: APT consolidation
-domain: "repository"
+domain: "payments"
 source_paths: ["apt-principles-agents/product-hubs/examples/generic-payment-product/bank-acquirer-partner-guide.md"]
 ---
 
-# Bank Acquirer Partner Guide
+# Bank, Acquirer, and Partner Guide
 
-## Audience And Intent
+## Boundary Contract
 
-State who uses this artifact, what outcome they need, and what they should do next.
+The partner adapter translates ExamplePay requests into an approved processor contract and maps responses into canonical status and reason families without discarding the original processor reference.
 
-## Canonical Product Facts
+## Certification Evidence
 
-- Product capability and exclusions:
-- Verified source:
-- Setup, roles, and permissions:
-- Lifecycle and operational behavior:
+- Supported transaction types, currencies, amount limits, and credential scopes.
+- Field mapping for authorization, capture, void, refund, settlement, and error responses.
+- Duplicate/replay behavior and timeout recovery.
+- Webhook authenticity, ordering, retry, and replay procedure.
+- Settlement file delivery, timezone, fee, and exception semantics.
 
-## Guidance
+## Ownership
 
-Cover business value, partner enablement, developer integration, support identifiers, product decisions, and AI-safe examples as applicable. Link rather than duplicate shared facts.
-
-## Risks, Questions, And Readiness
-
-- Known limitations and assumptions:
-- Security, compliance, payment, or migration review:
-- Troubleshooting and escalation:
-- Launch evidence and approval:
+ExamplePay owns canonical contract behavior and audit correlation. The partner owns processor availability and authoritative processor codes. Finance owns settlement acceptance. Unsupported behavior stays explicit rather than being approximated.

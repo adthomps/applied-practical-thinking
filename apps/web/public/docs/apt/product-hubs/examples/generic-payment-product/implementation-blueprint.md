@@ -5,30 +5,25 @@ status: active
 owner: APT
 last_updated: 2026-06-27
 source: APT consolidation
-domain: "repository"
+domain: "payments"
 source_paths: ["apt-principles-agents/product-hubs/examples/generic-payment-product/implementation-blueprint.md"]
 ---
 
 # Implementation Blueprint
 
-## Audience And Intent
+## Components
 
-State who uses this artifact, what outcome they need, and what they should do next.
+- API boundary: authentication, schema validation, idempotency, and canonical errors.
+- Payment service: state-transition rules and command authorization.
+- Adapter: processor mapping, timeouts, and original reference retention.
+- Event service: transactional event creation, signature, retry, and replay.
+- Ledger/reconciliation store: immutable financial events and settlement matching.
+- Operations surface: lookup by canonical and partner identifiers with restricted diagnostics.
 
-## Canonical Product Facts
+## Data and Security
 
-- Product capability and exclusions:
-- Verified source:
-- Setup, roles, and permissions:
-- Lifecycle and operational behavior:
+Store tokens rather than raw credentials, encrypt secrets, separate capture/refund permissions, redact logs, and audit every mutation. Persist idempotency request hashes and results. State changes and outbound events must share a recoverable transaction/outbox boundary.
 
-## Guidance
+## Delivery
 
-Cover business value, partner enablement, developer integration, support identifiers, product decisions, and AI-safe examples as applicable. Link rather than duplicate shared facts.
-
-## Risks, Questions, And Readiness
-
-- Known limitations and assumptions:
-- Security, compliance, payment, or migration review:
-- Troubleshooting and escalation:
-- Launch evidence and approval:
+Build contract fixtures, adapter simulators, state tests, webhook replay tests, reconciliation fixtures, operational dashboards, and rollback controls before production traffic.

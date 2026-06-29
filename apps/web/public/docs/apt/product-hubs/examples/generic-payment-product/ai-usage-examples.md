@@ -5,30 +5,22 @@ status: active
 owner: APT
 last_updated: 2026-06-27
 source: APT consolidation
-domain: "repository"
+domain: "payments"
 source_paths: ["apt-principles-agents/product-hubs/examples/generic-payment-product/ai-usage-examples.md"]
 ---
 
 # AI Usage Examples
 
-## Audience And Intent
+## Allowed Assistance
 
-State who uses this artifact, what outcome they need, and what they should do next.
+An AI agent may explain canonical states, draft sandbox code using placeholders, group sanitized error families, summarize reconciliation mismatches, and propose test cases.
 
-## Canonical Product Facts
+## Prohibited Without Human Approval
 
-- Product capability and exclusions:
-- Verified source:
-- Setup, roles, and permissions:
-- Lifecycle and operational behavior:
+The agent must not use live credentials, initiate or retry a real payment, change routing or fraud controls, promise settlement timing, interpret legal obligations, or expose restricted processor diagnostics.
 
-## Guidance
+## Safe Prompt
 
-Cover business value, partner enablement, developer integration, support identifiers, product decisions, and AI-safe examples as applicable. Link rather than duplicate shared facts.
+“Using the ExamplePay v1 contract and these redacted sandbox responses, identify the lifecycle state, cite the request IDs, distinguish retryable from non-retryable outcomes, and propose tests. Do not execute requests or infer facts absent from evidence.”
 
-## Risks, Questions, And Readiness
-
-- Known limitations and assumptions:
-- Security, compliance, payment, or migration review:
-- Troubleshooting and escalation:
-- Launch evidence and approval:
+Outputs must label verified facts, assumptions, recommended actions, and the accountable approver.

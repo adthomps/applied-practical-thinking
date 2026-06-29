@@ -5,30 +5,22 @@ status: active
 owner: APT
 last_updated: 2026-06-27
 source: APT consolidation
-domain: "repository"
+domain: "payments"
 source_paths: ["apt-principles-agents/product-hubs/examples/generic-payment-product/api-guide.md"]
 ---
 
 # API Guide
 
-## Audience And Intent
+## Contract
 
-State who uses this artifact, what outcome they need, and what they should do next.
+`POST /v1/payments` creates an authorization. Required fields are `amount`, `currency`, `payment_method_token`, and `merchant_reference`; the `Idempotency-Key` header is mandatory. `POST /v1/payments/{id}/capture`, `/void`, and `/refunds` enforce state and permission checks. `GET /v1/payments/{id}` returns canonical state.
 
-## Canonical Product Facts
+## Response and Errors
 
-- Product capability and exclusions:
-- Verified source:
-- Setup, roles, and permissions:
-- Lifecycle and operational behavior:
+Success returns the payment resource plus `request_id`. Errors use `code`, customer-safe `message`, `request_id`, optional `field_errors`, and `retryable`. Authentication failures reveal no credential detail. A conflict identifies invalid state or idempotency payload mismatch.
 
-## Guidance
+## Webhooks
 
-Cover business value, partner enablement, developer integration, support identifiers, product decisions, and AI-safe examples as applicable. Link rather than duplicate shared facts.
+Events contain `event_id`, `type`, `occurred_at`, and the canonical payment ID. Verify the signature against the raw body, enforce timestamp tolerance, store event IDs, and tolerate duplicates and reordering.
 
-## Risks, Questions, And Readiness
-
-- Known limitations and assumptions:
-- Security, compliance, payment, or migration review:
-- Troubleshooting and escalation:
-- Launch evidence and approval:
+Versioning is additive within v1; breaking contract changes require a new version and migration evidence.

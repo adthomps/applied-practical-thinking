@@ -21,7 +21,7 @@ This folder explains the public strategy. The installable pack sources remain in
 | APT core | APT intent, behavior preservation, source-of-truth boundaries | `context/apt-principles-agents/README.md` |
 | Architecture | repo shape, ownership, modernization, routing | `context/architecture/README.md` |
 | UI | workflows, accessibility, state design, frontend review | `context/ui/README.md` |
-| API | API review through `apt-core/api-standards.md` and API profiles | `apt-core/api-standards.md` |
+| API | API review through `.apt/standards/installable-summaries/api-standards.md` and API manifests | `.apt/standards/installable-summaries/api-standards.md` |
 | Documentation | docs structure, drift checks, setup and operating docs | `context/documentation/README.md` |
 | Cloudflare | Workers, Pages, Hono, bindings, deployment review | `context/cloudflare/README.md` |
 | Security | secrets, auth, permissions, sensitive workflows | `context/security/README.md` |

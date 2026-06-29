@@ -26,7 +26,7 @@ Read:
 
 - `docs/project-context.md` when present.
 - `AGENTS.md`.
-- `apt-core/cloudflare-standards.md`.
+- `.apt/standards/installable-summaries/cloudflare-standards.md`.
 - `wrangler.toml` or nested `apps/*/wrangler.toml`.
 - Root and package `package.json` scripts.
 - Frontend entry points, Worker entry points, route handlers, and deployment docs.

@@ -17,13 +17,13 @@ export const aptPrinciplesPublicManifest = [
     "id": "AGENTS",
     "title": "APT Agent Instructions",
     "kind": "instruction",
-    "domain": "repository",
+    "domain": "governance",
     "sourcePath": "apt-principles-agents/AGENTS.md",
     "publicPath": "/docs/apt/AGENTS.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "5449938685d3330aa5b172257759682f2e85c7459a8b44afbbdc0341e3280e5f"
+    "checksum": "3baa2d3d3baa91445584f534838e2a941d4d92f3f2e47806102849aba59955a3"
   },
   {
     "id": "agents-api-apt-ai-consumable-api-reviewer",
@@ -917,13 +917,13 @@ export const aptPrinciplesPublicManifest = [
     "id": "agents-README",
     "title": "APT Agents",
     "kind": "index",
-    "domain": "README",
+    "domain": "navigation",
     "sourcePath": "apt-principles-agents/agents/README.md",
     "publicPath": "/docs/apt/agents/README.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "1a1836af86c43139232bcf4a68f16cb77de3dc57fa301fd6c83ef750b4552460"
+    "checksum": "b581857d4d1bc9ef97f9afaa084fdd13cc4774fb0e1d657e08e5929f73462f8d"
   },
   {
     "id": "agents-risk-apt-compliance-awareness-reviewer",
@@ -1241,25 +1241,25 @@ export const aptPrinciplesPublicManifest = [
     "id": "CLAUDE",
     "title": "Claude Guidance",
     "kind": "instruction",
-    "domain": "repository",
+    "domain": "governance",
     "sourcePath": "apt-principles-agents/CLAUDE.md",
     "publicPath": "/docs/apt/CLAUDE.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "d372ec17278dc5985e26af30e87d9008ef89c67706e6a4510dabfb728e6d81ab"
+    "checksum": "c6c34c1c5da94e59c46aad2e1a21e45869125923230f8a49cd8b44d92b921b06"
   },
   {
     "id": "CODEX",
     "title": "Codex Guidance",
     "kind": "instruction",
-    "domain": "repository",
+    "domain": "governance",
     "sourcePath": "apt-principles-agents/CODEX.md",
     "publicPath": "/docs/apt/CODEX.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "a972a3796516236507f973e6a8f7adc82e61620855b75de0b54c526e9a917a05"
+    "checksum": "45fe0380ce8376d689e59c7d4768203d38989ac371753ceb56c3ffef80164dfc"
   },
   {
     "id": "context-packs-agent-distribution",
@@ -1271,7 +1271,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-28",
-    "checksum": "9333a88d8477d65dffe24ef91a0b4216aa94c4adc991f0f5e026d21ee9607bea"
+    "checksum": "aca3bdb87965b007aa3f96fa055dfb470ed9d53b07676a6b4bbbdbaf1f70826e"
   },
   {
     "id": "context-packs-apt-agent-pack",
@@ -1379,7 +1379,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-28",
-    "checksum": "228090d99d73b9c8f312286a992e0018bf7328228e8479948bc4b538610269d3"
+    "checksum": "45d4b0ce8470207c40cf66caf2744e3e6caed2185470eb85c3cca5f66e64ad88"
   },
   {
     "id": "context-architecture-README",
@@ -1403,7 +1403,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-28",
-    "checksum": "7f9b0d55f7ad1c4dcbbb28967773de0c4db96c36d3e23f53978e5937a6cb64cb"
+    "checksum": "11acffb57cd9db32fa94f9bf93422901a4b76cd903cdbf3ca64238bbc3e843f8"
   },
   {
     "id": "context-documentation-README",
@@ -1469,13 +1469,13 @@ export const aptPrinciplesPublicManifest = [
     "id": "CONTRIBUTING",
     "title": "Contributing to APT Principles",
     "kind": "repository",
-    "domain": "repository",
+    "domain": "governance",
     "sourcePath": "apt-principles-agents/CONTRIBUTING.md",
     "publicPath": "/docs/apt/CONTRIBUTING.md",
     "version": "v1",
     "status": "stable",
     "lastUpdated": "2026-05-31",
-    "checksum": "59c547debb44176fe41907ed080d1bd37884e92188eaec09066700438508dc0c"
+    "checksum": "22b9d7196050688323cb7bc73649dcb9d75a7ac444866e3970062878f2bafd15"
   },
   {
     "id": "docs-agent-authoring-guide",
@@ -1586,64 +1586,16 @@ export const aptPrinciplesPublicManifest = [
     "checksum": "bf324cae97acdfdb27e6c03bdb98bc4e37697c5b194bb6a29479d86645043004"
   },
   {
-    "id": "docs-distribution-ACTIONS",
-    "title": "Action Playbooks",
-    "kind": "guide",
-    "domain": "documentation",
-    "sourcePath": "apt-principles-agents/docs/distribution/ACTIONS.md",
-    "publicPath": "/docs/apt/docs/distribution/ACTIONS.md",
-    "version": "1.0.0",
-    "status": "active",
-    "lastUpdated": "2026-06-28",
-    "checksum": "57aa40fb905783e5bed043113a3a2256e976caae629c4623f22beb5f7e52a690"
-  },
-  {
     "id": "docs-distribution-AGENT-CATALOG",
     "title": "Agent Catalog",
-    "kind": "guide",
+    "kind": "catalog",
     "domain": "documentation",
     "sourcePath": "apt-principles-agents/docs/distribution/AGENT-CATALOG.md",
     "publicPath": "/docs/apt/docs/distribution/AGENT-CATALOG.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-28",
-    "checksum": "cfdb813b2cd4d85e7cced5b5d3b2185cb5ff627c9ef3d3355430bcd34d038058"
-  },
-  {
-    "id": "docs-distribution-AI-TOOL-LAYOUT",
-    "title": "AI Tool Layout",
-    "kind": "guide",
-    "domain": "documentation",
-    "sourcePath": "apt-principles-agents/docs/distribution/AI-TOOL-LAYOUT.md",
-    "publicPath": "/docs/apt/docs/distribution/AI-TOOL-LAYOUT.md",
-    "version": "1.0.0",
-    "status": "active",
-    "lastUpdated": "2026-06-28",
-    "checksum": "d4064d214c5e38cdcc0d1dd17e778bb8464649fde33c8867c46d925615345ee9"
-  },
-  {
-    "id": "docs-distribution-CURRENT-STATE-ASSESSMENT",
-    "title": "Current-State Assessment",
-    "kind": "guide",
-    "domain": "documentation",
-    "sourcePath": "apt-principles-agents/docs/distribution/CURRENT-STATE-ASSESSMENT.md",
-    "publicPath": "/docs/apt/docs/distribution/CURRENT-STATE-ASSESSMENT.md",
-    "version": "1.0.0",
-    "status": "active",
-    "lastUpdated": "2026-06-28",
-    "checksum": "d86bb793b38fbfacd929a831930e55fcae485696a78b792a0ff4b6fe94525ce9"
-  },
-  {
-    "id": "docs-distribution-EXAMPLE-APT-ANET-ACCEPT-SUITE-TOOLBOX",
-    "title": "Example: apt-anet-accept-suite-toolbox",
-    "kind": "guide",
-    "domain": "documentation",
-    "sourcePath": "apt-principles-agents/docs/distribution/EXAMPLE-APT-ANET-ACCEPT-SUITE-TOOLBOX.md",
-    "publicPath": "/docs/apt/docs/distribution/EXAMPLE-APT-ANET-ACCEPT-SUITE-TOOLBOX.md",
-    "version": "1.0.0",
-    "status": "active",
-    "lastUpdated": "2026-06-28",
-    "checksum": "a26f33af0ace497fe045dbf5f3268a14de3818b85b980f3dea9244be1065e66b"
+    "checksum": "69a436f5d8df161bc8f169cec68c2c2045d7a6cc7b226a21f0a7d0d0a45b46bf"
   },
   {
     "id": "docs-distribution-GOVERNANCE-ARCHITECTURE",
@@ -1658,112 +1610,28 @@ export const aptPrinciplesPublicManifest = [
     "checksum": "7486ed92e7bbfd0ef776104ce97bef4d279226588fe81bf8831c3971d24890f5"
   },
   {
-    "id": "docs-distribution-HARNESS-ARCHITECTURE",
-    "title": "Agent Harness Architecture",
-    "kind": "guide",
+    "id": "docs-distribution-MANIFEST-CATALOG",
+    "title": "Manifest Catalog",
+    "kind": "catalog",
     "domain": "documentation",
-    "sourcePath": "apt-principles-agents/docs/distribution/HARNESS-ARCHITECTURE.md",
-    "publicPath": "/docs/apt/docs/distribution/HARNESS-ARCHITECTURE.md",
+    "sourcePath": "apt-principles-agents/docs/distribution/MANIFEST-CATALOG.md",
+    "publicPath": "/docs/apt/docs/distribution/MANIFEST-CATALOG.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-28",
-    "checksum": "4c9c4df60a2d48998e1fd8366e1ac920136435c6fb361e670caa943b8b1326f0"
-  },
-  {
-    "id": "docs-distribution-MIGRATION-ROADMAP",
-    "title": "Migration Roadmap",
-    "kind": "guide",
-    "domain": "documentation",
-    "sourcePath": "apt-principles-agents/docs/distribution/MIGRATION-ROADMAP.md",
-    "publicPath": "/docs/apt/docs/distribution/MIGRATION-ROADMAP.md",
-    "version": "1.0.0",
-    "status": "active",
-    "lastUpdated": "2026-06-28",
-    "checksum": "0d525183abeed4cb4d6626f97575b1db49d2de3e8060e0f73643cd0dfe6f55b9"
-  },
-  {
-    "id": "docs-distribution-OPERATING",
-    "title": "Operating Guide",
-    "kind": "guide",
-    "domain": "documentation",
-    "sourcePath": "apt-principles-agents/docs/distribution/OPERATING.md",
-    "publicPath": "/docs/apt/docs/distribution/OPERATING.md",
-    "version": "1.0.0",
-    "status": "active",
-    "lastUpdated": "2026-06-28",
-    "checksum": "09b9d72148ec40b0101ad235bda1d2d6fbda5f46980bd98c919aef5730060c8e"
-  },
-  {
-    "id": "docs-distribution-POST-OPERATION-CHECKS",
-    "title": "Post-Operation Checks",
-    "kind": "guide",
-    "domain": "documentation",
-    "sourcePath": "apt-principles-agents/docs/distribution/POST-OPERATION-CHECKS.md",
-    "publicPath": "/docs/apt/docs/distribution/POST-OPERATION-CHECKS.md",
-    "version": "1.0.0",
-    "status": "active",
-    "lastUpdated": "2026-06-28",
-    "checksum": "74b48701182e2728ffbf27c1a8da7aa3390516bd907d77baee24cee4beceab55"
-  },
-  {
-    "id": "docs-distribution-PROFILE-REFERENCE",
-    "title": "Profile Reference",
-    "kind": "guide",
-    "domain": "documentation",
-    "sourcePath": "apt-principles-agents/docs/distribution/PROFILE-REFERENCE.md",
-    "publicPath": "/docs/apt/docs/distribution/PROFILE-REFERENCE.md",
-    "version": "1.0.0",
-    "status": "active",
-    "lastUpdated": "2026-06-28",
-    "checksum": "b2a81f9c61178650124c0660927669cebb4bf9c652c3add6f3099c7c03d5cb4d"
+    "checksum": "8a4cccb25af7c3c8776bfefcfac8f38ec0aba9347c128ac708f94ceafae7a747"
   },
   {
     "id": "docs-distribution-PROMPT-CATALOG",
     "title": "Prompt Catalog",
-    "kind": "guide",
+    "kind": "catalog",
     "domain": "documentation",
     "sourcePath": "apt-principles-agents/docs/distribution/PROMPT-CATALOG.md",
     "publicPath": "/docs/apt/docs/distribution/PROMPT-CATALOG.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-28",
-    "checksum": "6e38173af1339f4cfef25e4e5dc209a0350437f3d6ffb07ef636c4d83dae1812"
-  },
-  {
-    "id": "docs-distribution-PROPOSED-FILE-CHANGES",
-    "title": "Proposed File Changes",
-    "kind": "guide",
-    "domain": "documentation",
-    "sourcePath": "apt-principles-agents/docs/distribution/PROPOSED-FILE-CHANGES.md",
-    "publicPath": "/docs/apt/docs/distribution/PROPOSED-FILE-CHANGES.md",
-    "version": "1.0.0",
-    "status": "active",
-    "lastUpdated": "2026-06-28",
-    "checksum": "c451a20375b5f72bb971bf46ca122e5bb04a558f0e0022bdc373b4b34f4edf80"
-  },
-  {
-    "id": "docs-distribution-RISK-ASSESSMENT",
-    "title": "Risk Assessment",
-    "kind": "guide",
-    "domain": "documentation",
-    "sourcePath": "apt-principles-agents/docs/distribution/RISK-ASSESSMENT.md",
-    "publicPath": "/docs/apt/docs/distribution/RISK-ASSESSMENT.md",
-    "version": "1.0.0",
-    "status": "active",
-    "lastUpdated": "2026-06-28",
-    "checksum": "dd5935cdf085f1cf44ef04d81e882d36e49aa055b95e752478469cd8cbc6d55b"
-  },
-  {
-    "id": "docs-distribution-SETUP",
-    "title": "Setup Guide",
-    "kind": "guide",
-    "domain": "documentation",
-    "sourcePath": "apt-principles-agents/docs/distribution/SETUP.md",
-    "publicPath": "/docs/apt/docs/distribution/SETUP.md",
-    "version": "1.0.0",
-    "status": "active",
-    "lastUpdated": "2026-06-28",
-    "checksum": "3371e0fd307f620c66c34be92a0f87246bd7be804d0e2d184c86f865471a827a"
+    "checksum": "d953af3181a3d2cbbacd8ec7b383b593d6e05bcdd8097da6eaeee6c442dcfccb"
   },
   {
     "id": "docs-distribution-SHADCN-UI-STANDARD",
@@ -1780,38 +1648,26 @@ export const aptPrinciplesPublicManifest = [
   {
     "id": "docs-distribution-SKILL-CATALOG",
     "title": "Skill Catalog",
-    "kind": "guide",
+    "kind": "catalog",
     "domain": "documentation",
     "sourcePath": "apt-principles-agents/docs/distribution/SKILL-CATALOG.md",
     "publicPath": "/docs/apt/docs/distribution/SKILL-CATALOG.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-28",
-    "checksum": "621c9af5cf9f7d4f6b392d37b8157856fadd06da101278c303c8099c5fa2f036"
+    "checksum": "9ec00f2e95a65491e62e4caf0d646091e72b8c9cf3acd0f31ef289317c80fe8e"
   },
   {
-    "id": "docs-distribution-USING-INSTALLED-STANDARDS",
-    "title": "Using Installed Standards",
-    "kind": "guide",
+    "id": "docs-distribution-TEMPLATE-CATALOG",
+    "title": "Template Catalog",
+    "kind": "catalog",
     "domain": "documentation",
-    "sourcePath": "apt-principles-agents/docs/distribution/USING-INSTALLED-STANDARDS.md",
-    "publicPath": "/docs/apt/docs/distribution/USING-INSTALLED-STANDARDS.md",
+    "sourcePath": "apt-principles-agents/docs/distribution/TEMPLATE-CATALOG.md",
+    "publicPath": "/docs/apt/docs/distribution/TEMPLATE-CATALOG.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-28",
-    "checksum": "31eb1d0885cdedcc975c13407a95aad0ba964bcb5cb307e5f5a61f87afd8046c"
-  },
-  {
-    "id": "docs-distribution-WORKSPACE-ROLLOUT",
-    "title": "Workspace Rollout Guide",
-    "kind": "guide",
-    "domain": "documentation",
-    "sourcePath": "apt-principles-agents/docs/distribution/WORKSPACE-ROLLOUT.md",
-    "publicPath": "/docs/apt/docs/distribution/WORKSPACE-ROLLOUT.md",
-    "version": "1.0.0",
-    "status": "active",
-    "lastUpdated": "2026-06-28",
-    "checksum": "611a00f641614bca1aabcdbbf98b7b62fe94841953ef2e3596858fb61aaa28a6"
+    "checksum": "17031a78014222d58cf7a7412976a2536d0be1bea1a5dd83cf05af7ed0e985d0"
   },
   {
     "id": "docs-game-development-glossary",
@@ -2183,7 +2039,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-28",
-    "checksum": "0ec7318cedf47a80b45ee322975f893d3f16f485d5b4bf2af78b2a121433ecb7"
+    "checksum": "55b2d514033a0d1e4d1647168c058522b4af69363b9f1a90084d9834a5163a73"
   },
   {
     "id": "examples-distribution-showcases-cloudflare-worker-hono-structure",
@@ -2441,13 +2297,13 @@ export const aptPrinciplesPublicManifest = [
     "id": "examples-README",
     "title": "APT Examples",
     "kind": "index",
-    "domain": "README",
+    "domain": "navigation",
     "sourcePath": "apt-principles-agents/examples/README.md",
     "publicPath": "/docs/apt/examples/README.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "410f43ce221348cb4fc1a7088da23a8cae78b63974a699e095579faad1b71297"
+    "checksum": "39c72b40be5a4900654c65ab4f02cb4941e49f1b35eaee8d35820ab500fc0092"
   },
   {
     "id": "examples-security-login-session-flow",
@@ -2873,13 +2729,13 @@ export const aptPrinciplesPublicManifest = [
     "id": "GEMINI",
     "title": "Gemini Guidance",
     "kind": "instruction",
-    "domain": "repository",
+    "domain": "governance",
     "sourcePath": "apt-principles-agents/GEMINI.md",
     "publicPath": "/docs/apt/GEMINI.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "5326230a362c84dff39c3b7be7e8514ff0b2f6311b5e8c30c06d8b4a8b8bb97a"
+    "checksum": "86bf9a43158f4400aa09d4caba98f2551d841725d30c3e7b6c939981330449a0"
   },
   {
     "id": "governance-architecture-review",
@@ -4301,13 +4157,13 @@ export const aptPrinciplesPublicManifest = [
     "id": "principles-README",
     "title": "APT Principles",
     "kind": "index",
-    "domain": "README",
+    "domain": "navigation",
     "sourcePath": "apt-principles-agents/principles/README.md",
     "publicPath": "/docs/apt/principles/README.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "a92d02081be9d1cd9511ef11b50843ba374f3e452cb0112612e6d67a2c81e31f"
+    "checksum": "dc463d5b1b36c450763345e3d8cf75bddc248942bb7fafcb8fdf41316bb32549"
   },
   {
     "id": "principles-security-risk-compliance-awareness",
@@ -4661,409 +4517,409 @@ export const aptPrinciplesPublicManifest = [
     "id": "product-hubs-examples-generic-payment-product-ai-usage-examples",
     "title": "AI Usage Examples",
     "kind": "product-hub-example",
-    "domain": "repository",
+    "domain": "payments",
     "sourcePath": "apt-principles-agents/product-hubs/examples/generic-payment-product/ai-usage-examples.md",
     "publicPath": "/docs/apt/product-hubs/examples/generic-payment-product/ai-usage-examples.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "64a5e76035e1ea670efa864070d254c55aafab02c3e4c78cc3bfdea1949e572d"
+    "checksum": "bdf5e325c7d078bb121c8bc0fcd76dec5a7aed5bf3edc6e58b529b8b7896eac3"
   },
   {
     "id": "product-hubs-examples-generic-payment-product-api-examples",
     "title": "API Examples",
     "kind": "product-hub-example",
-    "domain": "repository",
+    "domain": "payments",
     "sourcePath": "apt-principles-agents/product-hubs/examples/generic-payment-product/api-examples.md",
     "publicPath": "/docs/apt/product-hubs/examples/generic-payment-product/api-examples.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "cce48d666f2a2914d62d0caf1d3be7ad3f95837d5fc64519732475c1bd9ddd1c"
+    "checksum": "e7d6467a14b5a27ce63485f02ea8c698c53c016167c79f0a56bab51295e4c6ff"
   },
   {
     "id": "product-hubs-examples-generic-payment-product-api-guide",
     "title": "API Guide",
     "kind": "product-hub-example",
-    "domain": "repository",
+    "domain": "payments",
     "sourcePath": "apt-principles-agents/product-hubs/examples/generic-payment-product/api-guide.md",
     "publicPath": "/docs/apt/product-hubs/examples/generic-payment-product/api-guide.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "9e6373431b674d054c93a18e8722ccfe7bb92310c192e3dc18f8c0dc6885fc66"
+    "checksum": "0eceef9a71bbf010dcec7fad30ccf026ac3ce9a864a2e7458b5344782edb1b69"
   },
   {
     "id": "product-hubs-examples-generic-payment-product-audience-map",
     "title": "Audience Map",
     "kind": "product-hub-example",
-    "domain": "repository",
+    "domain": "payments",
     "sourcePath": "apt-principles-agents/product-hubs/examples/generic-payment-product/audience-map.md",
     "publicPath": "/docs/apt/product-hubs/examples/generic-payment-product/audience-map.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "49906c9db24433f64a14f7a5466019761cba70b12bd56ef1b3fd5d110a68a340"
+    "checksum": "4850f857ce954236a8ed5e6ef4c9751350e64b1e1869abec663b2b6639bcd051"
   },
   {
     "id": "product-hubs-examples-generic-payment-product-bank-acquirer-partner-guide",
     "title": "Bank Acquirer Partner Guide",
     "kind": "product-hub-example",
-    "domain": "repository",
+    "domain": "payments",
     "sourcePath": "apt-principles-agents/product-hubs/examples/generic-payment-product/bank-acquirer-partner-guide.md",
     "publicPath": "/docs/apt/product-hubs/examples/generic-payment-product/bank-acquirer-partner-guide.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "7cfa355f43133fad962262c2ea31f08e753bff635e0474ba986727d7be1e0038"
+    "checksum": "743c079e7a200802d87105eef97d3cf9e95779da0a7730b059c3651fa1801cac"
   },
   {
     "id": "product-hubs-examples-generic-payment-product-business-guide",
     "title": "Business Guide",
     "kind": "product-hub-example",
-    "domain": "repository",
+    "domain": "payments",
     "sourcePath": "apt-principles-agents/product-hubs/examples/generic-payment-product/business-guide.md",
     "publicPath": "/docs/apt/product-hubs/examples/generic-payment-product/business-guide.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "f04913a149450b0ae656f4be8cfeb6a328b8ff4c4d397ec97d76eb9ee299cb49"
+    "checksum": "3deb9edc0fd326c7a8533cdf03a65c417b0301f6f4aea2a21b4eccdd3fcf71f8"
   },
   {
     "id": "product-hubs-examples-generic-payment-product-demos-demo-plan",
     "title": "Demo Plan",
     "kind": "template",
-    "domain": "repository",
+    "domain": "payments",
     "sourcePath": "apt-principles-agents/product-hubs/examples/generic-payment-product/demos/demo-plan.md",
     "publicPath": "/docs/apt/product-hubs/examples/generic-payment-product/demos/demo-plan.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "47d989d3d9dd92df0cb95d4d93333b1646309e25557cb4bad5b3324b3029fe9d"
+    "checksum": "7f278611cd06afc0419efaca375caad169bd64f9f9ca05e59bfed3cd14570b5f"
   },
   {
     "id": "product-hubs-examples-generic-payment-product-demos-README",
     "title": "Demo Assets",
     "kind": "demo",
-    "domain": "repository",
+    "domain": "product-hubs",
     "sourcePath": "apt-principles-agents/product-hubs/examples/generic-payment-product/demos/README.md",
     "publicPath": "/docs/apt/product-hubs/examples/generic-payment-product/demos/README.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "a5437839f3b7da3a6d8f3e66ddd066e162ed23bb6f068b14b3e73f5bacc10f4a"
+    "checksum": "d24c32cb07bc782a25cbe4a6731d8bfeb13e736ab06bb7f79d09fdc19cb74012"
   },
   {
     "id": "product-hubs-examples-generic-payment-product-developer-integrator-guide",
     "title": "Developer Integrator Guide",
     "kind": "product-hub-example",
-    "domain": "repository",
+    "domain": "payments",
     "sourcePath": "apt-principles-agents/product-hubs/examples/generic-payment-product/developer-integrator-guide.md",
     "publicPath": "/docs/apt/product-hubs/examples/generic-payment-product/developer-integrator-guide.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "ee79cf89412a62b4a0354ef32bcd776dea6fcc9d1e051b2dd5b57d214ae2ece0"
+    "checksum": "d595e1c94a7756758ff6a22d3cfdfefe1423674965f608a840701539b275b8e9"
   },
   {
     "id": "product-hubs-examples-generic-payment-product-implementation-blueprint",
     "title": "Implementation Blueprint",
     "kind": "product-hub-example",
-    "domain": "repository",
+    "domain": "payments",
     "sourcePath": "apt-principles-agents/product-hubs/examples/generic-payment-product/implementation-blueprint.md",
     "publicPath": "/docs/apt/product-hubs/examples/generic-payment-product/implementation-blueprint.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "21cfb17b47f3daf147e5232ba963661978d6b1042fdff8699386f338d12efd5f"
+    "checksum": "72d3f33fe4f54743ffb35a59cd01006c404cf45c67fcb073b073b5220bd380f6"
   },
   {
     "id": "product-hubs-examples-generic-payment-product-launch-readiness-checklist",
     "title": "Launch Readiness Checklist",
     "kind": "product-hub-example",
-    "domain": "repository",
+    "domain": "payments",
     "sourcePath": "apt-principles-agents/product-hubs/examples/generic-payment-product/launch-readiness-checklist.md",
     "publicPath": "/docs/apt/product-hubs/examples/generic-payment-product/launch-readiness-checklist.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "b286ae6ef272e87d5f4edeca6250d77936e8a9a1fb6dfc8271b4655eec1db444"
+    "checksum": "5c2139f055aa8934de25dbf5ee7625f72a5f2e1b0c60c73d1e5292c029129164"
   },
   {
     "id": "product-hubs-examples-generic-payment-product-migration-guide",
     "title": "Migration Guide",
     "kind": "product-hub-example",
-    "domain": "repository",
+    "domain": "payments",
     "sourcePath": "apt-principles-agents/product-hubs/examples/generic-payment-product/migration-guide.md",
     "publicPath": "/docs/apt/product-hubs/examples/generic-payment-product/migration-guide.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "1fdcefc4d54af5a7549b405bce45cb76643917dd7011f9f0236e2f26efb7dfa3"
+    "checksum": "1c9a46c5a1a451e77ede4691a25c9d9eadbc35fbc0dacf6834775bf01aac5f18"
   },
   {
     "id": "product-hubs-examples-generic-payment-product-operations-guide",
     "title": "Operations Guide",
     "kind": "product-hub-example",
-    "domain": "repository",
+    "domain": "payments",
     "sourcePath": "apt-principles-agents/product-hubs/examples/generic-payment-product/operations-guide.md",
     "publicPath": "/docs/apt/product-hubs/examples/generic-payment-product/operations-guide.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "7af0ba122df8dece51f480a8a8ed36b1f510faacdf9063cb69f20cc75e92f467"
+    "checksum": "ec7395f3895bcedd9bbbcbc5c5b088fcc9354bff9c2fff861637fa7a6b280ad9"
   },
   {
     "id": "product-hubs-examples-generic-payment-product-overview",
     "title": "Overview",
     "kind": "product-hub-example",
-    "domain": "repository",
+    "domain": "payments",
     "sourcePath": "apt-principles-agents/product-hubs/examples/generic-payment-product/overview.md",
     "publicPath": "/docs/apt/product-hubs/examples/generic-payment-product/overview.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "4147bb8765fca989b6de7895383a01d2d273f26ca32526b0709d8b8e1d699622"
+    "checksum": "78fa94b248a60013008b2250846b5c3593b6d58df98d2eb658e6268e6b67312d"
   },
   {
     "id": "product-hubs-examples-generic-payment-product-README",
     "title": "Generic Payment Product Hub",
     "kind": "product-hub-example",
-    "domain": "repository",
+    "domain": "payments",
     "sourcePath": "apt-principles-agents/product-hubs/examples/generic-payment-product/README.md",
     "publicPath": "/docs/apt/product-hubs/examples/generic-payment-product/README.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "e9c3b9abc8e384c4a7a5eb2077502d4b56c52f902778be40f95a283a3dab259a"
+    "checksum": "5a17c8797722e051ad344ca6e22314b8d3fd71860a3506bb9ef4b076409ce2d5"
   },
   {
     "id": "product-hubs-examples-generic-payment-product-troubleshooting-guide",
     "title": "Troubleshooting Guide",
     "kind": "product-hub-example",
-    "domain": "repository",
+    "domain": "payments",
     "sourcePath": "apt-principles-agents/product-hubs/examples/generic-payment-product/troubleshooting-guide.md",
     "publicPath": "/docs/apt/product-hubs/examples/generic-payment-product/troubleshooting-guide.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "696cddffe91ddf72cea768729555a7861c03fa41d57f8f7cbe58a27f776008e8"
+    "checksum": "16290bd03888159140a3446d2f2fe88fd4323f4b0b9565aa02be6737685b2b96"
   },
   {
     "id": "product-hubs-product-hub-template-ai-usage-examples",
     "title": "AI Usage Examples",
     "kind": "product-hub-template",
-    "domain": "repository",
+    "domain": "product-hubs",
     "sourcePath": "apt-principles-agents/product-hubs/product-hub-template/ai-usage-examples.md",
     "publicPath": "/docs/apt/product-hubs/product-hub-template/ai-usage-examples.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "9016173b4d538162fa23bf824d727585b81befe1732b35f5a90b5eeefb2f8cc1"
+    "checksum": "122d910805fc05cb965b44d9e597c26ef1146d8c26b04ba3509fa7d6dfb1d6a4"
   },
   {
     "id": "product-hubs-product-hub-template-api-examples",
     "title": "API Examples",
     "kind": "product-hub-template",
-    "domain": "repository",
+    "domain": "product-hubs",
     "sourcePath": "apt-principles-agents/product-hubs/product-hub-template/api-examples.md",
     "publicPath": "/docs/apt/product-hubs/product-hub-template/api-examples.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "9a32182e2e8b2db17497497a0eba5f8f883a19f693ec46b4e2be8cc86b20f0b5"
+    "checksum": "8514288d16b34b479cb3cc38ba842864b8742350f23d851b4a29c3362c5d8f8d"
   },
   {
     "id": "product-hubs-product-hub-template-api-guide",
     "title": "API Guide",
     "kind": "product-hub-template",
-    "domain": "repository",
+    "domain": "product-hubs",
     "sourcePath": "apt-principles-agents/product-hubs/product-hub-template/api-guide.md",
     "publicPath": "/docs/apt/product-hubs/product-hub-template/api-guide.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "b893ac18b642e892bb978f36cf3e5c5de0dcd9619b2fa96fce783934b385fb7f"
+    "checksum": "c9a1cf92cfb6e0282267f110b082928c0d936df0a03c50c57bcb4e335b8dff2c"
   },
   {
     "id": "product-hubs-product-hub-template-audience-map",
     "title": "Audience Map",
     "kind": "product-hub-template",
-    "domain": "repository",
+    "domain": "product-hubs",
     "sourcePath": "apt-principles-agents/product-hubs/product-hub-template/audience-map.md",
     "publicPath": "/docs/apt/product-hubs/product-hub-template/audience-map.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "b8ad2d7602d6afdd10627284c0f18632e2b7b770c78a977f630e08e72d1ebba3"
+    "checksum": "49ed0dd601f921998eb50a332f331cbcb5c3134685cf2dcddf943ee6e86cd45b"
   },
   {
     "id": "product-hubs-product-hub-template-bank-acquirer-partner-guide",
     "title": "Bank Acquirer Partner Guide",
     "kind": "product-hub-template",
-    "domain": "repository",
+    "domain": "product-hubs",
     "sourcePath": "apt-principles-agents/product-hubs/product-hub-template/bank-acquirer-partner-guide.md",
     "publicPath": "/docs/apt/product-hubs/product-hub-template/bank-acquirer-partner-guide.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "46aba52628f7c3c5d8ac37cec412ff89e223335c1b3aa195b531281607c388e0"
+    "checksum": "ace137755468e7fe582a205d53ff149f0b2b1ac32da48abaabff873dfecf0824"
   },
   {
     "id": "product-hubs-product-hub-template-business-guide",
     "title": "Business Guide",
     "kind": "product-hub-template",
-    "domain": "repository",
+    "domain": "product-hubs",
     "sourcePath": "apt-principles-agents/product-hubs/product-hub-template/business-guide.md",
     "publicPath": "/docs/apt/product-hubs/product-hub-template/business-guide.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "4e5be210a374785fc355234ccce4141e9ddf938979fabf09664cf6f4412975ad"
+    "checksum": "19b04dadb22a9853f080f536a64257559830f97147b1a077cf17d324f150b2ca"
   },
   {
     "id": "product-hubs-product-hub-template-demos-demo-plan",
     "title": "Demo Plan",
     "kind": "template",
-    "domain": "repository",
+    "domain": "product-hubs",
     "sourcePath": "apt-principles-agents/product-hubs/product-hub-template/demos/demo-plan.md",
     "publicPath": "/docs/apt/product-hubs/product-hub-template/demos/demo-plan.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "af2c742ec3ff878659e7505f2a76db47084f12309c753f2c687c8914676d2fdc"
+    "checksum": "de9988c204614e3c5f7b184e4ca73593d52a455cfb0e543847bceccddb4f7aa4"
   },
   {
     "id": "product-hubs-product-hub-template-demos-README",
     "title": "Demo Assets",
     "kind": "demo",
-    "domain": "repository",
+    "domain": "product-hubs",
     "sourcePath": "apt-principles-agents/product-hubs/product-hub-template/demos/README.md",
     "publicPath": "/docs/apt/product-hubs/product-hub-template/demos/README.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "269db3969be06ef0f454b6b99a29e1d3be7e26e74b22bd8fd58867a21eed5a20"
+    "checksum": "a8d0544a4eef1c8cbb31c38f465575676ff56d2c2fd56bbf25ab1bd394ddb55b"
   },
   {
     "id": "product-hubs-product-hub-template-developer-integrator-guide",
     "title": "Developer Integrator Guide",
     "kind": "product-hub-template",
-    "domain": "repository",
+    "domain": "product-hubs",
     "sourcePath": "apt-principles-agents/product-hubs/product-hub-template/developer-integrator-guide.md",
     "publicPath": "/docs/apt/product-hubs/product-hub-template/developer-integrator-guide.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "b7e246b55b4cbda5cf13a7278d42fc97033d8d15a3afaeaf458992a11b1d6f03"
+    "checksum": "013032f1220d9ed942e19ff94721a8e7a157e8c4e9c7e19e899129cb99537870"
   },
   {
     "id": "product-hubs-product-hub-template-game-extension",
     "title": "Game Product Hub Extension",
     "kind": "product-hub-extension",
-    "domain": "repository",
+    "domain": "product-hubs",
     "sourcePath": "apt-principles-agents/product-hubs/product-hub-template/game-extension.md",
     "publicPath": "/docs/apt/product-hubs/product-hub-template/game-extension.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "c8ede7ef0fd7256c3f433c23fe66acdf4a79ddd98df74b7479b450017d087442"
+    "checksum": "9b744bbb75bd0b2b9f0cf216cab967455bccdd86470652d986753e66315ac3a3"
   },
   {
     "id": "product-hubs-product-hub-template-implementation-blueprint",
     "title": "Implementation Blueprint",
     "kind": "product-hub-template",
-    "domain": "repository",
+    "domain": "product-hubs",
     "sourcePath": "apt-principles-agents/product-hubs/product-hub-template/implementation-blueprint.md",
     "publicPath": "/docs/apt/product-hubs/product-hub-template/implementation-blueprint.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "25afa3653ddec3cdb2b4b6cffac1fb7a1d9badd774bb21111c6ad31b42a996ce"
+    "checksum": "0e31ece1321baa88b0be6180f3b1afc7f957ace309efd0b3f3c2ac695c4b45ec"
   },
   {
     "id": "product-hubs-product-hub-template-launch-readiness-checklist",
     "title": "Launch Readiness Checklist",
     "kind": "product-hub-template",
-    "domain": "repository",
+    "domain": "product-hubs",
     "sourcePath": "apt-principles-agents/product-hubs/product-hub-template/launch-readiness-checklist.md",
     "publicPath": "/docs/apt/product-hubs/product-hub-template/launch-readiness-checklist.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "efdb1e3584e52f785cad749e80e1d90d65bf4e5396f3587aadfcb08e212fc290"
+    "checksum": "5ea27116105b92da3500d2287d59b42a850ec21efc94637d0784822d55a800aa"
   },
   {
     "id": "product-hubs-product-hub-template-migration-guide",
     "title": "Migration Guide",
     "kind": "product-hub-template",
-    "domain": "repository",
+    "domain": "product-hubs",
     "sourcePath": "apt-principles-agents/product-hubs/product-hub-template/migration-guide.md",
     "publicPath": "/docs/apt/product-hubs/product-hub-template/migration-guide.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "36bdb5a628eed9369dd6cc74c3a9a3f3a5193b4a45e7dd0a83483eb4ecfdec70"
+    "checksum": "d09baa086e700630bf9b709a1ebbc08ba79fe208682d4e72866bbf684dc24f6b"
   },
   {
     "id": "product-hubs-product-hub-template-operations-guide",
     "title": "Operations Guide",
     "kind": "product-hub-template",
-    "domain": "repository",
+    "domain": "product-hubs",
     "sourcePath": "apt-principles-agents/product-hubs/product-hub-template/operations-guide.md",
     "publicPath": "/docs/apt/product-hubs/product-hub-template/operations-guide.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "89d7c307967b26709e4996ad3e4a26df87ecf6a032f870e0a0a221e433bc766c"
+    "checksum": "56705227182a6effa9bfe5dd658d905182da305e30402c1a47fd3534a28c353d"
   },
   {
     "id": "product-hubs-product-hub-template-overview",
     "title": "Overview",
     "kind": "product-hub-template",
-    "domain": "repository",
+    "domain": "product-hubs",
     "sourcePath": "apt-principles-agents/product-hubs/product-hub-template/overview.md",
     "publicPath": "/docs/apt/product-hubs/product-hub-template/overview.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "db509a6887e4b5bdf54359150b906269192376888945847ac7ed2ddb62ab01bd"
+    "checksum": "c92f334fb15261b1ce9d76d190ce41422c18cdf23ea3023c24b740d8b6ee1c92"
   },
   {
     "id": "product-hubs-product-hub-template-README",
     "title": "Product Hub Template",
     "kind": "product-hub-template",
-    "domain": "repository",
+    "domain": "product-hubs",
     "sourcePath": "apt-principles-agents/product-hubs/product-hub-template/README.md",
     "publicPath": "/docs/apt/product-hubs/product-hub-template/README.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "8df4f8329fbfa8a5b6f6b4b12414c21503f16fcbdf3d87a463a4a00a8f04e48b"
+    "checksum": "cd57015d22aef450377e96dcb25a067249dccb6ce84e97a2c4238996aa17090f"
   },
   {
     "id": "product-hubs-product-hub-template-troubleshooting-guide",
     "title": "Troubleshooting Guide",
     "kind": "product-hub-template",
-    "domain": "repository",
+    "domain": "product-hubs",
     "sourcePath": "apt-principles-agents/product-hubs/product-hub-template/troubleshooting-guide.md",
     "publicPath": "/docs/apt/product-hubs/product-hub-template/troubleshooting-guide.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "f82506d8b50c34b0650f80bad52a1637d047df949f16b5ba6051fd1e0d758b13"
+    "checksum": "06a1b3544f6959d126e74fc122985ae0ca3a2bcda06301e02b6c73bca1d228ad"
   },
   {
     "id": "product-hubs-README",
     "title": "APT Product Hubs",
     "kind": "standard",
-    "domain": "repository",
+    "domain": "product-hubs",
     "sourcePath": "apt-principles-agents/product-hubs/README.md",
     "publicPath": "/docs/apt/product-hubs/README.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "1cff2dc3b9e7b47a51ce2dc510a393ee288d50e2cfc495a98191b74f440c06fa"
+    "checksum": "840366e753805c627191dea96ae5b98a2a30f39863f0718955b9ea867a1ee2e4"
   },
   {
     "id": "prompts-agent-harness-review-prompt",
@@ -5741,13 +5597,13 @@ export const aptPrinciplesPublicManifest = [
     "id": "prompts-README",
     "title": "APT Prompts",
     "kind": "index",
-    "domain": "README",
+    "domain": "navigation",
     "sourcePath": "apt-principles-agents/prompts/README.md",
     "publicPath": "/docs/apt/prompts/README.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "688fdefa3caf574cd48990a8f422ac6aca43fd94119ef28122d852d16cce1122"
+    "checksum": "303b64c1542009318a620fca886d017480d855c1092d44ad5f10ce00dea2325b"
   },
   {
     "id": "prompts-release-review-prompt",
@@ -6077,25 +5933,25 @@ export const aptPrinciplesPublicManifest = [
     "id": "README",
     "title": "APT Principles + Agents",
     "kind": "repository",
-    "domain": "repository",
+    "domain": "governance",
     "sourcePath": "apt-principles-agents/README.md",
     "publicPath": "/docs/apt/README.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "f1cbf38c3f3202e5e82d06cdcaeced8199f02729d4cb3d89ee9ffc23a4e942b7"
+    "checksum": "024b37f5f8fd617b6fe67c22d44129b262f333d6431a1239fea20a00c4e91c11"
   },
   {
     "id": "references-agent-standards-contract",
-    "title": "APT Agent Standards Distribution Contract",
+    "title": "APT Principles and Agents Distribution Contract",
     "kind": "reference",
     "domain": "reference",
     "sourcePath": "apt-principles-agents/references/agent-standards-contract.json",
     "publicPath": "/docs/apt/references/agent-standards-contract.json",
-    "version": "v1",
-    "status": "draft",
-    "lastUpdated": "2026-06-14",
-    "checksum": "d04e0d4d1c47258dc7ce3597a3656c444529052249293eafccd82bade417af97"
+    "version": "1.0.0",
+    "status": "active",
+    "lastUpdated": "2026-06-28",
+    "checksum": "a9c48595321321dfd72437e94656282210370441f07068dafc448b0ed4d5cd3d"
   },
   {
     "id": "references-ai-harness-contract",
@@ -6170,6 +6026,18 @@ export const aptPrinciplesPublicManifest = [
     "checksum": "879993a514cbc7b5a31c99f016356aeea4912a3d856209c2c2b721a9dce0a81d"
   },
   {
+    "id": "references-installation-schema",
+    "title": "APT Installation Record",
+    "kind": "reference",
+    "domain": "reference",
+    "sourcePath": "apt-principles-agents/references/installation.schema.json",
+    "publicPath": "/docs/apt/references/installation.schema.json",
+    "version": "1.0.0",
+    "status": "active",
+    "lastUpdated": null,
+    "checksum": "2bea5aef8dcf98b8586712024f3c8c18b18ad5a09bb08cfbe886de0bcdea69c1"
+  },
+  {
     "id": "references-knowledge-contracts",
     "title": "APT Knowledge Contracts",
     "kind": "reference",
@@ -6204,6 +6072,18 @@ export const aptPrinciplesPublicManifest = [
     "status": "draft",
     "lastUpdated": "2026-04-24",
     "checksum": "2eded24db6e4d163c344cb288d54eec3ca4e3a0454be7afd0bfa00990552d894"
+  },
+  {
+    "id": "references-workspace-consumers",
+    "title": "workspace-consumers.json",
+    "kind": "reference",
+    "domain": "reference",
+    "sourcePath": "apt-principles-agents/references/workspace-consumers.json",
+    "publicPath": "/docs/apt/references/workspace-consumers.json",
+    "version": "1.0.0",
+    "status": "active",
+    "lastUpdated": "2026-06-28",
+    "checksum": "fdf46f30ba4ca3fd9ab5dd3815224ce3b843e54d7fcc86e15f95fc42b6142579"
   },
   {
     "id": "routing-local-first-routing",
@@ -7745,13 +7625,13 @@ export const aptPrinciplesPublicManifest = [
     "id": "skills-README",
     "title": "APT Skills",
     "kind": "index",
-    "domain": "README",
+    "domain": "navigation",
     "sourcePath": "apt-principles-agents/skills/README.md",
     "publicPath": "/docs/apt/skills/README.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "1e67fe78f9417df3be4265153deef3864bc5aacbab72aff829bceb66b971306a"
+    "checksum": "f261669841e141ac8262e52c8b7af2f4f65497a05de5541d135cac5e2ad9a99f"
   },
   {
     "id": "skills-security-risk-data-handling-review-SKILL",
@@ -8297,13 +8177,13 @@ export const aptPrinciplesPublicManifest = [
     "id": "standards-README",
     "title": "APT Standards Index",
     "kind": "standard",
-    "domain": "README",
+    "domain": "navigation",
     "sourcePath": "apt-principles-agents/standards/README.md",
     "publicPath": "/docs/apt/standards/README.md",
     "version": "v1",
     "status": "stable",
     "lastUpdated": "2026-06-21",
-    "checksum": "317c997988720c4e1bb82038609d3ff2cedc735e5125b11a9c9555aa50d5178c"
+    "checksum": "fc34afb907b3715e58662c16fe0f4a10c377b555b042e9c00ebe1194cb1ad0a8"
   },
   {
     "id": "standards-testing-testing-standards",
@@ -8642,16 +8522,16 @@ export const aptPrinciplesPublicManifest = [
     "checksum": "5902b0798ce550e9e06d00b16052fd1c8e862319240fd6918bc0899fd81c62c4"
   },
   {
-    "id": "templates-distribution-agent-standards-manifest-template",
-    "title": "agent-standards.manifest.template.json",
+    "id": "templates-distribution-installation-template",
+    "title": "installation.template.json",
     "kind": "template",
     "domain": "template",
-    "sourcePath": "apt-principles-agents/templates/distribution/agent-standards.manifest.template.json",
-    "publicPath": "/docs/apt/templates/distribution/agent-standards.manifest.template.json",
-    "version": "0.1.0",
+    "sourcePath": "apt-principles-agents/templates/distribution/installation.template.json",
+    "publicPath": "/docs/apt/templates/distribution/installation.template.json",
+    "version": "1",
     "status": "active",
     "lastUpdated": null,
-    "checksum": "fc15e4620376ebbe3eba9b3b39631041bd4160f21978ed2359f62b7755ea339c"
+    "checksum": "61e9318361656a99ab87e3ce376645e5e7293844ebb9e527c42410a4233c88f0"
   },
   {
     "id": "templates-docs-ai-usage-examples",
@@ -9341,13 +9221,13 @@ export const aptPrinciplesPublicManifest = [
     "id": "templates-README",
     "title": "APT Templates",
     "kind": "index",
-    "domain": "README",
+    "domain": "navigation",
     "sourcePath": "apt-principles-agents/templates/README.md",
     "publicPath": "/docs/apt/templates/README.md",
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "1e3b40eafec9433055adb1053e31f0896827ef52d4035ee728222e957d3dbc15"
+    "checksum": "e53d4b0a6e2c81b71b11d0ff525a75628fbd0f14a5ab40b81ebffb8ee75c6c17"
   },
   {
     "id": "templates-srd-README",

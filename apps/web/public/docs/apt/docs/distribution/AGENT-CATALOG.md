@@ -1,42 +1,91 @@
 ---
 title: "Agent Catalog"
-kind: "guide"
+kind: "catalog"
 domain: "documentation"
 status: "active"
 owner: "APT"
 last_updated: "2026-06-28"
-source_paths: ["apt-agent-standards/docs/AGENT-CATALOG.md"]
+source_paths: ["apt-principles-agents/agents/"]
 ---
 
 # Agent Catalog
 
-## Harness Agents
+Generated from active repository artifacts by `scripts/generate-catalogs.mjs`. Do not hand-edit catalog rows.
 
-| Agent | Class | Primary use |
+| Artifact | Path | Purpose |
 | --- | --- | --- |
-| `apt-router` | Router | Classify requests, select skills/context, and build task packets. |
-| `apt-model-router` | Router | Pick local, mid-tier, or frontier model execution. |
-| `apt-architect` | Specialist | Review architecture, repo structure, and migration strategy. |
-| `apt-docs-reviewer` | Reviewer | Review documentation quality and information architecture. |
-| `apt-ui-reviewer` | Reviewer | Review UI intent, workflow, states, and accessibility. |
-| `apt-code-reviewer` | Reviewer | Review code for regressions, maintainability, and missing tests. |
-| `apt-cloudflare-builder` | Specialist | Build or review Cloudflare Workers, Pages, Hono, and bindings. |
-| `apt-security-reviewer` | Reviewer | Review prompt injection, secrets, permissions, and sensitive workflows. |
-| `apt-cost-controller` | Auditor | Manage token budgets, context loading, and escalation control. |
-| `apt-verifier` | Auditor | Validate outputs, manifests, reports, and standards compliance. |
-| `apt-installer` | Utility | Install selected APT agent repository assets. |
-| `apt-repo-scanner` | Utility | Detect install state, drift, missing files, and repair needs. |
-| `apt-repair-agent` | Utility | Repair installations while preserving local customizations. |
-
-## Existing Claude Agents
-
-Claude agents remain tool-native role files in `claude/agents/`. Use the harness router to select among them:
-
-- Cloudflare work routes to `cloudflare-architect`, `cloudflare-modernization-architect`, or `cloudflare-react-hono-architect`.
-- API work routes to `api-experience-reviewer`.
-- Documentation work routes to `documentation-architect` or `documentation-normalizer`.
-- Generated-output review routes to `ai-output-auditor`.
-- Repository adoption routes to `apt-readiness-auditor`, `apt-principles-agents-reviewer`, or `repo-standardizer`.
-- UI work routes to `intent-ux-reviewer`.
-- Generated/Lovable migration routes to `lovable-to-apt-architect` or `lovable-to-cloudflare-architect`.
-- Payment, health, webhook, or integration readiness routes to `service-readiness-reviewer` and `apt-security-reviewer`.
+| [Apt AI Consumable API Reviewer](../../agents/api/apt-ai-consumable-api-reviewer.md) | `agents/api/apt-ai-consumable-api-reviewer.md` | Provide the Apt AI Consumable API Reviewer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt API Bridge Reviewer](../../agents/api/apt-api-bridge-reviewer.md) | `agents/api/apt-api-bridge-reviewer.md` | Provide the Apt API Bridge Reviewer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt API Migration Planner](../../agents/api/apt-api-migration-planner.md) | `agents/api/apt-api-migration-planner.md` | Provide the Apt API Migration Planner perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt API Reviewer](../../agents/api/apt-api-reviewer.md) | `agents/api/apt-api-reviewer.md` | Provide the Apt API Reviewer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Modern API Designer](../../agents/api/apt-modern-api-designer.md) | `agents/api/apt-modern-api-designer.md` | Provide the Apt Modern API Designer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt API Architect](../../agents/architecture/apt-api-architect.md) | `agents/architecture/apt-api-architect.md` | Provide the Apt API Architect perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Integration Architect](../../agents/architecture/apt-integration-architect.md) | `agents/architecture/apt-integration-architect.md` | Provide the Apt Integration Architect perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Modernization Architect](../../agents/architecture/apt-modernization-architect.md) | `agents/architecture/apt-modernization-architect.md` | Provide the Apt Modernization Architect perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Principal Architect](../../agents/architecture/apt-principal-architect.md) | `agents/architecture/apt-principal-architect.md` | Provide the Apt Principal Architect perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Beginner User Reviewer](../../agents/beginner-reviewers/apt-beginner-user-reviewer.md) | `agents/beginner-reviewers/apt-beginner-user-reviewer.md` | Provide the Apt Beginner User Reviewer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt New Developer Reviewer](../../agents/beginner-reviewers/apt-new-developer-reviewer.md) | `agents/beginner-reviewers/apt-new-developer-reviewer.md` | Provide the Apt New Developer Reviewer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt New Merchant Reviewer](../../agents/beginner-reviewers/apt-new-merchant-reviewer.md) | `agents/beginner-reviewers/apt-new-merchant-reviewer.md` | Provide the Apt New Merchant Reviewer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt New Support Agent Reviewer](../../agents/beginner-reviewers/apt-new-support-agent-reviewer.md) | `agents/beginner-reviewers/apt-new-support-agent-reviewer.md` | Provide the Apt New Support Agent Reviewer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Architecture Lead](../../agents/core/apt-architecture-lead.md) | `agents/core/apt-architecture-lead.md` | Provide the Apt Architecture Lead perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Design Lead](../../agents/core/apt-design-lead.md) | `agents/core/apt-design-lead.md` | Provide the Apt Design Lead perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Execution Lead](../../agents/core/apt-execution-lead.md) | `agents/core/apt-execution-lead.md` | Provide the Apt Execution Lead perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Principal](../../agents/core/apt-principal.md) | `agents/core/apt-principal.md` | Provide the Apt Principal perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Router](../../agents/core/apt-router.md) | `agents/core/apt-router.md` | Provide the Apt Router perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Thinking Lead](../../agents/core/apt-thinking-lead.md) | `agents/core/apt-thinking-lead.md` | Provide the Apt Thinking Lead perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt AI Agent User Reviewer](../../agents/customer/apt-ai-agent-user-reviewer.md) | `agents/customer/apt-ai-agent-user-reviewer.md` | Provide the Apt AI Agent User Reviewer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Bank Acquirer Reviewer](../../agents/customer/apt-bank-acquirer-reviewer.md) | `agents/customer/apt-bank-acquirer-reviewer.md` | Provide the Apt Bank Acquirer Reviewer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Business User Reviewer](../../agents/customer/apt-business-user-reviewer.md) | `agents/customer/apt-business-user-reviewer.md` | Provide the Apt Business User Reviewer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Developer Integrator Reviewer](../../agents/customer/apt-developer-integrator-reviewer.md) | `agents/customer/apt-developer-integrator-reviewer.md` | Provide the Apt Developer Integrator Reviewer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Support Operations Reviewer](../../agents/customer/apt-support-operations-reviewer.md) | `agents/customer/apt-support-operations-reviewer.md` | Provide the Apt Support Operations Reviewer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt API Docs Writer](../../agents/docs/apt-api-docs-writer.md) | `agents/docs/apt-api-docs-writer.md` | Provide the Apt API Docs Writer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Audience Docs Reviewer](../../agents/docs/apt-audience-docs-reviewer.md) | `agents/docs/apt-audience-docs-reviewer.md` | Provide the Apt Audience Docs Reviewer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Demo And Diagram Planner](../../agents/docs/apt-demo-and-diagram-planner.md) | `agents/docs/apt-demo-and-diagram-planner.md` | Provide the Apt Demo And Diagram Planner perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Docs Reviewer](../../agents/docs/apt-docs-reviewer.md) | `agents/docs/apt-docs-reviewer.md` | Provide the Apt Docs Reviewer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Implementation Blueprint Writer](../../agents/docs/apt-implementation-blueprint-writer.md) | `agents/docs/apt-implementation-blueprint-writer.md` | Provide the Apt Implementation Blueprint Writer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Product Hub Builder](../../agents/docs/apt-product-hub-builder.md) | `agents/docs/apt-product-hub-builder.md` | Provide the Apt Product Hub Builder perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Checkout Reviewer](../../agents/ecommerce/apt-checkout-reviewer.md) | `agents/ecommerce/apt-checkout-reviewer.md` | Provide the Apt Checkout Reviewer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Commerce Experience Reviewer](../../agents/ecommerce/apt-commerce-experience-reviewer.md) | `agents/ecommerce/apt-commerce-experience-reviewer.md` | Provide the Apt Commerce Experience Reviewer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Merchant Onboarding Reviewer](../../agents/ecommerce/apt-merchant-onboarding-reviewer.md) | `agents/ecommerce/apt-merchant-onboarding-reviewer.md` | Provide the Apt Merchant Onboarding Reviewer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Partner Acquirer Reviewer](../../agents/ecommerce/apt-partner-acquirer-reviewer.md) | `agents/ecommerce/apt-partner-acquirer-reviewer.md` | Provide the Apt Partner Acquirer Reviewer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Cloudflare Hono Engineer](../../agents/engineering/apt-cloudflare-hono-engineer.md) | `agents/engineering/apt-cloudflare-hono-engineer.md` | Provide the Apt Cloudflare Hono Engineer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Engineering Reviewer](../../agents/engineering/apt-engineering-reviewer.md) | `agents/engineering/apt-engineering-reviewer.md` | Provide the Apt Engineering Reviewer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Refactor Agent](../../agents/engineering/apt-refactor-agent.md) | `agents/engineering/apt-refactor-agent.md` | Provide the Apt Refactor Agent perspective while keeping APT principles, evidence, and human accountability visible. |
+| [APT Beginner Game Dev Reviewer](../../agents/game-development/apt-beginner-game-dev-reviewer.md) | `agents/game-development/apt-beginner-game-dev-reviewer.md` | Check whether a brand-new game developer can understand the plan, project structure, terms, and next steps. |
+| [APT Game Architect](../../agents/game-development/apt-game-architect.md) | `agents/game-development/apt-game-architect.md` | Review whether game structure supports safe, understandable playable change. |
+| [APT Game Designer](../../agents/game-development/apt-game-designer.md) | `agents/game-development/apt-game-designer.md` | Shape the player promise, loop, mechanics, progression, and experience. |
+| [APT Game Development Coach](../../agents/game-development/apt-game-development-coach.md) | `agents/game-development/apt-game-development-coach.md` | Help a beginner learn game development while finishing small playable increments. |
+| [APT Game Docs Writer](../../agents/game-development/apt-game-docs-writer.md) | `agents/game-development/apt-game-docs-writer.md` | Create concise, audience-layered documentation for the current playable truth. |
+| [APT Game Prototype Planner](../../agents/game-development/apt-game-prototype-planner.md) | `agents/game-development/apt-game-prototype-planner.md` | Turn a risky game assumption into a timeboxed playable experiment. |
+| [APT Game Scope Guardian](../../agents/game-development/apt-game-scope-guardian.md) | `agents/game-development/apt-game-scope-guardian.md` | Reduce ideas to the fastest credible playable prototype. |
+| [APT Game Testing Reviewer](../../agents/game-development/apt-game-testing-reviewer.md) | `agents/game-development/apt-game-testing-reviewer.md` | Review correctness, playtest evidence, compatibility, failure recovery, and release confidence. |
+| [APT Game UI Reviewer](../../agents/game-development/apt-game-ui-reviewer.md) | `agents/game-development/apt-game-ui-reviewer.md` | Review game UI, HUD, navigation, controls communication, and accessibility. |
+| [APT Gameplay Reviewer](../../agents/game-development/apt-gameplay-reviewer.md) | `agents/game-development/apt-gameplay-reviewer.md` | Review the playable loop, mechanics, feedback, challenge, and recovery using build evidence. |
+| [apt-architect](../../agents/harness/apt-architect.md) | `agents/harness/apt-architect.md` | Review architecture, repository structure, migration strategy, and harness design. |
+| [apt-cloudflare-builder](../../agents/harness/apt-cloudflare-builder.md) | `agents/harness/apt-cloudflare-builder.md` | Build and review Cloudflare Workers, Pages, Hono, D1, KV, R2, and deployment workflows. |
+| [apt-code-reviewer](../../agents/harness/apt-code-reviewer.md) | `agents/harness/apt-code-reviewer.md` | Review code for bugs, maintainability, behavior preservation, and missing validation. |
+| [apt-cost-controller](../../agents/harness/apt-cost-controller.md) | `agents/harness/apt-cost-controller.md` | Control token usage, repeated context, model escalation, and unnecessary scans. |
+| [apt-docs-reviewer](../../agents/harness/apt-docs-reviewer.md) | `agents/harness/apt-docs-reviewer.md` | Review documentation architecture, consistency, source-of-truth boundaries, and operating guidance. |
+| [apt-installer](../../agents/harness/apt-installer.md) | `agents/harness/apt-installer.md` | Apply this repository's installable agent standards and harness assets to target repositories. |
+| [apt-model-router](../../agents/harness/apt-model-router.md) | `agents/harness/apt-model-router.md` | Choose the smallest sufficient local or cloud model tier for an APT task. |
+| [apt-repair-agent](../../agents/harness/apt-repair-agent.md) | `agents/harness/apt-repair-agent.md` | Repair or upgrade existing APT agent standard installations while preserving local customizations. |
+| [apt-repo-scanner](../../agents/harness/apt-repo-scanner.md) | `agents/harness/apt-repo-scanner.md` | Inspect target repositories for installed APT agent standards, drift, missing files, duplicates, and repair needs. |
+| [apt-router](../../agents/harness/apt-router.md) | `agents/harness/apt-router.md` | Turn a user request into a compact, reviewable task packet for the smallest suitable APT workflow. |
+| [apt-security-reviewer](../../agents/harness/apt-security-reviewer.md) | `agents/harness/apt-security-reviewer.md` | Review security-sensitive agent, code, configuration, MCP, model-routing, and lifecycle behavior. |
+| [apt-ui-reviewer](../../agents/harness/apt-ui-reviewer.md) | `agents/harness/apt-ui-reviewer.md` | Review UI work through intent, workflow continuity, state design, accessibility, and responsive behavior. |
+| [apt-verifier](../../agents/harness/apt-verifier.md) | `agents/harness/apt-verifier.md` | Verify outputs, installs, repairs, routing config, and documentation alignment before trust. |
+| [Apt Chargeback Risk Reviewer](../../agents/payments/apt-chargeback-risk-reviewer.md) | `agents/payments/apt-chargeback-risk-reviewer.md` | Provide the Apt Chargeback Risk Reviewer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Crypto Payment Risk Reviewer](../../agents/payments/apt-crypto-payment-risk-reviewer.md) | `agents/payments/apt-crypto-payment-risk-reviewer.md` | Provide the Apt Crypto Payment Risk Reviewer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Fraud Risk Reviewer](../../agents/payments/apt-fraud-risk-reviewer.md) | `agents/payments/apt-fraud-risk-reviewer.md` | Provide the Apt Fraud Risk Reviewer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Gateway Migration Reviewer](../../agents/payments/apt-gateway-migration-reviewer.md) | `agents/payments/apt-gateway-migration-reviewer.md` | Provide the Apt Gateway Migration Reviewer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Payment Architect](../../agents/payments/apt-payment-architect.md) | `agents/payments/apt-payment-architect.md` | Provide the Apt Payment Architect perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Principal Payment Consultant](../../agents/payments/apt-principal-payment-consultant.md) | `agents/payments/apt-principal-payment-consultant.md` | Provide the Apt Principal Payment Consultant perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Stablecoin Readiness Reviewer](../../agents/payments/apt-stablecoin-readiness-reviewer.md) | `agents/payments/apt-stablecoin-readiness-reviewer.md` | Provide the Apt Stablecoin Readiness Reviewer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Transaction Intelligence Analyst](../../agents/payments/apt-transaction-intelligence-analyst.md) | `agents/payments/apt-transaction-intelligence-analyst.md` | Provide the Apt Transaction Intelligence Analyst perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Launch Readiness Lead](../../agents/product/apt-launch-readiness-lead.md) | `agents/product/apt-launch-readiness-lead.md` | Provide the Apt Launch Readiness Lead perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt PRD Writer](../../agents/product/apt-prd-writer.md) | `agents/product/apt-prd-writer.md` | Provide the Apt PRD Writer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Product Manager](../../agents/product/apt-product-manager.md) | `agents/product/apt-product-manager.md` | Provide the Apt Product Manager perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Voice Of Customer Analyst](../../agents/product/apt-voice-of-customer-analyst.md) | `agents/product/apt-voice-of-customer-analyst.md` | Provide the Apt Voice Of Customer Analyst perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Compliance Awareness Reviewer](../../agents/risk/apt-compliance-awareness-reviewer.md) | `agents/risk/apt-compliance-awareness-reviewer.md` | Provide the Apt Compliance Awareness Reviewer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Permissions Reviewer](../../agents/risk/apt-permissions-reviewer.md) | `agents/risk/apt-permissions-reviewer.md` | Provide the Apt Permissions Reviewer perspective while keeping APT principles, evidence, and human accountability visible. |
+| [Apt Security Risk Reviewer](../../agents/risk/apt-security-risk-reviewer.md) | `agents/risk/apt-security-risk-reviewer.md` | Provide the Apt Security Risk Reviewer perspective while keeping APT principles, evidence, and human accountability visible. |

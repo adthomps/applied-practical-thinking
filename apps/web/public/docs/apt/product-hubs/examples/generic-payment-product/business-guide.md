@@ -5,30 +5,26 @@ status: active
 owner: APT
 last_updated: 2026-06-27
 source: APT consolidation
-domain: "repository"
+domain: "payments"
 source_paths: ["apt-principles-agents/product-hubs/examples/generic-payment-product/business-guide.md"]
 ---
 
 # Business Guide
 
-## Audience And Intent
+## Intended Outcome
 
-State who uses this artifact, what outcome they need, and what they should do next.
+Reduce integration variance and support investigation time by presenting one payment lifecycle across processor adapters.
 
-## Canonical Product Facts
+## Merchant Journey
 
-- Product capability and exclusions:
-- Verified source:
-- Setup, roles, and permissions:
-- Lifecycle and operational behavior:
+Configure credentials and permissions, create a token outside ExamplePay, submit a payment, present the returned outcome, capture when fulfillment permits, and reconcile settlement reports.
 
-## Guidance
+## Measures
 
-Cover business value, partner enablement, developer integration, support identifiers, product decisions, and AI-safe examples as applicable. Link rather than duplicate shared facts.
+Track authorization outcome by reason family, duplicate-effect prevention, capture completion, settlement match rate, time to identify a payment, and migration rollback rate. Targets must be approved from baseline evidence; this example supplies no performance claims.
 
-## Risks, Questions, And Readiness
+## Business Risks
 
-- Known limitations and assumptions:
-- Security, compliance, payment, or migration review:
-- Troubleshooting and escalation:
-- Launch evidence and approval:
+Processor feature differences may leak through the abstraction; generic decline messages can hide actionable configuration issues; delayed settlement can be mistaken for failed capture; and unclear refund timing can create customer-service promises the system cannot support.
+
+Launch requires product, finance, operations, security, legal/compliance, and partner approval where applicable.

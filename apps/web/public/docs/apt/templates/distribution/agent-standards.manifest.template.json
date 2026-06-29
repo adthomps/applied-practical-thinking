@@ -1,9 +1,0 @@
-{
-  "source": "apt-principles-agents",
-  "version": "0.1.0",
-  "profiles": ["apt-core"],
-  "installedAt": "ISO-8601 timestamp",
-  "managedFiles": [],
-  "managedFileSources": {},
-  "localContext": "docs/project-context.md"
-}

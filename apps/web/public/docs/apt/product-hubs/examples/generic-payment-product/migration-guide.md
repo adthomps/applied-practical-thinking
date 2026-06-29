@@ -5,30 +5,20 @@ status: active
 owner: APT
 last_updated: 2026-06-27
 source: APT consolidation
-domain: "repository"
+domain: "payments"
 source_paths: ["apt-principles-agents/product-hubs/examples/generic-payment-product/migration-guide.md"]
 ---
 
 # Migration Guide
 
-## Audience And Intent
+## Phases
 
-State who uses this artifact, what outcome they need, and what they should do next.
+Inventory legacy operations and processor codes; create field and status mappings; run contract fixtures; introduce a facade in shadow-read mode; dual-write only where reconciliation proves safety; canary merchants; then expand by evidence.
 
-## Canonical Product Facts
+## Parity Gate
 
-- Product capability and exclusions:
-- Verified source:
-- Setup, roles, and permissions:
-- Lifecycle and operational behavior:
+Authorization, capture, void, refund, timeout recovery, duplicate prevention, webhooks, settlement, reporting identifiers, permissions, and support lookup require explicit parity or an approved exclusion.
 
-## Guidance
+## Rollback
 
-Cover business value, partner enablement, developer integration, support identifiers, product decisions, and AI-safe examples as applicable. Link rather than duplicate shared facts.
-
-## Risks, Questions, And Readiness
-
-- Known limitations and assumptions:
-- Security, compliance, payment, or migration review:
-- Troubleshooting and escalation:
-- Launch evidence and approval:
+Keep legacy routing available per merchant, preserve both identifiers, stop new traffic without deleting events, and reconcile in-flight transactions before changing the system of record. Deprecation requires usage evidence, communications, support preparation, dates, and exception ownership.

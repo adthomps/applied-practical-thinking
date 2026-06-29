@@ -16,6 +16,6 @@ Load:
 
 - local `AGENTS.md`
 - `docs/project-context.md` in target repos
-- relevant `apt-core/*.md` summaries
+- relevant `.apt/standards/installable-summaries/*.md` summaries
 
 Do not duplicate long doctrine from `apt-principles-agents`; link to the canonical source when deeper doctrine is needed.

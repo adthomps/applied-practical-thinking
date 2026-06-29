@@ -5,30 +5,20 @@ status: active
 owner: APT
 last_updated: 2026-06-27
 source: APT consolidation
-domain: "repository"
+domain: "payments"
 source_paths: ["apt-principles-agents/product-hubs/examples/generic-payment-product/operations-guide.md"]
 ---
 
 # Operations Guide
 
-## Audience And Intent
+## Observe
 
-State who uses this artifact, what outcome they need, and what they should do next.
+Monitor request rate, latency, canonical outcomes, unknown timeouts, adapter health, webhook backlog, duplicate suppression, capture age, and settlement mismatches. Alert on customer impact and reconciliation risk, not raw volume alone.
 
-## Canonical Product Facts
+## Investigate
 
-- Product capability and exclusions:
-- Verified source:
-- Setup, roles, and permissions:
-- Lifecycle and operational behavior:
+Start with `payment_id` or `request_id`; confirm canonical state; correlate the processor reference; inspect adapter attempts and event delivery; then compare settlement records. Never ask support users for raw payment credentials.
 
-## Guidance
+## Recover
 
-Cover business value, partner enablement, developer integration, support identifiers, product decisions, and AI-safe examples as applicable. Link rather than duplicate shared facts.
-
-## Risks, Questions, And Readiness
-
-- Known limitations and assumptions:
-- Security, compliance, payment, or migration review:
-- Troubleshooting and escalation:
-- Launch evidence and approval:
+Retry only operations explicitly marked safe and with the original idempotency key. Replay signed events from the event store, not handcrafted payloads. Escalate unknown financial state, reconciliation imbalance, credential compromise, or repeated processor inconsistency.

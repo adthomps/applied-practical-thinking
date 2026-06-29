@@ -18,6 +18,6 @@ Load:
 - Worker and frontend entry points
 - package scripts
 - deployment docs
-- `apt-core/cloudflare-standards.md`
+- `.apt/standards/installable-summaries/cloudflare-standards.md`
 
 Do not add Cloudflare services unless project behavior justifies them.

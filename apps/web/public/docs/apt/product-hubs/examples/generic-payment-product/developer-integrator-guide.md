@@ -5,30 +5,24 @@ status: active
 owner: APT
 last_updated: 2026-06-27
 source: APT consolidation
-domain: "repository"
+domain: "payments"
 source_paths: ["apt-principles-agents/product-hubs/examples/generic-payment-product/developer-integrator-guide.md"]
 ---
 
-# Developer Integrator Guide
+# Developer and Integrator Guide
 
-## Audience And Intent
+## Integration Sequence
 
-State who uses this artifact, what outcome they need, and what they should do next.
+1. Obtain a scoped server credential and a sandbox payment-method token.
+2. Generate a unique merchant reference and idempotency key.
+3. Create a payment and persist the returned `payment_id`.
+4. Treat timeout as unknown; retrieve by ID or retry with the same idempotency key.
+5. Capture only an `authorized` payment.
+6. Verify signed webhooks, deduplicate event IDs, and fetch current state before side effects.
+7. Reconcile settled payments independently of webhook delivery.
 
-## Canonical Product Facts
+## Non-negotiable Rules
 
-- Product capability and exclusions:
-- Verified source:
-- Setup, roles, and permissions:
-- Lifecycle and operational behavior:
+Never log credentials or tokens, never infer success from an HTTP status alone, never retry a mutation with a new idempotency key after an unknown result, and never expose processor diagnostics directly to customers.
 
-## Guidance
-
-Cover business value, partner enablement, developer integration, support identifiers, product decisions, and AI-safe examples as applicable. Link rather than duplicate shared facts.
-
-## Risks, Questions, And Readiness
-
-- Known limitations and assumptions:
-- Security, compliance, payment, or migration review:
-- Troubleshooting and escalation:
-- Launch evidence and approval:
+Use [API examples](api-examples.md) as illustrative fixtures; hostnames and credentials are placeholders.
