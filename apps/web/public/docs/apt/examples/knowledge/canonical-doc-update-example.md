@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-04-24
 owner: APT
 status: draft
+kind: "example"
+domain: "knowledge"
+source_paths: ["apt-principles/examples/knowledge/canonical-doc-update-example.md"]
 ---
 
 # Canonical Doc Update Example
@@ -53,7 +56,7 @@ Related updates:
 - references/metadata-versioning-contract.json
 - checklists/knowledge-system-checklist.md
 - prompts/knowledge-review-prompt.md
-Validation: npm --prefix apt-principles run validate
+Validation: npm --prefix apt-principles-agents run validate
 ```
 
 ## Tradeoffs

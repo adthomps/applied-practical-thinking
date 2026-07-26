@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-04-24
 owner: APT
 status: draft
+kind: "example"
+domain: "quality"
+source_paths: ["apt-principles/examples/quality/validation-plan-example.md"]
 ---
 
 # Validation Plan Example
@@ -53,7 +56,7 @@ Example:
 ```text
 Change: Add public APT project profile page.
 Checks:
-1. Validate apt-principles.
+1. Validate apt-principles-agents.
 2. Confirm project profile schema fields.
 3. Preview page at desktop and mobile widths.
 4. Check links to canonical doctrine.

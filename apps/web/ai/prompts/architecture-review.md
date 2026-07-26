@@ -4,7 +4,7 @@ version: v1
 status: draft
 audience: internal
 visibility: internal
-source: apt-principles/prompts/architecture-review-prompt.md
+source: apt-principles-agents/prompts/architecture-review-prompt.md
 ---
 
 # Architecture Review Prompt
@@ -16,9 +16,9 @@ Review structure, boundaries, deployment fit, and ownership before implementing 
 1. `AGENTS.md` — project structure and boundary rules
 2. `apps/web/docs/design/versions/v2/APT-DESIGN-ARCHITECTURE.md` — project-specific MUST/NEVER boundary rules and source-of-truth map
 3. `apps/web/docs/design/versions/v2/APT-ARCHITECTURE-EXAMPLES.md` — concrete boundary examples for this repo
-4. `apt-principles/architecture.md` — canonical doctrine that the local doc defers to
-5. `apt-principles/system-standards.md` — API style, response shapes, naming rules (no substantive local version)
-6. `apt-principles/security.md` — auth, input validation, abuse protection (no substantive local version)
+4. `apt-principles-agents/principles/architecture/README.md` — canonical doctrine that the local doc defers to
+5. `apt-principles-agents/principles/system-standards/README.md` — API style, response shapes, naming rules (no substantive local version)
+6. `apt-principles-agents/principles/security-risk/README.md` — auth, input validation, abuse protection (no substantive local version)
 7. The files and packages under review
 
 ## Prompt
@@ -30,10 +30,10 @@ Use in this order:
 - AGENTS.md (project working rules and common task patterns)
 - apps/web/docs/design/versions/v2/APT-DESIGN-ARCHITECTURE.md (project-specific MUST/NEVER boundary rules — primary reference)
 - apps/web/docs/design/versions/v2/APT-ARCHITECTURE-EXAMPLES.md (concrete examples of correct boundary patterns)
-- apt-principles/architecture.md (canonical doctrine authority the local doc defers to)
-- apt-principles/system-standards.md (API style, response shapes, naming — no substantive local version)
-- apt-principles/security.md (auth, validation, abuse protection — no substantive local version)
-- apt-principles/checklists/architecture-review-checklist.md
+- apt-principles-agents/principles/architecture/README.md (canonical doctrine authority the local doc defers to)
+- apt-principles-agents/principles/system-standards/README.md (API style, response shapes, naming — no substantive local version)
+- apt-principles-agents/principles/security-risk/README.md (auth, validation, abuse protection — no substantive local version)
+- apt-principles-agents/checklists/architecture-review-checklist.md
 
 Review for:
 1. Clear responsibility placement:
@@ -97,7 +97,7 @@ Local (project-specific, primary):
 - `docs/DECISION_LOG.md`
 
 Canonical (doctrine authority):
-- `apt-principles/architecture.md`
-- `apt-principles/system-standards.md`
-- `apt-principles/security.md`
-- `apt-principles/checklists/architecture-review-checklist.md`
+- `apt-principles-agents/principles/architecture/README.md`
+- `apt-principles-agents/principles/system-standards/README.md`
+- `apt-principles-agents/principles/security-risk/README.md`
+- `apt-principles-agents/checklists/architecture-review-checklist.md`

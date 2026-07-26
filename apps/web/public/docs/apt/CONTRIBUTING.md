@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-05-31
 owner: APT
 status: stable
+kind: "repository"
+domain: "governance"
+source_paths: ["apt-principles/CONTRIBUTING.md"]
 ---
 
 # Contributing to APT Principles
@@ -17,7 +20,7 @@ This repository is the authoritative source for Applied Practical Thinking (APT)
 Read these files:
 
 - `AGENTS.md` — working rules for all contributors (human and AI)
-- `apt-principles.md` — the full APT framework and lifecycle map
+- `apt-principles-agents.md` — the full APT framework and lifecycle map
 - `README.md` — repository structure and canonical file inventory
 
 ---

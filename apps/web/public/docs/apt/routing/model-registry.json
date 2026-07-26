@@ -1,0 +1,86 @@
+{
+  "version": "0.1.0",
+  "routingVersion": "2026-06-17",
+  "updatedAt": "2026-06-17T00:00:00.000Z",
+  "tiers": {
+    "tier1-local": {
+      "description": "Local models for routing, classification, summaries, formatting, inventories, and checklists.",
+      "models": [
+        {
+          "id": "phi-local",
+          "family": "Phi",
+          "provider": "local",
+          "runtime": "ollama-or-local",
+          "status": "candidate",
+          "capabilities": ["classification", "skill-selection", "task-packet", "summarization", "checklist"]
+        },
+        {
+          "id": "qwen-local",
+          "family": "Qwen",
+          "provider": "local",
+          "runtime": "ollama-or-local",
+          "status": "candidate",
+          "capabilities": ["classification", "summarization", "markdown-cleanup"]
+        },
+        {
+          "id": "llama-local",
+          "family": "Llama",
+          "provider": "local",
+          "runtime": "ollama-or-local",
+          "status": "candidate",
+          "capabilities": ["summarization", "inventories", "checklist"]
+        }
+      ]
+    },
+    "tier2-mid": {
+      "description": "Mid-tier cloud or hosted models for implementation, documentation, tests, and moderate refactors.",
+      "models": [
+        {
+          "id": "claude-sonnet-class",
+          "family": "Claude Sonnet",
+          "provider": "cloud",
+          "status": "candidate",
+          "capabilities": ["implementation", "documentation", "tests", "moderate-refactor"]
+        },
+        {
+          "id": "gpt-mini-class",
+          "family": "GPT Mini",
+          "provider": "cloud",
+          "status": "candidate",
+          "capabilities": ["implementation", "documentation", "api-generation", "ui-generation"]
+        },
+        {
+          "id": "codex-mid-tier",
+          "family": "Codex mid-tier",
+          "provider": "cloud",
+          "status": "candidate",
+          "capabilities": ["implementation", "repo-editing", "tests"]
+        }
+      ]
+    },
+    "tier3-frontier": {
+      "description": "Frontier models for architecture, security, complex debugging, migrations, and final reviews.",
+      "models": [
+        {
+          "id": "gpt-5-class",
+          "family": "GPT-5 class",
+          "provider": "cloud",
+          "status": "candidate",
+          "capabilities": ["architecture", "security-review", "complex-debugging", "major-migration", "final-review"]
+        },
+        {
+          "id": "claude-opus-class",
+          "family": "Claude Opus class",
+          "provider": "cloud",
+          "status": "candidate",
+          "capabilities": ["architecture", "security-review", "complex-reasoning", "final-review"]
+        }
+      ]
+    }
+  },
+  "deprecated": [],
+  "notes": [
+    "Registry entries are routing candidates, not guaranteed local availability.",
+    "Scripts must avoid paid API calls unless explicitly configured."
+  ]
+}

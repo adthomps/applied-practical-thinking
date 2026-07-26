@@ -463,7 +463,7 @@ export default function PrinciplesDetail(props: PrinciplesDetailProps) {
                 >
                   <span className="inline-flex items-center gap-2 text-foreground">
                     <Github className="h-4 w-4" />
-                    apt-principles
+                    apt-principles-agents
                   </span>
                   <ExternalLink className="h-4 w-4 text-muted-foreground" />
                 </a>

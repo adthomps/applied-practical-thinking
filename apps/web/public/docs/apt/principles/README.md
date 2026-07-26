@@ -1,42 +1,29 @@
 ---
-title: APT Principles Index
-version: v1
-last_updated: 2026-05-31
+title: APT Principles
+kind: index
+status: active
 owner: APT
-status: stable
+last_updated: 2026-06-27
+source: APT consolidation
+domain: "navigation"
+source_paths: ["apt-principles-agents/principles/README.md"]
 ---
 
 # APT Principles
 
-This directory contains concise principle cards — one per APT lifecycle layer.
+Durable guidance organized around the four pillars and cross-cutting product, API, payment, documentation, readiness, risk, and AI domains.
 
-Each card is a quick-reference summary. The canonical source of truth for each principle lives in the root doctrine file listed under **Canonical doc** on every card. Read the canonical doc for full rules, examples, prompts, and checklists.
-
-## Principle Cards
-
-| Principle | Card | Canonical Doc |
-|-----------|------|--------------|
-| Outcomes | [outcomes.md](outcomes.md) | `apt-principles.md` |
-| Thinking | [thinking.md](thinking.md) | `thinking.md` |
-| Design | [design.md](design.md) | `design.md` |
-| Architecture | [architecture.md](architecture.md) | `architecture.md` |
-| Delivery | [delivery.md](delivery.md) | `execution.md`, `release-change-management.md` |
-| Operations | [operations.md](operations.md) | `operations-support.md` |
-| Security | [security.md](security.md) | `security.md` |
-| AI & Agents | [ai.md](ai.md) | `ai-agent-framework.md` |
-| Learning | [learning.md](learning.md) | `knowledge-system.md` |
-
-## What a Principle Card Is Not
-
-A principle card does not replace the canonical doc. It does not contain examples, prompts, or deep-dive rules. Use the canonical doc when:
-
-- Reviewing a PR against APT standards
-- Writing a checklist or prompt
-- Deciding whether a pattern violates a rule
-- Onboarding a new team member or AI agent
-
-Use a principle card when:
-
-- You need a 30-second reminder of the principle's core statement
-- You are navigating the principles index
-- You are linking to the principle from an overview doc
+- [Thinking](thinking/README.md)
+- [Design](design/README.md)
+- [Architecture](architecture/README.md)
+- [Execution](execution/README.md)
+- [API](api/README.md)
+- [Payments](payments/README.md)
+- [Ecommerce](ecommerce/README.md)
+- [Modernization](modernization/README.md)
+- [Documentation](documentation/README.md)
+- [Service Readiness](service-readiness/README.md)
+- [Security Risk](security-risk/README.md)
+- [Stablecoin Crypto](stablecoin-crypto/README.md)
+- [AI](ai/README.md)
+- [Game Development](game-development/README.md)

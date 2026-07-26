@@ -9,7 +9,7 @@ import {
 describe("apt primitives contract", () => {
   it("keeps AptButton API variants and sizes stable", () => {
     expect(aptButtonVariants({ variant: "primary", size: "default" })).toContain("shadow-elevation-1");
-    expect(aptButtonVariants({ variant: "accent", size: "sm" })).toContain("bg-accent");
+    expect(aptButtonVariants({ variant: "accent", size: "sm" })).toContain("bg-primary/10");
     expect(aptButtonVariants({ variant: "link", size: "lg" })).toContain("hover:underline");
     expect(aptButtonVariants({ variant: "ghost", size: "icon" })).toContain("w-10");
   });

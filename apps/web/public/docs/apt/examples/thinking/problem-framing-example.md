@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-04-24
 owner: APT
 status: draft
+kind: "example"
+domain: "thinking"
+source_paths: ["apt-principles/examples/thinking/problem-framing-example.md"]
 ---
 
 # Problem Framing Example

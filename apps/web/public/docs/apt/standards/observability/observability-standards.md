@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-05-31
 owner: APT
 status: stable
+kind: "standard"
+domain: "observability"
+source_paths: ["apt-principles/standards/observability/observability-standards.md"]
 ---
 
 # Observability Standards

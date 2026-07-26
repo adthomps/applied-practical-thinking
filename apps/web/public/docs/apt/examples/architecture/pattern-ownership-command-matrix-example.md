@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-06-13
 owner: APT
 status: draft
+kind: "example"
+domain: "architecture"
+source_paths: ["apt-principles/examples/architecture/pattern-ownership-command-matrix-example.md"]
 ---
 
 # Pattern Ownership Command Matrix Example

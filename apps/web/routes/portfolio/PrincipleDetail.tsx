@@ -39,7 +39,7 @@ export default function PrincipleDetail() {
 
   const handleMarkdownDownload = async () => {
     if (!group.publicDocPath) return;
-    await downloadPublicMarkdown(group.publicDocPath, `apt-principles-${group.id}.md`);
+    await downloadPublicMarkdown(group.publicDocPath, `apt-principles-agents-${group.id}.md`);
   };
 
   return (
@@ -90,7 +90,7 @@ export default function PrincipleDetail() {
       <section>
         <SectionIntro
           title="Published Doctrine Mirror"
-          description="Primary principle content rendered from generated apt-principles public docs. Doctrine authority remains upstream in apt-principles."
+          description="Primary principle content rendered from generated apt-principles-agents public docs. Doctrine authority remains upstream in apt-principles-agents."
           className="mb-5"
         />
         <AptCard>

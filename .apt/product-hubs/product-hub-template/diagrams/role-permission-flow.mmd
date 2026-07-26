@@ -1,0 +1,5 @@
+flowchart TD
+  I["Intent"] --> R{"Role permitted?"}
+  R -- Yes --> A["Authorized action"]
+  R -- No --> D["Explain and deny"]
+  A --> L["Audit and support evidence"]

@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-05-31
 owner: APT
 status: stable
+kind: "standard"
+domain: "data"
+source_paths: ["apt-principles/standards/data/data-standards.md"]
 ---
 
 # Data Standards

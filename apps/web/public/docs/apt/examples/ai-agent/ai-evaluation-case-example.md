@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-06-13
 owner: APT
 status: draft
+kind: "example"
+domain: "ai-agent"
+source_paths: ["apt-principles/examples/ai-agent/ai-evaluation-case-example.md"]
 ---
 
 # AI Evaluation Case Example

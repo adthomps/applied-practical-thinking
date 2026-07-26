@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-04-28
 owner: APT
 status: draft
+kind: "example"
+domain: "ai-agent"
+source_paths: ["apt-principles/examples/ai-agent/workspace-knowledge-example.md"]
 ---
 
 # Workspace Knowledge Example
@@ -36,7 +39,7 @@ Lovable or Figma Make workspace knowledge example:
 Use Applied Practical Thinking (APT) as the governing framework.
 
 Canonical source:
-https://github.com/adthomps/apt-principles
+https://github.com/adthomps/apt-principles-agents
 
 Default behavior:
 - Frame the user, problem, constraints, and success criteria before proposing screens or implementation.
@@ -85,7 +88,7 @@ A short workspace block is easier to paste into tools, but it cannot contain eve
 
 ## Implementation Notes
 
-Keep tool workspace knowledge separate from local project adoption docs. If a project needs stack-specific rules, store them in that project and point back to `https://github.com/adthomps/apt-principles` as the APT source of truth.
+Keep tool workspace knowledge separate from local project adoption docs. If a project needs stack-specific rules, store them in that project and point back to `https://github.com/adthomps/apt-principles-agents` as the APT source of truth.
 
 When a tool produces reusable rules that improve APT itself, promote them back into `prompts/`, `examples/`, or the relevant canonical doctrine file instead of leaving them hidden in a tool setting.
 

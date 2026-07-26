@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-04-24
 owner: APT
 status: draft
+kind: "prompt"
+domain: "architecture-review-prompt"
+source_paths: ["apt-principles/prompts/architecture-review-prompt.md"]
 ---
 
 # Architecture Review Prompt

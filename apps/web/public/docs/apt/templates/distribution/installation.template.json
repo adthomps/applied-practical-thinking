@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "repository": "apt-principles-agents",
+    "version": "1.0.0",
+    "commit": "40-character-source-commit"
+  },
+  "manifests": ["core"],
+  "platforms": ["codex", "claude", "copilot", "gemini"],
+  "managedFiles": [],
+  "localContext": "docs/project-context.md",
+  "lastOperation": {
+    "type": "install",
+    "at": "ISO-8601 timestamp"
+  }
+}

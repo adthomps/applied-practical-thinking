@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-05-01
 owner: APT
 status: draft
+kind: "example"
+domain: "projects"
+source_paths: ["apt-principles/examples/projects/apt-project-profile-example.md"]
 ---
 
 # APT Project Profile Example
@@ -84,7 +87,7 @@ A shared profile structure creates some upfront documentation work, but it preve
 
 ## Related Documents
 
-- `../../apt-principles.md`
+- `../../apt-principles-agents.md`
 - `../../knowledge-system.md`
 - `../../templates/project-adoption-template.md`
 - `../../checklists/project-adoption-checklist.md`

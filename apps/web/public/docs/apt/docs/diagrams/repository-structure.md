@@ -4,23 +4,26 @@ version: v1
 last_updated: 2026-05-31
 owner: APT
 status: stable
+kind: "guide"
+domain: "documentation"
+source_paths: ["apt-principles/docs/diagrams/repository-structure.md"]
 ---
 
 # Repository Structure Diagram
 
-This diagram shows the complete folder and file structure of `apt-principles` and explains the purpose of every directory.
+This diagram shows the complete folder and file structure of `apt-principles-agents` and explains the purpose of every directory.
 
 ## Full Directory Tree
 
 ```
-apt-principles/
+apt-principles-agents/
 │
 │  ── ROOT DOCTRINE (canonical principle files) ──
 │
 ├── README.md                          Navigation map and structure contract
 ├── AGENTS.md                          AI agent working rules for this repo
 ├── CONTRIBUTING.md                    Contribution guidelines
-├── apt-principles.md                  Master APT framework overview
+├── apt-principles-agents.md                  Master APT framework overview
 ├── thinking.md                        Layer 1: Why (problem framing)
 ├── design.md                          Layer 2: What (behavior and UX)
 ├── architecture.md                    Layer 3: How (system structure)

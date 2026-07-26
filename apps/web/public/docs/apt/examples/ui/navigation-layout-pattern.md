@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-04-24
 owner: APT
 status: draft
+kind: "example"
+domain: "ui"
+source_paths: ["apt-principles/examples/ui/navigation-layout-pattern.md"]
 ---
 
 # Navigation Layout Pattern
@@ -54,7 +57,7 @@ Example navigation contract:
   "label": "Principles",
   "path": "/principles",
   "description": "Canonical APT doctrine",
-  "source": "apt-principles/apt-principles.md",
+  "source": "apt-principles-agents/apt-principles-agents.md",
   "status": "active"
 }
 ```
@@ -72,7 +75,7 @@ Flat navigation is easier to scan, but large systems may need secondary indexes 
 
 ## Implementation Notes
 
-For `applied-practical-thinking`, the public principles browser should import from `apt-principles` and label generated pages by source. For downstream projects, keep local `docs/apt/` pages separate from canonical APT pages so users can distinguish doctrine from local adoption notes.
+For `applied-practical-thinking`, the public principles browser should import from `apt-principles-agents` and label generated pages by source. For downstream projects, keep local `docs/apt/` pages separate from canonical APT pages so users can distinguish doctrine from local adoption notes.
 
 ## Related Documents
 

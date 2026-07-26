@@ -10,7 +10,7 @@ title: APT Operations & Support
 
 # APT Operations & Support (Run & Support)
 
-Public companion summary for operations behavior in the APT site/design docs. Canonical operations doctrine lives in `apt-principles/operations-support.md` and is published into this site at `/docs/apt/operations-support.md`.
+Public companion summary for operations behavior in the APT site/design docs. Canonical operations doctrine lives in `apt-principles-agents/principles/execution/operations-and-support.md` and is published into this site at `/docs/apt/operations-support.md`.
 
 ## Focus
 

@@ -4,6 +4,9 @@ version: v1
 last_updated: {{DATE}}
 owner: APT
 status: draft
+kind: "template"
+domain: "prompt-template"
+source_paths: ["apt-principles/templates/prompt-template.md"]
 ---
 
 # {{TITLE}}
@@ -74,6 +77,6 @@ Expected output should include:
 
 ## Related Documents
 
-- `../apt-principles.md`
+- `../apt-principles-agents.md`
 - `../ai-agent-framework.md`
 - `../templates/principle-doc-template.md`

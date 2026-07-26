@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-05-31
 owner: APT
 status: stable
+kind: "guide"
+domain: "documentation"
+source_paths: ["apt-principles/docs/diagrams/file-relationships.md"]
 ---
 
 # File Relationships Diagram
@@ -95,6 +98,6 @@ Developer needs to review a PR against design standards:
 
 ## Related Docs
 
-- `apt-principles.md` — required documentation model (five layers)
+- `apt-principles-agents.md` — required documentation model (five layers)
 - `knowledge-system.md` — how artifacts are kept in sync
 - `docs/diagrams/apt-lifecycle.md` — which layer each artifact belongs to

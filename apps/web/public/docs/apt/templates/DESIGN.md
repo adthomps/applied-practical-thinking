@@ -4,6 +4,9 @@ version: v1
 last_updated: {{DATE}}
 owner: {{OWNER}}
 status: draft
+kind: "template"
+domain: "DESIGN"
+source_paths: ["apt-principles/templates/DESIGN.md"]
 ---
 
 # DESIGN.md

@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-04-24
 owner: APT
 status: draft
+kind: "prompt"
+domain: "testing-review-prompt"
+source_paths: ["apt-principles/prompts/testing-review-prompt.md"]
 ---
 
 # Testing Review Prompt

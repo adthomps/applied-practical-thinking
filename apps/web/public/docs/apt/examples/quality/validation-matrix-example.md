@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-06-13
 owner: APT
 status: draft
+kind: "example"
+domain: "quality"
+source_paths: ["apt-principles/examples/quality/validation-matrix-example.md"]
 ---
 
 # Validation Matrix Example

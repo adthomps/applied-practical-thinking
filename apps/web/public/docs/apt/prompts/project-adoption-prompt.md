@@ -4,13 +4,16 @@ version: v1
 last_updated: 2026-04-24
 owner: APT
 status: draft
+kind: "prompt"
+domain: "project-adoption-prompt"
+source_paths: ["apt-principles/prompts/project-adoption-prompt.md"]
 ---
 
 # APT Project Adoption Prompt
 
 ## Purpose
 
-Use this prompt to apply `apt-principles` to a real project without casually forking doctrine. The output should identify adoption mode, local docs, project-specific decisions, validation evidence, and public showcase readiness.
+Use this prompt to apply `apt-principles-agents` to a real project without casually forking doctrine. The output should identify adoption mode, local docs, project-specific decisions, validation evidence, and public showcase readiness.
 
 ## Input Expectations
 
@@ -22,7 +25,7 @@ Provide the project name, repository structure, intended audience, current matur
 Review this project for APT adoption readiness.
 
 Canonical source:
-- apt-principles/
+- apt-principles-agents/
 
 Project context:
 - Project name:
@@ -39,7 +42,7 @@ Return:
 1. Recommended adoption mode: copy, sync, apply, or showcase.
 2. Required local docs and where they should live.
 3. Project-specific decisions or exceptions that need records.
-4. Agent standards recommendation: use apt-agent-standards profiles, local project context, or no managed install.
+4. Agent standards recommendation: use apt-principles-agents profiles, local project context, or no managed install.
 5. Missing checklists, prompts, examples, or references.
 6. Project profile draft for public or internal reuse.
 7. Validation and evidence required before promotion.
@@ -57,15 +60,15 @@ Return:
 ## Guardrails
 
 - Do not rewrite canonical APT doctrine inside the project.
-- Do not merge apt-agent-standards installer behavior into apt-principles or target project doctrine.
-- Do not treat installed `AGENTS.md`, `.claude/`, `.codex/`, or `.github/` files as canonical doctrine when they should point back to apt-principles.
+- Do not merge apt-principles-agents installer behavior into apt-principles-agents or target project doctrine.
+- Do not treat installed `AGENTS.md`, `.claude/`, `.codex/`, or `.github/` files as canonical doctrine when they should point back to apt-principles-agents.
 - Do not claim production maturity without evidence.
 - Do not invent missing architecture, security, or AI usage.
 - Keep local exceptions separate from reusable APT improvements.
 
 ## Related Documents
 
-- `../apt-principles.md`
+- `../apt-principles-agents.md`
 - `../ai-agent-framework.md`
 - `../checklists/project-adoption-checklist.md`
 - `../templates/project-adoption-template.md`

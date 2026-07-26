@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-04-24
 owner: APT
 status: draft
+kind: "example"
+domain: "architecture"
+source_paths: ["apt-principles/examples/architecture/monorepo-layout-example.md"]
 ---
 
 # Monorepo Layout Example

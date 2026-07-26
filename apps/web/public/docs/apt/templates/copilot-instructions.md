@@ -4,6 +4,9 @@ version: v1
 last_updated: {{DATE}}
 owner: {{OWNER}}
 status: draft
+kind: "template"
+domain: "copilot-instructions"
+source_paths: ["apt-principles/templates/copilot-instructions.md"]
 ---
 
 # Copilot Instructions

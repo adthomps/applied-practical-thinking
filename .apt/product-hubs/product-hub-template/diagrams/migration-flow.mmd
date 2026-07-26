@@ -1,0 +1,7 @@
+flowchart LR
+  L["Legacy contract"] --> B["Bridge / facade"]
+  B --> M["Modern contract"]
+  L --> T["Parity and replay tests"]
+  M --> T
+  T --> D["Dual run"]
+  D --> X["Measured deprecation"]

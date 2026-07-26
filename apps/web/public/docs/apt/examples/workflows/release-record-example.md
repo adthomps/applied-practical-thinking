@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-06-13
 owner: APT
 status: draft
+kind: "example"
+domain: "workflows"
+source_paths: ["apt-principles/examples/workflows/release-record-example.md"]
 ---
 
 # Release Record Example

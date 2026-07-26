@@ -13,7 +13,7 @@ const requiredProxyFiles = [
 
 const expectedProxyMarkers = [
   'Canonical source:',
-  '../apt-principles/',
+  '../apt-principles-agents/',
   'Policy:',
 ];
 

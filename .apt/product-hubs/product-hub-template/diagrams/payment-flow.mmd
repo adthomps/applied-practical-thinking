@@ -1,0 +1,8 @@
+flowchart LR
+  A["Customer intent"] --> B["Checkout or API"]
+  B --> C["Validate and authorize"]
+  C --> D["Capture or complete"]
+  D --> E["Settlement and funding"]
+  E --> F["Reconciliation and support"]
+  C --> G["Decline or review"]
+  G --> H["Customer-safe recovery"]

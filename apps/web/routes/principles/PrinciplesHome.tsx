@@ -28,7 +28,7 @@ export default function PrinciplesHome() {
         >
           <div className="flex flex-wrap gap-3">
             <AptButton variant="outline" asChild>
-              <a href="https://github.com/adthomps/apt-principles" target="_blank" rel="noreferrer">
+              <a href="https://github.com/adthomps/apt-principles-agents" target="_blank" rel="noreferrer">
                 Open Doctrine Repo
                 <ExternalLink className="h-4 w-4" />
               </a>

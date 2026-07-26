@@ -21,7 +21,7 @@
   "security_model": "Worker boundary with environment-specific API base and documented production origin contracts",
   "learning_value": "Demonstrates doctrine-to-product publishing with generated public artifacts and validation gates",
   "reusable_artifacts": [
-    "apps/web/scripts/generate-apt-principles-public.cjs",
+    "apps/web/scripts/generate-apt-principles-agents-public.cjs",
     "apps/web/scripts/validation-report.cjs",
     "apps/worker/src/routes",
     "packages/knowledge/src/content.ts"

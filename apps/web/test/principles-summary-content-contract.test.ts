@@ -29,7 +29,7 @@ describe("principles summary content contract", () => {
       }
       expect(section.sourceAnchors.length).toBeGreaterThanOrEqual(4);
       for (const anchor of section.sourceAnchors) {
-        expect(anchor.href.startsWith("https://github.com/adthomps/apt-principles/blob/main/apt-principles/")).toBe(true);
+        expect(anchor.href.startsWith("/docs/apt/")).toBe(true);
       }
       expect(section.moreDetail.decisionCues.length).toBeGreaterThan(0);
       expect(section.moreDetail.failureModes.length).toBeGreaterThan(0);
@@ -44,7 +44,7 @@ describe("principles summary content contract", () => {
       expect(section.promptStarter.inputs.length).toBeGreaterThan(0);
       expect(section.promptStarter.expectedOutputFormat.length).toBeGreaterThan(0);
       expect(section.relatedArtifacts.length).toBeGreaterThan(0);
-      expect(section.sourceHref.startsWith("https://github.com/adthomps/apt-principles/blob/main/apt-principles/")).toBe(true);
+      expect(section.sourceHref.startsWith("/docs/apt/")).toBe(true);
       expect(section.sourceHref.endsWith(".md")).toBe(true);
     }
   });

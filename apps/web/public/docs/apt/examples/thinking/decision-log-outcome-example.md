@@ -4,6 +4,9 @@ version: v1
 last_updated: 2026-06-13
 owner: APT
 status: draft
+kind: "example"
+domain: "thinking"
+source_paths: ["apt-principles/examples/thinking/decision-log-outcome-example.md"]
 ---
 
 # Decision Log Outcome Example
@@ -75,6 +78,6 @@ Decision logs add process weight. Use them for durable choices, accepted risk, a
 ## Related Documents
 
 - `../../thinking.md`
-- `../../apt-principles.md`
+- `../../apt-principles-agents.md`
 - `../../knowledge-system.md`
 - `../../checklists/thinking-review-checklist.md`
