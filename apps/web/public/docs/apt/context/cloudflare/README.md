@@ -4,7 +4,7 @@ kind: "context"
 domain: "ai"
 status: "active"
 owner: "APT"
-last_updated: "2026-06-28"
+last_updated: "2026-07-25"
 source_paths: ["apt-agent-standards/context/cloudflare/README.md"]
 ---
 
@@ -19,5 +19,9 @@ Load:
 - package scripts
 - deployment docs
 - `.apt/standards/installable-summaries/cloudflare-standards.md`
+
+For agent skill or MCP setup, re-verify Cloudflare's official setup prompt before recommending commands:
+
+- `https://developers.cloudflare.com/agent-setup/prompt.md`
 
 Do not add Cloudflare services unless project behavior justifies them.

@@ -1,8 +1,14 @@
 {
   "version": "1.0.0",
   "owner": "APT",
-  "last_updated": "2026-06-28",
+  "last_updated": "2026-07-26",
   "consumers": [
+    {
+      "repository": "adthomps.github.io",
+      "manifests": ["core", "documentation", "payments", "security", "api-review"],
+      "platforms": ["codex", "claude", "copilot", "gemini"],
+      "validation": []
+    },
     {
       "repository": "applied-practical-thinking",
       "manifests": ["standard", "cloudflare", "ai-development", "product-hub"],
@@ -16,8 +22,26 @@
       "validation": ["corepack pnpm validate:ai", "corepack pnpm validate:apt"]
     },
     {
-      "repository": "apt-coach",
-      "manifests": ["core", "health", "training", "cloudflare", "api-review", "ux-review", "security", "ai-development"],
+      "repository": "apt-anet-hosted-toolbox",
+      "manifests": ["core", "cloudflare", "documentation", "api-review", "ux-review", "security", "payments", "governance", "training"],
+      "platforms": ["codex", "claude", "copilot", "gemini"],
+      "validation": ["pnpm lint", "pnpm typecheck", "pnpm build", "pnpm test"]
+    },
+    {
+      "repository": "apt-commerce",
+      "manifests": ["core", "payments", "documentation", "ux-review", "api-review"],
+      "platforms": ["codex", "claude", "copilot", "gemini"],
+      "validation": ["npm run apt:validate", "npm test", "npm run build"]
+    },
+    {
+      "repository": "apt-design-reference",
+      "manifests": ["core", "ux-review", "documentation"],
+      "platforms": ["codex", "claude", "copilot", "gemini"],
+      "validation": []
+    },
+    {
+      "repository": "apt-dream-to-reality",
+      "manifests": ["core", "documentation", "cloudflare", "ux-review", "ai-development", "product-hub"],
       "platforms": ["codex", "claude", "copilot", "gemini"],
       "validation": ["npm test", "npm run build"]
     },
@@ -28,16 +52,22 @@
       "validation": ["npm test", "npm run build"]
     },
     {
-      "repository": "apt-commerce",
-      "manifests": ["core", "payments", "documentation", "ux-review", "api-review"],
+      "repository": "apt-intake",
+      "manifests": ["governance"],
       "platforms": ["codex", "claude", "copilot", "gemini"],
-      "validation": ["npm run apt:validate", "npm test", "npm run build"]
+      "validation": []
     },
     {
-      "repository": "apt-dream-to-reality",
-      "manifests": ["core", "documentation", "cloudflare", "ux-review", "ai-development", "product-hub"],
+      "repository": "apt-intelligence-core",
+      "manifests": ["core", "documentation", "ai-development", "knowledge-graph", "cloudflare"],
       "platforms": ["codex", "claude", "copilot", "gemini"],
-      "validation": ["npm test", "npm run build"]
+      "validation": ["pnpm test", "pnpm build"]
+    },
+    {
+      "repository": "apt-knowledge-hub",
+      "manifests": ["core", "cloudflare", "api-review", "ux-review", "documentation", "ai-development", "knowledge-graph", "security", "payments", "governance"],
+      "platforms": ["codex", "claude", "copilot", "gemini"],
+      "validation": ["pnpm validate", "pnpm lint", "pnpm test", "pnpm build"]
     },
     {
       "repository": "apt-novel-reviewer",
@@ -46,10 +76,10 @@
       "validation": ["npm test", "npm run build"]
     },
     {
-      "repository": "apt-design-reference",
-      "manifests": ["core", "ux-review", "documentation"],
+      "repository": "apt-starter-project",
+      "manifests": ["core", "cloudflare", "api-review", "ux-review", "documentation", "ai-development"],
       "platforms": ["codex", "claude", "copilot", "gemini"],
-      "validation": []
+      "validation": ["pnpm test", "pnpm build"]
     },
     {
       "repository": "crt-world",

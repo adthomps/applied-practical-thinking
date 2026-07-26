@@ -1,7 +1,7 @@
 ---
 title: APT Cloudflare Context Pack
 version: v1
-last_updated: 2026-06-22
+last_updated: 2026-07-25
 owner: APT
 status: draft
 kind: "context-pack"
@@ -21,6 +21,7 @@ Use this pack for Cloudflare Pages, Workers, Hono APIs, edge routing, bindings, 
 - Aligning deployment scripts, environment bindings, routes, and runtime boundaries.
 - Checking Cloudflare-specific examples before adding or restructuring an edge service.
 - Preparing a public or production release that uses Cloudflare infrastructure.
+- Setting up or auditing Cloudflare agent skills and MCP server access.
 
 ## Avoid When
 
@@ -50,9 +51,13 @@ Use this pack for Cloudflare Pages, Workers, Hono APIs, edge routing, bindings, 
 - [Architecture Review Prompt](../prompts/architecture-review-prompt.md)
 - [API Review Prompt](../prompts/api-review-prompt.md)
 
+## Official External References
+
+- [Cloudflare Agent Setup Prompt](https://developers.cloudflare.com/agent-setup/prompt.md) - official Cloudflare setup instructions for installing Cloudflare skills and MCP servers across supported agents. Re-verify before recommending commands because the source is vendor-owned and may change.
+
 ## Exact-Read Requirements
 
-Before final Cloudflare edits or deployment recommendations, read route code, configuration, binding declarations, environment assumptions, tests, and runbook notes. Compressed context can identify likely files but cannot verify runtime safety.
+Before final Cloudflare edits or deployment recommendations, read route code, configuration, binding declarations, environment assumptions, tests, and runbook notes. Before recommending Cloudflare agent setup commands, re-read the official Cloudflare Agent Setup Prompt. Compressed context can identify likely files but cannot verify runtime safety.
 
 ## Mandatory Vs Recommended
 

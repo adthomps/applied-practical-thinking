@@ -3,7 +3,7 @@
   "source": {
     "repository": "apt-principles-agents",
     "version": "1.0.0",
-    "commit": "8e3f9a68aa391789b4a746be38078282a1505346"
+    "commit": "58505a53e718b6fd939bdda6b07d132e54af62b9"
   },
   "manifests": [
     "core",
@@ -370,7 +370,7 @@
       "source": "context-packs/apt-cloudflare-pack.md",
       "target": ".apt/context-packs/apt-cloudflare-pack.md",
       "kind": "canonical",
-      "sha256": "c5e5b1b736cc8d924365e5d4626b00e9dcd6dfd147bfd2ddaacd9ee75a3ab3f7"
+      "sha256": "992898cef37dbca280c179a70acd4349ff1a7d3481321d088e8aebd40071498c"
     },
     {
       "source": "context-packs/apt-core-pack.md",
@@ -400,7 +400,7 @@
       "source": "context/cloudflare/README.md",
       "target": ".apt/context/cloudflare/README.md",
       "kind": "canonical",
-      "sha256": "11acffb57cd9db32fa94f9bf93422901a4b76cd903cdbf3ca64238bbc3e843f8"
+      "sha256": "e73b2825f7b1adc3a7d49bc4d6281bdb58925d2076a6c8eb04c8935b5dab82f4"
     },
     {
       "source": "context/documentation/README.md",
@@ -461,6 +461,36 @@
       "target": ".apt/governance/service-readiness-review.md",
       "kind": "canonical",
       "sha256": "4c0dfc84355106d6f15da1188c8e03ed11e6f4c27e64b62d952d4ebcce4dc8c6"
+    },
+    {
+      "source": "knowledge/okf/decisions/okf-adoption.md",
+      "target": ".apt/knowledge/okf/decisions/okf-adoption.md",
+      "kind": "canonical",
+      "sha256": "fa7ac5151c2e50489e827276906136fca0f669b4627d2e39e09c515fe17ab979"
+    },
+    {
+      "source": "knowledge/okf/index.md",
+      "target": ".apt/knowledge/okf/index.md",
+      "kind": "canonical",
+      "sha256": "6f1d81d26d10410fc4924e3860a5b9ed7cee549e809de26fe7fa6e0905cd189c"
+    },
+    {
+      "source": "knowledge/okf/principles/knowledge-system.md",
+      "target": ".apt/knowledge/okf/principles/knowledge-system.md",
+      "kind": "canonical",
+      "sha256": "c35f41629829f8c9f6b9cfb126d30ec07c2ecd0c55699e425f73090f2e4ec4fa"
+    },
+    {
+      "source": "knowledge/okf/skills/voice-of-customer.md",
+      "target": ".apt/knowledge/okf/skills/voice-of-customer.md",
+      "kind": "canonical",
+      "sha256": "9128ebb7dcb7a7543b2e55019c724696fcd33d38533d70f2269d22f022c42e4b"
+    },
+    {
+      "source": "knowledge/okf/workflows/cross-repo-guidance-sync.md",
+      "target": ".apt/knowledge/okf/workflows/cross-repo-guidance-sync.md",
+      "kind": "canonical",
+      "sha256": "794e49f662fb3794f0b5078b200e514b7ea442365f47ef3cca7752102256308c"
     },
     {
       "source": "platforms/claude/README.md",
@@ -1324,7 +1354,7 @@
       "source": "references/workspace-consumers.json",
       "target": ".apt/references/workspace-consumers.json",
       "kind": "canonical",
-      "sha256": "fdf46f30ba4ca3fd9ab5dd3815224ce3b843e54d7fcc86e15f95fc42b6142579"
+      "sha256": "5277fdb36a5bb403e8d0708773365982629b5f7c738bc0527008d8e437cf258f"
     },
     {
       "source": "skills/ai-agents/agent-routing/SKILL.md",
@@ -3526,6 +3556,6 @@
   "localContext": "docs/project-context.md",
   "lastOperation": {
     "type": "sync",
-    "at": "2026-06-29T02:04:27.807Z"
+    "at": "2026-07-26T20:18:43.428Z"
   }
 }

@@ -14,6 +14,30 @@ export type AptPublicDocManifestEntry = {
 
 export const aptPrinciplesPublicManifest = [
   {
+    "id": "wrangler-cache-pages",
+    "title": "pages.json",
+    "kind": "guide",
+    "domain": ".wrangler",
+    "sourcePath": "apt-principles-agents/.wrangler/cache/pages.json",
+    "publicPath": "/docs/apt/.wrangler/cache/pages.json",
+    "version": "1.0.0",
+    "status": "active",
+    "lastUpdated": null,
+    "checksum": "67bf5c2f828759c3c123beb263ea99aa1b01999041b919560ba6561236efa18e"
+  },
+  {
+    "id": "wrangler-cache-wrangler-account",
+    "title": "wrangler-account.json",
+    "kind": "guide",
+    "domain": ".wrangler",
+    "sourcePath": "apt-principles-agents/.wrangler/cache/wrangler-account.json",
+    "publicPath": "/docs/apt/.wrangler/cache/wrangler-account.json",
+    "version": "1.0.0",
+    "status": "active",
+    "lastUpdated": null,
+    "checksum": "e34a7a35f82e5e3a3cd5cadea86d589d1e31d82447ce65395a65e4c85e2d98b3"
+  },
+  {
     "id": "AGENTS",
     "title": "APT Agent Instructions",
     "kind": "instruction",
@@ -1306,8 +1330,8 @@ export const aptPrinciplesPublicManifest = [
     "publicPath": "/docs/apt/context-packs/apt-cloudflare-pack.md",
     "version": "v1",
     "status": "draft",
-    "lastUpdated": "2026-06-22",
-    "checksum": "c5e5b1b736cc8d924365e5d4626b00e9dcd6dfd147bfd2ddaacd9ee75a3ab3f7"
+    "lastUpdated": "2026-07-25",
+    "checksum": "992898cef37dbca280c179a70acd4349ff1a7d3481321d088e8aebd40071498c"
   },
   {
     "id": "context-packs-apt-core-pack",
@@ -1402,8 +1426,8 @@ export const aptPrinciplesPublicManifest = [
     "publicPath": "/docs/apt/context/cloudflare/README.md",
     "version": "1.0.0",
     "status": "active",
-    "lastUpdated": "2026-06-28",
-    "checksum": "11acffb57cd9db32fa94f9bf93422901a4b76cd903cdbf3ca64238bbc3e843f8"
+    "lastUpdated": "2026-07-25",
+    "checksum": "e73b2825f7b1adc3a7d49bc4d6281bdb58925d2076a6c8eb04c8935b5dab82f4"
   },
   {
     "id": "context-documentation-README",
@@ -1499,7 +1523,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-28",
-    "checksum": "17586bf28cb0efcd02371e2dcbc6f2628384720e3923f314ef5f2595d11993df"
+    "checksum": "e8adcadc67a861bc43ce90fa98d2e51a3cc792a74a7be6a0c7ca6400d0089df8"
   },
   {
     "id": "docs-audience-layered-documentation",
@@ -1619,7 +1643,19 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-28",
-    "checksum": "8a4cccb25af7c3c8776bfefcfac8f38ec0aba9347c128ac708f94ceafae7a747"
+    "checksum": "f22fe2927a4c37eff6649b1f017ac23b51284df830204f7b9bb26da530d1ee5a"
+  },
+  {
+    "id": "docs-distribution-OKF-CATALOG",
+    "title": "OKF Catalog",
+    "kind": "catalog",
+    "domain": "documentation",
+    "sourcePath": "apt-principles-agents/docs/distribution/OKF-CATALOG.md",
+    "publicPath": "/docs/apt/docs/distribution/OKF-CATALOG.md",
+    "version": "1.0.0",
+    "status": "active",
+    "lastUpdated": "2026-06-28",
+    "checksum": "7caef16667377b3dadc08ce1b89dafc0773c89ac9c262567008d7047c3d38f93"
   },
   {
     "id": "docs-distribution-PROMPT-CATALOG",
@@ -1800,6 +1836,222 @@ export const aptPrinciplesPublicManifest = [
     "status": "active",
     "lastUpdated": "2026-06-27",
     "checksum": "4f1e98bc34c5f131319656eaddec098fcad378d65156524918aebd6352ad1532"
+  },
+  {
+    "id": "docs-refactor-canonical-source-hierarchy",
+    "title": "Refactor Canonical Source Hierarchy",
+    "kind": "assessment",
+    "domain": "governance",
+    "sourcePath": "apt-principles-agents/docs/refactor/canonical-source-hierarchy.md",
+    "publicPath": "/docs/apt/docs/refactor/canonical-source-hierarchy.md",
+    "version": "1.0.0",
+    "status": "active",
+    "lastUpdated": "2026-07-11",
+    "checksum": "575f2f85eeea9ec8253d105c6f847b01c76703524eeaf9810739520b4c9682d8"
+  },
+  {
+    "id": "docs-refactor-context-efficiency",
+    "title": "Refactor Context Efficiency",
+    "kind": "assessment",
+    "domain": "ai",
+    "sourcePath": "apt-principles-agents/docs/refactor/context-efficiency.md",
+    "publicPath": "/docs/apt/docs/refactor/context-efficiency.md",
+    "version": "1.0.0",
+    "status": "active",
+    "lastUpdated": "2026-07-11",
+    "checksum": "939d42664aa26df5ea6f650baf7a7384379fa5494b0dd3a4dc9c78f7a5be20e6"
+  },
+  {
+    "id": "docs-refactor-cross-agent-instruction-model",
+    "title": "Refactor Cross-Agent Instruction Model",
+    "kind": "assessment",
+    "domain": "ai",
+    "sourcePath": "apt-principles-agents/docs/refactor/cross-agent-instruction-model.md",
+    "publicPath": "/docs/apt/docs/refactor/cross-agent-instruction-model.md",
+    "version": "1.0.0",
+    "status": "active",
+    "lastUpdated": "2026-07-11",
+    "checksum": "c0dfaaaea8e489564f8a15a5e4c84435e5d0f46e392d65dafc48154d341508cd"
+  },
+  {
+    "id": "docs-refactor-current-state-inventory",
+    "title": "Refactor Current-State Inventory",
+    "kind": "assessment",
+    "domain": "architecture",
+    "sourcePath": "apt-principles-agents/docs/refactor/current-state-inventory.md",
+    "publicPath": "/docs/apt/docs/refactor/current-state-inventory.md",
+    "version": "1.0.0",
+    "status": "active",
+    "lastUpdated": "2026-07-11",
+    "checksum": "a9e267b5c8ec999992941ebd931b75d200c27eda3f3230504f21e16812e7da2b"
+  },
+  {
+    "id": "docs-refactor-decision-register",
+    "title": "Refactor Decision Register",
+    "kind": "decision-register",
+    "domain": "governance",
+    "sourcePath": "apt-principles-agents/docs/refactor/decision-register.md",
+    "publicPath": "/docs/apt/docs/refactor/decision-register.md",
+    "version": "1.0.0",
+    "status": "active",
+    "lastUpdated": "2026-07-11",
+    "checksum": "3de75e8b74f63b751f4d3819f580cd0034730e233607420131bcfc51c87885e4"
+  },
+  {
+    "id": "docs-refactor-distribution-model",
+    "title": "Refactor Distribution Model",
+    "kind": "assessment",
+    "domain": "distribution",
+    "sourcePath": "apt-principles-agents/docs/refactor/distribution-model.md",
+    "publicPath": "/docs/apt/docs/refactor/distribution-model.md",
+    "version": "1.0.0",
+    "status": "active",
+    "lastUpdated": "2026-07-11",
+    "checksum": "4df52427e22a7c170448c684241a0e1cd42be15e90121f69d50b5e7919d9f177"
+  },
+  {
+    "id": "docs-refactor-duplication-and-conflicts",
+    "title": "Refactor Duplication And Conflicts",
+    "kind": "assessment",
+    "domain": "architecture",
+    "sourcePath": "apt-principles-agents/docs/refactor/duplication-and-conflicts.md",
+    "publicPath": "/docs/apt/docs/refactor/duplication-and-conflicts.md",
+    "version": "1.0.0",
+    "status": "active",
+    "lastUpdated": "2026-07-11",
+    "checksum": "df358c36dc6c140b0d6a3c153bccfd5b1dfe6dd3d58de417353b53ec86306c97"
+  },
+  {
+    "id": "docs-refactor-implementation-readiness",
+    "title": "Refactor Implementation Readiness",
+    "kind": "assessment",
+    "domain": "governance",
+    "sourcePath": "apt-principles-agents/docs/refactor/implementation-readiness.md",
+    "publicPath": "/docs/apt/docs/refactor/implementation-readiness.md",
+    "version": "1.0.0",
+    "status": "active",
+    "lastUpdated": "2026-07-11",
+    "checksum": "780a0050896d5d3757da00c262c76a6cbfe499fc60b4da87d2131a95d70f2f08"
+  },
+  {
+    "id": "docs-refactor-independent-review",
+    "title": "Refactor Independent Architecture Review",
+    "kind": "assessment",
+    "domain": "architecture",
+    "sourcePath": "apt-principles-agents/docs/refactor/independent-review.md",
+    "publicPath": "/docs/apt/docs/refactor/independent-review.md",
+    "version": "1.0.0",
+    "status": "active",
+    "lastUpdated": "2026-07-11",
+    "checksum": "f0add63a76620b67d0ab16ff32ff6a386ba64d22379af41dfbf0b76d002f1d94"
+  },
+  {
+    "id": "docs-refactor-merge-quality-assessment",
+    "title": "Refactor Merge Quality Assessment",
+    "kind": "assessment",
+    "domain": "architecture",
+    "sourcePath": "apt-principles-agents/docs/refactor/merge-quality-assessment.md",
+    "publicPath": "/docs/apt/docs/refactor/merge-quality-assessment.md",
+    "version": "1.0.0",
+    "status": "active",
+    "lastUpdated": "2026-07-11",
+    "checksum": "6dc3416eb6a2eb3bb822e8803cc4898107a0238e134ccb9e4d3942ff6e966ff7"
+  },
+  {
+    "id": "docs-refactor-migration-plan",
+    "title": "Refactor Migration Plan",
+    "kind": "plan",
+    "domain": "architecture",
+    "sourcePath": "apt-principles-agents/docs/refactor/migration-plan.md",
+    "publicPath": "/docs/apt/docs/refactor/migration-plan.md",
+    "version": "1.0.0",
+    "status": "active",
+    "lastUpdated": "2026-07-11",
+    "checksum": "79250a64e4f08e35c7a75c04e6b6d009c7a873763c23b03338e5bf2667691c48"
+  },
+  {
+    "id": "docs-refactor-okf-design",
+    "title": "Refactor OKF Design",
+    "kind": "assessment",
+    "domain": "knowledge",
+    "sourcePath": "apt-principles-agents/docs/refactor/okf-design.md",
+    "publicPath": "/docs/apt/docs/refactor/okf-design.md",
+    "version": "1.0.0",
+    "status": "active",
+    "lastUpdated": "2026-07-26",
+    "checksum": "6037d1fd969297575c13a7dcd00c75fb2e24960102f4a1a951f166343663579b"
+  },
+  {
+    "id": "docs-refactor-phase-1-acceptance-criteria",
+    "title": "Phase 1 Acceptance Criteria",
+    "kind": "assessment",
+    "domain": "architecture",
+    "sourcePath": "apt-principles-agents/docs/refactor/phase-1-acceptance-criteria.md",
+    "publicPath": "/docs/apt/docs/refactor/phase-1-acceptance-criteria.md",
+    "version": "1.0.0",
+    "status": "active",
+    "lastUpdated": "2026-07-13",
+    "checksum": "40fb8f362c52384af9f1fe036292051abce5dca16bb91d32719d09229677d8f9"
+  },
+  {
+    "id": "docs-refactor-phase-1-file-plan",
+    "title": "Phase 1 File Plan",
+    "kind": "plan",
+    "domain": "architecture",
+    "sourcePath": "apt-principles-agents/docs/refactor/phase-1-file-plan.md",
+    "publicPath": "/docs/apt/docs/refactor/phase-1-file-plan.md",
+    "version": "1.0.0",
+    "status": "active",
+    "lastUpdated": "2026-07-13",
+    "checksum": "2d0762c5f0c1459837cffe70b76346873334e76a5d2dce4cef6c492ee632ca2d"
+  },
+  {
+    "id": "docs-refactor-phase-1-readiness-check",
+    "title": "Phase 1 Readiness Check",
+    "kind": "assessment",
+    "domain": "architecture",
+    "sourcePath": "apt-principles-agents/docs/refactor/phase-1-readiness-check.md",
+    "publicPath": "/docs/apt/docs/refactor/phase-1-readiness-check.md",
+    "version": "1.0.0",
+    "status": "active",
+    "lastUpdated": "2026-07-13",
+    "checksum": "b0bec7efa591cfe69b433abd278cba8a5c00e320b07207737f9a0bb69b91f141"
+  },
+  {
+    "id": "docs-refactor-required-revisions",
+    "title": "Refactor Required Revisions",
+    "kind": "assessment",
+    "domain": "architecture",
+    "sourcePath": "apt-principles-agents/docs/refactor/required-revisions.md",
+    "publicPath": "/docs/apt/docs/refactor/required-revisions.md",
+    "version": "1.0.0",
+    "status": "active",
+    "lastUpdated": "2026-07-11",
+    "checksum": "40d4c27feed94ff5708c9c2ec26dae89cb4352b70399462efc6ba63184ab7b0b"
+  },
+  {
+    "id": "docs-refactor-risks-and-decisions",
+    "title": "Refactor Risks And Decisions",
+    "kind": "assessment",
+    "domain": "governance",
+    "sourcePath": "apt-principles-agents/docs/refactor/risks-and-decisions.md",
+    "publicPath": "/docs/apt/docs/refactor/risks-and-decisions.md",
+    "version": "1.0.0",
+    "status": "active",
+    "lastUpdated": "2026-07-11",
+    "checksum": "ea7aaef87349d764056a3be22f20d4bf0bdcad7ccc4bea790da7a3adb2519e92"
+  },
+  {
+    "id": "docs-refactor-target-architecture",
+    "title": "Refactor Target Architecture",
+    "kind": "assessment",
+    "domain": "architecture",
+    "sourcePath": "apt-principles-agents/docs/refactor/target-architecture.md",
+    "publicPath": "/docs/apt/docs/refactor/target-architecture.md",
+    "version": "1.0.0",
+    "status": "active",
+    "lastUpdated": "2026-07-11",
+    "checksum": "9226f09182741288e63cfaf9d0fafaf5ef9d0c817a8f638ce0831bba7f1f3e10"
   },
   {
     "id": "docs-repo-usage",
@@ -2820,6 +3072,66 @@ export const aptPrinciplesPublicManifest = [
     "status": "draft",
     "lastUpdated": "2026-05-31",
     "checksum": "4c0dfc84355106d6f15da1188c8e03ed11e6f4c27e64b62d952d4ebcce4dc8c6"
+  },
+  {
+    "id": "knowledge-okf-decisions-okf-adoption",
+    "title": "OKF Adoption",
+    "kind": "okf-concept",
+    "domain": "knowledge",
+    "sourcePath": "apt-principles-agents/knowledge/okf/decisions/okf-adoption.md",
+    "publicPath": "/docs/apt/knowledge/okf/decisions/okf-adoption.md",
+    "version": "1.0.0",
+    "status": "stable",
+    "lastUpdated": "2026-07-26",
+    "checksum": "fa7ac5151c2e50489e827276906136fca0f669b4627d2e39e09c515fe17ab979"
+  },
+  {
+    "id": "knowledge-okf-index",
+    "title": "APT OKF Knowledge Bundle",
+    "kind": "okf-index",
+    "domain": "knowledge",
+    "sourcePath": "apt-principles-agents/knowledge/okf/index.md",
+    "publicPath": "/docs/apt/knowledge/okf/index.md",
+    "version": "1.0.0",
+    "status": "active",
+    "lastUpdated": "2026-07-26",
+    "checksum": "6f1d81d26d10410fc4924e3860a5b9ed7cee549e809de26fe7fa6e0905cd189c"
+  },
+  {
+    "id": "knowledge-okf-principles-knowledge-system",
+    "title": "APT Knowledge System",
+    "kind": "okf-concept",
+    "domain": "knowledge",
+    "sourcePath": "apt-principles-agents/knowledge/okf/principles/knowledge-system.md",
+    "publicPath": "/docs/apt/knowledge/okf/principles/knowledge-system.md",
+    "version": "1.0.0",
+    "status": "stable",
+    "lastUpdated": "2026-07-26",
+    "checksum": "c35f41629829f8c9f6b9cfb126d30ec07c2ecd0c55699e425f73090f2e4ec4fa"
+  },
+  {
+    "id": "knowledge-okf-skills-voice-of-customer",
+    "title": "Voice Of Customer",
+    "kind": "okf-concept",
+    "domain": "knowledge",
+    "sourcePath": "apt-principles-agents/knowledge/okf/skills/voice-of-customer.md",
+    "publicPath": "/docs/apt/knowledge/okf/skills/voice-of-customer.md",
+    "version": "1.0.0",
+    "status": "stable",
+    "lastUpdated": "2026-07-26",
+    "checksum": "9128ebb7dcb7a7543b2e55019c724696fcd33d38533d70f2269d22f022c42e4b"
+  },
+  {
+    "id": "knowledge-okf-workflows-cross-repo-guidance-sync",
+    "title": "Cross-Repo Guidance Sync",
+    "kind": "okf-concept",
+    "domain": "knowledge",
+    "sourcePath": "apt-principles-agents/knowledge/okf/workflows/cross-repo-guidance-sync.md",
+    "publicPath": "/docs/apt/knowledge/okf/workflows/cross-repo-guidance-sync.md",
+    "version": "1.0.0",
+    "status": "stable",
+    "lastUpdated": "2026-07-26",
+    "checksum": "794e49f662fb3794f0b5078b200e514b7ea442365f47ef3cca7752102256308c"
   },
   {
     "id": "manifests-README",
@@ -6082,8 +6394,8 @@ export const aptPrinciplesPublicManifest = [
     "publicPath": "/docs/apt/references/workspace-consumers.json",
     "version": "1.0.0",
     "status": "active",
-    "lastUpdated": "2026-06-28",
-    "checksum": "fdf46f30ba4ca3fd9ab5dd3815224ce3b843e54d7fcc86e15f95fc42b6142579"
+    "lastUpdated": "2026-07-26",
+    "checksum": "5277fdb36a5bb403e8d0708773365982629b5f7c738bc0527008d8e437cf258f"
   },
   {
     "id": "routing-local-first-routing",

@@ -30,6 +30,7 @@ Generated from active repository artifacts by `scripts/generate-catalogs.mjs`. D
 | [migration.yaml](../../manifests/migration.yaml) | `manifests/migration.yaml` | Behavior-preserving repository and product migration. |
 | [minimal.yaml](../../manifests/minimal.yaml) | `manifests/minimal.yaml` | Smallest supported APT installation. |
 | [modernization.yaml](../../manifests/modernization.yaml) | `manifests/modernization.yaml` | API bridges, legacy parity, dual-run migration, and deprecation. |
+| [okf.yaml](../../manifests/okf.yaml) | `manifests/okf.yaml` | Open Knowledge Format bundle for portable APT concepts and downstream agent context. |
 | [payments.yaml](../../manifests/payments.yaml) | `manifests/payments.yaml` | Payments, ecommerce, gateway lifecycle, transaction intelligence, risk, and readiness. |
 | [product-hub.yaml](../../manifests/product-hub.yaml) | `manifests/product-hub.yaml` | Audience-layered Product Hub construction and review. |
 | [security.yaml](../../manifests/security.yaml) | `manifests/security.yaml` | Security, privacy, permissions, data handling, AI safety, and protected decisions. |
