@@ -41,9 +41,9 @@
     },
     {
       "repository": "apt-dream-to-reality",
-      "manifests": ["core", "documentation", "cloudflare", "ux-review", "ai-development", "product-hub"],
+      "manifests": ["dream-to-reality"],
       "platforms": ["codex", "claude", "copilot", "gemini"],
-      "validation": ["npm test", "npm run build"]
+      "validation": ["pnpm run test:contracts", "pnpm run check:design", "pnpm run build"]
     },
     {
       "repository": "apt-health",
