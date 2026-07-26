@@ -3,7 +3,7 @@
   "source": {
     "repository": "apt-principles-agents",
     "version": "1.0.0",
-    "commit": "58505a53e718b6fd939bdda6b07d132e54af62b9"
+    "commit": "d506b16bad69761111e590e4e06cdccea35ad124"
   },
   "manifests": [
     "core",
@@ -910,7 +910,7 @@
       "source": "principles/framework.md",
       "target": ".apt/principles/framework.md",
       "kind": "canonical",
-      "sha256": "e50145ae58ca7380c0e54ed45432364fca714245117ef2362a45a633196f4a0d"
+      "sha256": "7e68692b08cc496791e9e04675c40908a22c12fd53b77452454f0f0029af0d9e"
     },
     {
       "source": "principles/security-risk/compliance-awareness.md",
@@ -1354,7 +1354,7 @@
       "source": "references/workspace-consumers.json",
       "target": ".apt/references/workspace-consumers.json",
       "kind": "canonical",
-      "sha256": "5277fdb36a5bb403e8d0708773365982629b5f7c738bc0527008d8e437cf258f"
+      "sha256": "8a9f2b1bd55029c9eb4725b2aae4b580b69849eaecd0137f2a8942127a805d14"
     },
     {
       "source": "skills/ai-agents/agent-routing/SKILL.md",
@@ -3556,6 +3556,6 @@
   "localContext": "docs/project-context.md",
   "lastOperation": {
     "type": "sync",
-    "at": "2026-07-26T20:18:43.428Z"
+    "at": "2026-07-26T20:57:44.414Z"
   }
 }
