@@ -30,6 +30,7 @@ Tools such as Headroom may compress these packs for navigation or planning. Comp
 | [APT Docs Pack](apt-docs-pack.md) | docs sites, knowledge systems, repo documentation | canonical doc edits, public docs release |
 | [APT Cloudflare Pack](apt-cloudflare-pack.md) | Cloudflare Workers, Pages, Hono, edge services | deployment, auth, secrets, observability changes |
 | [APT Security Pack](apt-security-pack.md) | auth, trust boundaries, sensitive data, abuse controls | security signoff, compliance claims, high-risk remediation |
+| [APT Dream To Reality Pack](apt-dream-to-reality-pack.md) | idea-to-project workflows, generated assets, implementation prompts, build/deploy readiness | build handoff, generated asset approval, launch recommendation |
 
 ## Agent Use
 

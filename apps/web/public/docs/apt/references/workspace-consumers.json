@@ -41,9 +41,9 @@
     },
     {
       "repository": "apt-dream-to-reality",
-      "manifests": ["core", "documentation", "cloudflare", "ux-review", "ai-development", "product-hub"],
+      "manifests": ["dream-to-reality"],
       "platforms": ["codex", "claude", "copilot", "gemini"],
-      "validation": ["npm test", "npm run build"]
+      "validation": ["pnpm run test:contracts", "pnpm run check:design", "pnpm run build"]
     },
     {
       "repository": "apt-health",
@@ -74,6 +74,12 @@
       "manifests": ["core", "ai-development", "documentation", "ux-review"],
       "platforms": ["codex", "claude", "copilot", "gemini"],
       "validation": ["npm test", "npm run build"]
+    },
+    {
+      "repository": "apt-security-harness",
+      "manifests": ["core", "security", "ai-development", "documentation", "governance"],
+      "platforms": ["codex"],
+      "validation": ["python -m pytest", "python -m ruff check .", "python -m pyright"]
     },
     {
       "repository": "apt-starter-project",

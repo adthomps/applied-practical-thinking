@@ -118,6 +118,25 @@
       ]
     },
     {
+      "docId": "design-reference-source-map",
+      "slug": "design-reference-source-map",
+      "title": "APT Design Reference Source Map",
+      "description": "Public source map for carrying useful apt-design-reference material into the APT design docs without creating a second doctrine source.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/APT-DESIGN-REFERENCE-SOURCE-MAP.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/APT-DESIGN-REFERENCE-SOURCE-MAP.md",
+          "canonicalPath": "/docs/design/v2/APT-DESIGN-REFERENCE-SOURCE-MAP.md",
+          "publishedAt": "2026-08-02",
+          "changelog": "Add source map for design-reference consolidation into public APT design docs."
+        }
+      ]
+    },
+    {
       "docId": "tokens-guide",
       "slug": "tokens",
       "title": "APT Tokens",
@@ -582,6 +601,63 @@
           "canonicalPath": "/docs/design/v2/patterns/Card-Input/index.md",
           "publishedAt": "2026-04-12",
           "changelog": "Scaffolded pattern doc."
+        }
+      ]
+    },
+    {
+      "docId": "pattern-portfolio-surface",
+      "slug": "patterns/portfolio-surface",
+      "title": "Portfolio Surface",
+      "description": "Public portfolio pattern for APT identity, proof-oriented project browsing, and stable Labs/Proof separation.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/patterns/Portfolio-Surface.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/patterns/Portfolio-Surface/index.md",
+          "canonicalPath": "/docs/design/v2/patterns/Portfolio-Surface/index.md",
+          "publishedAt": "2026-08-03",
+          "changelog": "Add portfolio surface pattern from apt-design-reference portfolio UI kit."
+        }
+      ]
+    },
+    {
+      "docId": "pattern-docs-browser",
+      "slug": "patterns/docs-browser",
+      "title": "Docs Browser",
+      "description": "Documentation browser pattern for provenance-heavy APT doctrine, source clarity, and long-form navigation.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/patterns/Docs-Browser.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/patterns/Docs-Browser/index.md",
+          "canonicalPath": "/docs/design/v2/patterns/Docs-Browser/index.md",
+          "publishedAt": "2026-08-03",
+          "changelog": "Add docs browser pattern from apt-design-reference docs UI kit."
+        }
+      ]
+    },
+    {
+      "docId": "pattern-insights-surface",
+      "slug": "patterns/insights-surface",
+      "title": "Insights Surface",
+      "description": "Content browsing pattern for APT articles, guides, podcasts, case studies, filters, metadata, and reading views.",
+      "latestMajor": 2,
+      "aliasPath": "/docs/design/patterns/Insights-Surface.md",
+      "versions": [
+        {
+          "major": 2,
+          "semanticVersion": "2.0.0",
+          "status": "candidate",
+          "sourcePath": "versions/v2/patterns/Insights-Surface/index.md",
+          "canonicalPath": "/docs/design/v2/patterns/Insights-Surface/index.md",
+          "publishedAt": "2026-08-03",
+          "changelog": "Add insights surface pattern from apt-design-reference insights UI kit."
         }
       ]
     },

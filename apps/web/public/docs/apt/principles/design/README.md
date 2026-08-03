@@ -6,7 +6,7 @@ status: active
 owner: APT
 version: v1
 last_updated: 2026-06-28
-source_paths: ["apt-principles/design.md"]
+source_paths: ["apt-principles/design.md", "apt-design-reference/README.md"]
 supersedes: ["apt-principles/design.md"]
 ---
 
@@ -311,6 +311,7 @@ Return:
 - `thinking.md`
 - `architecture.md`
 - `system-standards.md`
+- `docs/design-reference-intake.md`
 
 ## Summary
 

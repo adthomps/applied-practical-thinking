@@ -21,3 +21,6 @@ Operator and contributor guidance for using this repository.
 - [Model Routing.md](model-routing.md)
 - [Installing Into Projects.md](installing-into-projects.md)
 - [Audience Layered Documentation.md](audience-layered-documentation.md)
+- [Design Reference Intake.md](design-reference-intake.md)
+- [Intake Routing Application.md](intake-routing-application.md)
+- [Working Backwards Product Team Application.md](working-backwards-product-team-application.md)

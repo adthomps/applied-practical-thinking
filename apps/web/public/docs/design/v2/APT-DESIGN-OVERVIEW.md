@@ -122,6 +122,7 @@ Generated outputs:
 - [APT Design Thinking](./APT-DESIGN-THINKING.md)
 - [APT Principles Framework](./APT-PRINCIPLES-FRAMEWORK.md)
 - [APT Design System](./APT-DESIGN-SYSTEM.md)
+- [APT Design Reference Source Map](./APT-DESIGN-REFERENCE-SOURCE-MAP.md)
 - [APT Content Naming and Messaging](./APT-CONTENT-NAMING-AND-MESSAGING.md)
 - [APT Design Architecture](./APT-DESIGN-ARCHITECTURE.md)
 - [APT Content Strategy](./APT-CONTENT-STRATEGY.md)
@@ -129,6 +130,9 @@ Generated outputs:
 - [APT Design Versioning](./APT-DESIGN-VERSIONING.md)
 
 Pattern references (v2):
+- [Portfolio Surface](./patterns/Portfolio-Surface/index.md)
+- [Docs Browser](./patterns/Docs-Browser/index.md)
+- [Insights Surface](./patterns/Insights-Surface/index.md)
 - [Inline Messages](./patterns/Inline-Messages/index.md)
 - [Bar Chart](./patterns/Bar-Chart/index.md)
 - [Line Chart](./patterns/Line-Chart/index.md)

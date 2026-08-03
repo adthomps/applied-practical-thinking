@@ -21,6 +21,7 @@ Generated from active repository artifacts by `scripts/generate-catalogs.mjs`. D
 | [core.yaml](../../manifests/core.yaml) | `manifests/core.yaml` | APT framework, four pillars, baseline standards, checks, skills, agents, and adapters. |
 | [custom.yaml](../../manifests/custom.yaml) | `manifests/custom.yaml` | Explicitly empty manifest for project-owned composition. |
 | [documentation.yaml](../../manifests/documentation.yaml) | `manifests/documentation.yaml` | Audience-layered documentation, Product Hubs, knowledge, support, and examples. |
+| [dream-to-reality.yaml](../../manifests/dream-to-reality.yaml) | `manifests/dream-to-reality.yaml` | Idea-to-project Working Backwards, generated assets, implementation prompts, validation, and release readiness. |
 | [full.yaml](../../manifests/full.yaml) | `manifests/full.yaml` | All supported APT capabilities. |
 | [game-development.yaml](../../manifests/game-development.yaml) | `manifests/game-development.yaml` | Beginner-friendly game design, architecture, prototypes, playtests, and learning. |
 | [governance.yaml](../../manifests/governance.yaml) | `manifests/governance.yaml` | Repository adoption, maturity, scorecards, review gates, and source-of-truth governance. |

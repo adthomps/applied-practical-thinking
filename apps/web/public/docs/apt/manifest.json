@@ -1346,6 +1346,18 @@
       "checksum": "92493ae8f476458a0d8df8700c9ff2ae5d87a658b85ea0eafab23b7f72154f92"
     },
     {
+      "id": "context-packs-apt-dream-to-reality-pack",
+      "title": "APT Dream To Reality Context Pack",
+      "kind": "context-pack",
+      "domain": "ai",
+      "sourcePath": "apt-principles-agents/context-packs/apt-dream-to-reality-pack.md",
+      "publicPath": "/docs/apt/context-packs/apt-dream-to-reality-pack.md",
+      "version": "v1",
+      "status": "active",
+      "lastUpdated": "2026-07-26",
+      "checksum": "45b27f51520ae8aa4d277b96f9172086712f9b5abb88a581c237c416e9e3e12b"
+    },
+    {
       "id": "context-packs-apt-security-pack",
       "title": "APT Security Context Pack",
       "kind": "context-pack",
@@ -1367,7 +1379,7 @@
       "version": "v1",
       "status": "draft",
       "lastUpdated": "2026-06-22",
-      "checksum": "b22836268b6e3061699bf3241aaec939d05c610cf858c1e73582790e017e0fa2"
+      "checksum": "97d4e7d65cabbf5b3ffe396b59130984801abc015ae8a0c14ce7ffb1b404279f"
     },
     {
       "id": "context-packs-README",
@@ -1379,7 +1391,7 @@
       "version": "v1",
       "status": "draft",
       "lastUpdated": "2026-06-22",
-      "checksum": "76432aa205f57e89a631320b588ef732d1fbd91acf6fbdf40f2eaf460824e8d6"
+      "checksum": "1e8bd8383af9f39ae42270e9b8bbe85f7dea3aa71f7563e12510f70ced153ece"
     },
     {
       "id": "context-apt-principles-README",
@@ -1475,7 +1487,7 @@
       "version": "1.0.0",
       "status": "active",
       "lastUpdated": "2026-06-28",
-      "checksum": "67dac2ff1d554c6e8166e4af1f252cf7d83e3f9a64c2950dce4966f3dd18449f"
+      "checksum": "23301eda0f04ea0efe651424a1ee90926e7b77ed1c6502d19637f30a565ff002"
     },
     {
       "id": "CONTRIBUTING",
@@ -1536,6 +1548,18 @@
       "status": "active",
       "lastUpdated": "2026-06-27",
       "checksum": "0a7f9ed776eb6f3f527c72bf6046f26ccac360b9da46e7434dfbf87357a3fe04"
+    },
+    {
+      "id": "docs-design-reference-intake",
+      "title": "APT Design Reference Intake",
+      "kind": "operating-guidance",
+      "domain": "design",
+      "sourcePath": "apt-principles-agents/docs/design-reference-intake.md",
+      "publicPath": "/docs/apt/docs/design-reference-intake.md",
+      "version": "1.0.0",
+      "status": "draft",
+      "lastUpdated": "2026-08-02",
+      "checksum": "d1be556e64797ff9626d2445f7d774841c65d563ac3e44283528c94bff1449b2"
     },
     {
       "id": "docs-diagrams-apt-lifecycle",
@@ -1631,7 +1655,7 @@
       "version": "1.0.0",
       "status": "active",
       "lastUpdated": "2026-06-28",
-      "checksum": "f22fe2927a4c37eff6649b1f017ac23b51284df830204f7b9bb26da530d1ee5a"
+      "checksum": "a05c146eb43bd74d30fb8b2de0da822def44f2b4aa4185413da221a9f641df9c"
     },
     {
       "id": "docs-distribution-OKF-CATALOG",
@@ -1691,7 +1715,7 @@
       "version": "1.0.0",
       "status": "active",
       "lastUpdated": "2026-06-28",
-      "checksum": "17031a78014222d58cf7a7412976a2536d0be1bea1a5dd83cf05af7ed0e985d0"
+      "checksum": "bd18c47221ef0db7bd067cd3b32ad2e1e7e6d341048dbea20c4e8d7f03149c25"
     },
     {
       "id": "docs-game-development-glossary",
@@ -1740,6 +1764,18 @@
       "status": "active",
       "lastUpdated": "2026-06-27",
       "checksum": "95da58dd3ceb4d8bec2e1f6c3a78549955cb82660f6ad1d13409d85c1dae44e4"
+    },
+    {
+      "id": "docs-intake-routing-application",
+      "title": "APT Intake Routing Application",
+      "kind": "operating-guidance",
+      "domain": "governance",
+      "sourcePath": "apt-principles-agents/docs/intake-routing-application.md",
+      "publicPath": "/docs/apt/docs/intake-routing-application.md",
+      "version": "1.0.0",
+      "status": "draft",
+      "lastUpdated": "2026-08-02",
+      "checksum": "c494c640829e9c735ccec3bc6dedad034502eee45d069e8481a2e1e4db8131f2"
     },
     {
       "id": "docs-model-routing",
@@ -1823,7 +1859,7 @@
       "version": "1.0.0",
       "status": "active",
       "lastUpdated": "2026-06-27",
-      "checksum": "4f1e98bc34c5f131319656eaddec098fcad378d65156524918aebd6352ad1532"
+      "checksum": "9927448b02599c5d421c3d1f1f288b16a936af6843ceabe180462a46953396e3"
     },
     {
       "id": "docs-refactor-canonical-source-hierarchy",
@@ -2064,6 +2100,18 @@
       "status": "active",
       "lastUpdated": "2026-06-27",
       "checksum": "ccf1f2e8919a4880adc5d87b037719f3202a412e3fe4fde3e976f07b49491805"
+    },
+    {
+      "id": "docs-working-backwards-product-team-application",
+      "title": "Working Backwards Product Team Application",
+      "kind": "operating-guidance",
+      "domain": "thinking",
+      "sourcePath": "apt-principles-agents/docs/working-backwards-product-team-application.md",
+      "publicPath": "/docs/apt/docs/working-backwards-product-team-application.md",
+      "version": "1.0.0",
+      "status": "draft",
+      "lastUpdated": "2026-08-02",
+      "checksum": "29d8566d5a4c3de615f1a253cc53bbade9b3dc43b68643d73bece35ad415c4e5"
     },
     {
       "id": "examples-ai-agent-agent-harness-flow-example",
@@ -3131,7 +3179,7 @@
       "version": "1.0.0",
       "status": "active",
       "lastUpdated": "2026-06-27",
-      "checksum": "05dcd5b2d2b944c41374d7c97ecc12e4c68b172289a203230b36f72140d61e61"
+      "checksum": "435deea92e3729b8792d6f1e8be3c66d40e17009301ab64edb8f5348cbd9e5c7"
     },
     {
       "id": "principles-ai-agent-design",
@@ -3563,7 +3611,7 @@
       "version": "v1",
       "status": "active",
       "lastUpdated": "2026-06-28",
-      "checksum": "90bfd30be84145c788aded461c59ca66acff2e74a9699de03271cc8145a7a8d8"
+      "checksum": "bafa35700504c08ba76fd7d64006325a0163486f80fe0d4d24255c8751d87114"
     },
     {
       "id": "principles-design-role-based-experience",
@@ -3851,7 +3899,7 @@
       "version": "1.0.0",
       "status": "active",
       "lastUpdated": "2026-06-27",
-      "checksum": "a7f46ea1995ae578de519946a3c8219ade50447e7c83d2e18bbbd6091541869b"
+      "checksum": "8553c621090038f2e35ff9f53df77e6512a53b72e52727ffa69470b2e87fcc36"
     },
     {
       "id": "principles-execution-release-and-change-management",
@@ -3875,7 +3923,7 @@
       "version": "v1",
       "status": "active",
       "lastUpdated": "2026-06-28",
-      "checksum": "e50145ae58ca7380c0e54ed45432364fca714245117ef2362a45a633196f4a0d"
+      "checksum": "7e68692b08cc496791e9e04675c40908a22c12fd53b77452454f0f0029af0d9e"
     },
     {
       "id": "principles-game-development-ai-assisted-game-development",
@@ -6383,7 +6431,7 @@
       "version": "1.0.0",
       "status": "active",
       "lastUpdated": "2026-07-26",
-      "checksum": "5277fdb36a5bb403e8d0708773365982629b5f7c738bc0527008d8e437cf258f"
+      "checksum": "c7f7289dab3940f3dcb10388f3810ff0bfafe1c48877a68e21bc04001a9b674e"
     },
     {
       "id": "routing-local-first-routing",
@@ -8246,6 +8294,18 @@
       "checksum": "124bb6a470edadeea2889fadcdaf448e54463fb7ea4c497b863b1073f97b1fbd"
     },
     {
+      "id": "standards-ai-provider-neutral-ai-task-contract",
+      "title": "Provider-Neutral AI Task Contract",
+      "kind": "standard",
+      "domain": "ai",
+      "sourcePath": "apt-principles-agents/standards/ai/provider-neutral-ai-task-contract.md",
+      "publicPath": "/docs/apt/standards/ai/provider-neutral-ai-task-contract.md",
+      "version": "1.0.0",
+      "status": "active",
+      "lastUpdated": "2026-08-01",
+      "checksum": "d83832d1277672d3b8f56d37eaac01a168385fc989f672c9f2e676fd8cf420ca"
+    },
+    {
       "id": "standards-ai-repository-lifecycle-standard",
       "title": "Repository Lifecycle Standard",
       "kind": "standard",
@@ -9527,7 +9587,7 @@
       "version": "1.0.0",
       "status": "active",
       "lastUpdated": "2026-06-27",
-      "checksum": "e53d4b0a6e2c81b71b11d0ff525a75628fbd0f14a5ab40b81ebffb8ee75c6c17"
+      "checksum": "6d0d1687cda70cefcc17eea47e08daf42eb7d9b1cdb8603e55e0718c90802362"
     },
     {
       "id": "templates-srd-README",
@@ -9612,6 +9672,114 @@
       "status": "active",
       "lastUpdated": "2026-06-27",
       "checksum": "5e490ed137da6204cde7d5d48584ffb364011e208a4bc2fc5e511c693143012f"
+    },
+    {
+      "id": "templates-working-backwards-agent-role-contracts",
+      "title": "Working Backwards Agent Role Contracts",
+      "kind": "template",
+      "domain": "thinking",
+      "sourcePath": "apt-principles-agents/templates/working-backwards/agent-role-contracts.md",
+      "publicPath": "/docs/apt/templates/working-backwards/agent-role-contracts.md",
+      "version": "1.0.0",
+      "status": "draft",
+      "lastUpdated": "2026-08-02",
+      "checksum": "ea21aefe1cd752d6e46edc0b6b1f7f80bdd2423789019340b78598e55f7f3ac6"
+    },
+    {
+      "id": "templates-working-backwards-ai-task-contract",
+      "title": "ai-task-contract.json",
+      "kind": "template",
+      "domain": "template",
+      "sourcePath": "apt-principles-agents/templates/working-backwards/ai-task-contract.json",
+      "publicPath": "/docs/apt/templates/working-backwards/ai-task-contract.json",
+      "version": "1",
+      "status": "active",
+      "lastUpdated": null,
+      "checksum": "23d6ba9a4b65edd78a60b3b0e69d60d427948f7f6359818bdb711d36b31c085a"
+    },
+    {
+      "id": "templates-working-backwards-critic-rubric",
+      "title": "critic-rubric.json",
+      "kind": "template",
+      "domain": "template",
+      "sourcePath": "apt-principles-agents/templates/working-backwards/critic-rubric.json",
+      "publicPath": "/docs/apt/templates/working-backwards/critic-rubric.json",
+      "version": "1.0.0",
+      "status": "active",
+      "lastUpdated": null,
+      "checksum": "931cdcc7a38e61003761db0dd84d8b1c673d075178a5e1e6155fd0bc7c70d8d5"
+    },
+    {
+      "id": "templates-working-backwards-faq",
+      "title": "Working Backwards FAQ",
+      "kind": "template",
+      "domain": "thinking",
+      "sourcePath": "apt-principles-agents/templates/working-backwards/faq.md",
+      "publicPath": "/docs/apt/templates/working-backwards/faq.md",
+      "version": "1.0.0",
+      "status": "active",
+      "lastUpdated": "2026-08-01",
+      "checksum": "c772b6525798573960c14eecde105b976f0a4ecb44d703879c1b6a6973dd615f"
+    },
+    {
+      "id": "templates-working-backwards-press-release",
+      "title": "Working Backwards Press Release",
+      "kind": "template",
+      "domain": "thinking",
+      "sourcePath": "apt-principles-agents/templates/working-backwards/press-release.md",
+      "publicPath": "/docs/apt/templates/working-backwards/press-release.md",
+      "version": "1.0.0",
+      "status": "active",
+      "lastUpdated": "2026-08-01",
+      "checksum": "c10518cb6f6dc83702ef6559f31cc753ae5a154c58b1a53fabc326cd77b5f7e4"
+    },
+    {
+      "id": "templates-working-backwards-README",
+      "title": "Working Backwards Templates",
+      "kind": "template",
+      "domain": "thinking",
+      "sourcePath": "apt-principles-agents/templates/working-backwards/README.md",
+      "publicPath": "/docs/apt/templates/working-backwards/README.md",
+      "version": "1.0.0",
+      "status": "active",
+      "lastUpdated": "2026-08-01",
+      "checksum": "ed3238797f465fd3f0f3751f5262b15c6dd2bbf0a9c035d357d2dea34ce88532"
+    },
+    {
+      "id": "templates-working-backwards-requirements",
+      "title": "Working Backwards Requirements",
+      "kind": "template",
+      "domain": "thinking",
+      "sourcePath": "apt-principles-agents/templates/working-backwards/requirements.md",
+      "publicPath": "/docs/apt/templates/working-backwards/requirements.md",
+      "version": "1.0.0",
+      "status": "active",
+      "lastUpdated": "2026-08-01",
+      "checksum": "c6aaf72cccb1037ebfe5efd92064337d02d1242f84150debf2b04b374ea77221"
+    },
+    {
+      "id": "templates-working-backwards-session",
+      "title": "session.json",
+      "kind": "template",
+      "domain": "template",
+      "sourcePath": "apt-principles-agents/templates/working-backwards/session.json",
+      "publicPath": "/docs/apt/templates/working-backwards/session.json",
+      "version": "1.0.0",
+      "status": "active",
+      "lastUpdated": null,
+      "checksum": "7b18f6f7eb16d83104a8ff7aa4abdd84f0434f818c6fb344efd5d4606e00fdf9"
+    },
+    {
+      "id": "templates-working-backwards-stage-gate-status",
+      "title": "Working Backwards Stage Gate Status",
+      "kind": "template",
+      "domain": "thinking",
+      "sourcePath": "apt-principles-agents/templates/working-backwards/stage-gate-status.md",
+      "publicPath": "/docs/apt/templates/working-backwards/stage-gate-status.md",
+      "version": "1.0.0",
+      "status": "draft",
+      "lastUpdated": "2026-08-02",
+      "checksum": "89a64a35026c2ccc360e2ef29ece40a0a33d595e90f080edd3ef9471ebe6f5dd"
     }
   ]
 }
