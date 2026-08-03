@@ -18,3 +18,4 @@ Canonical guidance for turn approved intent and architecture into small coherent
 - [Release And Change Management.md](release-and-change-management.md)
 - [Operations And Support.md](operations-and-support.md)
 - [Knowledge And Learning.md](knowledge-and-learning.md)
+- [Intake Routing Application](../../docs/intake-routing-application.md)

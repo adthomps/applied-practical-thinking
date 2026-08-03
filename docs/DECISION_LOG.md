@@ -458,3 +458,60 @@ The runtime app, shared primitives, generated public docs, and APT principles ex
 **Consequences:**
 - Positive: stronger design governance, cleaner token language, and automated drift detection.
 - Negative: future media exports must be manually checked against the APT palette or generated from an asset pipeline that encodes it.
+
+---
+
+### [APT-015] Public Design Reference Consolidation Direction
+
+**Date:** 2026-08-02
+**Author:** Codex
+**Status:** Accepted
+
+**Context:**
+`apt-design-reference` contains portable APT visual reference material, UI-kit guidance, content fundamentals, iconography rules, token examples, previews, assets, and standalone generated artifacts. `applied-practical-thinking` already owns the public APT site and authored external-first design docs under `apps/web/docs/design/`, while `apt-principles-agents` owns reusable APT doctrine and agent distribution.
+
+**Decision:**
+Make `applied-practical-thinking` the primary public home for APT design reference and visual examples. Merge only needed authored elements from `apt-design-reference` into the existing design docs, content, asset, runtime primitive, and token-contract model. Promote generalized doctrine, standards, rubrics, prompts, skills, and agent-facing rules to `apt-principles-agents` instead of making the public site the canonical doctrine source.
+
+**Rationale:**
+- Public visual reference belongs with the public APT presentation layer.
+- Canonical reusable design doctrine should remain in `apt-principles-agents`.
+- The existing `apps/web/docs/design/` source model can absorb maintained design reference without copying generated artifacts into source.
+- A direction-setting merge prevents `apt-design-reference` from becoming a parallel source of truth.
+
+**Alternatives Considered:**
+1. Keep `apt-design-reference` as a full standalone peer indefinitely - rejected for now: it duplicates public design-reference ownership unless it has a distinct portable bundle consumer.
+2. Copy the entire repo into `applied-practical-thinking` - rejected: it would import generated bundles, screenshots, standalone HTML, and agent assets without clarifying ownership.
+3. Move all design material to `apt-principles-agents` - rejected: public examples and visual showcases belong with the public site, not only the doctrine repo.
+
+**Consequences:**
+- Positive: clearer public design-reference home and less design-source drift.
+- Positive: reusable design standards still flow through the canonical doctrine repo.
+- Negative: the migration needs careful inventory so useful examples are not lost and generated artifacts do not become maintained source.
+
+---
+
+### [APT-016] Public Design Reference Source Map
+
+**Date:** 2026-08-02
+**Author:** Codex
+**Status:** Accepted
+
+**Context:**
+The consolidation inventory identified specific `apt-design-reference` material that should feed the public APT design reference: visual identity, content voice, surface families, preview examples, UI-kit guidance, token evidence, and asset examples.
+
+**Decision:**
+Add `APT-DESIGN-REFERENCE-SOURCE-MAP.md` to the authored v2 design docs and register it in the design docs manifest. The source map explains which design-reference materials are public site material, which belong upstream in `apt-principles-agents`, and which generated artifacts should remain evidence only.
+
+**Rationale:**
+- Gives the public design-reference merge a concrete authored home.
+- Keeps generated design bundles out of maintained source.
+- Preserves the public/canonical split established by APT-015.
+
+**Alternatives Considered:**
+1. Copy the full design-reference README into the public docs - rejected: too much duplicated doctrine and bundle-specific detail.
+2. Wait until runtime UI-kit migration - rejected: documentation ownership should be clear before code or asset movement.
+
+**Consequences:**
+- Positive: clearer public migration path for preview cards, UI-kit narratives, token evidence, and assets.
+- Negative: future implementation still needs file-by-file review before adopting code, images, or token changes.

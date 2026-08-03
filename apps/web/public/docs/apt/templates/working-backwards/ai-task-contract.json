@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "taskCapabilities": [
+    "draft_press_release",
+    "generate_external_faq",
+    "generate_internal_faq",
+    "critic_review",
+    "generate_requirements",
+    "generate_engineering_prompt"
+  ],
+  "request": {
+    "taskCapability": "",
+    "inputArtifacts": [
+      {
+        "id": "",
+        "kind": "",
+        "approvalState": "approved-for-ai"
+      }
+    ],
+    "outputArtifact": {
+      "kind": "",
+      "format": "markdown"
+    },
+    "riskLevel": "medium",
+    "providerPolicy": {
+      "allowedProviders": ["openai", "anthropic"],
+      "forbiddenProviders": [],
+      "dataBoundary": "server-side only",
+      "fallbackBehavior": "return an error or explicit open item; do not fabricate certainty"
+    },
+    "validation": {
+      "schema": "",
+      "rubric": "",
+      "checklists": [],
+      "humanReviewRequired": true
+    }
+  }
+}
