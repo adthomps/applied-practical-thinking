@@ -1,19 +1,21 @@
 // scripts/generate-content-index.cjs
 // Usage: node scripts/generate-content-index.cjs
-// Generates JSON index files for each content type (blog, guides, podcasts, design-reviews, labs, demos, systems)
+// Generates JSON index files for each authored public content type.
 // by parsing Markdown frontmatter in apps/web/content/*
 
 const fs = require('fs');
 const path = require('path');
 const matter = require('gray-matter');
 
-const CONTENT_TYPES = ['blog', 'guides', 'podcasts', 'design-reviews', 'labs', 'demos', 'systems'];
+const CONTENT_TYPES = ['blog', 'guides', 'podcasts', 'design-reviews', 'case-studies', 'labs', 'demos', 'systems'];
 const CONTENT_ROOT = path.join(__dirname, '../content');
 const OUTPUT_ROOT = path.join(__dirname, '../data');
 const DRAFT_STATUSES = new Set(['draft', 'hidden', 'private']);
 const PLACEHOLDER_PATTERNS = [
   /_content coming soon\._/i,
   /\bcontent coming soon\b/i,
+  /add your (demo )?walkthrough/i,
+  /this is the content for the full example demo/i,
   /^coming soon[.!\s]*$/im,
   /\btbd\b/i,
 ];
@@ -190,7 +192,6 @@ function generateIndexForType(type) {
 
 function main() {
   if (!fs.existsSync(OUTPUT_ROOT)) fs.mkdirSync(OUTPUT_ROOT);
-  fs.rmSync(path.join(OUTPUT_ROOT, 'case-studies-index.json'), { force: true });
   const indexesByType = {};
 
   CONTENT_TYPES.forEach(type => {

@@ -19,7 +19,7 @@ technologies:
 tags:
   - demo
   - example
-status: live
+status: draft
 links:
   demo: https://apt-hosted-toolbox.pages.dev/
   figma: 

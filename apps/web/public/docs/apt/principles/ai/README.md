@@ -5,7 +5,7 @@ domain: ai
 status: active
 owner: APT
 version: v1
-last_updated: 2026-06-28
+last_updated: 2026-08-16
 source_paths: ["apt-principles/ai-agent-framework.md"]
 supersedes: ["apt-principles/ai-agent-framework.md"]
 ---
@@ -83,6 +83,10 @@ Agents should load compact context packs, reusable prompts, source indexes, and 
 ### 10. Local-first AI is the default posture
 
 When local tools, local models, or repo-local analysis can complete the work safely, prefer them before external services. Escalate to remote or higher-capability systems when local execution lacks required quality, safety, modality, or integration support.
+
+### 11. Responsible AI preserves human agency
+
+Every durable AI use must state its human purpose, affected audiences, maximum autonomy, data boundary, evaluation, oversight, and incident behavior. AI must not silently broaden its objective, fabricate evidence, or make unreviewable high-impact decisions.
 
 ## Standards / Rules
 
@@ -308,6 +312,7 @@ Return:
 - `standards/ai/local-first-ai-standard.md`
 - `standards/ai/security-harness-standard.md`
 - `standards/ai/repository-lifecycle-standard.md`
+- `standards/ai/responsible-ai-standard.md`
 
 ## Related Documents
 

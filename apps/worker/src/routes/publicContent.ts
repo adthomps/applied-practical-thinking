@@ -384,7 +384,7 @@ function normalizeFeedItem(
 
   let kind: PublicFeedKind = "prototype";
   if (sourceIndexType === "systems") kind = "system";
-  else if (sourceIndexType === "design-reviews") kind = "case-study";
+  else if (sourceIndexType === "design-reviews" || sourceIndexType === "case-studies") kind = "case-study";
   else if (sourceIndexType === "blog") kind = "blog";
   else if (sourceIndexType === "podcasts") kind = "podcast";
   else if (sourceIndexType === "guides") kind = "guide";
@@ -400,7 +400,8 @@ function normalizeFeedItem(
         : sourceIndexType === "blog" ||
             sourceIndexType === "podcasts" ||
             sourceIndexType === "guides" ||
-            sourceIndexType === "design-reviews"
+            sourceIndexType === "design-reviews" ||
+            sourceIndexType === "case-studies"
           ? `/insights/${id}`
           : `/labs/${id}`;
 
@@ -458,21 +459,23 @@ async function fetchFeedItems(
   }
 
   if (feed === "proof") {
-    const [systems, demos, reviews] = await Promise.all([
+    const [systems, demos, reviews, caseStudies] = await Promise.all([
       fetchNormalizedIndex(c, "systems"),
       fetchNormalizedIndex(c, "demos"),
       fetchNormalizedIndex(c, "design-reviews"),
+      fetchNormalizedIndex(c, "case-studies"),
     ]);
-    return [...systems, ...demos, ...reviews];
+    return [...systems, ...demos, ...reviews, ...caseStudies];
   }
 
-  const [blog, podcasts, guides, reviews] = await Promise.all([
+  const [blog, podcasts, guides, reviews, caseStudies] = await Promise.all([
     fetchNormalizedIndex(c, "blog"),
     fetchNormalizedIndex(c, "podcasts"),
     fetchNormalizedIndex(c, "guides"),
     fetchNormalizedIndex(c, "design-reviews"),
+    fetchNormalizedIndex(c, "case-studies"),
   ]);
-  return [...blog, ...podcasts, ...guides, ...reviews];
+  return [...blog, ...podcasts, ...guides, ...reviews, ...caseStudies];
 }
 
 export const publicContentRoute = new Hono<{ Bindings: WorkerBindings }>()

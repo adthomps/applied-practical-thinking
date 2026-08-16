@@ -1,0 +1,31 @@
+[
+  {
+    "id": "apt-publication-boundary-case-study",
+    "slug": "apt-publication-boundary-case-study",
+    "title": "APT in Practice: Turning a Repository Dump into a Governed Public Library",
+    "type": "case-study",
+    "description": "How APT thinking, architecture, security, and execution reduced the public doctrine export from 815 broadly discovered artifacts to 203 explicitly governed documents.",
+    "publishedAt": "2026-08-16",
+    "featured": true,
+    "concepts": [
+      "APT",
+      "content-governance",
+      "security",
+      "architecture",
+      "responsible-ai"
+    ],
+    "platforms": [
+      "Web"
+    ],
+    "technologies": [
+      "Node.js",
+      "React",
+      "Cloudflare"
+    ],
+    "status": "active",
+    "links": {},
+    "related": [],
+    "contentPath": "case-studies/apt-publication-boundary.md",
+    "excerpt": "Problem And Audience  `aptprinciplesagents` is the canonical source for APT doctrine and reusable operational assets. `appliedpracticalthinking` is the public portfolio and learning surface. The publishing script between them recursively discovered most Markdown and JSON files, which made internal plans, drafts, operational assets, and tooling paths eligible for copying into the public site.  The audience needed a clear APT reference library. Maintainers needed a safe, deterministic publication boundary. Neither group benefited from a public mirror of the entire canonical repository.   Intended Outcome"
+  }
+]

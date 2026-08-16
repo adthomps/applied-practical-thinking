@@ -3,6 +3,7 @@ export const contentIndexTypes = [
   "guides",
   "podcasts",
   "design-reviews",
+  "case-studies",
   "labs",
   "demos",
   "systems",

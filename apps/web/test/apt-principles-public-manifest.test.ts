@@ -25,20 +25,44 @@ describe("apt principles public manifest", () => {
     }
   });
 
-  it("publishes build-kit and reference artifacts for public docs consumers", () => {
-    const kinds = new Set(aptPrinciplesPublicManifest.map((item) => item.kind));
+  it("publishes only the curated collections and excludes operational asset roots", () => {
+    const collections = new Set(aptPrinciplesPublicManifest.map((item) => item.collection));
+    expect(collections).toEqual(new Set([
+      "start-here",
+      "doctrine",
+      "standards",
+      "examples",
+      "reference-architecture",
+      "flagship-product-example",
+    ]));
 
-    expect(kinds.has("checklist")).toBe(true);
-    expect(kinds.has("example")).toBe(true);
-    expect(kinds.has("prompt")).toBe(true);
-    expect(kinds.has("template")).toBe(true);
-    expect(kinds.has("reference")).toBe(true);
+    const excludedRoots = ["agents", "checklists", "prompts", "references", "skills", "templates"];
+    for (const item of aptPrinciplesPublicManifest) {
+      const relativeRoot = item.sourcePath.split("/")[1];
+      expect(excludedRoots).not.toContain(relativeRoot);
+      expect(["active", "stable"]).toContain(item.status);
+    }
   });
 
   it("uses public apt docs paths and source checksums for drift detection", () => {
     for (const item of aptPrinciplesPublicManifest) {
       expect(Object.keys(item).sort()).toEqual(
-        ["checksum", "domain", "id", "kind", "lastUpdated", "publicPath", "sourcePath", "status", "title", "version"].sort()
+        [
+          "audience",
+          "category",
+          "checksum",
+          "collection",
+          "domain",
+          "featured",
+          "id",
+          "kind",
+          "lastUpdated",
+          "publicPath",
+          "sourcePath",
+          "status",
+          "title",
+          "version",
+        ].sort()
       );
       expect(item.sourcePath.startsWith("apt-principles-agents/")).toBe(true);
       expect(item.publicPath.startsWith("/docs/apt/")).toBe(true);
@@ -47,6 +71,9 @@ describe("apt principles public manifest", () => {
       expect(item.domain.length).toBeGreaterThan(0);
       expect(item.version.length).toBeGreaterThan(0);
       expect(item.status.length).toBeGreaterThan(0);
+      expect(item.collection.length).toBeGreaterThan(0);
+      expect(item.category.length).toBeGreaterThan(0);
+      expect(item.audience.length).toBeGreaterThan(0);
     }
   });
 });

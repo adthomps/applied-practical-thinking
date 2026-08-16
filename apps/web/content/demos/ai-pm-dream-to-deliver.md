@@ -18,7 +18,7 @@ technologies:
 tags:
   - demo
   - example
-status: live
+status: draft
 links:
   demo: https://pm-dream-to-deliver.apt-account.workers.dev/
   figma: 
