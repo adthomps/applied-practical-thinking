@@ -3,7 +3,7 @@
   "source": {
     "repository": "apt-principles-agents",
     "version": "1.0.0",
-    "commit": "f041f7e4cadf17f90b176e1afac898716243000e"
+    "commit": "3a450b00373c54726f3493d8aa55d9a9029763e3"
   },
   "manifests": [
     "core",
@@ -3004,7 +3004,7 @@
       "source": "platforms/github-copilot/copilot-instructions.md",
       "target": ".github/copilot-instructions.md",
       "kind": "instruction",
-      "sha256": "fdbf0d942ac08882cfe0597557b52586f3cca4b80239f8b9d1a8d142c1c0716e"
+      "sha256": "016d67565d2f94c618909c1f26ac4194c8e2b0efdafb42a281a3a1f8ce7de713"
     },
     {
       "source": "prompts/agent-harness-review-prompt.md",
@@ -3598,6 +3598,6 @@
   "localContext": "docs/project-context.md",
   "lastOperation": {
     "type": "sync",
-    "at": "2026-08-16T23:43:30.833Z"
+    "at": "2026-08-16T23:54:18.076Z"
   }
 }
