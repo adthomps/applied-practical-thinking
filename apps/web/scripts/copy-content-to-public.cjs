@@ -4,7 +4,8 @@ const fs = require('fs');
 const path = require('path');
 const matter = require('gray-matter');
 
-const CONTENT_TYPES = ['blog', 'guides', 'podcasts', 'design-reviews', 'labs', 'demos', 'systems'];
+const CONTENT_TYPES = ['blog', 'guides', 'podcasts', 'design-reviews', 'case-studies', 'labs', 'demos', 'systems'];
+const NON_PUBLIC_CONTENT_STATUSES = new Set(['draft', 'hidden', 'private']);
 const CONTENT_ROOT = path.join(__dirname, '../content');
 const PUBLIC_CONTENT_ROOT = path.join(__dirname, '../public/content');
 const DESIGN_DOCS_ROOT = path.join(__dirname, '../docs/design');
@@ -445,8 +446,6 @@ function buildReviewBundleManifestForPublic(designDocsRoot = DESIGN_DOCS_ROOT) {
 }
 
 function copyContentToPublic(contentRoot = CONTENT_ROOT, publicContentRoot = PUBLIC_CONTENT_ROOT) {
-  fs.rmSync(path.join(publicContentRoot, 'case-studies'), { recursive: true, force: true });
-
   for (const type of CONTENT_TYPES) {
     const srcDir = path.join(contentRoot, type);
     const destDir = path.join(publicContentRoot, type);
@@ -462,7 +461,11 @@ function copyContentToPublic(contentRoot = CONTENT_ROOT, publicContentRoot = PUB
 
     if (!fs.existsSync(srcDir)) continue;
 
-    const files = fs.readdirSync(srcDir).filter((file) => file.endsWith('.md'));
+    const files = fs.readdirSync(srcDir).filter((file) => {
+      if (!file.endsWith('.md')) return false;
+      const parsed = matter(fs.readFileSync(path.join(srcDir, file), 'utf8'));
+      return !NON_PUBLIC_CONTENT_STATUSES.has(String(parsed.data.status || '').trim().toLowerCase());
+    });
     for (const file of files) {
       fs.copyFileSync(path.join(srcDir, file), path.join(destDir, file));
       console.log(`Copied ${type}/${file} to public/content/${type}`);

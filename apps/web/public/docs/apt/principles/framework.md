@@ -34,23 +34,25 @@ APT is a working model for:
 
 APT creates a repeatable system for moving from concept to execution without losing clarity, consistency, quality, security, or long-term reuse.
 
-## Lifecycle Map
+## Framework Map
 
-| Layer | Question | Canonical Doc |
-|---|---|---|
-| Thinking | Why does this matter? | `thinking.md` |
-| Design | What should the solution communicate and do? | `design.md` |
-| Architecture | How should the system be structured? | `architecture.md` |
-| System Standards | How do we keep behavior consistent? | `system-standards.md` |
-| Execution | How do we build it safely? | `execution.md` |
-| Quality & Testing | How do we validate it? | `quality-testing.md` |
-| Release & Change Management | How do we promote it? | `release-change-management.md` |
-| Operations & Support | How do we run and support it? | `operations-support.md` |
-| Knowledge System | How do we learn and scale understanding? | `knowledge-system.md` |
-| AI & Agent Framework | How does AI augment the work? | `ai-agent-framework.md` |
-| Security & Authentication | How do we protect trust boundaries? | `security.md` |
+The first four entries are APT's pillars. System standards, quality, release, operations, and knowledge are lifecycle practices that make those pillars repeatable. AI and security are cross-cutting overlays applied throughout the work.
 
-Security is a formal lifecycle layer. It may be reviewed alongside architecture and operations, but it is not optional or merely a final checklist.
+| Role | Area | Question | Canonical Doc |
+|---|---|---|---|
+| Pillar | Thinking | Why does this matter? | `thinking/README.md` |
+| Pillar | Design | What should the solution communicate and do? | `design/README.md` |
+| Pillar | Architecture | How should the system be structured? | `architecture/README.md` |
+| Lifecycle practice | System Standards | How do we keep behavior consistent? | `system-standards/README.md` |
+| Pillar | Execution | How do we build it safely? | `execution/README.md` |
+| Lifecycle practice | Quality and Testing | How do we validate it? | `execution/quality-and-testing.md` |
+| Lifecycle practice | Release and Change Management | How do we promote it? | `execution/release-and-change-management.md` |
+| Lifecycle practice | Operations and Support | How do we run and support it? | `execution/operations-and-support.md` |
+| Lifecycle practice | Knowledge and Learning | How do we learn and scale understanding? | `execution/knowledge-and-learning.md` |
+| Cross-cutting overlay | AI and Agents | How can AI participate safely and usefully? | `ai/README.md` |
+| Cross-cutting overlay | Security and Risk | How do we protect people, data, systems, and trust? | `security-risk/README.md` |
+
+Security and AI are explicit and required, but they are not sequential handoff stages. Public sites may use shorter labels and eleven navigation groups when they preserve this role mapping and the canonical source path.
 
 Canonical file slugs use explicit doctrine names such as `operations-support` and `knowledge-system`. Public sites and route groups may use shorter labels such as Operations or Knowledge, but generated views should preserve the canonical source path so those aliases do not become competing doctrine names.
 

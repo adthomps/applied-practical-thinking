@@ -19,6 +19,7 @@ const typeIcons = {
   podcast: Mic,
   guide: Book,
   "design-review": Book,
+  "case-study": Book,
 };
 
 const typeLabels = {
@@ -27,6 +28,7 @@ const typeLabels = {
   podcast: "Podcast Episode",
   guide: "Guide",
   "design-review": "Design Review",
+  "case-study": "Case Study",
 };
 
 export default function InsightDetail() {

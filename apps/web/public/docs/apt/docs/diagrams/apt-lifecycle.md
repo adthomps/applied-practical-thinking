@@ -11,7 +11,7 @@ source_paths: ["apt-principles/docs/diagrams/apt-lifecycle.md"]
 
 # APT Lifecycle Diagram
 
-The APT lifecycle defines 11 sequential layers that move a concept from raw idea to production-ready, continuously-improved software. Each layer has one canonical doctrine file that owns it.
+APT uses four pillars, five supporting lifecycle practices, and two cross-cutting overlays. Public navigation may present eleven sections, but those sections are not eleven equal or sequential pillars.
 
 ## Lifecycle Flow
 
@@ -32,9 +32,9 @@ The APT lifecycle defines 11 sequential layers that move a concept from raw idea
 │  8  RUN  │  How do we run and support it?   │  operations-      │
 │          │                                  │  support.md       │
 │  9  LEARN│  How do we capture learning?     │  knowledge-system │
-│ 10  AI   │  How does AI participate safely? │  ai-agent-        │
-│          │                                  │  framework.md     │
-│ 11  SAFE │  How do we protect trust?        │  security.md      │
+│ OVERLAY  │  How does AI participate safely? │  ai/README.md     │
+│ OVERLAY  │  How do we protect trust?        │  security-risk/   │
+│          │                                  │  README.md        │
 └──────────┴──────────────────────────────────┴───────────────────┘
 ```
 
@@ -69,7 +69,7 @@ Idea
   └────────────────┘   └──────────────────────┘
 ```
 
-Security and AI are not sequential — they apply across all layers.
+Security and AI are cross-cutting overlays. They apply during framing, design, architecture, execution, validation, release, operations, and learning.
 
 ## Required Change Flow
 
@@ -86,11 +86,12 @@ When making any significant change, traverse the layers in order:
 8. Promote with release-change-management.md
 9. Support with operations-support.md
 10. Capture in knowledge-system.md
-11. Agent work follows ai-agent-framework.md
+11. Apply the AI and security overlays throughout; record where either is not applicable.
 ```
 
 ## Related Docs
 
-- `apt-principles-agents.md` — full lifecycle map with canonical doc table
-- `principles/` — concise principle cards per layer
+- `principles/framework.md` — full lifecycle map and operating rules
+- `principles/` — canonical doctrine and specialist applications
+- `references/apt-taxonomy.json` — structured taxonomy used by generated views
 - `docs/diagrams/file-relationships.md` — how artifacts connect across layers

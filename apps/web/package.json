@@ -9,7 +9,7 @@
     "build": "pnpm run verify-worker-api-config && pnpm run generate-apt-principles-agents-public && pnpm run validation-report && pnpm run build-content-index && pnpm run copy-content-to-public && vite build",
     "preview": "vite preview",
     "lint": "eslint . && pnpm run verify-doc-governance",
-    "test": "vitest run",
+    "test": "node scripts/test-apt-publication.cjs && vitest run",
     "test:watch": "vitest",
     "generate-content-index": "node scripts/generate-content-index.cjs",
     "copy-content-index": "node scripts/copy-index-to-public.cjs",

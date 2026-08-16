@@ -1,0 +1,105 @@
+// Generated from apt-principles-agents/references/apt-taxonomy.json. Do not edit by hand.
+export type AptTaxonomyRole = "pillar" | "lifecycle-practice" | "cross-cutting";
+
+export const aptTaxonomy = [
+  {
+    "id": "thinking",
+    "role": "pillar",
+    "order": 1,
+    "label": "Thinking",
+    "question": "Why does this matter?",
+    "source_path": "principles/thinking/README.md"
+  },
+  {
+    "id": "design",
+    "role": "pillar",
+    "order": 2,
+    "label": "Design",
+    "question": "What should the solution communicate and do?",
+    "source_path": "principles/design/README.md"
+  },
+  {
+    "id": "architecture",
+    "role": "pillar",
+    "order": 3,
+    "label": "Architecture",
+    "question": "How should the system be structured?",
+    "source_path": "principles/architecture/README.md"
+  },
+  {
+    "id": "system",
+    "role": "lifecycle-practice",
+    "order": 4,
+    "label": "System Standards",
+    "question": "How do we keep behavior consistent?",
+    "source_path": "principles/system-standards/README.md"
+  },
+  {
+    "id": "execution",
+    "role": "pillar",
+    "order": 5,
+    "label": "Execution",
+    "question": "How do we build it safely?",
+    "source_path": "principles/execution/README.md"
+  },
+  {
+    "id": "quality-testing",
+    "role": "lifecycle-practice",
+    "order": 6,
+    "label": "Quality and Testing",
+    "question": "How do we validate it?",
+    "source_path": "principles/execution/quality-and-testing.md"
+  },
+  {
+    "id": "release-change-management",
+    "role": "lifecycle-practice",
+    "order": 7,
+    "label": "Release and Change Management",
+    "question": "How do we promote it?",
+    "source_path": "principles/execution/release-and-change-management.md"
+  },
+  {
+    "id": "operations",
+    "role": "lifecycle-practice",
+    "order": 8,
+    "label": "Operations and Support",
+    "question": "How do we run and support it?",
+    "source_path": "principles/execution/operations-and-support.md"
+  },
+  {
+    "id": "knowledge",
+    "role": "lifecycle-practice",
+    "order": 9,
+    "label": "Knowledge and Learning",
+    "question": "How do we learn and scale understanding?",
+    "source_path": "principles/execution/knowledge-and-learning.md"
+  },
+  {
+    "id": "security",
+    "role": "cross-cutting",
+    "order": 10,
+    "label": "Security and Risk",
+    "question": "How do we protect people, data, systems, and trust?",
+    "source_path": "principles/security-risk/README.md"
+  },
+  {
+    "id": "ai-agent",
+    "role": "cross-cutting",
+    "order": 11,
+    "label": "AI and Agents",
+    "question": "How can AI participate safely and usefully?",
+    "source_path": "principles/ai/README.md"
+  }
+] as const;
+
+export const aptTaxonomyById = Object.fromEntries(
+  aptTaxonomy.map((group) => [group.id, group])
+) as Record<(typeof aptTaxonomy)[number]["id"], (typeof aptTaxonomy)[number]>;
+
+export const aptLifecycleGroupIds = aptTaxonomy
+  .filter((group) => group.role !== "cross-cutting")
+  .map((group) => group.id);
+
+export const aptCrossCuttingGroupIds = aptTaxonomy
+  .filter((group) => group.role === "cross-cutting")
+  .map((group) => group.id);

@@ -2,6 +2,7 @@ import {
   getAptPublicDocBySourcePath,
   type AptPublicDocManifestEntry,
 } from "@/data/generated/aptPrinciplesPublicManifest";
+import { aptTaxonomyById, type AptTaxonomyRole } from "@/data/generated/aptTaxonomy";
 
 export type AptPrincipleGroupId =
   | "thinking"
@@ -56,6 +57,7 @@ function getAptPublicDocMeta(sourcePath: string): AptPublicDocMeta | null {
 
 export type AptPrincipleGroup = {
   readonly id: AptPrincipleGroupId;
+  readonly role: AptTaxonomyRole;
   readonly title: string;
   readonly shortTitle: string;
   readonly displayLabel: string;
@@ -77,6 +79,7 @@ export type AptPrincipleGroup = {
 export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
   {
     id: "thinking",
+    role: aptTaxonomyById.thinking.role,
     title: "Thinking",
     shortTitle: "Thinking",
     displayLabel: "APT Thinking Principles (Why)",
@@ -118,6 +121,7 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
   },
   {
     id: "design",
+    role: aptTaxonomyById.design.role,
     title: "Design",
     shortTitle: "Design",
     displayLabel: "APT Design Principles (What)",
@@ -154,6 +158,7 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
   },
   {
     id: "architecture",
+    role: aptTaxonomyById.architecture.role,
     title: "Architecture",
     shortTitle: "Architecture",
     displayLabel: "APT Architecture Standards (How)",
@@ -190,6 +195,7 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
   },
   {
     id: "system",
+    role: aptTaxonomyById.system.role,
     title: "System",
     shortTitle: "System",
     displayLabel: "APT System Standards (Consistency)",
@@ -226,6 +232,7 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
   },
   {
     id: "security",
+    role: aptTaxonomyById.security.role,
     title: "Security",
     shortTitle: "Security",
     displayLabel: "APT Security & Authentication Standard",
@@ -262,6 +269,7 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
   },
   {
     id: "execution",
+    role: aptTaxonomyById.execution.role,
     title: "Execution",
     shortTitle: "Execution",
     displayLabel: "APT Execution Model (Build)",
@@ -298,6 +306,7 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
   },
   {
     id: "quality-testing",
+    role: aptTaxonomyById["quality-testing"].role,
     title: "Quality and Testing",
     shortTitle: "Quality & Testing",
     displayLabel: "APT Quality & Testing (Validate)",
@@ -334,6 +343,7 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
   },
   {
     id: "release-change-management",
+    role: aptTaxonomyById["release-change-management"].role,
     title: "Release and Change Management",
     shortTitle: "Release & Change Management",
     displayLabel: "APT Release & Change Management (Promote)",
@@ -371,6 +381,7 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
   },
   {
     id: "operations",
+    role: aptTaxonomyById.operations.role,
     title: "Operations",
     shortTitle: "Operations",
     displayLabel: "APT Operations & Support Thinking (Run & Support)",
@@ -407,6 +418,7 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
   },
   {
     id: "knowledge",
+    role: aptTaxonomyById.knowledge.role,
     title: "Knowledge",
     shortTitle: "Knowledge",
     displayLabel: "APT Knowledge System (Learn & Scale)",
@@ -443,6 +455,7 @@ export const aptPrincipleGroups: readonly AptPrincipleGroup[] = [
   },
   {
     id: "ai-agent",
+    role: aptTaxonomyById["ai-agent"].role,
     title: "AI / Agent",
     shortTitle: "AI / Agent",
     displayLabel: "APT AI & Agent Framework (Augmentation Layer)",

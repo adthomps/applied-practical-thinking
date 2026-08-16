@@ -1,7 +1,7 @@
-// Publish active canonical artifacts from the sibling apt-principles-agents repository.
-const crypto = require("crypto");
+// Generate the curated public APT reference library from canonical contracts.
 const fs = require("fs");
 const path = require("path");
+const { publishArtifacts } = require("./apt-publication-lib.cjs");
 
 const WEB_ROOT = path.resolve(__dirname, "..");
 const REPO_ROOT = path.resolve(WEB_ROOT, "../..");
@@ -9,117 +9,11 @@ const WORKSPACE_ROOT = path.resolve(REPO_ROOT, "..");
 const PUBLIC_APT_ROOT = path.join(WEB_ROOT, "public", "docs", "apt");
 const GENERATED_DATA_DIR = path.join(WEB_ROOT, "data", "generated");
 const GENERATED_TS_PATH = path.join(GENERATED_DATA_DIR, "aptPrinciplesPublicManifest.ts");
+const GENERATED_TAXONOMY_PATH = path.join(GENERATED_DATA_DIR, "aptTaxonomy.ts");
 const PUBLIC_MANIFEST_PATH = path.join(PUBLIC_APT_ROOT, "manifest.json");
-
-const ALLOWED_EXTENSIONS = new Set([".md", ".json"]);
-const EXCLUDED_DIRS = new Set([
-  ".apt",
-  ".apt-backups",
-  ".claude",
-  ".codex",
-  ".gemini",
-  ".git",
-  ".github",
-  "archive",
-  "installers",
-  "node_modules",
-  "platforms",
-  "scripts",
-]);
-const EXCLUDED_PREFIXES = ["docs/archive/", "docs/migration/", "docs/migration-from-old-repos.md"];
-const EXCLUDED_FILES = new Set(["package.json"]);
-
-function toPosix(value) {
-  return String(value || "").replace(/\\/g, "/");
-}
 
 function ensureDir(dir) {
   fs.mkdirSync(dir, { recursive: true });
-}
-
-function walkFiles(root) {
-  const files = [];
-  function walk(current) {
-    for (const entry of fs.readdirSync(current, { withFileTypes: true })) {
-      const fullPath = path.join(current, entry.name);
-      const relativePath = toPosix(path.relative(root, fullPath));
-      if (entry.isDirectory()) {
-        if (EXCLUDED_DIRS.has(entry.name)) continue;
-        if (EXCLUDED_PREFIXES.some((prefix) => `${relativePath}/`.startsWith(prefix))) continue;
-        walk(fullPath);
-      } else if (
-        entry.isFile() &&
-        !EXCLUDED_FILES.has(entry.name) &&
-        ALLOWED_EXTENSIONS.has(path.extname(entry.name)) &&
-        !EXCLUDED_PREFIXES.some((prefix) => relativePath.startsWith(prefix))
-      ) {
-        files.push(fullPath);
-      }
-    }
-  }
-  walk(root);
-  return files;
-}
-
-function parseFrontmatter(markdown) {
-  const match = markdown.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n/);
-  if (!match) return {};
-  return Object.fromEntries(
-    match[1].split(/\r?\n/).flatMap((line) => {
-      const field = line.match(/^([A-Za-z0-9_-]+):\s*(.*)$/);
-      return field ? [[field[1], field[2].trim().replace(/^["']|["']$/g, "")]] : [];
-    })
-  );
-}
-
-function inferFromPath(relativePath, field) {
-  const parts = relativePath.split("/");
-  if (field === "kind") {
-    const root = parts[0];
-    const singular = {
-      agents: "agent",
-      checklists: "checklist",
-      examples: "example",
-      prompts: "prompt",
-      references: "reference",
-      skills: "skill",
-      standards: "standard",
-      templates: "template",
-    };
-    return singular[root] || (root === "principles" ? "principle" : "guide");
-  }
-  if (parts[0] === "principles") return parts[1] || "framework";
-  return parts[0].replace(/s$/, "") || "general";
-}
-
-function readMetadata(fullPath, relativePath) {
-  const raw = fs.readFileSync(fullPath, "utf8");
-  const checksum = crypto.createHash("sha256").update(raw).digest("hex");
-  if (path.extname(fullPath) === ".json") {
-    const value = JSON.parse(raw);
-    return {
-      title: value.title || value.name || path.basename(relativePath),
-      kind: value.kind || inferFromPath(relativePath, "kind"),
-      domain: value.domain || inferFromPath(relativePath, "domain"),
-      version: String(value.version || value.schemaVersion || "1.0.0"),
-      status: value.status || "active",
-      lastUpdated: value.last_updated || value.lastUpdated || value.updatedAt || null,
-      checksum,
-    };
-  }
-  const value = parseFrontmatter(raw);
-  if (!value.kind || !value.domain || !value.status || !value.last_updated) {
-    throw new Error(`Active public artifact is missing required metadata: ${relativePath}`);
-  }
-  return {
-    title: value.title || path.basename(relativePath),
-    kind: value.kind,
-    domain: value.domain,
-    version: value.version || "1.0.0",
-    status: value.status,
-    lastUpdated: value.last_updated,
-    checksum,
-  };
 }
 
 function writeGeneratedTypeScript(manifest) {
@@ -132,6 +26,10 @@ export type AptPublicDocManifestEntry = {
   readonly title: string;
   readonly kind: string;
   readonly domain: string;
+  readonly collection: string;
+  readonly category: string;
+  readonly audience: readonly string[];
+  readonly featured: boolean;
   readonly sourcePath: string;
   readonly publicPath: string;
   readonly version: string;
@@ -146,9 +44,50 @@ export function getAptPublicDocsByKind(kind: string): readonly AptPublicDocManif
   return aptPrinciplesPublicManifest.filter((item) => item.kind === kind);
 }
 
+export function getAptPublicDocsByCollection(collection: string): readonly AptPublicDocManifestEntry[] {
+  return aptPrinciplesPublicManifest.filter((item) => item.collection === collection);
+}
+
 export function getAptPublicDocBySourcePath(sourcePath: string): AptPublicDocManifestEntry | undefined {
   return aptPrinciplesPublicManifest.find((item) => item.sourcePath === sourcePath);
 }
+`,
+    "utf8"
+  );
+}
+
+function writeGeneratedTaxonomy(sourceRoot) {
+  const taxonomySourcePath = path.join(sourceRoot, "references", "apt-taxonomy.json");
+  const taxonomy = JSON.parse(fs.readFileSync(taxonomySourcePath, "utf8"));
+  if (taxonomy.version !== 1 || !Array.isArray(taxonomy.groups) || taxonomy.groups.length === 0) {
+    throw new Error("Canonical APT taxonomy must use version 1 and declare groups.");
+  }
+  const ids = new Set();
+  for (const group of taxonomy.groups) {
+    if (!group.id || ids.has(group.id)) throw new Error(`APT taxonomy group is missing or duplicated: ${group.id}`);
+    if (!["pillar", "lifecycle-practice", "cross-cutting"].includes(group.role)) {
+      throw new Error(`APT taxonomy group ${group.id} has invalid role: ${group.role}`);
+    }
+    ids.add(group.id);
+  }
+  fs.writeFileSync(
+    GENERATED_TAXONOMY_PATH,
+    `// Generated from apt-principles-agents/references/apt-taxonomy.json. Do not edit by hand.
+export type AptTaxonomyRole = "pillar" | "lifecycle-practice" | "cross-cutting";
+
+export const aptTaxonomy = ${JSON.stringify(taxonomy.groups, null, 2)} as const;
+
+export const aptTaxonomyById = Object.fromEntries(
+  aptTaxonomy.map((group) => [group.id, group])
+) as Record<(typeof aptTaxonomy)[number]["id"], (typeof aptTaxonomy)[number]>;
+
+export const aptLifecycleGroupIds = aptTaxonomy
+  .filter((group) => group.role !== "cross-cutting")
+  .map((group) => group.id);
+
+export const aptCrossCuttingGroupIds = aptTaxonomy
+  .filter((group) => group.role === "cross-cutting")
+  .map((group) => group.id);
 `,
     "utf8"
   );
@@ -177,36 +116,19 @@ function main() {
   fs.rmSync(PUBLIC_APT_ROOT, { recursive: true, force: true });
   ensureDir(PUBLIC_APT_ROOT);
 
-  const manifest = walkFiles(sourceRoot)
-    .map((fullPath) => {
-      const relativePath = toPosix(path.relative(sourceRoot, fullPath));
-      const metadata = readMetadata(fullPath, relativePath);
-      const targetPath = path.join(PUBLIC_APT_ROOT, ...relativePath.split("/"));
-      ensureDir(path.dirname(targetPath));
-      fs.copyFileSync(fullPath, targetPath);
-      return {
-        id: relativePath.replace(/\.[^.]+$/, "").replace(/[^a-zA-Z0-9]+/g, "-").replace(/^-|-$/g, ""),
-        title: metadata.title,
-        kind: metadata.kind,
-        domain: metadata.domain,
-        sourcePath: `apt-principles-agents/${relativePath}`,
-        publicPath: `/docs/apt/${relativePath}`,
-        version: metadata.version,
-        status: metadata.status,
-        lastUpdated: metadata.lastUpdated,
-        checksum: metadata.checksum,
-      };
-    })
-    .filter((entry) => entry.status !== "archived" && entry.status !== "retired")
-    .sort((a, b) => a.sourcePath.localeCompare(b.sourcePath));
-
+  const manifest = publishArtifacts(sourceRoot, PUBLIC_APT_ROOT);
+  writeGeneratedTaxonomy(sourceRoot);
   fs.writeFileSync(
     PUBLIC_MANIFEST_PATH,
-    `${JSON.stringify({ version: "1.0.0", documents: manifest }, null, 2)}\n`,
+    `${JSON.stringify({
+      version: "2.0.0",
+      sourceContract: "apt-principles-agents/references/publication-manifest.json",
+      documents: manifest,
+    }, null, 2)}\n`,
     "utf8"
   );
   writeGeneratedTypeScript(manifest);
-  console.log(`Generated ${manifest.length} active APT public artifacts from ${sourceRoot}`);
+  console.log(`Generated ${manifest.length} curated APT public artifacts from ${sourceRoot}`);
 }
 
 main();
