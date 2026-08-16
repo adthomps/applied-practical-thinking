@@ -1,0 +1,291 @@
+{
+  "schemaVersion": 1,
+  "files": {
+    "skills": 142,
+    "agents": 75,
+    "principles": 123,
+    "prompts": 74
+  },
+  "sharedCore": {
+    "skills": 93,
+    "agents": 52,
+    "principles": 85,
+    "prompts": 38
+  },
+  "thinSpecialization": {
+    "skills": {
+      "count": 30,
+      "sha256": "dd9313e052999ef1c92dd776b70e59e401a84b92b0c59f5fe6ed48e6b055ffd2"
+    },
+    "agents": {
+      "count": 50,
+      "sha256": "8101c60f74a5775b17a3aae21c39f32e05d638361cc2d7f63c19d571944a4663"
+    },
+    "principles": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "prompts": {
+      "count": 36,
+      "sha256": "610a734c6bc76cb7a190e103b8a055a083d059311f9f4aaaa4f2b8e08951b029"
+    }
+  },
+  "exactDuplicateBodyGroups": 0,
+  "pilots": [
+    {
+      "path": "agents/api/apt-api-reviewer.md",
+      "heading": "## Perspective-Specific Checks",
+      "minimumBullets": 3
+    },
+    {
+      "path": "agents/api/apt-api-migration-planner.md",
+      "heading": "## Perspective-Specific Checks",
+      "minimumBullets": 3
+    },
+    {
+      "path": "prompts/audits/api-audit.md",
+      "heading": "## Task-Specific Requirements",
+      "minimumBullets": 3
+    },
+    {
+      "path": "prompts/audits/repo-audit.md",
+      "heading": "## Task-Specific Requirements",
+      "minimumBullets": 3
+    },
+    {
+      "path": "principles/thinking/practical-thinking.md",
+      "heading": "## Topic-Specific Guidance",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/thinking/problem-framing/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "principles/design/intent-based-design.md",
+      "heading": "## Topic-Specific Guidance",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/design/intent-based-ui-design/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "principles/ai/agent-design.md",
+      "heading": "## Topic-Specific Guidance",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/ai-agents/agent-routing/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "principles/security-risk/data-handling.md",
+      "heading": "## Topic-Specific Guidance",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/security-risk/data-handling-review/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "principles/ai/skill-design.md",
+      "heading": "## Topic-Specific Guidance",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/ai-agents/skill-authoring/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "principles/ai/local-llm-routing.md",
+      "heading": "## Topic-Specific Guidance",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/ai-agents/local-llm-routing/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "principles/api/modern-api-design.md",
+      "heading": "## Topic-Specific Guidance",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/api/modern-api-design/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "principles/service-readiness/escalation-paths.md",
+      "heading": "## Topic-Specific Guidance",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/service-readiness/escalation-path-review/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "principles/api/ai-consumable-apis.md",
+      "heading": "## Topic-Specific Guidance",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/api/ai-consumable-api-design/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "principles/api/human-consumable-apis.md",
+      "heading": "## Topic-Specific Guidance",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/api/intent-based-api-design/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "principles/design/ui-api-alignment.md",
+      "heading": "## Topic-Specific Guidance",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/design/ui-api-alignment-review/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "principles/documentation/ai-usage-examples.md",
+      "heading": "## Topic-Specific Guidance",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/documentation/ai-example-builder/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "principles/documentation/api-examples.md",
+      "heading": "## Topic-Specific Guidance",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/documentation/api-example-builder/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "principles/documentation/audience-layered-docs.md",
+      "heading": "## Topic-Specific Guidance",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/documentation/audience-layered-docs/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "principles/documentation/implementation-blueprints.md",
+      "heading": "## Topic-Specific Guidance",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/documentation/implementation-blueprint-writer/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "principles/documentation/migration-guides.md",
+      "heading": "## Topic-Specific Guidance",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/documentation/migration-guide-writer/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "principles/documentation/product-hub-standard.md",
+      "heading": "## Topic-Specific Guidance",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/documentation/product-hub-builder/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "principles/modernization/api-facade-design.md",
+      "heading": "## Topic-Specific Guidance",
+      "minimumBullets": 5
+    },
+    {
+      "path": "principles/modernization/backward-compatibility.md",
+      "heading": "## Topic-Specific Guidance",
+      "minimumBullets": 5
+    },
+    {
+      "path": "principles/modernization/legacy-api-inventory.md",
+      "heading": "## Topic-Specific Guidance",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/modernization/legacy-api-inventory/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/modernization/legacy-api-parity-reviewer/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "principles/payments/reconciliation-funding.md",
+      "heading": "## Topic-Specific Guidance",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/payments/settlement-funding-review/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "principles/payments/transaction-intelligence.md",
+      "heading": "## Topic-Specific Guidance",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/payments/transaction-intelligence-analysis/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "principles/service-readiness/release-communications.md",
+      "heading": "## Topic-Specific Guidance",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/service-readiness/release-communication-writer/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "principles/stablecoin-crypto/digital-asset-risk.md",
+      "heading": "## Topic-Specific Guidance",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/stablecoin-crypto/digital-asset-settlement-review/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    }
+  ]
+}

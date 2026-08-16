@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "owner": "APT",
+  "default_visibility": "internal",
+  "allowed_statuses": ["active", "stable"],
+  "collections": [
+    {
+      "id": "start-here",
+      "category": "orientation",
+      "audience": ["public", "adopters"],
+      "featured": true,
+      "paths": ["README.md"]
+    },
+    {
+      "id": "doctrine",
+      "category": "principles",
+      "audience": ["public", "practitioners", "adopters"],
+      "featured": true,
+      "prefixes": ["principles/"]
+    },
+    {
+      "id": "standards",
+      "category": "standards",
+      "audience": ["practitioners", "adopters"],
+      "featured": false,
+      "prefixes": ["standards/"]
+    },
+    {
+      "id": "examples",
+      "category": "examples",
+      "audience": ["public", "learners", "adopters"],
+      "featured": true,
+      "prefixes": ["examples/"]
+    },
+    {
+      "id": "reference-architecture",
+      "category": "architecture",
+      "audience": ["practitioners", "adopters"],
+      "featured": false,
+      "paths": [
+        "docs/diagrams/apt-lifecycle.md",
+        "docs/distribution/GOVERNANCE-ARCHITECTURE.md",
+        "docs/distribution/MANIFEST-CATALOG.md",
+        "docs/public-showcase-contract.md"
+      ]
+    },
+    {
+      "id": "flagship-product-example",
+      "category": "case-study",
+      "audience": ["public", "practitioners"],
+      "featured": true,
+      "prefixes": ["product-hubs/examples/generic-payment-product/"]
+    }
+  ]
+}

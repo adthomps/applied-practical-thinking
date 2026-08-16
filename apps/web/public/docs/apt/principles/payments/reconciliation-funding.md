@@ -3,7 +3,7 @@ title: Reconciliation Funding
 kind: principle
 status: active
 owner: APT
-last_updated: 2026-06-27
+last_updated: 2026-08-16
 source: apt-principles and apt-agent-standards
 domain: "payments"
 source_paths: ["apt-principles-agents/principles/payments/reconciliation-funding.md"]
@@ -13,37 +13,41 @@ source_paths: ["apt-principles-agents/principles/payments/reconciliation-funding
 
 ## Purpose
 
-This principle helps APT teams model the complete transaction lifecycle and explicitly address money movement, tokenization, risk, reconciliation, funding, support, and provider differences. It is guidance for decisions and required evidence, not a claim about any specific vendor or product.
+Prove how expected transaction activity becomes processor settlement, internal ledger entries, bank movement, and merchant funding—and how every mismatch is detected, owned, corrected, and audited.
 
 ## Principles
 
-- Begin with the intended outcome and affected audiences.
-- Separate verified facts, assumptions, recommendations, and open questions.
-- Prefer explicit contracts, reversible steps, and supportable behavior.
-- Preserve compatibility when it materially reduces customer or partner disruption.
-- Record the evidence needed for another person or agent to review the decision.
+- Define separate expected, processor-reported, ledger-posted, bank-confirmed, and funded views; never treat one as proof of another.
+- Reconcile immutable transaction and settlement identifiers across gross amounts, fees, reserves, adjustments, chargebacks, refunds, currency, and timing.
+- Establish cutoffs, calendars, time zones, funding delays, and late-arriving or corrected record behavior explicitly.
+- Classify breaks by cause and materiality, with queues, owners, evidence, aging targets, and controlled correction paths.
+- Require dual control, auditability, and least privilege for manual adjustments, write-offs, reruns, and funding release.
+- Close financial periods only against defined completeness and exception thresholds, with preserved lineage to source records.
 
 ## Required Artifacts
 
-At minimum, produce: lifecycle states, amount and currency rules, idempotency, provider mapping, token boundaries, settlement/funding flow, reconciliation, disputes, and support identifiers.
+At minimum, produce: money-movement diagram, source/ledger ownership map, reconciliation keys and equations, cutoff/calendar rules, fee/reserve/adjustment treatment, exception taxonomy and queues, funding controls, period-close criteria, audit evidence, and recovery procedures.
 
 ## Tradeoffs And Failure Modes
 
-Review for invented provider behavior, double processing, confused authorization and settlement, sensitive-data exposure, incomplete reversals, and weak reconciliation. When evidence is incomplete, mark the gap rather than inventing certainty.
+Review for net-only comparison, mismatched time zones or currencies, missing fee and reserve treatment, duplicate or late files, mutable source records, manual spreadsheet authority, unapproved adjustments, premature funding, hidden aged breaks, and close processes that ignore unresolved material exceptions.
 
 ## Review Questions
 
-1. What outcome and audience does this serve?
-2. Which source-backed facts constrain the decision?
-3. What alternatives and migration effects were considered?
-4. How will engineering, security, documentation, and support verify readiness?
-5. What remains uncertain and who must approve it?
+1. Which sources represent expected activity, external settlement, internal accounting, bank confirmation, and final funding?
+2. Which identifiers and equations reconcile each stage at transaction, batch, day, currency, and account level?
+3. How are fees, reserves, reversals, disputes, adjustments, corrections, and late records represented?
+4. Which breaks stop funding or close, and who can investigate, adjust, approve, and release them?
+5. What evidence demonstrates completeness, lineage, correction history, and recoverability?
 
 ## Topic-Specific Guidance
 
-- Treat **Reconciliation Funding** as an explicit decision with defined scope, evidence, owner, and validation.
-- Required evidence: transaction states, money movement, tokens, provider mapping, risk, funding, reconciliation.
-- State what is verified, what is assumed, and what requires specialist or human approval.
+- Reconcile gross activity through fees, reserves, adjustments, disputes, refunds, and net funding rather than comparing totals alone.
+- Define source authority and immutable join keys for transaction, batch, settlement, ledger, bank, and funding records.
+- Normalize currency, precision, sign, business date, time zone, and cutoff behavior before comparison.
+- Give every exception a cause class, materiality, owner, evidence trail, aging target, and controlled resolution.
+- Gate funding and period close on explicit completeness and unresolved-exception thresholds.
+- Protect manual adjustments, reruns, write-offs, and releases with least privilege, dual control, idempotency, and audit logs.
 
 See the [Payments canonical hub](README.md) and linked standards/checklists before making final claims.
 ## Related

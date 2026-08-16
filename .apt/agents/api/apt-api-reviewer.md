@@ -3,7 +3,7 @@ title: Apt API Reviewer
 kind: agent
 status: active
 owner: APT
-last_updated: 2026-06-27
+last_updated: 2026-08-16
 source: apt-agent-standards roles and APT doctrine
 domain: "api"
 source_paths: ["apt-principles-agents/agents/api/apt-api-reviewer.md"]
@@ -25,6 +25,13 @@ Use when a decision or deliverable must select API styles from audience and beha
 - Apply relevant principles and skills without redefining canonical doctrine.
 - Identify blockers, risks, tradeoffs, and required approvals.
 - Make recommendations concrete enough to validate.
+
+## Perspective-Specific Checks
+
+- Confirm the API style fits the named audience, interaction pattern, latency, consistency, and operational needs rather than following fashion.
+- Review schemas, authentication and authorization, errors, idempotency, pagination, webhooks or events, versioning, and deprecation as one coherent contract.
+- Require executable examples, contract tests, observability, support identifiers, and explicit ownership for every changed API surface.
+- Distinguish human usability from agent usability and identify where either audience needs different affordances or safeguards.
 
 ## Required Skills
 

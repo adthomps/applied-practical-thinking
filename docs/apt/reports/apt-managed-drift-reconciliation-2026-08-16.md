@@ -187,6 +187,31 @@ Stage 2 completed the registry reconciliation and stopped before downstream muta
 
 The next mutation stage remains gated on committing or otherwise preserving the authored reconciliation work so that `applied-practical-thinking` is clean immediately before repair. The repair must use backups and force only the 98 reviewed drift targets; the 7 clean updates can follow normal synchronization behavior.
 
+## Stage 3 Resolution
+
+Stage 3 completed the reviewed repair, profile migration, publication refresh, and target validation.
+
+- Preserved the Stage 1/2 report in target commit `9cc8691` before mutation.
+- Added and tested exact `--targets` selection for canonical sync/repair tooling so force repair could not rewrite unreviewed managed files.
+- Applied force repair to exactly 98 reviewed drift targets and created 98 matching recovery files under `.apt-backups/20260816232803836/`.
+- Applied 7 normal missing-asset additions, then corrected 2 of those additions from an LF-preserving clean canonical clone to exclude an unrelated uncommitted specialization change and normalize checkout line endings. Those corrections created 2 recovery files under `.apt-backups/20260816234330059/`.
+- Final managed scan reports 595 current files, zero drift, and current provenance at canonical commit `f041f7e`.
+- Migrated `docs/apt/references/project-profile.json` to inventory version 2 and regenerated `docs/project-context.md` from it.
+- Regenerated 205 explicitly curated public APT artifacts from the clean canonical clone, rebuilt content indexes, and refreshed generated public content and validation projections.
+- Promoted this repository from legacy to verified inventory coverage in the generated workspace rollup.
+
+Validation evidence:
+
+- Canonical `npm run check`: passed after the scoped-repair and generated-frontmatter changes.
+- Project profile schema validation and stale-context check: passed.
+- APT publication contract tests: passed.
+- Vitest: 18 test files and 47 tests passed.
+- ESLint: passed.
+- Consolidated validation recommendation: `pass_with_fixes`; the remaining warnings are pre-existing frontmatter rollout gaps in managed GitHub adapter files.
+- Vite production build: passed with a non-blocking large-chunk warning, led by the Mermaid vendor bundle.
+
+No backup is eligible for deletion during Stage 3. Retain both new timestamped backup sets until the repaired managed installation and generated publication changes are committed and a subsequent clean-checkout verification passes.
+
 ## Archive And Deletion Position
 
 - Do not archive managed copies before repair; they are active installed surfaces.

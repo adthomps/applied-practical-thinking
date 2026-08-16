@@ -3,7 +3,7 @@ title: Digital Asset Risk
 kind: principle
 status: active
 owner: APT
-last_updated: 2026-06-27
+last_updated: 2026-08-16
 source: apt-principles and apt-agent-standards
 domain: "stablecoin-crypto"
 source_paths: ["apt-principles-agents/principles/stablecoin-crypto/digital-asset-risk.md"]
@@ -13,23 +13,24 @@ source_paths: ["apt-principles-agents/principles/stablecoin-crypto/digital-asset
 
 ## Purpose
 
-This principle helps APT teams separate mature capability from emerging or future-looking options and require legal, compliance, custody, counterparty, settlement, and risk review. It is guidance for decisions and required evidence, not a claim about any specific vendor or product.
+Evaluate digital-asset use as a system of asset, network, custody, counterparty, legal, compliance, market, operational, and settlement risks. Capability maturity and permitted use must be supported by current jurisdiction-, provider-, asset-, and custody-specific evidence.
 
 ## Principles
 
-- Begin with the intended outcome and affected audiences.
-- Separate verified facts, assumptions, recommendations, and open questions.
-- Prefer explicit contracts, reversible steps, and supportable behavior.
-- Preserve compatibility when it materially reduces customer or partner disruption.
-- Record the evidence needed for another person or agent to review the decision.
+- Define the exact asset, issuer, network, bridge, wallet, custodian, exchange, liquidity route, geography, user, and transaction purpose in scope.
+- Separate protocol capability from provider support, contractual commitment, operational readiness, and legal permission.
+- Model key ownership, signing authority, custody segregation, recovery, address controls, sanctions/AML screening, and incident response.
+- Define probabilistic or economic finality, confirmation policy, reorganization handling, forks, freezes, blacklisting, depegs, and unsupported reversals.
+- Quantify counterparty, concentration, liquidity, market, smart-contract, oracle, bridge, fee, and operational exposure with limits and monitoring.
+- Require accountable legal, compliance, treasury, security, risk, operations, and product approval before production use or public claims.
 
 ## Required Artifacts
 
-At minimum, produce: maturity label, asset and network assumptions, custody model, on/off-chain flow, finality, refunds, payout, reconciliation, volatility, compliance, and human approval.
+At minimum, produce: maturity classification, scoped asset/network/provider/jurisdiction matrix, custody and key model, end-to-end value flow, finality/reorg/fork policy, screening and travel-rule treatment, counterparty and concentration assessment, liquidity/depeg/stress scenarios, reconciliation/accounting/tax treatment, limits/monitoring, incident/recovery plan, and named approvals.
 
 ## Tradeoffs And Failure Modes
 
-Review for hype, uncertain finality, unsupported reversals, custody ambiguity, counterparty exposure, regulatory assumptions, and card-like dispute expectations. When evidence is incomplete, mark the gap rather than inventing certainty.
+Review for generic “blockchain” claims, stale legal assumptions, unsupported networks or assets, commingled custody, single-key control, irreversible address errors, bridge/oracle dependence, unbounded gas or liquidity cost, depeg and freeze exposure, sanctions-evasion paths, chain reorganization, unavailable refunds, and reconciliation that cannot tie on-chain movement to internal books.
 
 ## Maturity Labels
 
@@ -37,17 +38,20 @@ Every decision must state one: **Mature today**, **Emerging**, **Future-looking*
 
 ## Review Questions
 
-1. What outcome and audience does this serve?
-2. Which source-backed facts constrain the decision?
-3. What alternatives and migration effects were considered?
-4. How will engineering, security, documentation, and support verify readiness?
-5. What remains uncertain and who must approve it?
+1. Which exact asset, network, providers, custody arrangement, jurisdictions, users, and value flows are being approved?
+2. Who controls keys and policies, and how are loss, compromise, unauthorized transfer, address error, freeze, fork, and provider failure handled?
+3. What constitutes finality, reversal, refund, payout, and reconciliation for this design?
+4. Which legal, compliance, market, liquidity, counterparty, protocol, and operational assumptions remain current and evidenced?
+5. What limits, monitoring, stress tests, stop conditions, incident actions, and human approvals govern use?
 
 ## Topic-Specific Guidance
 
-- Treat **Digital Asset Risk** as an explicit decision with defined scope, evidence, owner, and validation.
-- Required evidence: maturity, network, asset, custody, finality, payout, reconciliation, legal/risk review.
-- State what is verified, what is assumed, and what requires specialist or human approval.
+- Scope exact assets, issuers, networks, bridges, wallets, custodians, liquidity providers, jurisdictions, users, and transaction purposes.
+- Separate technical possibility, provider support, contractual commitment, operational maturity, and legal permission.
+- Document key custody, signing authority, segregation, recovery, address allowlisting, screening, and incident controls.
+- Define confirmation/finality, reorganization, fork, freeze, blacklist, depeg, fee-spike, and unsupported-reversal behavior.
+- Set and monitor counterparty, concentration, liquidity, market, smart-contract, oracle, bridge, and operational limits.
+- Require current evidence and named legal, compliance, treasury, security, risk, operations, and product approvals.
 
 See the [Stablecoin Crypto canonical hub](README.md) and linked standards/checklists before making final claims.
 ## Related

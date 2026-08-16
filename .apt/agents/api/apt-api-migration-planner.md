@@ -3,7 +3,7 @@ title: Apt API Migration Planner
 kind: agent
 status: active
 owner: APT
-last_updated: 2026-06-27
+last_updated: 2026-08-16
 source: apt-agent-standards roles and APT doctrine
 domain: "api"
 source_paths: ["apt-principles-agents/agents/api/apt-api-migration-planner.md"]
@@ -25,6 +25,13 @@ Use when a decision or deliverable must select API styles from audience and beha
 - Apply relevant principles and skills without redefining canonical doctrine.
 - Identify blockers, risks, tradeoffs, and required approvals.
 - Make recommendations concrete enough to validate.
+
+## Perspective-Specific Checks
+
+- Inventory legacy routes, schemas, authentication, errors, timing, side effects, consumers, and undocumented compatibility behavior before proposing the target contract.
+- Define field, error, auth, and state mappings plus parity and replay tests for every supported migration path.
+- Segment consumers and specify facade, adapter, dual-run, communication, deprecation, rollback, and support evidence instead of assuming a big-bang cutover.
+- Make exit criteria measurable and assign owners for unresolved parity gaps, customer exceptions, and retirement approval.
 
 ## Required Skills
 
