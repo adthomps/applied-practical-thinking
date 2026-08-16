@@ -212,6 +212,31 @@ Validation evidence:
 
 No backup is eligible for deletion during Stage 3. Retain both new timestamped backup sets until the repaired managed installation and generated publication changes are committed and a subsequent clean-checkout verification passes.
 
+## Stage 4 Resolution
+
+Stage 4 resolved the remaining frontmatter rollout warnings by correcting contract scope rather than rewriting tool-native managed assets as website documents.
+
+- Confirmed from `.apt/installation.json` and canonical distribution mappings that `.github/prompts/**` and `.github/skills/**` are managed `platform` adapters with prompt- and skill-specific frontmatter contracts.
+- Narrowed Wave 3 from every nested Markdown file under `.github/` to the documented root-level `.github/*.md` operational-document scope, while retaining `apps/worker/src/ai/docs/**` coverage.
+- Added regression coverage proving that root GitHub documents remain governed and nested prompt/skill adapters remain outside the website-document metadata contract.
+- Completed the canonical root Copilot adapter metadata in `apt-principles-agents` commit `3a450b0`, then synchronized only `.github/copilot-instructions.md` into this repository.
+- The scoped replacement created one recovery copy under `.apt-backups/20260816235418065/`; no unrelated managed target was synchronized.
+- Frontmatter reporting now covers 47 in-scope files with zero missing metadata keys. Wave 3 covers 10 files: 9 pass and 1 explicit pull-request-template exception.
+- Consolidated quick and full validation now recommend `pass`, replacing the prior `pass_with_fixes` result.
+
+Validation evidence:
+
+- Canonical `npm run check`: passed.
+- APT publication contract tests: passed.
+- Vitest: 19 test files and 49 tests passed.
+- ESLint and documentation governance: passed.
+- Full validation report: `pass`.
+- Vite production build: passed; the existing non-blocking large Mermaid chunk warning remains a separate performance concern.
+
+The three backup sets remain retained through this stage. Their source and rationale are documented and the application/governance gate validates, but deletion still requires a clean-checkout verification after all Stage 4 authored and generated outputs are committed.
+
+During the final gate, the previously separate canonical specialization work was committed as `620fc6a`, advancing canonical provenance after the scoped Copilot sync. A final managed scan therefore reports 593 current targets and 2 drift targets: the genuinely updated `references/content-specialization-baseline.json` projection and an end-of-line-only mismatch for `templates/apt-audit-report-template.md`. Reconciling those two targets and restoring current provenance is the next lifecycle stage; it is intentionally not folded into this frontmatter-contract fix.
+
 ## Archive And Deletion Position
 
 - Do not archive managed copies before repair; they are active installed surfaces.
