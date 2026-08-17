@@ -7,15 +7,15 @@
     "prompts": 74
   },
   "sharedCore": {
-    "skills": 93,
+    "skills": 84,
     "agents": 52,
     "principles": 85,
     "prompts": 38
   },
   "thinSpecialization": {
     "skills": {
-      "count": 30,
-      "sha256": "dd9313e052999ef1c92dd776b70e59e401a84b92b0c59f5fe6ed48e6b055ffd2"
+      "count": 21,
+      "sha256": "5f1dd877725d2a210b372ee8ddad9ba5a3d165823e97854775ec2efd93c296ca"
     },
     "agents": {
       "count": 50,
@@ -284,6 +284,51 @@
     },
     {
       "path": "skills/stablecoin-crypto/digital-asset-settlement-review/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/modernization/api-contract-test-generator/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/modernization/api-modernization-planner/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/payments/accept-suite-review/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/payments/avs-cvv-analysis/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/payments/chargeback-risk-review/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/payments/cybersource-review/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/payments/response-code-analysis/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/payments/retry-strategy-review/SKILL.md",
+      "heading": "## Domain Checklist",
+      "minimumBullets": 5
+    },
+    {
+      "path": "skills/payments/visa-acceptance-review/SKILL.md",
       "heading": "## Domain Checklist",
       "minimumBullets": 5
     }

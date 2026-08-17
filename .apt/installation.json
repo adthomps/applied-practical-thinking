@@ -3,7 +3,7 @@
   "source": {
     "repository": "apt-principles-agents",
     "version": "1.0.0",
-    "commit": "3a450b00373c54726f3493d8aa55d9a9029763e3"
+    "commit": "620fc6ad36d11cf2e1e68ae7805b26a36668c3c7"
   },
   "manifests": [
     "core",
@@ -1324,7 +1324,7 @@
       "source": "references/content-specialization-baseline.json",
       "target": ".apt/references/content-specialization-baseline.json",
       "kind": "canonical",
-      "sha256": "97df1875c20526c6e8fe7114c05672361dcb356b81caf025cb78925e27bc9a94"
+      "sha256": "4bc8fba807db162704711e2dd173bb3f61168fdb56a612454b06d8f4166bc2c4"
     },
     {
       "source": "references/design-lint-gates.json",
@@ -3598,6 +3598,6 @@
   "localContext": "docs/project-context.md",
   "lastOperation": {
     "type": "sync",
-    "at": "2026-08-16T23:54:18.076Z"
+    "at": "2026-08-17T00:00:08.011Z"
   }
 }
