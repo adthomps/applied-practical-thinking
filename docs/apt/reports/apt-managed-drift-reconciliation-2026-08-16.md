@@ -237,9 +237,45 @@ The three backup sets remain retained through this stage. Their source and ratio
 
 During the final gate, the previously separate canonical specialization work was committed as `620fc6a`, advancing canonical provenance after the scoped Copilot sync. A final managed scan therefore reports 593 current targets and 2 drift targets: the genuinely updated `references/content-specialization-baseline.json` projection and an end-of-line-only mismatch for `templates/apt-audit-report-template.md`. Reconciling those two targets and restoring current provenance is the next lifecycle stage; it is intentionally not folded into this frontmatter-contract fix.
 
+## Stage 5 Resolution
+
+Stage 5 restored current managed provenance, proved the apparent template drift was platform-only, and completed the backup disposition gate.
+
+- Repeated the managed scan from a clean canonical checkout configured for LF. The audit-template mismatch disappeared, proving it was caused only by the live Windows checkout's CRLF conversion.
+- Force-synchronized only `.apt/references/content-specialization-baseline.json`, the one genuinely changed managed target, and committed the target baseline/provenance update as `7bbc77e`.
+- Final managed scan from clean canonical source reports 595 current targets, zero drift, and current provenance at canonical commit `620fc6a`.
+- Cloned the committed target with its original repository basename and LF checkout rules. The clean checkout contains no `.apt-backups` directory and independently passes the 595-target managed scan, project-profile validation, generated-context freshness check, and root APT surface verification.
+
+Validation evidence:
+
+- Canonical `npm run check`: passed.
+- APT publication contract tests: passed.
+- Vitest: 19 test files and 49 tests passed.
+- ESLint and documentation governance: passed with recommendation `pass`.
+- Vite production build: passed; the existing non-blocking large Mermaid chunk warning remains unchanged.
+
+### Backup Audit
+
+The ignored `.apt-backups/` tree contained eight timestamped sets, 186 files, and approximately 536 KiB:
+
+| Backup set | Files | Bytes | Disposition evidence |
+|---|---:|---:|---|
+| `20260628182855` | 39 | 149,563 | 38 exact Git blobs; one superseded audit template whose only content difference is obsolete `apt-principles` links replaced by live `apt-principles-agents` links. |
+| `20260629013433721` | 40 | 65,202 | All 40 exact Git blobs. |
+| `20260726201843184` | 3 | 5,814 | All 3 exact Git blobs. |
+| `20260726205744199` | 2 | 11,813 | Both exact Git blobs. |
+| `20260816232803836` | 98 | 282,170 | All 98 exact Git blobs. |
+| `20260816234330059` | 2 | 13,299 | One exact Git blob; the other is byte-different only because of line endings and is content-identical to the live audit template. |
+| `20260816235418065` | 1 | 490 | Exact Git blob. |
+| `20260817000007996` | 1 | 8,248 | Exact Git blob created before the reviewed specialization-baseline update. |
+
+Across all sets, 184 files are byte-for-byte recoverable from reachable target or canonical Git history. The remaining two audit-template copies contain no unique guidance: one is line-ending-only, and the older copy differs only by repository-link migration already absorbed into the live template. The current managed installation, canonical Git history, target Git history, and this report therefore preserve every useful instruction and provenance fact.
+
+All eight backup sets were deleted after the gate passed: 186 ignored recovery files totaling 536,599 bytes. They were not authored source, and the clean-checkout verification proves the repository does not depend on them.
+
 ## Archive And Deletion Position
 
 - Do not archive managed copies before repair; they are active installed surfaces.
 - Do not preserve the 47 stale snapshots as new archive files; canonical Git already retains their exact content and provenance.
 - Backup material created by the repair workflow may be removed only after the repaired installation, generated public content, and target validation are verified and the backup is recoverable through version control or the repair record.
-- No deletion is authorized by this report.
+- Stage 5 satisfies those conditions and authorizes deletion of the eight audited `.apt-backups/` sets listed above.
