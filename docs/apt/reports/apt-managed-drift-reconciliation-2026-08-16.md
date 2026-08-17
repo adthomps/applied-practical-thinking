@@ -273,6 +273,18 @@ Across all sets, 184 files are byte-for-byte recoverable from reachable target o
 
 All eight backup sets were deleted after the gate passed: 186 ignored recovery files totaling 536,599 bytes. They were not authored source, and the clean-checkout verification proves the repository does not depend on them.
 
+## Stage 6 Resolution
+
+Stage 6 resolved the separate Mermaid performance concern identified by Stages 3 through 5.
+
+- Replaced the renderer's static Mermaid import with a cached dynamic import that starts only for non-empty Mermaid diagram code.
+- Removed the Mermaid-specific Vite manual chunk rule after production-bundle inspection showed that it created a static preload-helper back-edge and defeated the dynamic boundary.
+- Preserved Mermaid rendering while allowing Rollup to split its core, parser, and diagram implementations on demand.
+- Added a regression contract covering the source import boundary, Markdown fence gate, and Vite configuration.
+- Reduced the largest emitted chunk from 2,258.12 kB to 649.41 kB and eliminated the prior production chunk-size warning.
+
+Detailed evidence and the browser-measurement limitation are recorded in `docs/apt/reports/apt-mermaid-bundle-review-2026-08-16.md`.
+
 ## Archive And Deletion Position
 
 - Do not archive managed copies before repair; they are active installed surfaces.
