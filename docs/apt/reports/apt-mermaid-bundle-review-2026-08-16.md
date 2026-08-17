@@ -58,6 +58,6 @@ The post-change `MarkdownContent` bundle contains `import("./mermaid.core-...")`
 
 This review uses source imports and deterministic Vite production output. It proves bundle composition and loading boundaries, but it does not claim measured improvements to LCP, INP, main-thread time, or network timing. Those require a browser trace against a deployed or locally served build.
 
-## Remaining Performance Candidate
+## Follow-On Status
 
-The next largest shared content dependency is `vendor-syntax` at approximately 649.41 kB minified and 230.61 kB gzip. `MarkdownContent` statically imports `CodeBlock`, so ordinary Markdown may still load syntax-highlighting code when no fenced code block exists. Review that boundary separately; do not combine it with the verified Mermaid change.
+The syntax-highlighting boundary identified by this review was resolved separately in Stage 7. See `docs/apt/reports/apt-syntax-highlighting-bundle-review-2026-08-16.md` for the implementation, rejected alternatives, and build evidence.

@@ -285,6 +285,18 @@ Stage 6 resolved the separate Mermaid performance concern identified by Stages 3
 
 Detailed evidence and the browser-measurement limitation are recorded in `docs/apt/reports/apt-mermaid-bundle-review-2026-08-16.md`.
 
+## Stage 7 Resolution
+
+Stage 7 resolved the shared syntax-highlighting dependency identified after the Mermaid boundary was corrected.
+
+- Replaced static Prism and theme imports with cached dynamic imports that start only after a fenced code block renders.
+- Preserved readable code through a semantic plain-text fallback during loading or chunk failure.
+- Used direct Prism and One Dark module entries after production builds rejected broader lazy shapes that moved Markdown into the app entry, disabled tree-shaking, or bundled every theme.
+- Removed the syntax-specific Vite manual chunk rule and added regression coverage.
+- Removed the 649.41 kB / 230.61 kB gzip static syntax dependency from ordinary Markdown routes while keeping the shared Markdown renderer route-scoped.
+
+Detailed evidence is recorded in `docs/apt/reports/apt-syntax-highlighting-bundle-review-2026-08-16.md`.
+
 ## Archive And Deletion Position
 
 - Do not archive managed copies before repair; they are active installed surfaces.

@@ -34,9 +34,6 @@ export default defineConfig(() => ({
             if (id.includes('/recharts/') || id.includes('/d3-') || id.includes('/victory-vendor/')) {
               return 'vendor-charts';
             }
-            if (id.includes('/react-syntax-highlighter/') || id.includes('/refractor/') || id.includes('/prismjs/')) {
-              return 'vendor-syntax';
-            }
             if (id.includes('/@radix-ui/')) {
               return 'vendor-radix';
             }
