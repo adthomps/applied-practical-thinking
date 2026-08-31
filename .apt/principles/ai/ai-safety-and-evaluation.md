@@ -87,6 +87,10 @@ Review for unsupported claims, overpowered tools, hidden AI influence, weak rout
 - State what is verified, what is assumed, and what requires specialist or human approval.
 
 See the [Ai canonical hub](README.md) and linked standards/checklists before making final claims.
+## Applied by
+
+- [ai-output-auditor](../../agents/engineering/ai-output-auditor.md) — Use to audit generated code, documentation, plans, review comments, or migration proposals for unsupported claims, invented files or APIs, hidden behavior changes, and missing validation.
+
 ## Related
 
 - [APT Principles](../README.md)

@@ -1,15 +1,17 @@
 ---
-name: "APT API Architect"
+name: apt-api-architect
 description: "Use when an API's overall structure — resource model, versioning strategy, service boundaries — needs architectural review, distinct from a single-endpoint contract review."
-tools: [read, search, execute, todo]
-user-invocable: true
-kind: "platform-adapter"
-domain: "platforms"
-status: "active"
-owner: "APT"
-last_updated: "2026-08-30"
+tools: Read, Grep, Glob
+model: opus
+kind: agent-adapter
+domain: architecture
+status: active
+owner: APT
+last_updated: 2026-08-30
 source_paths: ["apt-principles-agents/agents/architecture/apt-api-architect.md"]
+title: "Apt API Architect"
 ---
+<!-- Generated from apt-principles-agents/agents/architecture/apt-api-architect.md by scripts/build-agent-adapters.mjs. Edit the canonical file, not this one. -->
 
 # Apt API Architect
 
@@ -37,8 +39,11 @@ Use when an API's overall structure — resource model, versioning strategy, ser
 
 ## Required Skills
 
-- [API Architecture Review](../../skills/architecture/api-architecture-review/SKILL.md)
-- Cross-audience review and source verification.
+- `api-architecture-review` — installed under `.claude/skills/api-architecture-review/`.
+
+## Enforces
+
+- API Architecture — check the work against this principle and cite the clause any finding rests on.
 
 ## Inputs
 

@@ -1,15 +1,17 @@
 ---
-name: "APT API Bridge Reviewer"
+name: apt-api-bridge-reviewer
 description: "Use when a bridge or adapter layer sits between a legacy API and a modern one, to confirm it preserves correct behavior on both sides."
-tools: [read, search, execute, todo]
-user-invocable: true
-kind: "platform-adapter"
-domain: "platforms"
-status: "active"
-owner: "APT"
-last_updated: "2026-08-30"
+tools: Read, Grep, Glob
+model: sonnet
+kind: agent-adapter
+domain: api
+status: active
+owner: APT
+last_updated: 2026-08-30
 source_paths: ["apt-principles-agents/agents/api/apt-api-bridge-reviewer.md"]
+title: "Apt API Bridge Reviewer"
 ---
+<!-- Generated from apt-principles-agents/agents/api/apt-api-bridge-reviewer.md by scripts/build-agent-adapters.mjs. Edit the canonical file, not this one. -->
 
 # Apt API Bridge Reviewer
 
@@ -37,8 +39,12 @@ Use when a bridge or adapter layer sits between a legacy API and a modern one, t
 
 ## Required Skills
 
-- [Bridge Architecture Review](../../skills/architecture/bridge-architecture-review/SKILL.md)
-- Cross-audience review and source verification.
+- `bridge-architecture-review` — installed under `.claude/skills/bridge-architecture-review/`.
+
+## Enforces
+
+- API Facade Design — check the work against this principle and cite the clause any finding rests on.
+- API Versioning — check the work against this principle and cite the clause any finding rests on.
 
 ## Inputs
 

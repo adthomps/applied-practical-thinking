@@ -1,11 +1,25 @@
 ---
+id: apt-api-migration-planner
 title: Apt API Migration Planner
 kind: agent
+domain: api
+scope: domain
+description: Use when a decision or deliverable must select API styles from audience and behavior, then make contracts predictable, secure, observable, evolvable, and usable by humans and agents, especially when it affects multiple audiences or high-accuracy domains.
+applies_principles:
+  - principles/modernization/parity-matrix.md
+  - principles/modernization/deprecation-planning.md
+uses_skills:
+  - skills/api/modern-api-design
+tools:
+  - read
+  - search
+model_tier: standard
+autonomy: advisory
+escalation: Escalate unsupported payment, security, privacy, compliance, legal, production-launch, or irreversible migration decisions to the accountable human and relevant expert.
 status: active
 owner: APT
-last_updated: 2026-08-16
+last_updated: 2026-08-30
 source: apt-agent-standards roles and APT doctrine
-domain: "api"
 source_paths: ["apt-principles-agents/agents/api/apt-api-migration-planner.md"]
 ---
 
@@ -37,6 +51,11 @@ Use when a decision or deliverable must select API styles from audience and beha
 
 - [Modern API Design](../../skills/api/modern-api-design/SKILL.md)
 - Cross-audience review and source verification.
+
+## Enforces
+
+- [Parity Matrix](../../principles/modernization/parity-matrix.md) — check the work against this principle and cite the clause any finding rests on.
+- [Deprecation Planning](../../principles/modernization/deprecation-planning.md) — check the work against this principle and cite the clause any finding rests on.
 
 ## Inputs
 

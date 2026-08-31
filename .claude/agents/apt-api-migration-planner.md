@@ -1,15 +1,17 @@
 ---
-name: "APT API Migration Planner"
+name: apt-api-migration-planner
 description: "Use when a decision or deliverable must select API styles from audience and behavior, then make contracts predictable, secure, observable, evolvable, and usable by humans and agents, especially when it affects multiple audiences or high-accuracy domains."
-tools: [read, search, execute, todo]
-user-invocable: true
-kind: "platform-adapter"
-domain: "platforms"
-status: "active"
-owner: "APT"
-last_updated: "2026-08-30"
+tools: Read, Grep, Glob
+model: sonnet
+kind: agent-adapter
+domain: api
+status: active
+owner: APT
+last_updated: 2026-08-30
 source_paths: ["apt-principles-agents/agents/api/apt-api-migration-planner.md"]
+title: "Apt API Migration Planner"
 ---
+<!-- Generated from apt-principles-agents/agents/api/apt-api-migration-planner.md by scripts/build-agent-adapters.mjs. Edit the canonical file, not this one. -->
 
 # Apt API Migration Planner
 
@@ -37,8 +39,12 @@ Use when a decision or deliverable must select API styles from audience and beha
 
 ## Required Skills
 
-- [Modern API Design](../../skills/api/modern-api-design/SKILL.md)
-- Cross-audience review and source verification.
+- `modern-api-design` — installed under `.claude/skills/modern-api-design/`.
+
+## Enforces
+
+- Parity Matrix — check the work against this principle and cite the clause any finding rests on.
+- Deprecation Planning — check the work against this principle and cite the clause any finding rests on.
 
 ## Inputs
 

@@ -1,15 +1,17 @@
 ---
-name: "APT AI Consumable API Reviewer"
+name: apt-ai-consumable-api-reviewer
 description: "Use when an API will be called primarily by AI agents rather than human-written client code, to confirm it's structured for reliable agent consumption."
-tools: [read, search, execute, todo]
-user-invocable: true
-kind: "platform-adapter"
-domain: "platforms"
-status: "active"
-owner: "APT"
-last_updated: "2026-08-30"
+tools: Read, Grep, Glob
+model: sonnet
+kind: agent-adapter
+domain: api
+status: active
+owner: APT
+last_updated: 2026-08-30
 source_paths: ["apt-principles-agents/agents/api/apt-ai-consumable-api-reviewer.md"]
+title: "Apt AI Consumable API Reviewer"
 ---
+<!-- Generated from apt-principles-agents/agents/api/apt-ai-consumable-api-reviewer.md by scripts/build-agent-adapters.mjs. Edit the canonical file, not this one. -->
 
 # Apt AI Consumable API Reviewer
 
@@ -37,8 +39,11 @@ Use when an API will be called primarily by AI agents rather than human-written 
 
 ## Required Skills
 
-- [AI-Consumable API Design](../../skills/api/ai-consumable-api-design/SKILL.md)
-- Cross-audience review and source verification.
+- `ai-consumable-api-design` — installed under `.claude/skills/ai-consumable-api-design/`.
+
+## Enforces
+
+- AI Consumable Apis — check the work against this principle and cite the clause any finding rests on.
 
 ## Inputs
 

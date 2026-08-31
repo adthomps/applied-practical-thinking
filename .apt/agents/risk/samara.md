@@ -1,11 +1,24 @@
 ---
+id: samara
 title: Samara
 kind: agent
+domain: risk
+scope: global
+description: Use when a change affects who can do what — roles, scopes, access control rules — to confirm the permission model is correct and least-privilege.
+applies_principles:
+  - principles/security-risk/permission-design.md
+uses_skills:
+  - skills/security-risk/permission-review
+tools:
+  - read
+  - search
+model_tier: standard
+autonomy: advisory
+escalation: Escalate unsupported payment, security, privacy, compliance, legal, production-launch, or irreversible migration decisions to the accountable human and relevant expert.
 status: active
 owner: APT
-last_updated: 2026-08-29
+last_updated: 2026-08-30
 source: apt-agent-standards roles and APT doctrine
-domain: "risk"
 source_paths: ["apt-principles-agents/agents/risk/samara.md"]
 ---
 
@@ -44,6 +57,10 @@ Use when a change affects who can do what — roles, scopes, access control rule
 
 - [Permission Review](../../skills/security-risk/permission-review/SKILL.md)
 - Cross-audience review and source verification.
+
+## Enforces
+
+- [Permission Design](../../principles/security-risk/permission-design.md) — check the work against this principle and cite the clause any finding rests on.
 
 ## Inputs
 

@@ -95,6 +95,8 @@ Every durable AI use must state its human purpose, affected audiences, maximum a
 - `apt-principles-agents` owns canonical AI doctrine, review criteria, prompts, examples, and reference contracts.
 - `apt-principles-agents` owns cross-project installation, profile manifests, `.apt/installation.json`, tool-native file distribution, and sync behavior.
 - Installed tool-native files such as `AGENTS.md`, `.claude/`, `.codex/`, and `.github/` should not become competing doctrine sources.
+- Every canonical agent cites the principles it enforces (`applies_principles` frontmatter and a `## Enforces` section) and is reproducible from its canonical source by `scripts/build-agent-adapters.mjs`; a hand-edited platform adapter is drift.
+- Agent orchestration that must fan out to several specialists runs at the top level or as a script, never as a delegated sub-agent; delegation is one level deep.
 - AI must not bypass authentication, authorization, validation, or release gates.
 - AI routes and prompts in applications should be explicit, versioned, and reviewable.
 - AI workflows should define deterministic fallback behavior for provider failure, missing context, low confidence, or policy-sensitive input.

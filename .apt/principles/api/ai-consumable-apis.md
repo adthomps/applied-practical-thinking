@@ -49,6 +49,10 @@ Review for fashion-driven protocol choices, ambiguous errors, unsafe retries, un
 - State what is verified, what is assumed, and what requires specialist or human approval.
 
 See the [Api canonical hub](README.md) and linked standards/checklists before making final claims.
+## Applied by
+
+- [apt-ai-consumable-api-reviewer](../../agents/api/apt-ai-consumable-api-reviewer.md) — Use when an API will be called primarily by AI agents rather than human-written client code, to confirm it's structured for reliable agent consumption.
+
 ## Related
 
 - [APT Principles](../README.md)

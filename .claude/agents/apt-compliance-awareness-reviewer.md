@@ -1,15 +1,17 @@
 ---
-name: "APT Compliance Awareness Reviewer"
+name: apt-compliance-awareness-reviewer
 description: "Use when a change touches data handling, disclosures, or regulated processes, to confirm the team is aware of the compliance obligations involved, even where full legal review is separate."
-tools: [read, search, execute, todo]
-user-invocable: true
-kind: "platform-adapter"
-domain: "platforms"
-status: "active"
-owner: "APT"
-last_updated: "2026-08-30"
+tools: Read, Grep, Glob
+model: sonnet
+kind: agent-adapter
+domain: risk
+status: active
+owner: APT
+last_updated: 2026-08-30
 source_paths: ["apt-principles-agents/agents/risk/apt-compliance-awareness-reviewer.md"]
+title: "Apt Compliance Awareness Reviewer"
 ---
+<!-- Generated from apt-principles-agents/agents/risk/apt-compliance-awareness-reviewer.md by scripts/build-agent-adapters.mjs. Edit the canonical file, not this one. -->
 
 # Apt Compliance Awareness Reviewer
 
@@ -37,8 +39,12 @@ Use when a change touches data handling, disclosures, or regulated processes, to
 
 ## Required Skills
 
-- [Privacy Review](../../skills/security-risk/privacy-review/SKILL.md)
-- Cross-audience review and source verification.
+- `privacy-review` — installed under `.claude/skills/privacy-review/`.
+
+## Enforces
+
+- Compliance Awareness — check the work against this principle and cite the clause any finding rests on.
+- Data Handling — check the work against this principle and cite the clause any finding rests on.
 
 ## Inputs
 

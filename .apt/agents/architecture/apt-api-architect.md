@@ -1,11 +1,24 @@
 ---
+id: apt-api-architect
 title: Apt API Architect
 kind: agent
+domain: architecture
+scope: domain
+description: Use when an API's overall structure — resource model, versioning strategy, service boundaries — needs architectural review, distinct from a single-endpoint contract review.
+applies_principles:
+  - principles/architecture/api-architecture.md
+uses_skills:
+  - skills/architecture/api-architecture-review
+tools:
+  - read
+  - search
+model_tier: deep
+autonomy: advisory
+escalation: Escalate unsupported payment, security, privacy, compliance, legal, production-launch, or irreversible migration decisions to the accountable human and relevant expert.
 status: active
 owner: APT
-last_updated: 2026-08-29
+last_updated: 2026-08-30
 source: apt-agent-standards roles and APT doctrine
-domain: "architecture"
 source_paths: ["apt-principles-agents/agents/architecture/apt-api-architect.md"]
 ---
 
@@ -37,6 +50,10 @@ Use when an API's overall structure — resource model, versioning strategy, ser
 
 - [API Architecture Review](../../skills/architecture/api-architecture-review/SKILL.md)
 - Cross-audience review and source verification.
+
+## Enforces
+
+- [API Architecture](../../principles/architecture/api-architecture.md) — check the work against this principle and cite the clause any finding rests on.
 
 ## Inputs
 

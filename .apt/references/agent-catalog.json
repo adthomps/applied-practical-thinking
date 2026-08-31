@@ -1,0 +1,1600 @@
+{
+  "generatedBy": "scripts/build-agent-adapters.mjs",
+  "count": 79,
+  "agents": [
+    {
+      "id": "ai-output-auditor",
+      "title": "AI Output Auditor",
+      "domain": "engineering",
+      "scope": "domain",
+      "description": "Use to audit generated code, documentation, plans, review comments, or migration proposals for unsupported claims, invented files or APIs, hidden behavior changes, and missing validation.",
+      "applies_principles": [
+        "principles/ai/ai-safety-and-evaluation.md",
+        "principles/execution/quality-and-testing.md"
+      ],
+      "uses_skills": [
+        "skills/ai-agents/hallucination-review"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/engineering/ai-output-auditor.md"
+    },
+    {
+      "id": "apt-ai-agent-user-reviewer",
+      "title": "Apt AI Agent User Reviewer",
+      "domain": "customer",
+      "scope": "domain",
+      "description": "Use when an autonomous AI agent (not a human) is the one integrating with or acting on the product, to confirm it can act safely and correctly without human-oriented affordances it can't use.",
+      "applies_principles": [
+        "principles/design/role-based-experience.md"
+      ],
+      "uses_skills": [
+        "skills/ai-agents/agent-routing"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/customer/apt-ai-agent-user-reviewer.md"
+    },
+    {
+      "id": "apt-ai-consumable-api-reviewer",
+      "title": "Apt AI Consumable API Reviewer",
+      "domain": "api",
+      "scope": "domain",
+      "description": "Use when an API will be called primarily by AI agents rather than human-written client code, to confirm it's structured for reliable agent consumption.",
+      "applies_principles": [
+        "principles/api/ai-consumable-apis.md"
+      ],
+      "uses_skills": [
+        "skills/api/ai-consumable-api-design"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/api/apt-ai-consumable-api-reviewer.md"
+    },
+    {
+      "id": "apt-api-architect",
+      "title": "Apt API Architect",
+      "domain": "architecture",
+      "scope": "domain",
+      "description": "Use when an API's overall structure — resource model, versioning strategy, service boundaries — needs architectural review, distinct from a single-endpoint contract review.",
+      "applies_principles": [
+        "principles/architecture/api-architecture.md"
+      ],
+      "uses_skills": [
+        "skills/architecture/api-architecture-review"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "deep",
+      "autonomy": "advisory",
+      "canonical_path": "agents/architecture/apt-api-architect.md"
+    },
+    {
+      "id": "apt-api-bridge-reviewer",
+      "title": "Apt API Bridge Reviewer",
+      "domain": "api",
+      "scope": "domain",
+      "description": "Use when a bridge or adapter layer sits between a legacy API and a modern one, to confirm it preserves correct behavior on both sides.",
+      "applies_principles": [
+        "principles/modernization/api-facade-design.md",
+        "principles/api/api-versioning.md"
+      ],
+      "uses_skills": [
+        "skills/architecture/bridge-architecture-review"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/api/apt-api-bridge-reviewer.md"
+    },
+    {
+      "id": "apt-api-docs-writer",
+      "title": "Apt API Docs Writer",
+      "domain": "docs",
+      "scope": "domain",
+      "description": "Use when API reference material, quickstarts, or integration guides need to be written or reviewed against the actual contract, not just described in prose.",
+      "applies_principles": [
+        "principles/documentation/README.md"
+      ],
+      "uses_skills": [
+        "skills/documentation/api-guide-writer"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/docs/apt-api-docs-writer.md"
+    },
+    {
+      "id": "apt-api-migration-planner",
+      "title": "Apt API Migration Planner",
+      "domain": "api",
+      "scope": "domain",
+      "description": "Use when a decision or deliverable must select API styles from audience and behavior, then make contracts predictable, secure, observable, evolvable, and usable by humans and agents, especially when it affects multiple audiences or high-accuracy domains.",
+      "applies_principles": [
+        "principles/modernization/parity-matrix.md",
+        "principles/modernization/deprecation-planning.md"
+      ],
+      "uses_skills": [
+        "skills/api/modern-api-design"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/api/apt-api-migration-planner.md"
+    },
+    {
+      "id": "apt-architect",
+      "title": "apt-architect",
+      "domain": "harness",
+      "scope": "domain",
+      "description": "Use when reviewing architecture, repository structure, migration strategy, or harness design before an approach is committed.",
+      "applies_principles": [
+        "principles/ai/agent-design.md"
+      ],
+      "uses_skills": [],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "deep",
+      "autonomy": "advisory",
+      "canonical_path": "agents/harness/apt-architect.md"
+    },
+    {
+      "id": "apt-architecture-lead",
+      "title": "Apt Architecture Lead",
+      "domain": "core",
+      "scope": "global",
+      "description": "Use when a change has structural or system-design implications spanning more than one architecture perspective, and someone needs to own the combined structural verdict.",
+      "applies_principles": [
+        "principles/framework.md",
+        "principles/thinking/practical-thinking.md"
+      ],
+      "uses_skills": [
+        "skills/architecture/system-architecture-review"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "deep",
+      "autonomy": "advisory",
+      "canonical_path": "agents/core/apt-architecture-lead.md"
+    },
+    {
+      "id": "apt-audience-docs-reviewer",
+      "title": "Apt Audience Docs Reviewer",
+      "domain": "docs",
+      "scope": "domain",
+      "description": "Use when documentation exists but it's unclear whether it's actually usable by the audience it claims to serve (beginner, developer, business user, support agent).",
+      "applies_principles": [
+        "principles/documentation/README.md"
+      ],
+      "uses_skills": [
+        "skills/documentation/audience-layered-docs"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/docs/apt-audience-docs-reviewer.md"
+    },
+    {
+      "id": "apt-bank-acquirer-reviewer",
+      "title": "Apt Bank Acquirer Reviewer",
+      "domain": "customer",
+      "scope": "domain",
+      "description": "Use when a deliverable will be reviewed or used by a bank or acquirer partner, to confirm it addresses their risk, compliance, and settlement concerns.",
+      "applies_principles": [
+        "principles/design/role-based-experience.md"
+      ],
+      "uses_skills": [
+        "skills/ecommerce/partner-acquirer-onboarding-review"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/customer/apt-bank-acquirer-reviewer.md"
+    },
+    {
+      "id": "apt-beginner-game-dev-reviewer",
+      "title": "APT Beginner Game Dev Reviewer",
+      "domain": "game-development",
+      "scope": "domain",
+      "description": "Use for onboarding, learning plans, setup, architecture explanations, templates, examples, and AI-generated implementation plans.",
+      "applies_principles": [
+        "principles/game-development/README.md"
+      ],
+      "uses_skills": [
+        "skills/game-development/game-dev-learning-plan",
+        "skills/game-development/game-scope-review"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/game-development/apt-beginner-game-dev-reviewer.md"
+    },
+    {
+      "id": "apt-beginner-user-reviewer",
+      "title": "Apt Beginner User Reviewer",
+      "domain": "beginner-reviewers",
+      "scope": "domain",
+      "description": "Use when a deliverable will be seen by someone with no prior context on APT or the product, to confirm it's understandable without assumed background.",
+      "applies_principles": [
+        "principles/thinking/beginner-clarity.md"
+      ],
+      "uses_skills": [
+        "skills/thinking/beginner-clarity-review"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/beginner-reviewers/apt-beginner-user-reviewer.md"
+    },
+    {
+      "id": "apt-business-user-reviewer",
+      "title": "Apt Business User Reviewer",
+      "domain": "customer",
+      "scope": "domain",
+      "description": "Use when a deliverable will be used by a business owner or operator (not a developer) to run their business, to confirm it matches how they actually think about their operations.",
+      "applies_principles": [
+        "principles/design/role-based-experience.md"
+      ],
+      "uses_skills": [
+        "skills/design/customer-journey-mapping"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/customer/apt-business-user-reviewer.md"
+    },
+    {
+      "id": "apt-chargeback-risk-reviewer",
+      "title": "Apt Chargeback Risk Reviewer",
+      "domain": "payments",
+      "scope": "domain",
+      "description": "Use when a payment flow, merchant category, or dispute-handling process needs to be assessed for chargeback exposure and evidence-collection readiness.",
+      "applies_principles": [
+        "principles/payments/refunds-voids-disputes.md"
+      ],
+      "uses_skills": [
+        "skills/payments/chargeback-risk-review"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/payments/apt-chargeback-risk-reviewer.md"
+    },
+    {
+      "id": "apt-checkout-reviewer",
+      "title": "Apt Checkout Reviewer",
+      "domain": "ecommerce",
+      "scope": "domain",
+      "description": "Use when a checkout flow — cart, payment entry, confirmation — needs review for conversion friction and correctness.",
+      "applies_principles": [
+        "principles/ecommerce/checkout-design.md",
+        "principles/ecommerce/cart-to-payment-flow.md"
+      ],
+      "uses_skills": [
+        "skills/ecommerce/checkout-experience-review"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/ecommerce/apt-checkout-reviewer.md"
+    },
+    {
+      "id": "apt-cloudflare-builder",
+      "title": "apt-cloudflare-builder",
+      "domain": "harness",
+      "scope": "domain",
+      "description": "Use when building or reviewing Cloudflare Workers, Pages, Hono, D1, KV, R2, or deployment workflows.",
+      "applies_principles": [
+        "principles/ai/agent-design.md"
+      ],
+      "uses_skills": [],
+      "tools": [
+        "read",
+        "search",
+        "edit"
+      ],
+      "model_tier": "standard",
+      "autonomy": "bounded-edit",
+      "canonical_path": "agents/harness/apt-cloudflare-builder.md"
+    },
+    {
+      "id": "apt-code-reviewer",
+      "title": "apt-code-reviewer",
+      "domain": "harness",
+      "scope": "domain",
+      "description": "Use when code needs a review for bugs, maintainability, behavior preservation, or missing validation.",
+      "applies_principles": [
+        "principles/ai/agent-design.md"
+      ],
+      "uses_skills": [],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/harness/apt-code-reviewer.md"
+    },
+    {
+      "id": "apt-commerce-experience-reviewer",
+      "title": "Apt Commerce Experience Reviewer",
+      "domain": "ecommerce",
+      "scope": "domain",
+      "description": "Use when reviewing the broader shopping experience — browsing, cart, post-purchase — beyond the checkout transaction itself.",
+      "applies_principles": [
+        "principles/ecommerce/customer-payment-experience.md"
+      ],
+      "uses_skills": [
+        "skills/design/customer-journey-mapping"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/ecommerce/apt-commerce-experience-reviewer.md"
+    },
+    {
+      "id": "apt-compliance-awareness-reviewer",
+      "title": "Apt Compliance Awareness Reviewer",
+      "domain": "risk",
+      "scope": "domain",
+      "description": "Use when a change touches data handling, disclosures, or regulated processes, to confirm the team is aware of the compliance obligations involved, even where full legal review is separate.",
+      "applies_principles": [
+        "principles/security-risk/compliance-awareness.md",
+        "principles/security-risk/data-handling.md"
+      ],
+      "uses_skills": [
+        "skills/security-risk/privacy-review"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/risk/apt-compliance-awareness-reviewer.md"
+    },
+    {
+      "id": "apt-cost-controller",
+      "title": "apt-cost-controller",
+      "domain": "harness",
+      "scope": "domain",
+      "description": "Use when a task risks excessive token usage, repeated context loading, unnecessary model escalation, or redundant scans.",
+      "applies_principles": [
+        "principles/ai/agent-design.md"
+      ],
+      "uses_skills": [],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/harness/apt-cost-controller.md"
+    },
+    {
+      "id": "apt-crypto-payment-risk-reviewer",
+      "title": "Apt Crypto Payment Risk Reviewer",
+      "domain": "payments",
+      "scope": "domain",
+      "description": "Use when a payment flow accepts or settles in cryptocurrency and needs review for custody, volatility, and settlement risk.",
+      "applies_principles": [
+        "principles/stablecoin-crypto/digital-asset-risk.md",
+        "principles/stablecoin-crypto/crypto-payment-review.md"
+      ],
+      "uses_skills": [
+        "skills/stablecoin-crypto/crypto-payment-risk-review"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/payments/apt-crypto-payment-risk-reviewer.md"
+    },
+    {
+      "id": "apt-demo-and-diagram-planner",
+      "title": "Apt Demo And Diagram Planner",
+      "domain": "docs",
+      "scope": "domain",
+      "description": "Use when a concept, architecture, or workflow needs a demo script or diagram to be understood, and it's unclear what to show, in what order, or at what level of detail.",
+      "applies_principles": [
+        "principles/documentation/README.md"
+      ],
+      "uses_skills": [
+        "skills/documentation/demo-plan-writer",
+        "skills/documentation/diagram-generator"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/docs/apt-demo-and-diagram-planner.md"
+    },
+    {
+      "id": "apt-design-lead",
+      "title": "Apt Design Lead",
+      "domain": "core",
+      "scope": "global",
+      "description": "Use when a change touches UI, UX flow, or customer-facing design decisions spanning more than one audience or perspective, and someone needs to own the combined design verdict.",
+      "applies_principles": [
+        "principles/framework.md",
+        "principles/thinking/practical-thinking.md"
+      ],
+      "uses_skills": [
+        "skills/design/intent-based-ui-design"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "deep",
+      "autonomy": "advisory",
+      "canonical_path": "agents/core/apt-design-lead.md"
+    },
+    {
+      "id": "apt-developer-integrator-reviewer",
+      "title": "Apt Developer Integrator Reviewer",
+      "domain": "customer",
+      "scope": "domain",
+      "description": "Use when reviewing the steady-state integration experience for a developer already familiar with the product, to confirm advanced flows and edge cases are covered, not just the first call.",
+      "applies_principles": [
+        "principles/design/role-based-experience.md"
+      ],
+      "uses_skills": [
+        "skills/documentation/developer-guide-writer"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/customer/apt-developer-integrator-reviewer.md"
+    },
+    {
+      "id": "apt-docs-reviewer",
+      "title": "Apt Docs Reviewer",
+      "domain": "docs",
+      "scope": "domain",
+      "description": "Use as a general accuracy and completeness pass on any documentation deliverable that doesn't need a specialized audience or API-contract review.",
+      "applies_principles": [
+        "principles/documentation/README.md"
+      ],
+      "uses_skills": [],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/docs/apt-docs-reviewer.md"
+    },
+    {
+      "id": "apt-engineering-reviewer",
+      "title": "Apt Engineering Reviewer",
+      "domain": "engineering",
+      "scope": "domain",
+      "description": "Use as a general implementation-quality review of code changes — correctness, maintainability, test coverage — before merge.",
+      "applies_principles": [
+        "principles/execution/quality-and-testing.md"
+      ],
+      "uses_skills": [
+        "skills/engineering/implementation-review"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/engineering/apt-engineering-reviewer.md"
+    },
+    {
+      "id": "apt-execution-lead",
+      "title": "Apt Execution Lead",
+      "domain": "core",
+      "scope": "global",
+      "description": "Use when a change is ready to move from design/architecture into implementation, and someone needs to confirm the plan is buildable, safely sequenced, and verifiable before work starts.",
+      "applies_principles": [
+        "principles/framework.md",
+        "principles/thinking/practical-thinking.md"
+      ],
+      "uses_skills": [
+        "skills/engineering/implementation-review"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "deep",
+      "autonomy": "advisory",
+      "canonical_path": "agents/core/apt-execution-lead.md"
+    },
+    {
+      "id": "apt-fraud-risk-reviewer",
+      "title": "Apt Fraud Risk Reviewer",
+      "domain": "payments",
+      "scope": "domain",
+      "description": "Use when a payment flow, fraud rule set, or decline-handling process needs to be assessed for fraud exposure without unnecessarily blocking legitimate transactions.",
+      "applies_principles": [
+        "principles/payments/fraud-risk.md",
+        "principles/security-risk/fraud-risk-review.md"
+      ],
+      "uses_skills": [
+        "skills/payments/fraud-rule-review"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/payments/apt-fraud-risk-reviewer.md"
+    },
+    {
+      "id": "apt-game-architect",
+      "title": "APT Game Architect",
+      "domain": "game-development",
+      "scope": "domain",
+      "description": "Use before expansion or when scenes, entities, components, state, input, saves, assets, or services are tangled.",
+      "applies_principles": [
+        "principles/game-development/README.md"
+      ],
+      "uses_skills": [
+        "skills/game-development/game-architecture-review",
+        "skills/game-development/game-state-design",
+        "skills/game-development/save-system-design"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "deep",
+      "autonomy": "advisory",
+      "canonical_path": "agents/game-development/apt-game-architect.md"
+    },
+    {
+      "id": "apt-game-designer",
+      "title": "APT Game Designer",
+      "domain": "game-development",
+      "scope": "domain",
+      "description": "Use when framing play, resolving unclear rules, planning levels, or interpreting player behavior.",
+      "applies_principles": [
+        "principles/game-development/README.md"
+      ],
+      "uses_skills": [
+        "skills/game-development/game-loop-designer",
+        "skills/game-development/mechanics-designer",
+        "skills/game-development/player-journey-mapping"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/game-development/apt-game-designer.md"
+    },
+    {
+      "id": "apt-game-development-coach",
+      "title": "APT Game Development Coach",
+      "domain": "game-development",
+      "scope": "domain",
+      "description": "Use when a learner needs sequencing, plain explanations, project-based exercises, or help recovering from overload.",
+      "applies_principles": [
+        "principles/game-development/README.md"
+      ],
+      "uses_skills": [
+        "skills/game-development/game-dev-learning-plan",
+        "skills/game-development/game-idea-framing",
+        "skills/game-development/game-scope-review"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/game-development/apt-game-development-coach.md"
+    },
+    {
+      "id": "apt-game-docs-writer",
+      "title": "APT Game Docs Writer",
+      "domain": "game-development",
+      "scope": "domain",
+      "description": "Use for concepts, design documents, player guides, developer setup, architecture, playtests, releases, or a Game Product Hub.",
+      "applies_principles": [
+        "principles/game-development/README.md"
+      ],
+      "uses_skills": [
+        "skills/game-development/game-idea-framing",
+        "skills/game-development/game-architecture-review",
+        "skills/game-development/game-test-plan"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/game-development/apt-game-docs-writer.md"
+    },
+    {
+      "id": "apt-game-prototype-planner",
+      "title": "APT Game Prototype Planner",
+      "domain": "game-development",
+      "scope": "domain",
+      "description": "Use before implementation or when a team is polishing without answering the main question.",
+      "applies_principles": [
+        "principles/game-development/README.md"
+      ],
+      "uses_skills": [
+        "skills/game-development/prototype-planner",
+        "skills/game-development/game-engine-selection"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/game-development/apt-game-prototype-planner.md"
+    },
+    {
+      "id": "apt-game-scope-guardian",
+      "title": "APT Game Scope Guardian",
+      "domain": "game-development",
+      "scope": "domain",
+      "description": "Use at concept approval, prototype planning, roadmap changes, milestone review, and every game micro-group review.",
+      "applies_principles": [
+        "principles/game-development/README.md"
+      ],
+      "uses_skills": [
+        "skills/game-development/game-scope-review",
+        "skills/game-development/prototype-planner"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/game-development/apt-game-scope-guardian.md"
+    },
+    {
+      "id": "apt-game-testing-reviewer",
+      "title": "APT Game Testing Reviewer",
+      "domain": "game-development",
+      "scope": "domain",
+      "description": "Use before playtests, milestones, releases, or changes to state, saves, inputs, scenes, and core rules.",
+      "applies_principles": [
+        "principles/game-development/README.md"
+      ],
+      "uses_skills": [
+        "skills/game-development/game-test-plan",
+        "skills/game-development/playtest-feedback-review"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/game-development/apt-game-testing-reviewer.md"
+    },
+    {
+      "id": "apt-game-ui-reviewer",
+      "title": "APT Game UI Reviewer",
+      "domain": "game-development",
+      "scope": "domain",
+      "description": "Use for menus, HUDs, overlays, settings, onboarding, responsive layouts, and failure/recovery screens.",
+      "applies_principles": [
+        "principles/game-development/README.md"
+      ],
+      "uses_skills": [
+        "skills/game-development/game-ui-hud-review",
+        "skills/game-development/input-control-design"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/game-development/apt-game-ui-reviewer.md"
+    },
+    {
+      "id": "apt-gameplay-reviewer",
+      "title": "APT Gameplay Reviewer",
+      "domain": "game-development",
+      "scope": "domain",
+      "description": "Use when a playable build exists or a proposed change affects moment-to-moment play.",
+      "applies_principles": [
+        "principles/game-development/README.md"
+      ],
+      "uses_skills": [
+        "skills/game-development/game-loop-designer",
+        "skills/game-development/playtest-feedback-review"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/game-development/apt-gameplay-reviewer.md"
+    },
+    {
+      "id": "apt-gateway-migration-reviewer",
+      "title": "Apt Gateway Migration Reviewer",
+      "domain": "payments",
+      "scope": "domain",
+      "description": "Use when a merchant, platform, or integration is migrating from one payment gateway or processor to another, and payment continuity during the cutover is at risk.",
+      "applies_principles": [
+        "principles/payments/gateway-abstraction.md",
+        "principles/modernization/api-facade-design.md"
+      ],
+      "uses_skills": [
+        "skills/payments/gateway-design"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/payments/apt-gateway-migration-reviewer.md"
+    },
+    {
+      "id": "apt-harness-docs-reviewer",
+      "title": "APT Harness Docs Reviewer",
+      "domain": "harness",
+      "scope": "domain",
+      "description": "Use when reviewing this repository’s own documentation architecture, consistency, source-of-truth boundaries, or operating guidance.",
+      "applies_principles": [
+        "principles/ai/agent-design.md"
+      ],
+      "uses_skills": [],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/harness/apt-harness-docs-reviewer.md"
+    },
+    {
+      "id": "apt-implementation-blueprint-writer",
+      "title": "Apt Implementation Blueprint Writer",
+      "domain": "docs",
+      "scope": "domain",
+      "description": "Use when a design or architecture decision is approved and needs to become a concrete, step-by-step implementation blueprint an engineer can execute without re-deriving the design.",
+      "applies_principles": [
+        "principles/documentation/README.md"
+      ],
+      "uses_skills": [
+        "skills/documentation/implementation-blueprint-writer"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/docs/apt-implementation-blueprint-writer.md"
+    },
+    {
+      "id": "apt-installer",
+      "title": "apt-installer",
+      "domain": "harness",
+      "scope": "domain",
+      "description": "Use when applying this repository’s installable agent standards and harness assets to a target repository for the first time.",
+      "applies_principles": [
+        "principles/ai/agent-design.md"
+      ],
+      "uses_skills": [],
+      "tools": [
+        "read",
+        "search",
+        "edit"
+      ],
+      "model_tier": "standard",
+      "autonomy": "bounded-edit",
+      "canonical_path": "agents/harness/apt-installer.md"
+    },
+    {
+      "id": "apt-integration-architect",
+      "title": "Apt Integration Architect",
+      "domain": "architecture",
+      "scope": "domain",
+      "description": "Use when two or more systems need to be connected — via API, event stream, or bridge — and the integration pattern itself needs architectural review.",
+      "applies_principles": [
+        "principles/architecture/integration-architecture.md",
+        "principles/architecture/event-driven-architecture.md"
+      ],
+      "uses_skills": [
+        "skills/architecture/integration-architecture-review"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "deep",
+      "autonomy": "advisory",
+      "canonical_path": "agents/architecture/apt-integration-architect.md"
+    },
+    {
+      "id": "apt-launch-readiness-lead",
+      "title": "Apt Launch Readiness Lead",
+      "domain": "product",
+      "scope": "domain",
+      "description": "Use before a launch or major release, to confirm the product, support, and operational readiness checks are actually complete, not just planned.",
+      "applies_principles": [
+        "principles/execution/delivery-increments.md"
+      ],
+      "uses_skills": [
+        "skills/service-readiness/launch-readiness-review"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/product/apt-launch-readiness-lead.md"
+    },
+    {
+      "id": "apt-merchant-onboarding-reviewer",
+      "title": "Apt Merchant Onboarding Reviewer",
+      "domain": "ecommerce",
+      "scope": "domain",
+      "description": "Use when a merchant onboarding flow — signup through first live transaction — needs review for completeness and time-to-first-sale.",
+      "applies_principles": [
+        "principles/ecommerce/merchant-onboarding.md"
+      ],
+      "uses_skills": [
+        "skills/ecommerce/merchant-onboarding-review"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/ecommerce/apt-merchant-onboarding-reviewer.md"
+    },
+    {
+      "id": "apt-model-router",
+      "title": "apt-model-router",
+      "domain": "harness",
+      "scope": "domain",
+      "description": "Use when choosing the smallest sufficient local or cloud model tier for an APT task.",
+      "applies_principles": [
+        "principles/ai/agent-design.md"
+      ],
+      "uses_skills": [],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "none",
+      "canonical_path": "agents/harness/apt-model-router.md"
+    },
+    {
+      "id": "apt-modern-api-designer",
+      "title": "Apt Modern API Designer",
+      "domain": "api",
+      "scope": "domain",
+      "description": "Use when designing a new API from scratch, to confirm it follows current best practice (REST/GraphQL/JSON-RPC as appropriate) rather than replicating legacy patterns.",
+      "applies_principles": [
+        "principles/api/modern-api-design.md",
+        "principles/api/json-first-design.md"
+      ],
+      "uses_skills": [
+        "skills/api/modern-api-design"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/api/apt-modern-api-designer.md"
+    },
+    {
+      "id": "apt-modernization-architect",
+      "title": "Apt Modernization Architect",
+      "domain": "architecture",
+      "scope": "domain",
+      "description": "Use when a legacy system, API, or integration needs a modernization path — replacing SOAP/XML/NVP or monolithic patterns with current APT-supported approaches.",
+      "applies_principles": [
+        "principles/architecture/modernization-architecture.md"
+      ],
+      "uses_skills": [
+        "skills/modernization/api-modernization-planner"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "deep",
+      "autonomy": "advisory",
+      "canonical_path": "agents/architecture/apt-modernization-architect.md"
+    },
+    {
+      "id": "apt-new-developer-reviewer",
+      "title": "Apt New Developer Reviewer",
+      "domain": "beginner-reviewers",
+      "scope": "domain",
+      "description": "Use when reviewing a developer's first-run experience — first API call, first local setup, first error — to confirm nothing assumes prior familiarity with this specific codebase.",
+      "applies_principles": [
+        "principles/thinking/beginner-clarity.md"
+      ],
+      "uses_skills": [
+        "skills/documentation/developer-guide-writer"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/beginner-reviewers/apt-new-developer-reviewer.md"
+    },
+    {
+      "id": "apt-new-merchant-reviewer",
+      "title": "Apt New Merchant Reviewer",
+      "domain": "beginner-reviewers",
+      "scope": "domain",
+      "description": "Use when reviewing a merchant's first-run experience — signup, KYC, first transaction — to confirm a business owner without payments expertise can complete it unassisted.",
+      "applies_principles": [
+        "principles/thinking/beginner-clarity.md"
+      ],
+      "uses_skills": [
+        "skills/ecommerce/merchant-onboarding-review"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/beginner-reviewers/apt-new-merchant-reviewer.md"
+    },
+    {
+      "id": "apt-new-support-agent-reviewer",
+      "title": "Apt New Support Agent Reviewer",
+      "domain": "beginner-reviewers",
+      "scope": "domain",
+      "description": "Use when reviewing material a support agent will use to help a customer, to confirm a newly trained agent can resolve common cases without escalating.",
+      "applies_principles": [
+        "principles/thinking/beginner-clarity.md"
+      ],
+      "uses_skills": [
+        "skills/service-readiness/kb-article-writer"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/beginner-reviewers/apt-new-support-agent-reviewer.md"
+    },
+    {
+      "id": "apt-payment-architect",
+      "title": "Apt Payment Architect",
+      "domain": "payments",
+      "scope": "domain",
+      "description": "Use when a payment system's structure — gateway abstraction, tokenization boundary, ledger design, or provider failover — needs architectural review before implementation.",
+      "applies_principles": [
+        "principles/architecture/payment-architecture.md",
+        "principles/payments/gateway-abstraction.md"
+      ],
+      "uses_skills": [
+        "skills/architecture/payment-architecture-review"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "deep",
+      "autonomy": "advisory",
+      "canonical_path": "agents/payments/apt-payment-architect.md"
+    },
+    {
+      "id": "apt-prd-writer",
+      "title": "Apt PRD Writer",
+      "domain": "product",
+      "scope": "domain",
+      "description": "Use when a feature or initiative needs a PRD written or reviewed — problem, goals, non-goals, success metrics, and scope.",
+      "applies_principles": [
+        "principles/execution/delivery-increments.md"
+      ],
+      "uses_skills": [
+        "skills/product/prd-writer"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/product/apt-prd-writer.md"
+    },
+    {
+      "id": "apt-principal",
+      "title": "Apt Principal",
+      "domain": "core",
+      "scope": "global",
+      "description": "Use as the final synthesis step after specialist perspectives have reported, when scattered concerns, risks, and tradeoffs must be reconciled into one accountable, evidence-backed decision with a clear approval status.",
+      "applies_principles": [
+        "principles/framework.md",
+        "principles/thinking/practical-thinking.md"
+      ],
+      "uses_skills": [
+        "skills/thinking/decision-rationalization"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "deep",
+      "autonomy": "advisory",
+      "canonical_path": "agents/core/apt-principal.md"
+    },
+    {
+      "id": "apt-principles-reviewer",
+      "title": "APT Principles Reviewer",
+      "domain": "core",
+      "scope": "domain",
+      "description": "Use to review code, documentation, plans, and diffs for APT Core alignment — behavior preservation, clear intent, small reviewable scope with a rollback path, and grounded output with no invented interfaces.",
+      "applies_principles": [
+        "principles/framework.md",
+        "principles/execution/quality-and-testing.md"
+      ],
+      "uses_skills": [
+        "skills/engineering/implementation-review"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/core/apt-principles-reviewer.md"
+    },
+    {
+      "id": "apt-product-hub-builder",
+      "title": "Apt Product Hub Builder",
+      "domain": "docs",
+      "scope": "domain",
+      "description": "Use when a product or feature area needs a single organized hub page pulling together its scattered docs, specs, and status into one navigable entry point.",
+      "applies_principles": [
+        "principles/documentation/README.md"
+      ],
+      "uses_skills": [
+        "skills/documentation/product-hub-builder"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/docs/apt-product-hub-builder.md"
+    },
+    {
+      "id": "apt-refactor-agent",
+      "title": "Apt Refactor Agent",
+      "domain": "engineering",
+      "scope": "domain",
+      "description": "Use when code is being restructured without an intended behavior change, to confirm the refactor is actually behavior-preserving.",
+      "applies_principles": [
+        "principles/execution/quality-and-testing.md"
+      ],
+      "uses_skills": [
+        "skills/engineering/refactor-safety"
+      ],
+      "tools": [
+        "read",
+        "search",
+        "edit"
+      ],
+      "model_tier": "standard",
+      "autonomy": "bounded-edit",
+      "canonical_path": "agents/engineering/apt-refactor-agent.md"
+    },
+    {
+      "id": "apt-repair-agent",
+      "title": "apt-repair-agent",
+      "domain": "harness",
+      "scope": "domain",
+      "description": "Use when repairing or upgrading an existing APT standards installation while preserving local customizations.",
+      "applies_principles": [
+        "principles/ai/agent-design.md"
+      ],
+      "uses_skills": [],
+      "tools": [
+        "read",
+        "search",
+        "edit"
+      ],
+      "model_tier": "standard",
+      "autonomy": "bounded-edit",
+      "canonical_path": "agents/harness/apt-repair-agent.md"
+    },
+    {
+      "id": "apt-repo-scanner",
+      "title": "apt-repo-scanner",
+      "domain": "harness",
+      "scope": "domain",
+      "description": "Use when inspecting a target repository for installed APT standards, drift, missing files, duplicates, or repair needs.",
+      "applies_principles": [
+        "principles/ai/agent-design.md"
+      ],
+      "uses_skills": [],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "none",
+      "canonical_path": "agents/harness/apt-repo-scanner.md"
+    },
+    {
+      "id": "apt-router",
+      "title": "Apt Router",
+      "domain": "core",
+      "scope": "global",
+      "description": "Use at the start of any review-council engagement, before any specialist perspective agent is invoked, to decide which agents the request actually needs based on domain, audience, and risk.",
+      "applies_principles": [
+        "principles/framework.md",
+        "principles/thinking/practical-thinking.md"
+      ],
+      "uses_skills": [
+        "skills/ai-agents/agent-routing"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "deep",
+      "autonomy": "none",
+      "canonical_path": "agents/core/apt-router.md"
+    },
+    {
+      "id": "apt-security-reviewer",
+      "title": "apt-security-reviewer",
+      "domain": "harness",
+      "scope": "domain",
+      "description": "Use when reviewing security-sensitive agent, code, configuration, MCP, model-routing, or lifecycle behavior.",
+      "applies_principles": [
+        "principles/ai/agent-design.md"
+      ],
+      "uses_skills": [],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/harness/apt-security-reviewer.md"
+    },
+    {
+      "id": "apt-support-operations-reviewer",
+      "title": "Apt Support Operations Reviewer",
+      "domain": "customer",
+      "scope": "domain",
+      "description": "Use when a change is about to ship, to confirm the support organization can actually operate and troubleshoot it on day one.",
+      "applies_principles": [
+        "principles/design/role-based-experience.md"
+      ],
+      "uses_skills": [
+        "skills/service-readiness/support-readiness-review"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/customer/apt-support-operations-reviewer.md"
+    },
+    {
+      "id": "apt-task-router",
+      "title": "APT Task Router",
+      "domain": "harness",
+      "scope": "domain",
+      "description": "Use at the start of a harness engagement to turn a request into a compact, reviewable task packet for the smallest suitable APT workflow.",
+      "applies_principles": [
+        "principles/ai/agent-design.md"
+      ],
+      "uses_skills": [],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "none",
+      "canonical_path": "agents/harness/apt-task-router.md"
+    },
+    {
+      "id": "apt-thinking-lead",
+      "title": "Apt Thinking Lead",
+      "domain": "core",
+      "scope": "global",
+      "description": "Use before domain-specific perspectives are engaged, whenever the problem statement, assumptions, or tradeoffs behind a proposal haven't yet been made explicit and checkable.",
+      "applies_principles": [
+        "principles/framework.md",
+        "principles/thinking/practical-thinking.md"
+      ],
+      "uses_skills": [
+        "skills/thinking/problem-framing"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "deep",
+      "autonomy": "advisory",
+      "canonical_path": "agents/core/apt-thinking-lead.md"
+    },
+    {
+      "id": "apt-transaction-intelligence-analyst",
+      "title": "Apt Transaction Intelligence Analyst",
+      "domain": "payments",
+      "scope": "domain",
+      "description": "Use when transaction data, decline patterns, or authorization trends need to be analyzed to explain what's happening and what it implies for risk or revenue.",
+      "applies_principles": [
+        "principles/payments/transaction-intelligence.md"
+      ],
+      "uses_skills": [
+        "skills/payments/transaction-intelligence-analysis"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/payments/apt-transaction-intelligence-analyst.md"
+    },
+    {
+      "id": "apt-ui-reviewer",
+      "title": "apt-ui-reviewer",
+      "domain": "harness",
+      "scope": "domain",
+      "description": "Use when reviewing UI work for intent, workflow continuity, state design, accessibility, or responsive behavior.",
+      "applies_principles": [
+        "principles/ai/agent-design.md"
+      ],
+      "uses_skills": [],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/harness/apt-ui-reviewer.md"
+    },
+    {
+      "id": "apt-verifier",
+      "title": "apt-verifier",
+      "domain": "harness",
+      "scope": "domain",
+      "description": "Use when outputs, installs, repairs, routing config, or documentation alignment must be verified before they are trusted.",
+      "applies_principles": [
+        "principles/ai/agent-design.md"
+      ],
+      "uses_skills": [],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/harness/apt-verifier.md"
+    },
+    {
+      "id": "apt-voice-of-customer-analyst",
+      "title": "Apt Voice Of Customer Analyst",
+      "domain": "product",
+      "scope": "domain",
+      "description": "Use when raw customer feedback, support tickets, or interview notes need to be synthesized into themes that inform product decisions.",
+      "applies_principles": [
+        "principles/execution/delivery-increments.md"
+      ],
+      "uses_skills": [
+        "skills/product/voice-of-customer"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/product/apt-voice-of-customer-analyst.md"
+    },
+    {
+      "id": "documentation-normalizer",
+      "title": "Documentation Normalizer",
+      "domain": "docs",
+      "scope": "domain",
+      "description": "Use to consolidate duplicated, stale, or scattered documentation into canonical homes, proposing a merge, move, and delete plan before any edits.",
+      "applies_principles": [
+        "principles/documentation/audience-layered-docs.md",
+        "principles/execution/knowledge-and-learning.md"
+      ],
+      "uses_skills": [
+        "skills/documentation/audience-layered-docs"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/docs/documentation-normalizer.md"
+    },
+    {
+      "id": "drack",
+      "title": "Drack",
+      "domain": "engineering",
+      "scope": "global",
+      "description": "Use when implementation work targets the Cloudflare Workers/Pages + Hono stack, to confirm it follows the stack's actual constraints (bindings, cold starts, edge runtime limits).",
+      "applies_principles": [
+        "principles/execution/quality-and-testing.md"
+      ],
+      "uses_skills": [
+        "skills/architecture/cloudflare-hono-architecture"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/engineering/drack.md"
+    },
+    {
+      "id": "glyph",
+      "title": "Glyph",
+      "domain": "api",
+      "scope": "global",
+      "description": "Use when a decision or deliverable must select API styles from audience and behavior, then make contracts predictable, secure, observable, evolvable, and usable by humans and agents, especially when it affects multiple audiences or high-accuracy domains.",
+      "applies_principles": [
+        "principles/api/modern-api-design.md",
+        "principles/api/rest-api-design.md"
+      ],
+      "uses_skills": [
+        "skills/api/modern-api-design"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/api/glyph.md"
+    },
+    {
+      "id": "intent-ux-reviewer",
+      "title": "Intent UX Reviewer",
+      "domain": "design",
+      "scope": "domain",
+      "description": "Use to review a product surface through user intent, workflow completion, state design, accessibility, and responsive behavior.",
+      "applies_principles": [
+        "principles/design/intent-based-design.md",
+        "principles/design/accessibility.md"
+      ],
+      "uses_skills": [
+        "skills/design/intent-based-ui-design"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/design/intent-ux-reviewer.md"
+    },
+    {
+      "id": "javik",
+      "title": "Javik",
+      "domain": "architecture",
+      "scope": "global",
+      "description": "Use as the senior cross-cutting sign-off for architecture work, after specialist architecture perspectives (api, integration, modernization) have reported, to reconcile them into one accountable structural recommendation.",
+      "applies_principles": [
+        "principles/architecture/system-architecture.md"
+      ],
+      "uses_skills": [
+        "skills/architecture/system-architecture-review"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "deep",
+      "autonomy": "advisory",
+      "canonical_path": "agents/architecture/javik.md"
+    },
+    {
+      "id": "kaidan",
+      "title": "Kaidan",
+      "domain": "ecommerce",
+      "scope": "global",
+      "description": "Use when a partner or acquirer integration/onboarding flow needs review, distinct from a single merchant's onboarding.",
+      "applies_principles": [
+        "principles/ecommerce/marketplace-payments.md"
+      ],
+      "uses_skills": [
+        "skills/ecommerce/partner-acquirer-onboarding-review"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/ecommerce/kaidan.md"
+    },
+    {
+      "id": "kasumi",
+      "title": "Kasumi",
+      "domain": "risk",
+      "scope": "global",
+      "description": "Use when a change has security implications — authentication, data exposure, attack surface — that need review before it ships.",
+      "applies_principles": [
+        "principles/security-risk/security-review.md"
+      ],
+      "uses_skills": [
+        "skills/security-risk/security-review"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "deep",
+      "autonomy": "advisory",
+      "canonical_path": "agents/risk/kasumi.md"
+    },
+    {
+      "id": "miranda",
+      "title": "Miranda",
+      "domain": "product",
+      "scope": "global",
+      "description": "Use when prioritization, sequencing, or tradeoff decisions across multiple initiatives need a product-management perspective.",
+      "applies_principles": [
+        "principles/execution/delivery-increments.md"
+      ],
+      "uses_skills": [
+        "skills/product/roadmap-planner"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/product/miranda.md"
+    },
+    {
+      "id": "samara",
+      "title": "Samara",
+      "domain": "risk",
+      "scope": "global",
+      "description": "Use when a change affects who can do what — roles, scopes, access control rules — to confirm the permission model is correct and least-privilege.",
+      "applies_principles": [
+        "principles/security-risk/permission-design.md"
+      ],
+      "uses_skills": [
+        "skills/security-risk/permission-review"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/risk/samara.md"
+    },
+    {
+      "id": "suvi",
+      "title": "Suvi",
+      "domain": "payments",
+      "scope": "global",
+      "description": "Use when a product is evaluating or building stablecoin acceptance or settlement, to confirm operational and compliance readiness before launch.",
+      "applies_principles": [
+        "principles/stablecoin-crypto/stablecoin-readiness.md",
+        "principles/stablecoin-crypto/settlement-and-reconciliation.md"
+      ],
+      "uses_skills": [
+        "skills/stablecoin-crypto/stablecoin-readiness-review"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/payments/suvi.md"
+    },
+    {
+      "id": "wrex",
+      "title": "Wrex",
+      "domain": "payments",
+      "scope": "global",
+      "description": "Use as the senior cross-cutting sign-off for payments work, after specialist payment perspectives (fraud, chargeback, gateway, architecture) have reported, to reconcile them into one accountable payments recommendation.",
+      "applies_principles": [
+        "principles/payments/payment-lifecycle.md",
+        "principles/architecture/payment-architecture.md"
+      ],
+      "uses_skills": [
+        "skills/payments/payment-lifecycle-analysis"
+      ],
+      "tools": [
+        "read",
+        "search"
+      ],
+      "model_tier": "standard",
+      "autonomy": "advisory",
+      "canonical_path": "agents/payments/wrex.md"
+    }
+  ]
+}

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "files": {
     "skills": 142,
-    "agents": 75,
+    "agents": 79,
     "principles": 123,
     "prompts": 74
   },
@@ -18,8 +18,8 @@
       "sha256": "5f1dd877725d2a210b372ee8ddad9ba5a3d165823e97854775ec2efd93c296ca"
     },
     "agents": {
-      "count": 50,
-      "sha256": "8101c60f74a5775b17a3aae21c39f32e05d638361cc2d7f63c19d571944a4663"
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     "principles": {
       "count": 0,
@@ -33,7 +33,7 @@
   "exactDuplicateBodyGroups": 0,
   "pilots": [
     {
-      "path": "agents/api/apt-api-reviewer.md",
+      "path": "agents/api/glyph.md",
       "heading": "## Perspective-Specific Checks",
       "minimumBullets": 3
     },

@@ -1,11 +1,24 @@
 ---
+id: drack
 title: Drack
 kind: agent
+domain: engineering
+scope: global
+description: Use when implementation work targets the Cloudflare Workers/Pages + Hono stack, to confirm it follows the stack's actual constraints (bindings, cold starts, edge runtime limits).
+applies_principles:
+  - principles/execution/quality-and-testing.md
+uses_skills:
+  - skills/architecture/cloudflare-hono-architecture
+tools:
+  - read
+  - search
+model_tier: standard
+autonomy: advisory
+escalation: Escalate unsupported payment, security, privacy, compliance, legal, production-launch, or irreversible migration decisions to the accountable human and relevant expert.
 status: active
 owner: APT
-last_updated: 2026-08-29
+last_updated: 2026-08-30
 source: apt-agent-standards roles and APT doctrine
-domain: "engineering"
 source_paths: ["apt-principles-agents/agents/engineering/drack.md"]
 ---
 
@@ -43,6 +56,10 @@ Use when implementation work targets the Cloudflare Workers/Pages + Hono stack, 
 
 - [Cloudflare + Hono Architecture](../../skills/architecture/cloudflare-hono-architecture/SKILL.md)
 - Cross-audience review and source verification.
+
+## Enforces
+
+- [APT Quality & Testing (Validate)](../../principles/execution/quality-and-testing.md) — check the work against this principle and cite the clause any finding rests on.
 
 ## Inputs
 

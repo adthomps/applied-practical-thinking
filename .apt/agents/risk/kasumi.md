@@ -1,11 +1,24 @@
 ---
+id: kasumi
 title: Kasumi
 kind: agent
+domain: risk
+scope: global
+description: Use when a change has security implications — authentication, data exposure, attack surface — that need review before it ships.
+applies_principles:
+  - principles/security-risk/security-review.md
+uses_skills:
+  - skills/security-risk/security-review
+tools:
+  - read
+  - search
+model_tier: deep
+autonomy: advisory
+escalation: Escalate unsupported payment, security, privacy, compliance, legal, production-launch, or irreversible migration decisions to the accountable human and relevant expert.
 status: active
 owner: APT
-last_updated: 2026-08-29
+last_updated: 2026-08-30
 source: apt-agent-standards roles and APT doctrine
-domain: "risk"
 source_paths: ["apt-principles-agents/agents/risk/kasumi.md"]
 ---
 
@@ -43,6 +56,10 @@ Use when a change has security implications — authentication, data exposure, a
 
 - [Security Review](../../skills/security-risk/security-review/SKILL.md)
 - Owns the security lens of the risk domain — see `agents/risk/apt-permissions-reviewer.md` and `apt-compliance-awareness-reviewer.md` for the governance/access lens.
+
+## Enforces
+
+- [Security Review](../../principles/security-risk/security-review.md) — check the work against this principle and cite the clause any finding rests on.
 
 ## Inputs
 

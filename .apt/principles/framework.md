@@ -176,6 +176,16 @@ Downstream projects should keep local adoption records under `docs/apt/` or an e
 10. Capture reusable learning with `knowledge-system.md`.
 11. Use `ai-agent-framework.md` when AI participates.
 
+## Applied by
+
+- [apt-architecture-lead](../agents/core/apt-architecture-lead.md) — Use when a change has structural or system-design implications spanning more than one architecture perspective, and someone needs to own the combined structural verdict.
+- [apt-design-lead](../agents/core/apt-design-lead.md) — Use when a change touches UI, UX flow, or customer-facing design decisions spanning more than one audience or perspective, and someone needs to own the combined design verdict.
+- [apt-execution-lead](../agents/core/apt-execution-lead.md) — Use when a change is ready to move from design/architecture into implementation, and someone needs to confirm the plan is buildable, safely sequenced, and verifiable before work starts.
+- [apt-principal](../agents/core/apt-principal.md) — Use as the final synthesis step after specialist perspectives have reported, when scattered concerns, risks, and tradeoffs must be reconciled into one accountable, evidence-backed decision with a clear approval status.
+- [apt-principles-reviewer](../agents/core/apt-principles-reviewer.md) — Use to review code, documentation, plans, and diffs for APT Core alignment — behavior preservation, clear intent, small reviewable scope with a rollback path, and grounded output with no invented interfaces.
+- [apt-router](../agents/core/apt-router.md) — Use at the start of any review-council engagement, before any specialist perspective agent is invoked, to decide which agents the request actually needs based on domain, audience, and risk.
+- [apt-thinking-lead](../agents/core/apt-thinking-lead.md) — Use before domain-specific perspectives are engaged, whenever the problem statement, assumptions, or tradeoffs behind a proposal haven't yet been made explicit and checkable.
+
 ## Related Build Kit
 
 - `checklists/`
