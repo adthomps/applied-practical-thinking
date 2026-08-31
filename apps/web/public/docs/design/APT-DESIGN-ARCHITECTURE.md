@@ -126,7 +126,7 @@ Repo-wide markdown metadata enforcement is intentionally phased:
 
 - Wave 1 (enforce on 2026-04-20): `apps/web/docs/design/static/*.md`, `apps/web/ai/prompts/*.md`
 - Wave 2 (enforce on 2026-05-15): `docs/*.md` plus root operational docs (`README.md`, `PROJECT_RULES.md`, `DOCUMENTATION_INDEX.md`, `AGENTS.md`, `QUICK_REFERENCE.md`)
-- Wave 3 (enforce on 2026-06-15): `apps/worker/src/ai/docs/*.md`, `.github/*.md`
+- Wave 3 (enforce on 2026-06-15): `apps/worker/src/ai/docs/*.md` and root-level `.github/*.md` operational documents. Nested `.github/prompts/**` and `.github/skills/**` adapters retain their tool-native contracts and are not website-document metadata targets.
 
 Current behavior:
 - `frontmatter-report` runs in governance as report-only (non-blocking) until each wave reaches enforcement date.

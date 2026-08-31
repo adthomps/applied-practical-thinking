@@ -46,6 +46,10 @@ Review for implicit authorization, excessive data collection, sensitive logs, un
 - State what is verified, what is assumed, and what requires specialist or human approval.
 
 See the [Security Risk canonical hub](README.md) and linked standards/checklists before making final claims.
+## Applied by
+
+- [kasumi](../../agents/risk/kasumi.md) — Use when a change has security implications — authentication, data exposure, attack surface — that need review before it ships.
+
 ## Related
 
 - [APT Principles](../README.md)

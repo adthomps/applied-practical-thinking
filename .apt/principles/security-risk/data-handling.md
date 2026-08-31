@@ -3,7 +3,7 @@ title: Data Handling
 kind: principle
 status: active
 owner: APT
-last_updated: 2026-06-27
+last_updated: 2026-08-16
 source: apt-principles and apt-agent-standards
 domain: "security-risk"
 source_paths: ["apt-principles-agents/principles/security-risk/data-handling.md"]
@@ -43,9 +43,16 @@ Review for implicit authorization, excessive data collection, sensitive logs, un
 
 - Treat **Data Handling** as an explicit decision with defined scope, evidence, owner, and validation.
 - Required evidence: assets, trust boundaries, permissions, sensitive data, controls, residual risk, approval.
+- Inventory data by source, purpose, sensitivity, subject, jurisdiction, owner, storage, transit, recipient, retention, deletion, and recovery behavior before selecting controls.
+- Minimize collection and propagation; prefer tokens, references, redaction, aggregation, or ephemeral processing when raw sensitive data is unnecessary.
+- Treat logs, analytics, prompts, model context, traces, backups, exports, and support tools as data stores with the same access, retention, deletion, and incident obligations.
 - State what is verified, what is assumed, and what requires specialist or human approval.
 
 See the [Security Risk canonical hub](README.md) and linked standards/checklists before making final claims.
+## Applied by
+
+- [apt-compliance-awareness-reviewer](../../agents/risk/apt-compliance-awareness-reviewer.md) — Use when a change touches data handling, disclosures, or regulated processes, to confirm the team is aware of the compliance obligations involved, even where full legal review is separate.
+
 ## Related
 
 - [APT Principles](../README.md)
