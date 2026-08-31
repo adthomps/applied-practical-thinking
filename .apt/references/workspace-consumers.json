@@ -22,12 +22,6 @@
       "validation": ["corepack pnpm validate:ai", "corepack pnpm validate:apt"]
     },
     {
-      "repository": "apt-anet-hosted-toolbox",
-      "manifests": ["core", "cloudflare", "documentation", "api-review", "ux-review", "security", "payments", "governance", "training"],
-      "platforms": ["codex", "claude", "copilot", "gemini"],
-      "validation": ["pnpm lint", "pnpm typecheck", "pnpm build", "pnpm test"]
-    },
-    {
       "repository": "apt-commerce",
       "manifests": ["core", "payments", "documentation", "ux-review", "api-review"],
       "platforms": ["codex", "claude", "copilot", "gemini"],
