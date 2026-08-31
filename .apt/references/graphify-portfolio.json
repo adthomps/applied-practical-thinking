@@ -1,0 +1,383 @@
+{
+  "schema_version": 1,
+  "operator_repository": "apt-principles-agents",
+  "audience": "internal-hybrid",
+  "update_mode": "curated-on-demand",
+  "semantic_policy": {
+    "mode": "local-only",
+    "backend": "ollama",
+    "max_concurrency": 1,
+    "token_budget": 2000,
+    "hosted_backends_allowed": false
+  },
+  "output_policy": {
+    "root": "graphify-out",
+    "commit_generated_outputs": false,
+    "inferred_edges_are_candidates": true
+  },
+  "portfolio": {
+    "id": "apt-portfolio",
+    "stage_directory": "graphify-out/portfolio-corpus",
+    "diagram_document": "docs/diagrams/apt-portfolio-knowledge-system.md",
+    "starter_queries": [
+      "Which repositories own canonical doctrine, local product behavior, internal planning, operational intake, and public proof?",
+      "How does accepted intake move through planning, reusable doctrine, productized behavior, and delivery?",
+      "Which repositories consume assets distributed from apt-principles-agents, and where can adoption drift occur?",
+      "How does frozen design evidence connect to canonical design guidance and the public APT experience?",
+      "Which security-review components connect the APT security harness to the repositories it evaluates?"
+    ]
+  },
+  "common_exclusions": [
+    ".git/",
+    ".apt-backups/",
+    "node_modules/",
+    "graphify-out/",
+    ".wrangler/",
+    ".playwright-cli/",
+    ".pytest_cache/",
+    ".ruff_cache/",
+    ".turbo/",
+    ".vs/",
+    "dist/",
+    "build/",
+    "coverage/",
+    "output/",
+    "reports/",
+    "tmp/",
+    ".tmp/",
+    ".env",
+    ".env.*",
+    "*.log",
+    "*.sqlite*",
+    "*.db",
+    "*.pem",
+    "*.key",
+    "*.p12",
+    "*.pfx",
+    "**/certs/",
+    "**/secrets/",
+    "**/uploads/",
+    "**/components/ui/",
+    "**/fixtures/",
+    "**/package.json",
+    "**/tsconfig*.json",
+    "**/*lock*",
+    "docs/apt/reports/static/",
+    "apps/web/public/"
+  ],
+  "projects": [
+    {
+      "name": "adthomps.github.io",
+      "participation": "ordinary-docs-search",
+      "wave": "none",
+      "reason": "Small static gateway whose README and page set already expose the useful structure."
+    },
+    {
+      "name": "applied-practical-thinking",
+      "participation": "deep",
+      "wave": 2,
+      "portfolio_paths": [
+        "README.md",
+        "AGENTS.md",
+        "docs/project-context.md",
+        "docs/DESIGN_REFERENCE_MERGE_DIRECTION.md",
+        "docs/apt/adoption.md"
+      ],
+      "additional_exclusions": [
+        ".apt/",
+        "apps/web/data/generated/",
+        "apps/web/public/",
+        "reports/validation/"
+      ],
+      "starter_queries": [
+        "How does canonical APT doctrine become the curated public reference experience?",
+        "Which authored sources generate public content, indexes, and validation evidence?",
+        "How do the web application, Worker, and shared packages interact?",
+        "What would be affected by changing the public publication manifest or taxonomy?",
+        "Where does generated public content risk drifting from its canonical sources?"
+      ]
+    },
+    {
+      "name": "apt-anet-doc-explorer",
+      "participation": "lightweight-on-demand",
+      "wave": "on-demand",
+      "reason": "Graph only when tracing document discovery, catalog provenance, or analysis behavior."
+    },
+    {
+      "name": "apt-anet-integration-toolbox",
+      "participation": "deep",
+      "wave": 1,
+      "additional_exclusions": [
+        ".agents/",
+        ".apt/",
+        "apt-core/",
+        "docs/apt/reports/"
+      ],
+      "starter_queries": [
+        "How are the retained Authorize.net integration methods represented across docs, demos, web routes, and Worker APIs?",
+        "Where does payment-sensitive data cross browser, Worker, storage, and Authorize.net boundaries?",
+        "How do the React application and Hono Worker coordinate each integration flow?",
+        "Which callback, relay, webhook, or signature-validation components connect legacy and current methods?",
+        "Where can hosted-method documentation drift from implemented demos or Worker behavior?"
+      ]
+    },
+    {
+      "name": "apt-anet-relaytests",
+      "participation": "ordinary-docs-search",
+      "wave": "none",
+      "reason": "Small fixed-behavior Worker collection with an adequate README matrix."
+    },
+    {
+      "name": "apt-anet-security-sdk",
+      "participation": "deep",
+      "wave": 2,
+      "additional_exclusions": [
+        ".claude/",
+        "data/",
+        "reports/",
+        "tls-server/certs/",
+        "**/target/",
+        "**/vendor/",
+        "ruby-runner;C/"
+      ],
+      "starter_queries": [
+        "How do orchestrator requests flow through SDK runners to controlled TLS profiles and reports?",
+        "Which components determine protocol, cipher, hostname, and certificate evidence?",
+        "How do local, sandbox, production, Cloudflare, and SSL Labs observations differ?",
+        "What would be affected by adding a new SDK runner or TLS profile?",
+        "Where can generated compatibility claims drift from raw observations or test configuration?"
+      ]
+    },
+    {
+      "name": "apt-commerce",
+      "participation": "deep",
+      "wave": 1,
+      "additional_exclusions": [
+        ".apt/",
+        ".lovable/",
+        "_quarantine_github_src_old/",
+        "docs/apt/reports/",
+        "apps/web/e2e/"
+      ],
+      "starter_queries": [
+        "How does merchant onboarding flow from public signup through validation, underwriting review, and activation?",
+        "How do payment, invoice, subscription, payment-link, customer, and event domains share contracts and authorization?",
+        "Where are partner, merchant, internal staff, developer, and support roles enforced?",
+        "How do the React application, Worker APIs, D1 repositories, and external services exchange data?",
+        "Where can product documentation, Working Backwards packages, and runtime behavior drift?"
+      ]
+    },
+    {
+      "name": "apt-design-reference",
+      "participation": "selected-provenance",
+      "wave": "portfolio-only",
+      "portfolio_paths": [
+        "README.md",
+        "AGENTS.md",
+        "SKILL.md",
+        "docs/project-context.md",
+        "docs/archive-decision.md"
+      ],
+      "reason": "Frozen evidence is included only to preserve design provenance and promotion paths."
+    },
+    {
+      "name": "apt-dream-to-reality",
+      "participation": "deep",
+      "wave": 1,
+      "portfolio_paths": [
+        "README.md",
+        "AGENTS.md",
+        "docs/project-context.md",
+        "docs/INTAKE_APPLICATION_DIRECTION.md",
+        "docs/INTAKE_TO_DELIVERY_CONTRACT.md",
+        "docs/WORKING_BACKWARDS_PRODUCT_TEAM_APPLICATION.md"
+      ],
+      "additional_exclusions": [
+        ".apt/",
+        "apps/worker/src/fixtures/",
+        "docs/apt/reports/",
+        "docs/design/static/"
+      ],
+      "starter_queries": [
+        "How does an idea become approved Working Backwards artifacts and a confirmed delivery handoff?",
+        "Which services enforce revisions, reviews, approval gates, staleness, and source lineage?",
+        "How are AI provider capabilities, prompt versions, evidence, and writer-critic separation connected?",
+        "How do web pages and hooks map to Worker routes, services, D1 tables, and delivery records?",
+        "What is affected when an approved requirements or engineering-prompt revision changes?"
+      ]
+    },
+    {
+      "name": "apt-health",
+      "participation": "deep",
+      "wave": 2,
+      "additional_exclusions": [
+        ".agents/",
+        ".apt/",
+        "docs/apt/reports/",
+        "**/data/",
+        "**/imports/",
+        "**/exports/"
+      ],
+      "starter_queries": [
+        "How does imported periodic health data move through validation, persistence, comparison, and direction generation?",
+        "Which domain schemas connect the web application, Worker routes, repositories, and D1 migrations?",
+        "How are supplement records compared with body composition, blood, device, and report evidence?",
+        "What would be affected by adding a new supported source or import format?",
+        "Where are privacy boundaries, clinician-follow-up limits, and non-goals enforced?"
+      ]
+    },
+    {
+      "name": "apt-intake",
+      "participation": "portfolio-metadata",
+      "wave": "portfolio-only",
+      "portfolio_paths": [
+        "README.md",
+        "AGENTS.md",
+        "docs/project-context.md",
+        "docs/operating-model.md"
+      ],
+      "reason": "Small operational front door whose main value is its routing relationship to owning repositories."
+    },
+    {
+      "name": "apt-intelligence-core",
+      "participation": "deep",
+      "wave": 2,
+      "additional_exclusions": [
+        ".agents/",
+        ".apt/",
+        "output/",
+        "**/generated/",
+        "**/*.csv"
+      ],
+      "starter_queries": [
+        "How does source-shaped data become normalized evidence, metrics, findings, narratives, and packaged reports?",
+        "Which core pipeline stages are shared across active intelligence domains?",
+        "How do domain configurations, schemas, report types, and renderers interact?",
+        "What would be affected by adding a new intelligence domain or source system?",
+        "Where can deterministic calculations, generated narratives, and rendered reports drift?"
+      ]
+    },
+    {
+      "name": "apt-knowledge-hub",
+      "participation": "deep",
+      "wave": 1,
+      "additional_exclusions": [
+        ".apt/",
+        "data/",
+        "reports/",
+        "**/generated/"
+      ],
+      "starter_queries": [
+        "How does canonical Git content move through validation, D1 ingest, KV publication, and the React reader?",
+        "How does the APT MCP connect prompts, blueprints, docs, APIs, and examples?",
+        "Which schemas and loaders preserve provenance across content formats and brand scopes?",
+        "What would be affected by changing a knowledge package or OpenAPI contract?",
+        "Where can D1 or KV read models drift from canonical Git content?"
+      ]
+    },
+    {
+      "name": "apt-novel-reviewer",
+      "participation": "deep",
+      "wave": 2,
+      "additional_exclusions": [
+        ".apt/",
+        "test-data/",
+        "tmp-docx-sample-*/",
+        "**/*.docx"
+      ],
+      "starter_queries": [
+        "How does a manuscript version move through import, chapter parsing, local review, findings, and comparison?",
+        "Which contracts connect Electron, preload, React, Ollama, persistence, and review modes?",
+        "How are resolved, still-present, and new findings calculated across versions?",
+        "What would be affected by adding a review mode or manuscript format?",
+        "Where are the local-only, no-rewriting, and no-chat boundaries enforced?"
+      ]
+    },
+    {
+      "name": "apt-principles-agents",
+      "participation": "deep",
+      "wave": 1,
+      "portfolio_paths": [
+        "README.md",
+        "AGENTS.md",
+        "docs/project-context.md",
+        "standards/installable-summaries/knowledge-graph-standards.md",
+        "manifests/knowledge-graph.yaml",
+        "docs/working-backwards-product-team-application.md",
+        "docs/intake-routing-application.md",
+        "docs/design-reference-intake.md"
+      ],
+      "additional_exclusions": [
+        "docs/archive/",
+        "docs/distribution/",
+        "graphify-out/"
+      ],
+      "starter_queries": [
+        "Which artifacts bridge canonical doctrine, standards, skills, prompts, templates, manifests, and platform adapters?",
+        "How are selected APT assets installed, scanned, synchronized, and validated in downstream repositories?",
+        "Where can generated catalogs, public projections, archives, or local copies be mistaken for canonical sources?",
+        "What would be affected by changing a manifest, taxonomy entry, or platform adapter?",
+        "Which downstream adoption records indicate drift from the canonical repository?"
+      ]
+    },
+    {
+      "name": "apt-product-team",
+      "participation": "portfolio-metadata",
+      "wave": "portfolio-only",
+      "portfolio_paths": [
+        "README.md",
+        "AGENTS.md",
+        "docs/project-context.md",
+        "docs/operating-model.md",
+        "docs/formalization-direction.md",
+        "INTAKE_APPLICATION_DIRECTION.md"
+      ],
+      "reason": "Local planning cockpit whose durable value is promotion and routing context."
+    },
+    {
+      "name": "apt-security-harness",
+      "participation": "deep",
+      "wave": 2,
+      "portfolio_paths": [
+        "README.md",
+        "AGENTS.md",
+        "docs/project-context.md",
+        "docs/operations.md"
+      ],
+      "additional_exclusions": [
+        ".apt/",
+        ".vvaharness-state/",
+        "inputs/",
+        "outputs/",
+        "targets/",
+        "vvaharness/",
+        "vvaharness.egg-info/"
+      ],
+      "starter_queries": [
+        "How does an APT-governed scan move from target selection through analysis, findings, review, and remediation gating?",
+        "Which wrapper components adapt the upstream vvaharness pipeline without erasing provenance?",
+        "Where are secrets, live inputs, generated reports, and remediation artifacts kept out of source?",
+        "What would be affected by changing a scan rule, target adapter, or finding contract?",
+        "How does the harness connect findings back to owning repositories and APT governance evidence?"
+      ]
+    },
+    {
+      "name": "crt-world",
+      "participation": "deep",
+      "wave": 2,
+      "additional_exclusions": [
+        ".apt/",
+        "apt-core/",
+        "apps/site/public/images/",
+        "docs/apt/reports/"
+      ],
+      "starter_queries": [
+        "How does authored content move through admin validation, D1 persistence, API view models, and public pages?",
+        "Which contracts connect the site, Worker, content schema, database, and authentication packages?",
+        "How are draft and published states enforced across related content records?",
+        "What would be affected by changing a content schema or publication rule?",
+        "Where can migrations, seeded content, API behavior, and public documentation drift?"
+      ]
+    }
+  ]
+}

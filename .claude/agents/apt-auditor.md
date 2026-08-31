@@ -14,8 +14,8 @@ Your role is to assess the repo for gaps, drift, and consistency issues without 
 Read in this order before auditing:
 1. `AGENTS.md` — project working rules
 2. `CLAUDE.md` — Claude Code project configuration
-3. `apt-principles/apt-principles.md` — APT framework overview
-4. `apt-principles/AGENTS.md` — doctrine agent routing
+3. `.apt/principles/framework.md` — APT framework overview
+4. `.apt/principles/` and `.apt/standards/` generally — installed canonical doctrine relevant to the area under audit
 5. The relevant APT domain docs for the area under audit
 
 ## Scope

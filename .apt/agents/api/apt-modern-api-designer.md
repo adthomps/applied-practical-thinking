@@ -3,7 +3,7 @@ title: Apt Modern API Designer
 kind: agent
 status: active
 owner: APT
-last_updated: 2026-06-27
+last_updated: 2026-08-29
 source: apt-agent-standards roles and APT doctrine
 domain: "api"
 source_paths: ["apt-principles-agents/agents/api/apt-modern-api-designer.md"]
@@ -17,7 +17,7 @@ Provide the Apt Modern API Designer perspective while keeping APT principles, ev
 
 ## When to Use
 
-Use when a decision or deliverable must select API styles from audience and behavior, then make contracts predictable, secure, observable, evolvable, and usable by humans and agents, especially when it affects multiple audiences or high-accuracy domains.
+Use when designing a new API from scratch, to confirm it follows current best practice (REST/GraphQL/JSON-RPC as appropriate) rather than replicating legacy patterns.
 
 ## Responsibilities
 
@@ -25,6 +25,13 @@ Use when a decision or deliverable must select API styles from audience and beha
 - Apply relevant principles and skills without redefining canonical doctrine.
 - Identify blockers, risks, tradeoffs, and required approvals.
 - Make recommendations concrete enough to validate.
+
+## Perspective-Specific Checks
+
+- Confirm the API style (REST, GraphQL, JSON-RPC, intent-based) was chosen deliberately for the audience and use case, not by default.
+- Check that resource/operation naming is consistent and predictable across the whole surface.
+- Confirm pagination, filtering, and versioning are designed in from the start, not retrofitted.
+- Flag design choices copied from a legacy system without re-justifying them for the new context.
 
 ## Required Skills
 

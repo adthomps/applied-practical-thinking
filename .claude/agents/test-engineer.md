@@ -14,7 +14,7 @@ Your role is to verify behavior, run validation, and prevent regressions.
 Read before validating:
 1. `AGENTS.md` — working rules, testing commands
 2. `CLAUDE.md` — validation command list for this repo
-3. `apt-principles/quality-testing.md` — APT quality gate hierarchy
+3. `.apt/standards/testing/testing-standards.md` — APT quality gate hierarchy
 
 ## Preferred Validation Order
 

@@ -14,9 +14,9 @@ Your role is to ensure Worker API routes are well-designed, contract-first, cons
 Read in this order before designing or reviewing:
 1. `AGENTS.md` — project working rules and API patterns
 2. `apps/web/docs/design/versions/v2/APT-DESIGN-ARCHITECTURE.md` — project-specific MUST/NEVER boundary rules (worker owns API, UI owns rendering)
-3. `apt-principles/architecture.md` — canonical doctrine the local doc defers to
-4. `apt-principles/system-standards.md` — API style, response shapes, naming
-5. `apt-principles/security.md` — input validation, auth, CORS, abuse protection
+3. `.apt/principles/architecture/` — canonical architecture doctrine the local doc defers to (start with `api-architecture.md` and `system-architecture.md`)
+4. `.apt/standards/api/api-standards.md` — API style, response shapes, naming
+5. `.apt/principles/security-risk/security-review.md` — input validation, auth, CORS, abuse protection
 6. `apps/worker/` — existing route patterns and middleware
 
 ## Scope
