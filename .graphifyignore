@@ -1,6 +1,9 @@
 .git/
 .apt/
 .apt-backups/
+.claude/
+.codex/
+.gemini/
 node_modules/
 graphify-out/
 .wrangler/
@@ -12,7 +15,10 @@ output/
 reports/
 apps/web/public/
 apps/web/data/generated/
+apps/web/docs/
 docs/apt/reports/static/
+**/test/
+**/*.test.*
 **/components/ui/
 **/fixtures/
 **/package.json
