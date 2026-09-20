@@ -30,11 +30,11 @@ const WAVE_RULES = [
   },
   {
     id: 'wave3',
-    label: 'Worker AI docs + .github docs',
+    label: 'Worker AI docs + root .github docs',
     enforceOn: '2026-06-15',
     matches: (relativePath) =>
       relativePath.startsWith('apps/worker/src/ai/docs/') ||
-      (relativePath.startsWith('.github/') && relativePath.endsWith('.md')),
+      /^\.github\/[^/]+\.md$/.test(relativePath),
   },
 ];
 

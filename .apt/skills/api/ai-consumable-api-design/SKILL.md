@@ -4,7 +4,7 @@ description: Use when work must select API styles from audience and behavior, th
 kind: skill
 status: active
 owner: APT
-last_updated: 2026-06-27
+last_updated: 2026-08-16
 source: consolidated APT guidance
 title: "AI Consumable API Design"
 domain: "api"
@@ -29,12 +29,12 @@ Use for planning, design, implementation review, migration, troubleshooting, or 
 
 ## Process
 
-1. Restate the intended outcome and affected audiences.
-2. Inventory exact current behavior and source-backed constraints.
-3. Apply the relevant APT principles and identify missing evidence.
-4. Compare viable options, including compatibility and operational effects.
-5. Produce the required artifacts: audience, use cases, protocol decision, schema, auth, errors, idempotency, pagination, webhooks, examples, tests, and deprecation policy.
-6. Review fashion-driven protocol choices, ambiguous errors, unsafe retries, undocumented permissions, weak compatibility, and examples that do not execute; separate blockers, recommendations, and open questions.
+1. Define the agent tasks, discovery path, authority, autonomy, supported tools, data sensitivity, side effects, approval boundaries, and accountable human owner.
+2. Inventory the current schema, authentication and authorization, errors, idempotency, concurrency, pagination, asynchronous states, rate behavior, compatibility, observability, and support recovery.
+3. Design stable machine-readable operations with explicit names, types, requiredness, enums, constraints, descriptions, examples, and deterministic success and failure shapes.
+4. Separate read, propose, preview, and mutate capabilities; define least-privilege scopes, confirmation behavior, duplicate/stale request handling, cancellation, rollback, and audit evidence.
+5. Build executable agent examples and evaluation cases for happy, malformed, adversarial, unauthorized, partial, duplicate, delayed, and incompatible requests.
+6. Validate schema consumption, tool selection, side-effect visibility, injection/untrusted-content boundaries, human approval, observability, deprecation, and support identifiers before release.
 
 ## Outputs
 
@@ -48,6 +48,8 @@ The output is practical, source-backed, audience-aware, testable, reversible whe
 
 - Treat **Ai Consumable Api Design** as an explicit decision with defined scope, evidence, owner, and validation.
 - Required evidence: audience, schema, auth, errors, idempotency, examples, compatibility, operations.
+- Require deterministic schemas and error/retry semantics so an agent does not have to guess which action is safe.
+- Test least privilege, protected-action approval, duplicate execution, stale context, untrusted content, and partial failure as first-class contract cases.
 - State what is verified, what is assumed, and what requires specialist or human approval.
 
 ## Required Reading

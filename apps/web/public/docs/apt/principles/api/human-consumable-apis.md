@@ -3,7 +3,7 @@ title: Human Consumable Apis
 kind: principle
 status: active
 owner: APT
-last_updated: 2026-06-27
+last_updated: 2026-08-16
 source: apt-principles and apt-agent-standards
 domain: "api"
 source_paths: ["apt-principles-agents/principles/api/human-consumable-apis.md"]
@@ -43,6 +43,9 @@ Review for fashion-driven protocol choices, ambiguous errors, unsafe retries, un
 
 - Treat **Human Consumable Apis** as an explicit decision with defined scope, evidence, owner, and validation.
 - Required evidence: audience, schema, auth, errors, idempotency, examples, compatibility, operations.
+- Organize the contract around recognizable user and integrator intents with predictable naming, progressive disclosure, copyable examples, and a clear path from first success to advanced behavior.
+- Make authentication, permissions, state transitions, errors, retryability, asynchronous completion, limits, versioning, and support identifiers understandable without internal implementation knowledge.
+- Test onboarding, common tasks, debugging, recovery, migration, and reference lookup with representative beginners and expert consumers; record where documentation or tooling must compensate for complexity.
 - State what is verified, what is assumed, and what requires specialist or human approval.
 
 See the [Api canonical hub](README.md) and linked standards/checklists before making final claims.

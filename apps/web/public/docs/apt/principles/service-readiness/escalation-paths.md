@@ -3,7 +3,7 @@ title: Escalation Paths
 kind: principle
 status: active
 owner: APT
-last_updated: 2026-06-27
+last_updated: 2026-08-16
 source: apt-principles and apt-agent-standards
 domain: "service-readiness"
 source_paths: ["apt-principles-agents/principles/service-readiness/escalation-paths.md"]
@@ -43,6 +43,9 @@ Review for launch without ownership, alerts without action, missing customer-saf
 
 - Treat **Escalation Paths** as an explicit decision with defined scope, evidence, owner, and validation.
 - Required evidence: owner, telemetry, runbook, knowledge, escalation, communication, rollback.
+- Define objective triggers by impact, urgency, affected audience, data or money risk, duration, and confidence, then map each severity to a primary owner, backup, acknowledgement target, and decision authority.
+- Require a handoff packet with timeline, symptoms, scope, customer impact, evidence, actions attempted, current state, risks, communication status, and the next decision needed.
+- Exercise business-hours and out-of-hours paths, failed acknowledgements, cross-team incidents, customer communication, rollback authority, and closure learning before launch.
 - State what is verified, what is assumed, and what requires specialist or human approval.
 
 See the [Service Readiness canonical hub](README.md) and linked standards/checklists before making final claims.

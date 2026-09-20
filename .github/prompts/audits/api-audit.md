@@ -3,7 +3,7 @@ title: API Audit
 kind: prompt
 status: active
 owner: APT
-last_updated: 2026-06-27
+last_updated: 2026-08-16
 source: APT prompt consolidation
 domain: "audits"
 source_paths: ["apt-principles-agents/prompts/audits/api-audit.md"]
@@ -29,3 +29,10 @@ You are performing an APT api audit.
 Expected evidence: implementation plan, acceptance criteria, validation matrix, release record, runbook, support handoff, and captured learning.
 
 Do not invent product behavior. For payment, security, compliance, legal, or production-launch decisions, identify the required expert or human approval.
+
+## Task-Specific Requirements
+
+- Map each API surface to its audience, owner, protocol choice, source contract, and deployment boundary.
+- Review authentication and authorization, schema behavior, errors, idempotency, pagination, versioning, webhooks or events, rate limits, and deprecation where applicable.
+- Require runnable examples, contract and negative-path tests, observability, support identifiers, and evidence for compatibility claims.
+- Separate confirmed behavior from proposed behavior and identify missing product, security, payment, or operational approvals.

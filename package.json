@@ -11,6 +11,11 @@
     "build:web": "pnpm --dir apps/web build",
     "test:web": "pnpm --dir apps/web test",
     "lint:web": "pnpm --dir apps/web lint",
+    "typecheck": "pnpm run typecheck:worker && pnpm run typecheck:ui",
+    "typecheck:web": "tsc --project apps/web/tsconfig.json --noEmit --pretty false",
+    "typecheck:worker": "tsc --project apps/worker/tsconfig.json --noEmit --pretty false",
+    "typecheck:ui": "tsc --project packages/ui/tsconfig.json --noEmit --pretty false",
+    "check": "pnpm run validate:apt-conformance && pnpm run lint && pnpm run typecheck && pnpm run test && pnpm run build",
     "validation-report:web": "pnpm --dir apps/web run validation-report",
     "validation-report:web:full": "pnpm --dir apps/web run validation-report:full",
     "verify:apt-root-surfaces": "node scripts/verify-apt-root-surfaces.cjs",
@@ -19,5 +24,8 @@
     "docs:frontmatter-report": "pnpm --dir apps/web run frontmatter-report",
     "dev:worker": "pnpm --dir apps/worker dev",
     "deploy:worker": "pnpm --dir apps/worker deploy"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
   }
 }

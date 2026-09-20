@@ -119,126 +119,6 @@
       "checksum": "33c0fc6ad68f963d1987c2826c2ff837ef24d67ce73340a32aaa40eb27258473"
     },
     {
-      "id": "examples-distribution-showcases-agents-instruction-structure",
-      "title": "Agent Instruction Structure",
-      "kind": "example",
-      "domain": "distribution-showcases",
-      "collection": "examples",
-      "category": "examples",
-      "audience": [
-        "public",
-        "learners",
-        "adopters"
-      ],
-      "featured": true,
-      "sourcePath": "apt-principles-agents/examples/distribution-showcases/agents/instruction-structure.md",
-      "publicPath": "/docs/apt/examples/distribution-showcases/agents/instruction-structure.md",
-      "version": "1.0.0",
-      "status": "active",
-      "lastUpdated": "2026-06-28",
-      "checksum": "b53465a7c2d6a606fe232eac1ec2312ba35addfd46854b66eb774eaee1fc1331"
-    },
-    {
-      "id": "examples-distribution-showcases-api-route-design",
-      "title": "API Route Design",
-      "kind": "example",
-      "domain": "distribution-showcases",
-      "collection": "examples",
-      "category": "examples",
-      "audience": [
-        "public",
-        "learners",
-        "adopters"
-      ],
-      "featured": true,
-      "sourcePath": "apt-principles-agents/examples/distribution-showcases/api/route-design.md",
-      "publicPath": "/docs/apt/examples/distribution-showcases/api/route-design.md",
-      "version": "1.0.0",
-      "status": "active",
-      "lastUpdated": "2026-06-28",
-      "checksum": "55b2d514033a0d1e4d1647168c058522b4af69363b9f1a90084d9834a5163a73"
-    },
-    {
-      "id": "examples-distribution-showcases-cloudflare-worker-hono-structure",
-      "title": "Cloudflare Worker Hono Structure",
-      "kind": "example",
-      "domain": "distribution-showcases",
-      "collection": "examples",
-      "category": "examples",
-      "audience": [
-        "public",
-        "learners",
-        "adopters"
-      ],
-      "featured": true,
-      "sourcePath": "apt-principles-agents/examples/distribution-showcases/cloudflare/worker-hono-structure.md",
-      "publicPath": "/docs/apt/examples/distribution-showcases/cloudflare/worker-hono-structure.md",
-      "version": "1.0.0",
-      "status": "active",
-      "lastUpdated": "2026-06-28",
-      "checksum": "f24a8783ab2486a9d7b7421a73aa6a34062ed32fb82db0f199b8259abcb57a16"
-    },
-    {
-      "id": "examples-distribution-showcases-docs-documentation-structure",
-      "title": "Documentation Structure",
-      "kind": "example",
-      "domain": "distribution-showcases",
-      "collection": "examples",
-      "category": "examples",
-      "audience": [
-        "public",
-        "learners",
-        "adopters"
-      ],
-      "featured": true,
-      "sourcePath": "apt-principles-agents/examples/distribution-showcases/docs/documentation-structure.md",
-      "publicPath": "/docs/apt/examples/distribution-showcases/docs/documentation-structure.md",
-      "version": "1.0.0",
-      "status": "active",
-      "lastUpdated": "2026-06-28",
-      "checksum": "c1e8446b8a5334d67e7381f8173225e0f466b2e61910ccc70781215f7f286914"
-    },
-    {
-      "id": "examples-distribution-showcases-security-security-review-expectations",
-      "title": "Security Review Expectations",
-      "kind": "example",
-      "domain": "distribution-showcases",
-      "collection": "examples",
-      "category": "examples",
-      "audience": [
-        "public",
-        "learners",
-        "adopters"
-      ],
-      "featured": true,
-      "sourcePath": "apt-principles-agents/examples/distribution-showcases/security/security-review-expectations.md",
-      "publicPath": "/docs/apt/examples/distribution-showcases/security/security-review-expectations.md",
-      "version": "1.0.0",
-      "status": "active",
-      "lastUpdated": "2026-06-28",
-      "checksum": "6d54b4d54a03308f4bdd81618be620c563fa7e909b6a19e84e06675a5fd51a47"
-    },
-    {
-      "id": "examples-distribution-showcases-ui-intent-based-navigation",
-      "title": "Intent-Based UI Navigation",
-      "kind": "example",
-      "domain": "distribution-showcases",
-      "collection": "examples",
-      "category": "examples",
-      "audience": [
-        "public",
-        "learners",
-        "adopters"
-      ],
-      "featured": true,
-      "sourcePath": "apt-principles-agents/examples/distribution-showcases/ui/intent-based-navigation.md",
-      "publicPath": "/docs/apt/examples/distribution-showcases/ui/intent-based-navigation.md",
-      "version": "1.0.0",
-      "status": "active",
-      "lastUpdated": "2026-06-28",
-      "checksum": "d915851d54da4cd61ee507e9989352be80ae8a4ac6b01ec40913cdde7df98d84"
-    },
-    {
       "id": "examples-ecommerce-checkout-README",
       "title": "Ecommerce Checkout",
       "kind": "example",
@@ -495,8 +375,128 @@
       "publicPath": "/docs/apt/examples/README.md",
       "version": "1.0.0",
       "status": "active",
-      "lastUpdated": "2026-06-27",
-      "checksum": "6a313923a13b196a610f19441d30db11a3192835ec0c6d7298882081b6c7efd0"
+      "lastUpdated": "2026-08-16",
+      "checksum": "d45b97e834a29b85063ab9c2c517dc1883549c9f845b392b226c969491cee9b2"
+    },
+    {
+      "id": "examples-showcases-agent-instruction-structure",
+      "title": "Agent Instruction Structure Showcase",
+      "kind": "example",
+      "domain": "showcases",
+      "collection": "examples",
+      "category": "examples",
+      "audience": [
+        "public",
+        "learners",
+        "adopters"
+      ],
+      "featured": true,
+      "sourcePath": "apt-principles-agents/examples/showcases/agent-instruction-structure.md",
+      "publicPath": "/docs/apt/examples/showcases/agent-instruction-structure.md",
+      "version": "v2",
+      "status": "active",
+      "lastUpdated": "2026-08-16",
+      "checksum": "975891f48752da496df57d87f5666bc1ef96f45b79c01fd8f0ef0295b1961919"
+    },
+    {
+      "id": "examples-showcases-api-route-design",
+      "title": "API Route Design Showcase",
+      "kind": "example",
+      "domain": "showcases",
+      "collection": "examples",
+      "category": "examples",
+      "audience": [
+        "public",
+        "learners",
+        "adopters"
+      ],
+      "featured": true,
+      "sourcePath": "apt-principles-agents/examples/showcases/api-route-design.md",
+      "publicPath": "/docs/apt/examples/showcases/api-route-design.md",
+      "version": "v2",
+      "status": "active",
+      "lastUpdated": "2026-08-16",
+      "checksum": "ecca13582d65e72d113bb42e7e18f6b9c87ef435383114bfbd0d03feb7db6888"
+    },
+    {
+      "id": "examples-showcases-cloudflare-worker-hono-structure",
+      "title": "Cloudflare Worker Hono Structure Showcase",
+      "kind": "example",
+      "domain": "showcases",
+      "collection": "examples",
+      "category": "examples",
+      "audience": [
+        "public",
+        "learners",
+        "adopters"
+      ],
+      "featured": true,
+      "sourcePath": "apt-principles-agents/examples/showcases/cloudflare-worker-hono-structure.md",
+      "publicPath": "/docs/apt/examples/showcases/cloudflare-worker-hono-structure.md",
+      "version": "v2",
+      "status": "active",
+      "lastUpdated": "2026-08-16",
+      "checksum": "ac077ed9d8050cb6c597d60906870f5e7e4b678bbfc362487a236ca09db57b64"
+    },
+    {
+      "id": "examples-showcases-documentation-structure",
+      "title": "Documentation Structure Showcase",
+      "kind": "example",
+      "domain": "showcases",
+      "collection": "examples",
+      "category": "examples",
+      "audience": [
+        "public",
+        "learners",
+        "adopters"
+      ],
+      "featured": true,
+      "sourcePath": "apt-principles-agents/examples/showcases/documentation-structure.md",
+      "publicPath": "/docs/apt/examples/showcases/documentation-structure.md",
+      "version": "v2",
+      "status": "active",
+      "lastUpdated": "2026-08-16",
+      "checksum": "4ca4d0ee1955d4c29bf2c38f27f25c00ba123fd88285ef0ae070fcfa16bb7725"
+    },
+    {
+      "id": "examples-showcases-intent-based-ui-navigation",
+      "title": "Intent-Based UI Navigation Showcase",
+      "kind": "example",
+      "domain": "showcases",
+      "collection": "examples",
+      "category": "examples",
+      "audience": [
+        "public",
+        "learners",
+        "adopters"
+      ],
+      "featured": true,
+      "sourcePath": "apt-principles-agents/examples/showcases/intent-based-ui-navigation.md",
+      "publicPath": "/docs/apt/examples/showcases/intent-based-ui-navigation.md",
+      "version": "v2",
+      "status": "active",
+      "lastUpdated": "2026-08-16",
+      "checksum": "14f7731661c266ad044a8d0a9a2435f87f9e6b4d31116129009a57f8a8977721"
+    },
+    {
+      "id": "examples-showcases-security-review-expectations",
+      "title": "Security Review Expectations Showcase",
+      "kind": "example",
+      "domain": "showcases",
+      "collection": "examples",
+      "category": "examples",
+      "audience": [
+        "public",
+        "learners",
+        "adopters"
+      ],
+      "featured": true,
+      "sourcePath": "apt-principles-agents/examples/showcases/security-review-expectations.md",
+      "publicPath": "/docs/apt/examples/showcases/security-review-expectations.md",
+      "version": "v2",
+      "status": "active",
+      "lastUpdated": "2026-08-16",
+      "checksum": "e40facacb44a9c853ee0ba4ee5796b59eafaa3f7cf334f4d4f3e169b704776f9"
     },
     {
       "id": "examples-soap-to-rest-README",
@@ -595,8 +595,8 @@
       "publicPath": "/docs/apt/principles/ai/agent-design.md",
       "version": "1.0.0",
       "status": "active",
-      "lastUpdated": "2026-06-27",
-      "checksum": "baaff899d09349364dc3539fddd7efb601e114f6e5b7989bf589f256cd540d85"
+      "lastUpdated": "2026-08-16",
+      "checksum": "e1e0ad3a7be1736a75c8ed711dc5d6f03061b07d270eef0135e624b6cc91b397"
     },
     {
       "id": "principles-ai-ai-safety-and-evaluation",
@@ -635,8 +635,8 @@
       "publicPath": "/docs/apt/principles/ai/local-llm-routing.md",
       "version": "1.0.0",
       "status": "active",
-      "lastUpdated": "2026-06-27",
-      "checksum": "edbf040c3e51c6530b443282f5756fe3a2e3d91dd5c1b8e634e5ef4cd9c27c32"
+      "lastUpdated": "2026-08-16",
+      "checksum": "4a3b5f9f2745aa08d3974b8357c72cf5c6e41a9ded0212ad296d61236c43bddb"
     },
     {
       "id": "principles-ai-model-routing",
@@ -715,8 +715,8 @@
       "publicPath": "/docs/apt/principles/ai/skill-design.md",
       "version": "1.0.0",
       "status": "active",
-      "lastUpdated": "2026-06-27",
-      "checksum": "51edd10e169ff3faa882487c3fd6337530b80981dde9d828219068d4a9b58a39"
+      "lastUpdated": "2026-08-16",
+      "checksum": "39b400e4f864d0b6676c28025fe39ef5126622a157407ee3f0dfa9f5be8b3e30"
     },
     {
       "id": "principles-ai-swarm-review",
@@ -755,8 +755,8 @@
       "publicPath": "/docs/apt/principles/api/ai-consumable-apis.md",
       "version": "1.0.0",
       "status": "active",
-      "lastUpdated": "2026-06-27",
-      "checksum": "f41a1917b60817ef2ffb09eaf46776b0163ba951964bc739e29b4369adb49c72"
+      "lastUpdated": "2026-08-16",
+      "checksum": "7a2cae888762525e8bb9741e13ee05f04addad505cfb7420a7d2b2495e2089cd"
     },
     {
       "id": "principles-api-api-auth",
@@ -915,8 +915,8 @@
       "publicPath": "/docs/apt/principles/api/human-consumable-apis.md",
       "version": "1.0.0",
       "status": "active",
-      "lastUpdated": "2026-06-27",
-      "checksum": "de0075489a249d05c91ace3b541c16cb48b7bca8870dd02906cd13efb5c121dc"
+      "lastUpdated": "2026-08-16",
+      "checksum": "025104729585d6a6bd61bf3d5e9fafc431da8331e007494c71d4fdb492a0abb0"
     },
     {
       "id": "principles-api-json-first-design",
@@ -975,8 +975,8 @@
       "publicPath": "/docs/apt/principles/api/modern-api-design.md",
       "version": "1.0.0",
       "status": "active",
-      "lastUpdated": "2026-06-27",
-      "checksum": "0365077750fd23bb3cfeb19f16316e7bf2423071a3822d51799b2f25b2c3e5e8"
+      "lastUpdated": "2026-08-16",
+      "checksum": "5a8493b087cee306a62e686d0066e6e8b3a0a7c66d27e9b3adef10a9c2ef5d3f"
     },
     {
       "id": "principles-api-README",
@@ -1275,8 +1275,8 @@
       "publicPath": "/docs/apt/principles/design/intent-based-design.md",
       "version": "1.0.0",
       "status": "active",
-      "lastUpdated": "2026-06-27",
-      "checksum": "35af9d9a926932b351660a2e5fc38db6a57505d5b079ce6fdc58255d4d5b624d"
+      "lastUpdated": "2026-08-16",
+      "checksum": "c224d6262de4453adf5d1ba09d3bfad4f26558d24ba82c452d77f230c05057a8"
     },
     {
       "id": "principles-design-README",
@@ -1335,8 +1335,8 @@
       "publicPath": "/docs/apt/principles/design/ui-api-alignment.md",
       "version": "1.0.0",
       "status": "active",
-      "lastUpdated": "2026-06-27",
-      "checksum": "3c6481f44df3b3ecbdc4502bf5b621eb4bf3c2ff57c155d3a01ee288f962b758"
+      "lastUpdated": "2026-08-16",
+      "checksum": "be967449f1da0cb19c2078c7c5f44338ec032bf7e3045fec40ec9a16848e009d"
     },
     {
       "id": "principles-documentation-ai-usage-examples",
@@ -1355,8 +1355,8 @@
       "publicPath": "/docs/apt/principles/documentation/ai-usage-examples.md",
       "version": "1.0.0",
       "status": "active",
-      "lastUpdated": "2026-06-27",
-      "checksum": "48c765b19761f116029971d4cbff676f69efb23b1578ae9f6e343aa898976390"
+      "lastUpdated": "2026-08-16",
+      "checksum": "a72e847b8099b27adf769d9998764178f1ec26dc08f2b60813e6336b056d6e16"
     },
     {
       "id": "principles-documentation-api-examples",
@@ -1375,8 +1375,8 @@
       "publicPath": "/docs/apt/principles/documentation/api-examples.md",
       "version": "1.0.0",
       "status": "active",
-      "lastUpdated": "2026-06-27",
-      "checksum": "bc12920b57606da2bd005d669ad1e9d55ecb0caca1fe898a1ba776ce00d63449"
+      "lastUpdated": "2026-08-16",
+      "checksum": "b5c78be5de85dfc0ffbd4d21da72d0f2c361624cf5ac1b995117fe21e604c384"
     },
     {
       "id": "principles-documentation-audience-layered-docs",
@@ -1395,8 +1395,8 @@
       "publicPath": "/docs/apt/principles/documentation/audience-layered-docs.md",
       "version": "1.0.0",
       "status": "active",
-      "lastUpdated": "2026-06-27",
-      "checksum": "1d8bbd8f2c17d8f1fdb71f191147246e2f5d56176e9e35e176c9079f73a75700"
+      "lastUpdated": "2026-08-16",
+      "checksum": "13a77f45f8d3577a13d79892d67bb8fa260a7256d9708310832841ccd3d2509f"
     },
     {
       "id": "principles-documentation-diagrams-and-demos",
@@ -1435,8 +1435,8 @@
       "publicPath": "/docs/apt/principles/documentation/implementation-blueprints.md",
       "version": "1.0.0",
       "status": "active",
-      "lastUpdated": "2026-06-27",
-      "checksum": "bf2951a61a1d99a531317d9e9e6583a919627bd0b46d2487929e57d4760960a7"
+      "lastUpdated": "2026-08-16",
+      "checksum": "6e97beceeb06ec0ac3e0210f37303659a8fb087053ff50db02824e10771a6368"
     },
     {
       "id": "principles-documentation-migration-guides",
@@ -1455,8 +1455,8 @@
       "publicPath": "/docs/apt/principles/documentation/migration-guides.md",
       "version": "1.0.0",
       "status": "active",
-      "lastUpdated": "2026-06-27",
-      "checksum": "8c8ba26eaaa734ef1640aa1a6395f2aaf6722d6bae048db4da4ec648b7f52147"
+      "lastUpdated": "2026-08-16",
+      "checksum": "4525b399b969fb7766e179cc454180b33b516ec8f1affb2cf7583b6509341136"
     },
     {
       "id": "principles-documentation-product-hub-standard",
@@ -1475,8 +1475,8 @@
       "publicPath": "/docs/apt/principles/documentation/product-hub-standard.md",
       "version": "1.0.0",
       "status": "active",
-      "lastUpdated": "2026-06-27",
-      "checksum": "4c5d6178a0c6dcb53c18fd1bc2f78eeb4f628f21319b8fb091e8757c8b99f73c"
+      "lastUpdated": "2026-08-16",
+      "checksum": "cd103569e77e26ea80164eb526dff0c93cc6bc595a5a6b1b3a544eab38de1a99"
     },
     {
       "id": "principles-documentation-README",
@@ -2155,8 +2155,8 @@
       "publicPath": "/docs/apt/principles/modernization/api-facade-design.md",
       "version": "1.0.0",
       "status": "active",
-      "lastUpdated": "2026-06-27",
-      "checksum": "c994e39d7b2659e8d64fd0e0b093cdbf46c9c2032fded9c03d3503b8b593bd38"
+      "lastUpdated": "2026-08-16",
+      "checksum": "ad3e0f2942f31f43be346449c592c88da52f71b3b9663b1aa811ee7bbf98e7a3"
     },
     {
       "id": "principles-modernization-backward-compatibility",
@@ -2175,8 +2175,8 @@
       "publicPath": "/docs/apt/principles/modernization/backward-compatibility.md",
       "version": "1.0.0",
       "status": "active",
-      "lastUpdated": "2026-06-27",
-      "checksum": "125f0f737f4c043fdf614ee543a7781ec54ec377e50a4b14454681025e8bb83f"
+      "lastUpdated": "2026-08-16",
+      "checksum": "ad86be6d9943446c11c2bce663ae43fc882acb89ecc4d5b7e1778b441bc4b3a7"
     },
     {
       "id": "principles-modernization-deprecation-planning",
@@ -2235,8 +2235,8 @@
       "publicPath": "/docs/apt/principles/modernization/legacy-api-inventory.md",
       "version": "1.0.0",
       "status": "active",
-      "lastUpdated": "2026-06-27",
-      "checksum": "359397a2ac1e176a93e53625d678c894acfb8c0303e5c303e82d1bfa2ccf180c"
+      "lastUpdated": "2026-08-16",
+      "checksum": "32b5c0bbb28448ca3c03abc5896c816be7d9ca9ed30e016d10ac0a671e40a9d6"
     },
     {
       "id": "principles-modernization-nvp-to-rest",
@@ -2495,8 +2495,8 @@
       "publicPath": "/docs/apt/principles/payments/reconciliation-funding.md",
       "version": "1.0.0",
       "status": "active",
-      "lastUpdated": "2026-06-27",
-      "checksum": "2a139449cc17886776f086bd6ff8770b56d80566418ca921fd5bf32865e9c8ef"
+      "lastUpdated": "2026-08-16",
+      "checksum": "d44420f1ca1fc01db3a950387a23d662daee84559f1b2720efb230ae36978389"
     },
     {
       "id": "principles-payments-recurring-and-subscriptions",
@@ -2575,8 +2575,8 @@
       "publicPath": "/docs/apt/principles/payments/transaction-intelligence.md",
       "version": "1.0.0",
       "status": "active",
-      "lastUpdated": "2026-06-27",
-      "checksum": "826fdbc6d84766f19b047f4dac8ed05732e90e8180b5774619be27dd3bd8e314"
+      "lastUpdated": "2026-08-16",
+      "checksum": "f9f849141b408c282a22e14de42983561a9d914d6cb580aec76c32f806639afa"
     },
     {
       "id": "principles-quick-reference-ai",
@@ -2835,8 +2835,8 @@
       "publicPath": "/docs/apt/principles/security-risk/data-handling.md",
       "version": "1.0.0",
       "status": "active",
-      "lastUpdated": "2026-06-27",
-      "checksum": "694fdffab039c71b480deb6e6e5d49dcba2d43b6dc07b05be3adc7243d018efa"
+      "lastUpdated": "2026-08-16",
+      "checksum": "76579b8ff07293d3d793372d0b4f1c9bdc3c81a5f70e88c8997132b590a65c23"
     },
     {
       "id": "principles-security-risk-fraud-risk-review",
@@ -2955,8 +2955,8 @@
       "publicPath": "/docs/apt/principles/service-readiness/escalation-paths.md",
       "version": "1.0.0",
       "status": "active",
-      "lastUpdated": "2026-06-27",
-      "checksum": "b1587ccaa862876361a63fd75ee0cf6e6179332508cbff7b520c3d1d9d446c63"
+      "lastUpdated": "2026-08-16",
+      "checksum": "d0bc8204b997a47c6ce5a65432c60486ec0d4149277e1ff5f9819c00707ebbbf"
     },
     {
       "id": "principles-service-readiness-knowledge-base-readiness",
@@ -3055,8 +3055,8 @@
       "publicPath": "/docs/apt/principles/service-readiness/release-communications.md",
       "version": "1.0.0",
       "status": "active",
-      "lastUpdated": "2026-06-27",
-      "checksum": "a3b945725ae61eb9631d548e290a7c5ec63afa300af9240e6d3f324eacc885dc"
+      "lastUpdated": "2026-08-16",
+      "checksum": "e32aee882f4eccdafe75019dd883cf33bbe4aa41009328a6c442c32e34608eaa"
     },
     {
       "id": "principles-service-readiness-support-readiness",
@@ -3135,8 +3135,8 @@
       "publicPath": "/docs/apt/principles/stablecoin-crypto/digital-asset-risk.md",
       "version": "1.0.0",
       "status": "active",
-      "lastUpdated": "2026-06-27",
-      "checksum": "eb0e7c790adc8ffc4147ae2accd479a16aa4f09809789a50fb355989a26d28b1"
+      "lastUpdated": "2026-08-16",
+      "checksum": "38a878fc7e87bcb8e9f3fabb29c5976b407966072395f56367743fbf8ba20e0e"
     },
     {
       "id": "principles-stablecoin-crypto-on-chain-off-chain-design",
@@ -3335,8 +3335,8 @@
       "publicPath": "/docs/apt/principles/thinking/practical-thinking.md",
       "version": "1.0.0",
       "status": "active",
-      "lastUpdated": "2026-06-27",
-      "checksum": "f4235730329f284315b27960890b207bd5f639fe67abd7d6ec1a7116f87602ac"
+      "lastUpdated": "2026-08-16",
+      "checksum": "b217d556198f0246b8f392fcd5f08beddc4ba338177dc45aafd95586d12337b3"
     },
     {
       "id": "principles-thinking-README",

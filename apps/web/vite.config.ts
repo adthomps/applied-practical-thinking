@@ -31,14 +31,8 @@ export default defineConfig(() => ({
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
-            if (id.includes('/mermaid/') || id.includes('/dagre/') || id.includes('/dagre-d3')) {
-              return 'vendor-mermaid';
-            }
             if (id.includes('/recharts/') || id.includes('/d3-') || id.includes('/victory-vendor/')) {
               return 'vendor-charts';
-            }
-            if (id.includes('/react-syntax-highlighter/') || id.includes('/refractor/') || id.includes('/prismjs/')) {
-              return 'vendor-syntax';
             }
             if (id.includes('/@radix-ui/')) {
               return 'vendor-radix';

@@ -1,96 +1,155 @@
 {
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "APT Project Profile Schema",
-  "version": "v1",
-  "last_updated": "2026-04-24",
+  "version": "v2",
+  "last_updated": "2026-08-16",
   "owner": "APT",
   "status": "draft",
+  "description": "Backward-compatible project profile contract. Legacy profiles retain the v1 fields; inventory_version 2 profiles add a verified operational inventory.",
   "type": "object",
-  "required": [
-    "project",
-    "purpose",
-    "audience",
-    "adoption_mode",
-    "principles_demonstrated",
-    "maturity",
-    "showcase"
-  ],
+  "required": ["project", "purpose", "audience", "adoption_mode", "principles_demonstrated", "maturity", "showcase"],
   "properties": {
-    "project": {
-      "type": "string"
+    "inventory_version": { "type": "integer", "const": 2 },
+    "project": { "type": "string", "minLength": 1 },
+    "purpose": { "type": "string", "minLength": 1 },
+    "description": { "type": "string", "minLength": 1 },
+    "audience": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+    "adoption_mode": { "type": "string", "enum": ["copy", "sync", "apply", "showcase"] },
+    "principles_demonstrated": { "type": "array", "items": { "type": "string" } },
+    "repository_type": { "type": "string", "enum": ["documentation-asset-toolkit", "application", "service", "library", "monorepo", "static-site", "workspace-tool", "other"] },
+    "ownership": {
+      "type": "object",
+      "required": ["owner", "profile_maintainer"],
+      "properties": {
+        "owner": { "type": "string", "minLength": 1 },
+        "profile_maintainer": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
     },
-    "purpose": {
-      "type": "string"
+    "architecture": {
+      "type": "object",
+      "required": ["summary", "components", "runtime_model", "deployment_model"],
+      "properties": {
+        "summary": { "type": "string", "minLength": 1 },
+        "components": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "runtime_model": { "type": "string", "minLength": 1 },
+        "deployment_model": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
     },
-    "audience": {
+    "runtime": {
+      "type": "object",
+      "required": ["summary", "requirements", "package_manager", "local_server", "build", "deployment"],
+      "properties": {
+        "summary": { "type": "string", "minLength": 1 },
+        "requirements": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["name", "declared", "recommended", "verified_by"],
+            "properties": {
+              "name": { "type": "string", "minLength": 1 },
+              "declared": { "type": "string", "minLength": 1 },
+              "recommended": { "type": "string", "minLength": 1 },
+              "verified_by": { "type": "string", "minLength": 1 }
+            },
+            "additionalProperties": false
+          }
+        },
+        "package_manager": { "type": "string", "minLength": 1 },
+        "local_server": { "type": "string", "minLength": 1 },
+        "build": { "type": "string", "minLength": 1 },
+        "deployment": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "commands": {
       "type": "array",
+      "minItems": 1,
       "items": {
-        "type": "string"
+        "type": "object",
+        "required": ["name", "category", "command", "purpose", "mutates", "applicability"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "category": { "type": "string", "enum": ["setup", "run", "build", "validate", "test", "generate", "distribute", "deploy", "audit", "maintenance"] },
+          "command": { "type": "string" },
+          "purpose": { "type": "string", "minLength": 1 },
+          "mutates": { "type": "boolean" },
+          "applicability": { "type": "string", "enum": ["applicable", "not-applicable"] }
+        },
+        "additionalProperties": false
       }
     },
-    "adoption_mode": {
-      "type": "string",
-      "enum": ["copy", "sync", "apply", "showcase"]
-    },
-    "principles_demonstrated": {
+    "structure": {
       "type": "array",
+      "minItems": 1,
       "items": {
-        "type": "string"
+        "type": "object",
+        "required": ["path", "purpose", "authority", "maintenance"],
+        "properties": {
+          "path": { "type": "string", "minLength": 1 },
+          "purpose": { "type": "string", "minLength": 1 },
+          "authority": { "type": "string", "enum": ["canonical", "operational", "adapter", "supporting", "generated", "archived", "local"] },
+          "maintenance": { "type": "string", "enum": ["authored", "generated", "mixed", "tool-managed"] }
+        },
+        "additionalProperties": false
       }
     },
-    "outcome_evidence": {
-      "type": "string"
+    "integrations": { "type": "array", "items": { "type": "string" } },
+    "source_boundaries": {
+      "type": "object",
+      "required": ["canonical", "generated", "archived"],
+      "properties": {
+        "canonical": { "type": "array", "items": { "type": "string" } },
+        "generated": { "type": "array", "items": { "type": "string" } },
+        "archived": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
     },
-    "architecture_pattern": {
-      "type": "string"
-    },
-    "command_matrix": {
-      "type": "string"
-    },
-    "validation_evidence": {
-      "type": "string"
-    },
-    "release_model": {
-      "type": "string"
-    },
-    "operations_model": {
-      "type": "string"
-    },
-    "ai_agent_usage": {
-      "type": "string"
-    },
-    "ai_evaluation": {
-      "type": "string"
-    },
-    "security_model": {
-      "type": "string"
-    },
-    "security_escalation": {
-      "type": "string"
-    },
-    "learning_value": {
-      "type": "string"
-    },
-    "reusable_artifacts": {
+    "constraints": { "type": "array", "items": { "type": "string" } },
+    "evidence": {
       "type": "array",
+      "minItems": 1,
       "items": {
-        "type": "string"
+        "type": "object",
+        "required": ["path", "supports"],
+        "properties": {
+          "path": { "type": "string", "minLength": 1 },
+          "supports": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
       }
     },
-    "maturity": {
-      "type": "string",
-      "enum": ["concept", "prototype", "active", "production", "archived"]
-    },
+    "last_verified": { "type": "string", "format": "date" },
+    "outcome_evidence": { "type": "string" },
+    "architecture_pattern": { "type": "string" },
+    "command_matrix": { "type": "string" },
+    "validation_evidence": { "type": "string" },
+    "release_model": { "type": "string" },
+    "operations_model": { "type": "string" },
+    "ai_agent_usage": { "type": "string" },
+    "ai_evaluation": { "type": "string" },
+    "security_model": { "type": "string" },
+    "security_escalation": { "type": "string" },
+    "learning_value": { "type": "string" },
+    "reusable_artifacts": { "type": "array", "items": { "type": "string" } },
+    "maturity": { "type": "string", "enum": ["concept", "prototype", "active", "production", "archived"] },
     "showcase": {
       "type": "object",
       "required": ["include", "summary"],
       "properties": {
-        "include": {
-          "type": "boolean"
-        },
-        "summary": {
-          "type": "string"
-        }
+        "include": { "type": "boolean" },
+        "summary": { "type": "string" }
       }
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "inventory_version": { "const": 2 } }, "required": ["inventory_version"] },
+      "then": {
+        "required": ["description", "repository_type", "ownership", "architecture", "runtime", "commands", "structure", "integrations", "source_boundaries", "constraints", "evidence", "last_verified"]
+      }
+    }
+  ]
 }
