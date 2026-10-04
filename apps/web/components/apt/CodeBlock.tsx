@@ -50,9 +50,17 @@ function loadSyntaxResources() {
   return syntaxResourcesPromise;
 }
 
+// Both the plain fallback and the highlighted block sit on the APT code surface, so the
+// block does not change background when the highlighter finishes loading.
+const CODE_SURFACE_STYLE: React.CSSProperties = {
+  background: "hsl(var(--apt-surface))",
+  borderRadius: "var(--radius)",
+  fontSize: 14,
+};
+
 function PlainCodeBlock({ code }: { code: string }) {
   return (
-    <pre className="my-4 overflow-x-auto rounded-lg bg-[#282c34] p-4 text-sm text-[#abb2bf]">
+    <pre className="my-4 overflow-x-auto rounded-lg bg-apt-surface p-4 text-sm text-apt-text-secondary">
       <code>{code}</code>
     </pre>
   );
@@ -92,7 +100,7 @@ export function CodeBlock({ code, language }: { code: string; language?: string 
 
   return (
     <div className="my-4">
-      <SyntaxHighlighter language={normalizedLanguage} style={theme} customStyle={{ borderRadius: 8, fontSize: 14 }}>
+      <SyntaxHighlighter language={normalizedLanguage} style={theme} customStyle={CODE_SURFACE_STYLE}>
         {code}
       </SyntaxHighlighter>
     </div>

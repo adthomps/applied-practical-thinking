@@ -47,11 +47,28 @@ Current mapping:
 
 | Token | Dark (`chart`) | Light (`chartLight`) |
 |---|---|---|
-| `chart-1` | `hsl(220, 70%, 55%)` | `hsl(220, 70%, 50%)` |
+| `chart-1` | `hsl(220, 70%, 61%)` | `hsl(220, 70%, 50%)` |
 | `chart-2` | `hsl(165, 45%, 40%)` | `hsl(165, 45%, 40%)` |
 | `chart-3` | `hsl(280, 55%, 55%)` | `hsl(280, 60%, 50%)` |
 | `chart-4` | `hsl(30, 75%, 50%)` | `hsl(30, 80%, 55%)` |
 | `chart-5` | `hsl(340, 65%, 55%)` | `hsl(340, 70%, 50%)` |
+
+## Status Tokens
+
+Status colors are part of the contract (APT-018), so products do not define their own:
+
+| Token | Dark | Light | Use |
+|---|---|---|---|
+| `success` | `hsl(155, 50%, 45%)` | `hsl(160, 60%, 28%)` | Completed, approved, healthy |
+| `success-foreground` | `hsl(220, 20%, 8%)` | `hsl(0, 0%, 100%)` | Text on a success fill |
+| `warning` | `hsl(38, 92%, 50%)` | `hsl(30, 95%, 30%)` | Needs review, partial, at risk |
+| `warning-foreground` | `hsl(220, 20%, 8%)` | `hsl(0, 0%, 100%)` | Text on a warning fill |
+
+Errors use the existing `destructive` token.
+
+## Contrast Contract
+
+Every text token must meet WCAG AA (4.5:1) on every surface it is used on: `background`, `card`, `muted`, `secondary`, and `apt-surface-elevated`. This is why the dark `muted-foreground` and `apt-text-secondary` are `hsl(220, 10%, 60%)`. The pairs are listed in `apps/web/lib/contrast.ts` and enforced by `test/apt-contrast-contract.test.ts`.
 
 ## Guard Rails
 

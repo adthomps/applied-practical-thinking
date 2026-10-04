@@ -304,6 +304,8 @@ export default function PortfolioDesignSystem() {
                   <ColorSwatch name="Border" cssVar="--border" className="bg-border" />
                   <ColorSwatch name="Ring" cssVar="--ring" className="bg-ring" />
                   <ColorSwatch name="Destructive" cssVar="--destructive" className="bg-destructive" />
+                  <ColorSwatch name="Success" cssVar="--success" className="bg-success" />
+                  <ColorSwatch name="Warning" cssVar="--warning" className="bg-warning" />
                   <ColorSwatch name="Input" cssVar="--input" className="bg-input" />
                   <ColorSwatch name="Popover" cssVar="--popover" className="bg-popover" />
                 </div>
@@ -313,9 +315,12 @@ export default function PortfolioDesignSystem() {
 .dark {
   --background: 220 20% 8%;      /* Deep space blue */
   --foreground: 220 10% 95%;     /* Near-white text */
-  --primary: 220 70% 55%;        /* Blue accent */
+  --primary: 220 70% 61%;        /* Blue accent */
   --accent: 165 45% 40%;         /* Restricted support accent */
   --muted: 220 15% 15%;          /* Subdued backgrounds */
+  --muted-foreground: 220 10% 60%; /* Secondary text, AA on all surfaces */
+  --success: 155 50% 45%;        /* Positive status */
+  --warning: 38 92% 50%;         /* Caution status */
   --border: 220 15% 20%;         /* Subtle dividers */
 }`} />
             </TabsContent>

@@ -9,24 +9,28 @@
         "card-foreground": { "value": "hsl(220, 10%, 95%)", "type": "color", "description": "Card text color" },
         "popover": { "value": "hsl(220, 18%, 12%)", "type": "color", "description": "Popover background" },
         "popover-foreground": { "value": "hsl(220, 10%, 95%)", "type": "color", "description": "Popover text" },
-        "primary": { "value": "hsl(220, 70%, 55%)", "type": "color", "description": "Brand accent color" },
+        "primary": { "value": "hsl(220, 70%, 61%)", "type": "color", "description": "Brand accent color" },
         "primary-foreground": { "value": "hsl(220, 20%, 8%)", "type": "color", "description": "Text on primary" },
         "secondary": { "value": "hsl(220, 15%, 18%)", "type": "color", "description": "Secondary backgrounds" },
         "secondary-foreground": { "value": "hsl(220, 10%, 90%)", "type": "color", "description": "Text on secondary" },
         "muted": { "value": "hsl(220, 15%, 15%)", "type": "color", "description": "Subdued backgrounds" },
-        "muted-foreground": { "value": "hsl(220, 10%, 55%)", "type": "color", "description": "Secondary/subdued text" },
+        "muted-foreground": { "value": "hsl(220, 10%, 60%)", "type": "color", "description": "Secondary/subdued text" },
         "accent": { "value": "hsl(165, 45%, 40%)", "type": "color", "description": "Restricted support accent" },
         "accent-foreground": { "value": "hsl(220, 20%, 8%)", "type": "color", "description": "Text on accent - dark for contrast" },
         "overlay": { "value": "hsl(220, 20%, 4% / 0.82)", "type": "color", "description": "Modal and sheet overlay scrim" },
         "destructive": { "value": "hsl(0, 65%, 45%)", "type": "color", "description": "Error/danger color" },
         "destructive-foreground": { "value": "hsl(0, 0%, 100%)", "type": "color", "description": "Text on destructive" },
+        "success": { "value": "hsl(155, 50%, 45%)", "type": "color", "description": "Positive status (completed, approved). Text-safe on all theme surfaces." },
+        "success-foreground": { "value": "hsl(220, 20%, 8%)", "type": "color", "description": "Text on success fill" },
+        "warning": { "value": "hsl(38, 92%, 50%)", "type": "color", "description": "Caution status (review needed, partial). Text-safe on all theme surfaces." },
+        "warning-foreground": { "value": "hsl(220, 20%, 8%)", "type": "color", "description": "Text on warning fill" },
         "border": { "value": "hsl(220, 15%, 20%)", "type": "color", "description": "Border and divider color" },
         "input": { "value": "hsl(220, 15%, 18%)", "type": "color", "description": "Input field background" },
-        "ring": { "value": "hsl(220, 70%, 55%)", "type": "color", "description": "Focus ring color" },
-        "apt-glow": { "value": "hsl(220, 70%, 55%)", "type": "color", "description": "Glow effect color" },
+        "ring": { "value": "hsl(220, 70%, 61%)", "type": "color", "description": "Focus ring color" },
+        "apt-glow": { "value": "hsl(220, 70%, 61%)", "type": "color", "description": "Glow effect color" },
         "apt-surface": { "value": "hsl(220, 18%, 12%)", "type": "color", "description": "APT surface" },
         "apt-surface-elevated": { "value": "hsl(220, 16%, 16%)", "type": "color", "description": "Elevated surface" },
-        "apt-text-secondary": { "value": "hsl(220, 10%, 55%)", "type": "color", "description": "Secondary text" },
+        "apt-text-secondary": { "value": "hsl(220, 10%, 60%)", "type": "color", "description": "Secondary text" },
         "apt-border-subtle": { "value": "hsl(220, 15%, 22%)", "type": "color", "description": "Subtle borders" }
       },
       "light": {
@@ -47,6 +51,10 @@
         "overlay": { "value": "hsl(220, 20%, 8% / 0.78)", "type": "color", "description": "Modal and sheet overlay scrim" },
         "destructive": { "value": "hsl(0, 70%, 50%)", "type": "color", "description": "Light destructive" },
         "destructive-foreground": { "value": "hsl(0, 0%, 100%)", "type": "color", "description": "Light destructive text" },
+        "success": { "value": "hsl(160, 60%, 28%)", "type": "color", "description": "Positive status (completed, approved). Text-safe on all theme surfaces." },
+        "success-foreground": { "value": "hsl(0, 0%, 100%)", "type": "color", "description": "Text on success fill" },
+        "warning": { "value": "hsl(30, 95%, 30%)", "type": "color", "description": "Caution status (review needed, partial). Text-safe on all theme surfaces." },
+        "warning-foreground": { "value": "hsl(0, 0%, 100%)", "type": "color", "description": "Text on warning fill" },
         "border": { "value": "hsl(220, 15%, 85%)", "type": "color", "description": "Light border" },
         "input": { "value": "hsl(220, 15%, 85%)", "type": "color", "description": "Light input" },
         "ring": { "value": "hsl(220, 70%, 50%)", "type": "color", "description": "Light focus ring" },
@@ -57,7 +65,7 @@
         "apt-border-subtle": { "value": "hsl(220, 15%, 25%)", "type": "color", "description": "Light subtle border" }
       },
       "chart": {
-        "1": { "value": "hsl(220, 70%, 55%)", "type": "color", "description": "Chart color 1 - Primary blue" },
+        "1": { "value": "hsl(220, 70%, 61%)", "type": "color", "description": "Chart color 1 - Primary blue" },
         "2": { "value": "hsl(165, 45%, 40%)", "type": "color", "description": "Chart color 2 - restricted support accent" },
         "3": { "value": "hsl(280, 55%, 55%)", "type": "color", "description": "Chart color 3 - Purple" },
         "4": { "value": "hsl(30, 75%, 50%)", "type": "color", "description": "Chart color 4 - Orange" },
@@ -330,7 +338,7 @@
           "interactive": {
             "background": { "value": "{color.dark.card}", "type": "color" },
             "border": { "value": "{color.dark.border}", "type": "color" },
-            "hoverBorder": { "value": "hsl(220, 70%, 55% / 0.5)", "type": "color" },
+            "hoverBorder": { "value": "hsl(220, 70%, 61% / 0.5)", "type": "color" },
             "hoverShadow": { "value": "{shadow.elevation-3-dark}", "type": "boxShadow" }
           },
           "hero": {
@@ -365,7 +373,7 @@
             "foreground": { "value": "{color.dark.accent}", "type": "color" }
           },
           "primary": {
-            "background": { "value": "hsl(220, 70%, 55% / 0.2)", "type": "color" },
+            "background": { "value": "hsl(220, 70%, 61% / 0.2)", "type": "color" },
             "foreground": { "value": "{color.dark.primary}", "type": "color" }
           },
           "muted": {
