@@ -1,0 +1,85 @@
+{
+  "version": "1.0.0",
+  "description": "Canonical capability and installation map for generated agent adapters. Platforms without an adapter are recorded separately from their other APT surfaces.",
+  "platforms": {
+    "claude": {
+      "label": "Claude Code",
+      "adapterStatus": "generated",
+      "sourceDirectory": "platforms/claude/source/agents",
+      "installTarget": ".claude/agents",
+      "extension": ".md",
+      "renderer": "claudeAdapter",
+      "executionSurface": "Native Claude Code agent definitions",
+      "limitations": [
+        "Generated agent bodies replace repository-relative skill links with installed skill identifiers."
+      ],
+      "toolMapping": {
+        "read": ["Read"],
+        "search": ["Grep", "Glob"],
+        "edit": ["Edit", "Write", "MultiEdit"],
+        "execute": ["Bash"],
+        "web": ["WebFetch", "WebSearch"],
+        "todo": ["TodoWrite"]
+      }
+    },
+    "codex": {
+      "label": "Codex",
+      "adapterStatus": "generated",
+      "sourceDirectory": "platforms/codex/source/agents",
+      "installTarget": ".codex/agents",
+      "extension": ".md",
+      "renderer": "codexAdapter",
+      "executionSurface": "Generated role prompt blocks in the Codex agent directory",
+      "limitations": [
+        "The emitted format is role prompt content, not a Codex-specific native agent configuration."
+      ],
+      "toolMapping": {}
+    },
+    "cursor": {
+      "label": "Cursor",
+      "adapterStatus": "generated",
+      "sourceDirectory": "platforms/cursor/source/agents",
+      "installTarget": ".cursor/agents",
+      "extension": ".mdc",
+      "renderer": "cursorAdapter",
+      "executionSurface": "Generated Cursor rule files",
+      "limitations": [
+        "The emitted agent body is a rule prompt, not a platform-native subagent definition."
+      ],
+      "toolMapping": {}
+    },
+    "copilot": {
+      "label": "GitHub Copilot",
+      "adapterStatus": "generated",
+      "sourceDirectory": "platforms/github-copilot/source/agents/generated",
+      "installTarget": ".github/agents",
+      "extension": ".agent.md",
+      "renderer": "copilotAdapter",
+      "executionSurface": "Generated GitHub Copilot custom agent definitions",
+      "limitations": [
+        "The generated tool list maps abstract APT capabilities to the available Copilot tool identifiers."
+      ],
+      "toolMapping": {
+        "read": ["codebase", "search"],
+        "search": ["search"],
+        "edit": ["editFiles"],
+        "execute": ["runCommands"],
+        "web": ["fetch"],
+        "todo": []
+      }
+    },
+    "gemini": {
+      "label": "Gemini CLI",
+      "adapterStatus": "not-generated",
+      "sourceDirectory": null,
+      "installTarget": null,
+      "extension": null,
+      "renderer": null,
+      "executionSurface": "APT command surface only",
+      "limitations": [
+        "APT distributes Gemini CLI commands under .gemini/commands; it does not currently generate agent adapters."
+      ],
+      "toolMapping": {}
+    }
+  }
+}

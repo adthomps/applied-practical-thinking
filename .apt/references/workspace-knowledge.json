@@ -1,0 +1,61 @@
+{
+  "version": "1.0.0",
+  "owner": "APT",
+  "last_updated": "2026-10-04",
+  "description": "How workspace repos relate: PROJECTS.md grouping, which repos feed which knowledge source, and which files are copies of a source of truth. Names and descriptions stay in each repo's docs/project-identity.md.",
+  "groups": [
+    {
+      "id": "core",
+      "title": "Portfolio and APT core",
+      "repositories": ["adthomps.github.io", "applied-practical-thinking", "apt-principles-agents", "apt-design-reference", "apt-dream-to-reality", "apt-intake", "apt-security-harness"]
+    },
+    {
+      "id": "products",
+      "title": "Products",
+      "repositories": ["apt-commerce", "apt-health", "apt-novel-reviewer", "apt-grey-rain"]
+    },
+    {
+      "id": "anet",
+      "title": "Authorize.Net",
+      "intro": "`apt-anet-training` is the main knowledge source. The other repos here feed it or test special cases.",
+      "repositories": ["apt-anet-training", "apt-anet-integration-toolbox", "apt-anet-playwright", "apt-anet-relaytests", "apt-anet-security-sdk"]
+    },
+    {
+      "id": "vas-smb",
+      "title": "VAS SMB (with VAS Enterprise as reference)",
+      "intro": "`apt-vas-smb-training` is the main knowledge source. VAS Enterprise is a larger, more complex version of VAS SMB, used as reference and not as a migration target.",
+      "repositories": ["apt-vas-smb-training", "apt-vas-integration-toolbox", "apt-vas-smb-playwright", "apt-vas-ent-playwright"]
+    },
+    {
+      "id": "anet-vas-move",
+      "title": "Authorize.Net to VAS SMB move",
+      "intro": "`apt-anet-vas-smb-move` is the source of truth for the move. It draws on both training repos. The MCP takes its migration knowledge from the move repo, and the acceptance repo is what the MCP is tested against.",
+      "repositories": ["apt-anet-vas-smb-move", "apt-developer-mcp-payments", "apt-anet-vas-migration-acceptance"]
+    },
+    {
+      "id": "playwright",
+      "title": "Playwright overview",
+      "repositories": ["apt-playwright-compass"]
+    },
+    {
+      "id": "unconfirmed",
+      "title": "Present on disk, description not confirmed",
+      "repositories": ["crt-world"]
+    }
+  ],
+  "feeds": [
+    { "to": "apt-anet-training", "from": ["apt-anet-integration-toolbox", "apt-anet-playwright"] },
+    { "to": "apt-vas-smb-training", "from": ["apt-vas-integration-toolbox", "apt-vas-smb-playwright", "apt-vas-ent-playwright"] },
+    { "to": "apt-anet-vas-smb-move", "from": ["apt-anet-training", "apt-vas-smb-training"] },
+    { "to": "apt-developer-mcp-payments", "from": ["apt-anet-vas-smb-move"] },
+    { "to": "apt-playwright-compass", "from": ["apt-anet-playwright", "apt-vas-smb-playwright", "apt-vas-ent-playwright"] }
+  ],
+  "copies": [
+    {
+      "id": "smb-migration-catalog",
+      "source": "apt-anet-vas-smb-move/data/migration-catalog.json",
+      "copy": "apt-developer-mcp-payments/knowledge/smb-migration/catalog.json",
+      "refresh": "npm run sync:catalog in apt-developer-mcp-payments"
+    }
+  ]
+}

@@ -4,43 +4,123 @@
   "title": "APT Installation Record",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schemaVersion", "source", "manifests", "platforms", "managedFiles", "localContext", "lastOperation"],
+  "required": [
+    "schemaVersion",
+    "source",
+    "manifests",
+    "platforms",
+    "managedFiles",
+    "localContext",
+    "lastOperation"
+  ],
   "properties": {
-    "schemaVersion": { "const": 1 },
+    "schemaVersion": {
+      "const": 1
+    },
     "source": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["repository", "version", "commit"],
+      "required": [
+        "repository",
+        "version",
+        "commit"
+      ],
       "properties": {
-        "repository": { "const": "apt-principles-agents" },
-        "version": { "type": "string", "minLength": 1 },
-        "commit": { "type": "string", "pattern": "^[a-f0-9]{40}$" }
+        "repository": {
+          "const": "apt-principles-agents"
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "commit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        }
       }
     },
-    "manifests": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
-    "platforms": { "type": "array", "items": { "enum": ["codex", "claude", "copilot", "gemini"] }, "uniqueItems": true },
+    "manifests": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "platforms": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "codex",
+          "claude",
+          "copilot",
+          "gemini",
+          "cursor"
+        ]
+      },
+      "uniqueItems": true
+    },
     "managedFiles": {
       "type": "array",
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["source", "target", "kind", "sha256"],
+        "required": [
+          "source",
+          "target",
+          "kind",
+          "sha256"
+        ],
         "properties": {
-          "source": { "type": "string", "minLength": 1 },
-          "target": { "type": "string", "minLength": 1 },
-          "kind": { "enum": ["canonical", "platform", "instruction"] },
-          "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+          "source": {
+            "type": "string",
+            "minLength": 1
+          },
+          "target": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "enum": [
+              "canonical",
+              "platform",
+              "instruction",
+              "platform-agent",
+              "command",
+              "hook"
+            ]
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
         }
       }
     },
-    "localContext": { "type": "string", "minLength": 1 },
+    "localContext": {
+      "type": "string",
+      "minLength": 1
+    },
     "lastOperation": {
       "type": "object",
-      "required": ["type", "at"],
+      "required": [
+        "type",
+        "at"
+      ],
       "properties": {
-        "type": { "type": "string", "minLength": 1 },
-        "at": { "type": "string", "format": "date-time" }
+        "type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "at": {
+          "type": "string",
+          "format": "date-time"
+        }
       }
+    },
+    "designVersion": {
+      "type": "string",
+      "pattern": "^d+.d+.d+$",
+      "description": "design/VERSION synced into this repository (DR-015)."
     }
   }
 }

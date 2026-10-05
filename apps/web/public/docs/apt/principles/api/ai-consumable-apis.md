@@ -3,7 +3,7 @@ title: AI Consumable Apis
 kind: principle
 status: active
 owner: APT
-last_updated: 2026-06-27
+last_updated: 2026-08-16
 source: apt-principles and apt-agent-standards
 domain: "api"
 source_paths: ["apt-principles-agents/principles/api/ai-consumable-apis.md"]
@@ -43,6 +43,9 @@ Review for fashion-driven protocol choices, ambiguous errors, unsafe retries, un
 
 - Treat **Ai Consumable Apis** as an explicit decision with defined scope, evidence, owner, and validation.
 - Required evidence: audience, schema, auth, errors, idempotency, examples, compatibility, operations.
+- Publish stable machine-readable schemas with unambiguous names, types, required fields, enums, constraints, descriptions, and representative values; do not make agents infer behavior from prose alone.
+- Expose side effects, permissions, idempotency, concurrency, pagination, asynchronous states, errors, retry rules, rate behavior, and correlation identifiers deterministically enough for safe tool use.
+- Separate read, propose, preview, and mutate capabilities; require least privilege, explicit approval for protected actions, and tests for malformed, adversarial, partial, duplicate, and stale requests.
 - State what is verified, what is assumed, and what requires specialist or human approval.
 
 See the [Api canonical hub](README.md) and linked standards/checklists before making final claims.

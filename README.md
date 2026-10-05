@@ -196,3 +196,7 @@ Canonical runbook location: `apt-principles-agents/examples/workflows/apt-princi
 - [APT Design System](apps/web/docs/design/versions/v2/APT-DESIGN-SYSTEM.md)
 - [Decision Log](docs/DECISION_LOG.md)
 - [Documentation Index](DOCUMENTATION_INDEX.md)
+
+## Graphify
+
+See [docs/graphify.md](docs/graphify.md) for the code-only platform architecture scope, exclusions, questions, and review workflow.

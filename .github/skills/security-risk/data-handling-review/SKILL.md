@@ -4,7 +4,7 @@ description: Use when work must identify trust boundaries, permissions, sensitiv
 kind: skill
 status: active
 owner: APT
-last_updated: 2026-06-27
+last_updated: 2026-08-16
 source: consolidated APT guidance
 title: "Data Handling Review"
 domain: "security-risk"
@@ -29,12 +29,12 @@ Use for planning, design, implementation review, migration, troubleshooting, or 
 
 ## Process
 
-1. Restate the intended outcome and affected audiences.
-2. Inventory exact current behavior and source-backed constraints.
-3. Apply the relevant APT principles and identify missing evidence.
-4. Compare viable options, including compatibility and operational effects.
-5. Produce the required artifacts: threat and data-flow review, role-permission matrix, secret handling, retention, abuse controls, audit trail, residual risk, and approval owner.
-6. Review implicit authorization, excessive data collection, sensitive logs, unsupported compliance claims, and AI-generated security conclusions without review; separate blockers, recommendations, and open questions.
+1. Inventory each data class by source, purpose, sensitivity, subject, jurisdiction, owner, format, and whether collection is actually necessary.
+2. Trace collection, validation, transit, storage, processing, model or tool exposure, sharing, logging, backup, export, retention, deletion, and recovery across trust boundaries.
+3. Map roles and service identities to least-privilege read, write, export, delete, and administrative actions; identify implicit or inherited access.
+4. Review secrets, encryption and key ownership, tokenization or redaction, audit trails, abuse controls, incident response, and data-subject or customer support workflows.
+5. Verify that logs, analytics, prompts, traces, test fixtures, and support tools do not create ungoverned secondary stores or unsupported compliance claims.
+6. Return blockers, required controls, residual risk, evidence gaps, validation steps, retention/deletion owners, and accountable security or privacy approval.
 
 ## Outputs
 
@@ -48,6 +48,8 @@ The output is practical, source-backed, audience-aware, testable, reversible whe
 
 - Treat **Data Handling Review** as an explicit decision with defined scope, evidence, owner, and validation.
 - Required evidence: assets, trust boundaries, permissions, sensitive data, controls, residual risk, approval.
+- Include prompts, model context, traces, logs, backups, exports, test fixtures, and support tooling in the data inventory.
+- Prefer elimination or minimization of sensitive data over adding controls to an unnecessary collection path.
 - State what is verified, what is assumed, and what requires specialist or human approval.
 
 ## Required Reading

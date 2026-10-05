@@ -3,7 +3,7 @@ title: APT Examples
 kind: index
 status: active
 owner: APT
-last_updated: 2026-06-27
+last_updated: 2026-08-16
 source: APT consolidation
 domain: "navigation"
 source_paths: ["apt-principles-agents/examples/README.md"]
@@ -37,6 +37,5 @@ Examples illustrate decisions, tradeoffs, artifacts, and validation. They do not
 ## Showcases
 
 - [Full principle showcases](showcases/)
-- [Concise distribution showcases](distribution-showcases/)
 
-The two showcase collections currently serve different depths. Their planned consolidation and archive gate are recorded in `docs/refactor/content-lifecycle-and-publication-plan.md`.
+All six parallel showcase pairs have been consolidated into their live canonical examples. Their superseded source-backed copies are retained in the consolidation archive, and `examples/distribution-showcases/` no longer contains active guidance. The consolidation and archive gate are recorded in `docs/refactor/content-lifecycle-and-publication-plan.md`.

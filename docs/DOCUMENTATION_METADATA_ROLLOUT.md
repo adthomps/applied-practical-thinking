@@ -52,7 +52,9 @@ Scope:
 Scope:
 
 - `apps/worker/src/ai/docs/*.md`
-- `.github/*.md`
+- root-level `.github/*.md` operational documents
+
+Nested tool-native adapters under `.github/prompts/**` and `.github/skills/**` follow their prompt and skill contracts. They are managed from `apt-principles-agents` and are outside this website-document metadata rollout.
 
 ## Explicit Exceptions (During Rollout)
 

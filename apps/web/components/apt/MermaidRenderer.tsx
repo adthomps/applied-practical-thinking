@@ -1,8 +1,14 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import mermaid from "mermaid";
 
 let mermaidInitialized = false;
+let mermaidPromise: Promise<typeof import("mermaid")["default"]> | undefined;
+
+function loadMermaid() {
+  mermaidPromise ??= import("mermaid").then((module) => module.default);
+  return mermaidPromise;
+}
+
 export function MermaidRenderer({ code }: { code: string }) {
   const [error, setError] = useState<string | null>(null);
   const hasCode = code.trim().length > 0;
@@ -85,8 +91,10 @@ export function MermaidRenderer({ code }: { code: string }) {
       return;
     }
 
-    Promise.resolve()
-      .then(() => {
+    let cancelled = false;
+
+    loadMermaid()
+      .then((mermaid) => {
         // One-time init so HTML labels (br/span) work, and we align to APT tokens.
         if (!mermaidInitialized) {
           mermaid.initialize({
@@ -106,7 +114,7 @@ export function MermaidRenderer({ code }: { code: string }) {
         return (mermaid as any).render(id, renderCode);
       })
       .then((result: any) => {
-        if (!containerRef.current) return;
+        if (cancelled || !containerRef.current) return;
         containerRef.current.innerHTML = result?.svg || "";
         if (typeof result?.bindFunctions === "function") {
           result.bindFunctions(containerRef.current);
@@ -114,8 +122,13 @@ export function MermaidRenderer({ code }: { code: string }) {
         setError(null);
       })
       .catch((e: any) => {
+        if (cancelled) return;
         setError(e?.message || "Mermaid rendering failed");
       });
+
+    return () => {
+      cancelled = true;
+    };
   }, [hasCode, renderCode, themeVars]);
 
   if (!hasCode) {

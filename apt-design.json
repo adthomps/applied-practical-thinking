@@ -1,0 +1,8 @@
+{
+  "$schema": "./.apt/references/apt-design.schema.json",
+  "tier": 1,
+  "css": "apps/web/index.css",
+  "lint": {
+    "roots": ["apps/web/components", "apps/web/routes", "apps/web/pages", "apps/web/src", "apps/web/features", "apps/web/hooks", "apps/web/lib", "apps/web/theme", "packages/ui/src"]
+  }
+}

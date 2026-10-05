@@ -4,7 +4,7 @@ description: Use when work must select API styles from audience and behavior, th
 kind: skill
 status: active
 owner: APT
-last_updated: 2026-06-27
+last_updated: 2026-08-16
 source: consolidated APT guidance
 title: "Intent Based API Design"
 domain: "api"
@@ -29,12 +29,12 @@ Use for planning, design, implementation review, migration, troubleshooting, or 
 
 ## Process
 
-1. Restate the intended outcome and affected audiences.
-2. Inventory exact current behavior and source-backed constraints.
-3. Apply the relevant APT principles and identify missing evidence.
-4. Compare viable options, including compatibility and operational effects.
-5. Produce the required artifacts: audience, use cases, protocol decision, schema, auth, errors, idempotency, pagination, webhooks, examples, tests, and deprecation policy.
-6. Review fashion-driven protocol choices, ambiguous errors, unsafe retries, undocumented permissions, weak compatibility, and examples that do not execute; separate blockers, recommendations, and open questions.
+1. Identify human consumer groups, their top tasks, prerequisite knowledge, frequency, risk, current workarounds, and evidence of successful completion.
+2. Map each intent to resources or operations, permissions, inputs, states, side effects, completion evidence, errors, recovery, and support ownership before selecting protocol details.
+3. Design predictable names, schemas, defaults, errors, pagination, asynchronous behavior, versioning, and examples with progressive disclosure from first success to advanced use.
+4. Trace authentication, authorization, idempotency, retries, limits, compatibility, observability, and deprecation to the consumer journey rather than documenting them as detached mechanics.
+5. Test onboarding, common tasks, debugging, recovery, and migration with representative beginner and expert consumers using only the published contract and tooling.
+6. Return the intent map, contract decisions, executable examples, usability findings, compatibility plan, documentation gaps, support path, and accountable approval.
 
 ## Outputs
 
@@ -48,6 +48,8 @@ The output is practical, source-backed, audience-aware, testable, reversible whe
 
 - Treat **Intent Based Api Design** as an explicit decision with defined scope, evidence, owner, and validation.
 - Required evidence: audience, schema, auth, errors, idempotency, examples, compatibility, operations.
+- Prove that names, operations, states, and examples match consumer tasks rather than storage or internal service boundaries.
+- Validate first success, debugging, recovery, and migration with representative humans using only published materials.
 - State what is verified, what is assumed, and what requires specialist or human approval.
 
 ## Required Reading

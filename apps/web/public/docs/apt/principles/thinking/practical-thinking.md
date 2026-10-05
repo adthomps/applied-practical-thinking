@@ -3,7 +3,7 @@ title: Practical Thinking
 kind: principle
 status: active
 owner: APT
-last_updated: 2026-06-27
+last_updated: 2026-08-16
 source: apt-principles and apt-agent-standards
 domain: "thinking"
 source_paths: ["apt-principles-agents/principles/thinking/practical-thinking.md"]
@@ -43,6 +43,9 @@ Review for solution-first framing, false certainty, hidden constraints, and deci
 
 - Treat **Practical Thinking** as an explicit decision with defined scope, evidence, owner, and validation.
 - Required evidence: problem statement, assumptions, alternatives, decision, measurable outcome.
+- Separate the observed problem from the requested solution; restate both and verify that solving one would improve the named outcome.
+- Test important assumptions with disconfirming evidence, counterexamples, or a small reversible experiment before committing to an expensive path.
+- Match decision depth to consequence: move quickly on reversible low-impact choices and require stronger evidence and accountable approval for irreversible or high-risk choices.
 - State what is verified, what is assumed, and what requires specialist or human approval.
 
 See the [Thinking canonical hub](README.md) and linked standards/checklists before making final claims.

@@ -515,3 +515,89 @@ Add `APT-DESIGN-REFERENCE-SOURCE-MAP.md` to the authored v2 design docs and regi
 **Consequences:**
 - Positive: clearer public migration path for preview cards, UI-kit narratives, token evidence, and assets.
 - Negative: future implementation still needs file-by-file review before adopting code, images, or token changes.
+
+---
+
+### [APT-017] Dark Primary Lightened For WCAG AA Text Contrast
+
+**Date:** 2026-10-03  
+**Author:** Adam Thompson  
+**Status:** Accepted
+
+**Context:**
+The dark-theme primary (`220 70% 55%`) measured 4.09:1 on `--background` and 3.72:1 on `--card`, below WCAG AA (4.5:1) for normal-size text. Primary is used as text for links and active labels, and as the fill behind `--primary-foreground` button labels (also 4.09:1). The contrast catalogue in `apps/web/lib/contrast.ts` only checked primary as a button fill, so the text cases were never measured. The light theme already passed.
+
+**Decision:**
+Set the dark-theme primary to `220 70% 61%`, with `--ring`, `--sidebar-primary`, `--sidebar-ring`, `--chart-1` and `--apt-glow` moving with it. Keep the dark `--primary-foreground` (`220 20% 8%`). Add "Primary Link on Background" and "Primary Link on Card" to the contrast catalogue.
+
+**Rationale:**
+At 61%: 5.14:1 on background, 4.68:1 on card, and 5.14:1 for dark button labels. 60% was first chosen but measures 4.487:1 on card (it had been rounded to 4.50); the contrast contract test added in APT-018 caught it. 61% is the smallest change that clears the card surface, so hue and saturation are unchanged. Primary text still fails on `muted`, `secondary`, and `apt-surface-elevated` even at 62%, so APT-018 adds a rule that links on those surfaces use `text-foreground` with an underline.
+
+**Alternatives Considered:**
+1. 58% and 60%: pass on background but fail on card (4.17 and 4.487). Rejected.
+2. A separate lighter `primary-text` token for links only: adds a token and keeps failing button labels. Rejected.
+3. White button labels: 4.55:1 at 55% but fails at any lighter primary, and conflicts with the dark-label doctrine. Rejected.
+
+**Consequences:**
+- Positive: primary text and buttons meet AA on all dark surfaces, and the catalogue now covers link text.
+- Negative: dark-theme blue is slightly lighter. Consumers that copy APT tokens (`apt-anet-integration-toolbox`, `apt-vas-integration-toolbox`, `apt-dream-to-reality`) must sync the new value.
+
+---
+
+### [APT-018] Canonical Status Tokens And Full-Surface Contrast Contract
+
+**Date:** 2026-10-03  
+**Author:** Adam Thompson  
+**Status:** Accepted
+
+**Context:**
+APT defined no status colors beyond `destructive`, so products invented their own `success`/`warning` values. The Authorize.Net and VAS toolboxes and Dream to Reality all did. Some fail WCAG AA: the Dream to Reality light `warning` (`45 90% 50%`) is 1.59:1 on its background. Separately, the dark `muted-foreground` and `apt-text-secondary` (`220 10% 55%`) pass on `background` (5.25:1) and `card` (4.78:1) but fail on `muted` (4.37:1), `apt-surface-elevated` (4.25:1), and `secondary` (3.97:1). The contrast catalogue only covered background and card, and nothing enforced it.
+
+**Decision:**
+- Add `success`, `success-foreground`, `warning`, and `warning-foreground` to the APT contract for both themes. Dark: success `155 50% 45%`, warning `38 92% 50%`, foregrounds `220 20% 8%`. Light: success `160 60% 28%`, warning `30 95% 30%`, foregrounds white.
+- Raise the dark `muted-foreground` and `apt-text-secondary` to `220 10% 60%`.
+- Require every text token to meet AA on every theme surface, extend `lib/contrast.ts` with those pairs, and enforce it with `test/apt-contrast-contract.test.ts`. The token drift check now covers the status tokens.
+- Links on `muted`, `secondary`, and `apt-surface-elevated` use `text-foreground` with an underline.
+
+**Rationale:**
+Each status value is the least change from the values products already used that passes AA as text on every surface (dark success minimum 4.95:1; light warning minimum 4.96:1) and for its foreground on a fill. The dark success hue moves off the accent hue (165°) so status and the restricted accent stay distinct, per "One Accent".
+
+**Alternatives Considered:**
+1. Keep status colors product-local - rejected: three products already diverged, and one failed AA badly.
+2. Keep muted text at 55% and forbid it on raised surfaces - rejected: muted text on cards and panels is common and hard to police.
+
+**Consequences:**
+- Positive: one status palette across APT, and contrast regressions now fail the test suite.
+- Negative: dark muted text is slightly brighter, and consumers must sync four new tokens plus the muted value.
+
+---
+
+### [APT-019] Canonical Design Tokens Move To apt-principles-agents
+
+**Date:** 2026-10-04
+**Author:** Adam Thompson
+**Status:** Accepted
+
+**Context:**
+Token values lived here (`apps/web/docs/design/static/APT-TOKENS.json`) with about six hand-maintained copies across the workspace, including `apt-principles-agents/references/design-tokens.json`. Documents disagreed about who owned the values, so APT-017 and APT-018 had to be applied to each product by hand.
+
+**Decision:**
+`apt-principles-agents` owns the canonical tokens in `design/tokens/APT-TOKENS.json`, versioned by `design/VERSION` (2.1.0 includes APT-017 and APT-018) and recorded there as DR-015. `scripts/build-design.mjs` generates the token CSS (light-first and dark-first), a Tailwind v3 preset, a Tailwind v4 theme, typed values, and the flat `references/design-tokens.json`. Products, including this site, receive them through the `design` manifest and are checked by `.apt/design/bin/apt-design-check.mjs` according to their tier in `apt-design.json`.
+
+**Rationale:**
+One source with generated outputs removes hand-copying and the drift it caused. The generated `apt-tokens.css` reproduces this site's `index.css` with zero drift across 98 tokens, so the move changes ownership without changing any rendered value.
+
+**Alternatives Considered:**
+1. Keep values in this repository and push them to apt-principles-agents - rejected: the doctrine repo already holds version authority, and products install from it.
+2. Publish an npm package - rejected for now: needs a registry and release process. Copy-in through apt-assets matches how doctrine already ships.
+
+**Consequences:**
+- Positive: token changes are one edit, a version bump and a sync, with drift and contrast checked the same way everywhere.
+- Negative: this site becomes a consumer. Its published `APT-TOKENS.json` and `APT-TOKENS-CONTRACT.json` under `docs/design/static/` become mirrors of the synced canonical files.
+
+**Migration (2026-10-04):**
+- The `design` manifest is installed (`.apt/design/`, design 2.1.0). `apt-design.json` declares Tier 1 with no exclusions.
+- `apps/web/index.css` imports `.apt/design/generated/apt-tokens.css` instead of defining the token blocks. Computed values in the browser are unchanged.
+- `pnpm run check:design` runs `.apt/design/bin/apt-design-check.mjs` (contrast, drift, lint) and `token-drift-check`. The latter now only keeps the published static copies identical to `.apt/design/tokens/`; use `--fix` to update them. The check runs in `check` and in the worker workflow.
+- `test/apt-contrast-contract.test.ts` also pins the contrast page's catalogue to the generated dark tokens.
+- `theme/aptTokens.ts` and `packages/config` hold utility class names, not token values, so they stay.

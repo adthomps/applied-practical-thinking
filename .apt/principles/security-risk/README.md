@@ -5,7 +5,7 @@ domain: security-risk
 status: active
 owner: APT
 version: v1
-last_updated: 2026-06-28
+last_updated: 2026-08-16
 source_paths: ["apt-principles/security.md"]
 supersedes: ["apt-principles/security.md"]
 ---
@@ -26,7 +26,7 @@ Security answers:
 
 ## Purpose
 
-Security prevents protection from being handled inconsistently across projects. It is a formal APT framework area, not a final checklist after build.
+Security prevents protection from being handled inconsistently across projects. It is a cross-cutting APT overlay applied during thinking, design, architecture, execution, validation, release, operations, and learning—not a final checklist after build.
 
 ## Core Principles
 
@@ -98,6 +98,35 @@ Avoid storing sensitive tokens in `localStorage` for browser apps.
 - Rotate secrets when exposed, stale, or ownership changes.
 - Keep production secrets separate from preview and development.
 
+### Threat Modeling And Secure Delivery
+
+- Identify protected assets, actors, entry points, trust boundaries, misuse cases, and plausible threats before implementation hardens assumptions.
+- Map each material threat to prevention, detection, response, recovery, evidence, and an accountable owner.
+- Review authentication, authorization, data flow, dependencies, build provenance, deployment permissions, and rollback as one delivery system.
+- Treat dependency and supply-chain risk as part of architecture: pin and review critical dependencies, minimize privileged automation, and preserve build provenance.
+- Security findings must distinguish confirmed behavior, plausible risk, assumptions, compensating controls, residual risk, and required approval.
+
+### Identity, Tenancy, And Sensitive Data
+
+- Model subject, action, resource, condition, enforcement point, and audit event for authorization decisions.
+- Make tenant and account boundaries explicit in data access, caches, logs, exports, background work, and support tools.
+- Classify sensitive data and define collection minimization, storage, redaction, retention, deletion, recovery, and support access.
+- Do not place credentials, secrets, private content, or unnecessary personal data in AI prompts, logs, examples, analytics, or error reports.
+
+### Detection, Incident Response, And Recovery
+
+- Define security-relevant telemetry and alert ownership before release.
+- Document first response, containment, evidence preservation, communication, recovery, and follow-up learning.
+- Make credential rotation, access revocation, feature disablement, rollback, and data correction executable rather than aspirational.
+- Convert confirmed incidents and near misses into tests, controls, runbooks, and reusable knowledge.
+
+### AI And Agent Threats
+
+- Treat prompts, retrieved content, tool output, and delegated-agent messages as potentially untrusted input.
+- Bound tools and data by task; never let model output grant itself permission or redefine policy.
+- Test prompt injection, data exfiltration, confused-deputy behavior, excessive agency, hidden delegation, fabricated evidence, and unsafe fallback.
+- Require human approval for security-sensitive remediation, risk acceptance, and consequential production action.
+
 ## Required Artifacts
 
 - Auth/session model
@@ -109,6 +138,8 @@ Avoid storing sensitive tokens in `localStorage` for browser apps.
 - Trust-boundary and authorization matrix
 - Threat or abuse review for sensitive workflows
 - Escalation criteria for high-impact data, AI, auth, payment, or integration changes
+- Secure-delivery and dependency/supply-chain notes
+- Detection, incident, containment, recovery, and rollback plan
 
 ## Good Example
 

@@ -46,6 +46,10 @@ Review for implicit authorization, excessive data collection, sensitive logs, un
 - State what is verified, what is assumed, and what requires specialist or human approval.
 
 See the [Security Risk canonical hub](README.md) and linked standards/checklists before making final claims.
+## Applied by
+
+- [apt-fraud-risk-reviewer](../../agents/payments/apt-fraud-risk-reviewer.md) — Use when a payment flow, fraud rule set, or decline-handling process needs to be assessed for fraud exposure without unnecessarily blocking legitimate transactions.
+
 ## Related
 
 - [APT Principles](../README.md)

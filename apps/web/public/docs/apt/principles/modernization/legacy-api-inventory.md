@@ -3,7 +3,7 @@ title: Legacy API Inventory
 kind: principle
 status: active
 owner: APT
-last_updated: 2026-06-27
+last_updated: 2026-08-16
 source: apt-principles and apt-agent-standards
 domain: "modernization"
 source_paths: ["apt-principles-agents/principles/modernization/legacy-api-inventory.md"]
@@ -13,37 +13,41 @@ source_paths: ["apt-principles-agents/principles/modernization/legacy-api-invent
 
 ## Purpose
 
-This principle helps APT teams inventory legacy behavior before designing a facade, adapter, bridge, parity plan, dual run, deprecation path, and rollback. It is guidance for decisions and required evidence, not a claim about any specific vendor or product.
+Build an evidence-backed record of what a legacy API actually exposes, does, owns, and supports before proposing parity, facade, migration, or retirement decisions. An inventory records verified current state and uncertainty; it is not a desired-state design.
 
 ## Principles
 
-- Begin with the intended outcome and affected audiences.
-- Separate verified facts, assumptions, recommendations, and open questions.
-- Prefer explicit contracts, reversible steps, and supportable behavior.
-- Preserve compatibility when it materially reduces customer or partner disruption.
-- Record the evidence needed for another person or agent to review the decision.
+- Enumerate externally callable and internally relied-upon operations, versions, events, jobs, files, and administrative paths.
+- Capture request, response, state transition, error, idempotency, authentication, authorization, rate, and side-effect behavior separately.
+- Trace each claim to code, configuration, contract, traffic, test, log, support record, or accountable owner.
+- Identify consumers, data ownership, downstream dependencies, operational owners, and support commitments.
+- Record observed, documented, inferred, conflicting, and unknown behavior distinctly.
+- Snapshot verification scope and date so later change can be detected rather than silently absorbed.
 
 ## Required Artifacts
 
-At minimum, produce: legacy inventory, field/error/auth mappings, parity matrix, contract and replay tests, observability, dual-run metrics, communications, and rollback plan.
+At minimum, produce: operation/version catalog, consumer and dependency map, field/error/auth/state tables, side-effect and data-ownership map, operational constraints, evidence links, uncertainty/conflict register, and prioritized verification gaps.
 
 ## Tradeoffs And Failure Modes
 
-Review for forced big-bang migration, silent parity loss, incorrect error translation, token incompatibility, and deprecation without customer evidence. When evidence is incomplete, mark the gap rather than inventing certainty.
+Review for documentation-only inventories, omitted batch or admin paths, assumed consumers, conflated current and target state, secrets copied into evidence, unverified provider claims, missing negative/error behavior, and stale snapshots presented as current truth.
 
 ## Review Questions
 
-1. What outcome and audience does this serve?
-2. Which source-backed facts constrain the decision?
-3. What alternatives and migration effects were considered?
-4. How will engineering, security, documentation, and support verify readiness?
-5. What remains uncertain and who must approve it?
+1. What complete set of interfaces and behaviors is in scope, including non-HTTP and privileged paths?
+2. Which evidence verifies each behavior, consumer, dependency, owner, and constraint?
+3. Where do documentation, implementation, traffic, tests, and operator knowledge disagree?
+4. Which unknowns can change parity, safety, cost, or migration decisions?
+5. Who verifies the inventory, and when must it be refreshed?
 
 ## Topic-Specific Guidance
 
-- Treat **Legacy Api Inventory** as an explicit decision with defined scope, evidence, owner, and validation.
-- Required evidence: legacy inventory, mappings, parity, tests, dual run, rollback, deprecation.
-- State what is verified, what is assumed, and what requires specialist or human approval.
+- Inventory synchronous APIs, asynchronous events, files, batch jobs, callbacks, operator actions, and undocumented but supported paths.
+- Capture behavior at operation and version level, including negative cases, state transitions, retry semantics, and side effects.
+- Map consumers and downstream dependencies using repository, configuration, telemetry, and owner evidence.
+- Label every record as verified, inferred, conflicting, unknown, or out of scope, with source and verification date.
+- Keep current-state facts separate from target mappings, recommendations, and deprecation plans.
+- Prioritize evidence gaps by their effect on security, financial correctness, parity, rollback, and customer disruption.
 
 See the [Modernization canonical hub](README.md) and linked standards/checklists before making final claims.
 ## Related

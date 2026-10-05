@@ -70,15 +70,15 @@ Paste `npm run validate` output summary here:
 
 ### Strengths
 
-- 
+-
 
 ### Gaps
 
-- 
+-
 
 ### Blockers (must fix before next release)
 
-- 
+-
 
 ---
 
