@@ -74,6 +74,23 @@
       "tier": 1
     },
     {
+      "repository": "apt-anet-playwright",
+      "manifests": [
+        "core",
+        "documentation",
+        "ux-review"
+      ],
+      "platforms": [
+        "codex",
+        "claude",
+        "copilot",
+        "gemini",
+        "cursor"
+      ],
+      "validation": [],
+      "tier": 3
+    },
+    {
       "repository": "apt-anet-relaytests",
       "manifests": [
         "core"
@@ -95,6 +112,64 @@
         "cursor"
       ],
       "validation": [],
+      "tier": 3
+    },
+    {
+      "repository": "apt-anet-training",
+      "manifests": [
+        "core",
+        "documentation",
+        "payments",
+        "training",
+        "api-review"
+      ],
+      "platforms": [
+        "codex",
+        "claude",
+        "copilot",
+        "gemini",
+        "cursor"
+      ],
+      "validation": [],
+      "tier": 3
+    },
+    {
+      "repository": "apt-anet-vas-migration-acceptance",
+      "manifests": [
+        "core",
+        "documentation",
+        "payments",
+        "migration"
+      ],
+      "platforms": [
+        "codex",
+        "claude",
+        "copilot",
+        "gemini",
+        "cursor"
+      ],
+      "validation": [],
+      "tier": 3
+    },
+    {
+      "repository": "apt-anet-vas-smb-move",
+      "manifests": [
+        "core",
+        "documentation",
+        "payments",
+        "migration",
+        "training"
+      ],
+      "platforms": [
+        "codex",
+        "claude",
+        "copilot",
+        "gemini",
+        "cursor"
+      ],
+      "validation": [
+        "node scripts/build-catalog.mjs --check"
+      ],
       "tier": 3
     },
     {
@@ -139,6 +214,29 @@
       "tier": 3
     },
     {
+      "repository": "apt-developer-mcp-payments",
+      "manifests": [
+        "core",
+        "documentation",
+        "api-review",
+        "payments",
+        "migration",
+        "security",
+        "ai-development"
+      ],
+      "platforms": [
+        "codex",
+        "claude",
+        "copilot",
+        "gemini",
+        "cursor"
+      ],
+      "validation": [
+        "npm run check"
+      ],
+      "tier": 3
+    },
+    {
       "repository": "apt-dream-to-reality",
       "manifests": [
         "dream-to-reality"
@@ -156,6 +254,23 @@
         "pnpm run build"
       ],
       "tier": 1
+    },
+    {
+      "repository": "apt-grey-rain",
+      "manifests": [
+        "core",
+        "documentation",
+        "game-development"
+      ],
+      "platforms": [
+        "codex",
+        "claude",
+        "copilot",
+        "gemini",
+        "cursor"
+      ],
+      "validation": [],
+      "tier": 3
     },
     {
       "repository": "apt-health",
@@ -220,11 +335,17 @@
       "tier": 2
     },
     {
-      "repository": "apt-product-team",
+      "repository": "apt-playwright-compass",
       "manifests": [
-        "core"
+        "core",
+        "documentation",
+        "ux-review"
       ],
       "platforms": [
+        "codex",
+        "claude",
+        "copilot",
+        "gemini",
         "cursor"
       ],
       "validation": [],
@@ -251,6 +372,23 @@
       "tier": 3
     },
     {
+      "repository": "apt-vas-ent-playwright",
+      "manifests": [
+        "core",
+        "documentation",
+        "ux-review"
+      ],
+      "platforms": [
+        "codex",
+        "claude",
+        "copilot",
+        "gemini",
+        "cursor"
+      ],
+      "validation": [],
+      "tier": 3
+    },
+    {
       "repository": "apt-vas-integration-toolbox",
       "manifests": [
         "core",
@@ -269,6 +407,42 @@
       ],
       "validation": [],
       "tier": 1
+    },
+    {
+      "repository": "apt-vas-smb-playwright",
+      "manifests": [
+        "core",
+        "documentation",
+        "ux-review"
+      ],
+      "platforms": [
+        "codex",
+        "claude",
+        "copilot",
+        "gemini",
+        "cursor"
+      ],
+      "validation": [],
+      "tier": 3
+    },
+    {
+      "repository": "apt-vas-smb-training",
+      "manifests": [
+        "core",
+        "documentation",
+        "payments",
+        "training",
+        "api-review"
+      ],
+      "platforms": [
+        "codex",
+        "claude",
+        "copilot",
+        "gemini",
+        "cursor"
+      ],
+      "validation": [],
+      "tier": 3
     },
     {
       "repository": "crt-world",

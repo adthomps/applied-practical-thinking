@@ -90,6 +90,7 @@ See the [Ai canonical hub](README.md) and linked standards/checklists before mak
 ## Applied by
 
 - [ai-output-auditor](../../agents/engineering/ai-output-auditor.md) — Use to audit generated code, documentation, plans, review comments, or migration proposals for unsupported claims, invented files or APIs, hidden behavior changes, and missing validation.
+- [apt-verifier](../../agents/harness/apt-verifier.md) — Use when outputs, installs, repairs, routing config, or documentation alignment must be verified before they are trusted.
 
 ## Related
 

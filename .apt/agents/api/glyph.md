@@ -18,18 +18,18 @@ autonomy: advisory
 escalation: Escalate unsupported payment, security, privacy, compliance, legal, production-launch, or irreversible migration decisions to the accountable human and relevant expert.
 status: active
 owner: APT
-last_updated: 2026-08-30
+last_updated: 2026-10-04
 source: apt-agent-standards roles and APT doctrine
 source_paths: ["apt-principles-agents/agents/api/glyph.md"]
 ---
 
 # Glyph
 
-## Persona Identity
+## Role Identity
 
 - **Technical ID:** `agent.backend.api`
-- **Reports To:** agent.backend (Legion — not yet adopted as a persona)
-- **Formerly:** `agents/api/apt-api-reviewer.md` (renamed 2026-08-29 as part of the persona batch-adoption; content and function unchanged)
+- **Reports To:** agent.backend (Legion — not yet adopted as an agent role)
+- **Formerly:** `agents/api/apt-api-reviewer.md` (renamed 2026-08-29 as part of the agent-role rename batch; responsibilities and function unchanged)
 - **Also Draws On:** `agents/api/apt-api-bridge-reviewer.md` — legacy-bridge contract work alongside primary API contract review.
 
 ## Role

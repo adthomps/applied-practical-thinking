@@ -7,8 +7,11 @@ scope: domain
 description: Use at the start of a harness engagement to turn a request into a compact, reviewable task packet for the smallest suitable APT workflow.
 applies_principles:
   - principles/ai/agent-design.md
+  - principles/thinking/practical-thinking.md
+  - principles/ai/model-routing.md
 uses_skills:
   - skills/thinking/clarify-before-acting
+  - skills/ai-agents/agent-routing
 tools:
   - read
   - search
@@ -67,6 +70,8 @@ Use `skills/thinking/clarify-before-acting` first. Then use the closest canonica
 ## Enforces
 
 - [Agent Design](../../principles/ai/agent-design.md) — check the work against this principle and cite the clause any finding rests on.
+- [Practical Thinking](../../principles/thinking/practical-thinking.md) — check the work against this principle and cite the clause any finding rests on.
+- [Model Routing](../../principles/ai/model-routing.md) — check the work against this principle and cite the clause any finding rests on.
 
 ## Inputs
 

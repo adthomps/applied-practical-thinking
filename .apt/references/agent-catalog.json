@@ -19,6 +19,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/engineering/ai-output-auditor.md"
@@ -39,6 +40,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/customer/apt-ai-agent-user-reviewer.md"
@@ -59,6 +61,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/api/apt-ai-consumable-api-reviewer.md"
@@ -79,6 +82,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "deep",
       "autonomy": "advisory",
       "canonical_path": "agents/architecture/apt-api-architect.md"
@@ -100,6 +104,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/api/apt-api-bridge-reviewer.md"
@@ -120,6 +125,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/docs/apt-api-docs-writer.md"
@@ -141,6 +147,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/api/apt-api-migration-planner.md"
@@ -152,13 +159,18 @@
       "scope": "domain",
       "description": "Use when reviewing architecture, repository structure, migration strategy, or harness design before an approach is committed.",
       "applies_principles": [
-        "principles/ai/agent-design.md"
+        "principles/ai/agent-design.md",
+        "principles/architecture/system-architecture.md",
+        "principles/execution/release-and-change-management.md"
       ],
-      "uses_skills": [],
+      "uses_skills": [
+        "skills/architecture/system-architecture-review"
+      ],
       "tools": [
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "deep",
       "autonomy": "advisory",
       "canonical_path": "agents/harness/apt-architect.md"
@@ -180,6 +192,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "deep",
       "autonomy": "advisory",
       "canonical_path": "agents/core/apt-architecture-lead.md"
@@ -200,6 +213,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/docs/apt-audience-docs-reviewer.md"
@@ -220,6 +234,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/customer/apt-bank-acquirer-reviewer.md"
@@ -241,6 +256,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/game-development/apt-beginner-game-dev-reviewer.md"
@@ -261,6 +277,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/beginner-reviewers/apt-beginner-user-reviewer.md"
@@ -281,6 +298,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/customer/apt-business-user-reviewer.md"
@@ -301,6 +319,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/payments/apt-chargeback-risk-reviewer.md"
@@ -322,6 +341,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/ecommerce/apt-checkout-reviewer.md"
@@ -333,14 +353,19 @@
       "scope": "domain",
       "description": "Use when building or reviewing Cloudflare Workers, Pages, Hono, D1, KV, R2, or deployment workflows.",
       "applies_principles": [
-        "principles/ai/agent-design.md"
+        "principles/ai/agent-design.md",
+        "principles/architecture/cloudflare-hono-architecture.md",
+        "principles/execution/release-and-change-management.md"
       ],
-      "uses_skills": [],
+      "uses_skills": [
+        "skills/architecture/cloudflare-hono-architecture"
+      ],
       "tools": [
         "read",
         "search",
         "edit"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "bounded-edit",
       "canonical_path": "agents/harness/apt-cloudflare-builder.md"
@@ -352,13 +377,19 @@
       "scope": "domain",
       "description": "Use when code needs a review for bugs, maintainability, behavior preservation, or missing validation.",
       "applies_principles": [
-        "principles/ai/agent-design.md"
+        "principles/ai/agent-design.md",
+        "principles/execution/quality-and-testing.md",
+        "principles/security-risk/security-review.md"
       ],
-      "uses_skills": [],
+      "uses_skills": [
+        "skills/engineering/implementation-review",
+        "skills/engineering/refactor-safety"
+      ],
       "tools": [
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/harness/apt-code-reviewer.md"
@@ -379,6 +410,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/ecommerce/apt-commerce-experience-reviewer.md"
@@ -400,6 +432,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/risk/apt-compliance-awareness-reviewer.md"
@@ -411,13 +444,19 @@
       "scope": "domain",
       "description": "Use when a task risks excessive token usage, repeated context loading, unnecessary model escalation, or redundant scans.",
       "applies_principles": [
-        "principles/ai/agent-design.md"
+        "principles/ai/agent-design.md",
+        "principles/ai/model-routing.md",
+        "principles/ai/local-llm-routing.md"
       ],
-      "uses_skills": [],
+      "uses_skills": [
+        "skills/source-backed/token-efficiency",
+        "skills/ai-agents/model-selection"
+      ],
       "tools": [
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/harness/apt-cost-controller.md"
@@ -439,6 +478,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/payments/apt-crypto-payment-risk-reviewer.md"
@@ -460,6 +500,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/docs/apt-demo-and-diagram-planner.md"
@@ -481,6 +522,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "deep",
       "autonomy": "advisory",
       "canonical_path": "agents/core/apt-design-lead.md"
@@ -501,6 +543,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/customer/apt-developer-integrator-reviewer.md"
@@ -512,13 +555,17 @@
       "scope": "domain",
       "description": "Use as a general accuracy and completeness pass on any documentation deliverable that doesn't need a specialized audience or API-contract review.",
       "applies_principles": [
-        "principles/documentation/README.md"
+        "principles/documentation/README.md",
+        "principles/documentation/support-ready-docs.md"
       ],
-      "uses_skills": [],
+      "uses_skills": [
+        "skills/ai-agents/hallucination-review"
+      ],
       "tools": [
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/docs/apt-docs-reviewer.md"
@@ -539,6 +586,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/engineering/apt-engineering-reviewer.md"
@@ -560,6 +608,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "deep",
       "autonomy": "advisory",
       "canonical_path": "agents/core/apt-execution-lead.md"
@@ -581,6 +630,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/payments/apt-fraud-risk-reviewer.md"
@@ -603,6 +653,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "deep",
       "autonomy": "advisory",
       "canonical_path": "agents/game-development/apt-game-architect.md"
@@ -625,6 +676,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/game-development/apt-game-designer.md"
@@ -647,6 +699,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/game-development/apt-game-development-coach.md"
@@ -669,6 +722,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/game-development/apt-game-docs-writer.md"
@@ -690,6 +744,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/game-development/apt-game-prototype-planner.md"
@@ -711,6 +766,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/game-development/apt-game-scope-guardian.md"
@@ -732,6 +788,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/game-development/apt-game-testing-reviewer.md"
@@ -753,6 +810,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/game-development/apt-game-ui-reviewer.md"
@@ -774,6 +832,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/game-development/apt-gameplay-reviewer.md"
@@ -795,6 +854,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/payments/apt-gateway-migration-reviewer.md"
@@ -806,13 +866,18 @@
       "scope": "domain",
       "description": "Use when reviewing this repository’s own documentation architecture, consistency, source-of-truth boundaries, or operating guidance.",
       "applies_principles": [
-        "principles/ai/agent-design.md"
+        "principles/ai/agent-design.md",
+        "principles/documentation/audience-layered-docs.md",
+        "principles/execution/knowledge-and-learning.md"
       ],
-      "uses_skills": [],
+      "uses_skills": [
+        "skills/documentation/audience-layered-docs"
+      ],
       "tools": [
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/harness/apt-harness-docs-reviewer.md"
@@ -833,6 +898,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/docs/apt-implementation-blueprint-writer.md"
@@ -844,7 +910,8 @@
       "scope": "domain",
       "description": "Use when applying this repository’s installable agent standards and harness assets to a target repository for the first time.",
       "applies_principles": [
-        "principles/ai/agent-design.md"
+        "principles/ai/agent-design.md",
+        "principles/execution/release-and-change-management.md"
       ],
       "uses_skills": [],
       "tools": [
@@ -852,6 +919,7 @@
         "search",
         "edit"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "bounded-edit",
       "canonical_path": "agents/harness/apt-installer.md"
@@ -873,6 +941,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "deep",
       "autonomy": "advisory",
       "canonical_path": "agents/architecture/apt-integration-architect.md"
@@ -884,15 +953,20 @@
       "scope": "domain",
       "description": "Use before a launch or major release, to confirm the product, support, and operational readiness checks are actually complete, not just planned.",
       "applies_principles": [
-        "principles/execution/delivery-increments.md"
+        "principles/execution/delivery-increments.md",
+        "principles/service-readiness/launch-readiness.md",
+        "principles/service-readiness/operational-readiness.md",
+        "principles/service-readiness/release-communications.md"
       ],
       "uses_skills": [
-        "skills/service-readiness/launch-readiness-review"
+        "skills/service-readiness/launch-readiness-review",
+        "skills/service-readiness/release-communication-writer"
       ],
       "tools": [
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/product/apt-launch-readiness-lead.md"
@@ -913,6 +987,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/ecommerce/apt-merchant-onboarding-reviewer.md"
@@ -924,16 +999,20 @@
       "scope": "domain",
       "description": "Use when choosing the smallest sufficient local or cloud model tier for an APT task.",
       "applies_principles": [
-        "principles/ai/agent-design.md"
+        "principles/ai/agent-design.md",
+        "principles/ai/model-routing.md",
+        "principles/ai/local-llm-routing.md"
       ],
       "uses_skills": [
         "skills/ai-agents/model-selection",
-        "skills/source-backed/token-efficiency"
+        "skills/source-backed/token-efficiency",
+        "skills/ai-agents/local-llm-routing"
       ],
       "tools": [
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "none",
       "canonical_path": "agents/harness/apt-model-router.md"
@@ -955,6 +1034,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/api/apt-modern-api-designer.md"
@@ -975,6 +1055,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "deep",
       "autonomy": "advisory",
       "canonical_path": "agents/architecture/apt-modernization-architect.md"
@@ -995,6 +1076,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/beginner-reviewers/apt-new-developer-reviewer.md"
@@ -1015,6 +1097,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/beginner-reviewers/apt-new-merchant-reviewer.md"
@@ -1026,7 +1109,8 @@
       "scope": "domain",
       "description": "Use when reviewing material a support agent will use to help a customer, to confirm a newly trained agent can resolve common cases without escalating.",
       "applies_principles": [
-        "principles/thinking/beginner-clarity.md"
+        "principles/thinking/beginner-clarity.md",
+        "principles/service-readiness/knowledge-base-readiness.md"
       ],
       "uses_skills": [
         "skills/service-readiness/kb-article-writer"
@@ -1035,6 +1119,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/beginner-reviewers/apt-new-support-agent-reviewer.md"
@@ -1056,6 +1141,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "deep",
       "autonomy": "advisory",
       "canonical_path": "agents/payments/apt-payment-architect.md"
@@ -1076,6 +1162,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/product/apt-prd-writer.md"
@@ -1097,6 +1184,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "deep",
       "autonomy": "advisory",
       "canonical_path": "agents/core/apt-principal.md"
@@ -1118,6 +1206,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/core/apt-principles-reviewer.md"
@@ -1138,6 +1227,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/docs/apt-product-hub-builder.md"
@@ -1159,6 +1249,7 @@
         "search",
         "edit"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "bounded-edit",
       "canonical_path": "agents/engineering/apt-refactor-agent.md"
@@ -1170,14 +1261,18 @@
       "scope": "domain",
       "description": "Use when repairing or upgrading an existing APT standards installation while preserving local customizations.",
       "applies_principles": [
-        "principles/ai/agent-design.md"
+        "principles/ai/agent-design.md",
+        "principles/execution/release-and-change-management.md"
       ],
-      "uses_skills": [],
+      "uses_skills": [
+        "skills/engineering/refactor-safety"
+      ],
       "tools": [
         "read",
         "search",
         "edit"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "bounded-edit",
       "canonical_path": "agents/harness/apt-repair-agent.md"
@@ -1189,13 +1284,15 @@
       "scope": "domain",
       "description": "Use when inspecting a target repository for installed APT standards, drift, missing files, duplicates, or repair needs.",
       "applies_principles": [
-        "principles/ai/agent-design.md"
+        "principles/ai/agent-design.md",
+        "principles/execution/quality-and-testing.md"
       ],
       "uses_skills": [],
       "tools": [
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "none",
       "canonical_path": "agents/harness/apt-repo-scanner.md"
@@ -1217,6 +1314,17 @@
         "read",
         "search"
       ],
+      "handoffs": [
+        {
+          "target": "apt-principles-reviewer",
+          "when": "The request requires a substantive review of code, documentation, plans, or diffs for alignment with APT Core.",
+          "required_evidence": [
+            "the artifact or diff under review",
+            "the decision context and applicable constraints"
+          ],
+          "expected_output": "A source-grounded APT principles review with findings, evidence, and any conditions or blockers."
+        }
+      ],
       "model_tier": "deep",
       "autonomy": "none",
       "canonical_path": "agents/core/apt-router.md"
@@ -1228,13 +1336,20 @@
       "scope": "domain",
       "description": "Use when reviewing security-sensitive agent, code, configuration, MCP, model-routing, or lifecycle behavior.",
       "applies_principles": [
-        "principles/ai/agent-design.md"
+        "principles/ai/agent-design.md",
+        "principles/security-risk/security-review.md",
+        "principles/security-risk/data-handling.md",
+        "principles/security-risk/permission-design.md"
       ],
-      "uses_skills": [],
+      "uses_skills": [
+        "skills/security-risk/security-review",
+        "skills/security-risk/permission-review"
+      ],
       "tools": [
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/harness/apt-security-reviewer.md"
@@ -1246,15 +1361,20 @@
       "scope": "domain",
       "description": "Use when a change is about to ship, to confirm the support organization can actually operate and troubleshoot it on day one.",
       "applies_principles": [
-        "principles/design/role-based-experience.md"
+        "principles/design/role-based-experience.md",
+        "principles/service-readiness/support-readiness.md",
+        "principles/service-readiness/escalation-paths.md",
+        "principles/service-readiness/troubleshooting-readiness.md"
       ],
       "uses_skills": [
-        "skills/service-readiness/support-readiness-review"
+        "skills/service-readiness/support-readiness-review",
+        "skills/service-readiness/escalation-path-review"
       ],
       "tools": [
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/customer/apt-support-operations-reviewer.md"
@@ -1266,15 +1386,19 @@
       "scope": "domain",
       "description": "Use at the start of a harness engagement to turn a request into a compact, reviewable task packet for the smallest suitable APT workflow.",
       "applies_principles": [
-        "principles/ai/agent-design.md"
+        "principles/ai/agent-design.md",
+        "principles/thinking/practical-thinking.md",
+        "principles/ai/model-routing.md"
       ],
       "uses_skills": [
-        "skills/thinking/clarify-before-acting"
+        "skills/thinking/clarify-before-acting",
+        "skills/ai-agents/agent-routing"
       ],
       "tools": [
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "none",
       "canonical_path": "agents/harness/apt-task-router.md"
@@ -1296,6 +1420,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "deep",
       "autonomy": "advisory",
       "canonical_path": "agents/core/apt-thinking-lead.md"
@@ -1316,6 +1441,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/payments/apt-transaction-intelligence-analyst.md"
@@ -1327,13 +1453,20 @@
       "scope": "domain",
       "description": "Use when reviewing UI work for intent, workflow continuity, state design, accessibility, or responsive behavior.",
       "applies_principles": [
-        "principles/ai/agent-design.md"
+        "principles/ai/agent-design.md",
+        "principles/design/intent-based-design.md",
+        "principles/design/accessibility.md",
+        "principles/design/role-based-experience.md"
       ],
-      "uses_skills": [],
+      "uses_skills": [
+        "skills/design/intent-based-ui-design",
+        "skills/design/apt-contrast-check"
+      ],
       "tools": [
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/harness/apt-ui-reviewer.md"
@@ -1345,13 +1478,18 @@
       "scope": "domain",
       "description": "Use when outputs, installs, repairs, routing config, or documentation alignment must be verified before they are trusted.",
       "applies_principles": [
-        "principles/ai/agent-design.md"
+        "principles/ai/agent-design.md",
+        "principles/execution/quality-and-testing.md",
+        "principles/ai/ai-safety-and-evaluation.md"
       ],
-      "uses_skills": [],
+      "uses_skills": [
+        "skills/ai-agents/hallucination-review"
+      ],
       "tools": [
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/harness/apt-verifier.md"
@@ -1372,6 +1510,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/product/apt-voice-of-customer-analyst.md"
@@ -1393,6 +1532,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/docs/documentation-normalizer.md"
@@ -1413,6 +1553,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/engineering/drack.md"
@@ -1434,6 +1575,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/api/glyph.md"
@@ -1455,6 +1597,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/design/intent-ux-reviewer.md"
@@ -1475,6 +1618,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "deep",
       "autonomy": "advisory",
       "canonical_path": "agents/architecture/javik.md"
@@ -1495,6 +1639,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/ecommerce/kaidan.md"
@@ -1515,6 +1660,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "deep",
       "autonomy": "advisory",
       "canonical_path": "agents/risk/kasumi.md"
@@ -1535,6 +1681,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/product/miranda.md"
@@ -1555,6 +1702,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/risk/samara.md"
@@ -1576,6 +1724,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/payments/suvi.md"
@@ -1597,6 +1746,7 @@
         "read",
         "search"
       ],
+      "handoffs": [],
       "model_tier": "standard",
       "autonomy": "advisory",
       "canonical_path": "agents/payments/wrex.md"

@@ -52,6 +52,7 @@ See the [Security Risk canonical hub](README.md) and linked standards/checklists
 ## Applied by
 
 - [apt-compliance-awareness-reviewer](../../agents/risk/apt-compliance-awareness-reviewer.md) — Use when a change touches data handling, disclosures, or regulated processes, to confirm the team is aware of the compliance obligations involved, even where full legal review is separate.
+- [apt-security-reviewer](../../agents/harness/apt-security-reviewer.md) — Use when reviewing security-sensitive agent, code, configuration, MCP, model-routing, or lifecycle behavior.
 
 ## Related
 

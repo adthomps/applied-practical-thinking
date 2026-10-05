@@ -52,7 +52,7 @@
     "status": "source-inventory-only",
     "diagram_document": "docs/diagrams/apt-portfolio-knowledge-system.md",
     "starter_queries": [
-      "Which repositories own canonical doctrine, local product behavior, internal planning, operational intake, and public proof?",
+      "Which repositories own canonical doctrine, local product behavior, operational intake, and public proof, and where is internal planning housed?",
       "How does accepted intake move through planning, reusable doctrine, productized behavior, and delivery?",
       "Which repositories consume assets distributed from apt-principles-agents, and where can adoption drift occur?",
       "How does frozen design evidence connect to canonical design guidance and the public APT experience?",
@@ -63,20 +63,6 @@
         "source": "apt-principles-agents",
         "target": "applied-practical-thinking",
         "relation": "publishes_guidance_to",
-        "source_file": "PROJECT_KNOWLEDGE.md",
-        "source_location": "Canonical Ownership"
-      },
-      {
-        "source": "apt-principles-agents",
-        "target": "apt-product-team",
-        "relation": "powers",
-        "source_file": "PROJECT_KNOWLEDGE.md",
-        "source_location": "Canonical Ownership"
-      },
-      {
-        "source": "apt-product-team",
-        "target": "applied-practical-thinking",
-        "relation": "connected_to",
         "source_file": "PROJECT_KNOWLEDGE.md",
         "source_location": "Canonical Ownership"
       },
@@ -116,10 +102,10 @@
         "source_location": "L16"
       },
       {
-        "source": "apt-product-team",
+        "source": "apt-principles-agents",
         "target": "apt-dream-to-reality",
         "relation": "productization_destination",
-        "source_file": "apt-product-team/docs/operating-model.md",
+        "source_file": "apt-principles-agents/product-team/docs/operating-model.md",
         "source_location": "L49"
       },
       {
@@ -177,12 +163,12 @@
     {
       "id": "intake-delivery",
       "title": "Intake to delivery",
-      "minimum_repositories": 3,
+      "minimum_repositories": 2,
       "sources": [
         "apt-intake/docs/operating-model.md",
-        "apt-product-team/docs/operating-model.md",
-        "apt-product-team/docs/formalization-direction.md",
-        "apt-product-team/INTAKE_APPLICATION_DIRECTION.md",
+        "apt-principles-agents/product-team/docs/operating-model.md",
+        "apt-principles-agents/product-team/docs/formalization-direction.md",
+        "apt-principles-agents/product-team/INTAKE_APPLICATION_DIRECTION.md",
         "apt-dream-to-reality/docs/INTAKE_TO_DELIVERY_CONTRACT.md",
         "apt-dream-to-reality/docs/WORKING_BACKWARDS_PRODUCT_TEAM_APPLICATION.md"
       ],
@@ -247,10 +233,10 @@
     {
       "id": "public-proof",
       "title": "Productization and public proof",
-      "minimum_repositories": 3,
+      "minimum_repositories": 2,
       "sources": [
-        "apt-product-team/docs/project-context.md",
-        "apt-product-team/docs/formalization-direction.md",
+        "apt-principles-agents/product-team/docs/project-context.md",
+        "apt-principles-agents/product-team/docs/formalization-direction.md",
         "apt-principles-agents/references/publication-manifest.json",
         "applied-practical-thinking/README.md",
         "applied-practical-thinking/docs/project-context.md",
@@ -639,7 +625,7 @@
           "graphify-out",
           "sources"
         ],
-        "provisional": true
+        "provisional": false
       },
       "starter_queries": [
         "How are VAS SMB audiences, accounts, onboarding, payment acceptance, and merchant operations outlined?",
@@ -659,7 +645,13 @@
         "manifests/knowledge-graph.yaml",
         "docs/working-backwards-product-team-application.md",
         "docs/intake-routing-application.md",
-        "docs/design-reference-intake.md"
+        "docs/design-reference-intake.md",
+        "product-team/README.md",
+        "product-team/AGENTS.md",
+        "product-team/docs/project-context.md",
+        "product-team/docs/operating-model.md",
+        "product-team/docs/formalization-direction.md",
+        "product-team/INTAKE_APPLICATION_DIRECTION.md"
       ],
       "additional_exclusions": [
         "docs/archive/",
@@ -673,20 +665,6 @@
         "What would be affected by changing a manifest, taxonomy entry, or platform adapter?",
         "Which downstream adoption records indicate drift from the canonical repository?"
       ]
-    },
-    {
-      "name": "apt-product-team",
-      "participation": "portfolio-metadata",
-      "wave": "portfolio-only",
-      "portfolio_paths": [
-        "README.md",
-        "AGENTS.md",
-        "docs/project-context.md",
-        "docs/operating-model.md",
-        "docs/formalization-direction.md",
-        "INTAKE_APPLICATION_DIRECTION.md"
-      ],
-      "reason": "Local planning cockpit whose durable value is promotion and routing context."
     },
     {
       "name": "apt-security-harness",

@@ -53,6 +53,7 @@ See the [Design canonical hub](README.md) and linked standards/checklists before
 - [apt-business-user-reviewer](../../agents/customer/apt-business-user-reviewer.md) — Use when a deliverable will be used by a business owner or operator (not a developer) to run their business, to confirm it matches how they actually think about their operations.
 - [apt-developer-integrator-reviewer](../../agents/customer/apt-developer-integrator-reviewer.md) — Use when reviewing the steady-state integration experience for a developer already familiar with the product, to confirm advanced flows and edge cases are covered, not just the first call.
 - [apt-support-operations-reviewer](../../agents/customer/apt-support-operations-reviewer.md) — Use when a change is about to ship, to confirm the support organization can actually operate and troubleshoot it on day one.
+- [apt-ui-reviewer](../../agents/harness/apt-ui-reviewer.md) — Use when reviewing UI work for intent, workflow continuity, state design, accessibility, or responsive behavior.
 
 ## Related
 

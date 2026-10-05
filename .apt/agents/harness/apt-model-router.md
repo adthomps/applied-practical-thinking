@@ -7,9 +7,12 @@ scope: domain
 description: Use when choosing the smallest sufficient local or cloud model tier for an APT task.
 applies_principles:
   - principles/ai/agent-design.md
+  - principles/ai/model-routing.md
+  - principles/ai/local-llm-routing.md
 uses_skills:
   - skills/ai-agents/model-selection
   - skills/source-backed/token-efficiency
+  - skills/ai-agents/local-llm-routing
 tools:
   - read
   - search
@@ -65,6 +68,8 @@ Use `skills/ai-agents/model-selection` and `skills/source-backed/token-efficienc
 ## Enforces
 
 - [Agent Design](../../principles/ai/agent-design.md) — check the work against this principle and cite the clause any finding rests on.
+- [Model Routing](../../principles/ai/model-routing.md) — check the work against this principle and cite the clause any finding rests on.
+- [Local LLM Routing](../../principles/ai/local-llm-routing.md) — check the work against this principle and cite the clause any finding rests on.
 
 ## Inputs
 

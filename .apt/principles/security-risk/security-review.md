@@ -48,6 +48,8 @@ Review for implicit authorization, excessive data collection, sensitive logs, un
 See the [Security Risk canonical hub](README.md) and linked standards/checklists before making final claims.
 ## Applied by
 
+- [apt-code-reviewer](../../agents/harness/apt-code-reviewer.md) — Use when code needs a review for bugs, maintainability, behavior preservation, or missing validation.
+- [apt-security-reviewer](../../agents/harness/apt-security-reviewer.md) — Use when reviewing security-sensitive agent, code, configuration, MCP, model-routing, or lifecycle behavior.
 - [kasumi](../../agents/risk/kasumi.md) — Use when a change has security implications — authentication, data exposure, attack surface — that need review before it ships.
 
 ## Related

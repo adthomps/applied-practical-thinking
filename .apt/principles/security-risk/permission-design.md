@@ -48,6 +48,7 @@ Review for implicit authorization, excessive data collection, sensitive logs, un
 See the [Security Risk canonical hub](README.md) and linked standards/checklists before making final claims.
 ## Applied by
 
+- [apt-security-reviewer](../../agents/harness/apt-security-reviewer.md) — Use when reviewing security-sensitive agent, code, configuration, MCP, model-routing, or lifecycle behavior.
 - [samara](../../agents/risk/samara.md) — Use when a change affects who can do what — roles, scopes, access control rules — to confirm the permission model is correct and least-privilege.
 
 ## Related

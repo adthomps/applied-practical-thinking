@@ -59,6 +59,7 @@ See the [Thinking canonical hub](README.md) and linked standards/checklists befo
 - [apt-execution-lead](../../agents/core/apt-execution-lead.md) — Use when a change is ready to move from design/architecture into implementation, and someone needs to confirm the plan is buildable, safely sequenced, and verifiable before work starts.
 - [apt-principal](../../agents/core/apt-principal.md) — Use as the final synthesis step after specialist perspectives have reported, when scattered concerns, risks, and tradeoffs must be reconciled into one accountable, evidence-backed decision with a clear approval status.
 - [apt-router](../../agents/core/apt-router.md) — Use at the start of any review-council engagement, before any specialist perspective agent is invoked, to decide which agents the request actually needs based on domain, audience, and risk.
+- [apt-task-router](../../agents/harness/apt-task-router.md) — Use at the start of a harness engagement to turn a request into a compact, reviewable task packet for the smallest suitable APT workflow.
 - [apt-thinking-lead](../../agents/core/apt-thinking-lead.md) — Use before domain-specific perspectives are engaged, whenever the problem statement, assumptions, or tradeoffs behind a proposal haven't yet been made explicit and checkable.
 
 ## Related
