@@ -36,6 +36,8 @@ jobs:
           fi
       - name: Validate APT conformance gates
         run: pnpm run validate:apt-conformance
+      - name: APT design check (contrast, token drift, lint)
+        run: pnpm run check:design
       - name: Deploy Worker
         run: |
           cd apps/worker

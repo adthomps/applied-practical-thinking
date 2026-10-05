@@ -3,30 +3,266 @@
   "operator_repository": "apt-principles-agents",
   "audience": "internal-hybrid",
   "update_mode": "curated-on-demand",
+  "workflow": {
+    "search_first": true,
+    "full_portfolio_build_enabled": false,
+    "default_repository_mode": "code-only",
+    "semantic_pack_min_files": 3,
+    "semantic_pack_max_files": 8,
+    "automatic_promotion": false,
+    "mcp_hooks_and_schedules_enabled": false
+  },
   "semantic_policy": {
     "mode": "local-only",
     "backend": "ollama",
+    "model": "qwen2.5-coder:14b",
     "max_concurrency": 1,
     "token_budget": 2000,
+    "context_window": 32768,
+    "max_output_tokens": 16384,
+    "disable_thinking": true,
     "hosted_backends_allowed": false
   },
   "output_policy": {
     "root": "graphify-out",
+    "runs_directory": "runs",
+    "current_directory": "current",
+    "history_directory": "history",
+    "legacy_directory": "legacy",
     "commit_generated_outputs": false,
     "inferred_edges_are_candidates": true
   },
+  "acceptance_policy": {
+    "code_only": {
+      "minimum_nodes": 1,
+      "minimum_edges": 0
+    },
+    "semantic_pack": {
+      "minimum_nodes": 3,
+      "minimum_edges": 2
+    },
+    "minimum_source_coverage": 0.9,
+    "minimum_query_source_locations": 2,
+    "minimum_query_repositories": 2,
+    "maximum_noisy_god_nodes": 2,
+    "noise_labels": ["cn", "react", "import", "package", "metadata"]
+  },
   "portfolio": {
     "id": "apt-portfolio",
-    "stage_directory": "graphify-out/portfolio-corpus",
+    "status": "source-inventory-only",
     "diagram_document": "docs/diagrams/apt-portfolio-knowledge-system.md",
     "starter_queries": [
       "Which repositories own canonical doctrine, local product behavior, internal planning, operational intake, and public proof?",
       "How does accepted intake move through planning, reusable doctrine, productized behavior, and delivery?",
       "Which repositories consume assets distributed from apt-principles-agents, and where can adoption drift occur?",
       "How does frozen design evidence connect to canonical design guidance and the public APT experience?",
-      "Which security-review components connect the APT security harness to the repositories it evaluates?"
+      "How do the APT security harness and Authorize.Net Security SDK provide distinct, complementary security coverage?"
+    ],
+    "relationships": [
+      {
+        "source": "apt-principles-agents",
+        "target": "applied-practical-thinking",
+        "relation": "publishes_guidance_to",
+        "source_file": "PROJECT_KNOWLEDGE.md",
+        "source_location": "Canonical Ownership"
+      },
+      {
+        "source": "apt-principles-agents",
+        "target": "apt-product-team",
+        "relation": "powers",
+        "source_file": "PROJECT_KNOWLEDGE.md",
+        "source_location": "Canonical Ownership"
+      },
+      {
+        "source": "apt-product-team",
+        "target": "applied-practical-thinking",
+        "relation": "connected_to",
+        "source_file": "PROJECT_KNOWLEDGE.md",
+        "source_location": "Canonical Ownership"
+      },
+      {
+        "source": "apt-anet-training",
+        "target": "apt-anet-integration-toolbox",
+        "relation": "provides_training_truth_for",
+        "source_file": "WORKSPACE_PROJECT_INVENTORY_2026-09-26.md",
+        "source_location": "Authorize.Net and the move to VAS"
+      },
+      {
+        "source": "apt-anet-vas-smb-move",
+        "target": "apt-developer-mcp-payments",
+        "relation": "migration_source_for",
+        "source_file": "WORKSPACE_PROJECT_INVENTORY_2026-09-26.md",
+        "source_location": "Relationships to preserve"
+      },
+      {
+        "source": "apt-developer-mcp-payments",
+        "target": "apt-anet-vas-migration-acceptance",
+        "relation": "validated_by",
+        "source_file": "WORKSPACE_PROJECT_INVENTORY_2026-09-26.md",
+        "source_location": "Relationships to preserve"
+      },
+      {
+        "source": "apt-anet-integration-toolbox",
+        "target": "apt-anet-vas-migration-acceptance",
+        "relation": "acceptance_tested_by",
+        "source_file": "WORKSPACE_PROJECT_INVENTORY_2026-09-26.md",
+        "source_location": "Relationships to preserve"
+      },
+      {
+        "source": "apt-intake",
+        "target": "apt-dream-to-reality",
+        "relation": "accepted_context_to_product_planning",
+        "source_file": "apt-dream-to-reality/docs/INTAKE_TO_DELIVERY_CONTRACT.md",
+        "source_location": "L16"
+      },
+      {
+        "source": "apt-product-team",
+        "target": "apt-dream-to-reality",
+        "relation": "productization_destination",
+        "source_file": "apt-product-team/docs/operating-model.md",
+        "source_location": "L49"
+      },
+      {
+        "source": "apt-principles-agents",
+        "target": "apt-dream-to-reality",
+        "relation": "owns_reusable_doctrine_for",
+        "source_file": "apt-dream-to-reality/docs/WORKING_BACKWARDS_PRODUCT_TEAM_APPLICATION.md",
+        "source_location": "L10"
+      },
+      {
+        "source": "apt-design-reference",
+        "target": "apt-principles-agents",
+        "relation": "historical_design_evidence_for",
+        "source_file": "apt-principles-agents/docs/design-reference-intake.md",
+        "source_location": "L17"
+      },
+      {
+        "source": "apt-design-reference",
+        "target": "applied-practical-thinking",
+        "relation": "promoted_public_examples_to",
+        "source_file": "apt-principles-agents/docs/design-reference-intake.md",
+        "source_location": "L17"
+      },
+      {
+        "source": "apt-security-harness",
+        "target": "apt-anet-security-sdk",
+        "relation": "complementary_security_scope",
+        "source_file": "WORKSPACE_PROJECT_INVENTORY_2026-09-26.md",
+        "source_location": "Relationships to preserve"
+      },
+      {
+        "source": "apt-playwright-compass",
+        "target": "apt-anet-playwright",
+        "relation": "aggregates_explorer",
+        "source_file": "WORKSPACE_PROJECT_INVENTORY_2026-09-26.md",
+        "source_location": "Playwright explorers"
+      },
+      {
+        "source": "apt-playwright-compass",
+        "target": "apt-vas-ent-playwright",
+        "relation": "aggregates_explorer",
+        "source_file": "WORKSPACE_PROJECT_INVENTORY_2026-09-26.md",
+        "source_location": "Playwright explorers"
+      },
+      {
+        "source": "apt-playwright-compass",
+        "target": "apt-vas-smb-playwright",
+        "relation": "aggregates_explorer",
+        "source_file": "WORKSPACE_PROJECT_INVENTORY_2026-09-26.md",
+        "source_location": "Playwright explorers"
+      }
     ]
   },
+  "investigation_packs": [
+    {
+      "id": "intake-delivery",
+      "title": "Intake to delivery",
+      "minimum_repositories": 3,
+      "sources": [
+        "apt-intake/docs/operating-model.md",
+        "apt-product-team/docs/operating-model.md",
+        "apt-product-team/docs/formalization-direction.md",
+        "apt-product-team/INTAKE_APPLICATION_DIRECTION.md",
+        "apt-dream-to-reality/docs/INTAKE_TO_DELIVERY_CONTRACT.md",
+        "apt-dream-to-reality/docs/WORKING_BACKWARDS_PRODUCT_TEAM_APPLICATION.md"
+      ],
+      "questions": [
+        "How does accepted intake move from triage into product planning and delivery?",
+        "Which repository owns each handoff, approval, and durable artifact?",
+        "Where do the operating models disagree or leave a routing gap?"
+      ]
+    },
+    {
+      "id": "doctrine-adoption-drift",
+      "title": "Doctrine adoption and drift",
+      "minimum_repositories": 2,
+      "sources": [
+        "apt-principles-agents/standards/installable-summaries/knowledge-graph-standards.md",
+        "apt-principles-agents/manifests/knowledge-graph.yaml",
+        "apt-principles-agents/docs/project-context.md",
+        "applied-practical-thinking/docs/apt/adoption.md",
+        "applied-practical-thinking/docs/project-context.md"
+      ],
+      "questions": [
+        "How does canonical doctrine become locally adopted behavior?",
+        "Which evidence reveals stale, partial, or divergent adoption?",
+        "What is canonical, generated, or merely inferred?"
+      ]
+    },
+    {
+      "id": "design-provenance",
+      "title": "Design provenance",
+      "minimum_repositories": 3,
+      "sources": [
+        "apt-design-reference/README.md",
+        "apt-design-reference/docs/archive-decision.md",
+        "apt-design-reference/docs/project-context.md",
+        "apt-principles-agents/docs/design-reference-intake.md",
+        "applied-practical-thinking/docs/DESIGN_REFERENCE_MERGE_DIRECTION.md"
+      ],
+      "questions": [
+        "How does frozen design evidence connect to canonical guidance and public implementation?",
+        "Which sources are historical evidence versus active authority?",
+        "Where could a consumer mistake copied evidence for canonical doctrine?"
+      ]
+    },
+    {
+      "id": "security-review",
+      "title": "Security review relationships",
+      "minimum_repositories": 3,
+      "sources": [
+        "apt-security-harness/README.md",
+        "apt-security-harness/docs/operations.md",
+        "apt-security-harness/docs/project-context.md",
+        "apt-anet-security-sdk/README.md",
+        "apt-anet-security-sdk/docs/architecture.md",
+        "apt-anet-integration-toolbox/docs/project-context.md"
+      ],
+      "questions": [
+        "How do the harness, SDK observations, and reviewed product repositories connect?",
+        "Which artifacts are source evidence, generated findings, or remediation candidates?",
+        "Where are sensitive inputs and runtime outputs excluded?"
+      ]
+    },
+    {
+      "id": "public-proof",
+      "title": "Productization and public proof",
+      "minimum_repositories": 3,
+      "sources": [
+        "apt-product-team/docs/project-context.md",
+        "apt-product-team/docs/formalization-direction.md",
+        "apt-principles-agents/references/publication-manifest.json",
+        "applied-practical-thinking/README.md",
+        "applied-practical-thinking/docs/project-context.md",
+        "applied-practical-thinking/docs/apt/adoption.md"
+      ],
+      "questions": [
+        "How does internal product thinking become reusable doctrine and public proof?",
+        "Which publication sources are canonical and which outputs are generated?",
+        "Where can product claims drift from implemented or published evidence?"
+      ]
+    }
+  ],
   "common_exclusions": [
     ".git/",
     ".apt-backups/",
@@ -76,6 +312,7 @@
       "name": "applied-practical-thinking",
       "participation": "deep",
       "wave": 2,
+      "graphify_guide": "docs/graphify.md",
       "portfolio_paths": [
         "README.md",
         "AGENTS.md",
@@ -85,9 +322,15 @@
       ],
       "additional_exclusions": [
         ".apt/",
+        ".claude/",
+        ".codex/",
+        ".gemini/",
         "apps/web/data/generated/",
         "apps/web/public/",
-        "reports/validation/"
+        "apps/web/docs/",
+        "reports/validation/",
+        "**/test/",
+        "**/*.test.*"
       ],
       "starter_queries": [
         "How does canonical APT doctrine become the curated public reference experience?",
@@ -96,12 +339,6 @@
         "What would be affected by changing the public publication manifest or taxonomy?",
         "Where does generated public content risk drifting from its canonical sources?"
       ]
-    },
-    {
-      "name": "apt-anet-doc-explorer",
-      "participation": "lightweight-on-demand",
-      "wave": "on-demand",
-      "reason": "Graph only when tracing document discovery, catalog provenance, or analysis behavior."
     },
     {
       "name": "apt-anet-integration-toolbox",
@@ -128,17 +365,73 @@
       "reason": "Small fixed-behavior Worker collection with an adequate README matrix."
     },
     {
+      "name": "apt-anet-training",
+      "participation": "local-content",
+      "wave": 2,
+      "graphify_guide": "docs/graphify.md",
+      "local_graph": {
+        "mode": "authored-markdown",
+        "source_roots": [],
+        "source_files": [
+          "content/foundations/index.md",
+          "content/foundations/01-payments-ecosystem.md",
+          "content/foundations/05-payment-acceptance.md",
+          "content/foundations/07-recurring-and-stored-payments.md",
+          "content/foundations/08-fraud-and-risk.md",
+          "content/foundations/09-developer-and-integration.md",
+          "content/foundations/10-reporting-and-settlement.md",
+          "content/foundations/12-architecture-overview.md"
+        ],
+        "excluded_paths": [
+          "archive",
+          "graphify-out",
+          "sources"
+        ],
+        "provisional": false
+      },
+      "starter_queries": [
+        "How do the foundations connect merchant operations, payments, risk, integration, and settlement?",
+        "How are legacy integrations and current checkout methods organized across the Authorize.Net knowledge pack?",
+        "Which training topics are source-backed, and where does the documentation identify review gaps?"
+      ]
+    },
+    {
+      "name": "apt-anet-vas-migration-acceptance",
+      "participation": "deep",
+      "wave": 2,
+      "graphify_guide": "docs/graphify.md",
+      "additional_exclusions": [
+        ".certs/",
+        ".local/",
+        ".env",
+        ".env.*",
+        "output/",
+        "node_modules/",
+        "tests/"
+      ],
+      "starter_queries": [
+        "How does the sandbox-only checkout move from browser tokenization to the backend sale and safe result?",
+        "Which source modules enforce payment-field allowlists, operation claims, and unresolved-outcome handling?",
+        "Where are live sandbox prerequisites and the boundary between the acceptance app and migration MCP documented?"
+      ]
+    },
+    {
       "name": "apt-anet-security-sdk",
       "participation": "deep",
       "wave": 2,
+      "graphify_guide": "docs/graphify.md",
       "additional_exclusions": [
         ".claude/",
         "data/",
         "reports/",
+        "_tmp_*",
+        ".sandbox-fs-artifact*",
         "tls-server/certs/",
         "**/target/",
         "**/vendor/",
-        "ruby-runner;C/"
+        "ruby-runner;C/",
+        "**/composer.json",
+        "**/pom.xml"
       ],
       "starter_queries": [
         "How do orchestrator requests flow through SDK runners to controlled TLS profiles and reports?",
@@ -152,10 +445,12 @@
       "name": "apt-commerce",
       "participation": "deep",
       "wave": 1,
+      "graphify_guide": "docs/graphify.md",
       "additional_exclusions": [
         ".apt/",
         ".lovable/",
         "_quarantine_github_src_old/",
+        "**/.output/",
         "docs/apt/reports/",
         "apps/web/e2e/"
       ],
@@ -165,6 +460,53 @@
         "Where are partner, merchant, internal staff, developer, and support roles enforced?",
         "How do the React application, Worker APIs, D1 repositories, and external services exchange data?",
         "Where can product documentation, Working Backwards packages, and runtime behavior drift?"
+      ]
+    },
+    {
+      "name": "apt-anet-vas-smb-move",
+      "participation": "local-content",
+      "wave": 2,
+      "graphify_guide": "docs/graphify.md",
+      "local_graph": {
+        "mode": "authored-markdown",
+        "source_roots": [
+          "docs/migrations"
+        ],
+        "source_files": [
+          "README.md",
+          "docs/integration-map.md"
+        ],
+        "excluded_paths": [
+          "docs/archive",
+          "docs/graphify.md",
+          "docs/project-identity.md"
+        ],
+        "provisional": false
+      },
+      "starter_queries": [
+        "Which Authorize.Net products map to VAS SMB products, and what is the documented migration status?",
+        "What merchant-side steps, prerequisites, and verification are required for the included migration guide?",
+        "Where are product migration guidance and developer MCP implementation kept separate?"
+      ]
+    },
+    {
+      "name": "apt-developer-mcp-payments",
+      "participation": "deep",
+      "wave": 2,
+      "graphify_guide": "docs/graphify.md",
+      "additional_exclusions": [
+        ".tmp/",
+        "dist/",
+        "knowledge/local/",
+        "local-settings/",
+        "node_modules/",
+        "tests/",
+        "*.tgz"
+      ],
+      "starter_queries": [
+        "How does bounded Authorize.Net assessment evidence flow into migration planning and verification?",
+        "Which modules own bundled knowledge, imported training context, MCP tools, and reviewed templates?",
+        "Where are payment credentials, customer data, and local imported context excluded from assessment output?"
       ]
     },
     {
@@ -210,13 +552,22 @@
       "name": "apt-health",
       "participation": "deep",
       "wave": 2,
+      "graphify_guide": "docs/graphify.md",
       "additional_exclusions": [
         ".agents/",
         ".apt/",
+        ".claude/",
+        ".codex/",
+        ".gemini/",
+        "apps/web/public/",
+        "packages/design-system/",
         "docs/apt/reports/",
+        "**/test/",
+        "**/*.test.*",
         "**/data/",
         "**/imports/",
-        "**/exports/"
+        "**/exports/",
+        "**/components.json"
       ],
       "starter_queries": [
         "How does imported periodic health data move through validation, persistence, comparison, and direction generation?",
@@ -239,50 +590,22 @@
       "reason": "Small operational front door whose main value is its routing relationship to owning repositories."
     },
     {
-      "name": "apt-intelligence-core",
-      "participation": "deep",
-      "wave": 2,
-      "additional_exclusions": [
-        ".agents/",
-        ".apt/",
-        "output/",
-        "**/generated/",
-        "**/*.csv"
-      ],
-      "starter_queries": [
-        "How does source-shaped data become normalized evidence, metrics, findings, narratives, and packaged reports?",
-        "Which core pipeline stages are shared across active intelligence domains?",
-        "How do domain configurations, schemas, report types, and renderers interact?",
-        "What would be affected by adding a new intelligence domain or source system?",
-        "Where can deterministic calculations, generated narratives, and rendered reports drift?"
-      ]
-    },
-    {
-      "name": "apt-knowledge-hub",
-      "participation": "deep",
-      "wave": 1,
-      "additional_exclusions": [
-        ".apt/",
-        "data/",
-        "reports/",
-        "**/generated/"
-      ],
-      "starter_queries": [
-        "How does canonical Git content move through validation, D1 ingest, KV publication, and the React reader?",
-        "How does the APT MCP connect prompts, blueprints, docs, APIs, and examples?",
-        "Which schemas and loaders preserve provenance across content formats and brand scopes?",
-        "What would be affected by changing a knowledge package or OpenAPI contract?",
-        "Where can D1 or KV read models drift from canonical Git content?"
-      ]
-    },
-    {
       "name": "apt-novel-reviewer",
       "participation": "deep",
       "wave": 2,
+      "graphify_guide": "docs/graphify.md",
       "additional_exclusions": [
         ".apt/",
+        ".claude/",
+        ".codex/",
+        ".gemini/",
+        "docs/apt/reports/",
         "test-data/",
         "tmp-docx-sample-*/",
+        "**/test/",
+        "**/*.test.*",
+        "**/*.d.ts",
+        "**/*.d.ts.map",
         "**/*.docx"
       ],
       "starter_queries": [
@@ -291,6 +614,37 @@
         "How are resolved, still-present, and new findings calculated across versions?",
         "What would be affected by adding a review mode or manuscript format?",
         "Where are the local-only, no-rewriting, and no-chat boundaries enforced?"
+      ]
+    },
+    {
+      "name": "apt-vas-smb-training",
+      "participation": "local-content",
+      "wave": 2,
+      "graphify_guide": "docs/graphify.md",
+      "local_graph": {
+        "mode": "authored-markdown",
+        "source_roots": [],
+        "source_files": [
+          "content/foundations/index.md",
+          "content/foundations/01-what-is-vas-smb.md",
+          "content/foundations/02-accounts-and-environments.md",
+          "content/foundations/04-onboarding-and-boarding.md",
+          "content/foundations/05-payment-acceptance.md",
+          "content/foundations/09-developer-integration.md",
+          "content/api/overview.md",
+          "content/online-checkout/index.md"
+        ],
+        "excluded_paths": [
+          "archive",
+          "graphify-out",
+          "sources"
+        ],
+        "provisional": true
+      },
+      "starter_queries": [
+        "How are VAS SMB audiences, accounts, onboarding, payment acceptance, and merchant operations outlined?",
+        "How do the API, checkout, portal, partner, and risk topic outlines connect?",
+        "Which topics remain draft outlines or identify unresolved SMB entitlement and partner questions?"
       ]
     },
     {
@@ -350,6 +704,7 @@
         "inputs/",
         "outputs/",
         "targets/",
+        "tests/",
         "vvaharness/",
         "vvaharness.egg-info/"
       ],
@@ -365,11 +720,17 @@
       "name": "crt-world",
       "participation": "deep",
       "wave": 2,
+      "graphify_guide": "docs/graphify.md",
       "additional_exclusions": [
         ".apt/",
+        ".claude/",
+        ".codex/",
+        ".gemini/",
         "apt-core/",
         "apps/site/public/images/",
-        "docs/apt/reports/"
+        "docs/apt/reports/",
+        "**/test/",
+        "**/*.test.*"
       ],
       "starter_queries": [
         "How does authored content move through admin validation, D1 persistence, API view models, and public pages?",

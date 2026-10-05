@@ -1,7 +1,7 @@
 {
   "title": "APT Design Lint Gates",
   "version": "v1",
-  "last_updated": "2026-10-03",
+  "last_updated": "2026-10-04",
   "owner": "APT",
   "status": "draft",
   "source": "Synchronized from apt-design-reference and canonical APT design doctrine",
@@ -32,7 +32,8 @@
     "Transactional email uses table-based layout, inline-safe styles, flattened token colors, a preheader, one primary call to action, and compliance or preference links where applicable.",
     "Content is clear, specific, non-marketing, and aligned to APT naming and messaging rules.",
     "Keyboard, focus, contrast, screen-reader, readable wrapping, and reduced-motion expectations are met.",
-    "AI-generated UI does not introduce unsupported styles, hidden behavior, invented components, or unreviewed visual language."
+    "AI-generated UI does not introduce unsupported styles, hidden behavior, invented components, or unreviewed visual language.",
+    "Tier 1 and Tier 2 products declare apt-design.json and run node .apt/design/bin/apt-design-check.mjs (contrast, token drift, design lint) in CI."
   ],
   "evidence_required": [
     "Screenshot or preview link",
@@ -43,19 +44,23 @@
     "Surface-pattern notes for docs, content, product, account, dashboard, or email flows when applicable",
     "Accessibility and contrast notes for primary, secondary, disabled, danger, warning, and success states",
     "Keyboard, screen-reader, and reduced-motion notes for interactive surfaces",
-    "Vendored design-reference-kit path or equivalent preview evidence when a kit pattern is used",
+    "Pattern reference (examples/ui/*-pattern.md or the APT site v2 patterns) or equivalent preview evidence when a pattern is reused",
     "Decision record for accepted exceptions"
   ],
   "reference_surfaces": [
-    "examples/ui/design-reference-kit/preview",
-    "examples/ui/design-reference-kit/ui_kits/account",
-    "examples/ui/design-reference-kit/ui_kits/dashboard",
-    "examples/ui/design-reference-kit/ui_kits/docs",
-    "examples/ui/design-reference-kit/ui_kits/email",
-    "examples/ui/design-reference-kit/ui_kits/insights",
-    "examples/ui/design-reference-kit/ui_kits/patterns",
-    "examples/ui/design-reference-kit/ui_kits/portfolio",
-    "examples/ui/design-reference-kit/ui_kits/product",
-    "examples/ui/design-reference-kit/ui_kits/primitives"
+    "design/generated/apt-tokens.css",
+    "design/generated/tailwind-preset.cjs",
+    "examples/ui/account-auth-settings-pattern.md",
+    "examples/ui/chart-data-visualization-pattern.md",
+    "examples/ui/content-insights-card-pattern.md",
+    "examples/ui/dashboard-layout-pattern.md",
+    "examples/ui/design-system-primitives-pattern.md",
+    "examples/ui/docs-principles-browser-pattern.md",
+    "examples/ui/feedback-alert-toast-pattern.md",
+    "examples/ui/footer-layout-pattern.md",
+    "examples/ui/navigation-layout-pattern.md",
+    "examples/ui/product-portfolio-surface-pattern.md",
+    "examples/ui/transactional-email-pattern.md",
+    "applied-practical-thinking/apps/web/docs/design/versions/v2/patterns/"
   ]
 }

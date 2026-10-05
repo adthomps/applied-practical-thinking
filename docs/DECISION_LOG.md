@@ -593,4 +593,11 @@ One source with generated outputs removes hand-copying and the drift it caused. 
 
 **Consequences:**
 - Positive: token changes are one edit, a version bump and a sync, with drift and contrast checked the same way everywhere.
-- Negative: this site becomes a consumer. Its token copies (`APT-TOKENS.json`, `theme/aptTokens.ts`, `packages/config` values) become mirrors to retire during migration.
+- Negative: this site becomes a consumer. Its published `APT-TOKENS.json` and `APT-TOKENS-CONTRACT.json` under `docs/design/static/` become mirrors of the synced canonical files.
+
+**Migration (2026-10-04):**
+- The `design` manifest is installed (`.apt/design/`, design 2.1.0). `apt-design.json` declares Tier 1 with no exclusions.
+- `apps/web/index.css` imports `.apt/design/generated/apt-tokens.css` instead of defining the token blocks. Computed values in the browser are unchanged.
+- `pnpm run check:design` runs `.apt/design/bin/apt-design-check.mjs` (contrast, drift, lint) and `token-drift-check`. The latter now only keeps the published static copies identical to `.apt/design/tokens/`; use `--fix` to update them. The check runs in `check` and in the worker workflow.
+- `test/apt-contrast-contract.test.ts` also pins the contrast page's catalogue to the generated dark tokens.
+- `theme/aptTokens.ts` and `packages/config` hold utility class names, not token values, so they stay.

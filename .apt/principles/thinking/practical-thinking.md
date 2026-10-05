@@ -46,6 +46,9 @@ Review for solution-first framing, false certainty, hidden constraints, and deci
 - Separate the observed problem from the requested solution; restate both and verify that solving one would improve the named outcome.
 - Test important assumptions with disconfirming evidence, counterexamples, or a small reversible experiment before committing to an expensive path.
 - Match decision depth to consequence: move quickly on reversible low-impact choices and require stronger evidence and accountable approval for irreversible or high-risk choices.
+- When the owning repository, customer or outcome, or plan-versus-implement choice is missing, stop and ask at most one or two questions. Do not invent a path to keep moving.
+- Record unresolved items as `[OPEN - owner: name]` when work can continue with visible risk, or `[BLOCKER - owner: name]` when implementation must not start.
+- Map missing product intent to Working Backwards intake, not to requirements or code.
 - State what is verified, what is assumed, and what requires specialist or human approval.
 
 See the [Thinking canonical hub](README.md) and linked standards/checklists before making final claims.

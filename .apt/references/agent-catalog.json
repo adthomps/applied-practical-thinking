@@ -926,7 +926,10 @@
       "applies_principles": [
         "principles/ai/agent-design.md"
       ],
-      "uses_skills": [],
+      "uses_skills": [
+        "skills/ai-agents/model-selection",
+        "skills/source-backed/token-efficiency"
+      ],
       "tools": [
         "read",
         "search"
@@ -1265,7 +1268,9 @@
       "applies_principles": [
         "principles/ai/agent-design.md"
       ],
-      "uses_skills": [],
+      "uses_skills": [
+        "skills/thinking/clarify-before-acting"
+      ],
       "tools": [
         "read",
         "search"

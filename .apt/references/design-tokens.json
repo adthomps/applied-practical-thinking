@@ -4,7 +4,7 @@
   "last_updated": "2026-10-03",
   "owner": "APT",
   "status": "draft",
-  "source": "Synchronized from applied-practical-thinking/apps/web/docs/design/static/APT-TOKENS.json (canonical values, decisions APT-017 and APT-018). apt-design-reference is archived.",
+  "source": "GENERATED color values from apt-principles-agents/design/tokens/APT-TOKENS.json by scripts/build-design.mjs (APT-019). Edit the canonical tokens, not this file's color sections.",
   "tokens": {
     "color": {
       "background": "hsl(220,20%,8%)",
@@ -141,5 +141,6 @@
     "The app radius scale supports compact product UI; the soft radius scale supports larger doctrine and marketing surfaces.",
     "One-off colors, shadows, spacing, typography, icon styles, and motion values require a design decision record.",
     "Public APT surfaces should prefer the full APT visual system unless a project has its own approved brand layer."
-  ]
+  ],
+  "designVersion": "2.1.0"
 }
