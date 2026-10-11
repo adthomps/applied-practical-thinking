@@ -4,7 +4,7 @@ kind: guide
 domain: design
 status: active
 owner: APT
-last_updated: 2026-10-04
+last_updated: 2026-10-05
 source_paths: ["apt-principles-agents/design/"]
 ---
 
@@ -21,6 +21,7 @@ This folder is the single source of APT design tokens (DR-015 / APT-019). Produc
 | `generated/tailwind-preset.cjs` | Generated Tailwind v3 preset (colors, radius, shadows, durations). |
 | `generated/apt-theme.css` | Generated Tailwind v4 `@theme inline` mapping. |
 | `generated/tokens.ts` | Generated typed token values. |
+| `generated/apt-preview.html` | Generated portable preview. Open the file directly. It is not the historical standalone HTML in `apt-design-reference`. |
 | `bin/apt-design-check.mjs` | Contrast, token-drift and design-lint check driven by `apt-design.json`. |
 
 The generated folder is deliberately not called `dist/`: nearly every product's `.gitignore` ignores `dist/`, which would leave `.apt/design/dist/` out of fresh clones and CI.
@@ -47,6 +48,22 @@ The generated folder is deliberately not called `dist/`: nearly every product's 
 
 4. Tailwind v3: `presets: [require("../../.apt/design/generated/tailwind-preset.cjs")]`. Tailwind v4: `@import` `apt-theme.css` after the token CSS.
 5. Run the check in a script and in CI: `node .apt/design/bin/apt-design-check.mjs`.
+
+## Highlight color
+
+Teal (`accent`) is the highlight. Hover and selected states that used to be a neutral grey surface may use it. Blue stays the color for primary actions, links, and focus. Success uses the success token.
+
+Ghost and outline buttons, menu items, dropdown options, sidebar items, and docs navigation items take their highlight from `accent`. Sidebar hover uses `sidebar-accent`, which is the same teal. Menu and dropdown options use `focus:bg-accent` with `focus:text-accent-foreground`, because Radix highlights the option by moving focus to it. Keyboard focus on buttons and other controls stays a blue `focus-visible` ring. `focus-visible:bg-accent` fails the design check.
+
+Motion is `140ms` / `220ms` / `360ms` (`--motion-fast`, `--motion-medium`, `--motion-slow`). The flat reference and the generated stylesheets use the same three values.
+
+Open `generated/apt-preview.html` for a portable view of the current tokens. `apt-design-reference` still has historical standalone exports, including `APT Patterns (standalone).html`. Leave those files unchanged. They are not generated from these tokens, and `APT Primitives (standalone).html` is not in this workspace.
+
+## Product code checks
+
+Some files in this folder can fail a product's strict type or lint check. The product still runs, and those files should stay unchanged in the product. The product may exclude the installed design folder from that check.
+
+To make the files pass, fix them here, run `node scripts/build-design.mjs`, sync the `design` manifest, and then remove the product's exclusion.
 
 ## Tiers
 

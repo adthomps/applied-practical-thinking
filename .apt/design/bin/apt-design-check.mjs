@@ -106,7 +106,9 @@ const RULES = {
   "raw-palette": /\b(?:bg|text|border|ring|from|to|via|decoration|placeholder|fill|stroke|outline)-(?:blue|green|emerald|yellow|amber|red|gray|slate|zinc|neutral|stone|purple|violet|indigo|pink|rose|fuchsia|orange|lime|teal|cyan|sky)-(?:50|100|200|300|400|500|600|700|800|900|950)(?:\/\d+)?\b/g,
   "raw-monochrome": /\b(?:bg|text|border|ring|from|to|via)-(?:white|black)(?:\/\d+)?\b/g,
   "raw-hex": /(?<![\w&-])#[0-9a-fA-F]{3,8}\b/g,
-  "accent-interaction": /\b(?:hover|focus|focus-within|data-\[active\]|data-\[state=open\]):bg-accent(?:\/\d+)?\b/g,
+  // Menu and dropdown highlight uses focus:bg-accent (Radix moves focus to the highlighted option).
+  // focus-visible:bg-accent replaces the blue focus ring, so it still fails.
+  "accent-interaction": /\bfocus-visible:bg-accent(?:\/\d+)?\b/g,
 };
 const IGNORE_MARKER = "design-check-ignore";
 const LINT_EXTENSIONS = new Set([".ts", ".tsx", ".js", ".jsx", ".mjs", ".css"]);

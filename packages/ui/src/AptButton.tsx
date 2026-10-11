@@ -13,9 +13,9 @@ const aptButtonVariants = cva(
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border",
         ghost:
-          "text-foreground hover:bg-secondary hover:text-foreground",
+          "text-foreground hover:bg-accent hover:text-accent-foreground",
         outline:
-          "border border-border bg-transparent text-foreground hover:bg-secondary hover:text-foreground",
+          "border border-border bg-transparent text-foreground hover:bg-accent hover:text-accent-foreground",
         link:
           "text-primary underline-offset-4 hover:underline p-0 h-auto",
           accent:

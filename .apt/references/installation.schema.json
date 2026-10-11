@@ -100,6 +100,15 @@
       "type": "string",
       "minLength": 1
     },
+    "localTargets": {
+      "type": "array",
+      "description": "Repository-owned paths that a selected manifest would otherwise manage. install, sync and repair never write them (even with --force); scan reports them as local.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
     "lastOperation": {
       "type": "object",
       "required": [

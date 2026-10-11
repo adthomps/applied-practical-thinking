@@ -310,22 +310,22 @@ function NavDropdown({ item, isLast = false }: { item: NavItem; isLast?: boolean
                   }}
                   onClick={closeDropdown}
                   className={cn(
-                    "block px-4 py-3 transition-all duration-200",
+                    "group block px-4 py-3 transition-all duration-200",
                     isChildActive 
                       ? "bg-primary/10" 
-                      : "hover:bg-secondary/70"
+                      : "hover:bg-accent"
                   )}
                 >
                   <div className={cn(
                     "text-sm font-medium",
-                    isChildActive ? "text-primary" : "text-foreground"
+                    isChildActive ? "text-primary" : "text-foreground group-hover:text-accent-foreground"
                   )}>
                     {child.label}
                   </div>
                   {child.description && (
                     <p className={cn(
                       "text-xs mt-0.5 line-clamp-2",
-                      isChildActive ? "text-primary/70" : "text-muted-foreground"
+                      isChildActive ? "text-primary/70" : "text-muted-foreground group-hover:text-accent-foreground"
                     )}>
                       {child.description}
                     </p>
@@ -397,7 +397,7 @@ function MobileNavItem({ item, onClose }: { item: NavItem; onClose: () => void }
                   "block px-3 py-2 text-sm rounded-md transition-all duration-200",
                   isRouteActive(currentRoute, child.path)
                     ? "bg-primary/10 text-primary font-semibold"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                    : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
                 )}
             >
               {child.label}

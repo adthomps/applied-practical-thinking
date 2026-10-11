@@ -10,11 +10,28 @@
       "kind": "account",
       "description": "A business accepting payments that operates its own account through portals and APIs.",
       "sources": [
-        { "repository": "apt-commerce", "path": "docs/apt/personas/README.md", "name": "Merchant", "status": "direction" },
-        { "repository": "apt-anet-training", "tag": "merchant", "status": "in-review" },
-        { "repository": "apt-vas-smb-training", "tag": "merchant", "status": "draft" }
+        {
+          "repository": "apt-commerce",
+          "path": "docs/apt/personas/README.md",
+          "name": "Merchant",
+          "status": "direction"
+        },
+        {
+          "repository": "apt-anet-training",
+          "tag": "merchant",
+          "status": "in-review"
+        },
+        {
+          "repository": "apt-vas-smb-training",
+          "tag": "merchant",
+          "status": "draft"
+        }
       ],
-      "reviewerAgents": ["apt-business-user-reviewer", "apt-new-merchant-reviewer", "apt-merchant-onboarding-reviewer"]
+      "reviewerAgents": [
+        "apt-business-user-reviewer",
+        "apt-new-merchant-reviewer",
+        "apt-merchant-onboarding-reviewer"
+      ]
     },
     {
       "id": "acquiring-partner",
@@ -22,11 +39,31 @@
       "kind": "account",
       "description": "A bank or acquiring entity that underwrites and boards merchants and configures processing. Called a boarding partner on VAS SMB.",
       "sources": [
-        { "repository": "apt-commerce", "path": "docs/apt/personas/README.md", "name": "Partner — Acquiring Partner", "status": "direction" },
-        { "repository": "apt-anet-training", "tag": "partner", "path": "content/foundations/03-customer-types.md", "name": "Acquiring Partners", "status": "in-review" },
-        { "repository": "apt-vas-smb-training", "tag": "partner", "path": "content/foundations/03-audiences-and-relationships.md", "name": "Partners (merchant boarding, residuals)", "status": "draft" }
+        {
+          "repository": "apt-commerce",
+          "path": "docs/apt/personas/README.md",
+          "name": "Partner — Acquiring Partner",
+          "status": "direction"
+        },
+        {
+          "repository": "apt-anet-training",
+          "tag": "partner",
+          "path": "content/foundations/03-customer-types.md",
+          "name": "Acquiring Partners",
+          "status": "in-review"
+        },
+        {
+          "repository": "apt-vas-smb-training",
+          "tag": "partner",
+          "path": "content/foundations/03-audiences-and-relationships.md",
+          "name": "Partners (merchant boarding, residuals)",
+          "status": "draft"
+        }
       ],
-      "reviewerAgents": ["apt-bank-acquirer-reviewer", "kaidan"]
+      "reviewerAgents": [
+        "apt-bank-acquirer-reviewer",
+        "kaidan"
+      ]
     },
     {
       "id": "iso",
@@ -34,10 +71,17 @@
       "kind": "account",
       "description": "A partner that sells and services merchant portfolios without being the acquiring bank. Distinct needs not yet evidenced.",
       "sources": [
-        { "repository": "apt-commerce", "path": "docs/apt/personas/README.md", "name": "Partner — ISO", "status": "direction" }
+        {
+          "repository": "apt-commerce",
+          "path": "docs/apt/personas/README.md",
+          "name": "Partner — ISO",
+          "status": "direction"
+        }
       ],
-      "reviewerAgents": ["kaidan"],
-      "gap": "No reviewer agent owns the ISO or reseller portfolio perspective; kaidan covers partner onboarding only."
+      "reviewerAgents": [
+        "apt-referral-iso-partner-reviewer",
+        "kaidan"
+      ]
     },
     {
       "id": "referral-partner",
@@ -45,10 +89,17 @@
       "kind": "account",
       "description": "Refers merchants and receives referral compensation without operating their accounts.",
       "sources": [
-        { "repository": "apt-anet-training", "tag": "partner", "path": "content/foundations/03-customer-types.md", "name": "Referral Partners", "status": "in-review" }
+        {
+          "repository": "apt-anet-training",
+          "tag": "partner",
+          "path": "content/foundations/03-customer-types.md",
+          "name": "Referral Partners",
+          "status": "in-review"
+        }
       ],
-      "reviewerAgents": [],
-      "gap": "No reviewer agent covers referral partners. Commerce groups referral with tech and ISV partners."
+      "reviewerAgents": [
+        "apt-referral-iso-partner-reviewer"
+      ]
     },
     {
       "id": "isv",
@@ -56,12 +107,36 @@
       "kind": "account",
       "description": "Builds software that connects merchants to the gateway, may refer or embed merchant signup, and attributes traffic (Solution ID on ANET). Called a technology partner on VAS SMB.",
       "sources": [
-        { "repository": "apt-commerce", "path": "docs/apt/personas/README.md", "name": "Partner — ISV", "status": "direction" },
-        { "repository": "apt-anet-training", "tag": "isv", "status": "in-review" },
-        { "repository": "apt-vas-smb-training", "tag": "isv", "path": "content/foundations/03-audiences-and-relationships.md", "name": "Technology partners / ISVs", "status": "draft" }
+        {
+          "repository": "apt-commerce",
+          "path": "docs/apt/personas/README.md",
+          "name": "Partner — ISV",
+          "status": "direction"
+        },
+        {
+          "repository": "apt-anet-training",
+          "tag": "isv",
+          "status": "in-review"
+        },
+        {
+          "repository": "apt-vas-smb-training",
+          "tag": "isv",
+          "path": "content/foundations/03-audiences-and-relationships.md",
+          "name": "Technology partners / ISVs",
+          "status": "draft"
+        },
+        {
+          "repository": "apt-anet-integration-toolbox",
+          "path": "docs/apt/personas/README.md",
+          "name": "Platform Developer",
+          "status": "direction"
+        }
       ],
-      "reviewerAgents": ["apt-developer-integrator-reviewer", "kaidan"],
-      "gap": "Reviewers cover the integration build, not the ISV's business view (attribution, referral, marketplace)."
+      "reviewerAgents": [
+        "apt-isv-tech-partner-reviewer",
+        "apt-developer-integrator-reviewer",
+        "kaidan"
+      ]
     },
     {
       "id": "tech-partner",
@@ -69,9 +144,18 @@
       "kind": "account",
       "description": "Builds bespoke integrations and may also refer merchants. Whether this is distinct from ISV is an open question in Commerce.",
       "sources": [
-        { "repository": "apt-commerce", "path": "docs/apt/personas/README.md", "name": "Partner — Tech Partner", "status": "direction" }
+        {
+          "repository": "apt-commerce",
+          "path": "docs/apt/personas/README.md",
+          "name": "Partner — Tech Partner",
+          "status": "direction"
+        }
       ],
-      "reviewerAgents": ["apt-developer-integrator-reviewer", "apt-new-developer-reviewer"]
+      "reviewerAgents": [
+        "apt-isv-tech-partner-reviewer",
+        "apt-developer-integrator-reviewer",
+        "apt-new-developer-reviewer"
+      ]
     },
     {
       "id": "developer",
@@ -79,10 +163,39 @@
       "kind": "audience",
       "description": "The person writing the integration, whether at a merchant, ISV, or tech partner. A role audience, not an account.",
       "sources": [
-        { "repository": "apt-anet-training", "tag": "developer", "status": "in-review" },
-        { "repository": "apt-vas-smb-training", "tag": "developer", "status": "draft" }
+        {
+          "repository": "apt-anet-training",
+          "tag": "developer",
+          "status": "in-review"
+        },
+        {
+          "repository": "apt-vas-smb-training",
+          "tag": "developer",
+          "status": "draft"
+        },
+        {
+          "repository": "apt-anet-integration-toolbox",
+          "path": "docs/apt/personas/README.md",
+          "name": "Merchant Integration Developer",
+          "status": "direction"
+        },
+        {
+          "repository": "apt-vas-integration-toolbox",
+          "path": "docs/apt/personas/README.md",
+          "name": "Migrating Developer",
+          "status": "direction"
+        },
+        {
+          "repository": "apt-vas-integration-toolbox",
+          "path": "docs/apt/personas/README.md",
+          "name": "New VAS SMB Developer",
+          "status": "direction"
+        }
       ],
-      "reviewerAgents": ["apt-developer-integrator-reviewer", "apt-new-developer-reviewer"]
+      "reviewerAgents": [
+        "apt-developer-integrator-reviewer",
+        "apt-new-developer-reviewer"
+      ]
     },
     {
       "id": "internal",
@@ -90,9 +203,17 @@
       "kind": "account",
       "description": "Internal staff who support merchants and partners.",
       "sources": [
-        { "repository": "apt-commerce", "path": "docs/apt/personas/README.md", "name": "Internal", "status": "direction" }
+        {
+          "repository": "apt-commerce",
+          "path": "docs/apt/personas/README.md",
+          "name": "Internal",
+          "status": "direction"
+        }
       ],
-      "reviewerAgents": ["apt-support-operations-reviewer", "apt-new-support-agent-reviewer"]
+      "reviewerAgents": [
+        "apt-support-operations-reviewer",
+        "apt-new-support-agent-reviewer"
+      ]
     },
     {
       "id": "payer",
@@ -100,10 +221,18 @@
       "kind": "transactional",
       "description": "The customer paying a merchant. Commerce keeps this as a transactional journey, not an account persona.",
       "sources": [
-        { "repository": "apt-commerce", "path": "docs/apt/personas/README.md", "name": "Separate Transactional Audience: Payer", "status": "direction" }
+        {
+          "repository": "apt-commerce",
+          "path": "docs/apt/personas/README.md",
+          "name": "Separate Transactional Audience: Payer",
+          "status": "direction"
+        }
       ],
-      "reviewerAgents": ["apt-checkout-reviewer", "apt-beginner-user-reviewer"],
-      "gap": "No reviewer owns the payer end to end (receipts, disputes, stored credentials) beyond checkout."
+      "reviewerAgents": [
+        "apt-payer-reviewer",
+        "apt-checkout-reviewer",
+        "apt-beginner-user-reviewer"
+      ]
     },
     {
       "id": "ai-agent-consumer",
@@ -111,7 +240,35 @@
       "kind": "audience",
       "description": "An automated agent consuming APIs, docs, or MCP tools on a person's behalf.",
       "sources": [],
-      "reviewerAgents": ["apt-ai-agent-user-reviewer"]
+      "reviewerAgents": [
+        "apt-ai-agent-user-reviewer"
+      ]
+    },
+    {
+      "id": "player",
+      "title": "Player",
+      "kind": "audience",
+      "description": "A person playing a game or interactive experience. Each game defines its own player profiles.",
+      "sources": [
+        {
+          "repository": "apt-grey-rain",
+          "path": "docs/apt/personas/README.md",
+          "name": "Solo Runner",
+          "status": "direction"
+        },
+        {
+          "repository": "apt-grey-rain",
+          "path": "docs/apt/personas/README.md",
+          "name": "Hot-Seat Crew",
+          "status": "direction"
+        }
+      ],
+      "reviewerAgents": [
+        "apt-gameplay-reviewer",
+        "apt-game-ui-reviewer",
+        "apt-game-testing-reviewer"
+      ],
+      "gap": "Grey Rain player profiles are direction only (owner docs, no playtests yet); docs/apt/playtests/pilot-loop-plan.md is the first evidence step."
     }
   ]
 }

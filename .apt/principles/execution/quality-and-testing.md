@@ -120,6 +120,7 @@ See the [Execution canonical hub](README.md) and linked standards/checklists bef
 - [apt-refactor-agent](../../agents/engineering/apt-refactor-agent.md) — Use when code is being restructured without an intended behavior change, to confirm the refactor is actually behavior-preserving.
 - [apt-repo-scanner](../../agents/harness/apt-repo-scanner.md) — Use when inspecting a target repository for installed APT standards, drift, missing files, duplicates, or repair needs.
 - [apt-verifier](../../agents/harness/apt-verifier.md) — Use when outputs, installs, repairs, routing config, or documentation alignment must be verified before they are trusted.
+- [apt-wb-requirements-writer](../../agents/working-backwards/apt-wb-requirements-writer.md) — Sub-agent invoked by the Working Backwards orchestrator to draft or revise Stages 3 and 4, traceable and testable requirements, an engineering handoff of validated increments, and a readiness checklist, all derived only from the passed press release and FAQs.
 - [drack](../../agents/engineering/drack.md) — Use when implementation work targets the Cloudflare Workers/Pages + Hono stack, to confirm it follows the stack's actual constraints (bindings, cold starts, edge runtime limits).
 
 ## Related Checklists
