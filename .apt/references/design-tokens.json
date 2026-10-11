@@ -1,7 +1,7 @@
 {
   "title": "APT Design Tokens Reference",
   "version": "v1.1",
-  "last_updated": "2026-10-03",
+  "last_updated": "2026-10-05",
   "owner": "APT",
   "status": "draft",
   "source": "GENERATED color values from apt-principles-agents/design/tokens/APT-TOKENS.json by scripts/build-design.mjs (APT-019). Edit the canonical tokens, not this file's color sections.",
@@ -131,9 +131,9 @@
   "rules": [
     "Projects may adapt token values, but must preserve semantic token names, and adapted values must still meet the contrast rule below.",
     "Base tokens remain valid for compatibility, but UI implementation should prefer semantic interaction aliases such as link, focusRing, navActive, actionPrimary, selected, selectedSupport, and disabledText.",
-    "Blue is the primary brand/action color for primary calls to action, links, focus rings, selected navigation, and high-frequency action emphasis.",
-    "The restricted accent is secondary and limited to explicit support semantics such as section identity, selected support states, badges, callouts, and charts. Success uses the success token, never the accent.",
-    "Neutral surface tokens are the default for secondary buttons, inactive navigation, tabs, cards, panels, and disabled surfaces.",
+    "Blue is the primary brand/action color for primary calls to action, links, focus rings, and high-frequency action emphasis.",
+    "Teal is the highlight color for hover and selected states that previously used a neutral grey surface, including ghost and outline buttons, menu items, dropdown options, sidebar items, and docs navigation, and for explicit support semantics such as section identity, badges, callouts, and charts. It is not the default call-to-action color. Success uses the success token, never the accent.",
+    "Neutral surface tokens are the resting treatment for secondary buttons, inactive navigation, tabs, cards, panels, and disabled surfaces.",
     "Danger, warning, and success tokens are semantic feedback colors, not general decoration. They are canonical: products must not define their own status colors.",
     "Every text token must meet WCAG AA (4.5:1) on every surface it appears on in its theme (background, surface, surfaceElevated, secondary, muted). Primary text is AA on background and surface only; links on raised surfaces use text color with an underline.",
     "Single-series charts use chart1. Multi-series charts use chart1 through chart5 in order.",
@@ -142,5 +142,5 @@
     "One-off colors, shadows, spacing, typography, icon styles, and motion values require a design decision record.",
     "Public APT surfaces should prefer the full APT visual system unless a project has its own approved brand layer."
   ],
-  "designVersion": "2.1.0"
+  "designVersion": "2.1.2"
 }
