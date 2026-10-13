@@ -1,4 +1,5 @@
 ---
+status: draft
 id: "auth-patterns"
 title: "Auth Patterns"
 type: "system"

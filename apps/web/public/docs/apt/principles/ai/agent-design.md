@@ -3,7 +3,7 @@ title: Agent Design
 kind: principle
 status: active
 owner: APT
-last_updated: 2026-06-27
+last_updated: 2026-08-16
 source: apt-principles and apt-agent-standards
 domain: "ai"
 source_paths: ["apt-principles-agents/principles/ai/agent-design.md"]
@@ -43,6 +43,9 @@ Review for unsupported claims, overpowered tools, weak-model routing for high-st
 
 - Treat **Agent Design** as an explicit decision with defined scope, evidence, owner, and validation.
 - Required evidence: task packet, sources, routing, tool boundaries, evaluation, review, approval.
+- Give an agent the minimum tools, data, permissions, context, and duration needed for the task; make destructive or external actions explicit approval boundaries.
+- Define observable success, representative evaluation cases, prohibited outcomes, handoff conditions, and a deterministic fallback before increasing autonomy.
+- Preserve provenance across delegation: record which sources, models, tools, intermediate decisions, validations, and human approvals contributed to the result.
 - State what is verified, what is assumed, and what requires specialist or human approval.
 
 See the [Ai canonical hub](README.md) and linked standards/checklists before making final claims.

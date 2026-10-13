@@ -140,7 +140,7 @@ export const aptColorPairs: ColorPair[] = [
   {
     name: "Muted Text",
     background: "220 20% 8%",
-    foreground: "220 10% 55%",
+    foreground: "220 10% 60%",
     bgClass: "bg-background",
     fgClass: "text-muted-foreground",
   },
@@ -151,10 +151,25 @@ export const aptColorPairs: ColorPair[] = [
     bgClass: "bg-card",
     fgClass: "text-card-foreground",
   },
+  // Primary as text (links, active labels) on dark surfaces
+  {
+    name: "Primary Link on Background",
+    background: "220 20% 8%",
+    foreground: "220 70% 61%",
+    bgClass: "bg-background",
+    fgClass: "text-primary",
+  },
+  {
+    name: "Primary Link on Card",
+    background: "220 18% 12%",
+    foreground: "220 70% 61%",
+    bgClass: "bg-card",
+    fgClass: "text-primary",
+  },
   // Primary button
   {
     name: "Primary Button",
-    background: "220 70% 55%",
+    background: "220 70% 61%",
     foreground: "220 20% 8%",
     bgClass: "bg-primary",
     fgClass: "text-primary-foreground",
@@ -169,7 +184,7 @@ export const aptColorPairs: ColorPair[] = [
   },
   {
     name: "Nav Active Primary (Dark)",
-    background: "220 70% 55%",
+    background: "220 70% 61%",
     foreground: "220 20% 8%",
     bgClass: "bg-primary",
     fgClass: "text-primary-foreground",
@@ -208,8 +223,66 @@ export const aptColorPairs: ColorPair[] = [
   {
     name: "Muted Surface",
     background: "220 15% 15%",
-    foreground: "220 10% 55%",
+    foreground: "220 10% 60%",
     bgClass: "bg-muted",
     fgClass: "text-muted-foreground",
+  },
+  // Muted text on raised surfaces (APT-018: 55% failed on these)
+  {
+    name: "Muted Text on Secondary",
+    background: "220 15% 18%",
+    foreground: "220 10% 60%",
+    bgClass: "bg-secondary",
+    fgClass: "text-muted-foreground",
+  },
+  {
+    name: "Muted Text on Elevated Surface",
+    background: "220 16% 16%",
+    foreground: "220 10% 60%",
+    bgClass: "bg-apt-surface-elevated",
+    fgClass: "text-apt-text-secondary",
+  },
+  // Status (APT-018): text on every dark surface, plus labels on status fills
+  {
+    name: "Success Text on Background",
+    background: "220 20% 8%",
+    foreground: "155 50% 45%",
+    bgClass: "bg-background",
+    fgClass: "text-success",
+  },
+  {
+    name: "Success Text on Secondary",
+    background: "220 15% 18%",
+    foreground: "155 50% 45%",
+    bgClass: "bg-secondary",
+    fgClass: "text-success",
+  },
+  {
+    name: "Success Fill",
+    background: "155 50% 45%",
+    foreground: "220 20% 8%",
+    bgClass: "bg-success",
+    fgClass: "text-success-foreground",
+  },
+  {
+    name: "Warning Text on Background",
+    background: "220 20% 8%",
+    foreground: "38 92% 50%",
+    bgClass: "bg-background",
+    fgClass: "text-warning",
+  },
+  {
+    name: "Warning Text on Secondary",
+    background: "220 15% 18%",
+    foreground: "38 92% 50%",
+    bgClass: "bg-secondary",
+    fgClass: "text-warning",
+  },
+  {
+    name: "Warning Fill",
+    background: "38 92% 50%",
+    foreground: "220 20% 8%",
+    bgClass: "bg-warning",
+    fgClass: "text-warning-foreground",
   },
 ];

@@ -46,6 +46,10 @@ Review for fashion-driven protocol choices, ambiguous errors, unsafe retries, un
 - State what is verified, what is assumed, and what requires specialist or human approval.
 
 See the [Api canonical hub](README.md) and linked standards/checklists before making final claims.
+## Applied by
+
+- [apt-api-bridge-reviewer](../../agents/api/apt-api-bridge-reviewer.md) — Use when a bridge or adapter layer sits between a legacy API and a modern one, to confirm it preserves correct behavior on both sides.
+
 ## Related
 
 - [APT Principles](../README.md)

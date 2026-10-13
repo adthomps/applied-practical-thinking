@@ -9,25 +9,37 @@
         "card-foreground": { "value": "hsl(220, 10%, 95%)", "type": "color", "description": "Card text color" },
         "popover": { "value": "hsl(220, 18%, 12%)", "type": "color", "description": "Popover background" },
         "popover-foreground": { "value": "hsl(220, 10%, 95%)", "type": "color", "description": "Popover text" },
-        "primary": { "value": "hsl(220, 70%, 55%)", "type": "color", "description": "Brand accent color" },
+        "primary": { "value": "hsl(220, 70%, 61%)", "type": "color", "description": "Brand accent color" },
         "primary-foreground": { "value": "hsl(220, 20%, 8%)", "type": "color", "description": "Text on primary" },
         "secondary": { "value": "hsl(220, 15%, 18%)", "type": "color", "description": "Secondary backgrounds" },
         "secondary-foreground": { "value": "hsl(220, 10%, 90%)", "type": "color", "description": "Text on secondary" },
         "muted": { "value": "hsl(220, 15%, 15%)", "type": "color", "description": "Subdued backgrounds" },
-        "muted-foreground": { "value": "hsl(220, 10%, 55%)", "type": "color", "description": "Secondary/subdued text" },
-        "accent": { "value": "hsl(165, 45%, 40%)", "type": "color", "description": "Restricted support accent" },
+        "muted-foreground": { "value": "hsl(220, 10%, 60%)", "type": "color", "description": "Secondary/subdued text" },
+        "accent": { "value": "hsl(165, 45%, 40%)", "type": "color", "description": "Teal highlight for hover and selected states. Not the default call to action." },
         "accent-foreground": { "value": "hsl(220, 20%, 8%)", "type": "color", "description": "Text on accent - dark for contrast" },
         "overlay": { "value": "hsl(220, 20%, 4% / 0.82)", "type": "color", "description": "Modal and sheet overlay scrim" },
         "destructive": { "value": "hsl(0, 65%, 45%)", "type": "color", "description": "Error/danger color" },
         "destructive-foreground": { "value": "hsl(0, 0%, 100%)", "type": "color", "description": "Text on destructive" },
+        "success": { "value": "hsl(155, 50%, 45%)", "type": "color", "description": "Positive status (completed, approved). Text-safe on all theme surfaces." },
+        "success-foreground": { "value": "hsl(220, 20%, 8%)", "type": "color", "description": "Text on success fill" },
+        "warning": { "value": "hsl(38, 92%, 50%)", "type": "color", "description": "Caution status (review needed, partial). Text-safe on all theme surfaces." },
+        "warning-foreground": { "value": "hsl(220, 20%, 8%)", "type": "color", "description": "Text on warning fill" },
         "border": { "value": "hsl(220, 15%, 20%)", "type": "color", "description": "Border and divider color" },
         "input": { "value": "hsl(220, 15%, 18%)", "type": "color", "description": "Input field background" },
-        "ring": { "value": "hsl(220, 70%, 55%)", "type": "color", "description": "Focus ring color" },
-        "apt-glow": { "value": "hsl(220, 70%, 55%)", "type": "color", "description": "Glow effect color" },
+        "ring": { "value": "hsl(220, 70%, 61%)", "type": "color", "description": "Focus ring color" },
+        "apt-glow": { "value": "hsl(220, 70%, 61%)", "type": "color", "description": "Glow effect color" },
         "apt-surface": { "value": "hsl(220, 18%, 12%)", "type": "color", "description": "APT surface" },
         "apt-surface-elevated": { "value": "hsl(220, 16%, 16%)", "type": "color", "description": "Elevated surface" },
-        "apt-text-secondary": { "value": "hsl(220, 10%, 55%)", "type": "color", "description": "Secondary text" },
-        "apt-border-subtle": { "value": "hsl(220, 15%, 22%)", "type": "color", "description": "Subtle borders" }
+        "apt-text-secondary": { "value": "hsl(220, 10%, 60%)", "type": "color", "description": "Secondary text" },
+        "apt-border-subtle": { "value": "hsl(220, 15%, 22%)", "type": "color", "description": "Subtle borders" },
+        "sidebar-background": { "value": "hsl(220, 20%, 6%)", "type": "color", "description": "Sidebar background" },
+        "sidebar-foreground": { "value": "hsl(220, 10%, 95%)", "type": "color", "description": "Sidebar foreground" },
+        "sidebar-primary": { "value": "hsl(220, 70%, 61%)", "type": "color", "description": "Sidebar primary" },
+        "sidebar-primary-foreground": { "value": "hsl(220, 20%, 8%)", "type": "color", "description": "Sidebar primary-foreground" },
+        "sidebar-accent": { "value": "hsl(165, 45%, 40%)", "type": "color", "description": "Sidebar and docs navigation hover highlight. Same teal as accent." },
+        "sidebar-accent-foreground": { "value": "hsl(220, 20%, 8%)", "type": "color", "description": "Text on the sidebar hover highlight" },
+        "sidebar-border": { "value": "hsl(220, 15%, 18%)", "type": "color", "description": "Sidebar border" },
+        "sidebar-ring": { "value": "hsl(220, 70%, 61%)", "type": "color", "description": "Sidebar ring" }
       },
       "light": {
         "background": { "value": "hsl(220, 15%, 95%)", "type": "color", "description": "Light mode background" },
@@ -42,11 +54,15 @@
         "secondary-foreground": { "value": "hsl(220, 20%, 10%)", "type": "color", "description": "Light secondary text" },
         "muted": { "value": "hsl(220, 15%, 92%)", "type": "color", "description": "Light muted" },
         "muted-foreground": { "value": "hsl(220, 10%, 40%)", "type": "color", "description": "Light muted text" },
-        "accent": { "value": "hsl(165, 45%, 35%)", "type": "color", "description": "Light mode restricted support accent" },
+        "accent": { "value": "hsl(165, 45%, 35%)", "type": "color", "description": "Light-mode teal highlight for hover and selected states. Not the default call to action." },
         "accent-foreground": { "value": "hsl(0, 0%, 100%)", "type": "color", "description": "Light accent text - white for contrast" },
         "overlay": { "value": "hsl(220, 20%, 8% / 0.78)", "type": "color", "description": "Modal and sheet overlay scrim" },
         "destructive": { "value": "hsl(0, 70%, 50%)", "type": "color", "description": "Light destructive" },
         "destructive-foreground": { "value": "hsl(0, 0%, 100%)", "type": "color", "description": "Light destructive text" },
+        "success": { "value": "hsl(160, 60%, 28%)", "type": "color", "description": "Positive status (completed, approved). Text-safe on all theme surfaces." },
+        "success-foreground": { "value": "hsl(0, 0%, 100%)", "type": "color", "description": "Text on success fill" },
+        "warning": { "value": "hsl(30, 95%, 30%)", "type": "color", "description": "Caution status (review needed, partial). Text-safe on all theme surfaces." },
+        "warning-foreground": { "value": "hsl(0, 0%, 100%)", "type": "color", "description": "Text on warning fill" },
         "border": { "value": "hsl(220, 15%, 85%)", "type": "color", "description": "Light border" },
         "input": { "value": "hsl(220, 15%, 85%)", "type": "color", "description": "Light input" },
         "ring": { "value": "hsl(220, 70%, 50%)", "type": "color", "description": "Light focus ring" },
@@ -54,10 +70,18 @@
         "apt-surface": { "value": "hsl(220, 20%, 18%)", "type": "color", "description": "Light surface" },
         "apt-surface-elevated": { "value": "hsl(220, 18%, 22%)", "type": "color", "description": "Light elevated" },
         "apt-text-secondary": { "value": "hsl(220, 10%, 60%)", "type": "color", "description": "Light secondary text" },
-        "apt-border-subtle": { "value": "hsl(220, 15%, 25%)", "type": "color", "description": "Light subtle border" }
+        "apt-border-subtle": { "value": "hsl(220, 15%, 25%)", "type": "color", "description": "Light subtle border" },
+        "sidebar-background": { "value": "hsl(220, 15%, 97%)", "type": "color", "description": "Sidebar background" },
+        "sidebar-foreground": { "value": "hsl(220, 20%, 10%)", "type": "color", "description": "Sidebar foreground" },
+        "sidebar-primary": { "value": "hsl(220, 70%, 50%)", "type": "color", "description": "Sidebar primary" },
+        "sidebar-primary-foreground": { "value": "hsl(0, 0%, 100%)", "type": "color", "description": "Sidebar primary-foreground" },
+        "sidebar-accent": { "value": "hsl(165, 45%, 35%)", "type": "color", "description": "Light sidebar and docs navigation hover highlight. Same teal as accent." },
+        "sidebar-accent-foreground": { "value": "hsl(0, 0%, 100%)", "type": "color", "description": "Text on the light sidebar hover highlight" },
+        "sidebar-border": { "value": "hsl(220, 15%, 85%)", "type": "color", "description": "Sidebar border" },
+        "sidebar-ring": { "value": "hsl(220, 70%, 50%)", "type": "color", "description": "Sidebar ring" }
       },
       "chart": {
-        "1": { "value": "hsl(220, 70%, 55%)", "type": "color", "description": "Chart color 1 - Primary blue" },
+        "1": { "value": "hsl(220, 70%, 61%)", "type": "color", "description": "Chart color 1 - Primary blue" },
         "2": { "value": "hsl(165, 45%, 40%)", "type": "color", "description": "Chart color 2 - restricted support accent" },
         "3": { "value": "hsl(280, 55%, 55%)", "type": "color", "description": "Chart color 3 - Purple" },
         "4": { "value": "hsl(30, 75%, 50%)", "type": "color", "description": "Chart color 4 - Orange" },
@@ -206,9 +230,9 @@
     },
     "animation": {
       "duration": {
-        "fast": { "value": "150ms", "type": "duration" },
-        "normal": { "value": "200ms", "type": "duration" },
-        "slow": { "value": "300ms", "type": "duration" },
+        "fast": { "value": "140ms", "type": "duration" },
+        "normal": { "value": "220ms", "type": "duration" },
+        "slow": { "value": "360ms", "type": "duration" },
         "slower": { "value": "400ms", "type": "duration" },
         "slowest": { "value": "500ms", "type": "duration" }
       },
@@ -245,7 +269,7 @@
           "description": "Hero/modal entrances"
         },
         "hover-lift": {
-          "transition": "transform 200ms ease-out, box-shadow 200ms ease-out",
+          "transition": "transform 140ms ease-out, box-shadow 140ms ease-out",
           "hover": { "transform": "translateY(-2px)", "boxShadow": "{shadow.apt-hover-lift}" },
           "description": "Interactive card hover"
         },
@@ -314,6 +338,38 @@
           }
         }
       },
+      "menu": {
+        "item": {
+          "background": { "value": "transparent", "type": "color" },
+          "foreground": { "value": "{color.dark.foreground}", "type": "color" },
+          "hoverBackground": { "value": "{color.dark.accent}", "type": "color", "description": "Menu item hover highlight" },
+          "hoverForeground": { "value": "{color.dark.accent-foreground}", "type": "color" }
+        }
+      },
+      "dropdown": {
+        "option": {
+          "background": { "value": "transparent", "type": "color" },
+          "foreground": { "value": "{color.dark.foreground}", "type": "color" },
+          "hoverBackground": { "value": "{color.dark.accent}", "type": "color", "description": "Dropdown option hover highlight" },
+          "hoverForeground": { "value": "{color.dark.accent-foreground}", "type": "color" }
+        }
+      },
+      "sidebar": {
+        "item": {
+          "background": { "value": "transparent", "type": "color" },
+          "foreground": { "value": "{color.dark.sidebar-foreground}", "type": "color" },
+          "hoverBackground": { "value": "{color.dark.accent}", "type": "color", "description": "Sidebar item hover highlight" },
+          "hoverForeground": { "value": "{color.dark.accent-foreground}", "type": "color" }
+        }
+      },
+      "docsNav": {
+        "item": {
+          "background": { "value": "transparent", "type": "color" },
+          "foreground": { "value": "{color.dark.foreground}", "type": "color" },
+          "hoverBackground": { "value": "{color.dark.accent}", "type": "color", "description": "Docs navigation item hover highlight" },
+          "hoverForeground": { "value": "{color.dark.accent-foreground}", "type": "color" }
+        }
+      },
       "card": {
         "borderRadius": { "value": "{borderRadius.lg}", "type": "borderRadius" },
         "padding": { "value": "{spacing.6}", "type": "spacing" },
@@ -330,7 +386,7 @@
           "interactive": {
             "background": { "value": "{color.dark.card}", "type": "color" },
             "border": { "value": "{color.dark.border}", "type": "color" },
-            "hoverBorder": { "value": "hsl(220, 70%, 55% / 0.5)", "type": "color" },
+            "hoverBorder": { "value": "hsl(220, 70%, 61% / 0.5)", "type": "color" },
             "hoverShadow": { "value": "{shadow.elevation-3-dark}", "type": "boxShadow" }
           },
           "hero": {
@@ -365,7 +421,7 @@
             "foreground": { "value": "{color.dark.accent}", "type": "color" }
           },
           "primary": {
-            "background": { "value": "hsl(220, 70%, 55% / 0.2)", "type": "color" },
+            "background": { "value": "hsl(220, 70%, 61% / 0.2)", "type": "color" },
             "foreground": { "value": "{color.dark.primary}", "type": "color" }
           },
           "muted": {
@@ -400,9 +456,9 @@
   },
   "$metadata": {
     "tokenSetOrder": ["apt"],
-    "version": "1.0.0",
+    "version": "2.1.2",
     "name": "APT Design System",
-    "description": "Applied Practical Thinking - Dark-first, card-based, calm motion design system",
+    "description": "Applied Practical Thinking design tokens. Canonical source: apt-principles-agents/design/tokens (APT-019).",
     "author": "APT"
   }
 }

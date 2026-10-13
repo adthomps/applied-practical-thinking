@@ -4,146 +4,97 @@ export const systems: System[] = [
   {
     id: "apt-site",
     title: "APT Site",
-    purpose: "Portfolio and demonstration platform",
+    purpose: "Public portfolio on Pages, with a separate Worker for feeds",
     description:
-      "This site itself—a Vite + React + Tailwind stack deployed on Cloudflare Pages with optional Hono worker APIs.",
+      "Cloudflare Pages serves the Vite and React app. The Worker reads those published files and returns the public feeds.",
     referenceType: "Operating Model",
     status: "Active",
-    appliesTo: ["Public sites", "Content platforms", "Static-first products"],
+    appliesTo: ["Public sites", "Content platforms"],
     decisions: [
-      "Static-first with optional API layer",
-      "Single design system for all demos",
-      "Markdown for content, TypeScript for data",
+      "Pages serves the browser app",
+      "The Worker is a separate deploy and reads published content",
+      "Authored markdown is the source; public copies are generated",
     ],
     tradeoffs: [
-      "No SSR means slower FCP for content-heavy pages",
-      "Worker-based APIs add deployment complexity",
+      "Feeds depend on the Worker being able to read the Pages origin",
+      "There is no visitor account system on this site",
     ],
     concepts: ["vite", "react", "cloudflare"],
     links: {
       demo: "/",
-      docs: "/insights",
+      docs: "/labs",
     },
-    productionGuide: {
-      overview: "Vite + React SPA deployed on Cloudflare Pages, with optional Hono worker APIs for backend.",
-      deployment: "See README for build and deploy steps. Configure Cloudflare Pages and Wrangler for worker APIs.",
-      api: "Worker APIs documented in /api routes. Auth via JWT, data via REST endpoints.",
-      operations: "Monitor via Cloudflare dashboard. Rollback via git and redeploy."
-    },
-    learningResources: {
-      rationale: "Static-first for speed and simplicity. Unified design system for consistency.",
-      practice: ["systems-mapping-guide", "design-review-portfolio-redesign"],
-      tutorials: ["guide-to-deployment", "guide-to-content-management"],
-      glossary: ["SSR", "SPA", "API", "Design System"]
-    }
   },
   {
-    id: "auth-patterns",
-    title: "Auth Patterns",
-    purpose: "Reference implementations for authentication flows",
+    id: "apt-commerce-compass",
+    title: "APT Commerce Compass",
+    purpose: "Working payments proof with a sandbox money path",
     description:
-      "A collection of auth patterns including session management, JWT handling, and OAuth integrations with security considerations.",
-    referenceType: "Pattern Library",
-    status: "Active",
-    appliesTo: ["Web apps", "APIs", "Protected product surfaces"],
+      "Signup, portals, and staff review are implemented. The money path is the APT sandbox processor.",
+    referenceType: "Working Proof",
+    status: "Working proof",
+    appliesTo: ["Payments proofs", "Merchant onboarding"],
     decisions: [
-      "httpOnly cookies over localStorage",
-      "Refresh token rotation",
-      "Rate limiting on auth endpoints",
+      "Show the merchant and partner path",
+      "Record money-path results in the sandbox processor",
+      "Keep live processors out of the claim",
     ],
     tradeoffs: [
-      "Cookie-based auth complicates mobile clients",
-      "Token rotation adds database writes",
+      "Cannot prove settlement or a production certification",
+      "A clickable site can be mistaken for live acquiring if the limit is not stated",
     ],
-    concepts: ["security", "auth", "patterns"],
+    concepts: ["payments", "sandbox"],
     links: {
-      docs: "/insights",
+      demo: "https://commerce.appliedpracticalthinking.com",
+      docs: "/labs/live-demos/apt-commerce-compass",
     },
-    productionGuide: {
-      overview: "Auth flows using JWT, OAuth, and session management. Security-first design.",
-      deployment: "Configure environment variables for secrets. Deploy with secure cookie settings.",
-      api: "Endpoints documented in /api/auth. Supports login, refresh, and logout.",
-      operations: "Monitor auth logs. Rotate secrets regularly."
-    },
-    learningResources: {
-      rationale: "httpOnly cookies for security. Token rotation for safety. Rate limiting to prevent abuse.",
-      practice: [],
-      tutorials: ["guide-to-auth-patterns"],
-      glossary: ["JWT", "OAuth", "Session", "Rate Limiting"]
-    }
   },
   {
-    id: "data-pipeline",
-    title: "Data Pipeline",
-    purpose: "Lightweight ETL for small-scale analytics",
+    id: "apt-health-compass",
+    title: "APT Health Compass",
+    purpose: "Signed-in review of periodic results and supplements",
     description:
-      "A simple but robust pattern for extracting, transforming, and loading data with observability and error recovery.",
-    referenceType: "Reference Model",
-    status: "Active",
-    appliesTo: ["Batch analytics", "Scheduled processing", "Small-scale data workflows"],
+      "Personal health review for the signed-in account. Not medical advice, and not a public dataset.",
+    referenceType: "Working Proof",
+    status: "Working proof",
+    appliesTo: ["Personal health review"],
     decisions: [
-      "Idempotent transforms",
-      "Dead letter queues for failures",
-      "Schema validation at boundaries",
+      "Keep records with the signed-in account",
+      "Describe the product without publishing sample patient data",
+      "State that the app is not medical advice",
     ],
     tradeoffs: [
-      "Not designed for real-time streams",
-      "Single-node processing limits scale",
+      "A stranger cannot inspect someone else's results",
+      "The public proof is the boundary, not a shared dashboard",
     ],
-    concepts: ["data", "etl", "observability"],
+    concepts: ["health", "privacy"],
     links: {
-      docs: "/insights",
+      demo: "https://health.appliedpracticalthinking.com",
+      docs: "/labs/live-demos/apt-health-compass",
     },
-    productionGuide: {
-      overview: "ETL pipeline for batch analytics. Built for reliability and error recovery.",
-      deployment: "Run as scheduled job. Configure schema validation and error queues.",
-      api: "Endpoints for ingest, transform, and load. Dead letter queue for failures.",
-      operations: "Monitor job status. Handle errors via dead letter queue."
-    },
-    learningResources: {
-      rationale: "Idempotency for safe retries. Dead letter queues for error handling.",
-      practice: [],
-      tutorials: ["guide-to-etl-pipeline"],
-      glossary: ["ETL", "Idempotency", "Dead Letter Queue", "Schema Validation"]
-    }
   },
   {
-    id: "shadcn-ui-builder",
-    title: "shadcn UI Builder",
-    purpose: "Visual project scaffolding and design system customization tool",
+    id: "crt-world",
+    title: "CRT World",
+    purpose: "Live author site with a separate editorial admin",
     description:
-      "A visual interface for configuring and generating UI projects using shadcn's open-code component registry. Enables real-time customization and open code ownership.",
-    referenceType: "Tooling Reference",
-    status: "External",
-    appliesTo: ["Design system setup", "Frontend scaffolding", "Open-code UI workflows"],
+      "The Worlds of C. R. Thompson is public. Editorial control stays in the admin, backed by a Worker and D1.",
+    referenceType: "Live System",
+    status: "Live",
+    appliesTo: ["Author sites", "Editorial publishing"],
     decisions: [
-      "Open code ownership: components are copied, not imported",
-      "Visual builder for real-time customization",
-      "Supports multiple frameworks (Next.js, Vite, TanStack Start, v0)",
+      "Publish the author site on its own domain",
+      "Keep editorial tools in the admin",
+      "Store content in D1 behind the Worker",
     ],
     tradeoffs: [
-      "Requires manual updates for component changes",
-      "No package-level updates; full code control",
+      "Anonymous visitors do not get the editorial tools",
+      "The public site and the admin share one app, so the boundary has to stay explicit",
     ],
-    concepts: ["design system", "visual builder", "shadcn", "Radix UI", "Base UI"],
-    platforms: ["web"],
-    technologies: ["shadcn", "vite", "nextjs", "tanstack", "radix-ui", "base-ui"],
+    concepts: ["content", "cloudflare"],
     links: {
-      docs: "https://ui.shadcn.com/create",
-      repo: "https://github.com/shadcn/ui",
-      demo: "https://ui.shadcn.com/create"
+      demo: "https://crthompson.net/",
+      docs: "/labs/live-demos/crt-world",
     },
-    productionGuide: {
-      overview: "Use shadcn UI Builder to bootstrap new projects or enhance existing design systems. Configure preferences visually, then run the generated command.",
-      deployment: "Visit the builder, configure, and run the generated command in your project.",
-      api: "N/A",
-      operations: "Manual updates for new component versions. Full code control."
-    },
-    learningResources: {
-      rationale: "Open code for flexibility and control. Visual builder accelerates design system setup.",
-      practice: ["shadcn-ui-builder-guide", "design-review-shadcn-ui-builder"],
-      tutorials: ["guide-to-shadcn-ui-builder"],
-      glossary: ["Design System", "Visual Builder", "Open Code"]
-    }
   },
 ];

@@ -1,5 +1,96 @@
 [
   {
+    "id": "apt-commerce-compass",
+    "slug": "apt-commerce-compass",
+    "title": "APT Commerce Compass",
+    "type": "interactive",
+    "description": "The APT brand for gateway and acquiring. A full proof of concept and a new way of taking, understanding, and guiding payments so they can grow.",
+    "publishedAt": "2026-10-12T00:00:00.000Z",
+    "featured": false,
+    "concepts": [
+      "demo",
+      "poc"
+    ],
+    "platforms": [
+      "Web",
+      "Cloud"
+    ],
+    "technologies": [
+      "Cloudflare",
+      "React",
+      "TypeScript"
+    ],
+    "status": "active",
+    "links": {
+      "demo": "https://commerce.appliedpracticalthinking.com",
+      "figma": null,
+      "repo": null
+    },
+    "related": [],
+    "contentPath": "demos/apt-commerce-compass.md",
+    "excerpt": "APT Commerce Compass is a working proof of concept for gateway and acquiring. The public site covers merchant signup, a partner portal, a merchant portal, and staff application review.  Applications are stored and staff can approve or reject them with an audit trail. The money path uses the APT sandbox processor, which records a mock result. It does not call live Authorize.Net or Cybersource, and it does not send webhooks from a real processor."
+  },
+  {
+    "id": "apt-health-compass",
+    "slug": "apt-health-compass",
+    "title": "APT Health Compass",
+    "type": "interactive",
+    "description": "A new way to review, see, and understand key health data and the actions to take for meaningful change.",
+    "publishedAt": "2026-10-12T00:00:00.000Z",
+    "featured": false,
+    "concepts": [
+      "demo"
+    ],
+    "platforms": [
+      "Web",
+      "Cloud"
+    ],
+    "technologies": [
+      "Cloudflare",
+      "React",
+      "TypeScript"
+    ],
+    "status": "active",
+    "links": {
+      "demo": "https://health.appliedpracticalthinking.com",
+      "figma": null,
+      "repo": null
+    },
+    "related": [],
+    "contentPath": "demos/apt-health-compass.md",
+    "excerpt": "APT Health Compass is a working app for reviewing periodic health data and the supplements taken each month, then reading those together for practical next steps.  It is a personal review tool. It is not medical advice, and it does not publish anyone's health records. Bodycomposition scans, blood panels, and device exports stay with the signedin account."
+  },
+  {
+    "id": "crt-world",
+    "slug": "crt-world",
+    "title": "CRT World",
+    "type": "interactive",
+    "description": "The live public site for C. R. Thompson. Visitors can open The Worlds of C. R. Thompson at crthompson.net.",
+    "publishedAt": "2026-10-12T00:00:00.000Z",
+    "featured": true,
+    "concepts": [
+      "demo"
+    ],
+    "platforms": [
+      "Web",
+      "Cloud"
+    ],
+    "technologies": [
+      "Cloudflare",
+      "React",
+      "TypeScript"
+    ],
+    "status": "live",
+    "links": {
+      "demo": "https://crthompson.net/",
+      "figma": null,
+      "repo": null
+    },
+    "related": [],
+    "contentPath": "demos/crt-world.md",
+    "excerpt": "CRT World is the live author site for C. R. Thompson, The Worlds of C. R. Thompson. Visitors can discover the author's worlds on the public site.  The same Cloudflare app serves that public site and the editorial admin. A Worker API and a D1 database hold the published content. This is a real site, not a mock."
+  },
+  {
     "id": "payment-gateway-poc-v1",
     "slug": "payment-gateway-poc-v1",
     "title": "Payment Gateway POC v1",
@@ -27,9 +118,7 @@
       "figma": null,
       "repo": null
     },
-    "related": [
-      "full-example-lab"
-    ],
+    "related": [],
     "contentPath": "demos/payment-gateway-poc-v1.md",
     "excerpt": "Frontend + Worker backend ProofofConcept for a cloudnative payments gateway UI."
   }

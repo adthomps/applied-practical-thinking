@@ -52,3 +52,4 @@ output/**/*
 # Captured audit screenshots
 docs/apt/reports/static/screenshots/**/*
 .apt-backups/
+graphify-out/

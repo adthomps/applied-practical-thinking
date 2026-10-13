@@ -3,7 +3,7 @@ title: Modern API Design
 kind: principle
 status: active
 owner: APT
-last_updated: 2026-06-27
+last_updated: 2026-08-16
 source: apt-principles and apt-agent-standards
 domain: "api"
 source_paths: ["apt-principles-agents/principles/api/modern-api-design.md"]
@@ -43,9 +43,17 @@ Review for fashion-driven protocol choices, ambiguous errors, unsafe retries, un
 
 - Treat **Modern Api Design** as an explicit decision with defined scope, evidence, owner, and validation.
 - Required evidence: audience, schema, auth, errors, idempotency, examples, compatibility, operations.
+- Select REST, JSON-RPC, GraphQL, webhooks, events, streaming, or another style from interaction semantics, consumer constraints, consistency, latency, evolution, and operational evidence rather than novelty.
+- Design the contract as a complete behavior: identity and authorization, schemas, errors, idempotency, concurrency, pagination, asynchronous completion, versioning, observability, support identifiers, and deprecation must agree.
+- Validate both human and agent consumption with runnable examples, machine-readable schemas, negative-path and replay tests, compatibility evidence, and a documented migration or rollback path.
 - State what is verified, what is assumed, and what requires specialist or human approval.
 
 See the [Api canonical hub](README.md) and linked standards/checklists before making final claims.
+## Applied by
+
+- [apt-modern-api-designer](../../agents/api/apt-modern-api-designer.md) — Use when designing a new API from scratch, to confirm it follows current best practice (REST/GraphQL/JSON-RPC as appropriate) rather than replicating legacy patterns.
+- [glyph](../../agents/api/glyph.md) — Use when a decision or deliverable must select API styles from audience and behavior, then make contracts predictable, secure, observable, evolvable, and usable by humans and agents, especially when it affects multiple audiences or high-accuracy domains.
+
 ## Related
 
 - [APT Principles](../README.md)

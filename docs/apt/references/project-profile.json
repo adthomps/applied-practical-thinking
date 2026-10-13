@@ -1,34 +1,243 @@
 {
+  "inventory_version": 2,
   "project": "applied-practical-thinking",
-  "purpose": "Public platform repo for Applied Practical Thinking doctrine, content publishing, and worker-backed API surfaces.",
+  "purpose": "Public Applied Practical Thinking portfolio, learning, demonstration, and publication platform.",
+  "description": "A pnpm monorepo containing a Vite and React public website, a separately deployed Cloudflare Worker API and AI subsystem, shared UI/config/knowledge packages, authored public content, and generators that publish an explicitly selected subset of canonical APT doctrine from the sibling apt-principles-agents repository.",
   "audience": [
-    "builders",
-    "architects",
-    "product teams",
-    "public APT learners"
+    "public APT learners",
+    "builders and architects",
+    "product and design teams",
+    "prospective collaborators and employers",
+    "APT maintainers and content authors"
   ],
-  "adoption_mode": "apply",
-  "principles_demonstrated": [
-    "thinking",
-    "design",
-    "architecture",
-    "system-standards",
-    "knowledge-system",
-    "ai-agent-framework"
+  "adoption_mode": "showcase",
+  "principles_demonstrated": ["thinking", "design", "architecture", "execution", "documentation", "knowledge-system", "ai-agent-framework"],
+  "repository_type": "monorepo",
+  "ownership": {
+    "owner": "APT",
+    "profile_maintainer": "Applied Practical Thinking maintainers"
+  },
+  "architecture": {
+    "summary": "A browser application and Worker backend share workspace packages and publication contracts; authored product content and selected sibling doctrine are transformed into generated runtime assets for the public site.",
+    "components": [
+      "apps/web provides the Vite, React, and TypeScript public experience, routes, authored content, design doctrine, publication generators, and validation scripts.",
+      "apps/worker provides the Hono-based Cloudflare Worker API, public feed assembly, AI and vector-search boundaries, and normalized content delivery.",
+      "packages/ui, packages/config, and packages/knowledge provide shared presentation, token/config, and content/domain contracts.",
+      "apps/web/scripts generates indexes, validation evidence, copied runtime content, and the curated public APT doctrine projection.",
+      "apt-principles-agents remains canonical for reusable APT doctrine and agent assets; this repository owns its product implementation, public narrative, local exceptions, and deployment configuration."
+    ],
+    "runtime_model": "The web app runs in the browser from a Vite development or production bundle. The Cloudflare Worker runs independently at the API boundary and accesses Pages-hosted public assets plus a remote Vectorize index.",
+    "deployment_model": "Cloudflare Pages builds and serves apps/web from GitHub updates. apps/worker is deployed separately with Wrangler and GitHub Actions; the web and Worker communicate through an explicit VITE_API_BASE and PUBLIC_SITE_ORIGIN contract."
+  },
+  "runtime": {
+    "summary": "Install the pnpm workspace, run the Vite web application and Wrangler Worker independently, generate publication assets before web builds, and deploy the two Cloudflare surfaces separately.",
+    "requirements": [
+      {
+        "name": "Node.js",
+        "declared": "No engines field is declared in the root package.json",
+        "recommended": "Node.js 20 or newer",
+        "verified_by": "README.md; package.json"
+      },
+      {
+        "name": "pnpm",
+        "declared": "pnpm-workspace.yaml and pnpm-lock.yaml define the workspace",
+        "recommended": "Use Corepack-managed pnpm consistently with the committed lockfile",
+        "verified_by": "pnpm-workspace.yaml; pnpm-lock.yaml; package.json"
+      },
+      {
+        "name": "Cloudflare configuration",
+        "declared": "Worker compatibility date 2026-01-25 with a remote Vectorize binding",
+        "recommended": "Set VITE_API_BASE for Pages and PUBLIC_SITE_ORIGIN for the Worker before production deployment",
+        "verified_by": "apps/worker/wrangler.toml; README.md"
+      }
+    ],
+    "package_manager": "pnpm workspace commands at the repository root delegate to apps/web and apps/worker.",
+    "local_server": "pnpm dev starts the generated-and-validated Vite web experience; pnpm dev:worker starts the Cloudflare Worker separately.",
+    "build": "pnpm build runs configuration checks, APT public-doctrine generation, validation reporting, content-index generation, public-copy generation, and the Vite production build.",
+    "deployment": "Cloudflare Pages deploys the web output from GitHub builds; pnpm deploy:worker publishes the Worker through Wrangler."
+  },
+  "commands": [
+    {
+      "name": "Install workspace dependencies",
+      "category": "setup",
+      "command": "pnpm install",
+      "purpose": "Install the root workspace and application dependencies from the committed lockfile.",
+      "mutates": true,
+      "applicability": "applicable"
+    },
+    {
+      "name": "Run public web application",
+      "category": "run",
+      "command": "pnpm dev",
+      "purpose": "Generate public APT assets and indexes, write validation evidence, copy runtime content, and start Vite.",
+      "mutates": true,
+      "applicability": "applicable"
+    },
+    {
+      "name": "Run Worker locally",
+      "category": "run",
+      "command": "pnpm dev:worker",
+      "purpose": "Start the Cloudflare Worker development runtime through Wrangler.",
+      "mutates": true,
+      "applicability": "applicable"
+    },
+    {
+      "name": "Build public web application",
+      "category": "build",
+      "command": "pnpm build",
+      "purpose": "Run web configuration and publication generators, then produce the Vite production bundle.",
+      "mutates": true,
+      "applicability": "applicable"
+    },
+    {
+      "name": "Web test suite",
+      "category": "test",
+      "command": "pnpm test",
+      "purpose": "Run APT publication contract tests and the Vitest suite.",
+      "mutates": false,
+      "applicability": "applicable"
+    },
+    {
+      "name": "Web lint and documentation governance",
+      "category": "validate",
+      "command": "pnpm lint",
+      "purpose": "Run ESLint and the documentation validation-report governance gate.",
+      "mutates": true,
+      "applicability": "applicable"
+    },
+    {
+      "name": "APT conformance validation",
+      "category": "validate",
+      "command": "pnpm validate:apt-conformance",
+      "purpose": "Verify required root APT surfaces and generate the web validation report.",
+      "mutates": true,
+      "applicability": "applicable"
+    },
+    {
+      "name": "Generate curated public APT doctrine",
+      "category": "generate",
+      "command": "pnpm --dir apps/web run generate-apt-principles-agents-public",
+      "purpose": "Generate the approved public doctrine projection from apt-principles-agents publication and taxonomy contracts.",
+      "mutates": true,
+      "applicability": "applicable"
+    },
+    {
+      "name": "Generate validation evidence",
+      "category": "generate",
+      "command": "pnpm --dir apps/web run validation-report:full",
+      "purpose": "Write full internal validation evidence and public-safe validation projections.",
+      "mutates": true,
+      "applicability": "applicable"
+    },
+    {
+      "name": "Generate and copy public content",
+      "category": "generate",
+      "command": "pnpm --dir apps/web run build-content-index && pnpm --dir apps/web run copy-content-to-public",
+      "purpose": "Build content indexes and copy authored content and governed documentation into runtime public directories.",
+      "mutates": true,
+      "applicability": "applicable"
+    },
+    {
+      "name": "Deploy Worker",
+      "category": "deploy",
+      "command": "pnpm deploy:worker",
+      "purpose": "Publish apps/worker using its Wrangler configuration.",
+      "mutates": true,
+      "applicability": "applicable"
+    },
+    {
+      "name": "Deploy web application",
+      "category": "deploy",
+      "command": "",
+      "purpose": "Cloudflare Pages deploys the web application automatically from the connected GitHub repository; there is no repository-owned manual deploy script.",
+      "mutates": false,
+      "applicability": "applicable"
+    },
+    {
+      "name": "Distribute reusable APT assets",
+      "category": "distribute",
+      "command": "",
+      "purpose": "Not applicable; reusable doctrine and managed-asset distribution are owned by apt-principles-agents.",
+      "mutates": false,
+      "applicability": "not-applicable"
+    }
   ],
-  "architecture_pattern": "Vite/React web app plus Cloudflare Worker API with shared packages for UI, config, and knowledge contracts",
-  "ai_agent_usage": "Worker-side AI/content routes with prompt files and explicit route boundaries",
-  "security_model": "Worker boundary with environment-specific API base and documented production origin contracts",
-  "learning_value": "Demonstrates doctrine-to-product publishing with generated public artifacts and validation gates",
-  "reusable_artifacts": [
-    "apps/web/scripts/generate-apt-principles-agents-public.cjs",
-    "apps/web/scripts/validation-report.cjs",
-    "apps/worker/src/routes",
-    "packages/knowledge/src/content.ts"
+  "structure": [
+    {"path": "apps/web/", "purpose": "Public React application, authored public content, design doctrine, publication scripts, and web validation.", "authority": "canonical", "maintenance": "mixed"},
+    {"path": "apps/web/public/", "purpose": "Generated runtime copies of public content, documentation, data, and curated APT doctrine.", "authority": "generated", "maintenance": "generated"},
+    {"path": "apps/worker/", "purpose": "Cloudflare Worker API, AI/vector boundaries, feed assembly, runtime configuration, and deployment surface.", "authority": "canonical", "maintenance": "authored"},
+    {"path": "packages/ui/", "purpose": "Shared stable APT presentational primitives.", "authority": "canonical", "maintenance": "authored"},
+    {"path": "packages/config/", "purpose": "Shared semantic token and configuration contracts.", "authority": "canonical", "maintenance": "authored"},
+    {"path": "packages/knowledge/", "purpose": "Shared public-content, feed, domain, and assistant contracts.", "authority": "canonical", "maintenance": "authored"},
+    {"path": "docs/", "purpose": "Internal engineering, architecture, deployment, decision, maintenance, and agent-facing documentation.", "authority": "local", "maintenance": "mixed"},
+    {"path": "scripts/", "purpose": "Repository-local verification and maintenance automation.", "authority": "operational", "maintenance": "authored"},
+    {"path": "checklists/ examples/ prompts/ references/ templates/", "purpose": "Target-owned supporting material used by the public platform and its maintainers.", "authority": "supporting", "maintenance": "authored"},
+    {"path": ".apt/ .codex/ .claude/ .github/ .gemini/", "purpose": "Managed APT assets and tool-native adapters synchronized from apt-principles-agents plus target-owned workflow configuration.", "authority": "adapter", "maintenance": "tool-managed"},
+    {"path": "reports/validation/", "purpose": "Generated internal and public-safe validation evidence.", "authority": "generated", "maintenance": "generated"},
+    {"path": ".apt-backups/", "purpose": "Timestamped recovery copies created before forced managed-asset replacement.", "authority": "archived", "maintenance": "tool-managed"}
   ],
+  "integrations": [
+    "Cloudflare Pages builds and serves the public Vite application.",
+    "Cloudflare Workers and Hono provide the API, AI, feed, and document-normalization boundary.",
+    "Cloudflare Vectorize supplies the remote knowledge index bound as VECTORIZE.",
+    "GitHub Actions deploys the Worker through .github/workflows/worker.yml.",
+    "apt-principles-agents supplies managed standards and an explicitly curated public doctrine projection.",
+    "Codex, Claude, GitHub Copilot, and Gemini consume synchronized tool-native APT adapters."
+  ],
+  "source_boundaries": {
+    "canonical": [
+      "apps/web/content/, apps/web/data/, and apps/web/docs/design/ own authored public product content, registries, and design doctrine.",
+      "apps/worker/ owns API behavior, Worker configuration, AI/vector boundaries, and feed assembly.",
+      "packages/ owns shared UI, configuration, token, knowledge, and content contracts.",
+      "docs/ owns target-local operating context, decisions, deployment guidance, and exceptions.",
+      "apt-principles-agents—not this repository—owns reusable APT doctrine, standards, skills, agents, and distribution tooling."
+    ],
+    "generated": [
+      "apps/web/public/content/, apps/web/public/docs/, and apps/web/public/data/ are generated runtime projections.",
+      "apps/web/data/generated/aptPrinciplesPublicManifest.ts is generated from the canonical public APT selection.",
+      "apps/web/docs/design/tokens.json is a compatibility projection generated from apps/web/docs/design/static/APT-TOKENS-CONTRACT.json.",
+      "reports/validation/ contains generated validation evidence.",
+      "docs/project-context.md is generated from docs/apt/references/project-profile.json."
+    ],
+    "archived": [
+      ".apt-backups/ contains recovery evidence only and must not be treated as active source.",
+      "Historical material under a docs/archive/ boundary, when present, is provenance rather than current direction."
+    ]
+  },
+  "constraints": [
+    "Do not edit apps/web/public copied content or generated indexes as authored source.",
+    "Do not redefine reusable APT doctrine locally; change apt-principles-agents and regenerate the approved public projection.",
+    "Use semantic design tokens rather than raw color values in application components.",
+    "Keep VITE_API_BASE and PUBLIC_SITE_ORIGIN explicit and aligned across Pages and Worker deployments.",
+    "Preserve Worker-backed public feed contracts for Labs, Proof, and Insights.",
+    "Treat payment, security, privacy, public claims, and AI behavior as high-accuracy review domains.",
+    "Deploy the Worker before rebuilding Pages when runtime contracts or environment configuration change."
+  ],
+  "evidence": [
+    {"path": "README.md", "supports": "Purpose, repository shape, documentation boundaries, commands, Cloudflare model, public-feed architecture, and APT publication flow."},
+    {"path": "AGENTS.md", "supports": "Target-local design, component, generated-output, testing, and deployment rules."},
+    {"path": "package.json", "supports": "Root pnpm command interface for web, Worker, validation, tests, and deployment."},
+    {"path": "apps/web/package.json", "supports": "Web build pipeline, content generation, validation, lint, and publication tests."},
+    {"path": "apps/worker/package.json", "supports": "Worker runtime and Wrangler deployment commands."},
+    {"path": "apps/worker/wrangler.toml", "supports": "Worker identity, compatibility date, public site origin, observability, and remote Vectorize binding."},
+    {"path": ".github/workflows/worker.yml", "supports": "Automated Worker deployment integration."},
+    {"path": "pnpm-workspace.yaml", "supports": "Monorepo workspace boundaries."},
+    {"path": ".apt/installation.json", "supports": "Managed APT manifests, adapters, per-file provenance, and current canonical source commit."},
+    {"path": "docs/apt/reports/apt-managed-drift-reconciliation-2026-08-16.md", "supports": "Reviewed managed-drift classification, registry resolution, and repair gate."}
+  ],
+  "last_verified": "2026-08-16",
+  "architecture_pattern": "Vite/React public site plus Cloudflare Worker BFF with shared workspace contracts and generated publication projections",
+  "command_matrix": "See commands[] in this version-2 profile.",
+  "validation_evidence": "APT conformance, ESLint and documentation governance, publication contract tests, Vitest, and production web build",
+  "release_model": "Cloudflare Pages deployment from GitHub plus a separately deployed Wrangler Worker",
+  "operations_model": "Author in canonical local sources, generate governed runtime projections, validate, build, deploy Worker, then deploy Pages",
+  "ai_agent_usage": "Managed provider adapters guide repository work; Worker routes provide explicit AI and content boundaries backed by shared knowledge contracts",
+  "security_model": "Explicit web-to-Worker origins, environment-owned configuration, input contracts at Worker boundaries, remote Vectorize isolation, and no secrets committed to source",
+  "learning_value": "Demonstrates APT doctrine through a real public portfolio, governed content publication, design-system constraints, shared contracts, and separately operated edge services",
+  "reusable_artifacts": ["shared UI primitives", "semantic design-token contracts", "public feed and content contracts", "curated APT publication generator", "validation and documentation-governance scripts"],
   "maturity": "active",
   "showcase": {
     "include": true,
-    "summary": "Public-facing APT platform that demonstrates doctrine publishing, design governance, and worker-backed content delivery."
+    "summary": "Public APT portfolio and learning platform demonstrating governed doctrine publication, practical design and architecture, and Worker-backed content delivery."
   }
 }

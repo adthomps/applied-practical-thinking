@@ -27,6 +27,20 @@ export default {
     },
     extend: {
       colors: {
+        // APT surface tokens (apt-surface stays dark in both themes, e.g. for code blocks).
+        "apt-surface": "hsl(var(--apt-surface))",
+        "apt-surface-elevated": "hsl(var(--apt-surface-elevated))",
+        "apt-text-secondary": "hsl(var(--apt-text-secondary))",
+        "apt-border-subtle": "hsl(var(--apt-border-subtle))",
+        // Status (APT-018)
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+        },
+        warning: {
+          DEFAULT: "hsl(var(--warning))",
+          foreground: "hsl(var(--warning-foreground))",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

@@ -10,7 +10,7 @@ import { usePageMetadata } from "@/hooks/usePageMetadata";
 import { useInsightsFeedQuery } from "@/hooks/useFeedQueries";
 import { toContentIndexItemFromFeed } from "@/src/services/feedAdapters";
 
-type InsightFilter = "all" | "blog" | "podcast" | "case-study";
+type InsightFilter = "all" | "blog" | "podcast" | "guide" | "case-study";
 
 export default function Insights() {
   usePageMetadata({
@@ -29,7 +29,8 @@ export default function Insights() {
     if (filter === "all") return insights;
     if (filter === "blog") return insights.filter((item) => item.kind === "blog");
     if (filter === "podcast") return insights.filter((item) => item.kind === "podcast");
-    return insights.filter((item) => item.kind === "guide" || item.kind === "case-study");
+    if (filter === "guide") return insights.filter((item) => item.kind === "guide");
+    return insights.filter((item) => item.sourceIndexType === "case-studies");
   }, [filter, insights]);
 
   const configError = insightsQuery.isError ? getWorkerApiConfigError() : null;
@@ -57,6 +58,7 @@ export default function Insights() {
           {[
             { type: "blog", label: "Blog" },
             { type: "podcast", label: "Podcast" },
+            { type: "guide", label: "Guide" },
             { type: "case-study", label: "Case Study" },
           ].map(({ type, label }) => (
             <AptButton

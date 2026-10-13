@@ -16,9 +16,7 @@ tags:
 platforms: []
 technologies: []
 links: {}
-relatedLabs:
-  - edge-caching-patterns
-  - api-contract-first
+relatedLabs: []
 relatedSystems:
   - apt-site
 ---

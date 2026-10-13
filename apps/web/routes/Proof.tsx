@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { AptCard, AptCardDescription, AptCardTitle, AptTag, ContentStateGate, SectionIntro } from "@/components/apt";
@@ -7,32 +7,27 @@ import { useProofFeedQuery } from "@/hooks/useFeedQueries";
 import { getWorkerApiConfigError } from "@/src/services/api";
 import type { PublicFeedItem } from "@/src/services/feed";
 
-type ProofTab = "all" | "systems" | "live-demos" | "case-studies";
-
 type ProofCardItem = {
   id: string;
   title: string;
   description: string;
-  kind: "system" | "live-demo" | "case-study";
+  kind: "system";
   statusLabel: string;
   tags: string[];
   href: string;
 };
 
-const PROOF_TAB_ITEMS: Array<{ key: ProofTab; label: string }> = [
-  { key: "all", label: "All" },
-  { key: "systems", label: "Systems" },
-  { key: "live-demos", label: "Live Demos" },
-  { key: "case-studies", label: "Case Studies" },
-];
+function formatProofStatus(status: string) {
+  const normalized = status.trim().toLowerCase();
+  if (normalized === "live") return "Live";
+  if (normalized === "working-proof") return "Working proof";
+  if (normalized === "draft") return "Draft";
+  if (normalized === "active" || normalized === "") return "Active";
+  return normalized.charAt(0).toUpperCase() + normalized.slice(1);
+}
 
 function ProofCard({ item }: { item: ProofCardItem }) {
-  const kindLabel =
-    item.kind === "system"
-      ? "System"
-      : item.kind === "live-demo"
-        ? "Live Demo"
-        : "Case Study";
+  const kindLabel = "System";
 
   return (
     <AptCard variant="interactive" padding="none" className="h-full">
@@ -70,12 +65,10 @@ function ProofCard({ item }: { item: ProofCardItem }) {
 }
 
 export default function Systems() {
-  const [activeTab, setActiveTab] = useState<ProofTab>("all");
-
   usePageMetadata({
     title: "Proof",
     description:
-      "Working systems, live demos, and complete implementations. When a lab is interactive, complete, and demonstrable - it lives here.",
+      "What is implemented in each APT system, and what must not be claimed.",
   });
 
   const proofQuery = useProofFeedQuery();
@@ -87,24 +80,14 @@ export default function Systems() {
       id: item.id || item.slug || item.title,
       title: item.title,
       description: item.description || item.summary || item.excerpt || "Applied implementation artifact",
-      kind:
-        item.kind === "system"
-          ? "system"
-          : item.kind === "live-demo"
-            ? "live-demo"
-            : "case-study",
-      statusLabel: item.status === "live" ? "Live" : "Stable",
+      kind: "system",
+      statusLabel: formatProofStatus(item.status),
       tags: [...(item.topics || []), ...(item.platforms || []), ...(item.technologies || [])].slice(0, 3),
       href: item.href,
     }));
   }, [proofQuery.data]);
 
-  const filteredItems = useMemo(() => {
-    if (activeTab === "all") return items;
-    if (activeTab === "systems") return items.filter((item) => item.kind === "system");
-    if (activeTab === "live-demos") return items.filter((item) => item.kind === "live-demo");
-    return items.filter((item) => item.kind === "case-study");
-  }, [activeTab, items]);
+  const filteredItems = items;
 
   const configError = proofQuery.isError ? getWorkerApiConfigError() : null;
 
@@ -113,30 +96,11 @@ export default function Systems() {
       <section className="space-y-3">
         <SectionIntro
           title="Proof"
-          description="Working systems, live demos, and complete implementations. When a lab is interactive, complete, and demonstrable - it lives here."
+          description="What is implemented, and what must not be claimed. Clickable demos stay in Labs. The story of a decision stays in Insights."
           titleClassName="text-3xl md:text-4xl"
           descriptionClassName="text-lg max-w-3xl"
         />
       </section>
-
-      <div className="mt-8 border-b border-border/60">
-        <nav className="flex flex-wrap items-center gap-1" aria-label="Proof tabs">
-          {PROOF_TAB_ITEMS.map((item) => (
-            <button
-              key={item.key}
-              type="button"
-              onClick={() => setActiveTab(item.key)}
-              className={
-                activeTab === item.key
-                  ? "inline-flex items-center border-b-2 border-primary px-3 py-2 text-sm font-medium text-foreground"
-                  : "inline-flex items-center border-b-2 border-transparent px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-              }
-            >
-              {item.label}
-            </button>
-          ))}
-        </nav>
-      </div>
 
       <section className="mt-8">
         <ContentStateGate

@@ -149,16 +149,20 @@ Example:
   --foreground: 220 10% 95%;
   --card: 220 18% 12%;
   --card-foreground: 220 10% 95%;
-  --primary: 220 70% 55%;
+  --primary: 220 70% 61%;
   --primary-foreground: 220 20% 8%;
   --secondary: 220 15% 18%;
   --secondary-foreground: 220 10% 90%;
   --muted: 220 15% 15%;
-  --muted-foreground: 220 10% 55%;
+  --muted-foreground: 220 10% 60%;
   --accent: 165 45% 40%;
   --accent-foreground: 220 20% 8%;
+  --success: 155 50% 45%;
+  --success-foreground: 220 20% 8%;
+  --warning: 38 92% 50%;
+  --warning-foreground: 220 20% 8%;
   --border: 220 15% 20%;
-  --ring: 220 70% 55%;
+  --ring: 220 70% 61%;
 }
 ```
 
@@ -178,10 +182,21 @@ Example:
   --muted-foreground: 220 10% 40%;
   --accent: 165 45% 35%;
   --accent-foreground: 0 0% 100%;
+  --success: 160 60% 28%;
+  --success-foreground: 0 0% 100%;
+  --warning: 30 95% 30%;
+  --warning-foreground: 0 0% 100%;
   --border: 220 15% 85%;
   --ring: 220 70% 50%;
 }
 ```
+
+### Status and Contrast Rules
+
+- `success` and `warning` are the canonical status tokens, alongside `destructive`. Products must not define their own status colors. Use `text-success` / `text-warning` for status text, and `bg-success` / `bg-warning` with the matching `-foreground` for fills.
+- Every text token meets WCAG AA (4.5:1) on every surface it is used on in its theme: `background`, `card`, `muted`, `secondary`, and `apt-surface-elevated`. `muted-foreground`, `success`, and `warning` are checked against all of them.
+- Primary text (links, active labels) is AA on `background` and `card`. On `muted`, `secondary`, or `apt-surface-elevated`, links use `text-foreground` with an underline instead of `text-primary`.
+- The contrast catalogue (`apps/web/lib/contrast.ts`) lists the required pairs, and `test/apt-contrast-contract.test.ts` fails the build if any pair drops below 4.5:1. Add a pair whenever a new token or surface combination is introduced.
 
 ### Chart Theme Mapping Policy
 
@@ -193,7 +208,7 @@ Chart tokens are explicitly theme-scoped:
 ```css
 /* Dark chart palette (primary runtime) */
 .dark {
-  --chart-1: 220 70% 55%;
+  --chart-1: 220 70% 61%;
   --chart-2: 165 45% 40%;
   --chart-3: 280 55% 55%;
   --chart-4: 30 75% 50%;
@@ -416,7 +431,7 @@ CTA labels should use clear verbs (`Save`, `Remove`, `Create`, `Retry`, `Dismiss
 
 ### Success State
 
-- quiet confirmation
+- quiet confirmation, using the `success` token (never accent or raw green)
 - short-lived unless tied to persisted state
 - never brighter than primary CTA system
 

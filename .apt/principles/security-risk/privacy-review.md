@@ -46,6 +46,10 @@ Review for implicit authorization, excessive data collection, sensitive logs, un
 - State what is verified, what is assumed, and what requires specialist or human approval.
 
 See the [Security Risk canonical hub](README.md) and linked standards/checklists before making final claims.
+## Applied by
+
+- [apt-payer-reviewer](../../agents/customer/apt-payer-reviewer.md) — Use when a deliverable affects the person paying a merchant beyond the checkout screen, including receipts, statement descriptors, stored cards, recurring charges, refunds, and disputes, to confirm the payer can recognize, control, and resolve their payments.
+
 ## Related
 
 - [APT Principles](../README.md)

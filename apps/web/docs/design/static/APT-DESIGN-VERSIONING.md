@@ -32,6 +32,8 @@ This policy applies to local published mirror artifacts and compatibility metada
 
 `apt-principles-agents` owns doctrine meaning and version authority. This repo keeps only the metadata needed to publish and serve compatible mirror artifacts.
 
+Since APT-019 this also covers token values. The canonical tokens are `apt-principles-agents/design/tokens/APT-TOKENS.json` (design version in `design/VERSION`), and generated CSS and Tailwind presets ship from `design/dist/` through the `design` manifest. `apps/web/docs/design/static/APT-TOKENS.json` here is a published mirror. Change tokens upstream, then sync.
+
 Local mirror artifacts retain semantic versions so runtime consumers can resolve the right published file:
 
 - Major: `X.0.0`

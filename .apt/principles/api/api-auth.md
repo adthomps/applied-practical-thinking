@@ -46,6 +46,10 @@ Review for fashion-driven protocol choices, ambiguous errors, unsafe retries, un
 - State what is verified, what is assumed, and what requires specialist or human approval.
 
 See the [Api canonical hub](README.md) and linked standards/checklists before making final claims.
+## Applied by
+
+- [apt-isv-tech-partner-reviewer](../../agents/customer/apt-isv-tech-partner-reviewer.md) — Use when a deliverable will be used by an ISV, plugin provider, or technology partner that connects many merchants to the gateway, to confirm it covers their account linking, attribution, credentials, and installed-base needs, not only the integration build.
+
 ## Related
 
 - [APT Principles](../README.md)

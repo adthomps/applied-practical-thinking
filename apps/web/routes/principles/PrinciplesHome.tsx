@@ -1,3 +1,4 @@
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, ExternalLink, FileText } from "lucide-react";
 import {
@@ -17,6 +18,18 @@ import {
 } from "@/src/data/principles";
 
 export default function PrinciplesHome() {
+  const [query, setQuery] = useState("");
+  const normalizedQuery = query.trim().toLowerCase();
+  const visibleSections = useMemo(
+    () =>
+      principlesSections.filter((section) => {
+        if (!normalizedQuery) return true;
+        const haystack = `${section.title} ${section.summary} ${section.slug}`.toLowerCase();
+        return haystack.includes(normalizedQuery);
+      }),
+    [normalizedQuery]
+  );
+
   return (
     <div className="container py-12 md:py-16 space-y-10">
       <section>
@@ -117,9 +130,11 @@ export default function PrinciplesHome() {
                 <AptCardDescription className="mt-2">{item.summary}</AptCardDescription>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {item.evidence.map((evidence) => (
-                    <AptTag key={evidence} variant="muted" size="sm">
-                      {evidence}
-                    </AptTag>
+                    <Link key={evidence.href} to={evidence.href}>
+                      <AptTag variant="muted" size="sm">
+                        {evidence.label}
+                      </AptTag>
+                    </Link>
                   ))}
                 </div>
               </AptCard>
@@ -128,9 +143,18 @@ export default function PrinciplesHome() {
         </div>
       </section>
 
-      <section>
+      <section className="space-y-4">
+        <label className="block max-w-md text-sm text-muted-foreground">
+          Filter principle groups
+          <input
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Search by group"
+            className="mt-2 w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground"
+          />
+        </label>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {principlesSections.map((section) => (
+          {visibleSections.map((section) => (
             <AptCard key={section.slug} variant="interactive" className="group h-full">
               <Link to={`/principles/${section.slug}`} className="flex h-full flex-col p-6 focus:outline-none">
                 <div className="mb-4 flex items-center justify-between gap-3">

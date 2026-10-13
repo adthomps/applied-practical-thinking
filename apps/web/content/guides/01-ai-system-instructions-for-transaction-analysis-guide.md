@@ -1,4 +1,5 @@
 ---
+status: draft
 title: "AI System Instructions For Transaction Analysis Guide"
 featured: false
 id: "01-ai-system-instructions-for-transaction-analysis-guide"

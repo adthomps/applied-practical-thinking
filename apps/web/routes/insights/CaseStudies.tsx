@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { InsightCard } from "@/components/apt/InsightCard";
-import { AptButton, ContentFilters, FilterConfig, SelectedFilters, ContentStateGate } from "@/components/apt";
+import { ContentFilters, FilterConfig, SelectedFilters, ContentStateGate } from "@/components/apt";
 import { getWorkerApiConfigError } from "@/src/services/api";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
 import { useInsightsFeedQuery } from "@/hooks/useFeedQueries";
@@ -9,19 +9,15 @@ import { toContentIndexItemFromFeed } from "@/src/services/feedAdapters";
 export default function InsightsGuides() {
   usePageMetadata({
     title: "Case Studies",
-    description: "Practical guides and case studies for applied thinking, repeatable workflows, and artifact review.",
+    description: "Case studies that name the decision, the tradeoff, and what was left out.",
   });
 
   const [selected, setSelected] = useState<SelectedFilters>({ topics: [] });
-  const [subtype, setSubtype] = useState<"all" | "guide" | "design-review">("all");
 
   const guidesQuery = useInsightsFeedQuery();
 
   const guides = useMemo(
-    () =>
-      (guidesQuery.data || []).filter(
-        (item) => item.kind === "guide" || item.kind === "case-study"
-      ),
+    () => (guidesQuery.data || []).filter((item) => item.sourceIndexType === "case-studies"),
     [guidesQuery.data]
   );
   const loading = guidesQuery.isLoading;
@@ -33,15 +29,9 @@ export default function InsightsGuides() {
 
   const filteredGuides = useMemo(() => {
     return guides.filter((guide) => {
-      const matchesTopics =
-        !selected.topics?.length || selected.topics.some((t) => (guide.topics || []).includes(t));
-      const matchesSubtype =
-        subtype === "all" ||
-        (subtype === "guide" && guide.kind === "guide") ||
-        (subtype === "design-review" && guide.kind === "case-study");
-      return matchesTopics && matchesSubtype;
+      return !selected.topics?.length || selected.topics.some((t) => (guide.topics || []).includes(t));
     });
-  }, [selected.topics, guides, subtype]);
+  }, [selected.topics, guides]);
 
   const configError = guidesQuery.isError ? getWorkerApiConfigError() : null;
 
@@ -52,25 +42,8 @@ export default function InsightsGuides() {
           Case Studies
         </h1>
         <p className="text-lg text-muted-foreground">
-          Practical guides and case studies for applied thinking. Use guides to learn the workflow and reviews to see how decisions hold up against real artifacts.
+          Decisions from real APT work, including what was left out.
         </p>
-      </div>
-
-      <div className="flex flex-wrap gap-2 mb-6">
-        {[
-          { value: "all", label: "All" },
-          { value: "guide", label: "Guides" },
-          { value: "design-review", label: "Design Reviews" },
-        ].map((option) => (
-          <AptButton
-            key={option.value}
-            onClick={() => setSubtype(option.value as "all" | "guide" | "design-review")}
-            variant={subtype === option.value ? "primary" : "ghost"}
-            size="sm"
-          >
-            {option.label}
-          </AptButton>
-        ))}
       </div>
 
       <ContentFilters

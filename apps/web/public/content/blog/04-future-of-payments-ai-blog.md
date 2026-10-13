@@ -20,8 +20,8 @@ technologies:
   - OpenAI
 links:
   Blog: 04-future-of-payments-ai-blog
-  Podcast: 
-  Guide: 04-future-of-payments-ai-guide
+  Podcast:
+  Guide:
   Case: 
   Article: 
   Slides: 

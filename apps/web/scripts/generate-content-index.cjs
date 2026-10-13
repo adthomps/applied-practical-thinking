@@ -125,6 +125,15 @@ function validateCrossTypeLinks(indexesByType) {
   return issues;
 }
 
+function normalizeMedia(value) {
+  if (!value || typeof value !== 'object') return undefined;
+  const audioUrl = typeof value.audioUrl === 'string' ? value.audioUrl : undefined;
+  const embedUrl = typeof value.embedUrl === 'string' ? value.embedUrl : undefined;
+  const videoUrl = typeof value.videoUrl === 'string' ? value.videoUrl : undefined;
+  if (!audioUrl && !embedUrl && !videoUrl) return undefined;
+  return { audioUrl, embedUrl, videoUrl };
+}
+
 function parseMarkdownFile(filePath) {
   const raw = fs.readFileSync(filePath, 'utf8');
   const { data, content } = matter(raw);
@@ -166,6 +175,7 @@ function parseMarkdownFile(filePath) {
       thumbnail: data.thumbnail || data.image || undefined,
       links: typeof data.links === 'object' && data.links !== null ? data.links : {},
       related,
+      media: normalizeMedia(data.media),
       contentPath: path.relative(CONTENT_ROOT, filePath).replace(/\\/g, '/'),
       excerpt: extractExcerpt(content),
     },

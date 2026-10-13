@@ -1,4 +1,5 @@
 ---
+status: draft
 id: "data-pipeline"
 title: "Data Pipeline"
 type: "system"

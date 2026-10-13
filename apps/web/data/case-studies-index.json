@@ -1,5 +1,83 @@
 [
   {
+    "id": "apt-commerce-boundary",
+    "slug": "apt-commerce-boundary",
+    "title": "Commerce Compass: A Payments Proof Without a Live Processor",
+    "type": "case-study",
+    "description": "Why APT Commerce Compass ships signup, review, and a sandbox money path, and why that must not be described as live Authorize.Net or Cybersource processing.",
+    "publishedAt": "2026-10-12T00:00:00.000Z",
+    "featured": false,
+    "concepts": [
+      "payments",
+      "sandbox",
+      "proof"
+    ],
+    "platforms": [
+      "Web"
+    ],
+    "technologies": [
+      "Cloudflare",
+      "React"
+    ],
+    "status": "active",
+    "links": {},
+    "related": [],
+    "contentPath": "case-studies/apt-commerce-boundary.md",
+    "excerpt": "Problem And Audience  People looking at the portfolio need to see a payments flow they can click. They also need a hard line between a working proof and a live gateway. Merchants, partners, and reviewers should not leave thinking the site authorizes real cards.   Intended Outcome  Show merchant signup, partner and merchant portals, and staff approve or reject, with an audited decision. Record a moneypath result without calling a live processor."
+  },
+  {
+    "id": "apt-health-boundary",
+    "slug": "apt-health-boundary",
+    "title": "Health Compass: A Personal Review That Does Not Publish Records",
+    "type": "case-study",
+    "description": "Why APT Health Compass is a signed-in review of periodic results and supplements, and why it must not be described as medical advice or a public dataset.",
+    "publishedAt": "2026-10-12T00:00:00.000Z",
+    "featured": false,
+    "concepts": [
+      "health",
+      "privacy",
+      "proof"
+    ],
+    "platforms": [
+      "Web"
+    ],
+    "technologies": [
+      "Cloudflare",
+      "React"
+    ],
+    "status": "active",
+    "links": {},
+    "related": [],
+    "contentPath": "case-studies/apt-health-boundary.md",
+    "excerpt": "Problem And Audience  A health product is easy to overclaim. The audience needs to see that a working review exists, and that other people's results are not part of the public site.   Intended Outcome  Let a signedin person compare periodic results with the supplements taken that month, and read a practical next step from that comparison."
+  },
+  {
+    "id": "crt-world-publish",
+    "slug": "crt-world-publish",
+    "title": "CRT World: A Live Author Site With a Separate Editorial Path",
+    "type": "case-study",
+    "description": "How CRT World publishes C. R. Thompson's worlds on a public site while keeping editorial control in an admin surface backed by a Worker and D1.",
+    "publishedAt": "2026-10-12T00:00:00.000Z",
+    "featured": false,
+    "concepts": [
+      "content",
+      "publishing",
+      "cloudflare"
+    ],
+    "platforms": [
+      "Web"
+    ],
+    "technologies": [
+      "Cloudflare",
+      "React"
+    ],
+    "status": "active",
+    "links": {},
+    "related": [],
+    "contentPath": "case-studies/crt-world-publish.md",
+    "excerpt": "Problem And Audience  An author site has to be findable, and the writing workflow has to stay in the hands of the editor. Readers should not need the admin to discover the worlds.   Intended Outcome  Serve The Worlds of C. R. Thompson at the public site, and keep drafts and publishing decisions in the editorial admin."
+  },
+  {
     "id": "apt-publication-boundary-case-study",
     "slug": "apt-publication-boundary-case-study",
     "title": "APT in Practice: Turning a Repository Dump into a Governed Public Library",

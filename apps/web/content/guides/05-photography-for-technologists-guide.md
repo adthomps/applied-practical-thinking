@@ -1,4 +1,5 @@
 ---
+status: draft
 title: "Photography for Technologists"
 featured: false
 id: "05-photography-for-technologists-guide"

@@ -82,6 +82,12 @@ export interface PublicFeedItem {
   problem?: string;
   thumbnail?: string;
   assetBasePath?: string;
+  related?: string[];
+  media?: {
+    audioUrl?: string;
+    embedUrl?: string;
+    videoUrl?: string;
+  };
 }
 
 export interface PublicFeedDetailResponse {

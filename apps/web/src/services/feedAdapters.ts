@@ -25,6 +25,8 @@ export function toContentIndexItemFromFeed(item: PublicFeedItem): ContentIndexIt
     assetBasePath: item.assetBasePath,
     indexType: item.sourceIndexType,
     featured: item.featured,
+    related: item.related,
+    media: item.media,
   };
 }
 

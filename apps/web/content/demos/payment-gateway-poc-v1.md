@@ -23,8 +23,7 @@ links:
   demo: https://apt-gateway-prototype.pages.dev/
   figma: 
   repo: 
-relatedLabs:
-  - full-example-lab
+relatedLabs: []
 ---
 
 Front-end + Worker back-end Proof-of-Concept for a cloud-native payments gateway UI.

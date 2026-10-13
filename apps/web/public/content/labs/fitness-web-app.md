@@ -23,7 +23,7 @@ status: active
 links:
   demo: 
   figma: https://peach-orbit-27497554.figma.site/
-  lovable: https://api-gateway-concept1.lovable.app/
+  lovable:
   repo: 
 relatedInsights:
 

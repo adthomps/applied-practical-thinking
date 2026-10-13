@@ -1,5 +1,62 @@
 [
   {
+    "id": "apt-novel-reviewer",
+    "slug": "apt-novel-reviewer",
+    "title": "APT Novel Reviewer",
+    "type": "demo",
+    "description": "App for reviewing personal writing and providing feedback and direction.",
+    "publishedAt": "2026-10-12T00:00:00.000Z",
+    "featured": false,
+    "concepts": [
+      "prototype"
+    ],
+    "platforms": [
+      "Desktop"
+    ],
+    "technologies": [
+      "Electron",
+      "React",
+      "TypeScript"
+    ],
+    "status": "active",
+    "links": {
+      "demo": null,
+      "figma": null,
+      "repo": null
+    },
+    "related": [],
+    "contentPath": "labs/apt-novel-reviewer.md",
+    "excerpt": "APT Novel Reviewer is a local desktop prototype for personal writing. It imports a manuscript, splits it into chapters, and runs review modes through a local model.  Findings stay on the machine. Later versions can be compared so a note shows up as resolved, still open, or new. It does not rewrite the manuscript in the app."
+  },
+  {
+    "id": "grey-rain",
+    "slug": "grey-rain",
+    "title": "Grey Rain",
+    "type": "concept",
+    "description": "APT game concept.",
+    "publishedAt": "2026-10-12T00:00:00.000Z",
+    "featured": false,
+    "concepts": [
+      "concept"
+    ],
+    "platforms": [
+      "Game"
+    ],
+    "technologies": [
+      "React",
+      "Cloudflare"
+    ],
+    "status": "active",
+    "links": {
+      "demo": null,
+      "figma": null,
+      "repo": null
+    },
+    "related": [],
+    "contentPath": "labs/grey-rain.md",
+    "excerpt": "Grey Rain is an APT game concept: a turnbased tactical RPG set in Seattle, where magic and technology share the same streets. The idea is a small party, a grid fight, and a campaign that remembers what already happened.  This entry is the concept. There is no public playable build linked from Labs."
+  },
+  {
     "id": "ai-dream-to-deliver",
     "slug": "ai-dream-to-deliver",
     "title": "AI Dream to Deliver",
@@ -62,7 +119,7 @@
     "links": {
       "demo": null,
       "figma": "https://peach-orbit-27497554.figma.site/",
-      "lovable": "https://api-gateway-concept1.lovable.app/",
+      "lovable": null,
       "repo": null
     },
     "related": [],
@@ -169,7 +226,7 @@
     "links": {
       "demo": null,
       "figma": "https://royal-manor-57703683.figma.site/",
-      "lovable": "https://api-gateway-concept1.lovable.app/",
+      "lovable": null,
       "repo": null
     },
     "related": [],

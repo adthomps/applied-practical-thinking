@@ -13,8 +13,7 @@ tags:
   - design-system
   - rollout
   - governance
-links:
-  Guide: shadcn-ui-builder-guide
+links: {}
 ---
 
 ## Review Goal

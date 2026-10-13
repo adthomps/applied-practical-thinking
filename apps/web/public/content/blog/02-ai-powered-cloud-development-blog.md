@@ -20,8 +20,8 @@ technologies:
   - OpenAI
 links:
   Blog: 02-ai-powered-cloud-development-blog
-  Podcast: 02-ai-powered-cloud-development-podcast
-  Guide: 02-ai-powered-cloud-development-guide
+  Podcast:
+  Guide:
   Case: 
   Article: 
   Slides: 

@@ -40,7 +40,7 @@ Use `role="status"` or `role="alert"` appropriately. Ensure messages are program
 
 ## Tokens & Theming
 
-Use semantic tokens for success, error, and warning colors and surface contrasts.
+Use the canonical status tokens: `success`, `warning`, and `destructive` (error), each with a matching `-foreground` for text on a fill. They are defined in `APT-TOKENS.json` for both themes and meet WCAG AA as text on every theme surface. Do not introduce product-specific status colors, and do not use the accent token for success.
 
 ## API/Components
 

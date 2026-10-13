@@ -1,33 +1,57 @@
 [
   {
-    "id": "shadcn-ui-builder",
-    "slug": "shadcn-ui-builder",
-    "title": "shadcn UI Builder",
+    "id": "apt-commerce-compass",
+    "slug": "apt-commerce-compass",
+    "title": "APT Commerce Compass",
     "type": "system",
-    "description": "A visual project scaffolding tool for customizing and generating UI projects using shadcn's open-code component registry.",
-    "publishedAt": "2026-02-14",
+    "description": "A working payments proof. Merchant signup, partner and merchant portals, and staff review are implemented. The money path is the APT sandbox processor.",
+    "publishedAt": "2026-10-12T00:00:00.000Z",
     "featured": false,
     "concepts": [
-      "design system",
-      "tool",
-      "shadcn",
-      "builder"
+      "payments",
+      "cloudflare",
+      "sandbox"
     ],
     "platforms": [],
     "technologies": [],
-    "status": "",
-    "links": {},
+    "status": "working-proof",
+    "links": {
+      "demo": "https://commerce.appliedpracticalthinking.com"
+    },
     "related": [],
-    "contentPath": "systems/shadcn-ui-builder.md",
-    "excerpt": "Overview\r shadcn UI Builder is a visual interface for configuring and generating UI projects. It enables developers to customize themes, components, and project setup before writing code, promoting open code ownership and flexibility.\r \r  Features\r  Realtime customization: themes, colors, fonts, border radius, icon sets\r  Componentlevel preview and shuffle\r  Supports Next.js, Vite, TanStack Start, v0 frameworks"
+    "contentPath": "systems/apt-commerce-compass.md",
+    "excerpt": "APT Commerce Compass is a working proof of a gateway and acquiring flow.   What a visitor can verify  The public site covers merchant signup, a partner portal, a merchant portal, and staff application review. Staff can approve or reject an application, and that decision is audited. The money path records a result through the APT sandbox processor.   What must not be claimed"
+  },
+  {
+    "id": "apt-health-compass",
+    "slug": "apt-health-compass",
+    "title": "APT Health Compass",
+    "type": "system",
+    "description": "A working personal health-review app. Periodic results and monthly supplements stay with the signed-in account. It is not medical advice and it does not publish health records.",
+    "publishedAt": "2026-10-12T00:00:00.000Z",
+    "featured": false,
+    "concepts": [
+      "health",
+      "cloudflare",
+      "privacy"
+    ],
+    "platforms": [],
+    "technologies": [],
+    "status": "working-proof",
+    "links": {
+      "demo": "https://health.appliedpracticalthinking.com"
+    },
+    "related": [],
+    "contentPath": "systems/apt-health-compass.md",
+    "excerpt": "APT Health Compass is a working app for reading periodic health results next to the supplements taken that month.   What a visitor can verify  A signedin person can review their own imported results and the supplement record for that period. The public site is the app, not a shared dataset.   What must not be claimed"
   },
   {
     "id": "apt-site",
     "slug": "apt-site",
     "title": "APT Site",
     "type": "system",
-    "description": "Portfolio and demonstration platform built with Vite, React, and Cloudflare Pages.",
-    "publishedAt": "2026-02-01",
+    "description": "The public portfolio. Cloudflare Pages serves the Vite and React app. A separate Worker reads those public files and returns the Labs, Proof, and Insights feeds.",
+    "publishedAt": "2026-10-12T00:00:00.000Z",
     "featured": false,
     "concepts": [
       "vite",
@@ -36,56 +60,33 @@
     ],
     "platforms": [],
     "technologies": [],
-    "status": "",
+    "status": "active",
     "links": {},
-    "related": [
-      "systems-mapping-guide",
-      "design-review-portfolio-redesign",
-      "portfolio-website"
-    ],
+    "related": [],
     "contentPath": "systems/apt-site.md",
-    "excerpt": "This site itself—a Vite + React + Tailwind stack deployed on Cloudflare Pages with optional Hono worker APIs.\r \r  Production Guide\r  Overview: Vite + React SPA deployed on Cloudflare Pages, with optional Hono worker APIs for backend.\r  Deployment: See README for build and deploy steps. Configure Cloudflare Pages and Wrangler for worker APIs.\r  API: Worker APIs documented in /api routes. Auth via JWT, data via REST endpoints.\r  Operations: Monitor via Cloudflare dashboard. Rollback via git and redeploy."
+    "excerpt": "This site is the public Applied Practical Thinking portfolio.\r \r  What is implemented\r \r The browser app is built with Vite and React and deployed on Cloudflare Pages. Authored pages live in `apps/web/content`. A Cloudflare Worker, deployed separately, reads the published indexes and markdown and serves the public feeds.\r \r  What must not be claimed"
   },
   {
-    "id": "auth-patterns",
-    "slug": "auth-patterns",
-    "title": "Auth Patterns",
+    "id": "crt-world",
+    "slug": "crt-world",
+    "title": "CRT World",
     "type": "system",
-    "description": "Reference implementations for authentication flows including JWT, OAuth, and session management.",
-    "publishedAt": "2026-02-01",
-    "featured": false,
+    "description": "The live author site for C. R. Thompson. Visitors discover the worlds on the public site. An admin surface and a Worker API with D1 manage what gets published.",
+    "publishedAt": "2026-10-12T00:00:00.000Z",
+    "featured": true,
     "concepts": [
-      "security",
-      "auth",
-      "patterns"
+      "content",
+      "cloudflare",
+      "d1"
     ],
     "platforms": [],
     "technologies": [],
-    "status": "",
-    "links": {},
+    "status": "live",
+    "links": {
+      "demo": "https://crthompson.net/"
+    },
     "related": [],
-    "contentPath": "systems/auth-patterns.md",
-    "excerpt": "A collection of auth patterns including session management, JWT handling, and OAuth integrations with security considerations.\r \r  Production Guide\r  Overview: Auth flows using JWT, OAuth, and session management. Securityfirst design.\r  Deployment: Configure environment variables for secrets. Deploy with secure cookie settings.\r  API: Endpoints documented in /api/auth. Supports login, refresh, and logout.\r  Operations: Monitor auth logs. Rotate secrets regularly."
-  },
-  {
-    "id": "data-pipeline",
-    "slug": "data-pipeline",
-    "title": "Data Pipeline",
-    "type": "system",
-    "description": "Lightweight ETL for small-scale analytics with robust error recovery and observability.",
-    "publishedAt": "2026-02-01",
-    "featured": false,
-    "concepts": [
-      "data",
-      "etl",
-      "observability"
-    ],
-    "platforms": [],
-    "technologies": [],
-    "status": "",
-    "links": {},
-    "related": [],
-    "contentPath": "systems/data-pipeline.md",
-    "excerpt": "A simple but robust pattern for extracting, transforming, and loading data with observability and error recovery.\r \r  Production Guide\r  Overview: ETL pipeline for batch analytics. Built for reliability and error recovery.\r  Deployment: Run as scheduled job. Configure schema validation and error queues.\r  API: Endpoints for ingest, transform, and load. Dead letter queue for failures.\r  Operations: Monitor job status. Handle errors via dead letter queue."
+    "contentPath": "systems/crt-world.md",
+    "excerpt": "CRT World is the live author platform for C. R. Thompson.   What a visitor can verify  https://crthompson.net/ is the public site, The Worlds of C. R. Thompson. The same Cloudflare app has an editorial admin. A Worker API and a D1 database hold the published content.   What must not be claimed"
   }
 ]
