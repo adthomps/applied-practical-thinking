@@ -1,4 +1,5 @@
 ---
+status: draft
 title: Photography for Technologists - Systems Thinking Behind the Lens
 featured: true
 id: "05-photography-for-technologists-blog"

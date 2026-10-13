@@ -20,8 +20,8 @@ technologies:
   - OpenAI
 links:
   Blog: 07-ai-developers-journey-blog
-  Podcast: 07-ai-developers-journey-podcast
-  Guide: 07-ai-developers-journey-guide
+  Podcast:
+  Guide:
   Case: 
   Article: 
   Slides: 

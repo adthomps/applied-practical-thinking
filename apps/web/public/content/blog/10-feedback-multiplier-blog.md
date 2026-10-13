@@ -18,8 +18,8 @@ technologies:
   - OpenAI
 links:
   Article: 10-feedback-multiplier-blog
-  Podcast: 
-  Guide: 
+  Podcast:
+  Guide:
   Slides: 
 relatedLabs: 
 ---

@@ -1,4 +1,5 @@
 ---
+status: draft
 title: "Designing AI-Ready Interfaces"
 featured: false
 id: "03-designing-ai-ready-interfaces-guide"

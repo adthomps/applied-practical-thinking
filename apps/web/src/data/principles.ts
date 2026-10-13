@@ -53,7 +53,7 @@ export type PrincipleRelatedArtifact = {
 export type ProjectPrincipleEvidence = {
   readonly slug: PrincipleSlug;
   readonly summary: string;
-  readonly evidence: readonly string[];
+  readonly evidence: readonly { readonly label: string; readonly href: string }[];
 };
 
 export type AptProjectProfile = {
@@ -164,32 +164,50 @@ export const projectPrincipleEvidence: readonly ProjectPrincipleEvidence[] = [
   {
     slug: "thinking",
     summary: "Problem framing is visible in the content model before implementation surfaces are promoted.",
-    evidence: ["Project profile", "decision log", "labs-to-proof progression"],
+    evidence: [
+      { label: "Commerce working proof", href: "/proof/apt-commerce-compass" },
+      { label: "Publication boundary", href: "/insights/apt-publication-boundary-case-study" },
+    ],
   },
   {
     slug: "design",
     summary: "Public routes use shared APT primitives, semantic tokens, and state-aware page composition.",
-    evidence: ["Design system route", "design playground", "shared component contract"],
+    evidence: [
+      { label: "Health working proof", href: "/proof/apt-health-compass" },
+      { label: "Design system", href: "/design/system" },
+    ],
   },
   {
     slug: "architecture",
     summary: "The repo separates web routes, worker APIs, shared UI, config, and knowledge contracts.",
-    evidence: ["apps/web", "apps/worker", "packages/ui", "packages/knowledge"],
+    evidence: [
+      { label: "APT site", href: "/proof/apt-site" },
+      { label: "CRT World", href: "/proof/crt-world" },
+    ],
   },
   {
     slug: "system",
     summary: "Tokens, generated manifests, and shared packages keep public surfaces aligned across the monorepo.",
-    evidence: ["APT tokens", "generated docs manifest", "shared package contracts"],
+    evidence: [
+      { label: "APT site", href: "/proof/apt-site" },
+      { label: "CRT World", href: "/proof/crt-world" },
+    ],
   },
   {
     slug: "knowledge",
     summary: "Canonical doctrine is mirrored into public docs while local project records explain adoption and showcase use.",
-    evidence: ["public docs mirror", "docs/apt/adoption.md", "docs/apt/project-profile.md"],
+    evidence: [
+      { label: "Publication boundary", href: "/insights/apt-publication-boundary-case-study" },
+      { label: "CRT World", href: "/proof/crt-world" },
+    ],
   },
   {
     slug: "ai",
     summary: "AI usage is bounded by prompt files, review bundles, and worker-side route boundaries.",
-    evidence: ["apps/web/ai/prompts", "AI review bundle", "worker AI routes"],
+    evidence: [
+      { label: "Novel Reviewer", href: "/labs/apt-novel-reviewer" },
+      { label: "Publication boundary", href: "/insights/apt-publication-boundary-case-study" },
+    ],
   },
 ] as const;
 
@@ -976,9 +994,24 @@ const principleRelatedArtifactsBySlug: Record<PrincipleSlug, readonly PrincipleR
   ],
 };
 
+const seenInBySlug: Partial<Record<PrincipleSlug, PrincipleExample>> = {
+  framework: { label: "Seen in: Grey Rain", href: "/labs/grey-rain", status: "available" },
+  thinking: { label: "Seen in: Commerce", href: "/proof/apt-commerce-compass", status: "available" },
+  design: { label: "Seen in: Health", href: "/proof/apt-health-compass", status: "available" },
+  architecture: { label: "Seen in: APT site", href: "/proof/apt-site", status: "available" },
+  system: { label: "Seen in: CRT World", href: "/proof/crt-world", status: "available" },
+  execution: { label: "Seen in: Novel Reviewer", href: "/labs/apt-novel-reviewer", status: "available" },
+  quality: { label: "Seen in: Publication boundary", href: "/insights/apt-publication-boundary-case-study", status: "available" },
+  release: { label: "Seen in: Commerce", href: "/proof/apt-commerce-compass", status: "available" },
+  operations: { label: "Seen in: CRT World", href: "/labs/live-demos/crt-world", status: "available" },
+  knowledge: { label: "Seen in: Publication boundary", href: "/insights/apt-publication-boundary-case-study", status: "available" },
+  ai: { label: "Seen in: Novel Reviewer", href: "/labs/apt-novel-reviewer", status: "available" },
+  security: { label: "Seen in: Commerce", href: "/proof/apt-commerce-compass", status: "available" },
+};
+
 export const principlesSections: readonly PrincipleSection[] = principlesSectionsSeed.map((section) => ({
   ...section,
-  examples: section.examples.map((example) => ({
+  examples: [seenInBySlug[section.slug], ...section.examples].filter((example): example is PrincipleExample => Boolean(example)).map((example) => ({
     ...example,
     rationale: inferExampleRationale(section, example),
   })),

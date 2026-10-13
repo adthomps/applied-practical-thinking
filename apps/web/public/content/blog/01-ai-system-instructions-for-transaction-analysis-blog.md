@@ -20,8 +20,8 @@ technologies:
   - OpenAI
 links:
   Blog: 01-ai-system-instructions-for-transaction-analysis-blog
-  Podcast: 01-ai-system-instructions-for-transaction-analysis-podcast
-  Guide: 01-ai-system-instructions-for-transaction-analysis-guide
+  Podcast:
+  Guide:
   Case: 
   Article: 
   Slides: 

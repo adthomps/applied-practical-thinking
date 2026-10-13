@@ -430,7 +430,19 @@ function normalizeFeedItem(
     problem: typeof normalized.problem === "string" ? normalized.problem : undefined,
     thumbnail: typeof normalized.thumbnail === "string" ? normalized.thumbnail : undefined,
     assetBasePath: normalized.assetBasePath,
+    related: Array.isArray(normalized.related) ? normalized.related.filter((entry) => typeof entry === "string" && entry.length > 0) : undefined,
+    media: normalizeMedia(normalized.media),
   };
+}
+
+function normalizeMedia(value: unknown): PublicFeedItem["media"] {
+  if (!value || typeof value !== "object") return undefined;
+  const record = value as Record<string, unknown>;
+  const audioUrl = typeof record.audioUrl === "string" ? record.audioUrl : undefined;
+  const embedUrl = typeof record.embedUrl === "string" ? record.embedUrl : undefined;
+  const videoUrl = typeof record.videoUrl === "string" ? record.videoUrl : undefined;
+  if (!audioUrl && !embedUrl && !videoUrl) return undefined;
+  return { audioUrl, embedUrl, videoUrl };
 }
 
 async function fetchNormalizedIndex(
@@ -459,13 +471,7 @@ async function fetchFeedItems(
   }
 
   if (feed === "proof") {
-    const [systems, demos, reviews, caseStudies] = await Promise.all([
-      fetchNormalizedIndex(c, "systems"),
-      fetchNormalizedIndex(c, "demos"),
-      fetchNormalizedIndex(c, "design-reviews"),
-      fetchNormalizedIndex(c, "case-studies"),
-    ]);
-    return [...systems, ...demos, ...reviews, ...caseStudies];
+    return fetchNormalizedIndex(c, "systems");
   }
 
   const [blog, podcasts, guides, reviews, caseStudies] = await Promise.all([

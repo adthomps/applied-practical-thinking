@@ -18,13 +18,12 @@ technologies:
   - OpenAI
 links:
   Blog: 09-decision-driven-development-blog
-  Podcast: 
-  Guide: 
+  Podcast:
+  Guide:
   Case: 
   Article: 
   Slides: 
-relatedLabs:
-  - decision-log
+relatedLabs: []
 ---
 
 ## The Problem with Code Documentation

@@ -1,4 +1,5 @@
 ---
+status: draft
 title: "Vibe Coding for Game Dev"
 featured: false
 id: "06-vibe-coding-for-game-dev-guide"

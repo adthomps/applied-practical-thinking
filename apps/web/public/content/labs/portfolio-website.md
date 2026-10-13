@@ -23,7 +23,7 @@ status: active
 links:
   demo: 
   figma: https://royal-manor-57703683.figma.site/
-  lovable: https://api-gateway-concept1.lovable.app/
+  lovable:
   repo: 
 relatedInsights:
 

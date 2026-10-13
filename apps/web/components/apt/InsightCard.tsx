@@ -24,11 +24,9 @@ export function InsightCard({ insight, to, compact = false }: InsightCardProps) 
     podcast: "Podcast",
     guide: "Guide",
     "design-review": "Design Review",
+    "case-study": "Case Study",
   };
-  const displayTypeLabel =
-    insight.type === "guide" || insight.type === "design-review"
-      ? "Case Study"
-      : typeLabels[insight.type] || "Insight";
+  const displayTypeLabel = typeLabels[insight.type] || "Insight";
 
   if (compact) {
     return (

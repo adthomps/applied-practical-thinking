@@ -1,4 +1,5 @@
 ---
+status: draft
 title: "Guide: Getting Started with shadcn UI Builder"
 featured: false
 id: "shadcn-ui-builder-guide"

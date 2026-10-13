@@ -1,4 +1,5 @@
 ---
+status: draft
 title: "shadcn UI Builder: First Impressions"
 featured: false
 id: "shadcn-ui-builder-blog"

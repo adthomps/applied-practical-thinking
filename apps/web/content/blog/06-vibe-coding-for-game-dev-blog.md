@@ -1,4 +1,5 @@
 ---
+status: draft
 title: Vibe Coding for Game Dev - AI-Enhanced RTS & Simulation Projects
 featured: true
 id: "06-vibe-coding-for-game-dev-blog"

@@ -150,9 +150,11 @@ export default function PrinciplesDetail(props: PrinciplesDetailProps) {
                 <p className="mt-4 text-base leading-relaxed text-foreground">{projectEvidence.summary}</p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {projectEvidence.evidence.map((item) => (
-                    <AptTag key={item} variant="secondary" size="sm">
-                      {item}
-                    </AptTag>
+                    <Link key={item.href} to={item.href}>
+                      <AptTag variant="secondary" size="sm">
+                        {item.label}
+                      </AptTag>
+                    </Link>
                   ))}
                 </div>
                 <div className="mt-5 flex flex-wrap gap-3">
@@ -292,7 +294,11 @@ export default function PrinciplesDetail(props: PrinciplesDetailProps) {
 
           {codeSnippet ? (
             <section>
-              <SectionIntro title="Example Code" className="mb-4" />
+              <SectionIntro
+                title="Example Code"
+                description="Illustrative snippet. This is not a file in this repository."
+                className="mb-4"
+              />
               <AptCard variant="default" padding="none">
                 <pre className="overflow-x-auto p-4 text-sm leading-relaxed">
                   <code>{codeSnippet}</code>

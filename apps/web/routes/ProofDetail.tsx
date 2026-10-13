@@ -1,11 +1,20 @@
 import { useMemo } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 import { ArrowLeft, CheckCircle2, ExternalLink, AlertTriangle } from "lucide-react";
 import { AptButton, AptCard, AptTag, RuntimeConfigNotice } from "@/components/apt";
 import { useFeedDetailQuery } from "@/hooks/useFeedQueries";
 import { systems as systemDefinitions } from "@/data/systems";
 import { getWorkerApiConfigError } from "@/src/services/api";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
+
+function formatProofStatus(status: string) {
+  const normalized = status.trim().toLowerCase();
+  if (normalized === "live") return "Live";
+  if (normalized === "working-proof") return "Working proof";
+  if (normalized === "draft") return "Draft";
+  if (normalized === "active" || normalized === "") return "Active";
+  return normalized.charAt(0).toUpperCase() + normalized.slice(1);
+}
 
 function toLinkTarget(href: string) {
   return href.startsWith("http") ? "_blank" : undefined;
@@ -18,15 +27,16 @@ function toLinkRel(href: string) {
 export default function SystemDetail() {
   const { id } = useParams();
   const detailQuery = useFeedDetailQuery("proof", id);
-  const item = detailQuery.data?.item?.kind === "system" ? detailQuery.data.item : null;
+  const feedItem = detailQuery.data?.item || null;
+  const item = feedItem?.kind === "system" ? feedItem : null;
   const loading = detailQuery.isLoading;
-  const error = detailQuery.error?.message || (!loading && !item ? "System not found" : null);
+  const error = detailQuery.error?.message || (!loading && !feedItem ? "System not found" : null);
 
   const systemDefinition = useMemo(
     () => systemDefinitions.find((entry) => entry.id === item?.id),
     [item?.id]
   );
-  const hasMissingState = !loading && !item;
+  const hasMissingState = !loading && !feedItem;
 
   usePageMetadata(
     hasMissingState
@@ -49,6 +59,10 @@ export default function SystemDetail() {
 
   if (loading) return <div className="container py-12">Loading…</div>;
 
+  if (feedItem && feedItem.kind !== "system" && feedItem.href) {
+    return <Navigate to={feedItem.href} replace />;
+  }
+
   if (error) {
     const configError = getWorkerApiConfigError();
     if (configError) {
@@ -66,12 +80,12 @@ export default function SystemDetail() {
 
   if (!item) return <div className="container py-12 text-destructive">System not found</div>;
 
-  const statusLabel = "Stable";
+  const statusLabel = formatProofStatus(item.status);
   const technologies = item.topics || systemDefinition?.concepts || [];
   const decisions = systemDefinition?.decisions || [];
   const tradeoffs = systemDefinition?.tradeoffs || [];
-  const primaryActionHref = systemDefinition?.links?.demo || "/";
-  const docsHref = systemDefinition?.links?.docs || "/insights";
+  const primaryActionHref = item.links?.demo || systemDefinition?.links?.demo || "";
+  const docsHref = item.links?.docs || systemDefinition?.links?.docs || "";
 
   return (
     <div className="container py-12 md:py-16">
@@ -151,19 +165,35 @@ export default function SystemDetail() {
 
           <div className="border-t border-border/60 pt-6">
             <div className="flex flex-wrap gap-3">
-              <a href={primaryActionHref} target={toLinkTarget(primaryActionHref)} rel={toLinkRel(primaryActionHref)}>
-                <AptButton>
-                  <ExternalLink className="h-4 w-4" />
-                  View System
-                </AptButton>
-              </a>
+              {primaryActionHref ? (
+                primaryActionHref.startsWith("/") ? (
+                  <Link to={primaryActionHref}>
+                    <AptButton>View System</AptButton>
+                  </Link>
+                ) : (
+                  <a href={primaryActionHref} target={toLinkTarget(primaryActionHref)} rel={toLinkRel(primaryActionHref)}>
+                    <AptButton>
+                      <ExternalLink className="h-4 w-4" />
+                      View System
+                    </AptButton>
+                  </a>
+                )
+              ) : null}
 
-              <a href={docsHref} target={toLinkTarget(docsHref)} rel={toLinkRel(docsHref)}>
-                <AptButton variant="outline">
-                  <ExternalLink className="h-4 w-4" />
-                  Docs
-                </AptButton>
-              </a>
+              {docsHref ? (
+                docsHref.startsWith("/") ? (
+                  <Link to={docsHref}>
+                    <AptButton variant="outline">Docs</AptButton>
+                  </Link>
+                ) : (
+                  <a href={docsHref} target={toLinkTarget(docsHref)} rel={toLinkRel(docsHref)}>
+                    <AptButton variant="outline">
+                      <ExternalLink className="h-4 w-4" />
+                      Docs
+                    </AptButton>
+                  </a>
+                )
+              ) : null}
             </div>
           </div>
         </div>

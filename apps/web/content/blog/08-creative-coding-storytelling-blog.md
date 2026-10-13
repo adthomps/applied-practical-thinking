@@ -20,8 +20,8 @@ technologies:
   - OpenAI
 links:
   Blog: 08-creative-coding-storytelling-blog
-  Podcast: 08-creative-coding-storytelling-podcast
-  Guide: 08-creative-coding-storytelling-guide
+  Podcast:
+  Guide:
   Case: 
   Article: 
   Slides: 

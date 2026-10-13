@@ -1,4 +1,5 @@
 ---
+status: draft
 title: "AI-Powered Cloud Development"
 featured: false
 id: "02-ai-powered-cloud-development-guide"

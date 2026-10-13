@@ -1,27 +1,23 @@
 ---
-id: "apt-site"
-title: "APT Site"
-type: "system"
-description: "Portfolio and demonstration platform built with Vite, React, and Cloudflare Pages."
-publishedAt: "2026-02-01"
+id: apt-site
+title: APT Site
+type: system
+description: The public portfolio. Cloudflare Pages serves the Vite and React app. A separate Worker reads those public files and returns the Labs, Proof, and Insights feeds.
+publishedAt: 2026-10-12
 featured: false
-tags: ["vite", "react", "cloudflare"]
-related:
-  - systems-mapping-guide
-  - design-review-portfolio-redesign
-  - portfolio-website
+status: active
+tags:
+  - vite
+  - react
+  - cloudflare
 ---
 
-This site itself—a Vite + React + Tailwind stack deployed on Cloudflare Pages with optional Hono worker APIs.
+This site is the public Applied Practical Thinking portfolio.
 
-## Production Guide
-- **Overview:** Vite + React SPA deployed on Cloudflare Pages, with optional Hono worker APIs for backend.
-- **Deployment:** See README for build and deploy steps. Configure Cloudflare Pages and Wrangler for worker APIs.
-- **API:** Worker APIs documented in /api routes. Auth via JWT, data via REST endpoints.
-- **Operations:** Monitor via Cloudflare dashboard. Rollback via git and redeploy.
+## What is implemented
 
-## Learning Resources
-- **Rationale:** Static-first for speed and simplicity. Unified design system for consistency.
-- **Practice:** systems-mapping-guide, design-review-portfolio-redesign
-- **Tutorials:** guide-to-deployment, guide-to-content-management
-- **Glossary:** SSR, SPA, API, Design System
+The browser app is built with Vite and React and deployed on Cloudflare Pages. Authored pages live in `apps/web/content`. A Cloudflare Worker, deployed separately, reads the published indexes and markdown and serves the public feeds.
+
+## What must not be claimed
+
+This site does not authenticate visitors with JWT, and it does not expose a general data API. The Worker is a content and assistant boundary, not an account system.

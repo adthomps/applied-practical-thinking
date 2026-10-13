@@ -1,4 +1,5 @@
 ---
+status: draft
 title: "The Future of Payments & AI - Smarter, Faster, Safer for Everyone"
 featured: false
 id: "04-future-of-payments-ai-guide"
