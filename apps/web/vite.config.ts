@@ -37,13 +37,12 @@ export default defineConfig(() => ({
             if (id.includes('/@radix-ui/')) {
               return 'vendor-radix';
             }
-            if (id.includes('/@tanstack/')) {
-              return 'vendor-query';
-            }
             if (id.includes('/lucide-react/')) {
               return 'vendor-icons';
             }
             if (
+              id.includes('/@tanstack/') ||
+              id.includes('/use-sync-external-store/') ||
               id.includes('/react-dom/') ||
               id.includes('/react-router') ||
               id.includes('/react/') ||
