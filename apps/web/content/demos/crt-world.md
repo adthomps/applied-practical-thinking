@@ -1,9 +1,9 @@
 ---
 title: CRT World
-featured: false
+featured: true
 slug: crt-world
 date: 2026-10-12
-description: Cloudflare-native author discovery and content management platform for C. R. Thompson content.
+description: The live public site for C. R. Thompson. Visitors can open The Worlds of C. R. Thompson at crthompson.net.
 type: interactive
 problem: How do you publish and manage one author's worlds as a real public site?
 thumbnail:
@@ -16,7 +16,7 @@ technologies:
   - TypeScript
 tags:
   - demo
-status: active
+status: live
 links:
   demo: https://crthompson.net/
   figma:

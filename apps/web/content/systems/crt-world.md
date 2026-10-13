@@ -4,7 +4,7 @@ title: CRT World
 type: system
 description: The live author site for C. R. Thompson. Visitors discover the worlds on the public site. An admin surface and a Worker API with D1 manage what gets published.
 publishedAt: 2026-10-12
-featured: false
+featured: true
 status: live
 tags:
   - content

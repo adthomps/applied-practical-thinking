@@ -65,9 +65,9 @@
     "slug": "crt-world",
     "title": "CRT World",
     "type": "interactive",
-    "description": "Cloudflare-native author discovery and content management platform for C. R. Thompson content.",
+    "description": "The live public site for C. R. Thompson. Visitors can open The Worlds of C. R. Thompson at crthompson.net.",
     "publishedAt": "2026-10-12T00:00:00.000Z",
-    "featured": false,
+    "featured": true,
     "concepts": [
       "demo"
     ],
@@ -80,7 +80,7 @@
       "React",
       "TypeScript"
     ],
-    "status": "active",
+    "status": "live",
     "links": {
       "demo": "https://crthompson.net/",
       "figma": null,

@@ -73,7 +73,7 @@
     "type": "system",
     "description": "The live author site for C. R. Thompson. Visitors discover the worlds on the public site. An admin surface and a Worker API with D1 manage what gets published.",
     "publishedAt": "2026-10-12T00:00:00.000Z",
-    "featured": false,
+    "featured": true,
     "concepts": [
       "content",
       "cloudflare",
