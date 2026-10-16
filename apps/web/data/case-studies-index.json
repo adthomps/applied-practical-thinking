@@ -2,9 +2,9 @@
   {
     "id": "apt-commerce-boundary",
     "slug": "apt-commerce-boundary",
-    "title": "Commerce Compass: A Payments Proof Without a Live Processor",
+    "title": "APT Commerce: A Payments Proof Without a Live Processor",
     "type": "case-study",
-    "description": "Why APT Commerce Compass ships signup, review, and a sandbox money path, and why that must not be described as live Authorize.Net or Cybersource processing.",
+    "description": "Why APT Commerce ships signup, review, and a sandbox money path, and why that must not be described as live Authorize.Net or Cybersource processing.",
     "publishedAt": "2026-10-12T00:00:00.000Z",
     "featured": false,
     "concepts": [
@@ -28,7 +28,7 @@
   {
     "id": "apt-health-boundary",
     "slug": "apt-health-boundary",
-    "title": "Health Compass: A Personal Review That Does Not Publish Records",
+    "title": "APT Health Compass: A Personal Review That Does Not Publish Records",
     "type": "case-study",
     "description": "Why APT Health Compass is a signed-in review of periodic results and supplements, and why it must not be described as medical advice or a public dataset.",
     "publishedAt": "2026-10-12T00:00:00.000Z",

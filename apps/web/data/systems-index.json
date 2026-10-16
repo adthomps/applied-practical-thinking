@@ -2,7 +2,7 @@
   {
     "id": "apt-commerce-compass",
     "slug": "apt-commerce-compass",
-    "title": "APT Commerce Compass",
+    "title": "APT Commerce",
     "type": "system",
     "description": "A working payments proof. Merchant signup, partner and merchant portals, and staff review are implemented. The money path is the APT sandbox processor.",
     "publishedAt": "2026-10-12T00:00:00.000Z",
@@ -20,7 +20,7 @@
     },
     "related": [],
     "contentPath": "systems/apt-commerce-compass.md",
-    "excerpt": "APT Commerce Compass is a working proof of a gateway and acquiring flow.   What a visitor can verify  The public site covers merchant signup, a partner portal, a merchant portal, and staff application review. Staff can approve or reject an application, and that decision is audited. The money path records a result through the APT sandbox processor.   What must not be claimed"
+    "excerpt": "APT Commerce is a working proof of a gateway and acquiring flow.   What a visitor can verify  The public site covers merchant signup, a partner portal, a merchant portal, and staff application review. Staff can approve or reject an application, and that decision is audited. The money path records a result through the APT sandbox processor.   What must not be claimed"
   },
   {
     "id": "apt-health-compass",

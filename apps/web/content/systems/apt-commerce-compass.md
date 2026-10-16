@@ -1,6 +1,6 @@
 ---
 id: apt-commerce-compass
-title: APT Commerce Compass
+title: APT Commerce
 type: system
 description: A working payments proof. Merchant signup, partner and merchant portals, and staff review are implemented. The money path is the APT sandbox processor.
 publishedAt: 2026-10-12
@@ -14,7 +14,7 @@ links:
   demo: https://commerce.appliedpracticalthinking.com
 ---
 
-APT Commerce Compass is a working proof of a gateway and acquiring flow.
+APT Commerce is a working proof of a gateway and acquiring flow.
 
 ## What a visitor can verify
 

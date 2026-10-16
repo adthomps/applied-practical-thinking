@@ -1,10 +1,10 @@
 ---
-title: "Commerce Compass: A Payments Proof Without a Live Processor"
+title: "APT Commerce: A Payments Proof Without a Live Processor"
 featured: false
 id: apt-commerce-boundary
 type: case-study
 status: active
-description: "Why APT Commerce Compass ships signup, review, and a sandbox money path, and why that must not be described as live Authorize.Net or Cybersource processing."
+description: "Why APT Commerce ships signup, review, and a sandbox money path, and why that must not be described as live Authorize.Net or Cybersource processing."
 publishedAt: 2026-10-12
 concepts:
   - payments

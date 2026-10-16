@@ -2,7 +2,7 @@
   {
     "id": "apt-commerce-compass",
     "slug": "apt-commerce-compass",
-    "title": "APT Commerce Compass",
+    "title": "APT Commerce",
     "type": "interactive",
     "description": "The APT brand for gateway and acquiring. A full proof of concept and a new way of taking, understanding, and guiding payments so they can grow.",
     "publishedAt": "2026-10-12T00:00:00.000Z",
@@ -28,7 +28,7 @@
     },
     "related": [],
     "contentPath": "demos/apt-commerce-compass.md",
-    "excerpt": "APT Commerce Compass is a working proof of concept for gateway and acquiring. The public site covers merchant signup, a partner portal, a merchant portal, and staff application review.  Applications are stored and staff can approve or reject them with an audit trail. The money path uses the APT sandbox processor, which records a mock result. It does not call live Authorize.Net or Cybersource, and it does not send webhooks from a real processor."
+    "excerpt": "APT Commerce is a working proof of concept for gateway and acquiring. The public site covers merchant signup, a partner portal, a merchant portal, and staff application review.  Applications are stored and staff can approve or reject them with an audit trail. The money path uses the APT sandbox processor, which records a mock result. It does not call live Authorize.Net or Cybersource, and it does not send webhooks from a real processor."
   },
   {
     "id": "apt-health-compass",

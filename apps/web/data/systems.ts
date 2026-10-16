@@ -27,7 +27,7 @@ export const systems: System[] = [
   },
   {
     id: "apt-commerce-compass",
-    title: "APT Commerce Compass",
+    title: "APT Commerce",
     purpose: "Working payments proof with a sandbox money path",
     description:
       "Signup, portals, and staff review are implemented. The money path is the APT sandbox processor.",

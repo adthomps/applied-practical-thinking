@@ -165,7 +165,7 @@ export const projectPrincipleEvidence: readonly ProjectPrincipleEvidence[] = [
     slug: "thinking",
     summary: "Problem framing is visible in the content model before implementation surfaces are promoted.",
     evidence: [
-      { label: "Commerce working proof", href: "/proof/apt-commerce-compass" },
+      { label: "APT Commerce", href: "/proof/apt-commerce-compass" },
       { label: "Publication boundary", href: "/insights/apt-publication-boundary-case-study" },
     ],
   },
@@ -173,7 +173,7 @@ export const projectPrincipleEvidence: readonly ProjectPrincipleEvidence[] = [
     slug: "design",
     summary: "Public routes use shared APT primitives, semantic tokens, and state-aware page composition.",
     evidence: [
-      { label: "Health working proof", href: "/proof/apt-health-compass" },
+      { label: "APT Health Compass", href: "/proof/apt-health-compass" },
       { label: "Design system", href: "/design/system" },
     ],
   },
@@ -996,17 +996,17 @@ const principleRelatedArtifactsBySlug: Record<PrincipleSlug, readonly PrincipleR
 
 const seenInBySlug: Partial<Record<PrincipleSlug, PrincipleExample>> = {
   framework: { label: "Seen in: Grey Rain", href: "/labs/grey-rain", status: "available" },
-  thinking: { label: "Seen in: Commerce", href: "/proof/apt-commerce-compass", status: "available" },
-  design: { label: "Seen in: Health", href: "/proof/apt-health-compass", status: "available" },
+  thinking: { label: "Seen in: APT Commerce", href: "/proof/apt-commerce-compass", status: "available" },
+  design: { label: "Seen in: APT Health Compass", href: "/proof/apt-health-compass", status: "available" },
   architecture: { label: "Seen in: APT site", href: "/proof/apt-site", status: "available" },
   system: { label: "Seen in: CRT World", href: "/proof/crt-world", status: "available" },
   execution: { label: "Seen in: Novel Reviewer", href: "/labs/apt-novel-reviewer", status: "available" },
   quality: { label: "Seen in: Publication boundary", href: "/insights/apt-publication-boundary-case-study", status: "available" },
-  release: { label: "Seen in: Commerce", href: "/proof/apt-commerce-compass", status: "available" },
+  release: { label: "Seen in: APT Commerce", href: "/proof/apt-commerce-compass", status: "available" },
   operations: { label: "Seen in: CRT World", href: "/labs/live-demos/crt-world", status: "available" },
   knowledge: { label: "Seen in: Publication boundary", href: "/insights/apt-publication-boundary-case-study", status: "available" },
   ai: { label: "Seen in: Novel Reviewer", href: "/labs/apt-novel-reviewer", status: "available" },
-  security: { label: "Seen in: Commerce", href: "/proof/apt-commerce-compass", status: "available" },
+  security: { label: "Seen in: APT Commerce", href: "/proof/apt-commerce-compass", status: "available" },
 };
 
 export const principlesSections: readonly PrincipleSection[] = principlesSectionsSeed.map((section) => ({
