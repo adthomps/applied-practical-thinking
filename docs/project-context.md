@@ -155,3 +155,11 @@ Cloudflare Pages builds and serves apps/web from GitHub updates. apps/worker is 
 - `pnpm-workspace.yaml` — Monorepo workspace boundaries.
 - `.apt/installation.json` — Managed APT manifests, adapters, per-file provenance, and current canonical source commit.
 - `docs/apt/reports/apt-managed-drift-reconciliation-2026-08-16.md` — Reviewed managed-drift classification, registry resolution, and repair gate.
+
+## Local Cloudflare
+
+Status: Blocked. Blueprint: [docs/plans/local-cloudflare.md](plans/local-cloudflare.md).
+
+Local command: `pnpm dev` starts Vite on port 8080 and proxies `/api` to `127.0.0.1:8787`. `pnpm dev:worker` starts the Worker.
+
+Fix: `apps/worker/wrangler.toml` sets Vectorize `remote = true`, so `pnpm dev:worker` fails while creating a remote preview session and the web app has no local Worker. Add a local Wrangler env without that remote Vectorize binding, then run the web app and Worker together. Local Worker requests must read the local Pages origin, not `PUBLIC_SITE_ORIGIN` (`https://appliedpracticalthinking.com`).

@@ -1,5 +1,5 @@
 ---
-title: APT Commerce Compass
+title: APT Commerce
 featured: false
 slug: apt-commerce-compass
 date: 2026-10-12
@@ -24,6 +24,6 @@ links:
   repo:
 ---
 
-APT Commerce Compass is a working proof of concept for gateway and acquiring. The public site covers merchant signup, a partner portal, a merchant portal, and staff application review.
+APT Commerce is a working proof of concept for gateway and acquiring. The public site covers merchant signup, a partner portal, a merchant portal, and staff application review.
 
 Applications are stored and staff can approve or reject them with an audit trail. The money path uses the APT sandbox processor, which records a mock result. It does not call live Authorize.Net or Cybersource, and it does not send webhooks from a real processor.

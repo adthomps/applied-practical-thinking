@@ -1,5 +1,5 @@
 ---
-title: "Health Compass: A Personal Review That Does Not Publish Records"
+title: "APT Health Compass: A Personal Review That Does Not Publish Records"
 featured: false
 id: apt-health-boundary
 type: case-study
