@@ -237,7 +237,7 @@ export default function PortfolioDesignArchitecture() {
         description="Repo layout, deployment flows, API contracts, AI routing, and enforcement rules."
         titleClassName="text-3xl md:text-4xl"
         descriptionClassName="text-lg"
-        eyebrow={<AptTag variant="accent">Design Architecture</AptTag>}
+        eyebrow={<AptTag variant="primary">Design Architecture</AptTag>}
         className="mb-12"
       >
         <p className="text-base text-muted-foreground/80">

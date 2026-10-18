@@ -49,6 +49,11 @@ Review for screen-first design, missing states, inaccessible interactions, role 
 - State what is verified, what is assumed, and what requires specialist or human approval.
 
 See the [Design canonical hub](README.md) and linked standards/checklists before making final claims.
+## Applied by
+
+- [apt-ui-reviewer](../../agents/harness/apt-ui-reviewer.md) — Use when reviewing UI work for intent, workflow continuity, state design, accessibility, or responsive behavior.
+- [intent-ux-reviewer](../../agents/design/intent-ux-reviewer.md) — Use to review a product surface through user intent, workflow completion, state design, accessibility, and responsive behavior.
+
 ## Related
 
 - [APT Principles](../README.md)

@@ -72,7 +72,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-28",
-    "checksum": "a05c146eb43bd74d30fb8b2de0da822def44f2b4aa4185413da221a9f641df9c"
+    "checksum": "21b92cbbd63cae504f63ea6b1e145eab8dd4d326c016619ee2b888dade7e8e4e"
   },
   {
     "id": "docs-public-showcase-contract",
@@ -391,7 +391,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-08-16",
-    "checksum": "d45b97e834a29b85063ab9c2c517dc1883549c9f845b392b226c969491cee9b2"
+    "checksum": "cab8783aab8aeeba43a2db047524f059fd20c1417567a7437dae47e7dd0300df"
   },
   {
     "id": "examples-showcases-agent-instruction-structure",
@@ -574,6 +574,186 @@ export const aptPrinciplesPublicManifest = [
     "checksum": "a12e96b62c938717cb4d5b7435bce793a98de5cdfe06d632ea6123b1fadc2cad"
   },
   {
+    "id": "examples-working-backwards-booking-data-export-critic-review",
+    "title": "Example Critic Review — Booking Data Export",
+    "kind": "example",
+    "domain": "execution",
+    "collection": "examples",
+    "category": "examples",
+    "audience": [
+      "public",
+      "learners",
+      "adopters"
+    ],
+    "featured": true,
+    "sourcePath": "apt-principles-agents/examples/working-backwards/booking-data-export/critic-review.md",
+    "publicPath": "/docs/apt/examples/working-backwards/booking-data-export/critic-review.md",
+    "version": "v1",
+    "status": "active",
+    "lastUpdated": "2026-10-04",
+    "checksum": "1b1d5e4915b2b3bcd8b93aae049932c5232975ff6b163e8d36bb17347d6c403f"
+  },
+  {
+    "id": "examples-working-backwards-booking-data-export-engineering-handoff",
+    "title": "Example Engineering Handoff — Booking Data Export",
+    "kind": "example",
+    "domain": "execution",
+    "collection": "examples",
+    "category": "examples",
+    "audience": [
+      "public",
+      "learners",
+      "adopters"
+    ],
+    "featured": true,
+    "sourcePath": "apt-principles-agents/examples/working-backwards/booking-data-export/engineering-handoff.md",
+    "publicPath": "/docs/apt/examples/working-backwards/booking-data-export/engineering-handoff.md",
+    "version": "v1",
+    "status": "active",
+    "lastUpdated": "2026-10-04",
+    "checksum": "2fa9806e003f6298cf923e737eb32d67333b02f3810fa867d814aeed8926cd81"
+  },
+  {
+    "id": "examples-working-backwards-booking-data-export-faq-external",
+    "title": "Example External FAQ — Booking Data Export",
+    "kind": "example",
+    "domain": "execution",
+    "collection": "examples",
+    "category": "examples",
+    "audience": [
+      "public",
+      "learners",
+      "adopters"
+    ],
+    "featured": true,
+    "sourcePath": "apt-principles-agents/examples/working-backwards/booking-data-export/faq-external.md",
+    "publicPath": "/docs/apt/examples/working-backwards/booking-data-export/faq-external.md",
+    "version": "v1",
+    "status": "active",
+    "lastUpdated": "2026-10-04",
+    "checksum": "da5aa5f27a3572429509c82b17c72980b016cb3cbc41b813e2e4a64a7e0c42cf"
+  },
+  {
+    "id": "examples-working-backwards-booking-data-export-faq-internal",
+    "title": "Example Internal FAQ — Booking Data Export",
+    "kind": "example",
+    "domain": "execution",
+    "collection": "examples",
+    "category": "examples",
+    "audience": [
+      "public",
+      "learners",
+      "adopters"
+    ],
+    "featured": true,
+    "sourcePath": "apt-principles-agents/examples/working-backwards/booking-data-export/faq-internal.md",
+    "publicPath": "/docs/apt/examples/working-backwards/booking-data-export/faq-internal.md",
+    "version": "v1",
+    "status": "active",
+    "lastUpdated": "2026-10-04",
+    "checksum": "f19288a77732c3ab6438676a246e5fa5b5055e7cf82defad4dc148f4e1b17f48"
+  },
+  {
+    "id": "examples-working-backwards-booking-data-export-press-release",
+    "title": "Example Press Release — Booking Data Export",
+    "kind": "example",
+    "domain": "execution",
+    "collection": "examples",
+    "category": "examples",
+    "audience": [
+      "public",
+      "learners",
+      "adopters"
+    ],
+    "featured": true,
+    "sourcePath": "apt-principles-agents/examples/working-backwards/booking-data-export/press-release.md",
+    "publicPath": "/docs/apt/examples/working-backwards/booking-data-export/press-release.md",
+    "version": "v1",
+    "status": "active",
+    "lastUpdated": "2026-10-04",
+    "checksum": "8c961ac615bd8925aa83926939a13b0bb4fcd0f73611fc5d8a54f22259a6a24b"
+  },
+  {
+    "id": "examples-working-backwards-booking-data-export-readiness",
+    "title": "Example Readiness — Booking Data Export",
+    "kind": "example",
+    "domain": "execution",
+    "collection": "examples",
+    "category": "examples",
+    "audience": [
+      "public",
+      "learners",
+      "adopters"
+    ],
+    "featured": true,
+    "sourcePath": "apt-principles-agents/examples/working-backwards/booking-data-export/readiness.md",
+    "publicPath": "/docs/apt/examples/working-backwards/booking-data-export/readiness.md",
+    "version": "v1",
+    "status": "active",
+    "lastUpdated": "2026-10-04",
+    "checksum": "f1b2bc979c27388f5a9309f320df937342f37f275d1bdb87fde2f9a6bc992ef3"
+  },
+  {
+    "id": "examples-working-backwards-booking-data-export-README",
+    "title": "Example Package — Booking Data Export",
+    "kind": "example",
+    "domain": "execution",
+    "collection": "examples",
+    "category": "examples",
+    "audience": [
+      "public",
+      "learners",
+      "adopters"
+    ],
+    "featured": true,
+    "sourcePath": "apt-principles-agents/examples/working-backwards/booking-data-export/README.md",
+    "publicPath": "/docs/apt/examples/working-backwards/booking-data-export/README.md",
+    "version": "v1",
+    "status": "active",
+    "lastUpdated": "2026-10-04",
+    "checksum": "cb0521af056b5b7431fe82ac0a9cefcdb19c96f5c4ab4520018e1e84b22642a9"
+  },
+  {
+    "id": "examples-working-backwards-booking-data-export-requirements",
+    "title": "Example Requirements — Booking Data Export",
+    "kind": "example",
+    "domain": "execution",
+    "collection": "examples",
+    "category": "examples",
+    "audience": [
+      "public",
+      "learners",
+      "adopters"
+    ],
+    "featured": true,
+    "sourcePath": "apt-principles-agents/examples/working-backwards/booking-data-export/requirements.md",
+    "publicPath": "/docs/apt/examples/working-backwards/booking-data-export/requirements.md",
+    "version": "v1",
+    "status": "active",
+    "lastUpdated": "2026-10-04",
+    "checksum": "6a3297fe29ef30dc7a9aa2b6f6fb1b9ccd0bc8e67172e688ad55996aa375a366"
+  },
+  {
+    "id": "examples-working-backwards-README",
+    "title": "Working Backwards Examples",
+    "kind": "example",
+    "domain": "execution",
+    "collection": "examples",
+    "category": "examples",
+    "audience": [
+      "public",
+      "learners",
+      "adopters"
+    ],
+    "featured": true,
+    "sourcePath": "apt-principles-agents/examples/working-backwards/README.md",
+    "publicPath": "/docs/apt/examples/working-backwards/README.md",
+    "version": "v1",
+    "status": "active",
+    "lastUpdated": "2026-10-04",
+    "checksum": "36326c1e753f5e65b8170b8ecbe4070bf45a264395ced0f0de0640ba7aa20c97"
+  },
+  {
     "id": "examples-xml-to-rest-README",
     "title": "XML To Rest",
     "kind": "example",
@@ -611,7 +791,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-08-16",
-    "checksum": "e1e0ad3a7be1736a75c8ed711dc5d6f03061b07d270eef0135e624b6cc91b397"
+    "checksum": "f165965d26586c881af86f9f7112d1946680ef7a80f3aeb0f69d010cf7bbe75c"
   },
   {
     "id": "principles-ai-ai-safety-and-evaluation",
@@ -631,7 +811,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-08-16",
-    "checksum": "222204297e54420042d28c62e106b4294eb7c5e71e8931ab49c89049be967415"
+    "checksum": "c09064e05211fce398bf4f8688aa00d0bc258caab5c18935d03da8aea6a0fc5c"
   },
   {
     "id": "principles-ai-local-llm-routing",
@@ -651,7 +831,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-08-16",
-    "checksum": "4a3b5f9f2745aa08d3974b8357c72cf5c6e41a9ded0212ad296d61236c43bddb"
+    "checksum": "eb8af541ea6ec47a12d17abddc59df12f724a12719d54135117d5251c253efbe"
   },
   {
     "id": "principles-ai-model-routing",
@@ -671,7 +851,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "8f9535b9412348227975f385168db12254628d82ea79e07ab7e621d1156ef167"
+    "checksum": "9286c48600810231f8b83e0db73b5b50768132985bcb6609e63b0d9de8437731"
   },
   {
     "id": "principles-ai-prompt-engineering",
@@ -691,7 +871,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "d81f1fee66f22fbc252e33866ccb47861d1757b997e401d1d0e6487842d39da4"
+    "checksum": "1358ca68f2cb81c8669978e9463b88024fe8ca8b8598ecb01d63b587bc5dcc28"
   },
   {
     "id": "principles-ai-README",
@@ -711,7 +891,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "active",
     "lastUpdated": "2026-08-16",
-    "checksum": "404cec7332e4899486db35333e63cb930f5c295d3e6725d7e087cc3c7f209d93"
+    "checksum": "13579b5dd104f97b353ba482df864597fcc4a8316c2443f9d6a1d72504aec93a"
   },
   {
     "id": "principles-ai-skill-design",
@@ -731,7 +911,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-08-16",
-    "checksum": "39b400e4f864d0b6676c28025fe39ef5126622a157407ee3f0dfa9f5be8b3e30"
+    "checksum": "5c9ffb70cdb08685644395cd2b57f8efe58b80ac2cdd63e7b00e0817c59eb7fc"
   },
   {
     "id": "principles-ai-swarm-review",
@@ -771,7 +951,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-08-16",
-    "checksum": "7a2cae888762525e8bb9741e13ee05f04addad505cfb7420a7d2b2495e2089cd"
+    "checksum": "ebacf3eed83a2d8618d1968baff5faf1727459f72528b70fd1bbe5962cbe4f14"
   },
   {
     "id": "principles-api-api-auth",
@@ -791,7 +971,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "23e644f991ef03ae06d25d219cefcde8a23b23100e74f0a074abb4133ad9a87d"
+    "checksum": "918b80480b2b45b6283ab23a3c75aadbef6f773af30e8a2024a7a74a55cc0944"
   },
   {
     "id": "principles-api-api-errors",
@@ -871,7 +1051,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "7c81938984dfdb93c977b44a864d6c154bbcf00786b6b63331dca00aef3a2b02"
+    "checksum": "fc9974b7960864347a5c426aae07d8fbd9e7edfb20ee120c456ceb9aa9768d9d"
   },
   {
     "id": "principles-api-graphql-review",
@@ -951,7 +1131,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "2795908e734b8b66fc2e9ac4f0c0b721458e83d0b00242d7e929ca0978bc1767"
+    "checksum": "e7641901d19b6697b307952663e0e5448556aaeb34d7944101f21ed5905a6c35"
   },
   {
     "id": "principles-api-json-rpc-design",
@@ -991,7 +1171,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-08-16",
-    "checksum": "5a8493b087cee306a62e686d0066e6e8b3a0a7c66d27e9b3adef10a9c2ef5d3f"
+    "checksum": "6bd1d5cccae3c5ee14ea881faad2acd71390c4f2afbfba0b79ed83a87877f838"
   },
   {
     "id": "principles-api-README",
@@ -1011,7 +1191,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "49c82b6f16b928a4328c68841913c3ef98f054609cc97c423e1514e9c92e29f1"
+    "checksum": "dca0bfa4b888e0e00a511e777c386cbab849286228e5aebf8a135afc6185300b"
   },
   {
     "id": "principles-api-rest-api-design",
@@ -1031,7 +1211,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "54263ae19f1ea2000e35384c88c8c574a19e4983c7f5abc835c3aaae8ad6fc32"
+    "checksum": "91037a684b871b36289c102696facbf8fd9ad4faf16405ef7b7fdbd711c6f59a"
   },
   {
     "id": "principles-api-webhook-design",
@@ -1071,7 +1251,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "2f39dbba4fe2da223aacfd55c764a75ecc0bf29ef9378c395f51e75a40cf3231"
+    "checksum": "10ec547dc2e854d1f641bd0fb87300753750103b25be3b27cdf36a548118290e"
   },
   {
     "id": "principles-architecture-cloudflare-hono-architecture",
@@ -1090,8 +1270,8 @@ export const aptPrinciplesPublicManifest = [
     "publicPath": "/docs/apt/principles/architecture/cloudflare-hono-architecture.md",
     "version": "1.0.0",
     "status": "active",
-    "lastUpdated": "2026-06-27",
-    "checksum": "23a549abe416551329b53a45e44e798ac4b6c61717083264727cf7869e853f51"
+    "lastUpdated": "2026-10-12",
+    "checksum": "6c013bc04d38b0c54e39d5f6cbf43f6ad66136341babee3e8acfd7e6d8c08709"
   },
   {
     "id": "principles-architecture-event-driven-architecture",
@@ -1111,7 +1291,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "7028f30a71da7146313a84633dcfabc70775ee844828db8322060934f284b5e9"
+    "checksum": "021a3b3294b06e721d5022b258d74c4f4a350e12e142345b11eff26324d75adf"
   },
   {
     "id": "principles-architecture-integration-architecture",
@@ -1131,7 +1311,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "58f5277be568bb72167b3b347d12c0ee52915c191d7d1bce8508200c0e0c4318"
+    "checksum": "d2456b37a576b552f201061a4d7d59afbf7d2e547ae1e2d4418f2145f79e0965"
   },
   {
     "id": "principles-architecture-modernization-architecture",
@@ -1151,7 +1331,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "a0e3ece0f9f578599a4ddcefd54817784c50e7e4b6f38a11f6fa46b66c23e1cf"
+    "checksum": "18409c8327f8a7710961b84dd114b42b5a87a59cbb286c27da4b0acf8ee842a3"
   },
   {
     "id": "principles-architecture-payment-architecture",
@@ -1171,7 +1351,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "b9de0c54049ef72e9e125d8dedcac32369f7b822b24a4a58b46ea8530bc804e2"
+    "checksum": "1c87ca7c052d5293ae806f6e9d01b80f6af6ce7db0fa5c3ab24ef46194a6ed32"
   },
   {
     "id": "principles-architecture-README",
@@ -1190,8 +1370,8 @@ export const aptPrinciplesPublicManifest = [
     "publicPath": "/docs/apt/principles/architecture/README.md",
     "version": "v1",
     "status": "active",
-    "lastUpdated": "2026-06-28",
-    "checksum": "259534e020ab8c6520b23e8e114f43f9297b288d3b355e14e8de472a4eb9abd7"
+    "lastUpdated": "2026-10-12",
+    "checksum": "b5d8c56c09558c3299019e6fb505625c33b0be80757ddbd19503d032788c7c72"
   },
   {
     "id": "principles-architecture-system-architecture",
@@ -1211,7 +1391,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "663ca6982e194c1a3dca3e626121d7d3128f9641d8b76fb70d555f5c65045a55"
+    "checksum": "9fa1f79819c3fcac1a37fd4a8eb8ee4c3a2ba87047c182bb70c9c5efc3bb5952"
   },
   {
     "id": "principles-design-accessibility",
@@ -1230,8 +1410,8 @@ export const aptPrinciplesPublicManifest = [
     "publicPath": "/docs/apt/principles/design/accessibility.md",
     "version": "1.0.0",
     "status": "active",
-    "lastUpdated": "2026-06-27",
-    "checksum": "05334e5b6270812db9fd7d058a62a86efcaf26df42c6b81f6235073239adbe20"
+    "lastUpdated": "2026-10-03",
+    "checksum": "75a1045c84dfbda4308e85946d74b7310325ea7f4c90cc3a2d42a6c489c1a59c"
   },
   {
     "id": "principles-design-customer-journey-design",
@@ -1291,7 +1471,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-08-16",
-    "checksum": "c224d6262de4453adf5d1ba09d3bfad4f26558d24ba82c452d77f230c05057a8"
+    "checksum": "2d5a59093d824aa629cf75a3f6f60638408deb98d2ad5e9b800d933dacf6cbf0"
   },
   {
     "id": "principles-design-README",
@@ -1310,8 +1490,8 @@ export const aptPrinciplesPublicManifest = [
     "publicPath": "/docs/apt/principles/design/README.md",
     "version": "v1",
     "status": "active",
-    "lastUpdated": "2026-08-16",
-    "checksum": "9067a68af876547a73c9fbdb6595a7fdb8a4d9e1583a2542f692295083b903bc"
+    "lastUpdated": "2026-10-05",
+    "checksum": "5b631df9a3477b0006914311963db44e2be49a87be352aebabd2b034847982e4"
   },
   {
     "id": "principles-design-role-based-experience",
@@ -1331,7 +1511,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "e696a61debb01bea9915e1a070079a5204af820c905bf2a1e5e6ec2184c3cf62"
+    "checksum": "7790ad75642d9188f19b8e665b409486896d10ebce12b39e696bae54a70315de"
   },
   {
     "id": "principles-design-ui-api-alignment",
@@ -1411,7 +1591,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-08-16",
-    "checksum": "13a77f45f8d3577a13d79892d67bb8fa260a7256d9708310832841ccd3d2509f"
+    "checksum": "e8df7d85f6d6a1fe40dc75620cfffe5089f3b4b81c2fb3c9f6836225ebd396dd"
   },
   {
     "id": "principles-documentation-diagrams-and-demos",
@@ -1511,7 +1691,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "052e19c726fb476d0d5591d0aa011f3a30bb724161ac61738e785445d8b3c411"
+    "checksum": "43e7345e77af734b818bedb4d9af2adcb3b74c0e79e261c1ea51fa136d47078c"
   },
   {
     "id": "principles-documentation-support-ready-docs",
@@ -1531,7 +1711,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "7c9a217af0ae543b50127b9f98455698dc8279726d5445f3a9fe6e25d3b4e0ee"
+    "checksum": "0b81d2a412e7634a45866403ccfe7b5435c1e4c4527d7fa4175d6a9c90d89b23"
   },
   {
     "id": "principles-ecommerce-cart-to-payment-flow",
@@ -1551,7 +1731,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "cb8c047ebafffc6b16e92c4b5cd6a95c2ac5ca49a8005f238e950d110fb6aa5f"
+    "checksum": "28f9a546d07dc75ea3e129c770aac06ec1096a4091ab92d521ea6412eb375d32"
   },
   {
     "id": "principles-ecommerce-checkout-design",
@@ -1571,7 +1751,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "e7d087b696ef662a8527ef2429583b54d57f71d61109aafcf649a0c5e7610218"
+    "checksum": "ef89c6912f813d98a19ed98e3cd485e94c3a082fd57bf2f43aed528e2e8dc34b"
   },
   {
     "id": "principles-ecommerce-customer-payment-experience",
@@ -1591,7 +1771,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "fed407c9bcb6e614490a6d16e61270d2a4a7733b218e9f7ae0a01714bbab2321"
+    "checksum": "3cca710bdf337adcdcc735e14d4ae8e5aba9242bac19c60a93d6564c7a267ceb"
   },
   {
     "id": "principles-ecommerce-invoice-payments",
@@ -1631,7 +1811,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "a81621ab704a47501f7b6f0fa863d9e7c8cb73d3653243a171909e470a83896d"
+    "checksum": "cf46c897bf4e9c82adf5107374b0c78ea12154be186957b20de80f487106cb8e"
   },
   {
     "id": "principles-ecommerce-merchant-onboarding",
@@ -1651,7 +1831,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "6b7f720c16cbe9562393ff23e45e51c0c8f021af30dab880c7236aae33c09535"
+    "checksum": "5ec9a18d95b9be1f2fb0ebf3cff666785f7980c5237f725d483cb0bdef19e0e0"
   },
   {
     "id": "principles-ecommerce-payment-links",
@@ -1691,7 +1871,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "3a2442b9e51c666e46e69295a911f0cb414669af82879ad079cc74321eb7e573"
+    "checksum": "0c6ffe69e8258e8a801f689da9ad32d4c3a8513cdd7101f474355a06bf193adf"
   },
   {
     "id": "principles-execution-delivery-increments",
@@ -1711,7 +1891,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "active",
     "lastUpdated": "2026-06-28",
-    "checksum": "4430d172f82859cf8233febb58a8f1417a62bbfd2f0b7b513fd12b6c8391922b"
+    "checksum": "6a0f241383d0b6dfb25895e82a33eaf7601270d123d0d213a15fe1846594bb82"
   },
   {
     "id": "principles-execution-knowledge-and-learning",
@@ -1731,7 +1911,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "active",
     "lastUpdated": "2026-06-28",
-    "checksum": "58e86fe09c84bb2c424712c8fe045475ecbcefbaa0eb1d903b77d63466f50ce9"
+    "checksum": "dfcedeb32bfac912b4dd62843d33108c777d93c4eb166705652be5d36cc2c2d7"
   },
   {
     "id": "principles-execution-operations-and-support",
@@ -1771,7 +1951,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "active",
     "lastUpdated": "2026-06-28",
-    "checksum": "ae595d2cf56e4f8781fc08dd01c2d033464c97e9280941c788c78bc91ad93921"
+    "checksum": "b22c944eaa79109fb34db135be6b840be194f3b9c934e7429114c318677d9fb9"
   },
   {
     "id": "principles-execution-README",
@@ -1811,7 +1991,27 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "active",
     "lastUpdated": "2026-06-28",
-    "checksum": "1bdfc783874651e1709d4cd2999ed1227580e96de9dee4d24534bef0ca50d637"
+    "checksum": "b986fc0555b26444db1b5be2281097783037613a2411694ce76456064e2d8d95"
+  },
+  {
+    "id": "principles-execution-working-backwards",
+    "title": "Working Backwards",
+    "kind": "principle",
+    "domain": "execution",
+    "collection": "doctrine",
+    "category": "principles",
+    "audience": [
+      "public",
+      "practitioners",
+      "adopters"
+    ],
+    "featured": true,
+    "sourcePath": "apt-principles-agents/principles/execution/working-backwards.md",
+    "publicPath": "/docs/apt/principles/execution/working-backwards.md",
+    "version": "v1",
+    "status": "active",
+    "lastUpdated": "2026-10-04",
+    "checksum": "a5dc56443d5c19562191c0f7d81f77047b3aff0a029c4de9dae97200544a9585"
   },
   {
     "id": "principles-framework",
@@ -1831,7 +2031,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "active",
     "lastUpdated": "2026-06-28",
-    "checksum": "c76cbbbacd215ac7e3252067d7a1af65b867911a3b47b7d18ecfdb926d2c3f28"
+    "checksum": "0b82b7fa665d0d9050ffd2f2f52917955bae208a2be1c3a19fc947063ee6a4fe"
   },
   {
     "id": "principles-game-development-ai-assisted-game-development",
@@ -2131,7 +2331,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "907e1c17ca3f71ee8eb617e5fabf52e575a5177b234a1b75143bcde965366940"
+    "checksum": "c32c96f9ffb30281bfbc1151b42eb6d0b2c3d7081966cb888dd349bd7c8f6da0"
   },
   {
     "id": "principles-game-development-scope-control",
@@ -2171,7 +2371,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-08-16",
-    "checksum": "ad3e0f2942f31f43be346449c592c88da52f71b3b9663b1aa811ee7bbf98e7a3"
+    "checksum": "9df10ade77986ce977130e85571c6019634ca929f7bc4254681d9ae22f2de8c6"
   },
   {
     "id": "principles-modernization-backward-compatibility",
@@ -2211,7 +2411,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "0e33fee7a653196031ff7de198012aff321f4806ff3505bec762b5a9190c00cb"
+    "checksum": "7c7a935b603990c0c259abf480cf7cd2cc09835e89cd116c6e8aa7486492c339"
   },
   {
     "id": "principles-modernization-dual-run-migration",
@@ -2291,7 +2491,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "fb607d76e42c33fd83873dcc2934f03519a6a3136e4907fecb7e4ceb992b1544"
+    "checksum": "4cb81d4f4d00860880f98336a5cddf06237fa22365b964d65692c92d5e00f38b"
   },
   {
     "id": "principles-modernization-README",
@@ -2411,7 +2611,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "7e18e305165c81abe764ce0b4f1a6681e65246e0faef24fe258052a1c39c3280"
+    "checksum": "2cd3cca88b8a952e33dfdd8cbcecd62631671a653d7444e46ed30974b39baf0f"
   },
   {
     "id": "principles-payments-gateway-abstraction",
@@ -2431,7 +2631,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "63df02d7705d5491e5ba56574b74fbb593d991f77d211b5575b1d064d74dc81f"
+    "checksum": "0cef409944589f01582597f162bffb8185dc0e1c370fcbf8929f9c6674c9de7f"
   },
   {
     "id": "principles-payments-hosted-payments",
@@ -2471,7 +2671,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "0d811ec928ffdbe98cfc4ab0813d70c37b3e093c7a439140736f427d2292d154"
+    "checksum": "12fcbf28bff2cc3386636761fc69ff39f3aaddb057f47731f194e31251b89ab0"
   },
   {
     "id": "principles-payments-README",
@@ -2491,7 +2691,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "7b790ef373ea8bc7a4353af5efd1d2bd5d12aa514f97436ca4c7f996ca0661ee"
+    "checksum": "3501cab1e686f3834bf6b08ad8bec15e0529b6ebf72dea71ef56510163806f94"
   },
   {
     "id": "principles-payments-reconciliation-funding",
@@ -2511,7 +2711,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-08-16",
-    "checksum": "d44420f1ca1fc01db3a950387a23d662daee84559f1b2720efb230ae36978389"
+    "checksum": "7c00ceb96bccc02f531971072482e3de146462098f50fb36fb9b198e9845feb6"
   },
   {
     "id": "principles-payments-recurring-and-subscriptions",
@@ -2531,7 +2731,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "e7e9835525c8de69fc1d8bceac63e62f86ac859392cb143dcdb7ca8621d84ddc"
+    "checksum": "da20cfe391e0b04d4a6c1b882003a13d11b15583e6e50f7a982eefa9c5ca50fc"
   },
   {
     "id": "principles-payments-refunds-voids-disputes",
@@ -2551,7 +2751,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "5380fc30ee9587ccae3d69419d4110540bc25bc9e4e66bbf9c4133f9a0a84554"
+    "checksum": "0aa2e9208bace8328fd561b488cbdc119868f03867a8159d76a8d8a282978b1e"
   },
   {
     "id": "principles-payments-tokenization",
@@ -2591,7 +2791,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-08-16",
-    "checksum": "f9f849141b408c282a22e14de42983561a9d914d6cb580aec76c32f806639afa"
+    "checksum": "cbfeba14ebed13ac4acfe62c918b9331bccc643cb34ea0ecf68d0e77b2d335ee"
   },
   {
     "id": "principles-quick-reference-ai",
@@ -2831,7 +3031,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "baff1483678d2e6880412d295a2a291e36b26c314614ced3f74f38dc6660b7ae"
+    "checksum": "65946dc4632256ad1c95dbf229019432228ca1a7567a1f5a4ee5733955a23804"
   },
   {
     "id": "principles-security-risk-data-handling",
@@ -2851,7 +3051,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-08-16",
-    "checksum": "76579b8ff07293d3d793372d0b4f1c9bdc3c81a5f70e88c8997132b590a65c23"
+    "checksum": "21d3fad3988eb99687182e7acde5f14a4fea16c50e6858f7b8364d8581e41bde"
   },
   {
     "id": "principles-security-risk-fraud-risk-review",
@@ -2871,7 +3071,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "d0f7626a8730456b4382aa1d41f4828f9e54524c3ee9b5a1edf113cd47b6517e"
+    "checksum": "9cfefb3acc2d5cd6e7d0d7dc75ef26cb9389ace1bb22fc8ad43cb2764e49ca64"
   },
   {
     "id": "principles-security-risk-permission-design",
@@ -2891,7 +3091,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "1ed8b09f274e624e7a894366abd93ff3812a8986b55572cff82803d8a5d13372"
+    "checksum": "281141a5a502109e0c2b16293b39319c6d2689142a7585a567a4178e8ad7d4df"
   },
   {
     "id": "principles-security-risk-privacy-review",
@@ -2911,7 +3111,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "1919899522523e5c512c058f1eab1ccd2d579aa5f82bfa0670778b3bee000015"
+    "checksum": "92c6742cdc733555342815c3fb438f553a884bc75f072aab362851ec38ef6b04"
   },
   {
     "id": "principles-security-risk-README",
@@ -2951,7 +3151,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "c7ad3255346940e3685307be167debd21a3ae1551d9ac235dd3aa64714630c56"
+    "checksum": "caee05c6927a248a1df129c7f44bf5b4522bfea2491ba3b5f0aa4de68cbda68e"
   },
   {
     "id": "principles-service-readiness-escalation-paths",
@@ -2971,7 +3171,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-08-16",
-    "checksum": "d0bc8204b997a47c6ce5a65432c60486ec0d4149277e1ff5f9819c00707ebbbf"
+    "checksum": "3f097da94c95169c10f6a2676d6aaed6219dc67abbb581e89995c3a70945a3e5"
   },
   {
     "id": "principles-service-readiness-knowledge-base-readiness",
@@ -2991,7 +3191,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "dc4315fcc5974c27452076a473f50302a035847d5e364a2f165901362442e36f"
+    "checksum": "c227bc92a6c4586a910373f52df9ec27c0ea9133416d6d9fb6acdec5696e8d08"
   },
   {
     "id": "principles-service-readiness-launch-readiness",
@@ -3011,7 +3211,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "a99981a28e2f71a0b5fd2ffec32d97a1fcb2e78e5b074b75b510ee62c953ee1e"
+    "checksum": "51116bb23b59badbc51d98114bb5693d4f8f4330b657c65b335a50a68652138f"
   },
   {
     "id": "principles-service-readiness-operational-readiness",
@@ -3031,7 +3231,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "2cfddc4d5221a5388e6834003a2a122091762c07d1c6c73cbf39b71e67347325"
+    "checksum": "5e82f674be4ef79cc8ce50739577174eb4a42759a0a2b01427922b3cde2ff72a"
   },
   {
     "id": "principles-service-readiness-README",
@@ -3071,7 +3271,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-08-16",
-    "checksum": "e32aee882f4eccdafe75019dd883cf33bbe4aa41009328a6c442c32e34608eaa"
+    "checksum": "8cbb38f6ebf93f111505fa91974b89ea1c67cd474a6c87d5d3c2fedc942cef38"
   },
   {
     "id": "principles-service-readiness-support-readiness",
@@ -3091,7 +3291,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "2987a0de9b842796c12b50146bc87b0df517b5f39db4e13c5e8b17c2f9fdc172"
+    "checksum": "a74d466b033e6bd1319c5657a605aea9f341eb28202e46e9fcdf88c2f235374a"
   },
   {
     "id": "principles-service-readiness-troubleshooting-readiness",
@@ -3111,7 +3311,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "ff7ad5440bbd6ed15f546f8e82ede57ad1e6d2712d7492a8517ed804873e3c97"
+    "checksum": "d56742e3641e00a4569aec1a075a014179ed9ac08f0b74160c7d459cb73806a0"
   },
   {
     "id": "principles-stablecoin-crypto-crypto-payment-review",
@@ -3131,7 +3331,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "f4d2864cb103a870e0d3f64e6786dc7e7acb559b317b1a05fb5b4fdc14f18162"
+    "checksum": "888e75cf14f9950affee73803c4d8469e43e4c669c5a19cf79d0d27e4040b70d"
   },
   {
     "id": "principles-stablecoin-crypto-digital-asset-risk",
@@ -3151,7 +3351,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-08-16",
-    "checksum": "38a878fc7e87bcb8e9f3fabb29c5976b407966072395f56367743fbf8ba20e0e"
+    "checksum": "3ece4a3b5c0d74f1069227bee9ff88660b86fc6be52093d4ae3a49cf479df9e5"
   },
   {
     "id": "principles-stablecoin-crypto-on-chain-off-chain-design",
@@ -3211,7 +3411,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "304afdcbaf34747b45825a5bd926a58310ec7611756228f65fe659514cb03cdb"
+    "checksum": "7940409d1432478b36d84e516d781c32be783b147822794841c139e797ceed8a"
   },
   {
     "id": "principles-stablecoin-crypto-stablecoin-readiness",
@@ -3231,7 +3431,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "83309ff8889bfc01bd155cb4083efaaee30253b2e04016492dd653daf9473290"
+    "checksum": "f48ef8579e195efa57abf4a8c25cb67979947da59cc65213ffc491ff2f303f8e"
   },
   {
     "id": "principles-stablecoin-crypto-wallet-payment-design",
@@ -3291,7 +3491,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "f1c4ed58c98541da2df2dd613992a8d3006c66b13a6a4a5b6cbe362a7a14806b"
+    "checksum": "7cd4062bf53e0aa9200f1fd71c1f7a4ffdea4b45836a0d5ad903c7d5b61c2dc7"
   },
   {
     "id": "principles-thinking-beginner-clarity",
@@ -3311,7 +3511,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "0c9e18d8a70c17321ed622583cab2943da42af126b8597ad14ab8c70b1f4b57a"
+    "checksum": "13e2ea70fec048e249198e2f232ca9ccd361d598626f0d56cf7c0f3288d29cf1"
   },
   {
     "id": "principles-thinking-decision-framing",
@@ -3331,7 +3531,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "38f0a6904e79603758cb2a531364487955512ceca18430dac62dce1172cec297"
+    "checksum": "125fec3bd52e28428d52cfb46838a94a6f455a9ba9f08baa6d82dfbec9390729"
   },
   {
     "id": "principles-thinking-practical-thinking",
@@ -3351,7 +3551,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-08-16",
-    "checksum": "b217d556198f0246b8f392fcd5f08beddc4ba338177dc45aafd95586d12337b3"
+    "checksum": "836aca80290bbd3c788f6f9e452665a963a2e28b7502f09a08019ee3683a09c6"
   },
   {
     "id": "principles-thinking-README",
@@ -3371,7 +3571,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "v1",
     "status": "active",
     "lastUpdated": "2026-06-28",
-    "checksum": "706bba65d79f6d5ed1a2842e4c29e0b7f03f856793fbcfa2f55fd4b747203507"
+    "checksum": "95782d76cf7a270756affbfd4927e4015d6f4e879b51c162f3d85d6d51dc402c"
   },
   {
     "id": "principles-thinking-tradeoff-analysis",
@@ -3391,7 +3591,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-27",
-    "checksum": "ee623b63b6f906604f509938ca08bb5e298b4ff31866cfe3f504450a551bce49"
+    "checksum": "8611aa62bbb63aaec6a893d5727a8aac25db3a3f4a97bed931f2e062d41a1e3e"
   },
   {
     "id": "product-hubs-examples-generic-payment-product-ai-usage-examples",
@@ -3713,8 +3913,8 @@ export const aptPrinciplesPublicManifest = [
     "publicPath": "/docs/apt/README.md",
     "version": "1.0.0",
     "status": "active",
-    "lastUpdated": "2026-06-27",
-    "checksum": "024b37f5f8fd617b6fe67c22d44129b262f333d6431a1239fea20a00c4e91c11"
+    "lastUpdated": "2026-10-04",
+    "checksum": "c632c0edf92cac1b4ca2246a502bb35234f1ea50f901c3d8030546ef6baa6ac1"
   },
   {
     "id": "standards-ai-provider-neutral-ai-task-contract",
@@ -3733,7 +3933,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-08-01",
-    "checksum": "d83832d1277672d3b8f56d37eaac01a168385fc989f672c9f2e676fd8cf420ca"
+    "checksum": "21db4fc292d68d8abebec4e93006bafc61502056ccf2a5db6b39a975ce28a8fb"
   },
   {
     "id": "standards-ai-responsible-ai-standard",
@@ -3884,8 +4084,8 @@ export const aptPrinciplesPublicManifest = [
     "publicPath": "/docs/apt/standards/installable-summaries/cloudflare-standards.md",
     "version": "1.0.0",
     "status": "active",
-    "lastUpdated": "2026-06-28",
-    "checksum": "ebdf714789f07f7cfe836c63143856f71c79dca338b221337fbbf20aee5e3fd6"
+    "lastUpdated": "2026-10-12",
+    "checksum": "26311a04349f2c42264f64d3251a357afe842d9ed3afd08975a2ee5b3fca5343"
   },
   {
     "id": "standards-installable-summaries-decision-frameworks",
@@ -3942,7 +4142,7 @@ export const aptPrinciplesPublicManifest = [
     "version": "1.0.0",
     "status": "active",
     "lastUpdated": "2026-06-28",
-    "checksum": "66881975daace052b5d38e02db318751606f65d91c59f7b21e2c589729f3a412"
+    "checksum": "c7792f9df1a020235d7acec20d0b75e3c5b578560470f1b81f19d6d6ce57449f"
   },
   {
     "id": "standards-installable-summaries-migration-standards",

@@ -46,6 +46,10 @@ Review for forced big-bang migration, silent parity loss, incorrect error transl
 - State what is verified, what is assumed, and what requires specialist or human approval.
 
 See the [Modernization canonical hub](README.md) and linked standards/checklists before making final claims.
+## Applied by
+
+- [apt-api-migration-planner](../../agents/api/apt-api-migration-planner.md) — Use when a decision or deliverable must select API styles from audience and behavior, then make contracts predictable, secure, observable, evolvable, and usable by humans and agents, especially when it affects multiple audiences or high-accuracy domains.
+
 ## Related
 
 - [APT Principles](../README.md)

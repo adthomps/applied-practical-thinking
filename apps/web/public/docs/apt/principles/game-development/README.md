@@ -35,3 +35,17 @@ APT game development applies **Thinking, Design, Architecture, and Execution** t
 7. [Game Testing](game-testing.md), [Game Documentation](game-documentation.md), and [AI-Assisted Game Development](ai-assisted-game-development.md): learn, improve, and preserve decisions.
 
 New terms are explained in the [Game Development Glossary](../../docs/game-development-glossary.md). Principles guide decisions; use [game-development skills](../../skills/game-development/README.md) for procedures and [game-development agents](../../agents/game-development/README.md) for review perspectives. Phase-one evidence and accepted limitations are recorded in the [Game Development Phase-One Readiness Review](../../docs/game-development-phase-1-readiness.md).
+
+## Applied by
+
+- [apt-beginner-game-dev-reviewer](../../agents/game-development/apt-beginner-game-dev-reviewer.md) — Use for onboarding, learning plans, setup, architecture explanations, templates, examples, and AI-generated implementation plans.
+- [apt-game-architect](../../agents/game-development/apt-game-architect.md) — Use before expansion or when scenes, entities, components, state, input, saves, assets, or services are tangled.
+- [apt-game-designer](../../agents/game-development/apt-game-designer.md) — Use when framing play, resolving unclear rules, planning levels, or interpreting player behavior.
+- [apt-game-development-coach](../../agents/game-development/apt-game-development-coach.md) — Use when a learner needs sequencing, plain explanations, project-based exercises, or help recovering from overload.
+- [apt-game-docs-writer](../../agents/game-development/apt-game-docs-writer.md) — Use for concepts, design documents, player guides, developer setup, architecture, playtests, releases, or a Game Product Hub.
+- [apt-game-prototype-planner](../../agents/game-development/apt-game-prototype-planner.md) — Use before implementation or when a team is polishing without answering the main question.
+- [apt-game-scope-guardian](../../agents/game-development/apt-game-scope-guardian.md) — Use at concept approval, prototype planning, roadmap changes, milestone review, and every game micro-group review.
+- [apt-game-testing-reviewer](../../agents/game-development/apt-game-testing-reviewer.md) — Use before playtests, milestones, releases, or changes to state, saves, inputs, scenes, and core rules.
+- [apt-game-ui-reviewer](../../agents/game-development/apt-game-ui-reviewer.md) — Use for menus, HUDs, overlays, settings, onboarding, responsive layouts, and failure/recovery screens.
+- [apt-gameplay-reviewer](../../agents/game-development/apt-gameplay-reviewer.md) — Use when a playable build exists or a proposed change affects moment-to-moment play.
+

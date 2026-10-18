@@ -94,7 +94,7 @@ export default function Start() {
     <div className="container py-8 md:py-12 space-y-12">
       <section className="max-w-3xl mx-auto text-center space-y-5">
         <div className="flex justify-center">
-          <AptTag variant="accent" className="inline-flex items-center gap-2 px-3 py-1 text-sm">
+          <AptTag variant="primary" className="inline-flex items-center gap-2 px-3 py-1 text-sm">
           <Zap className="h-4 w-4" />
           Welcome to APT
           </AptTag>

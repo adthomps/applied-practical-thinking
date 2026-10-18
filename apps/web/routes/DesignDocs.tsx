@@ -59,7 +59,7 @@ export default function DesignDocs() {
           description="Browse published APT doctrine mirrors and pattern docs from the design docs manifest. Open any doc for version-aware rendering, examples, and markdown access."
           titleClassName="text-3xl md:text-4xl"
           descriptionClassName="text-lg"
-          eyebrow={<AptTag variant="accent">Published Mirror</AptTag>}
+          eyebrow={<AptTag variant="primary">Published Mirror</AptTag>}
         >
           <AptButton variant="ghost" asChild>
             <Link to="/design/patterns">
@@ -120,7 +120,7 @@ export default function DesignDocs() {
                     <div className="rounded-lg bg-primary/10 p-2 text-primary">
                       <Shapes className="h-4 w-4" />
                     </div>
-                    <AptTag variant="accent">Pattern</AptTag>
+                    <AptTag variant="primary">Pattern</AptTag>
                     {typeof doc.major === "number" ? (
                       <AptTag variant="muted">v{doc.major}</AptTag>
                     ) : null}

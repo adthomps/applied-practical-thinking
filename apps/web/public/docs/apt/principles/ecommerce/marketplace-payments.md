@@ -46,6 +46,11 @@ Review for conversion-only design, hidden fees or states, brittle checkout recov
 - State what is verified, what is assumed, and what requires specialist or human approval.
 
 See the [Ecommerce canonical hub](README.md) and linked standards/checklists before making final claims.
+## Applied by
+
+- [apt-isv-tech-partner-reviewer](../../agents/customer/apt-isv-tech-partner-reviewer.md) — Use when a deliverable will be used by an ISV, plugin provider, or technology partner that connects many merchants to the gateway, to confirm it covers their account linking, attribution, credentials, and installed-base needs, not only the integration build.
+- [kaidan](../../agents/ecommerce/kaidan.md) — Use when a partner or acquirer integration/onboarding flow needs review, distinct from a single merchant's onboarding.
+
 ## Related
 
 - [APT Principles](../README.md)

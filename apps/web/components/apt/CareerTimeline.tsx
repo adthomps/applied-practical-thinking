@@ -29,7 +29,7 @@ export function CareerTimeline({ phases, className }: CareerTimelineProps) {
 
             <div className="flex flex-wrap items-center gap-2">
               <h3 className="font-semibold text-foreground">{phase.name}</h3>
-              <AptTag variant={isCurrent ? "accent" : "muted"} size="sm">
+              <AptTag variant={isCurrent ? "primary" : "muted"} size="sm">
                 {phase.period}
               </AptTag>
             </div>

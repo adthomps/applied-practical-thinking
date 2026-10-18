@@ -136,7 +136,7 @@ export default function About() {
               {/* Profile Info */}
               <div className="flex-1 text-center md:text-left">
                 <div className="mb-3 flex justify-center md:justify-start">
-                  <AptTag variant="accent">About</AptTag>
+                  <AptTag variant="primary">About</AptTag>
                 </div>
 
                 <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-2">

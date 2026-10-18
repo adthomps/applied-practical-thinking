@@ -46,6 +46,11 @@ Review for invented provider behavior, double processing, confused authorization
 - State what is verified, what is assumed, and what requires specialist or human approval.
 
 See the [Payments canonical hub](README.md) and linked standards/checklists before making final claims.
+## Applied by
+
+- [apt-gateway-migration-reviewer](../../agents/payments/apt-gateway-migration-reviewer.md) — Use when a merchant, platform, or integration is migrating from one payment gateway or processor to another, and payment continuity during the cutover is at risk.
+- [apt-payment-architect](../../agents/payments/apt-payment-architect.md) — Use when a payment system's structure — gateway abstraction, tokenization boundary, ledger design, or provider failover — needs architectural review before implementation.
+
 ## Related
 
 - [APT Principles](../README.md)

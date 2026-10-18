@@ -52,7 +52,7 @@ export default function DesignArchitecturePatternDetail() {
           descriptionClassName="text-lg"
           eyebrow={
             <div className="flex items-center gap-3">
-              <AptTag variant="accent">Architectural Pattern</AptTag>
+              <AptTag variant="primary">Architectural Pattern</AptTag>
               <AptTag variant="outline">{entry.title}</AptTag>
             </div>
           }

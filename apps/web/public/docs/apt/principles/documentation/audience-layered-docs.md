@@ -49,6 +49,11 @@ Review for one guide for every audience, copied truths, non-runnable examples, m
 - State what is verified, what is assumed, and what requires specialist or human approval.
 
 See the [Documentation canonical hub](README.md) and linked standards/checklists before making final claims.
+## Applied by
+
+- [apt-harness-docs-reviewer](../../agents/harness/apt-harness-docs-reviewer.md) — Use when reviewing this repository’s own documentation architecture, consistency, source-of-truth boundaries, or operating guidance.
+- [documentation-normalizer](../../agents/docs/documentation-normalizer.md) — Use to consolidate duplicated, stale, or scattered documentation into canonical homes, proposing a merge, move, and delete plan before any edits.
+
 ## Related
 
 - [APT Principles](../README.md)

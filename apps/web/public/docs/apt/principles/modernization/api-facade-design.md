@@ -50,6 +50,11 @@ Review for a facade that merely renames legacy operations, hidden lossy translat
 - Require explicit rollout, rollback, bypass, and retirement criteria before the facade becomes a production dependency.
 
 See the [Modernization canonical hub](README.md) and linked standards/checklists before making final claims.
+## Applied by
+
+- [apt-api-bridge-reviewer](../../agents/api/apt-api-bridge-reviewer.md) — Use when a bridge or adapter layer sits between a legacy API and a modern one, to confirm it preserves correct behavior on both sides.
+- [apt-gateway-migration-reviewer](../../agents/payments/apt-gateway-migration-reviewer.md) — Use when a merchant, platform, or integration is migrating from one payment gateway or processor to another, and payment continuity during the cutover is at risk.
+
 ## Related
 
 - [APT Principles](../README.md)

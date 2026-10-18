@@ -16,7 +16,7 @@ export function ValidationStatusCallout({
 }: ValidationStatusCalloutProps) {
   const { report, loading, error } = useValidationReport();
   const recommendation = report?.recommendation || "unavailable";
-  const recommendationVariant = recommendation === "pass" ? "accent" : "outline";
+  const recommendationVariant = recommendation === "pass" ? "primary" : "outline";
 
   return (
     <AptCard variant="subtle" padding="large">

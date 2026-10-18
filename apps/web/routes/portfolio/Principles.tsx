@@ -86,7 +86,7 @@ export default function PortfolioPrinciples() {
           description="Canonical doctrine is rendered directly from generated apt-principles-agents public docs, then paired with operational summaries for implementation in the portfolio site."
           titleClassName="text-3xl md:text-4xl"
           descriptionClassName="text-lg"
-          eyebrow={<AptTag variant="accent">Principles</AptTag>}
+          eyebrow={<AptTag variant="primary">Principles</AptTag>}
         >
           <div className="flex flex-wrap items-center gap-2">
             <AptTag variant="secondary">{aptPrinciplesFrameworkPublicDocMeta?.version || "v1"}</AptTag>

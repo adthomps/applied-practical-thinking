@@ -50,6 +50,10 @@ Review for net-only comparison, mismatched time zones or currencies, missing fee
 - Protect manual adjustments, reruns, write-offs, and releases with least privilege, dual control, idempotency, and audit logs.
 
 See the [Payments canonical hub](README.md) and linked standards/checklists before making final claims.
+## Applied by
+
+- [apt-referral-iso-partner-reviewer](../../agents/customer/apt-referral-iso-partner-reviewer.md) — Use when a deliverable will be used by a referral partner, reseller, or independent sales organization (ISO) that brings in or services a merchant portfolio without being the acquiring bank, to confirm it covers attribution, compensation reporting, portfolio visibility, and their limited authority.
+
 ## Related
 
 - [APT Principles](../README.md)

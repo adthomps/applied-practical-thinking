@@ -46,6 +46,10 @@ Review for launch without ownership, alerts without action, missing customer-saf
 - State what is verified, what is assumed, and what requires specialist or human approval.
 
 See the [Service Readiness canonical hub](README.md) and linked standards/checklists before making final claims.
+## Applied by
+
+- [apt-launch-readiness-lead](../../agents/product/apt-launch-readiness-lead.md) — Use before a launch or major release, to confirm the product, support, and operational readiness checks are actually complete, not just planned.
+
 ## Related
 
 - [APT Principles](../README.md)

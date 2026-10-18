@@ -87,6 +87,13 @@ Review for unsupported claims, overpowered tools, hidden AI influence, weak rout
 - State what is verified, what is assumed, and what requires specialist or human approval.
 
 See the [Ai canonical hub](README.md) and linked standards/checklists before making final claims.
+## Applied by
+
+- [ai-output-auditor](../../agents/engineering/ai-output-auditor.md) — Use to audit generated code, documentation, plans, review comments, or migration proposals for unsupported claims, invented files or APIs, hidden behavior changes, and missing validation.
+- [apt-agent-skill-steward](../../agents/core/apt-agent-skill-steward.md) — Use when a canonical agent role or skill is proposed, written, revised, or retired, to confirm it owns a distinct perspective or procedure, is grounded in principles, and is packaged correctly for every platform.
+- [apt-verifier](../../agents/harness/apt-verifier.md) — Use when outputs, installs, repairs, routing config, or documentation alignment must be verified before they are trusted.
+- [apt-wb-critic](../../agents/working-backwards/apt-wb-critic.md) — Independent sub-agent that scores a Working Backwards package against the versioned rubric plus its declared domain and repository profile overlays and returns PASS or NEEDS REVISION per stage; must run in a fresh session that authored nothing in the package and writes only critic-review.md and session.json.
+
 ## Related
 
 - [APT Principles](../README.md)

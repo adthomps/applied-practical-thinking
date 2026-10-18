@@ -100,7 +100,7 @@ export default function DesignDocDetail() {
         descriptionClassName="text-lg"
         eyebrow={
           <div className="flex items-center gap-2">
-            <AptTag variant={slug.startsWith("patterns/") ? "accent" : "primary"}>
+            <AptTag variant="primary">
               {slug.startsWith("patterns/") ? "Pattern" : "Doc"}
             </AptTag>
             {activeMajor ? <AptTag variant="muted">v{activeMajor}</AptTag> : null}

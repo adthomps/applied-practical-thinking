@@ -33,6 +33,7 @@ Examples illustrate decisions, tradeoffs, artifacts, and validation. They do not
 - [NVP To REST](nvp-to-rest/README.md)
 - [Stablecoin Payment](stablecoin-payment/README.md)
 - [Game Development](game-development/README.md)
+- [Working Backwards](working-backwards/README.md)
 
 ## Showcases
 

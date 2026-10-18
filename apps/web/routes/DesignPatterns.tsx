@@ -66,7 +66,7 @@ export default function DesignPatterns() {
           description="Pattern docs are published from the design docs manifest and rendered through the same version-aware runtime as doctrine docs."
           titleClassName="text-3xl md:text-4xl"
           descriptionClassName="text-lg"
-          eyebrow={<AptTag variant="accent">Patterns</AptTag>}
+          eyebrow={<AptTag variant="primary">Patterns</AptTag>}
         />
       </section>
 
@@ -80,7 +80,7 @@ export default function DesignPatterns() {
                     <div className="rounded-lg bg-primary/10 p-2 text-primary">
                       <Shapes className="h-4 w-4" />
                     </div>
-                    <AptTag variant="accent">Pattern</AptTag>
+                    <AptTag variant="primary">Pattern</AptTag>
                     {typeof doc.major === "number" ? (
                       <AptTag variant="muted">v{doc.major}</AptTag>
                     ) : null}

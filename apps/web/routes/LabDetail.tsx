@@ -304,7 +304,7 @@ export default function LabDetail() {
                       <div className="flex-1">
                         <AptCardHeader className="p-0">
                           <div className="flex items-center gap-2 mb-1">
-                            <AptTag variant="accent" className="text-xs">
+                            <AptTag variant="primary" className="text-xs">
                               {insight!.type}
                             </AptTag>
                           </div>
