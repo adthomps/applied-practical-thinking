@@ -4,11 +4,11 @@ import { siteConfig, authorConfig } from "@/data/site";
 import { systems } from "../data/systems";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
 import { useAboutExperimentsCountQuery, useAboutInsightsCountQuery } from "@/hooks/useContentAggregateQueries";
-import { AptCard, AptButton, AptTag } from "@/components/apt";
+import { AptCard, AptButton, AptTag, CareerTimeline } from "@/components/apt";
+import { careerEmployer, careerPhases } from "@/data/career";
 import {
-  ExternalLink,
+  ArrowRight,
   MapPin,
-  Calendar,
   Github,
   Linkedin,
   Globe,
@@ -185,6 +185,16 @@ export default function About() {
             </p>
           </AptCard>
 
+          {/* Career */}
+          <AptCard variant="default" padding="large" id="career">
+            <h2 className="text-lg font-semibold mb-2">How I Got Here</h2>
+            <p className="text-sm text-muted-foreground mb-6">
+              Twenty years at {careerEmployer.name}, from front-line merchant support to leading service
+              experience and go-to-market readiness.
+            </p>
+            <CareerTimeline phases={careerPhases} />
+          </AptCard>
+
           {/* Principles */}
           <AptCard variant="default" padding="large" id="principles">
             <h2 className="text-lg font-semibold mb-2">Principles</h2>
@@ -265,7 +275,7 @@ export default function About() {
             <AptButton variant="outline" size="sm" asChild>
               <Link to="/about/visual-gallery" className="inline-flex items-center gap-2">
                 {siteConfig.appliedGalleryLabel}
-                <ExternalLink className="h-3.5 w-3.5" />
+                <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </AptButton>
           </AptCard>
@@ -294,10 +304,6 @@ export default function About() {
                 <div className="flex items-center gap-3 text-muted-foreground">
                   <MapPin className="h-4 w-4 text-primary" />
                   <span>{authorConfig.location}</span>
-                </div>
-                <div className="flex items-center gap-3 text-muted-foreground">
-                  <Calendar className="h-4 w-4 text-primary" />
-                  <span>Joined {authorConfig.joinedDate}</span>
                 </div>
               </div>
 

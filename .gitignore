@@ -53,3 +53,6 @@ output/**/*
 docs/apt/reports/static/screenshots/**/*
 .apt-backups/
 graphify-out/
+
+# Generated at build time
+apps/web/public/sitemap.xml

@@ -3,6 +3,8 @@ import { cn } from "@/lib/utils";
 type SectionIntroProps = {
   title: string;
   description: string;
+  /** Use "h1" when the intro is the page title. */
+  as?: "h1" | "h2";
   align?: "left" | "center";
   className?: string;
   titleClassName?: string;
@@ -14,6 +16,7 @@ type SectionIntroProps = {
 export function SectionIntro({
   title,
   description,
+  as: Heading = "h2",
   align = "left",
   className,
   titleClassName,
@@ -32,9 +35,9 @@ export function SectionIntro({
       )}
     >
       {eyebrow ? <div className={cn(centered && "flex justify-center")}>{eyebrow}</div> : null}
-      <h2 className={cn("text-2xl md:text-3xl font-semibold tracking-tight", titleClassName)}>
+      <Heading className={cn("text-2xl md:text-3xl font-semibold tracking-tight", titleClassName)}>
         {title}
-      </h2>
+      </Heading>
       <p className={cn("text-sm md:text-base text-muted-foreground", descriptionClassName)}>
         {description}
       </p>

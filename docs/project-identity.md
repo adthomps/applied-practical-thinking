@@ -6,4 +6,4 @@ status: active
 
 # Applied Practical Thinking
 
-New portfolio site and future consulting site. Also used for blogs, vlogs, and demo links.
+Personal professional and technical portfolio. Also used for blogs, vlogs, and demo links.

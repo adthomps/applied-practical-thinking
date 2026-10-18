@@ -4,28 +4,26 @@ import { AptEmblem } from "./AptEmblem";
 
 const footerNavigationLinks = [
   { label: "Home", href: "/" },
-  { label: "Labs", href: "/labs" },
-  { label: "Proof", href: "/proof" },
-  { label: "Principles", href: "/principles" },
-  { label: "Design", href: "/design" },
-  { label: "Insights", href: "/insights" },
   { label: "About", href: "/about" },
+  { label: "Photography & Drones", href: siteConfig.appliedGalleryUrl },
+  { label: "Projects (Labs)", href: "/labs" },
+  { label: "Proof", href: "/proof" },
+  { label: "Writing (Insights)", href: "/insights" },
+  { label: "How I Work (Principles)", href: "/principles" },
+  { label: "Design System", href: "/design" },
 ] as const;
 
 const footerResourceLinks = [
-  { label: siteConfig.appliedGalleryLabel, href: siteConfig.appliedGalleryUrl, external: true },
-  { label: "GitHub", href: authorConfig.social.github, external: true },
   { label: "LinkedIn", href: authorConfig.social.linkedin, external: true },
+  { label: "GitHub", href: authorConfig.social.github, external: true },
+  { label: "Flickr", href: authorConfig.social.flickr, external: true },
 ] as const;
 
 const footerFocusRingClass =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card";
 
 export function AptFooter() {
-  const currentYear = new Date().getFullYear();
-  const joinedYearMatch = authorConfig.joinedDate.match(/\d{4}/);
-  const startYear = joinedYearMatch ? Number(joinedYearMatch[0]) : currentYear;
-  const yearLabel = startYear < currentYear ? `${startYear}-${currentYear}` : `${currentYear}`;
+  const yearLabel = `${new Date().getFullYear()}`;
 
   return (
     <footer className="border-t border-border/60 bg-card text-card-foreground">

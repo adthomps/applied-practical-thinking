@@ -51,7 +51,7 @@ export default function PortfolioLabs() {
   return (
     <div className="container py-10 md:py-12 space-y-8">
       <section className="space-y-3">
-        <SectionIntro
+        <SectionIntro as="h1"
           title="Labs"
           description="Experiments, prototypes, UI concepts, and API demos. Ideas given shape — early, imperfect, and intentional."
           titleClassName="text-3xl md:text-4xl"

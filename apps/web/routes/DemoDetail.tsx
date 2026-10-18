@@ -1,5 +1,6 @@
 
 import { Navigate, useParams } from "react-router-dom";
+import { usePageMetadata } from "@/hooks/usePageMetadata";
 import { ContentDetailPage } from "@/components/apt/ContentDetailPage";
 import { useFeedDetailQuery } from "@/hooks/useFeedQueries";
 import { Play } from "lucide-react";
@@ -14,6 +15,14 @@ export default function DemoDetail() {
   const markdown = detailQuery.data?.markdown || "";
   const loading = detailQuery.isLoading;
   const error = detailQuery.error?.message || (!loading && !demo ? "Not found" : null);
+
+  usePageMetadata(
+    !loading && !demo
+      ? { title: "Demo not found", noIndex: true }
+      : demo
+        ? { title: demo.title, description: demo.description, image: demo.thumbnail, imageAlt: demo.title }
+        : { title: "Live Demos" }
+  );
 
   if (!slug) {
     return <Navigate to="/labs/live-demos" replace />;

@@ -33,7 +33,7 @@ export default function PrinciplesHome() {
   return (
     <div className="container py-12 md:py-16 space-y-10">
       <section>
-        <SectionIntro
+        <SectionIntro as="h1"
           title="Principles"
           description="APT's principle groups across thinking, design, architecture, execution, and operations, shown as both doctrine mirror and live project demonstration for this repository."
           titleClassName="text-3xl md:text-4xl"

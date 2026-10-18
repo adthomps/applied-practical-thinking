@@ -38,7 +38,7 @@ export default function Insights() {
   return (
     <div className="container py-10 md:py-12 space-y-8">
       <section>
-        <SectionIntro
+        <SectionIntro as="h1"
           title="Insights"
           description="Blogs, podcasts, and case studies. Each piece connects concepts to working implementations in Labs and Proof."
           titleClassName="text-3xl md:text-4xl"

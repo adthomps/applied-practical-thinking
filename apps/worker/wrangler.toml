@@ -19,3 +19,6 @@ invocation_logs = true
 
 [vars]
 PUBLIC_SITE_ORIGIN = "https://appliedpracticalthinking.com"
+# Keeps /api/chat, /api/query, /api/feedback and /api/report off until the
+# assistant has a real LLM step and rate limiting.
+APT_ASSISTANT_ENABLED = "false"

@@ -16,7 +16,7 @@ jobs:
     environment:
       name: production
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Checkout apt-principles-agents
         uses: actions/checkout@v4
         with:
@@ -43,8 +43,14 @@ jobs:
         run: pnpm run validate:apt-conformance
       - name: APT design check (contrast, token drift, lint)
         run: pnpm run check:design
+      - name: Typecheck (worker, ui)
+        run: pnpm run typecheck
       - name: Test
         run: pnpm test
+      - name: Build web
+        run: pnpm run build
+        env:
+          APT_PRINCIPLES_AGENTS_ROOT: _apt-principles-agents
       - name: Deploy Worker
         if: github.event_name == 'push' && github.ref == 'refs/heads/main' && vars.ENABLE_GHA_DEPLOY == 'true'
         run: |

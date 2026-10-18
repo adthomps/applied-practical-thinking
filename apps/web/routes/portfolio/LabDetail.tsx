@@ -1,5 +1,6 @@
 
 import { useParams, Navigate } from "react-router-dom";
+import { usePageMetadata } from "@/hooks/usePageMetadata";
 import { ContentDetailPage } from "@/components/apt/ContentDetailPage";
 import { useFeedDetailQuery } from "@/hooks/useFeedQueries";
 import { FlaskConical, Book, FileText, Play } from "lucide-react";
@@ -14,6 +15,14 @@ export default function PortfolioLabDetail() {
   const markdown = detailQuery.data?.markdown || "";
   const loading = detailQuery.isLoading;
   const error = detailQuery.error?.message || (!loading && !lab ? "Not found" : null);
+
+  usePageMetadata(
+    !loading && !lab
+      ? { title: "Lab not found", noIndex: true }
+      : lab
+        ? { title: lab.title, description: lab.description, image: lab.thumbnail, imageAlt: lab.title }
+        : { title: "Labs" }
+  );
 
   if (!id) {
     return <Navigate to="/labs" replace />;

@@ -86,7 +86,7 @@ export default function PortfolioVisualGallery() {
 
   return (
     <div className="container py-12 md:py-16 space-y-8">
-      <SectionIntro
+      <SectionIntro as="h1"
         title="Visual Gallery"
         description="Photography, motion, aerial work, and field maps framed as visual practice under constraint. This belongs in APT because observation, framing, limitation, and perspective are part of the same applied-thinking discipline."
         titleClassName="text-3xl md:text-4xl"

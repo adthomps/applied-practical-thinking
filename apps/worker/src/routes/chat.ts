@@ -14,27 +14,19 @@ const chatSchema = z.object({
 
 export const chatRoute = new Hono<{ Bindings: WorkerBindings }>().post('/api/chat', async (c) => {
   try {
-    // eslint-disable-next-line no-console
-    console.log('[Worker] /api/chat POST hit');
     const body = await c.req.json();
     const parsed = chatSchema.safeParse(body);
     if (!parsed.success) {
       return c.json({ error: 'Invalid request', details: parsed.error.format() }, 400);
     }
-    // eslint-disable-next-line no-console
-    console.log('[Worker] /api/chat body:', JSON.stringify(body));
     const { messages, scope } = parsed.data;
     const lastMsg = messages && messages.length > 0 ? messages[messages.length - 1].content : '';
     if (!lastMsg) {
-      // eslint-disable-next-line no-console
-      console.log('[Worker] /api/chat error: No question provided.');
       return c.json({ error: 'No question provided.' }, 400);
     }
 
     // 1. Embed the user question (pass env for Worker)
     const questionEmbedding = await embed(lastMsg, c.env);
-    // DEBUG: Log embedding shape
-    console.log('DEBUG: questionEmbedding length =', Array.isArray(questionEmbedding) ? questionEmbedding.length : typeof questionEmbedding, 'Sample:', questionEmbedding?.slice?.(0, 5));
 
     // 2. Query vector DB for top doc chunks (pass env for binding)
     const topChunks = await queryVectorDb(questionEmbedding, 4, c.env); // returns [{id, score, metadata, text}]
@@ -67,12 +59,10 @@ export const chatRoute = new Hono<{ Bindings: WorkerBindings }>().post('/api/cha
       confidence,
       followups
     };
-    // eslint-disable-next-line no-console
-    console.log('[Worker] /api/chat response:', JSON.stringify(response));
     return c.json(response);
   } catch (err: unknown) {
     // eslint-disable-next-line no-console
     console.error('[Worker] /api/chat error:', err);
-    return c.json({ error: 'Internal server error', details: err instanceof Error ? err.message : String(err) }, 500);
+    return c.json({ error: 'Internal server error' }, 500);
   }
 });

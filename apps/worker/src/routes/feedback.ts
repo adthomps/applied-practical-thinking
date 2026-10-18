@@ -26,6 +26,6 @@ export const feedbackRoute = new Hono<{ Bindings: WorkerBindings }>().post('/api
     return c.json({ ok: true });
   } catch (err) {
     console.error('[Worker] /api/feedback error:', err);
-    return c.json({ error: 'Internal server error', details: String(err) }, 500);
+    return c.json({ error: 'Internal server error' }, 500);
   }
 });

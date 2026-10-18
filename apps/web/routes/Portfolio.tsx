@@ -108,7 +108,7 @@ export default function Portfolio() {
   return (
     <div className="container py-8 md:py-12 space-y-12">
       <section>
-        <SectionIntro
+        <SectionIntro as="h1"
           title="Design"
           description="The APT portfolio's public implementation guide: how problems are framed, how the system is expressed visually, how architecture enforces it, and where stable published references live."
           titleClassName="text-3xl md:text-4xl"

@@ -1,0 +1,146 @@
+Experience
+
+Visa logo
+Visa
+
+Full-time · 20 yrs 5 mos
+
+On-site
+
+Director, Service Experience/Go to Market
+
+Mar 2023 - Present · 3 yrs 8 mos
+
+Bellevue, WA
+
+Lead service experience and go-to-market readiness for Authorize.net and Visa Acceptance Solutions, connecting product, technology, customer experience, and operations to help ensure new capabilities and platform changes are ready to launch, adopt, and support.
+
+• Lead cross-functional readiness for payment products, APIs, platform changes, migrations, infrastructure, and security initiatives across Product, Engineering, Support, Operations, and Marketing.
+
+• Represent customer, developer, and support needs during product development, identifying adoption barriers, parity gaps, operational impacts, support requirements, and customer risks.
+
+• Support product and platform transformation by translating complex payment and integration changes into migration strategies, requirements, workflows, documentation, and customer enablement.
+
+• Bridge business and technical teams through readiness assessments, API and integration analysis, process design, demonstrations, and proof-of-concept solutions.
+
+• Shape service strategy and knowledge governance, defining how new capabilities are supported, diagnosed, communicated, and documented across enterprise support platforms.
+
+• Apply AI-assisted workflows to requirements discovery, integration analysis, migration planning, testing, documentation, reporting, and knowledge management.
+
+ Technical Support, Troubleshooting and +11 skills
+
+Director, Product Support & Readiness
+
+Apr 2017 - Mar 2023 · 6 yrs
+
+Bellevue
+
+Led product support and service readiness for the Authorize.net platform, connecting Product, Engineering, Operations, and Customer Support to prepare teams and customers for new products, APIs, platform changes, security initiatives, and operational improvements.
+
+• Directed readiness for new and updated products, APIs, user experiences, infrastructure, and security changes throughout the development and launch lifecycle.
+
+• Represented customer and support needs in product development, identifying supportability gaps, customer risks, workflow impacts, documentation requirements, and potential post-launch issues.
+
+• Partnered across Product Management, Engineering, QA, Marketing, Operations, and Support to translate technical changes into support strategies, workflows, training, communications, and launch plans.
+
+• Built monitoring and validation capabilities for APIs, merchant interfaces, portals, and critical customer journeys using Postman, Runscope, Ghost Inspector, and UptimeRobot.
+
+• Led investigation of complex product and production issues through reproduction, user testing, database queries, log analysis, and cross-functional technical review.
+
+• Managed internal and external knowledge and Support Center content across Salesforce, Oracle Knowledge Management, and Microsoft Dynamics.
+
+• Improved incident response, service communications, operational reporting, and visibility into product and customer-impacting issues.
+
+ Technical Support, Troubleshooting and +10 skills
+
+Senior Product Support Engineer (PSE)
+
+Oct 2015 - Apr 2017 · 1 yr 7 mos
+
+Bellevue, WA
+
+Served as a senior technical and product subject-matter expert for the Authorize.net platform, supporting complex payment, API, operational, and partner issues across merchants, resellers, internal teams, and external partners.
+
+• Led advanced troubleshooting across payment processing, APIs, merchant interfaces, account configuration, partner integrations, billing, and residuals.
+
+• Investigated complex bugs and customer-impacting issues through transaction analysis, reproduction, log review, user testing, and collaboration with Engineering and Quality Assurance.
+
+• Assessed production issues for business and customer impact, severity, workarounds, and escalation requirements while coordinating clear service communications to support teams and stakeholders.
+
+• Partnered with QA and business teams to validate new and updated products, develop test scenarios, identify supportability gaps, and assess readiness before and after release.
+
+• Supported emerging digital-payment capabilities including Apple Pay, Google Pay, Visa Checkout, mobile payments, and mobile point-of-sale solutions.
+
+• Used Tableau and operational data to identify trends, investigate issues, and support business decisions; contributed to Knowledge-Centered Service practices and product documentation.
+
+ Technical Support, Troubleshooting and +9 skills
+
+Product Support Engineer (PSE)
+
+Sep 2011 - Oct 2015 · 4 yrs 2 mos
+
+Bellevue, WA
+
+Served as a platform subject-matter expert and escalation resource for complex technical, product, operational, merchant, and partner issues across Authorize.net products and payment services.
+
+* Provided advanced technical support for Authorize.net APIs, payment products, merchant tools, partner programs, billing processes, and account configurations.
+
+* Investigated complex issues by reproducing reported behavior, analyzing transactions and logs, and partnering with Engineering and Quality Assurance to identify defects and validate resolutions.
+
+* Managed escalations and production-incident communications, translating technical issues into customer impact, workarounds, and resolution status for support teams.
+
+* Documented and tracked product defects, including severity, frequency, customer impact, and operational risk, helping Product and Engineering prioritize investigation and remediation.
+
+* Partnered with Product Management, Engineering, and Quality Assurance to validate new products, platform changes, and releases through test cases and real-world customer scenarios.
+
+* Supported partner and reseller programs, billing and residual processes, mobile payments, and emerging digital-payment capabilities.
+
+* Used Tableau and reporting tools to identify customer, product, and operational trends and surface recurring issues and improvement opportunities.
+
+* Created and maintained support documentation using Knowledge-Centered Service (KCS) practices.
+
+ Technical Support, Troubleshooting and +9 skills
+
+Senior Customer Support Representative
+
+Feb 2009 - Sep 2011 · 2 yrs 8 mos
+
+Bellevue, WA
+
+Provided advanced technical and account support to merchants, partners, resellers, and acquiring organizations using the Authorize.net payment platform, while serving as an escalation resource and subject-matter expert for the Customer Support organization.
+
+* Resolved escalated technical, integration, transaction, billing, and account-related issues for merchants and partners.
+
+* Troubleshot merchant websites, shopping-cart integrations, payment-processing configurations, APIs, and hosted payment solutions.
+
+* Diagnosed implementation and configuration issues, helping merchants and partners understand system behavior, technical requirements, and resolution options.
+
+* Served as a subject-matter expert and escalation resource for Customer Support representatives, providing guidance on complex product and technical issues.
+
+* Documented emerging issues, troubleshooting procedures, and product guidance for internal and customer-facing use.
+
+* Partnered with Product Support, Operations, and technical teams to identify and escalate recurring or widespread customer issues.
+
+* Identified opportunities to improve support workflows, documentation, and the overall customer experience.
+
+ Customer Service, Technical Support and +5 skills
+
+Customer Support Representative
+
+Jun 2006 - Feb 2009 · 2 yrs 9 mos
+
+Bellevue, WA
+
+Provided front-line technical and account support to merchants and partners using Authorize.net payment-processing products and services, building foundational expertise in payments, ecommerce integrations, and merchant support.
+
+* Assisted merchants with transaction processing, account configuration, reporting, billing, and payment-platform usage.
+
+* Troubleshot merchant websites, shopping carts, payment integrations, account settings, and transaction-processing issues.
+
+* Helped merchants with varying levels of technical experience understand payment integrations, system behavior, and resolution steps.
+
+* Documented troubleshooting results and unresolved issues to support effective technical escalation.
+
+* Developed expertise in payment gateways, merchant acquiring, card processing, APIs, ecommerce integrations, and partner support.
+
+ Customer Service, Troubleshooting and +3 skills
