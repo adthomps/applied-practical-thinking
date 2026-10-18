@@ -23,8 +23,8 @@
       "secondary": "hsl(220,15%,18%)",
       "secondaryForeground": "hsl(220,10%,90%)",
       "secondaryHover": "rgba(255,255,255,0.08)",
-      "accent": "hsl(165,45%,40%)",
-      "accentForeground": "hsl(220,20%,8%)",
+      "accent": "hsl(220,22%,19%)",
+      "accentForeground": "hsl(220,10%,95%)",
       "danger": "hsl(0,65%,45%)",
       "dangerForeground": "hsl(0,0%,100%)",
       "warning": "hsl(38,92%,50%)",
@@ -42,15 +42,15 @@
       "actionSecondary": "hsl(220,15%,18%)",
       "actionSecondaryHover": "rgba(255,255,255,0.08)",
       "selected": "hsl(220,70%,61%)",
-      "selectedSupport": "hsl(165,45%,40%)",
+      "selectedSupport": "hsl(220,70%,61%)",
       "disabledSurface": "rgba(255,255,255,0.04)",
       "disabledText": "rgba(234,242,255,0.42)",
       "overlay": "hsl(220,20%,4%,0.82)",
       "chart1": "hsl(220,70%,61%)",
-      "chart2": "hsl(165,45%,40%)",
+      "chart2": "hsl(30,75%,50%)",
       "chart3": "hsl(280,55%,55%)",
-      "chart4": "hsl(30,75%,50%)",
-      "chart5": "hsl(340,65%,55%)",
+      "chart4": "hsl(340,65%,55%)",
+      "chart5": "hsl(205,90%,70%)",
       "glow": "hsl(220,70%,61%)"
     },
     "colorLightStatus": {
@@ -132,7 +132,7 @@
     "Projects may adapt token values, but must preserve semantic token names, and adapted values must still meet the contrast rule below.",
     "Base tokens remain valid for compatibility, but UI implementation should prefer semantic interaction aliases such as link, focusRing, navActive, actionPrimary, selected, selectedSupport, and disabledText.",
     "Blue is the primary brand/action color for primary calls to action, links, focus rings, and high-frequency action emphasis.",
-    "Teal is the highlight color for hover and selected states that previously used a neutral grey surface, including ghost and outline buttons, menu items, dropdown options, sidebar items, and docs navigation, and for explicit support semantics such as section identity, badges, callouts, and charts. It is not the default call-to-action color. Success uses the success token, never the accent.",
+    "Hover on ghost and outline buttons, menu items, dropdown options, sidebar items, and docs navigation uses the quiet accent surface. Selected items use a faint primary tint with a 2px primary bar on the inline-start edge. UI chrome has no second accent hue. Success uses the success token for status only.",
     "Neutral surface tokens are the resting treatment for secondary buttons, inactive navigation, tabs, cards, panels, and disabled surfaces.",
     "Danger, warning, and success tokens are semantic feedback colors, not general decoration. They are canonical: products must not define their own status colors.",
     "Every text token must meet WCAG AA (4.5:1) on every surface it appears on in its theme (background, surface, surfaceElevated, secondary, muted). Primary text is AA on background and surface only; links on raised surfaces use text color with an underline.",
@@ -142,5 +142,5 @@
     "One-off colors, shadows, spacing, typography, icon styles, and motion values require a design decision record.",
     "Public APT surfaces should prefer the full APT visual system unless a project has its own approved brand layer."
   ],
-  "designVersion": "2.1.2"
+  "designVersion": "2.2.0"
 }

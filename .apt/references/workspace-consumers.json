@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "owner": "APT",
-  "last_updated": "2026-10-04",
+  "last_updated": "2026-10-12",
   "consumers": [
     {
       "repository": "adthomps.github.io",
@@ -197,24 +197,6 @@
       "tier": 1
     },
     {
-      "repository": "apt-design-reference",
-      "manifests": [
-        "core",
-        "ux-review",
-        "documentation",
-        "ai-development"
-      ],
-      "platforms": [
-        "codex",
-        "claude",
-        "copilot",
-        "gemini",
-        "cursor"
-      ],
-      "validation": [],
-      "tier": 3
-    },
-    {
       "repository": "apt-developer-mcp-payments",
       "manifests": [
         "core",
@@ -284,7 +266,8 @@
         "api-review",
         "ux-review",
         "security",
-        "ai-development"
+        "ai-development",
+        "design"
       ],
       "platforms": [
         "codex",
@@ -298,22 +281,6 @@
         "npm run build"
       ],
       "tier": 1
-    },
-    {
-      "repository": "apt-intake",
-      "manifests": [
-        "governance",
-        "core"
-      ],
-      "platforms": [
-        "codex",
-        "claude",
-        "copilot",
-        "gemini",
-        "cursor"
-      ],
-      "validation": [],
-      "tier": 3
     },
     {
       "repository": "apt-novel-reviewer",
@@ -458,7 +425,8 @@
         "cloudflare",
         "documentation",
         "ux-review",
-        "ai-development"
+        "ai-development",
+        "design"
       ],
       "platforms": [
         "codex",

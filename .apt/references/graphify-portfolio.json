@@ -95,13 +95,6 @@
         "source_location": "Relationships to preserve"
       },
       {
-        "source": "apt-intake",
-        "target": "apt-dream-to-reality",
-        "relation": "accepted_context_to_product_planning",
-        "source_file": "apt-dream-to-reality/docs/INTAKE_TO_DELIVERY_CONTRACT.md",
-        "source_location": "L16"
-      },
-      {
         "source": "apt-principles-agents",
         "target": "apt-dream-to-reality",
         "relation": "productization_destination",
@@ -114,20 +107,6 @@
         "relation": "owns_reusable_doctrine_for",
         "source_file": "apt-dream-to-reality/docs/WORKING_BACKWARDS_PRODUCT_TEAM_APPLICATION.md",
         "source_location": "L10"
-      },
-      {
-        "source": "apt-design-reference",
-        "target": "apt-principles-agents",
-        "relation": "historical_design_evidence_for",
-        "source_file": "apt-principles-agents/docs/design-reference-intake.md",
-        "source_location": "L17"
-      },
-      {
-        "source": "apt-design-reference",
-        "target": "applied-practical-thinking",
-        "relation": "promoted_public_examples_to",
-        "source_file": "apt-principles-agents/docs/design-reference-intake.md",
-        "source_location": "L17"
       },
       {
         "source": "apt-security-harness",
@@ -165,7 +144,6 @@
       "title": "Intake to delivery",
       "minimum_repositories": 2,
       "sources": [
-        "apt-intake/docs/operating-model.md",
         "apt-principles-agents/product-team/docs/operating-model.md",
         "apt-principles-agents/product-team/docs/formalization-direction.md",
         "apt-principles-agents/product-team/INTAKE_APPLICATION_DIRECTION.md",
@@ -193,23 +171,6 @@
         "How does canonical doctrine become locally adopted behavior?",
         "Which evidence reveals stale, partial, or divergent adoption?",
         "What is canonical, generated, or merely inferred?"
-      ]
-    },
-    {
-      "id": "design-provenance",
-      "title": "Design provenance",
-      "minimum_repositories": 3,
-      "sources": [
-        "apt-design-reference/README.md",
-        "apt-design-reference/docs/archive-decision.md",
-        "apt-design-reference/docs/project-context.md",
-        "apt-principles-agents/docs/design-reference-intake.md",
-        "applied-practical-thinking/docs/DESIGN_REFERENCE_MERGE_DIRECTION.md"
-      ],
-      "questions": [
-        "How does frozen design evidence connect to canonical guidance and public implementation?",
-        "Which sources are historical evidence versus active authority?",
-        "Where could a consumer mistake copied evidence for canonical doctrine?"
       ]
     },
     {
@@ -496,19 +457,6 @@
       ]
     },
     {
-      "name": "apt-design-reference",
-      "participation": "selected-provenance",
-      "wave": "portfolio-only",
-      "portfolio_paths": [
-        "README.md",
-        "AGENTS.md",
-        "SKILL.md",
-        "docs/project-context.md",
-        "docs/archive-decision.md"
-      ],
-      "reason": "Frozen evidence is included only to preserve design provenance and promotion paths."
-    },
-    {
       "name": "apt-dream-to-reality",
       "participation": "deep",
       "wave": 1,
@@ -562,18 +510,6 @@
         "What would be affected by adding a new supported source or import format?",
         "Where are privacy boundaries, clinician-follow-up limits, and non-goals enforced?"
       ]
-    },
-    {
-      "name": "apt-intake",
-      "participation": "portfolio-metadata",
-      "wave": "portfolio-only",
-      "portfolio_paths": [
-        "README.md",
-        "AGENTS.md",
-        "docs/project-context.md",
-        "docs/operating-model.md"
-      ],
-      "reason": "Small operational front door whose main value is its routing relationship to owning repositories."
     },
     {
       "name": "apt-novel-reviewer",

@@ -148,7 +148,7 @@ export default function PortfolioContentStrategy() {
           description="Content strategy at APT is not decoration. It is the information architecture that helps people understand what they are looking at, why it exists, and how to move from learning to reference to working proof."
           titleClassName="text-3xl md:text-4xl"
           descriptionClassName="text-lg"
-          eyebrow={<AptTag variant="accent">Content Strategy</AptTag>}
+          eyebrow={<AptTag variant="primary">Content Strategy</AptTag>}
         >
           <div className="flex flex-wrap gap-3">
             <AptButton variant="outline" asChild>

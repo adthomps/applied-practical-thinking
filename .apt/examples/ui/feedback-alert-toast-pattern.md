@@ -38,7 +38,7 @@ modal/dialog -> user decision, irreversible action, or focused form task
 full-page error -> route-level 403, 404, 500, or unavailable state
 ```
 
-Color is semantic only, using canonical tokens: blue (`primary`) for information/action, green (`success`) for success, amber (`warning`) for warning, red (`destructive`) for error, and neutral for passive status. Success is not the teal accent. Feedback should include text, iconography, and placement so meaning does not depend on color alone.
+Color is semantic only, using canonical tokens: blue (`primary`) for information/action, green (`success`) for success, amber (`warning`) for warning, red (`destructive`) for error, and neutral for passive status. Feedback should include text, iconography, and placement so meaning does not depend on color alone.
 
 Use `examples/ui/design-reference-kit/ui_kits/account/` and `examples/ui/design-reference-kit/ui_kits/patterns/` as reference implementations.
 
@@ -65,7 +65,7 @@ Persistent feedback can add visual weight. Transient feedback is calmer, but it 
 - Using a toast for a blocking error.
 - Showing success with color only and no confirmation copy.
 - Omitting retry, request ID, or support context for recoverable failures.
-- Using teal, amber, or red to create visual variety instead of semantic feedback.
+- Using green, amber, or red to create visual variety instead of semantic feedback.
 
 ## Related Documents
 

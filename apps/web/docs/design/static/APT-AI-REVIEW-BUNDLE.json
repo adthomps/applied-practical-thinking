@@ -36,7 +36,7 @@
         "ctaLabel": "Download Review Standard",
         "ctaVariant": "primary",
         "tagLabel": "Start Here",
-        "tagVariant": "accent",
+        "tagVariant": "primary",
         "icon": "bot",
         "description": "Umbrella review contract for information architecture, design system usage, design architecture, systems framing, and content strategy."
       }
@@ -84,7 +84,7 @@
         "ctaLabel": "Download Principles Framework",
         "ctaVariant": "outline",
         "tagLabel": "Start Here",
-        "tagVariant": "accent",
+        "tagVariant": "primary",
         "icon": "sparkles",
         "description": "Canonical APT principles framework with the 10-group model and lifecycle map."
       }
@@ -380,7 +380,7 @@
       "ui": {
         "cardOrder": 25,
         "tagLabel": "AI",
-        "tagVariant": "accent",
+        "tagVariant": "primary",
         "icon": "bot",
         "description": "Agent contracts, prompt templates, and evaluation practices." 
       }

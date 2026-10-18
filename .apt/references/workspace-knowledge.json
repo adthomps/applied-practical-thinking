@@ -1,18 +1,18 @@
 {
   "version": "1.0.0",
   "owner": "APT",
-  "last_updated": "2026-10-04",
+  "last_updated": "2026-10-12",
   "description": "How workspace repos relate: PROJECTS.md grouping, which repos feed which knowledge source, and which files are copies of a source of truth. Names and descriptions stay in each repo's docs/project-identity.md.",
   "groups": [
     {
       "id": "core",
       "title": "Portfolio and APT core",
-      "repositories": ["adthomps.github.io", "applied-practical-thinking", "apt-principles-agents", "apt-design-reference", "apt-dream-to-reality", "apt-intake", "apt-security-harness"]
+      "repositories": ["adthomps.github.io", "applied-practical-thinking", "apt-principles-agents", "apt-dream-to-reality", "apt-security-harness", "apt-remotion"]
     },
     {
       "id": "products",
       "title": "Products",
-      "repositories": ["apt-commerce", "apt-health", "apt-novel-reviewer", "apt-grey-rain"]
+      "repositories": ["apt-commerce", "apt-health", "apt-novel-reviewer", "apt-grey-rain", "crt-world"]
     },
     {
       "id": "anet",
@@ -36,11 +36,6 @@
       "id": "playwright",
       "title": "Playwright overview",
       "repositories": ["apt-playwright-compass"]
-    },
-    {
-      "id": "unconfirmed",
-      "title": "Present on disk, description not confirmed",
-      "repositories": ["crt-world"]
     }
   ],
   "feeds": [

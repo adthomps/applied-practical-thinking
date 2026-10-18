@@ -1,19 +1,19 @@
 ---
 name: cloudflare-react-hono
-description: Use when building or reviewing React, Vite, Hono, and Cloudflare Workers or Pages applications.
+description: Use when building or reviewing React, Vite, Hono, and Cloudflare Workers applications. New apps use one Worker with static assets. Existing Pages apps stay until a reviewed move.
 title: "Cloudflare React Hono"
 kind: "platform-adapter"
 domain: "platforms"
 status: "active"
 owner: "APT"
-last_updated: "2026-06-28"
+last_updated: "2026-10-12"
 source_paths: ["apt-agent-standards/codex/skills/cloudflare-react-hono/SKILL.md"]
 ---
 
 # Cloudflare React Hono
 
 ## Purpose
-Guide Cloudflare app implementation with React, Vite, Hono, Workers, Pages, and TypeScript.
+Guide Cloudflare app implementation with React, Vite, Hono, Workers, and TypeScript. A new app uses one Worker with static assets. An existing Pages app stays until a reviewed move.
 
 ## When To Use
 Use for Cloudflare frontend/API architecture, bindings, routes, and deployment scripts.
@@ -33,8 +33,8 @@ Read:
 - Tests and deployment docs.
 
 ## Process
-1. Map static frontend responsibilities to Pages or static hosting.
-2. Map dynamic behavior to Worker routes, preferably under `/api` when appropriate.
+1. For a new app, serve the Vite build and the API from one Worker with static assets.
+2. For an existing Pages plus Worker app, keep that split until a reviewed move. Map dynamic behavior to Hono routes, preferably under `/api` when appropriate.
 3. Review Hono route structure, middleware order, error handling, and response shapes.
 4. Check binding names, environment separation, and local dev assumptions.
 5. Choose D1, KV, or R2 only when the data model requires it.

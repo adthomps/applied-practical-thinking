@@ -3,7 +3,7 @@ title: APT Principles + Agents
 kind: repository
 status: active
 owner: APT
-last_updated: 2026-06-27
+last_updated: 2026-10-04
 source: APT consolidation
 domain: "governance"
 source_paths: ["apt-principles-agents/README.md"]
@@ -22,7 +22,7 @@ source_paths: ["apt-principles-agents/README.md"]
 
 ## Use It As A Human
 
-Start in [principles](principles/README.md), choose a [template](./templates/README.md), use a [skill](skills/README.md) for the workflow, and ask the relevant [agent perspective](agents/README.md) to review the result. Product-facing work should use a [Product Hub](product-hubs/README.md).
+Start in [principles](principles/README.md), choose a [template](./templates/README.md), use a [skill](skills/README.md) for the workflow, and ask the relevant [agent perspective](agents/README.md) to review the result. Product-facing work should use a [Product Hub](product-hubs/README.md). The [APT Agent and Persona Directory](docs/agent-persona-directory.md) is the workspace-level index for canonical roles, local workers, platform availability, product personas, and related mechanisms. The internal [Product Team planning subsystem](product-team/README.md) is maintained here; its Working Backwards workers and planning records are distinct from canonical roles and product-owned personas.
 
 ## Use It With AI Tools
 
@@ -50,7 +50,7 @@ Existing files are skipped by default. The force option creates timestamped back
 
 ## Product Hubs And Audience Layers
 
-A Product Hub is the canonical product-facing package for business/merchant, bank/acquirer/partner, integrator/developer, support/operations, product/internal, and AI-agent audiences. Each layer shares one verified product truth but answers the questions and operational needs of its audience.
+A Product Hub is the canonical product-facing package for business/merchant, bank/acquirer/partner, integrator/developer, support/operations, and product/internal audiences. Product/customer personas and their evidence belong to the product repository that owns them. AI agents may consume those audience layers, but the global [agent catalog](agents/README.md) defines accountable agent roles, not customer personas. Each layer shares one verified product truth but answers the questions and operational needs of its audience.
 
 ## Domain Coverage
 
@@ -63,6 +63,12 @@ The [game-development domain](principles/game-development/README.md) helps begin
 ## Reviews
 
 Use micro-group review for focused cross-functional decisions and swarm review for broad, high-risk work. Every reviewer returns perspective, concerns, recommended changes, risks, questions, and approval status. Always include a beginner reviewer for onboarding, APIs, guides, UI journeys, migrations, troubleshooting, and Product Hubs.
+
+## Workspace knowledge graph
+
+The Graphify operator in `scripts/graphify-workspace.mjs` builds a deterministic portfolio map from the workspace project catalog and explicitly sourced relationships. Run `npm run graphify:portfolio` to generate the portfolio graph, report, and HTML under ignored `graphify-out/portfolio/current/`; run `npm run graphify:portfolio:check` to verify the JSON and report are current. The portfolio map is a routing index, not authority for local project behavior.
+
+Detailed graphs remain repository-local and opt-in: `code <repo>` builds an AST-only candidate for configured code repositories, while `content <repo>` stages only the configured authored Markdown sources and extracts them with local-only Ollama. Candidates stay under each repository's ignored `graphify-out/runs/`; review before explicit promotion. Content graphs are navigation aids, not sources of truth. `apt-vas-smb-training` remains explicitly provisional. Full-portfolio semantic builds, hosted extraction, hooks, schedules, and automatic promotion remain disabled. See each target repository's `docs/graphify.md` and `references/graphify-portfolio.json` for scope and exclusions.
 
 ## Contribute
 

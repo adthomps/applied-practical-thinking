@@ -50,6 +50,10 @@ Every decision must state one: **Mature today**, **Emerging**, **Future-looking*
 - State what is verified, what is assumed, and what requires specialist or human approval.
 
 See the [Stablecoin Crypto canonical hub](README.md) and linked standards/checklists before making final claims.
+## Applied by
+
+- [suvi](../../agents/payments/suvi.md) — Use when a product is evaluating or building stablecoin acceptance or settlement, to confirm operational and compliance readiness before launch.
+
 ## Related
 
 - [APT Principles](../README.md)

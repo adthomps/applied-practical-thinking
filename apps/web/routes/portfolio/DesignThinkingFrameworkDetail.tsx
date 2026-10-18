@@ -58,7 +58,7 @@ export default function DesignThinkingFrameworkDetail() {
           descriptionClassName="text-lg"
           eyebrow={
             <div className="flex items-center gap-3">
-              <AptTag variant="accent">Thinking Framework</AptTag>
+              <AptTag variant="primary">Thinking Framework</AptTag>
               <AptTag variant="outline">{entry.shortTitle}</AptTag>
             </div>
           }

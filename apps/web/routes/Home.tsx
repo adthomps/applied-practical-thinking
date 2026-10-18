@@ -278,7 +278,7 @@ export default function Home() {
                   <div className="flex items-start justify-between mb-2">
                     <div className="flex flex-wrap gap-2">
                       <AptTag variant="primary">{typeLabel}</AptTag>
-                      <AptTag variant="accent">{laneLabel}</AptTag>
+                      <AptTag variant="primary">{laneLabel}</AptTag>
                     </div>
                     {statusTag ? <AptTag variant={statusTag.variant}>{statusTag.label}</AptTag> : null}
                   </div>

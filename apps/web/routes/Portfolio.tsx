@@ -159,7 +159,7 @@ export default function Portfolio() {
           <div className="space-y-5">
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
               <div className="space-y-2">
-                <AptTag variant="accent" size="sm">Published Framework</AptTag>
+                <AptTag variant="primary" size="sm">Published Framework</AptTag>
                 <h2 className="text-2xl font-semibold tracking-tight">APT Principles Framework</h2>
                 <p className="text-sm text-muted-foreground">
                   Use this index to jump directly to the framework or any principle group section.

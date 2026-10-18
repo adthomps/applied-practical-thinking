@@ -54,6 +54,10 @@ Every decision must state one: **Mature today**, **Emerging**, **Future-looking*
 - Require current evidence and named legal, compliance, treasury, security, risk, operations, and product approvals.
 
 See the [Stablecoin Crypto canonical hub](README.md) and linked standards/checklists before making final claims.
+## Applied by
+
+- [apt-crypto-payment-risk-reviewer](../../agents/payments/apt-crypto-payment-risk-reviewer.md) — Use when a payment flow accepts or settles in cryptocurrency and needs review for custody, volatility, and settlement risk.
+
 ## Related
 
 - [APT Principles](../README.md)

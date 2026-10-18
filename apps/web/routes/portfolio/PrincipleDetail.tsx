@@ -59,7 +59,7 @@ export default function PrincipleDetail() {
           description={group.detailSummary}
           titleClassName="text-3xl md:text-4xl"
           descriptionClassName="text-lg"
-          eyebrow={<AptTag variant="accent">{group.framing}</AptTag>}
+          eyebrow={<AptTag variant="primary">{group.framing}</AptTag>}
         >
           <div className="flex flex-wrap items-center gap-2">
             <AptTag variant="secondary">{group.publicDocMeta?.version || "v1"}</AptTag>

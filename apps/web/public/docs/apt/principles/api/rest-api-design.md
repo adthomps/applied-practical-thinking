@@ -46,6 +46,10 @@ Review for fashion-driven protocol choices, ambiguous errors, unsafe retries, un
 - State what is verified, what is assumed, and what requires specialist or human approval.
 
 See the [Api canonical hub](README.md) and linked standards/checklists before making final claims.
+## Applied by
+
+- [glyph](../../agents/api/glyph.md) — Use when a decision or deliverable must select API styles from audience and behavior, then make contracts predictable, secure, observable, evolvable, and usable by humans and agents, especially when it affects multiple audiences or high-accuracy domains.
+
 ## Related
 
 - [APT Principles](../README.md)

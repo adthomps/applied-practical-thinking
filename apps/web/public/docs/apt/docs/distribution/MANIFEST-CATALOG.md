@@ -20,6 +20,7 @@ Generated from active repository artifacts by `scripts/generate-catalogs.mjs`. D
 | [cloudflare.yaml](../../manifests/cloudflare.yaml) | `manifests/cloudflare.yaml` | Cloudflare Workers, Hono, Pages, bindings, deployment, and modernization. |
 | [core.yaml](../../manifests/core.yaml) | `manifests/core.yaml` | APT framework, four pillars, baseline standards, checks, skills, agents, and adapters. |
 | [custom.yaml](../../manifests/custom.yaml) | `manifests/custom.yaml` | Explicitly empty manifest for project-owned composition. |
+| [design.yaml](../../manifests/design.yaml) | `manifests/design.yaml` | Canonical APT design tokens, generated token CSS and Tailwind presets, and the apt-design-check contrast, drift and lint check (DR-015 / APT-019). |
 | [documentation.yaml](../../manifests/documentation.yaml) | `manifests/documentation.yaml` | Audience-layered documentation, Product Hubs, knowledge, support, and examples. |
 | [dream-to-reality.yaml](../../manifests/dream-to-reality.yaml) | `manifests/dream-to-reality.yaml` | Idea-to-project Working Backwards, generated assets, implementation prompts, validation, and release readiness. |
 | [full.yaml](../../manifests/full.yaml) | `manifests/full.yaml` | All supported APT capabilities. |
@@ -38,3 +39,4 @@ Generated from active repository artifacts by `scripts/generate-catalogs.mjs`. D
 | [standard.yaml](../../manifests/standard.yaml) | `manifests/standard.yaml` | Core APT plus documentation, governance, API, security, and UX review. |
 | [training.yaml](../../manifests/training.yaml) | `manifests/training.yaml` | Beginner clarity, learning plans, examples, and progressive enablement. |
 | [ux-review.yaml](../../manifests/ux-review.yaml) | `manifests/ux-review.yaml` | Intent-based UI, accessibility, roles, journeys, responsive behavior, and design review. |
+| [working-backwards.yaml](../../manifests/working-backwards.yaml) | `manifests/working-backwards.yaml` | Working Backwards product method — principle, stage templates, domain profiles (payments, game-development), orchestrator and writer/critic sub-agents, session and critic skills, a |

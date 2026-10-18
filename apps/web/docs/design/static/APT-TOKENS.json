@@ -15,8 +15,8 @@
         "secondary-foreground": { "value": "hsl(220, 10%, 90%)", "type": "color", "description": "Text on secondary" },
         "muted": { "value": "hsl(220, 15%, 15%)", "type": "color", "description": "Subdued backgrounds" },
         "muted-foreground": { "value": "hsl(220, 10%, 60%)", "type": "color", "description": "Secondary/subdued text" },
-        "accent": { "value": "hsl(165, 45%, 40%)", "type": "color", "description": "Teal highlight for hover and selected states. Not the default call to action." },
-        "accent-foreground": { "value": "hsl(220, 20%, 8%)", "type": "color", "description": "Text on accent - dark for contrast" },
+        "accent": { "value": "hsl(220, 22%, 19%)", "type": "color", "description": "Quiet hover surface for ghost and outline buttons, menus, dropdowns, sidebar and docs navigation. Not a brand color, not the selected state, and not the call to action." },
+        "accent-foreground": { "value": "hsl(220, 10%, 95%)", "type": "color", "description": "Text on the accent hover surface" },
         "overlay": { "value": "hsl(220, 20%, 4% / 0.82)", "type": "color", "description": "Modal and sheet overlay scrim" },
         "destructive": { "value": "hsl(0, 65%, 45%)", "type": "color", "description": "Error/danger color" },
         "destructive-foreground": { "value": "hsl(0, 0%, 100%)", "type": "color", "description": "Text on destructive" },
@@ -36,8 +36,8 @@
         "sidebar-foreground": { "value": "hsl(220, 10%, 95%)", "type": "color", "description": "Sidebar foreground" },
         "sidebar-primary": { "value": "hsl(220, 70%, 61%)", "type": "color", "description": "Sidebar primary" },
         "sidebar-primary-foreground": { "value": "hsl(220, 20%, 8%)", "type": "color", "description": "Sidebar primary-foreground" },
-        "sidebar-accent": { "value": "hsl(165, 45%, 40%)", "type": "color", "description": "Sidebar and docs navigation hover highlight. Same teal as accent." },
-        "sidebar-accent-foreground": { "value": "hsl(220, 20%, 8%)", "type": "color", "description": "Text on the sidebar hover highlight" },
+        "sidebar-accent": { "value": "hsl(220, 22%, 19%)", "type": "color", "description": "Sidebar and docs navigation hover surface. Same as accent." },
+        "sidebar-accent-foreground": { "value": "hsl(220, 10%, 95%)", "type": "color", "description": "Text on the sidebar hover surface" },
         "sidebar-border": { "value": "hsl(220, 15%, 18%)", "type": "color", "description": "Sidebar border" },
         "sidebar-ring": { "value": "hsl(220, 70%, 61%)", "type": "color", "description": "Sidebar ring" }
       },
@@ -54,8 +54,8 @@
         "secondary-foreground": { "value": "hsl(220, 20%, 10%)", "type": "color", "description": "Light secondary text" },
         "muted": { "value": "hsl(220, 15%, 92%)", "type": "color", "description": "Light muted" },
         "muted-foreground": { "value": "hsl(220, 10%, 40%)", "type": "color", "description": "Light muted text" },
-        "accent": { "value": "hsl(165, 45%, 35%)", "type": "color", "description": "Light-mode teal highlight for hover and selected states. Not the default call to action." },
-        "accent-foreground": { "value": "hsl(0, 0%, 100%)", "type": "color", "description": "Light accent text - white for contrast" },
+        "accent": { "value": "hsl(220, 30%, 91%)", "type": "color", "description": "Light-mode quiet hover surface for ghost and outline buttons, menus, dropdowns, sidebar and docs navigation. Not a brand color, not the selected state, and not the call to action." },
+        "accent-foreground": { "value": "hsl(220, 20%, 10%)", "type": "color", "description": "Text on the light accent hover surface" },
         "overlay": { "value": "hsl(220, 20%, 8% / 0.78)", "type": "color", "description": "Modal and sheet overlay scrim" },
         "destructive": { "value": "hsl(0, 70%, 50%)", "type": "color", "description": "Light destructive" },
         "destructive-foreground": { "value": "hsl(0, 0%, 100%)", "type": "color", "description": "Light destructive text" },
@@ -75,24 +75,24 @@
         "sidebar-foreground": { "value": "hsl(220, 20%, 10%)", "type": "color", "description": "Sidebar foreground" },
         "sidebar-primary": { "value": "hsl(220, 70%, 50%)", "type": "color", "description": "Sidebar primary" },
         "sidebar-primary-foreground": { "value": "hsl(0, 0%, 100%)", "type": "color", "description": "Sidebar primary-foreground" },
-        "sidebar-accent": { "value": "hsl(165, 45%, 35%)", "type": "color", "description": "Light sidebar and docs navigation hover highlight. Same teal as accent." },
-        "sidebar-accent-foreground": { "value": "hsl(0, 0%, 100%)", "type": "color", "description": "Text on the light sidebar hover highlight" },
+        "sidebar-accent": { "value": "hsl(220, 30%, 91%)", "type": "color", "description": "Light sidebar and docs navigation hover surface. Same as accent." },
+        "sidebar-accent-foreground": { "value": "hsl(220, 20%, 10%)", "type": "color", "description": "Text on the light sidebar hover surface" },
         "sidebar-border": { "value": "hsl(220, 15%, 85%)", "type": "color", "description": "Sidebar border" },
         "sidebar-ring": { "value": "hsl(220, 70%, 50%)", "type": "color", "description": "Sidebar ring" }
       },
       "chart": {
         "1": { "value": "hsl(220, 70%, 61%)", "type": "color", "description": "Chart color 1 - Primary blue" },
-        "2": { "value": "hsl(165, 45%, 40%)", "type": "color", "description": "Chart color 2 - restricted support accent" },
+        "2": { "value": "hsl(30, 75%, 50%)", "type": "color", "description": "Chart color 2 - Orange" },
         "3": { "value": "hsl(280, 55%, 55%)", "type": "color", "description": "Chart color 3 - Purple" },
-        "4": { "value": "hsl(30, 75%, 50%)", "type": "color", "description": "Chart color 4 - Orange" },
-        "5": { "value": "hsl(340, 65%, 55%)", "type": "color", "description": "Chart color 5 - Pink" }
+        "4": { "value": "hsl(340, 65%, 55%)", "type": "color", "description": "Chart color 4 - Pink" },
+        "5": { "value": "hsl(205, 90%, 70%)", "type": "color", "description": "Chart color 5 - Sky" }
       },
       "chartLight": {
         "1": { "value": "hsl(220, 70%, 50%)", "type": "color", "description": "Light chart color 1 - Primary blue" },
-        "2": { "value": "hsl(165, 45%, 40%)", "type": "color", "description": "Light chart color 2 - restricted support accent" },
+        "2": { "value": "hsl(30, 80%, 55%)", "type": "color", "description": "Light chart color 2 - Orange" },
         "3": { "value": "hsl(280, 60%, 50%)", "type": "color", "description": "Light chart color 3 - Purple" },
-        "4": { "value": "hsl(30, 80%, 55%)", "type": "color", "description": "Light chart color 4 - Orange" },
-        "5": { "value": "hsl(340, 70%, 50%)", "type": "color", "description": "Light chart color 5 - Pink" }
+        "4": { "value": "hsl(340, 70%, 50%)", "type": "color", "description": "Light chart color 4 - Pink" },
+        "5": { "value": "hsl(205, 85%, 40%)", "type": "color", "description": "Light chart color 5 - Sky" }
       }
     },
     "typography": {
@@ -331,10 +331,6 @@
             "background": { "value": "transparent", "type": "color" },
             "foreground": { "value": "{color.dark.foreground}", "type": "color" },
             "hoverBackground": { "value": "{color.dark.accent}", "type": "color" }
-          },
-          "accent": {
-            "background": { "value": "{color.dark.accent}", "type": "color" },
-            "foreground": { "value": "{color.dark.accent-foreground}", "type": "color" }
           }
         }
       },
@@ -359,7 +355,12 @@
           "background": { "value": "transparent", "type": "color" },
           "foreground": { "value": "{color.dark.sidebar-foreground}", "type": "color" },
           "hoverBackground": { "value": "{color.dark.accent}", "type": "color", "description": "Sidebar item hover highlight" },
-          "hoverForeground": { "value": "{color.dark.accent-foreground}", "type": "color" }
+          "hoverForeground": { "value": "{color.dark.accent-foreground}", "type": "color" },
+          "selected": {
+            "background": { "value": "hsl(220, 70%, 61% / 0.12)", "type": "color", "description": "Selected item surface: faint primary tint" },
+            "foreground": { "value": "{color.dark.foreground}", "type": "color" },
+            "indicator": { "value": "{color.dark.primary}", "type": "color", "description": "2px inline-start bar marking the selected item" }
+          }
         }
       },
       "docsNav": {
@@ -367,7 +368,12 @@
           "background": { "value": "transparent", "type": "color" },
           "foreground": { "value": "{color.dark.foreground}", "type": "color" },
           "hoverBackground": { "value": "{color.dark.accent}", "type": "color", "description": "Docs navigation item hover highlight" },
-          "hoverForeground": { "value": "{color.dark.accent-foreground}", "type": "color" }
+          "hoverForeground": { "value": "{color.dark.accent-foreground}", "type": "color" },
+          "selected": {
+            "background": { "value": "hsl(220, 70%, 61% / 0.12)", "type": "color", "description": "Selected item surface: faint primary tint" },
+            "foreground": { "value": "{color.dark.foreground}", "type": "color" },
+            "indicator": { "value": "{color.dark.primary}", "type": "color", "description": "2px inline-start bar marking the selected item" }
+          }
         }
       },
       "card": {
@@ -416,10 +422,6 @@
             "background": { "value": "{color.dark.secondary}", "type": "color" },
             "foreground": { "value": "{color.dark.secondary-foreground}", "type": "color" }
           },
-          "accent": {
-            "background": { "value": "hsl(165, 55%, 45% / 0.2)", "type": "color" },
-            "foreground": { "value": "{color.dark.accent}", "type": "color" }
-          },
           "primary": {
             "background": { "value": "hsl(220, 70%, 61% / 0.2)", "type": "color" },
             "foreground": { "value": "{color.dark.primary}", "type": "color" }
@@ -456,7 +458,7 @@
   },
   "$metadata": {
     "tokenSetOrder": ["apt"],
-    "version": "2.1.2",
+    "version": "2.2.0",
     "name": "APT Design System",
     "description": "Applied Practical Thinking design tokens. Canonical source: apt-principles-agents/design/tokens (APT-019).",
     "author": "APT"

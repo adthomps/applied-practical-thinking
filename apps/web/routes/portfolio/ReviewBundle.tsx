@@ -69,7 +69,7 @@ type BundleCard = {
   filename: string;
   description: string;
   tag: string;
-  tagVariant: "default" | "accent" | "muted" | "primary" | "secondary" | "outline" | "ghost";
+  tagVariant: "default" | "muted" | "primary" | "secondary" | "outline" | "ghost";
   icon: typeof Bot;
   order: number;
 };
@@ -301,7 +301,7 @@ export default function PortfolioReviewBundle() {
           description="A single public handoff for standards-based review. Starter packs are primary, and the full bundle index remains available when deeper reference is needed."
           titleClassName="text-3xl md:text-4xl"
           descriptionClassName="text-lg"
-          eyebrow={<AptTag variant="accent">AI Review Bundle</AptTag>}
+          eyebrow={<AptTag variant="primary">AI Review Bundle</AptTag>}
         >
           <div className="flex flex-wrap gap-3">
             {primaryActionButtons.map((file) => {

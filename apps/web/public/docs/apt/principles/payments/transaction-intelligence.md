@@ -50,6 +50,10 @@ Review for leakage from future events, inconsistent lifecycle definitions, doubl
 - Provide explanations, human review, overrides, appeals, monitoring, and retirement paths proportional to impact.
 
 See the [Payments canonical hub](README.md) and linked standards/checklists before making final claims.
+## Applied by
+
+- [apt-transaction-intelligence-analyst](../../agents/payments/apt-transaction-intelligence-analyst.md) — Use when transaction data, decline patterns, or authorization trends need to be analyzed to explain what's happening and what it implies for risk or revenue.
+
 ## Related
 
 - [APT Principles](../README.md)

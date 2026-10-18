@@ -91,7 +91,7 @@ export default function PortfolioVisualGallery() {
         description="Photography, motion, aerial work, and field maps framed as visual practice under constraint. This belongs in APT because observation, framing, limitation, and perspective are part of the same applied-thinking discipline."
         titleClassName="text-3xl md:text-4xl"
         descriptionClassName="text-lg"
-        eyebrow={<AptTag variant="accent">Outside of Work</AptTag>}
+        eyebrow={<AptTag variant="primary">Outside of Work</AptTag>}
       >
         <p className="max-w-2xl text-sm text-muted-foreground">
           The gallery is not separate from APT so much as adjacent to it: a quieter place where the same habits

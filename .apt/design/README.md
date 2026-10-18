@@ -4,7 +4,7 @@ kind: guide
 domain: design
 status: active
 owner: APT
-last_updated: 2026-10-05
+last_updated: 2026-10-18
 source_paths: ["apt-principles-agents/design/"]
 ---
 
@@ -49,11 +49,15 @@ The generated folder is deliberately not called `dist/`: nearly every product's 
 4. Tailwind v3: `presets: [require("../../.apt/design/generated/tailwind-preset.cjs")]`. Tailwind v4: `@import` `apt-theme.css` after the token CSS.
 5. Run the check in a script and in CI: `node .apt/design/bin/apt-design-check.mjs`.
 
-## Highlight color
+## Hover and selected color
 
-Teal (`accent`) is the highlight. Hover and selected states that used to be a neutral grey surface may use it. Blue stays the color for primary actions, links, and focus. Success uses the success token.
+APT is blue-led. UI chrome has one accent hue, the primary blue, plus neutrals and status colors.
 
-Ghost and outline buttons, menu items, dropdown options, sidebar items, and docs navigation items take their highlight from `accent`. Sidebar hover uses `sidebar-accent`, which is the same teal. Menu and dropdown options use `focus:bg-accent` with `focus:text-accent-foreground`, because Radix highlights the option by moving focus to it. Keyboard focus on buttons and other controls stays a blue `focus-visible` ring. `focus-visible:bg-accent` fails the design check.
+- `accent` is the quiet hover surface, a blue-grey step above the card. Ghost and outline buttons, menu items, dropdown options, sidebar items, and docs navigation items use it on hover. Sidebar hover uses `sidebar-accent`, which has the same value.
+- Selected items use a faint primary tint and a 2px primary bar on the inline-start edge (`bg-primary/10 border-s-2 border-primary`). This matches `navActive` and `selected` in the flat reference.
+- Blue is also the color for primary actions, links, and focus. Success, warning, and destructive are for status only.
+
+Menu and dropdown options use `focus:bg-accent` with `focus:text-accent-foreground`, because Radix highlights the option by moving focus to it. Keyboard focus on buttons and other controls stays a blue `focus-visible` ring. `focus-visible:bg-accent` fails the design check.
 
 Motion is `140ms` / `220ms` / `360ms` (`--motion-fast`, `--motion-medium`, `--motion-slow`). The flat reference and the generated stylesheets use the same three values.
 

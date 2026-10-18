@@ -3,7 +3,7 @@ import { cn } from "./utils";
 
 export interface AptTagProps {
   children: React.ReactNode;
-  variant?: "default" | "accent" | "muted" | "primary" | "secondary" | "outline" | "ghost";
+  variant?: "default" | "muted" | "primary" | "secondary" | "outline" | "ghost";
   size?: "sm" | "default";
   className?: string;
 }
@@ -16,7 +16,6 @@ export function AptTag({ children, variant = "default", size = "default", classN
         size === "sm" ? "px-2 py-0.5 text-[10px]" : "px-2.5 py-0.5 text-xs",
         {
           "bg-secondary text-secondary-foreground": variant === "default",
-          "border border-primary/40 bg-primary/10 text-primary": variant === "accent",
           "bg-muted text-muted-foreground": variant === "muted",
           "bg-primary/20 text-primary": variant === "primary",
           "bg-secondary/80 text-secondary-foreground": variant === "secondary",

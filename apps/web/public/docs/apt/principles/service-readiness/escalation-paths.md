@@ -49,6 +49,10 @@ Review for launch without ownership, alerts without action, missing customer-saf
 - State what is verified, what is assumed, and what requires specialist or human approval.
 
 See the [Service Readiness canonical hub](README.md) and linked standards/checklists before making final claims.
+## Applied by
+
+- [apt-support-operations-reviewer](../../agents/customer/apt-support-operations-reviewer.md) — Use when a change is about to ship, to confirm the support organization can actually operate and troubleshoot it on day one.
+
 ## Related
 
 - [APT Principles](../README.md)

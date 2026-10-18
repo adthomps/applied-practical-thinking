@@ -33,7 +33,7 @@ export function InsightCard({ insight, to, compact = false }: InsightCardProps) 
       <AptCard variant="interactive" padding="none" className="group h-full">
         <Link to={to} className="flex h-full flex-col p-5 focus:outline-none">
           <div className="mb-3 flex items-center justify-between gap-3">
-            <AptTag variant="accent" size="sm">
+            <AptTag variant="primary" size="sm">
               {displayTypeLabel}
             </AptTag>
             <Icon className="h-4 w-4 text-muted-foreground" />
@@ -81,7 +81,7 @@ export function InsightCard({ insight, to, compact = false }: InsightCardProps) 
       icon={<Icon className="h-5 w-5" />}
       eyebrow={
         <>
-          <AptTag variant="accent">
+          <AptTag variant="primary">
             {displayTypeLabel}
           </AptTag>
         </>

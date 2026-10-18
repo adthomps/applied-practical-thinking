@@ -174,11 +174,11 @@ export const aptColorPairs: ColorPair[] = [
     bgClass: "bg-primary",
     fgClass: "text-primary-foreground",
   },
-  // Restricted accent support combinations
+  // Quiet hover surface (design 2.2.0, DR-016)
   {
-    name: "Accent Support Badge",
-    background: "165 45% 40%",
-    foreground: "220 20% 8%",
+    name: "Hover Accent",
+    background: "220 22% 19%",
+    foreground: "220 10% 95%",
     bgClass: "bg-accent",
     fgClass: "text-accent-foreground",
   },
@@ -195,13 +195,6 @@ export const aptColorPairs: ColorPair[] = [
     foreground: "220 10% 90%",
     bgClass: "bg-secondary",
     fgClass: "text-secondary-foreground",
-  },
-  {
-    name: "Accent on Background",
-    background: "220 20% 8%",
-    foreground: "165 45% 40%",
-    bgClass: "bg-background",
-    fgClass: "text-accent",
   },
   // Secondary
   {

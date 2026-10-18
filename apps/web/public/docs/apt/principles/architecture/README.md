@@ -5,7 +5,7 @@ domain: architecture
 status: active
 owner: APT
 version: v1
-last_updated: 2026-06-28
+last_updated: 2026-10-12
 source_paths: ["apt-principles/architecture.md"]
 supersedes: ["apt-principles/architecture.md"]
 ---
@@ -100,12 +100,14 @@ Architecture maps and forbidden flows are captured in `references/architecture-m
 
 ### Cloudflare-Oriented Baseline
 
-- Cloudflare Pages for static frontend/docs delivery.
-- Cloudflare Workers for APIs, BFFs, and AI endpoints.
-- D1 for relational persistence when appropriate.
-- KV for lightweight key/value data.
-- R2 for object storage.
-- GitHub as source of truth.
+Stack choices for new and existing apps are in [Cloudflare Standards](../../standards/installable-summaries/cloudflare-standards.md).
+
+- New full-stack apps use React, Vite, TypeScript, Tailwind, shadcn/ui, Hono, and one Worker with static assets.
+- An existing Pages project plus a separate Worker stays until a reviewed move.
+- D1 for relational persistence when the app stores relational data.
+- KV for lightweight key/value data when the app needs it.
+- R2 for object storage when the app stores files.
+- GitHub as source of truth, with Wrangler deploys gated on pull requests.
 - Preview-first deployment flow.
 
 ## Architecture Patterns
@@ -206,6 +208,13 @@ A new knowledge search feature defines:
 ## Bad Example
 
 A React component calls an external API directly, transforms business data inline, handles auth assumptions locally, and stores prompt text in the component body.
+
+## Applied by
+
+- [apt-api-architect](../../agents/architecture/apt-api-architect.md) — Use when an API's overall structure — resource model, versioning strategy, service boundaries — needs architectural review, distinct from a single-endpoint contract review.
+- [apt-integration-architect](../../agents/architecture/apt-integration-architect.md) — Use when two or more systems need to be connected — via API, event stream, or bridge — and the integration pattern itself needs architectural review.
+- [apt-modernization-architect](../../agents/architecture/apt-modernization-architect.md) — Use when a legacy system, API, or integration needs a modernization path — replacing SOAP/XML/NVP or monolithic patterns with current APT-supported approaches.
+- [javik](../../agents/architecture/javik.md) — Use as the senior cross-cutting sign-off for architecture work, after specialist architecture perspectives (api, integration, modernization) have reported, to reconcile them into one accountable structural recommendation.
 
 ## Related Checklists
 

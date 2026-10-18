@@ -211,7 +211,7 @@ export default function PortfolioDesignThinking() {
         description="Problem framing, assumption testing, constraint mapping, and decision-making in practice. This is how problems are defined before solutions exist, the thinking that precedes the doing."
         titleClassName="text-3xl md:text-4xl"
         descriptionClassName="text-lg"
-        eyebrow={<AptTag variant="accent">Design Thinking</AptTag>}
+        eyebrow={<AptTag variant="primary">Design Thinking</AptTag>}
         className="mb-12"
       >
         <div className="flex flex-wrap gap-3">
