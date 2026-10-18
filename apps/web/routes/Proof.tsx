@@ -94,7 +94,7 @@ export default function Systems() {
   return (
     <div className="container py-10 md:py-12">
       <section className="space-y-3">
-        <SectionIntro
+        <SectionIntro as="h1"
           title="Proof"
           description="What is implemented, and what must not be claimed. Clickable demos stay in Labs. The story of a decision stays in Insights."
           titleClassName="text-3xl md:text-4xl"

@@ -18,6 +18,7 @@ export type VectorizeBinding = {
 
 export type WorkerBindings = {
   PUBLIC_SITE_ORIGIN?: string;
+  APT_ASSISTANT_ENABLED?: string;
   OPENAI_API_KEY?: string;
   APT_INGEST_TOKEN?: string;
   CF_ACCOUNT_ID?: string;

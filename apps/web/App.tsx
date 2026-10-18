@@ -125,17 +125,17 @@ const App = () => (
               <Route path="/insights/blog" element={<InsightsBlog />} />
               <Route path="/insights/podcast" element={<InsightsPodcast />} />
               <Route path="/insights/case-studies" element={<InsightsCaseStudies />} />
-              <Route path="/insights/articles" element={<InsightsBlog />} />
-              <Route path="/insights/podcasts" element={<InsightsPodcast />} />
-              <Route path="/insights/practice" element={<InsightsCaseStudies />} />
+              <Route path="/insights/articles" element={<Navigate to="/insights/blog" replace />} />
+              <Route path="/insights/podcasts" element={<Navigate to="/insights/podcast" replace />} />
+              <Route path="/insights/practice" element={<Navigate to="/insights/case-studies" replace />} />
               <Route path="/insights/:id" element={<InsightDetail />} />
 
               <Route path="/about" element={<About />} />
               <Route path="/about/visual-gallery" element={<PortfolioVisualGallery />} />
               <Route path="/assistant" element={<AssistantPage />} />
               <Route path="/design-playground" element={<DesignPlayground />} />
+              <Route path="*" element={<NotFound />} />
             </Route>
-            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </BrowserRouter>

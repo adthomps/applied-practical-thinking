@@ -1,15 +1,15 @@
 import { useEffect, useId, useRef, useState } from "react";
 import type { FocusEvent as ReactFocusEvent, KeyboardEvent as ReactKeyboardEvent } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown, ExternalLink, Github } from "lucide-react";
+import { Menu, X, ChevronDown, Github, Linkedin } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { authorConfig, siteConfig, NavItem } from "@/data/site";
 
 const utilityLinks = [
   {
-    label: "Gallery",
-    href: siteConfig.appliedGalleryUrl,
-    icon: ExternalLink,
+    label: "LinkedIn",
+    href: authorConfig.social.linkedin,
+    icon: Linkedin,
   },
   {
     label: "GitHub",
@@ -491,7 +491,7 @@ export function AptNav() {
           </div>
         </Link>
 
-        <nav className="hidden flex-1 items-center justify-center md:flex">
+        <nav className="hidden flex-1 items-center justify-center lg:flex">
           <div className="flex items-center gap-1 rounded-lg border border-border/60 bg-muted/25 p-1">
           {siteConfig.nav.map((item, index) => (
             <NavDropdown 
@@ -503,7 +503,7 @@ export function AptNav() {
           </div>
         </nav>
 
-        <div className="ml-auto hidden items-center gap-2 md:flex">
+        <div className="ml-auto hidden items-center gap-2 lg:flex">
           {utilityLinks.map((link) => {
             const Icon = link.icon;
             return (
@@ -523,7 +523,7 @@ export function AptNav() {
 
         <button
           ref={mobileToggleRef}
-          className="ml-auto rounded-md p-2 text-muted-foreground transition-all duration-200 hover:bg-secondary hover:text-foreground md:hidden"
+          className="ml-auto rounded-md p-2 text-muted-foreground transition-all duration-200 hover:bg-secondary hover:text-foreground lg:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
           aria-expanded={mobileOpen}
@@ -537,7 +537,7 @@ export function AptNav() {
         <nav
           id={mobileMenuId}
           ref={mobileNavRef}
-          className="md:hidden border-t border-border bg-background p-4"
+          className="lg:hidden border-t border-border bg-background p-4"
           aria-label="Mobile navigation"
         >
           <div className="flex flex-col gap-1">

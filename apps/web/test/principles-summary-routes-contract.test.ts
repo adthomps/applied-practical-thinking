@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { siteConfig } from "@/data/site";
+import { siteConfig, type NavItem } from "@/data/site";
 
 function readAppSource() {
   const appPath = path.resolve(process.cwd(), "App.tsx");
@@ -31,13 +31,16 @@ describe("principles summary routes and nav contract", () => {
 
   it("uses the flat top-level IA and hard-cut canonical routes", () => {
     const topLevelPaths = new Set(siteConfig.nav.map((item) => item.path));
+    const navPaths = new Set(
+      (siteConfig.nav as readonly NavItem[]).flatMap((item) => [item.path, ...(item.children ?? []).map((child) => child.path)])
+    );
 
     expect(topLevelPaths.has("/")).toBe(true);
     expect(topLevelPaths.has("/labs")).toBe(true);
-    expect(topLevelPaths.has("/proof")).toBe(true);
     expect(topLevelPaths.has("/principles")).toBe(true);
     expect(topLevelPaths.has("/insights")).toBe(true);
     expect(topLevelPaths.has("/about")).toBe(true);
+    expect(navPaths.has("/proof")).toBe(true);
     expect(topLevelPaths.has("/start")).toBe(false);
     expect(topLevelPaths.has("/learn")).toBe(false);
     expect(topLevelPaths.has("/experiments")).toBe(false);

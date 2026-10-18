@@ -29,6 +29,7 @@ export { AptEmblem } from "./AptEmblem";
 export { CosmicBackground } from "./CosmicBackground";
 export { LandingSectionCardGrid } from "./LandingSectionCardGrid";
 export { SectionIntro } from "./SectionIntro";
+export { CareerTimeline } from "./CareerTimeline";
 export { BrowseCard } from "./BrowseCard";
 export { ReviewBundleCallout } from "./ReviewBundleCallout";
 export { DesignDocVersionSwitcher } from "./DesignDocVersionSwitcher";

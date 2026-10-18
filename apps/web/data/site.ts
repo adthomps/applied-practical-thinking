@@ -12,62 +12,59 @@ export const siteConfig = {
   footerSystemNote: "System note: Built as a practical, evolving operational reference.",
 
   // External links
-  appliedGalleryUrl: "https://appliedpracticalthinking.com/about/visual-gallery",
+  appliedGalleryUrl: "/about/visual-gallery",
   appliedGalleryLabel: "Applied Visual Gallery",
   
   // Primary Navigation
+  // Plain labels lead; APT terms (Labs, Proof, Principles, Insights) stay on the children.
   nav: [
     {
       label: "Home",
       path: "/",
-      description: "APT overview and system model.",
-    },
-    {
-      label: "Labs",
-      path: "/labs",
-      description: "Experiments, concepts, mocks, prototypes, and live demos.",
-      children: [
-        { label: "All Labs", path: "/labs", description: "Full labs index across all types." },
-        { label: "Concepts", path: "/labs/concepts", description: "Conceptual explorations and early-stage ideas." },
-        { label: "Mocks", path: "/labs/mocks", description: "UI and interaction mocks." },
-        { label: "Prototypes", path: "/labs/prototypes", description: "Working prototypes ready for feedback." },
-        { label: "Live Demos", path: "/labs/live-demos", description: "Runnable API and UI demonstrations." },
-      ],
-    },
-    {
-      label: "Proof",
-      path: "/proof",
-      description: "Stable, complete systems and implementation proof.",
-    },
-    {
-      label: "Principles",
-      path: "/principles",
-      description: "Curated APT principles summaries linked to canonical GitHub sources.",
-      children: [
-        { label: "All Principles", path: "/principles", description: "The full APT principles lifecycle overview." },
-        { label: "Thinking", path: "/principles/thinking", description: "Problem framing and outcome definition." },
-        { label: "Design", path: "/principles/design", description: "State-complete UX and design system standards." },
-        { label: "Architecture", path: "/principles/architecture", description: "Boundary and contract design." },
-        { label: "Execution", path: "/principles/execution", description: "Spec-to-build delivery model." },
-        { label: "AI", path: "/principles/ai", description: "AI and agent augmentation standards." },
-        { label: "Security", path: "/principles/security", description: "Trust boundaries and access controls." },
-      ],
-    },
-    {
-      label: "Insights",
-      path: "/insights",
-      description: "Blogs, podcasts, and case studies.",
-      children: [
-        { label: "All Insights", path: "/insights", description: "Full insights index." },
-        { label: "Blog", path: "/insights/blog", description: "Articles and long-form writing." },
-        { label: "Podcast", path: "/insights/podcast", description: "Podcast episodes and notes." },
-        { label: "Case Studies", path: "/insights/case-studies", description: "Detailed case study breakdowns." },
-      ],
+      description: "Experience, curiosity, and practical innovation.",
     },
     {
       label: "About",
       path: "/about",
-      description: "How I think, what I work on, and why APT exists.",
+      description: "Who I am, how I got here, and what I explore outside work.",
+      children: [
+        { label: "Profile", path: "/about", description: "Background, career, and the thinking behind APT." },
+        { label: "Photography & Drones", path: "/about/visual-gallery", description: "Photos, drone flights, and maps." },
+      ],
+    },
+    {
+      label: "Projects",
+      path: "/labs",
+      description: "Experiments, live demos, and shipped systems.",
+      children: [
+        { label: "Labs", path: "/labs", description: "All experiments: concepts, mocks, and prototypes." },
+        { label: "Live Demos", path: "/labs/live-demos", description: "Runnable API and UI demonstrations." },
+        { label: "Proof", path: "/proof", description: "Stable, shipped systems and implementation proof." },
+      ],
+    },
+    {
+      label: "Writing",
+      path: "/insights",
+      description: "Articles, case studies, and podcast episodes.",
+      children: [
+        { label: "All Insights", path: "/insights", description: "Every article, case study, and episode." },
+        { label: "Blog", path: "/insights/blog", description: "Articles and long-form writing." },
+        { label: "Case Studies", path: "/insights/case-studies", description: "Detailed case study breakdowns." },
+        { label: "Podcast", path: "/insights/podcast", description: "Podcast episodes and notes." },
+      ],
+    },
+    {
+      label: "How I Work",
+      path: "/principles",
+      description: "The APT principles and design system behind the work.",
+      children: [
+        { label: "APT Principles", path: "/principles", description: "The full APT principles lifecycle overview." },
+        { label: "Thinking", path: "/principles/thinking", description: "Problem framing and outcome definition." },
+        { label: "Architecture", path: "/principles/architecture", description: "Boundary and contract design." },
+        { label: "AI", path: "/principles/ai", description: "AI and agent augmentation standards." },
+        { label: "Security", path: "/principles/security", description: "Trust boundaries and access controls." },
+        { label: "Design System", path: "/design", description: "Tokens, patterns, and design documentation." },
+      ],
     },
   ],
 } as const;
@@ -75,9 +72,8 @@ export const siteConfig = {
 // Author/Profile configuration
 export const authorConfig = {
   name: "Adam Thompson",
-  title: "Director of Service Experience",
+  title: "Director of Service Experience / Go to Market",
   location: "Bellevue, WA",
-  joinedDate: "June 2006",
   roles: ["Engineer", "Photographer", "Product Leader", "Systems Thinker"],
   bio: "Passionate about technology-driven innovation, I design and implement tools, software, and systems that streamline and enhance processes. I focus on improving user experiences through precise testing and automation, delivering quality and efficiency in every project. Outside of work, I channel my creativity into photography and drone flying, capturing unique perspectives from both ground and sky. I also enjoy writing about my experiences and insights in the tech industry, sharing knowledge and fostering community engagement.",
   shortBio: "Crafting digital experiences through code and capturing moments through the lens. Welcome to my creative journey.",
