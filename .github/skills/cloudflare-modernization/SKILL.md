@@ -6,7 +6,7 @@ kind: "platform-adapter"
 domain: "platforms"
 status: "active"
 owner: "APT"
-last_updated: "2026-06-28"
+last_updated: "2026-10-12"
 source_paths: ["apt-agent-standards/codex/skills/cloudflare-modernization/SKILL.md"]
 ---
 
@@ -16,7 +16,7 @@ source_paths: ["apt-agent-standards/codex/skills/cloudflare-modernization/SKILL.
 Modernize deployment, API routing, and storage toward Cloudflare safely.
 
 ## When To Use
-Use for legacy hosting migration, Worker extraction, Pages adoption, or Cloudflare cleanup.
+Use for legacy hosting migration, Worker extraction, or Cloudflare cleanup. A new app follows Cloudflare Standards. An existing Pages app stays until a reviewed move.
 
 ## When Not To Use
 Do not use when the project has no deployment or runtime change.
@@ -35,7 +35,7 @@ Read:
 ## Process
 1. Inventory the current runtime, deploy targets, frontend, API routes, bindings, secrets, and storage.
 2. Identify the smallest Cloudflare target that preserves current behavior.
-3. Separate static frontend responsibilities from dynamic Worker responsibilities.
+3. Keep an existing Pages plus Worker split until a reviewed move. A new full-stack app uses one Worker with static assets.
 4. Decide whether Hono, D1, KV, or R2 are justified by current behavior.
 5. Produce a staged modernization plan before editing.
 6. For each stage, name files to change, behavior preserved, validation commands, risks, and rollback.

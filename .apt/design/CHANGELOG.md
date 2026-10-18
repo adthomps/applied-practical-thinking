@@ -4,13 +4,29 @@ kind: changelog
 domain: design
 status: active
 owner: APT
-last_updated: 2026-10-05
+last_updated: 2026-10-18
 source_paths: ["apt-principles-agents/design/VERSION", "apt-principles-agents/design/tokens/APT-TOKENS.json"]
 ---
 
 # APT Design Changelog
 
 Each entry matches a `design/VERSION` value. Consumers record the version they synced in `.apt/installation.json` (`designVersion`). Run `node scripts/apt-assets.mjs audit-workspace --workspace-root ..` to see which repos are behind.
+
+## 2.2.0 - 2026-10-18
+
+Hover is quiet again, and selection is blue. The teal accent is gone from UI chrome (DR-016).
+
+- **Hover:** `accent` is a quiet blue-grey surface: `220 22% 19%` dark and `220 30% 91%` light. `accent-foreground` is the theme foreground. `sidebar-accent` matches it. Ghost and outline buttons, menus, dropdowns, the sidebar, and docs navigation keep using `bg-accent` / `focus:bg-accent`, and they now get the quiet surface.
+- **Selected:** a faint primary tint plus a 2px primary bar on the inline-start edge (`bg-primary/10 border-s-2 border-primary`). Sidebar and docs navigation items gain a `selected` spec. This matches the existing `navActive` and `selected` aliases, and `selectedSupport` is now primary too.
+- **Charts:** `chart-2` is orange (the old `chart-4`), `chart-4` is pink (the old `chart-5`), and `chart-5` is a new sky blue (`205 90% 70%` dark, `205 85% 40%` light). Blue next to orange is the most distinct pair for the first two series.
+- **Components:** the teal `accent` tag and button variants are removed. Use the `primary` tag variant.
+- **Checks:** contrast now covers `accent-foreground` on `accent`.
+- **Migration:**
+  1. Sync the `design` manifest.
+  2. Replace product-local teal selected styling with `bg-primary/10 border-s-2 border-primary`.
+  3. Move `accent` tags and badges to `primary`.
+  4. Check charts that relied on `chart-2` being teal.
+  5. Run `node .apt/design/bin/apt-design-check.mjs`.
 
 ## 2.1.2 - 2026-10-05
 

@@ -32,7 +32,7 @@ Use the chart ramp and state roles deliberately.
 
 ```text
 single series: chart-1 / primary blue
-second series or focused comparison: chart-2 / restricted teal when meaningful
+second series or focused comparison: chart-2 / orange, chosen for maximum contrast with blue
 additional series: chart-3, chart-4, chart-5 in order
 status risk: danger, warning, success only when the data carries that status
 axes and labels: muted neutral text
@@ -62,7 +62,7 @@ Restricting chart color reduces decorative variety. It increases consistency and
 
 ## Common Mistakes
 
-- Using teal, red, amber, or success colors because a chart needs variety.
+- Using red, amber, or success colors because a chart needs variety.
 - Omitting axes, labels, units, or timeframe.
 - Letting loading or empty chart states resize the dashboard.
 - Using chart glow on every data element instead of a specific hero or lead trend.

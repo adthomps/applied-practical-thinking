@@ -4,7 +4,7 @@ kind: "platform-adapter"
 domain: "platforms"
 status: "active"
 owner: "APT"
-last_updated: "2026-06-28"
+last_updated: "2026-10-12"
 source_paths: ["apt-agent-standards/github-copilot/instructions/cloudflare.instructions.md"]
 ---
 
@@ -14,7 +14,9 @@ Use Cloudflare services only when they fit the repo's actual runtime and operati
 
 ## Runtime Guidance
 
-- Prefer Pages for static frontend delivery and Workers for dynamic behavior.
+- Follow Cloudflare Standards. A new full-stack app uses React, Vite, TypeScript, Hono, and one Worker with static assets.
+- An existing Pages project plus a separate Worker stays until a reviewed move.
+- Use Resend only when the app sends product mail. Use Clerk only for a new app that needs accounts, or when the repository already uses Clerk.
 - Prefer Hono when Worker routing benefits from explicit route structure and middleware.
 - Keep Worker bindings explicit in `wrangler.toml` and typed where the project supports it.
 - Use D1 for relational data, KV for low-churn key/value state, and R2 for object storage only when justified.

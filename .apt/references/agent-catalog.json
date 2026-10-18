@@ -387,7 +387,7 @@
       "title": "apt-cloudflare-builder",
       "domain": "harness",
       "scope": "domain",
-      "description": "Use when building or reviewing Cloudflare Workers, Pages, Hono, D1, KV, R2, or deployment workflows.",
+      "description": "Use when building or reviewing Cloudflare Workers, Hono, static assets, D1, KV, R2, or deployment workflows. New apps use one Worker with static assets. Existing Pages apps stay until a reviewed move.",
       "applies_principles": [
         "principles/ai/agent-design.md",
         "principles/architecture/cloudflare-hono-architecture.md",
@@ -1890,7 +1890,7 @@
       "title": "Drack",
       "domain": "engineering",
       "scope": "global",
-      "description": "Use when implementation work targets the Cloudflare Workers/Pages + Hono stack, to confirm it follows the stack's actual constraints (bindings, cold starts, edge runtime limits).",
+      "description": "Use when implementation work targets Hono on Cloudflare Workers, to confirm bindings, runtime limits, and the new-app versus existing-Pages rule in Cloudflare Standards.",
       "applies_principles": [
         "principles/execution/quality-and-testing.md"
       ],

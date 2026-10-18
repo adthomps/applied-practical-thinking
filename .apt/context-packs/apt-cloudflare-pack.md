@@ -1,7 +1,7 @@
 ---
 title: APT Cloudflare Context Pack
 version: v1
-last_updated: 2026-07-25
+last_updated: 2026-10-12
 owner: APT
 status: draft
 kind: "context-pack"
@@ -13,7 +13,7 @@ source_paths: ["apt-principles/context-packs/apt-cloudflare-pack.md"]
 
 ## Purpose
 
-Use this pack for Cloudflare Pages, Workers, Hono APIs, edge routing, bindings, deployment readiness, and operational review. It combines architecture, API, security, observability, and release expectations for edge projects.
+Use this pack for Cloudflare Workers, Hono APIs, static assets, bindings, deployment readiness, and operational review. New apps follow [Cloudflare Standards](../standards/installable-summaries/cloudflare-standards.md). An existing Pages plus Worker app stays until a reviewed move.
 
 ## Use When
 
