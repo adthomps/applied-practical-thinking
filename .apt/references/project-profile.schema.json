@@ -64,6 +64,17 @@
       },
       "additionalProperties": false
     },
+    "local_cloudflare": {
+      "type": "object",
+      "description": "How to run the repository locally with Cloudflare Wrangler. Rendered as the Local Cloudflare section of docs/project-context.md.",
+      "required": ["status", "local_command", "fix"],
+      "properties": {
+        "status": { "type": "string", "minLength": 1, "description": "Ready, Partial, Blocked, or Not a Cloudflare app, plus any blueprint link." },
+        "local_command": { "type": "string", "minLength": 1 },
+        "fix": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
     "commands": {
       "type": "array",
       "minItems": 1,
