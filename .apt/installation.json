@@ -3,7 +3,7 @@
   "source": {
     "repository": "apt-principles-agents",
     "version": "1.0.0",
-    "commit": "b5b8b4c256d1872a48ec55c7e89a93f0ff11dfbb"
+    "commit": "47bf67556d0a5a33aee8f1fd968ebdb73d6f144b"
   },
   "manifests": [
     "core",
@@ -346,6 +346,12 @@
       "sha256": "de33465b9ce97886b3111e12b70c55077debb0796a5e29ae0b6f5c77d82fbc76"
     },
     {
+      "source": "bin/apt-check-shim.mjs",
+      "target": ".apt/bin/apt-check.mjs",
+      "kind": "apt-check",
+      "sha256": "50b81f505b6db29ddbb04b2fdfd708051bf59931b72836695ae6e864c3f70015"
+    },
+    {
       "source": "checklists/ai-agent-review-checklist.md",
       "target": ".apt/checklists/ai-agent-review-checklist.md",
       "kind": "canonical",
@@ -620,6 +626,12 @@
       "target": ".apt/examples/ui/transactional-email-pattern.md",
       "kind": "canonical",
       "sha256": "eacf38c8eb3c77aaed6e60f943707f052a6b7c763b8ce8f2270987d4ce43af31"
+    },
+    {
+      "source": "git-hooks/pre-push",
+      "target": ".apt/git-hooks/pre-push",
+      "kind": "git-hook",
+      "sha256": "ed412626b6a52a64aecda847eadb4ef2b82f80ff040c10220b57f619bd55f9bd"
     },
     {
       "source": "governance/architecture-review.md",
@@ -1528,6 +1540,12 @@
       "sha256": "aa5e922523dc41f17a75c3c2164b12e007c025d57731d422cc0da4f26895ff09"
     },
     {
+      "source": "references/apt.schema.json",
+      "target": ".apt/references/apt.schema.json",
+      "kind": "canonical",
+      "sha256": "b321b567ee3a5e731b048f1d8dc39bcae092a7dde12a740c8f2ca2e680ed2142"
+    },
+    {
       "source": "references/architecture-map.json",
       "target": ".apt/references/architecture-map.json",
       "kind": "canonical",
@@ -1585,7 +1603,7 @@
       "source": "references/project-profile.schema.json",
       "target": ".apt/references/project-profile.schema.json",
       "kind": "canonical",
-      "sha256": "3a48b3833257ddede834d8063df8d88b1f35a60bc4d2d1296d110c0235960873"
+      "sha256": "6f0fd07fc68c259cdb9e122a0fa1b76b58c47643d8b5e2d1ce6d90e7377b4f7d"
     },
     {
       "source": "references/publication-manifest.json",
@@ -1993,7 +2011,7 @@
       "source": "standards/ai/hook-enforcement-standard.md",
       "target": ".apt/standards/ai/hook-enforcement-standard.md",
       "kind": "canonical",
-      "sha256": "378a7e0f85a147fbf07c3c1527f4d1e071ccb0a85eed6942f9d692dbff1eef61"
+      "sha256": "4a346552798e9b19be38857d6074f3152711aa8cf0d12376164270945bcf1e35"
     },
     {
       "source": "standards/ai/local-first-ai-standard.md",
@@ -5776,6 +5794,12 @@
       "sha256": "698d0bbd325463c87788ea03791e7b6e20780b4ae22fa3ba69139e24c32ed675"
     },
     {
+      "source": "templates/ci/apt-check.yml",
+      "target": ".github/workflows/apt-check.yml",
+      "kind": "ci",
+      "sha256": "3b1911058b7a661aa55f743dbab3762ce0abfaa052041e0bc73feb86cdd55af1"
+    },
+    {
       "source": "CLAUDE.md",
       "target": "CLAUDE.md",
       "kind": "instruction",
@@ -5798,6 +5822,6 @@
   "localContext": "docs/project-context.md",
   "lastOperation": {
     "type": "sync",
-    "at": "2026-10-18T23:08:38.005Z"
+    "at": "2026-10-20T05:11:01.924Z"
   }
 }

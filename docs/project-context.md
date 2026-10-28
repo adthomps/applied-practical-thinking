@@ -79,6 +79,8 @@ Install the pnpm workspace, run the Vite web application and Wrangler Worker ind
 
 | Name | Category | Command | Purpose | Mutates files or targets |
 |---|---|---|---|---|
+| Repository completion gate | validate | `pnpm check` | Run APT conformance, the design check, lint, typecheck, tests and the production build in order. | Yes |
+| Typecheck | validate | `pnpm typecheck` | Typecheck the Worker and the shared UI package. | No |
 | Install workspace dependencies | setup | `pnpm install` | Install the root workspace and application dependencies from the committed lockfile. | Yes |
 | Run public web application | run | `pnpm dev` | Generate public APT assets and indexes, write validation evidence, copy runtime content, and start Vite. | Yes |
 | Run Worker locally | run | `pnpm dev:worker` | Start the Cloudflare Worker development runtime through Wrangler. | Yes |
