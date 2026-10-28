@@ -5797,7 +5797,7 @@
       "source": "templates/ci/apt-check.yml",
       "target": ".github/workflows/apt-check.yml",
       "kind": "ci",
-      "sha256": "600fce2897649764318006a33d9750068a79c17d8b9a54b4d7de69aae6c39163"
+      "sha256": "3b1911058b7a661aa55f743dbab3762ce0abfaa052041e0bc73feb86cdd55af1"
     },
     {
       "source": "CLAUDE.md",
@@ -5822,6 +5822,6 @@
   "localContext": "docs/project-context.md",
   "lastOperation": {
     "type": "sync",
-    "at": "2026-10-19T04:10:49.159Z"
+    "at": "2026-10-20T05:11:01.924Z"
   }
 }

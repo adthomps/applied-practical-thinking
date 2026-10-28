@@ -56,7 +56,14 @@
     "build": "pnpm build runs configuration checks, APT public-doctrine generation, validation reporting, content-index generation, public-copy generation, and the Vite production build.",
     "deployment": "Cloudflare Pages deploys the web output from GitHub builds; pnpm deploy:worker publishes the Worker through Wrangler."
   },
+  "local_cloudflare": {
+    "status": "Blocked. Blueprint: [docs/plans/local-cloudflare.md](plans/local-cloudflare.md).",
+    "local_command": "`pnpm dev` starts Vite on port 8080 and proxies `/api` to `127.0.0.1:8787`. `pnpm dev:worker` starts the Worker.",
+    "fix": "`apps/worker/wrangler.toml` sets Vectorize `remote = true`, so `pnpm dev:worker` fails while creating a remote preview session and the web app has no local Worker. Add a local Wrangler env without that remote Vectorize binding, then run the web app and Worker together. Local Worker requests must read the local Pages origin, not `PUBLIC_SITE_ORIGIN` (`https://appliedpracticalthinking.com`)."
+  },
   "commands": [
+    {"name": "Repository completion gate", "category": "validate", "command": "pnpm check", "purpose": "Run APT conformance, the design check, lint, typecheck, tests and the production build in order.", "mutates": true, "applicability": "applicable"},
+    {"name": "Typecheck", "category": "validate", "command": "pnpm typecheck", "purpose": "Typecheck the Worker and the shared UI package.", "mutates": false, "applicability": "applicable"},
     {
       "name": "Install workspace dependencies",
       "category": "setup",
